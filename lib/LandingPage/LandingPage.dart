@@ -8,7 +8,10 @@ import '../Item_Page/Item.dart';
 import '../Home_Page/SecondScreen.dart';
 import '../Purchase_Entry.dart';
 import '../Purchase_Reports.dart';
+import '../Purchase_return_Page.dart';
 import '../Reports_Page.dart';
+import '../Sales_return_Page.dart';
+import '../Stocks_List-Page.dart';
 import '../Suppiler_Pages/Supplier.dart';
 import '../Suppiler_Reports.dart';
 import '../billing_Page.dart';
@@ -30,6 +33,7 @@ const List<String> saleslist = <String>[
   'Sales',
   'Sales Reports',
   'Sales Entry',
+  "Sales Returns"
 
 ];
 
@@ -37,6 +41,7 @@ const List<String> Purchaselist = <String>[
   'Purchase',
   'Purchase Reports',
   'Purchase Entry',
+  "Purchase Returns"
 
 ];
 
@@ -128,7 +133,7 @@ class _drawerState extends State<drawer> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xff00A99D),
+      backgroundColor: const Color(0xff00A99D),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -137,7 +142,7 @@ class _drawerState extends State<drawer> {
             Container(
               height: height/13.14,
               width: double.infinity,
-              color: Color(0xff263646),
+              color: const Color(0xff263646),
               child: Row(
                children: [
                  //shabika image
@@ -147,21 +152,15 @@ class _drawerState extends State<drawer> {
                  ),
 
                  //shabika text
-                 InkWell(
-                   onTap: (){
-                     print(height);
-                     print(width);
-                   },
-                   child: Padding(
-                     padding:  EdgeInsets.symmetric(
-                         horizontal: width/170.75,
-                         vertical: height/82.125
-                     ),
-                     child: Text(
-                       "Shabika",
-                       style: GoogleFonts.poppins(
-                           fontSize: width/75.888, color: Colors.white),
-                     ),
+                 Padding(
+                   padding:  EdgeInsets.symmetric(
+                       horizontal: width/170.75,
+                       vertical: height/82.125
+                   ),
+                   child: Text(
+                     "Shabika",
+                     style: GoogleFonts.poppins(
+                         fontSize: width/75.888, color: Colors.white),
                    ),
                  ),
 
@@ -220,7 +219,7 @@ class _drawerState extends State<drawer> {
                          Image.asset("assets/Vector1.png",color: dawer==1?Colors.transparent:Colors.white),
                          SizedBox(width: width/273.2,),
                          DropdownButton<String>(
-                           dropdownColor:dawer==1?Colors.white :Color(0xff263646),
+                           dropdownColor:dawer==1?Colors.white :const Color(0xff263646),
                            value: dropdownValue,
                            onTap: (){
                              setState(() {
@@ -298,7 +297,7 @@ class _drawerState extends State<drawer> {
                          SizedBox(width: width/273.2,),
                          DropdownButton<String>(
                            value: dropdownValue2,
-                           dropdownColor:dawer==2?Colors.white :Color(0xff263646),
+                           dropdownColor:dawer==2?Colors.white :const Color(0xff263646),
                            onTap: (){
                              setState(() {
                                sales=!sales;
@@ -370,7 +369,7 @@ class _drawerState extends State<drawer> {
                          SizedBox(width: width/273.2,),
                          DropdownButton<String>(
                            value: dropdownValue3,
-                           dropdownColor:dawer==3?Colors.white :Color(0xff263646),
+                           dropdownColor:dawer==3?Colors.white :const Color(0xff263646),
                            onTap: (){
                              setState(() {
                                purchase=!purchase;
@@ -441,7 +440,7 @@ class _drawerState extends State<drawer> {
                          SizedBox(width: width/273.2,),
                          DropdownButton<String>(
                            value: dropdownValue5,
-                           dropdownColor:dawer==5?Colors.white :Color(0xff263646),
+                           dropdownColor:dawer==5?Colors.white :const Color(0xff263646),
                            onTap: (){
                              setState(() {
                                Banking=!Banking;
@@ -494,38 +493,38 @@ class _drawerState extends State<drawer> {
 
                  //stocks dropdown
                  SizedBox(width: width/136.6,),
-                 Container(
-                  height: height/16.425,
-                   decoration: BoxDecoration(
-                       color: dawer==6?Colors.white:Colors.transparent,
-                       borderRadius: BorderRadius.circular(7)
-                   ),
-                   child: Padding(
-                   padding:  EdgeInsets.symmetric(
-                       horizontal: width/455.33,
-                       vertical: height/219
+                 GestureDetector(
+                   onTap: (){
+                     setState(() {
+                       stocks=!stocks;
+                       dawer=6;
+                       master = false;
+                       sales = false;
+                       purchase = false;
+                       Transfers = false;
+                       Banking = false;
+                       Reports = false;
+                       Support = false;
+                       Pages="Stocks";
+                     });
+                   },
+                   child: Container(
+                    height: height/16.425,
+                     width:width/9.106,
+                     decoration: BoxDecoration(
+                         color: dawer==6?Colors.white:Colors.transparent,
+                         borderRadius: BorderRadius.circular(7)
                      ),
-                     child: Row(
-                       children: [
-                         Image.asset("assets/Vector8.png",color:dawer==6?Colors.transparent:Colors.white),
-                         SizedBox(width: width/273.2,),
-                         DropdownButton<String>(
-                           value: dropdownValue6,
-                           dropdownColor:dawer==6?Colors.white :Color(0xff263646),
-                           onTap: (){
-                             setState(() {
-                               stocks=!stocks;
-                               dawer=6;
-                               master = false;
-                               sales = false;
-                               purchase = false;
-                               Transfers = false;
-                               Banking = false;
-                               Reports = false;
-                               Support = false;
-                             });
-                           },
-                           icon:   stocks == false
+                     child: Padding(
+                     padding:  EdgeInsets.symmetric(
+                         horizontal: width/455.33,
+                         vertical: height/219
+                       ),
+                       child: Row(
+                         children: [
+                           Image.asset("assets/Vector8.png",color:dawer==6?Colors.transparent:Colors.white),
+                           SizedBox(width: width/273.2,),
+                           stocks == false
                                ? Icon(
                              Icons.arrow_forward_ios_sharp,
                              color: Colors.white,
@@ -536,29 +535,15 @@ class _drawerState extends State<drawer> {
                              color: Colors.black,
                              size: width/80.353,
                            ),
-                           elevation: 16,
-                           style: const TextStyle(color: Colors.deepPurple),
-                           underline: Container(
-                             height: 0,
-                           ),
-                           onChanged: (String? value) {
-                             // This is called when the user selects an item.
-                             setState(() {
-                               dropdownValue6 = value!;
-                             });
-                           },
-                           items: Stockslist.map<DropdownMenuItem<String>>((String value) {
-                             return DropdownMenuItem<String>(
-                               value: value,
-                               child: Text(value,
-                                   style:GoogleFonts.montserrat(
-                                   fontSize: width/113.833,
-                                   color:dawer==6?Colors.black:Colors.white,
-                                   fontWeight: FontWeight.bold)),
-                             );
-                           }).toList(),
-                         ),
-                       ],
+                           SizedBox(width: width/273.2,),
+                           Text("Stocks",style: TextStyle(color: dawer==6?Colors.black:Colors.white,
+                               fontWeight: FontWeight.w700),)
+
+                           
+                           
+
+                         ],
+                       ),
                      ),
                    ),
                  ),
@@ -583,7 +568,7 @@ class _drawerState extends State<drawer> {
                          SizedBox(width: width/273.2,),
                          DropdownButton<String>(
                            value: dropdownValue7,
-                           dropdownColor:dawer==7?Colors.white :Color(0xff263646),
+                           dropdownColor:dawer==7?Colors.white :const Color(0xff263646),
                            onTap: (){
                              setState(() {
                                Reports=!Reports;
@@ -658,7 +643,7 @@ class _drawerState extends State<drawer> {
 
                          DropdownButton<String>(
                            value: dropdownValue8,
-                           dropdownColor:dawer==8?Colors.white :Color(0xff263646),
+                           dropdownColor:dawer==8?Colors.white :const Color(0xff263646),
                            onTap: (){
                              setState(() {
                                Support=!Support;
@@ -714,22 +699,25 @@ class _drawerState extends State<drawer> {
             ),
 
             Container(
-              color: Color(0xff00A99D),
+              color: const Color(0xff00A99D),
               width: width/1,
               height: height/1,
               child: SingleChildScrollView(child:
               Pages=="Home"?Home("Home"):
-              Pages=="Category"?Category():
-              Pages=="Brand"?Brand():
+              Pages=="Category"?const Category():
+              Pages=="Brand"?const Brand():
               Pages=="Item"?Item(Pages):
-              Pages=="Customer"?Customer():
-              Pages=="Supplier"?Supplier():
-              Pages=="Sales Entry"?Billing_Page():
-              Pages=="Sales Reports"?Reports_Page():
+              Pages=="Customer"?const Customer():
+              Pages=="Supplier"?const Supplier():
+              Pages=="Sales Entry"?const Billing_Page():
+              Pages=="Sales Reports"?const Reports_Page():
               Pages=="Purchase Entry"?Purchase_Entry():
               Pages=="Purchase Reports"?Purchase_Reports():
-              Pages=="Customer Reports"?Customer_Page_Reports():
-              Pages=="Supplier Reports"?Supplier_Reports():
+              Pages=="Customer Reports"?const Customer_Page_Reports():
+              Pages=="Supplier Reports"?const Supplier_Reports():
+              Pages=="Stocks"?const Stocks_Page():
+              Pages=="Purchase Returns"?const Purcharse_Return_Page():
+              Pages=="Sales Returns"?const Sales_Return_Page():
               Container()),
             )
           ],

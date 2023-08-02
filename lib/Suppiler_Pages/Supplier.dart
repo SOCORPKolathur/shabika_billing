@@ -11,6 +11,8 @@ import '../const Pages.dart';
 import 'package:flutter/services.dart';
 import 'package:shabika_billing/stmodel.dart' as StatusModel;
 
+import '../edit_suppier_Page.dart';
+
 
 
 class Supplier extends StatefulWidget {
@@ -54,6 +56,7 @@ const List<String> Stateslect = <String>[
   "West Bengal",
 
 ];
+
 class _SupplierState extends State<Supplier> {
 
   bool suplierclick=false;
@@ -105,18 +108,18 @@ class _SupplierState extends State<Supplier> {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 28.0, top: 20),
+              padding:  EdgeInsets.only(left:width/48.785, top: height/32.85),
               child: Text(
                 "Supplier",
                 style: GoogleFonts.cairo(
                     fontWeight: FontWeight.bold,
-                    fontSize: 23,
+                    fontSize:width/59.39,
                     color: Colors.white),
               ),
             ),
-            SizedBox(width: 100,),
+            SizedBox(width: width/13.66,),
             Padding(
-              padding: const EdgeInsets.only(left: 1008.0, top: 30),
+              padding:  EdgeInsets.only(left: width/1.355, top: height/21.9),
               child: GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
@@ -127,18 +130,18 @@ class _SupplierState extends State<Supplier> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 8),
+                        padding:  EdgeInsets.only(left:width/170.75, right: width/170.75),
                         child: Icon(
                           Icons.home,
                           color: Colors.white,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 10.0),
+                        padding:  EdgeInsets.only(bottom:height/65.7),
                         child: Text(
                           "Home",
                           style: GoogleFonts.cairo(
-                              color: Color(0xffFFFFFF), fontSize: 23),
+                              color: Color(0xffFFFFFF), fontSize:width/59.39),
                         ),
                       )
                     ],
@@ -156,11 +159,14 @@ class _SupplierState extends State<Supplier> {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.all(18.0),
+          padding:  EdgeInsets.symmetric(
+            horizontal: width/75.88,
+            vertical: height/36.5
+          ),
           child: Image.asset("assets/Line13.png"),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 1208.0),
+          padding:  EdgeInsets.only(right: width/1.130),
           child: Text("Search",
               style:
                   GoogleFonts.cairo(fontSize: width/68.3, fontWeight: FontWeight.bold)),
@@ -171,12 +177,15 @@ class _SupplierState extends State<Supplier> {
               padding:  EdgeInsets.only(left:width/28.458, right: width/34.15),
               child: Container(
                 child: TextField(
-                  style: GoogleFonts.poppins(fontSize: width/68.3),
+                  style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(left: width/68.3, bottom: 8),
+                    contentPadding: EdgeInsets.only(left: width/68.3, bottom: height/82.125),
                     border: InputBorder.none,
                     suffix: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.symmetric(
+                        vertical: height/82.125,
+                        horizontal: width/17.75
+                      ),
                       child: Image.asset("assets/search.png"),
                     ),
                   ),
@@ -204,8 +213,8 @@ class _SupplierState extends State<Supplier> {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                              top: 1.0, left: 15, right: 20),
+                          padding:  EdgeInsets.only(
+                              top: height/657, left: width/91.06, right: width/68.3),
                           child: Container(
                             child: Icon(Icons.add, color: Colors.teal),
                             width: width / 56.91,
@@ -239,7 +248,10 @@ class _SupplierState extends State<Supplier> {
         ),
 
         Padding(
-          padding: const EdgeInsets.all(18.0),
+          padding:  EdgeInsets.symmetric(
+              horizontal: width/75.88,
+              vertical: height/36.5
+          ),
           child: Container(
             child: SingleChildScrollView(
               child: Column(
@@ -249,7 +261,7 @@ class _SupplierState extends State<Supplier> {
                     child: Row(
                       children: [
                         Padding(
-                          padding:  EdgeInsets.only(left: 32.0, right: width/34.15),
+                          padding:  EdgeInsets.only(left:width/42.687, right: width/34.15),
                           child: Text("Sl.no",
                               style: GoogleFonts.cairo(
                                   color: Color(0xff00A99D), fontSize: width/68.3)),
@@ -309,31 +321,28 @@ class _SupplierState extends State<Supplier> {
                             children: [
 
                               //index (Serial number)
-                              Padding(
-                                padding: const EdgeInsets.only(right: .0),
-                                child: Container(
-                                  child: Center(
-                                      child: Text(
-                                        (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: Color(0xffFDFDFD)),
-                                      )),
-                                  height: height / 13.14,
-                                  width: width / 13.66,
-                                  // color: Colors.grey,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                ),
+                              Container(
+                                child: Center(
+                                    child: Text(
+                                      (index + 1).toString(),
+                                      style: GoogleFonts.cairo(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: width/75.888,
+                                          color: Color(0xffFDFDFD)),
+                                    )),
+                                height: height / 13.14,
+                                width: width / 13.66,
+                                // color: Colors.grey,
+                                decoration: BoxDecoration(
+                                    color: Color(0xff00A99D),
+                                    border: Border(
+                                      right: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                      bottom: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    )),
                               ),
 
                               //name text
@@ -365,21 +374,26 @@ class _SupplierState extends State<Supplier> {
                               ),
 
                               //edit icon(img)
-                              Container(
-                                  child: Image.asset("assets/edit.png"),
-                                  height: height / 13.14,
-                                  width: width / 12.64,
-                                  // color: Colors.grey,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      ))),//
+                              GestureDetector(
+                                onTap:(){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_suppiler_Paghe(snapshot.data!.docs[index].id),));
+                                },
+                                child: Container(
+                                    child: Image.asset("assets/edit.png"),
+                                    height: height / 13.14,
+                                    width: width / 12.64,
+                                    // color: Colors.grey,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xff00A99D),
+                                        border: Border(
+                                          right: BorderSide(
+                                            color: Colors.red,
+                                          ),
+                                          bottom: BorderSide(
+                                            color: Colors.red,
+                                          ),
+                                        ))),
+                              ),//
 
 
                               //delete icon (img)
@@ -405,25 +419,30 @@ class _SupplierState extends State<Supplier> {
                               ),
 
                               //active text
-                              Container(
-                                  child: Center(
-                                      child: Text(
-                                        "Active",
-                                        style: GoogleFonts.cairo(
-                                            fontSize: width/75.888,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xffFDFDFD)),
-                                      )),
-                                  height: height / 13.14,
-                                  width: width / 6.83,
-                                  // color: Colors.grey,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      ))),
+                              GestureDetector(
+                                onTap:(){
+                                  showdialpogboxss(snapshot.data!.docs[index].id);
+                                },
+                                child: Container(
+                                    child: Center(
+                                        child: Text(
+                                          "View",
+                                          style: GoogleFonts.cairo(
+                                              fontSize: width/75.888,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xffFDFDFD)),
+                                        )),
+                                    height: height / 13.14,
+                                    width: width / 6.83,
+                                    // color: Colors.grey,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xff00A99D),
+                                        border: Border(
+                                          bottom: BorderSide(
+                                            color: Colors.red,
+                                          ),
+                                        ))),
+                              ),
                             ],
                           );
                         },
@@ -454,7 +473,7 @@ class _SupplierState extends State<Supplier> {
         Row(
           children: [
             SizedBox(
-              width: 15,
+              width: width/91.06,
             ),
             InkWell(
               onTap: () {
@@ -472,8 +491,8 @@ class _SupplierState extends State<Supplier> {
                   borderRadius: BorderRadius.circular(100),
                   shadowColor: Colors.indigo,
                   child: Container(
-                    height: 30,
-                    width: 30,
+                    height: height/21.9,
+                    width: width/45.53,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                     ),
@@ -481,7 +500,7 @@ class _SupplierState extends State<Supplier> {
                       child: Icon(
                         Icons.arrow_back,
                         color: Colors.black,
-                        size: 15,
+                        size: width/91.06,
                       ),
                     ),
                   ),
@@ -489,14 +508,14 @@ class _SupplierState extends State<Supplier> {
               ),
             ),
             SizedBox(
-              width: 15,
+              width: width/91.06,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 1108.0,top: 10,bottom: 10),
+              padding:  EdgeInsets.only(right: width/1.232,top: height/65.7,bottom: height/65.7),
               child: Text(
                 "Add New Supplier",
                 style: GoogleFonts.cairo(
-                    fontWeight: FontWeight.bold, fontSize: 23,color: Color(0xffFFFFFF)),
+                    fontWeight: FontWeight.bold, fontSize:width/59.39,color: Color(0xffFFFFFF)),
               ),
             ),
           ],
@@ -507,16 +526,16 @@ class _SupplierState extends State<Supplier> {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 65.0,top: 8),
-              child: Text("Supplier Name *",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left: width/21.01,top: height/82.125),
+              child: Text("Supplier Name *",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 144.0,top: 8),
-              child: Text("Supplier Code*",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left: width/9.486,top: height/82.125),
+              child: Text("Supplier Code*",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 140.0,top: 8),
-              child: Text("Supplier Address *",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left:width/9.757,top: height/82.125),
+              child: Text("Supplier Address *",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
           ],
         ),
@@ -524,15 +543,16 @@ class _SupplierState extends State<Supplier> {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 53.0,top: 10,right: 60),
+              padding:  EdgeInsets.only(left: width/25.773,top: height/65.7,right: width/22.766),
               child: Container(
                 child:
                 TextField(
                   controller: Suppliername,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize: 15),
-                  decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
+                  style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                  decoration: InputDecoration(contentPadding:
+                  EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                     border: InputBorder.none,
                   ),
                 ),
@@ -544,14 +564,14 @@ class _SupplierState extends State<Supplier> {
             ),
 
             Padding(
-              padding:  EdgeInsets.only(top: 10.0,),
+              padding:  EdgeInsets.only(top:height/65.7,),
               child:
               Container(child: TextField(
                 controller: Suppliercode,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: 10),
-                decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
+                style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
+                decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                   border: InputBorder.none,
                 ),
               ),
@@ -563,14 +583,14 @@ class _SupplierState extends State<Supplier> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 10.0,left: 50),
+              padding:  EdgeInsets.only(top:height/65.7,left:width/27.32),
               child: Container(child: TextField(
                 controller: SupplierAddress,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: 15),
-                decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
-                  hintText: "Suppiler Address",
+                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,
+                    bottom:height/82.125),
                   border: InputBorder.none,
                 ),
               ),
@@ -588,28 +608,28 @@ class _SupplierState extends State<Supplier> {
           children: [
 
             Padding(
-              padding: const EdgeInsets.only(left: 58.0,top: 20),
-              child: Text("State",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left: width/23.55,top:height/32.85),
+              child: Text("State",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(left: 218.0,top: 20),
-              child: Text("City",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left: width/6.266,top:height/32.85),
+              child: Text("City",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(left: 228.0,top: 20),
-              child: Text("Pincode",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left: width/5.991,top:height/32.85),
+              child: Text("Pincode",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(left: 168.0,top: 20),
-              child: Text("Mobile Number",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left: width/8.130,top:height/32.85),
+              child: Text("Mobile Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(left: 110.0,top: 20),
-              child: Text("Mobile Number-2",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left:width/12.418,top:height/32.85),
+              child: Text("Mobile Number-2",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
 
           ],
@@ -619,8 +639,10 @@ class _SupplierState extends State<Supplier> {
           children: [
 
             Padding(
-              padding: const EdgeInsets.only(top: 10.0,right: 60,left: 50),
+              padding:  EdgeInsets.only(top:height/65.7,right: width/22.76,left:width/27.32),
               child: Container(child:
+
+
               LayoutBuilder(
                 builder: (BuildContext , BoxConstraints )=>
                     Autocomplete<String>(
@@ -677,6 +699,8 @@ class _SupplierState extends State<Supplier> {
                       },
                     ),
               ),
+
+
              /* DropdownButton<String>(
                 value: dropdownValue3,
                 isExpanded: true,
@@ -703,9 +727,9 @@ class _SupplierState extends State<Supplier> {
                 controller:  State,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: 15),
-                decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
-                  hintText: "State",
+                style: GoogleFonts.poppins(fontSize:width/91.06),
+                decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
+
                   border: InputBorder.none,
                 ),
               ),*/
@@ -717,8 +741,10 @@ class _SupplierState extends State<Supplier> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 10.0,right: 50),
-              child: Container(child: LayoutBuilder(
+              padding:  EdgeInsets.only(top:height/65.7,right:width/27.32),
+              child: Container(child:
+
+              LayoutBuilder(
                 builder: (BuildContext , BoxConstraints )=>
                     Autocomplete<String>(
                       optionsViewBuilder:(context, onSelected, options) => Align(
@@ -739,7 +765,10 @@ class _SupplierState extends State<Supplier> {
                                   return InkWell(
                                     onTap: () => onSelected(option),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(16.0),
+                                      padding:  EdgeInsets.symmetric(
+                                        vertical: height/41.062,
+                                        horizontal: width/85.375
+                                      ),
                                       child: Text(option),
                                     ),
                                   );
@@ -778,9 +807,9 @@ class _SupplierState extends State<Supplier> {
                 controller: City,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: 15),
-                decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
-                  hintText: "",
+                style: GoogleFonts.poppins(fontSize:width/91.06),
+                decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
+
                   border: InputBorder.none,
                 ),
               ),
@@ -794,14 +823,14 @@ class _SupplierState extends State<Supplier> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 10.0,right: 30),
+              padding:  EdgeInsets.only(top:height/65.7,right: width/45.53),
               child: Container(child: TextField(
                 controller: Pincode,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: 15),
-                decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
-                  hintText: "",
+                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                decoration: InputDecoration(contentPadding:
+                EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                   border: InputBorder.none,
                 ),
               ),
@@ -813,14 +842,13 @@ class _SupplierState extends State<Supplier> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding:  EdgeInsets.only(top:height/65.7),
               child: Container(child: TextField(
                 controller: Mobileno,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: 15),
-                decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
-                  hintText: "Mobile No 1",
+                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                   border: InputBorder.none,
                 ),
               ),
@@ -832,14 +860,13 @@ class _SupplierState extends State<Supplier> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 10.0,left: 20),
+              padding:  EdgeInsets.only(top:height/65.7,left:width/68.3),
               child: Container(child: TextField(
                 controller: Mobileno2,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: 15),
-                decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
-                  hintText: "Mobile No 2",
+                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                   border: InputBorder.none,
                 ),
               ),
@@ -856,13 +883,13 @@ class _SupplierState extends State<Supplier> {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 56.0,top: 20),
+              padding:  EdgeInsets.only(left: width/24.39,top:height/32.85),
 
-              child: Text("EMail Id",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              child: Text("EMail Id",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 198.0,top: 20),
-              child: Text("GST Number",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+              padding:  EdgeInsets.only(left: width/6.89,top:height/32.85),
+              child: Text("GST Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
             ),
 
           ],
@@ -872,16 +899,16 @@ class _SupplierState extends State<Supplier> {
           children: [
 
             Padding(
-              padding:  EdgeInsets.only(left: width/28.458,top: 8,right: 30),
+              padding:  EdgeInsets.only(left: width/28.458,top: height/82.125,right: width/45.53),
               child: Container(
                 child:
                 TextField(
                   controller: Supplieremail,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize: 15),
-                  decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
-                    border: InputBorder.none,  hintText: "Email",
+                  style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                  decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
+                    border: InputBorder.none,
 
                   ),
                 ),
@@ -893,14 +920,14 @@ class _SupplierState extends State<Supplier> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 10.0,right: 50,left: 29),
+              padding:  EdgeInsets.only(top:height/65.7,right:width/27.32,left: 29),
               child: Container(child: TextField(
                 controller: Panno,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: 15),
-                decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20,bottom: 8),
-                  hintText: "Gst No",
+                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
+
                   border: InputBorder.none,
                 ),
               ),
@@ -915,18 +942,18 @@ class _SupplierState extends State<Supplier> {
         ),
 
         Padding(
-          padding: const EdgeInsets.only(top: 20.0,right: 1200),
-          child: Text("Remarks",style: GoogleFonts.poppins(fontSize: 14,color: Color(0xff000000)),),
+          padding:  EdgeInsets.only(top:height/32.85,right: width/1.1383),
+          child: Text("Remarks",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
         ),
 
         Padding(
-          padding: const EdgeInsets.only(right: 468.0,top: 8),
+          padding:  EdgeInsets.only(right: width/2.918,top: height/82.125),
           child: Container(child: TextField(
             controller: Remarks,
             keyboardType: TextInputType.multiline,
             maxLines: null,
-            style: GoogleFonts.poppins(fontSize: 15),
-            decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 20),
+            style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+            decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3),
               hintStyle: GoogleFonts.poppins(color: Colors.black),
               border: InputBorder.none,
             ),
@@ -941,17 +968,18 @@ class _SupplierState extends State<Supplier> {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 68.0,top: 20),
+              padding:  EdgeInsets.only(left: width/20.088,top:height/32.85),
               child: GestureDetector(
                 onTap: () {
 
                   showdialpogbox();
                 },
-                child: Container(child: Center(child: Text("Save Supplier",style: GoogleFonts.poppins(color: Colors.white,fontSize: 15),)),
+                child: Container(child: Center(child: Text("Save Supplier",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/91.06),)),
                   width:width/8.6,
                   height: height/16.42,
                   //color: Color(0xffD60A0B),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Color(0xffD60A0B),),
+                  decoration: BoxDecoration(borderRadius:
+                  BorderRadius.circular(5),  color: Color(0xff25D366),),
                 ),
               ),
             ),
@@ -960,12 +988,12 @@ class _SupplierState extends State<Supplier> {
                 clearallcontroller();
               },
               child: Padding(
-                padding:  EdgeInsets.only(left: width/75.888,top: 20),
+                padding:  EdgeInsets.only(left: width/75.888,top:height/32.85),
                 child: Container(child: Center(child: Text("Reset",style: GoogleFonts.poppins(color: Colors.white),)),
                   width: width/13.6,
                   height:  height/16.42,
                   //color: Color(0xffD60A0B),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Color(0xff00A0E3),),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),
                 ),
               ),
             ),
@@ -990,6 +1018,7 @@ class _SupplierState extends State<Supplier> {
       "Suppliername":Suppliername.text,
       "Email":Supplieremail.text,
       "timestamp":DateTime.now().microsecondsSinceEpoch,
+      "Openingbalance":""
     });
   }
 
@@ -1021,7 +1050,7 @@ class _SupplierState extends State<Supplier> {
     return showDialog(context: context, builder:
         (context) {
       return Padding(
-        padding: const EdgeInsets.only(top: 138.0,bottom: 138.0),
+        padding:  EdgeInsets.only(top:height/4.760,bottom: height/4.760),
         child: SlideInLeft(
           animate: true,
           duration: Duration(
@@ -1031,53 +1060,84 @@ class _SupplierState extends State<Supplier> {
               backgroundColor: Color(0xff264656),
               content:
               Container(
-                width: 350,
+                width: width/3.902,
                 child: Column(
                   children: [
-                    SizedBox(height: 20,),
+                    SizedBox(height: height/32.85,),
                     Text("Add a Supplier Item Successfully",style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
-                    SizedBox(height: 20,),
+                    SizedBox(height: height/32.85,),
                     Container(
-                      height: 150,
-                      width: 150,
+                      height:height/ 4.38,
+                      width:width/ 9.106,
                       child: Lottie.network("https://assets10.lottiefiles.com/temporary_files/ofgUtS.json"),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height:  height/32.85,),
 
-                    InkWell(
-                      onTap: (){
-                        Supplier();
-                        clearallcontroller();
-                        Navigator.pop(context);
-                        setState(() {
-                          suplierclick=false;
-                        });
-                      },
-                      child: Material(
-                        elevation: 15,
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(5),
-                        child: Container(
-                          height: 40,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            Supplier();
+                            clearallcontroller();
+                            Navigator.pop(context);
+                            setState(() {
+                              suplierclick=false;
+                            });
+                          },
+                          child: Material(
+                            elevation: 15,
                             color: Colors.red,
-                          ),
-                          child: Center(
-                            child: Text(
-                                "Okay",
-                                style: GoogleFonts.poppins(
-                                    letterSpacing: 1.5,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16, color: Colors.white)
+                            borderRadius: BorderRadius.circular(5),
+                            child: Container(
+                              height: height/16.425,
+                              width: width/9.588,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.red,
+                              ),
+                              child: Center(
+                                child: Text(
+                                    "Okay",
+                                    style: GoogleFonts.poppins(
+                                        letterSpacing: 1.5,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: width/85.375, color: Colors.white)
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                        SizedBox(width:width/68.3),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Material(
+                            elevation: 15,
+                            color: Color(0xff263646),
+                            borderRadius: BorderRadius.circular(5),
+                            child: Container(
+                              height: height / 16.425,
+                              width: width / 9.588,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.white,
+                              ),
+                              child: Center(
+                                child: Text("Cancel",
+                                    style: GoogleFonts.poppins(
+                                        letterSpacing: 1.5,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: width / 85.375,
+                                        color: Colors.black)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     )
 
 
@@ -1100,47 +1160,82 @@ class _SupplierState extends State<Supplier> {
   }
   //Barnd showpopup(delete popup)
   _suppilier(suppilierid){
+    double height=MediaQuery.of(context).size.height;
+    double width=MediaQuery.of(context).size.width;
 
     return showDialog(context: context, builder:(context) {
 
       return Padding(
-        padding: const EdgeInsets.only(top: 150.0,bottom: 150,left: 350,right:350),
+        padding:  EdgeInsets.only(top: height/4.38,bottom: height/4.38,left: width/3.902,right:width/3.902),
         child: Scaffold(
           backgroundColor: Colors.grey.shade200,
           body: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height:30),
+                SizedBox(height:height/21.9),
                 Text("Are You Sure Want to Delete",style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w700,
-                    fontSize:18
+                    fontSize:width/75.88
                 ),),
 
-                SizedBox(height:20),
+                SizedBox(height:height/32.85),
 
                 Container(
-                  height:180,
-                  width:180,
+                  height:height/3.65,
+                  width:width/7.588,
                   child: Lottie.network(deletefile),
                 ),
-                SizedBox(height:20),
-                InkWell(
-                  onTap: (){
-                    delete(suppilierid);
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    height:40,
-                    width:180,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Color(0xff263646)
+                SizedBox(height:height/32.8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        delete(suppilierid);
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height:height/16.425,
+                        width:width/9.588,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Color(0xff263646)
+                        ),
+                        child: Center(
+                          child: Text("Okay",style: GoogleFonts.poppins(color:
+                          Colors.white,fontWeight: FontWeight.w600),),
+                        ),
+                      ),
                     ),
-                    child: Center(
-                      child: Text("Okay",style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w600),),
+                    SizedBox(width:width/68.3),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Material(
+                        elevation: 15,
+                        color: Color(0xff263646),
+                        borderRadius: BorderRadius.circular(5),
+                        child: Container(
+                          height: height / 16.425,
+                          width: width / 9.588,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.white,
+                          ),
+                          child: Center(
+                            child: Text("Cancel",
+                                style: GoogleFonts.poppins(
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: width / 85.375,
+                                    color: Colors.black)),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 )
 
               ],
@@ -1149,6 +1244,321 @@ class _SupplierState extends State<Supplier> {
         ),
       );
     },);
+  }
+  showdialpogboxss(streamid,) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return SlideInLeft(
+            animate: true,
+            duration: Duration(milliseconds: 800),
+            manualTrigger: false,
+            child:
+            Padding(
+              padding:  EdgeInsets.only(top:height/65.7,bottom: height/65.7,left: width/6.83,right: width/6.83),
+              child: Scaffold(
+                backgroundColor:  Colors.white,
+                body: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: Colors.white,
+                  ),
+
+                  child: SingleChildScrollView(
+                    child: Row(
+                      children: [
+
+                        Container(
+                          width: width/3.035,
+                          height: height/1.095,
+                          child: Lottie.network("https://assets8.lottiefiles.com/packages/lf20_j2hgsqs5.json"),
+                        ),
+
+                        Container(
+                          width: width/2.652,
+                          child: Column(
+                            children: [
+                              SizedBox(height:height/65.7,),
+                              Text("Supplier Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.w700),),
+                              SizedBox(height:height/65.7,),
+
+                              FutureBuilder<dynamic>(
+                                future: FirebaseFirestore.instance.collection("Supplier").doc(streamid).get(),
+                                builder: (context, snapshot) {
+                                  if(snapshot.hasData==null){
+                                    return Center(child: Container(),);
+                                  }
+                                  if(!snapshot.hasData){
+                                    return Center(child: Container(),);
+                                  }
+                                  var purchase=snapshot.data.data();
+                                  return
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        SizedBox(width: width/45.53),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Name :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              //height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['Suppliername'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Code :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['Suppliercode'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Address :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              //height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['SupplierAddress'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Mobile :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['Mobileno'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Mobile-2 :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['Mobileno2'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding:  EdgeInsets.only(left: width/27.32),
+                                              child: Container(
+                                                height:height/21.9,
+                                                width:width/10.507,
+                                                child: Text("Supplier Email :",style: GoogleFonts.poppins(),),
+                                              ),
+                                            ),
+                                            Container(
+                                              height:height/21.9,
+                                              width: width/7.588,
+                                              child: Text("${purchase['Email'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier City :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['City'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Pincode :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['Pincode'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Pan no :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              // height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['Panno'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier State :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['State'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Balance :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("${purchase['Openingbalance'].toString()}",style: GoogleFonts.poppins(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Remarks :",style: GoogleFonts.poppins(),),
+                                            ),
+                                            Container(
+                                              //height: height/10.95,
+                                              width:width/10.507,
+                                              child: Text("${purchase['Remarks'].toString()}",
+
+                                                style: GoogleFonts.poppins(),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+
+                                      ],
+                                    );
+                                },),
+
+                              SizedBox(
+                                height:height/21.9,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Material(
+                                  elevation: 15,
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: Container(
+                                    height: height/18.77,
+                                    width: width/8.537,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.red,
+                                    ),
+                                    child: Center(
+                                      child: Text("Okay",
+                                          style: GoogleFonts.poppins(
+                                              letterSpacing: 1.5,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16,
+                                              color: Colors.white)),
+                                    ),
+                                  ),
+                                ),
+                              )
+
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )
+        );
+      },
+    );
   }
 
   List<Location> locations = [];

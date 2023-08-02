@@ -5,14 +5,14 @@ import 'package:firebase_core/firebase_core.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-        apiKey: "AIzaSyDDqPX05pYKoB1QlDvCIBJdp0MhHh2uAS8",
-        authDomain: "billingapp-c34a2.firebaseapp.com",
-        projectId: "billingapp-c34a2",
-        storageBucket: "billingapp-c34a2.appspot.com",
-        messagingSenderId: "544636933687",
-        appId: "1:544636933687:web:3ce548d8529565f97391b2",
-        measurementId: "G-6L3VHHH0MF"
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyDR6I-aZpCAAK4wYRD573PeRALEMfgpTTY",
+        authDomain: "billingapp-cab55.firebaseapp.com",
+        projectId: "billingapp-cab55",
+        storageBucket: "billingapp-cab55.appspot.com",
+        messagingSenderId: "873474452092",
+        appId: "1:873474452092:web:d72fcc0a5e363fcc4b77f9",
+        measurementId: "G-VJP1FD05QV"
     )
   );
   runApp(const MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home:drawer(),
     );

@@ -28,36 +28,43 @@ class _BrandState extends State<Brand> {
                 children: [
                   //brand text....
                   Padding(
-                    padding: const EdgeInsets.only(left: 28.0, top: 20),
+                    padding:  EdgeInsets.only(left: width/48.78, top: height/32.85),
                     child: Text(
                       "Brand",
                       style: GoogleFonts.cairo(
                           fontWeight: FontWeight.bold,
-                          fontSize: 23,
+                         fontSize: width/59.39,
                           color: Colors.white),
                     ),
                   ),
 
                   SizedBox(
-                    width: 100,
+                    width:width/ 13.66,
                   ),
 
                   //home icon and text container....
                   Padding(
-                    padding: const EdgeInsets.only(left: 1008.0, top: 30),
+                    padding:  EdgeInsets.only(left: width/1.355, top: height/21.9),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => drawer(),
+                          builder: (context) => const drawer(),
                         ));
                       },
                       child: Container(
+                        width: width / 11.38,
+                        height: height / 16.42,
+                        // color: Color(0xff00A99D),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: const Color(0xff00A99D),
+                        ),
                         child: Row(
                           children: [
                             Padding(
                               padding:
-                                  const EdgeInsets.only(left: 8.0, right: 8),
-                              child: Icon(
+                                   EdgeInsets.only(left: width/170.75, right: width/170.75),
+                              child: const Icon(
                                 Icons.home,
                                 color: Colors.white,
                               ),
@@ -67,17 +74,10 @@ class _BrandState extends State<Brand> {
                               child: Text(
                                 "Home",
                                 style: GoogleFonts.cairo(
-                                    color: Color(0xffFFFFFF), fontSize: 23),
+                                    color: const Color(0xffFFFFFF),fontSize: width/59.39),
                               ),
                             )
                           ],
-                        ),
-                        width: width / 11.38,
-                        height: height / 16.42,
-                        // color: Color(0xff00A99D),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Color(0xff00A99D),
                         ),
                       ),
                     ),
@@ -86,13 +86,16 @@ class _BrandState extends State<Brand> {
               ),
 
               Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding:  EdgeInsets.symmetric(
+                  horizontal: width/75.88,
+                  vertical: height/36.5
+                ),
                 child: Image.asset("assets/Line13.png"),
               ),
 
               //search text
               Padding(
-                padding: const EdgeInsets.only(right: 1178.0),
+                padding:  EdgeInsets.only(right: width/1.159),
                 child: Text("Search",
                     style: GoogleFonts.cairo(
                         fontSize: width/68.3, fontWeight: FontWeight.bold)),
@@ -105,8 +108,15 @@ class _BrandState extends State<Brand> {
                   Padding(
                     padding:  EdgeInsets.only(left: width/28.458, right: width/34.15),
                     child: Container(
+                      width: width / 3.90,
+                      height: height / 16.42,
+                      //color: Color(0xff00A99D),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        color: const Color(0xffFFFFFF),
+                      ),
                       child: TextField(
-                        style: GoogleFonts.poppins(fontSize: width/68.3),
+                        style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: width/68.3, bottom: 8),
                           border: InputBorder.none,
@@ -115,14 +125,6 @@ class _BrandState extends State<Brand> {
                             child: Image.asset("assets/search.png"),
                           ),
                         ),
-                      ),
-
-                      width: width / 3.90,
-                      height: height / 16.42,
-                      //color: Color(0xff00A99D),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        color: Color(0xffFFFFFF),
                       ),
                     ),
                   ),
@@ -135,15 +137,21 @@ class _BrandState extends State<Brand> {
                       });
                     },
                     child: Container(
+                      width: width / 5.46,
+                      height: height / 16.42,
+                      //color: Color(0xff00A99D),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: const Color(0xff00A99D),
+                      ),
                       child: Column(
                         children: [
                           Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 1.0, left: 15, right: 20),
+                                padding:  EdgeInsets.only(
+                                    top:height/657, left:width/ 91.06, right:width/ 68.3),
                                 child: Container(
-                                  child: Icon(Icons.add, color: Colors.teal),
                                   width: width / 56.91,
                                   height: height / 27.37,
                                   // color: Colors.white,
@@ -151,6 +159,7 @@ class _BrandState extends State<Brand> {
                                     borderRadius: BorderRadius.circular(32),
                                     color: Colors.white,
                                   ),
+                                  child: const Icon(Icons.add, color: Colors.teal),
                                 ),
                               ),
                               Text(
@@ -162,13 +171,6 @@ class _BrandState extends State<Brand> {
                           ),
                         ],
                       ),
-                      width: width / 5.46,
-                      height: height / 16.42,
-                      //color: Color(0xff00A99D),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Color(0xff00A99D),
-                      ),
                     ),
                   ),
                 ],
@@ -176,50 +178,64 @@ class _BrandState extends State<Brand> {
 
               //table container....
               Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding:  EdgeInsets.symmetric(
+                vertical: height/36.5,
+                  horizontal: width/75.888
+                ),
                 child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(8),
+                        topLeft: Radius.circular(8),
+                      ),
+                      color: const Color(0xff00A99D),
+                      border: Border.all(color: Colors.red)),
+
+                  width: width / 1.03,
+
+                  height: height / 1.87,
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         Container(
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding:
-                                     EdgeInsets.only(left: 32.0, right: width/34.15),
-                                child: Text("Sl.no",
-                                    style: GoogleFonts.cairo(
-                                        color: Color(0xff00A99D), fontSize: width/68.3)),
-                              ),
-                              Text("Brand Name",
-                                  style: GoogleFonts.cairo(
-                                      color: Color(0xff00A99D), fontSize: width/68.3)),
-                              Padding(
-                                padding:
-                                     EdgeInsets.only(left: 718.0, right: width/19.514),
-                                child: Text("Edit",
-                                    style: GoogleFonts.cairo(
-                                        color: Color(0xff00A99D), fontSize: width/68.3)),
-                              ),
-                              Text("Delete",
-                                  style: GoogleFonts.cairo(
-                                      color: Color(0xff00A99D), fontSize: width/68.3)),
-                              Padding(
-                                padding:  EdgeInsets.only(left: width/15.523),
-                                child: Text("Status",
-                                    style: GoogleFonts.cairo(
-                                        color: Color(0xff00A99D), fontSize: width/68.3)),
-                              ),
-                            ],
-                          ),
                           width: width / 1.03,
                           height: height / 16.42,
                           // color: Color(0xff00A99D),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color(0xffFFFFFF),
                               borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(12),
                                   topLeft: Radius.circular(12))),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                     EdgeInsets.only(left: width/42.687, right: width/34.15),
+                                child: Text("Sl.no",
+                                    style: GoogleFonts.cairo(
+                                        color: const Color(0xff00A99D), fontSize: width/68.3)),
+                              ),
+                              Text("Brand Name",
+                                  style: GoogleFonts.cairo(
+                                      color: const Color(0xff00A99D), fontSize: width/68.3)),
+                              Padding(
+                                padding:
+                                     EdgeInsets.only(left:width/1.902, right: width/19.514),
+                                child: Text("Edit",
+                                    style: GoogleFonts.cairo(
+                                        color: const Color(0xff00A99D), fontSize: width/68.3)),
+                              ),
+                              Text("Delete",
+                                  style: GoogleFonts.cairo(
+                                      color: const Color(0xff00A99D), fontSize: width/68.3)),
+                              Padding(
+                                padding:  EdgeInsets.only(left: width/15.523),
+                                child: Text("Status",
+                                    style: GoogleFonts.cairo(
+                                        color: const Color(0xff00A99D), fontSize: width/68.3)),
+                              ),
+                            ],
+                          ),
                         ),
 
                         //Brand stream
@@ -241,55 +257,17 @@ class _BrandState extends State<Brand> {
 
                             return ListView.builder(
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
                                 return Row(
                                   children: [
                                     //index (Serial number)
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: .0),
-                                      child: Container(
-                                        child: Center(
-                                            child: Text(
-                                          (index + 1).toString(),
-                                          style: GoogleFonts.cairo(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: width/75.888,
-                                              color: Color(0xffFDFDFD)),
-                                        )),
-                                        height: height / 13.14,
-                                        width: width / 13.66,
-                                        // color: Colors.grey,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xff00A99D),
-                                            border: Border(
-                                              right: BorderSide(
-                                                color: Colors.red,
-                                              ),
-                                              bottom: BorderSide(
-                                                color: Colors.red,
-                                              ),
-                                            )),
-                                      ),
-                                    ),
-
-                                    //name text
                                     Container(
-                                      child: Padding(
-                                        padding:  EdgeInsets.only(
-                                            left: width/75.888, top: height/131.4),
-                                        child: Text(
-                                          snapshot.data!.docs[index]["Brandname"],
-                                          style: GoogleFonts.cairo(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: width/75.888,
-                                              color: Color(0xffFDFDFD)),
-                                        ),
-                                      ),
                                       height: height / 13.14,
-                                      width: width / 1.70,
-                                      decoration: BoxDecoration(
+                                      width: width / 13.66,
+                                      // color: Colors.grey,
+                                      decoration: const BoxDecoration(
                                           color: Color(0xff00A99D),
                                           border: Border(
                                             right: BorderSide(
@@ -299,15 +277,49 @@ class _BrandState extends State<Brand> {
                                               color: Colors.red,
                                             ),
                                           )),
+                                      child: Center(
+                                          child: Text(
+                                        (index + 1).toString(),
+                                        style: GoogleFonts.cairo(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: width/75.888,
+                                            color: const Color(0xffFDFDFD)),
+                                      )),
+                                    ),
+
+                                    //name text
+                                    Container(
+                                      height: height / 13.14,
+                                      width: width / 1.70,
+                                      decoration: const BoxDecoration(
+                                          color: Color(0xff00A99D),
+                                          border: Border(
+                                            right: BorderSide(
+                                              color: Colors.red,
+                                            ),
+                                            bottom: BorderSide(
+                                              color: Colors.red,
+                                            ),
+                                          )),
+                                      child: Padding(
+                                        padding:  EdgeInsets.only(
+                                            left: width/75.888, top: height/131.4),
+                                        child: Text(
+                                          snapshot.data!.docs[index]["Brandname"],
+                                          style: GoogleFonts.cairo(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: width/75.888,
+                                              color: const Color(0xffFDFDFD)),
+                                        ),
+                                      ),
                                     ),
 
                                     //edit icon(img)
                                     Container(
-                                        child: Image.asset("assets/edit.png"),
                                         height: height / 13.14,
                                         width: width / 12.64,
                                         // color: Colors.grey,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             color: Color(0xff00A99D),
                                             border: Border(
                                               right: BorderSide(
@@ -316,7 +328,8 @@ class _BrandState extends State<Brand> {
                                               bottom: BorderSide(
                                                 color: Colors.red,
                                               ),
-                                            ))), //
+                                            )),
+                                        child: Image.asset("assets/edit.png")), //
 
                                     //delete icon (img)
                                     InkWell(
@@ -324,11 +337,10 @@ class _BrandState extends State<Brand> {
                                         _Barnd(snapshot.data!.docs[index].id);
                                       },
                                       child: Container(
-                                          child: Image.asset("assets/delete.png"),
                                           height: height / 13.14,
                                           width: width / 12.41,
                                           // color: Colors.grey,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                               color: Color(0xff00A99D),
                                               border: Border(
                                                 right: BorderSide(
@@ -337,29 +349,30 @@ class _BrandState extends State<Brand> {
                                                 bottom: BorderSide(
                                                   color: Colors.red,
                                                 ),
-                                              ))),
+                                              )),
+                                          child: Image.asset("assets/delete.png")),
                                     ),
 
                                     //active text
                                     Container(
+                                        height: height / 13.14,
+                                        width: width / 6.83,
+                                        // color: Colors.grey,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xff00A99D),
+                                            border: Border(
+                                              bottom: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                            )),
                                         child: Center(
                                             child: Text(
                                           "Active",
                                           style: GoogleFonts.cairo(
                                               fontSize: width/75.888,
                                               fontWeight: FontWeight.bold,
-                                              color: Color(0xffFDFDFD)),
-                                        )),
-                                        height: height / 13.14,
-                                        width: width / 6.83,
-                                        // color: Colors.grey,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xff00A99D),
-                                            border: Border(
-                                              bottom: BorderSide(
-                                                color: Colors.red,
-                                              ),
-                                            ))),
+                                              color: const Color(0xffFDFDFD)),
+                                        ))),
                                   ],
                                 );
                               },
@@ -369,17 +382,6 @@ class _BrandState extends State<Brand> {
                       ],
                     ),
                   ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(8),
-                        topLeft: Radius.circular(8),
-                      ),
-                      color: Color(0xff00A99D),
-                      border: Border.all(color: Colors.red)),
-
-                  width: width / 1.03,
-
-                  height: height / 1.87,
 
                   //color: Colors.red,
                 ),
@@ -393,18 +395,16 @@ class _BrandState extends State<Brand> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 15,
+                    width: width/91.066,
                   ),
                   InkWell(
                     onTap: () {
                       setState(() {
                         brand = false;
                       });
-                      print(height);
-                      print(width);
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 20),
+                      padding:  EdgeInsets.only(top: height/32.85),
                       child: Tooltip(
                         message: "Back",
                         child: Material(
@@ -413,8 +413,8 @@ class _BrandState extends State<Brand> {
                           borderRadius: BorderRadius.circular(100),
                           shadowColor: Colors.indigo,
                           child: Container(
-                            height: 30,
-                            width: 30,
+                            height:height/ 21.9,
+                            width:width/ 45.53,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100),
                             ),
@@ -422,7 +422,7 @@ class _BrandState extends State<Brand> {
                               child: Icon(
                                 Icons.arrow_back,
                                 color: Colors.black,
-                                size: 15,
+                                size: width/91.06,
                               ),
                             ),
                           ),
@@ -431,28 +431,28 @@ class _BrandState extends State<Brand> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 38.0, top: 20),
+                    padding:  EdgeInsets.only(left: width/35.947, top: height/32.85),
                     child: Text(
                       "Add Brand ",
                       style: GoogleFonts.cairo(
                           fontWeight: FontWeight.bold,
-                          fontSize: 23,
-                          color: Color(0xffFFFFFF)),
+                         fontSize: width/59.39,
+                          color: const Color(0xffFFFFFF)),
                     ),
                   ),
                   SizedBox(
-                    width: 900,
+                    width: width/1.517,
                   ),
                   InkWell(
                     onTap: () {},
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 38.0, top: 20),
+                      padding:  EdgeInsets.only(left:width/ 35.94, top:height/ 32.85),
                       child: Text(
                         "Add Brand ",
                         style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
-                            fontSize: 23,
-                            color: Color(0xffFFFFFF)),
+                           fontSize: width/59.39,
+                            color: const Color(0xffFFFFFF)),
                       ),
                     ),
                   ),
@@ -460,7 +460,10 @@ class _BrandState extends State<Brand> {
               ),
 
               Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding:  EdgeInsets.symmetric(
+                  vertical: height/36.5,
+                  horizontal: width/75.88
+                ),
                 child: Image.asset("assets/Line13.png"),
               ),
 
@@ -468,47 +471,46 @@ class _BrandState extends State<Brand> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 58.0,
+                    padding:  EdgeInsets.only(
+                      left:width/ 23.55,
                     ),
                     child: Text(
                       "Brand Name *",
                       style: GoogleFonts.poppins(
-                          fontSize: 14, color: Color(0xff000000)),
+                          fontSize: width/97.57, color: const Color(0xff000000)),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              SizedBox(height: height/65.7),
 
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 58),
+                    padding:  EdgeInsets.only(left: width/23.55),
                     child: Container(
+                      width: width / 6.504,
+                      height: height / 16.42,
+                      decoration: BoxDecoration(
+                          color: const Color(0xffDDDEEE),
+                          borderRadius: BorderRadius.circular(4)),
                       child: TextField(
                         controller: Brandname,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 10),
+                        style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(left: 20, bottom: 8),
-                          hintText: "Brand Name",
+                          contentPadding: EdgeInsets.only(left: width/68.3, bottom:height/ 82.125),
                           border: InputBorder.none,
                         ),
                       ),
-                      width: width / 6.504,
-                      height: height / 16.42,
-                      decoration: BoxDecoration(
-                          color: Color(0xffDDDEEE),
-                          borderRadius: BorderRadius.circular(4)),
                     ),
                   ),
                 ],
               ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 18.0, left: 70),
+                padding:  EdgeInsets.only(top: height/36.5, left:width/ 19.51),
                 child: Row(
                   children: [
                     InkWell(
@@ -516,18 +518,18 @@ class _BrandState extends State<Brand> {
                         showdialpogbox();
                       },
                       child: Container(
-                        child: Center(
-                            child: Text(
-                          "Save",
-                          style: GoogleFonts.poppins(color: Colors.white),
-                        )),
                         width: width / 13.6,
                         height: height / 16.42,
                         //color: Color(0xffD60A0B),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Color(0xffD60A0B),
+                            color: const Color(0xff25D366)
                         ),
+                        child: Center(
+                            child: Text(
+                          "Save",
+                          style: GoogleFonts.poppins(color: Colors.white),
+                        )),
                       ),
                     ),
                     Padding(
@@ -537,18 +539,18 @@ class _BrandState extends State<Brand> {
                           claercate();
                         },
                         child: Container(
-                          child: Center(
-                              child: Text(
-                            "Reset",
-                            style: GoogleFonts.poppins(color: Colors.white),
-                          )),
                           width: width / 13.6,
                           height: height / 16.42,
                           //color: Color(0xffD60A0B),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Color(0xff00A0E3),
+                            color: Colors.red,
                           ),
+                          child: Center(
+                              child: Text(
+                            "Reset",
+                            style: GoogleFonts.poppins(color: Colors.white),
+                          )),
                         ),
                       ),
                     ),
@@ -559,7 +561,7 @@ class _BrandState extends State<Brand> {
           );
   }
 
-  TextEditingController Brandname = new TextEditingController();
+  TextEditingController Brandname = TextEditingController();
 
 
   //showdialogbox..
@@ -569,59 +571,90 @@ class _BrandState extends State<Brand> {
     return showDialog(context: context, builder:
         (context) {
       return Padding(
-        padding: const EdgeInsets.only(top: 138.0,bottom: 138.0),
+        padding:  EdgeInsets.only(top: height/4.760,bottom: height/4.76),
         child: SlideInLeft(
           animate: true,
-          duration: Duration(
+          duration: const Duration(
               milliseconds: 800),
           manualTrigger: false,
           child: AlertDialog(
-              backgroundColor: Color(0xff264656),
+              backgroundColor: const Color(0xff264656),
               content:
-              Container(
-                width: 350,
+              SizedBox(
+                width: width/3.902,
                 child: Column(
                   children: [
-                    SizedBox(height: 20,),
+                    SizedBox(height:height/ 32.85,),
                     Text("Add a Category Item Successfully",style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
-                    SizedBox(height: 20,),
-                    Container(
-                      height: 150,
-                      width: 150,
+                    SizedBox(height:height/ 32.85,),
+                    SizedBox(
+                      height:height/ 4.38,
+                      width: width/9.106,
                       child: Lottie.network("https://assets10.lottiefiles.com/temporary_files/ofgUtS.json"),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height: height/ 32.85,),
 
-                    InkWell(
-                      onTap: (){
-                        Brand();
-                        Navigator.pop(context);
-                      },
-                      child: Material(
-                        elevation: 15,
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(5),
-                        child: Container(
-                          height: 40,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            Brand();
+                            Navigator.pop(context);
+                          },
+                          child: Material(
+                            elevation: 15,
                             color: Colors.red,
-                          ),
-                          child: Center(
-                            child: Text(
-                                "Okay",
-                                style: GoogleFonts.poppins(
-                                    letterSpacing: 1.5,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16, color: Colors.white)
+                            borderRadius: BorderRadius.circular(5),
+                            child: Container(
+                              height: height/16.425,
+                              width: width/9.588,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.red,
+                              ),
+                              child: Center(
+                                child: Text(
+                                    "Okay",
+                                    style: GoogleFonts.poppins(
+                                        letterSpacing: 1.5,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: width/85.375, color: Colors.white)
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                        SizedBox(width:width/68.3),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Material(
+                            elevation: 15,
+                            color: const Color(0xff263646),
+                            borderRadius: BorderRadius.circular(5),
+                            child: Container(
+                              height: height / 16.425,
+                              width: width / 9.588,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.white,
+                              ),
+                              child: Center(
+                                child: Text("Cancel",
+                                    style: GoogleFonts.poppins(
+                                        letterSpacing: 1.5,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: width / 85.375,
+                                        color: Colors.black)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     )
 
 
@@ -662,46 +695,78 @@ class _BrandState extends State<Brand> {
       context: context,
       builder: (context) {
         return Padding(
-          padding: const EdgeInsets.only(
-              top: 150.0, bottom: 150, left: 350, right: 350),
+          padding:  EdgeInsets.only(
+              top: height/ 4.38, bottom:height/ 4.38, left:  width/3.902, right: width/3.902),
           child: Scaffold(
             backgroundColor: Colors.grey.shade200,
             body: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 30),
+                  SizedBox(height: height/21.9),
                   Text(
                     "Are You Sure Want to Delete",
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w700, fontSize: width/75.888),
                   ),
-                  SizedBox(height: 20),
-                  Container(
-                    height: 180,
-                    width: 180,
+                  SizedBox(height: height/32.85),
+                  SizedBox(
+                    height:height/ 3.65,
+                    width: width/7.588,
                     child: Lottie.network(deletefile),
                   ),
-                  SizedBox(height: 20),
-                  InkWell(
-                    onTap: () {
-                      delete(barndid);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 180,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Color(0xff263646)),
-                      child: Center(
-                        child: Text(
-                          "Okay",
-                          style: GoogleFonts.poppins(
-                              color: Colors.white, fontWeight: FontWeight.w600),
+                  SizedBox(height:height/ 32.85),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          delete(barndid);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height:height/ 16.425,
+                          width:width/ 9.588,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: const Color(0xff263646)),
+                          child: Center(
+                            child: Text(
+                              "Okay",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white, fontWeight: FontWeight.w600),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      SizedBox(width:width/68.3),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Material(
+                          elevation: 15,
+                          color: const Color(0xff263646),
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            height: height / 16.425,
+                            width: width / 9.588,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                            ),
+                            child: Center(
+                              child: Text("Cancel",
+                                  style: GoogleFonts.poppins(
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: width / 85.375,
+                                      color: Colors.black)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),

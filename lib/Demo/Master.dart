@@ -63,10 +63,10 @@ class _demo2State extends State<demo2> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Country State and City Picker'),
+        title: const Text('Country State and City Picker'),
       ),
       body:  Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           height: 600,
           child:
           Column(
@@ -96,7 +96,7 @@ class _demo2State extends State<demo2> {
                  onTap:(){
                    getCity();
                },
-               child: Text("Cjodfg")
+               child: const Text("Cjodfg")
             ),
               Text(locations .toString()),
               Text(status),

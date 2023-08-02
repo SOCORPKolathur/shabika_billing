@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_geocoder_alternative/flutter_geocoder_alternative.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 
 
  class Home extends StatefulWidget {
@@ -23,11 +25,31 @@ class _HomeState extends State<Home> {
 
 @override
   void initState() {
-
+  Future.delayed(Duration(seconds: 6),(){
+  _showAddress();
+  });
   billingtotalamount();
   // TODO: implement initState
     super.initState();
   }
+
+  Geocoder geocoder = Geocoder();
+
+  Future<String> getAddress(double pLon, double pLat) {
+    return geocoder.getAddressFromLonLat(pLon, pLat);
+  }
+
+  String _address='';
+
+  _showAddress() async {
+    print("_addressddddddddddddddddd");
+    _address = await getAddress(-6.1805312, 106.8282181);
+    print(_address);
+  }
+
+
+
+
   TextEditingController pos1=new TextEditingController();
   TextEditingController pos2=new TextEditingController();
   final DateFormat formatter = DateFormat('dd / M / yyyy');
@@ -1222,7 +1244,6 @@ class _HomeState extends State<Home> {
        var cus2=await FirebaseFirestore.instance.collection("Customer").doc(cus.docs[i].id).collection("billing").get();
        for(int j=0;j<cus2.docs.length;j++){
          if(mydate.contains(cus2.docs[j]["date"])){
-
            setState(() {
              customtotal=customtotal+cus2.docs[j]["Total"];
            });

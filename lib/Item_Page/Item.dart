@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:flutter_tagging_plus/flutter_tagging_plus.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -12,6 +13,7 @@ import 'package:lottie/lottie.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 import '../LandingPage/LandingPage.dart';
 import '../const Pages.dart';
+import 'Edit_Item_Page.dart';
 
 const List<String> list = <String>[
   'Please Select Category',
@@ -57,10 +59,17 @@ class _ItemState extends State<Item> {
   TextEditingController IMEino = new TextEditingController();
   TextEditingController SerialNo = new TextEditingController();
 
+  TextEditingController layourbuilderclear2 = TextEditingController();
+
+
+  bool status=true;
+  bool status2=false;
+
   TextFieldTagsController tagcontroller = new TextFieldTagsController();
 
   final TextEditingController _typeAheadControllergender = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
+
   List<String> getSuggestionsgender(String query) {
     List<String> matches = <String>[];
     matches.addAll(categorylist);
@@ -81,11 +90,27 @@ class _ItemState extends State<Item> {
   }
 
 
+  List <Map<String,dynamic>> search=[];
+
+  getdata()async{
+    var document=await FirebaseFirestore.instance.collection("Item").get();
+    print(search);
+    for(int i=0;i<document.docs.length;i++){
+      setState(() {
+        search.add(document.docs[i]["Newitemname"],);
+      });
+      print(search);
+    }
+
+  }
+
+  bool isserach=false;
 
   @override
   void initState() {
     categoryaddfunction();
     barndaddfunction();
+    getdata();
     getitename();
     // TODO: implement initState
     super.initState();
@@ -96,7 +121,7 @@ class _ItemState extends State<Item> {
   int itemcodes = 0;
 
   itemcodegenrate() async {
-    var document = await FirebaseFirestore.instance.collection("Item").get();
+    var document = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
     setState(() {
       itemcodes = document.docs.length + 1;
       itemcode.text = "${"SBI"}${F.format(itemcodes)}";
@@ -140,34 +165,14 @@ class _ItemState extends State<Item> {
     print(Barndlist);
   }
 
-  String hint = "";
-
-  checkcategoryaddfunction(name) async {
-    var Document2 =
-        await FirebaseFirestore.instance.collection('category').get();
-    for (int i = 0; i < Document2.docs.length; i++) {
-      if (name == Document2.docs[i]['categoryname']) {
-        hint = Document2.docs[i]['categoryname'];
-      }
-      print(hint);
-    }
-  }
-
-  String brandhint = "";
-
-  checkbrandaddfunction(name) async {
-    var Document2 = await FirebaseFirestore.instance.collection('Brand').get();
-    for (int i = 0; i < Document2.docs.length; i++) {
-      if (name == Document2.docs[i]['Brandname']) {
-        brandhint = Document2.docs[i]['Brandname'];
-      }
-      print(brandhint);
-    }
-  }
 
   bool isChecked = false; //imei
   bool isChecked2 = false; //serial
   bool isChecked3 = false; //color
+  bool isChecked4 = false; //image
+
+  bool status3=false;
+  bool status4=false;
 
   List<String> tags = [];
 
@@ -182,6 +187,11 @@ class _ItemState extends State<Item> {
       Itemnamelists.add(docs.docs[i]['Newitemname']);
     }
   }
+
+  String Username="";
+
+  final Formkey=GlobalKey<FormState>();
+  TextEditingController Serachcontroller=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -201,594 +211,1025 @@ class _ItemState extends State<Item> {
     double height = MediaQuery.of(context).size.height;
 
     return itemselect == false
-        ? Column(
-            children: [
-              Row(
+        ? Stack(
+          children: [
+            Column(
                 children: [
-                  SizedBox(width: width / 91.06),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => drawer(),
-                      ));
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(top: height / 32.85),
-                      child: Tooltip(
-                        message: "Back",
-                        child: Material(
-                          elevation: 10,
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(100),
-                          shadowColor: Colors.indigo,
-                          child: Container(
-                            height: height / 21.9,
-                            width: width / 45.53,
-                            decoration: BoxDecoration(
+                  Row(
+                    children: [
+                      SizedBox(width: width / 91.06),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => drawer(),
+                          ));
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(top: height / 32.85),
+                          child: Tooltip(
+                            message: "Back",
+                            child: Material(
+                              elevation: 10,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: Center(
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: Colors.black,
-                                size: width / 91.06,
+                              shadowColor: Colors.indigo,
+                              child: Container(
+                                height: height / 21.9,
+                                width: width / 45.53,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.arrow_back,
+                                    color: Colors.black,
+                                    size: width / 91.06,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: width / 48.78, top: height / 32.85),
+                        child: Text(
+                          "Item",
+                          style: GoogleFonts.cairo(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width / 59.39,
+                              color: Colors.white),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: width / 1.241, top: height / 21.9),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => drawer(),
+                            ));
+                          },
+                          child: Container(
+                            width: width / 11.38,
+                            height: height / 16.42,
+                            // color: Color(0xff00A99D),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Color(0xff00A99D),
+                            ),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: width / 170.75, right: width / 170.75),
+                                  child: Icon(
+                                    Icons.home,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: width / 136.6),
+                                  child: Text(
+                                    "Home",
+                                    style: GoogleFonts.cairo(
+                                        color: Color(0xffFFFFFF),
+                                        fontSize: width / 59.39),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 48.78, top: height / 32.85),
-                    child: Text(
-                      "Item",
-                      style: GoogleFonts.cairo(
-                          fontWeight: FontWeight.bold,
-                          fontSize: width / 59.39,
-                          color: Colors.white),
-                    ),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: width / 75.88, vertical: height / 36.5),
+                    child: Image.asset("assets/Line13.png"),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 1.241, top: height / 21.9),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => drawer(),
-                        ));
-                      },
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: width / 170.75, right: width / 170.75),
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: width / 136.6),
-                              child: Text(
-                                "Home",
-                                style: GoogleFonts.cairo(
-                                    color: Color(0xffFFFFFF),
-                                    fontSize: width / 59.39),
-                              ),
-                            )
-                          ],
-                        ),
-                        width: width / 11.38,
-                        height: height / 16.42,
-                        // color: Color(0xff00A99D),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Color(0xff00A99D),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: width / 75.88, vertical: height / 36.5),
-                child: Image.asset("assets/Line13.png"),
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: width / 1.1478),
-                child: Text("Search",
-                    style: GoogleFonts.cairo(
-                        fontSize: width / 68.3, fontWeight: FontWeight.bold)),
-              ),
-
-              Row(
-                children: [
-
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 28.458, right: width / 34.15),
-                    child: Container(
-                      child: TextField(
-                        style: GoogleFonts.poppins(fontSize: width / 68.3),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          border: InputBorder.none,
-                          suffix: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: height / 82.125,
-                                horizontal: width / 170.75),
-                            child: Image.asset("assets/search.png"),
-                          ),
-                        ),
-                      ),
-
-                      width: width / 3.902,
-                      height: height / 16.42,
-                      //color: Color(0xff00A99D),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Color(0xffFFFFFF),
-                      ),
-                    ),
+                    padding: EdgeInsets.only(right: width / 1.1478),
+                    child: Text("Search",
+                        style: GoogleFonts.cairo(
+                            fontSize: width / 68.3, fontWeight: FontWeight.bold)),
                   ),
 
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        itemselect = true;
-                      });
-                      itemcodegenrate();
-                    },
-                    child: Container(
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: height / 657,
-                                left: width / 91.066,
-                                right: width / 68.3),
-                            child: Container(
-                              child: Icon(Icons.add, color: Colors.teal),
-                              width: width / 56.91,
-                              height: height / 27.37,
-                              // color: Colors.white,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(32),
-                                color: Colors.white,
+                  Row(
+                    children: [
+
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: width / 28.458, right: width / 34.15),
+                        child: Container(
+                          width: width / 3.902,
+                          height: height / 16.42,
+                          //color: Color(0xff00A99D),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Color(0xffFFFFFF),
+                          ),
+                          child:
+                          TextField(
+                            controller: Serachcontroller,
+                            style: GoogleFonts.poppins(fontSize: width / 68.3,fontWeight: FontWeight.w700),
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  left: width / 68.3, bottom: height / 82.125),
+                              border: InputBorder.none,
+                              suffix: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: height / 82.125,
+                                    horizontal: width / 170.75),
+                                child: Image.asset("assets/search.png"),
                               ),
                             ),
+                            onTap: (){
+                              setState(() {
+                              isserach=true;
+                            });
+                            },
+                            onChanged: (value){
+                              if(Serachcontroller.text==""){
+                                setState(() {
+                                  isserach=false;
+                                });
+                              }
+                              else{
+                                setState(() {
+                                  isserach=true;
+                                });
+                              }
+                              setState(() {
+                                Username=value;
+                              });
+                            },
                           ),
-                          Text(
-                            "Add Item",
-                            style: GoogleFonts.cairo(
-                                fontSize: width / 68.3, color: Colors.white),
+                        ),
+                      ),
+
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            itemselect = true;
+                          });
+                          itemcodegenrate();
+                        },
+                        child: Container(
+                          width: width / 5.46,
+                          height: height / 16.42,
+                          //color: Color(0xff00A99D),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Color(0xff00A99D),
                           ),
-                        ],
-                      ),
-                      width: width / 5.46,
-                      height: height / 16.42,
-                      //color: Color(0xff00A99D),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Color(0xff00A99D),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: width / 75.888, vertical: height / 36.5),
-                child: Container(
-                  child: SingleChildScrollView(
-                    physics: ScrollPhysics(),
-                    child: Column(
-                      children: [
-                        //titles texts
-                        Container(
                           child: Row(
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
-                                    left: width / 42.687, right: width / 34.15),
-                                child: Text("Sl.no",
-                                    style: GoogleFonts.cairo(
-                                        color: Color(0xff00A99D),
-                                        fontSize: width / 68.3)),
+                                    top: height / 657,
+                                    left: width / 91.066,
+                                    right: width / 68.3),
+                                child: Container(
+                                  child: Icon(Icons.add, color: Colors.teal),
+                                  width: width / 56.91,
+                                  height: height / 27.37,
+                                  // color: Colors.white,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(32),
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
-                              Text("Item Name",
-                                  style: GoogleFonts.cairo(
-                                      color: Color(0xff00A99D),
-                                      fontSize: width / 68.3)),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left: width / 1.876, right: width / 19.514),
-                                child: Text("Edit",
-                                    style: GoogleFonts.cairo(
-                                        color: Color(0xff00A99D),
-                                        fontSize: width / 68.3)),
-                              ),
-                              Text("Delete",
-                                  style: GoogleFonts.cairo(
-                                      color: Color(0xff00A99D),
-                                      fontSize: width / 68.3)),
-                              Padding(
-                                padding: EdgeInsets.only(left: width / 15.523),
-                                child: Text("Status",
-                                    style: GoogleFonts.cairo(
-                                        color: Color(0xff00A99D),
-                                        fontSize: width / 68.3)),
+                              Text(
+                                "Add Item",
+                                style: GoogleFonts.cairo(
+                                    fontSize: width / 68.3, color: Colors.white),
                               ),
                             ],
                           ),
-                          width: width / 1.01,
-                          height: height / 16.42,
-                          // color: Color(0xff00A99D),
-                          decoration: BoxDecoration(
-                              color: Color(0xffFFFFFF),
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(10),
-                                  topLeft: Radius.circular(10))),
                         ),
+                      ),
 
-                        //item stream
-                        StreamBuilder<QuerySnapshot>(
-                          stream: FirebaseFirestore.instance
-                              .collection("Item")
-                              .snapshots(),
-                          builder: (context, snapshot2) {
-                            if (snapshot2.hasData == null) {
-                              return Center(
-                                child: Container(),
-                              );
-                            }
-                            if (!snapshot2.hasData) {
-                              return Center(
-                                child: Container(),
-                              );
-                            }
-                            return ListView.builder(
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              itemCount: snapshot2.data!.docs.length,
-                              itemBuilder: (context, index) {
-                                var item = snapshot2.data!.docs[index];
-                                return Row(
-                                  children: [
-                                    //index(serial text)
-                                    Container(
-                                      child: Center(
-                                          child: Text(
-                                        (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: width / 75.888,
-                                            color: Color(0xffFDFDFD)),
-                                      )),
-                                      height: height / 13.14,
-                                      width: width / 13.66,
-                                      // color: Colors.grey,
-                                      decoration: BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                    ),
-                                    //item name text
-                                    Container(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            left: width / 75.888,
-                                            top: height / 131.4),
-                                        child: Text(
-                                          item["Newitemname"],
-                                          style: GoogleFonts.cairo(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: width / 75.888,
-                                              color: Color(0xffFDFDFD)),
-                                        ),
-                                      ),
-                                      height: height / 13.14,
-                                      width: width / 1.70,
-                                      decoration: BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                    ),
-                                    //edit icon(img)
-                                    Container(
-                                        child: Image.asset("assets/edit.png"),
-                                        height: height / 13.14,
-                                        width: width / 12.64,
-                                        // color: Colors.grey,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xff00A99D),
-                                            border: Border(
-                                              right: BorderSide(
-                                                color: Colors.red,
-                                              ),
-                                              bottom: BorderSide(
-                                                color: Colors.red,
-                                              ),
-                                            ))),
+                      //toggle switchs
+                      Padding(
+                        padding:  EdgeInsets.only(left: width/4.583, right: width/56.916),
+                        child: FlutterSwitch(
+                          inactiveColor: Color(0xffC9C9C9),
+                          inactiveToggleColor: Colors.grey,
+                          width: width/30.35,
+                          height: height/32.85,
+                          valueFontSize: 5.0,
+                          toggleSize: 20.0,
+                          value: status,
+                          borderRadius: 10.0,
 
-                                    //delete icon (img)
-                                    InkWell(
-                                      onTap: () {
-                                        _Item(item.id);
-                                      },
-                                      child: Container(
-                                          child:
-                                              Image.asset("assets/delete.png"),
-                                          height: height / 13.14,
-                                          width: width / 12.41,
-                                          // color: Colors.grey,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xff00A99D),
-                                              border: Border(
-                                                right: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                                bottom: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                              ))),
-                                    ),
+                          padding: 2.0,
+                          //showOnOff: true,
+                          onToggle: (val) {
 
-                                    //active text
-                                    Container(
-                                        child: Center(
-                                            child: Text(
-                                          "Active",
-                                          style: GoogleFonts.cairo(
-                                              fontSize: width / 75.888,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color(0xffFDFDFD)),
-                                        )),
-                                        height: height / 13.14,
-                                        width: width / 6.83,
-                                        // color: Colors.grey,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xff00A99D),
-                                            border: Border(
-                                              bottom: BorderSide(
-                                                color: Colors.red,
-                                              ),
-                                            ))),
-                                  ],
-                                );
-                              },
-                            );
+                            setState(() {
+                              if(val==true) {
+                                setState(() {
+                                  status = val;
+                                  status2 = false;
+                                });
+                              }
+                              else{
+                                setState(() {
+                                  status = val;
+                                });
+                              }
+                            });
                           },
                         ),
-                      ],
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                        bottomRight: Radius.circular(3),
-                        bottomLeft: Radius.circular(3),
                       ),
-                      color: Color(0xff00A99D),
-                      border: Border.all(color: Colors.red)),
+                      Text(
+                        "Shabika G",
+                        style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                      ),
 
-                  width: width / 1.03,
+                      SizedBox(width:width/136.6),
 
-                  height: height / 1.87,
+                      FlutterSwitch(
+                        inactiveColor: Color(0xffC9C9C9),
+                        inactiveToggleColor: Colors.grey,
+                        width: width/30.35,
+                        height: height/32.85,
+                        valueFontSize: 5.0,
+                        toggleSize: 20.0,
+                        value: status2,
+                        borderRadius: 10.0,
 
-                  //color: Colors.red,
-                ),
-              )
-            ],
-          )
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(width: width / 91.06),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        itemselect = false;
-                      });
-                      print(height);
-                      print(width);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(top: height / 32.85),
-                      child: Tooltip(
-                        message: "Back",
-                        child: Material(
-                          elevation: 10,
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(100),
-                          shadowColor: Colors.indigo,
-                          child: Container(
-                            height: height / 21.9,
-                            width: width / 45.53,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
+                        padding: 2.0,
+                        //showOnOff: true,
+                        onToggle: (val) {
+
+
+                          setState(() {
+                            if(val==true) {
+                              setState(() {
+                                status2 = val;
+                                status = false;
+                              });
+                            }
+                            else{
+                              status2 = val;
+                            }
+
+                          });
+                        },
+                      ),
+                      SizedBox(width:width/136.6),
+                      Text(
+                        "Shabika N",
+                        style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                      ),
+
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: width / 130.66, vertical: height / 36.5),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(12),
+                            topRight: Radius.circular(12),
+                            bottomRight: Radius.circular(3),
+                            bottomLeft: Radius.circular(3),
+                          ),
+                          color: Color(0xff00A99D),
+                          border: Border.all(color: Colors.red)),
+
+                      width: width / 1.03,
+
+                      height: height / 1.87,
+                      child: SingleChildScrollView(
+                        physics: ScrollPhysics(),
+                        child: Column(
+                          children: [
+                            //titles texts
+                            Container(
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: width / 42.687, right: width / 34.15),
+                                    child: Text("Sl.no",
+                                        style: GoogleFonts.cairo(
+                                            color: Color(0xff00A99D),
+                                            fontSize: width / 68.3)),
+                                  ),
+                                  Text("Item Name",
+                                      style: GoogleFonts.cairo(
+                                          color: Color(0xff00A99D),
+                                          fontSize: width / 68.3)),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: width / 1.876, right: width / 19.514),
+                                    child: Text("Edit",
+                                        style: GoogleFonts.cairo(
+                                            color: Color(0xff00A99D),
+                                            fontSize: width / 68.3)),
+                                  ),
+                                  Text("Delete",
+                                      style: GoogleFonts.cairo(
+                                          color: Color(0xff00A99D),
+                                          fontSize: width / 68.3)),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: width / 15.523),
+                                    child: Text("Status",
+                                        style: GoogleFonts.cairo(
+                                            color: Color(0xff00A99D),
+                                            fontSize: width / 68.3)),
+                                  ),
+                                ],
+                              ),
+                              width: width / 1.01,
+                              height: height / 16.42,
+                              // color: Color(0xff00A99D),
+                              decoration: BoxDecoration(
+                                  color: Color(0xffFFFFFF),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(10),
+                                      topLeft: Radius.circular(10))),
                             ),
-                            child: Center(
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: Colors.black,
-                                size: width / 91.06,
+
+                            //item stream
+                            StreamBuilder<QuerySnapshot>(
+                              stream:status==true?
+                              FirebaseFirestore.instance
+                                  .collection("Item ShabikaG")
+                                  .snapshots():
+                              status2==true?
+                              FirebaseFirestore.instance
+                                  .collection("Item ShabikaN")
+                                  .snapshots():FirebaseFirestore.instance.collection("Item").snapshots(),
+                              builder: (context, snapshot2) {
+                                if (snapshot2.hasData == null) {
+                                  return Center(
+                                    child: Container(),
+                                  );
+                                }
+                                if (!snapshot2.hasData) {
+                                  return Center(
+                                    child: Container(),
+                                  );
+                                }
+                                return
+                                  ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: snapshot2.data!.docs.length,
+                                  itemBuilder: (context, index) {
+                                    var item = snapshot2.data!.docs[index];
+
+                                    if(isserach==true&&item['Newitemname'].toString().toLowerCase().startsWith(Username.toLowerCase())){
+                                      return Row(
+                                        children: [
+
+                                          //index(serial text)
+                                          Container(
+                                            child: Center(
+                                                child: Text(
+                                                  (index + 1).toString(),
+                                                  style: GoogleFonts.cairo(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: width / 75.888,
+                                                      color: Color(0xffFDFDFD)),
+                                                )),
+                                            height: height / 13.14,
+                                            width: width / 13.66,
+                                            // color: Colors.grey,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                          ),
+
+                                          //item name text
+                                          Container(
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: width / 75.888,
+                                                  top: height / 131.4),
+                                              child: Text(
+                                                item["Newitemname"],
+                                                style: GoogleFonts.cairo(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: width / 75.888,
+                                                    color: Color(0xffFDFDFD)),
+                                              ),
+                                            ),
+                                            height: height / 13.14,
+                                            width: width / 1.70,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                          ),
+
+                                          //edit icon(img)
+                                          InkWell(
+                                            onTap:(){
+
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                                                  Item_edit_Page(item.id,
+                                                      status==true?"ShabikaG":
+                                                      status2==true?"ShabikaN":"Item"),));
+                                              // editditem(item.id);
+                                            },
+                                            child: Container(
+                                                height: height / 13.14,
+                                                width: width / 12.64,
+                                                // color: Colors.grey,
+                                                decoration: const BoxDecoration(
+                                                    color: Color(0xff00A99D),
+                                                    border: Border(
+                                                      right: BorderSide(
+                                                        color: Colors.red,
+                                                      ),
+                                                      bottom: BorderSide(
+                                                        color: Colors.red,
+                                                      ),
+                                                    )),
+                                                child: Image.asset("assets/edit.png")),
+                                          ),
+
+                                          //delete icon (img)
+                                          InkWell(
+                                            onTap: () {
+                                              _Item(item.id);
+                                            },
+                                            child: Container(
+                                                height: height / 13.14,
+                                                width: width / 12.41,
+                                                // color: Colors.grey,
+                                                decoration: const BoxDecoration(
+                                                    color: Color(0xff00A99D),
+                                                    border: Border(
+                                                      right: BorderSide(
+                                                        color: Colors.red,
+                                                      ),
+                                                      bottom: BorderSide(
+                                                        color: Colors.red,
+                                                      ),
+                                                    )),
+                                                child:
+                                                Image.asset("assets/delete.png")),
+                                          ),
+
+                                          //active text
+                                          Container(
+                                              height: height / 13.14,
+                                              width: width / 6.83,
+                                              // color: Colors.grey,
+                                              decoration: const BoxDecoration(
+                                                  color: Color(0xff00A99D),
+                                                  border: Border(
+                                                    bottom: BorderSide(
+                                                      color: Colors.red,
+                                                    ),
+                                                  )),
+                                              child: Center(
+                                                  child: Text(
+                                                    "Active",
+                                                    style: GoogleFonts.cairo(
+                                                        fontSize: width / 75.888,
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Color(0xffFDFDFD)),
+                                                  ))),
+                                        ],
+                                      );
+                                    }
+                                    else if(isserach==false&&item['Newitemname'].toString().toLowerCase().startsWith(Username.toLowerCase())){
+                                      return Row(
+                                        children: [
+
+                                          //index(serial text)
+                                          Container(
+                                            child: Center(
+                                                child: Text(
+                                                  (index + 1).toString(),
+                                                  style: GoogleFonts.cairo(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: width / 75.888,
+                                                      color: Color(0xffFDFDFD)),
+                                                )),
+                                            height: height / 13.14,
+                                            width: width / 13.66,
+                                            // color: Colors.grey,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                          ),
+
+                                          //item name text
+                                          Container(
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: width / 75.888,
+                                                  top: height / 131.4),
+                                              child: Text(
+                                                item["Newitemname"],
+                                                style: GoogleFonts.cairo(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: width / 75.888,
+                                                    color: Color(0xffFDFDFD)),
+                                              ),
+                                            ),
+                                            height: height / 13.14,
+                                            width: width / 1.70,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                          ),
+
+                                          //edit icon(img)
+                                          InkWell(
+                                            onTap:(){
+
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                                                  Item_edit_Page(item.id,
+                                                      status==true?"ShabikaG":
+                                                      status2==true?"ShabikaN":"Item"),));
+                                              // editditem(item.id);
+                                            },
+                                            child: Container(
+                                                height: height / 13.14,
+                                                width: width / 12.64,
+                                                // color: Colors.grey,
+                                                decoration: const BoxDecoration(
+                                                    color: Color(0xff00A99D),
+                                                    border: Border(
+                                                      right: BorderSide(
+                                                        color: Colors.red,
+                                                      ),
+                                                      bottom: BorderSide(
+                                                        color: Colors.red,
+                                                      ),
+                                                    )),
+                                                child: Image.asset("assets/edit.png")),
+                                          ),
+
+                                          //delete icon (img)
+                                          InkWell(
+                                            onTap: () {
+                                              _Item(item.id);
+                                            },
+                                            child: Container(
+                                                height: height / 13.14,
+                                                width: width / 12.41,
+                                                // color: Colors.grey,
+                                                decoration: const BoxDecoration(
+                                                    color: Color(0xff00A99D),
+                                                    border: Border(
+                                                      right: BorderSide(
+                                                        color: Colors.red,
+                                                      ),
+                                                      bottom: BorderSide(
+                                                        color: Colors.red,
+                                                      ),
+                                                    )),
+                                                child:
+                                                Image.asset("assets/delete.png")),
+                                          ),
+
+                                          //active text
+                                          Container(
+                                              height: height / 13.14,
+                                              width: width / 6.83,
+                                              // color: Colors.grey,
+                                              decoration: const BoxDecoration(
+                                                  color: Color(0xff00A99D),
+                                                  border: Border(
+                                                    bottom: BorderSide(
+                                                      color: Colors.red,
+                                                    ),
+                                                  )),
+                                              child: Center(
+                                                  child: Text(
+                                                    "Active",
+                                                    style: GoogleFonts.cairo(
+                                                        fontSize: width / 75.888,
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Color(0xffFDFDFD)),
+                                                  ))),
+                                        ],
+                                      );
+                                    }
+
+                                    return  SizedBox();
+                                  },
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      //color: Colors.red,
+                    ),
+                  )
+                ],
+              ),
+
+          ],
+        )
+        : Form(
+          key: Formkey,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(width: width / 91.06),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          itemselect = false;
+                        });
+                        print(height);
+                        print(width);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(top: height / 32.85),
+                        child: Tooltip(
+                          message: "Back",
+                          child: Material(
+                            elevation: 10,
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(100),
+                            shadowColor: Colors.indigo,
+                            child: Container(
+                              height: height / 21.9,
+                              width: width / 45.53,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.black,
+                                  size: width / 91.06,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 35.947, top: height / 32.85),
-                    child: Text(
-                      "Add Item ",
-                      style: GoogleFonts.cairo(
-                          fontWeight: FontWeight.bold,
-                          fontSize: width / 59.39,
-                          color: Color(0xffFFFFFF)),
-                    ),
-                  ),
-                  SizedBox(
-                    width: width / 1.517,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {});
-                    },
-                    child: Padding(
+                    Padding(
                       padding: EdgeInsets.only(
                           left: width / 35.947, top: height / 32.85),
                       child: Text(
-                        "Add Category ",
+                        "Add Item ",
                         style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
                             fontSize: width / 59.39,
                             color: Color(0xffFFFFFF)),
                       ),
                     ),
-                  ),
-                ],
-              ),
 
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: width / 75.888, vertical: height / 36.5),
-                child: Image.asset("assets/Line13.png"),
-              ),
+                    SizedBox(
+                      width: width / 1.517,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            left: width / 35.947, top: height / 32.85),
+                        child: Text(
+                          "Add Category ",
+                          style: GoogleFonts.cairo(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width / 59.39,
+                              color: Color(0xffFFFFFF)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
 
-              //First row container and text
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: width / 23.551,
-                    ),
-                    child: Text(
-                      "Select Category Name *",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 11.383, top: height / 82.125),
-                    child: Text(
-                      "Brand Name",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: width / 6.83),
-                    child: Text(
-                      "New Item Code *",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 11.878, right: width / 9.106),
-                    child: Text(
-                      "HSN Code *",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: width / 75.888, vertical: height / 36.5),
+                  child: Image.asset("assets/Line13.png"),
+                ),
 
-                ],
-              ),
+                //First row container and text
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: width / 23.551,
+                      ),
+                      child: Text(
+                        "Select Category Name *",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 11.383, top: height / 82.125),
+                      child: Text(
+                        "Brand Name",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: width / 7.0),
+                      child: Text(
+                        "New Item Code *",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 10.3, right: width / 9.106),
+                      child: Text(
+                        "HSN Code *",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
 
-              Row(
-                children: [
+                  ],
+                ),
 
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 25.773,
-                        top: height / 65.7,
-                        right: width / 68.3),
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: width / 455.33, right: width / 455.33),
-                              child: TypeAheadFormField(
-                                suggestionsBoxDecoration:
-                                    SuggestionsBoxDecoration(
-                                        color: Color(0xffDDDEEE),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(5),
-                                          bottomRight: Radius.circular(5),
-                                        )),
-                                textFieldConfiguration: TextFieldConfiguration(
-                                  style: GoogleFonts.poppins(fontSize: 15),
-                                  decoration: InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.only(left: 10, bottom: 8),
-                                    border: InputBorder.none,
+                Row(
+                  children: [
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 25.773,
+                          top: height / 65.7,
+                          right: width / 68.3),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: width / 5.8,
+                            height: height / 16.42,
+
+                            //color: Color(0xffDDDEEE),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4)),
+                            child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: width / 130.33, right: width / 455.33),
+                                child:
+                                    /*
+                                TypeAheadFormField(
+                                  suggestionsBoxDecoration:
+                                      SuggestionsBoxDecoration(
+                                          color: Color(0xffDDDEEE),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(5),
+                                            bottomRight: Radius.circular(5),
+                                          )),
+                                  textFieldConfiguration: TextFieldConfiguration(
+                                    style: GoogleFonts.poppins(fontSize: 15),
+                                    decoration: InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.only(left: width/136.6, bottom: height/82.125),
+                                      border: InputBorder.none,
+                                    ),
+                                    controller: this._typeAheadControllergender,
                                   ),
-                                  controller: this._typeAheadControllergender,
+                                  suggestionsCallback: (pattern) {
+                                    return getSuggestionsgender(pattern);
+                                  },
+                                  itemBuilder: (context, String suggestion) {
+                                    return ListTile(
+                                      title: Text(suggestion),
+                                    );
+                                  },
+                                  transitionBuilder:
+                                      (context, suggestionsBox, controller) {
+                                    return suggestionsBox;
+                                  },
+                                  onSuggestionSelected: (String suggestion) {
+                                    this._typeAheadControllergender.text = suggestion;
+                                    categoryitemcode(_typeAheadControllergender.text);
+                                  },
+                                  suggestionsBoxController: suggestionBoxController,
+                                  validator: (value) => value!.isEmpty
+                                      ? 'Please select a academic year'
+                                      : null,
+                                )
+
+                                     */
+                                LayoutBuilder(
+                                  builder: (BuildContext, BoxConstraints) =>
+                                      Autocomplete<String>(
+                                        fieldViewBuilder: (context, textEditingController,
+                                            focusNode, onFieldSubmitted) {
+                                          return textfield3(
+                                            focusNode,
+                                            textEditingController,
+                                            onFieldSubmitted,
+                                          );
+                                        },
+                                    initialValue: const TextEditingValue(
+                                        selection: TextSelection(
+                                          isDirectional: true,
+                                          baseOffset: 10,
+                                          extentOffset: 1,
+                                        ),
+
+                                    ),
+                                    optionsViewBuilder:
+                                        (context, onSelected, options) => Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Material(
+                                              shape: const RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.vertical(
+                                                        bottom:
+                                                            Radius.circular(4.0)),
+                                              ),
+                                              child: Container(
+                                                height: 52.0 * options.length,
+                                                width:
+                                                    BoxConstraints.biggest.width,
+                                                child: ListView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  itemCount: options.length,
+                                                  shrinkWrap: false,
+                                                  itemBuilder: (BuildContext, index) {
+                                                    final String option = options.elementAt(index);
+                                                    return InkWell(
+                                                      onTap: () =>
+                                                          onSelected(option),
+                                                      child: Padding(padding: EdgeInsets.all(16.0),
+                                                        child: Text(option),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            )),
+                                    optionsBuilder:
+                                        (TextEditingValue textEditingValue) {
+                                      if (textEditingValue.text == '') {
+                                        return const Iterable<String>.empty();
+                                      }
+
+                                      if (textEditingValue.text != "") {
+                                        categoryitemcode(textEditingValue.text);
+
+                                      }
+
+                                      return categorylist.where((String option) {
+                                        return option.toLowerCase().contains(
+                                            textEditingValue.text.toLowerCase());
+                                      });
+                                    },
+                                    onSelected: (String selection) {
+                                      categoryitemcode(selection);
+                                      setState(() {
+                                        _typeAheadControllergender.text=selection;
+                                      });
+                                      debugPrint('You just selected $selection');
+                                    },
+                                    displayStringForOption: (Value) {
+                                      return Value;
+                                    },
+                                  ),
+                                )
+
                                 ),
-                                suggestionsCallback: (pattern) {
-                                  return getSuggestionsgender(pattern);
-                                },
-                                itemBuilder: (context, String suggestion) {
-                                  return ListTile(
-                                    title: Text(suggestion),
-                                  );
-                                },
-                                transitionBuilder:
-                                    (context, suggestionsBox, controller) {
-                                  return suggestionsBox;
-                                },
-                                onSuggestionSelected: (String suggestion) {
-                                  this._typeAheadControllergender.text =
-                                      suggestion;
-                                  checkcategoryaddfunction(
-                                      suggestion.toString());
-                                  categoryitemcode(suggestion.toString());
-                                },
-                                suggestionsBoxController:
-                                    suggestionBoxController,
-                                validator: (value) => value!.isEmpty
-                                    ? 'Please select a academic year'
-                                    : null,
-                                onSaved: (value) {
-                                  checkcategoryaddfunction(value.toString());
-                                  categoryitemcode(value.toString());
-                                },
-                              )
-                              /*LayoutBuilder(
+                          ),
+                          SizedBox(width: width/273.2),
+                          InkWell(
+                            onTap: () {
+                              //popup dialog
+                              AddCateogorys();
+                            },
+                            child: Tooltip(
+                              message: "Add Categorys",
+                              child: Container(
+                                height: height / 26.28,
+                                width: width / 54.64,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                    //brand stream dropdown
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: height / 65.7, right: width / 68.3),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: width / 5.8,
+                            height: height / 16.42,
+                            //color: Color(0xffDDDEEE),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4)),
+                            child:
+                           /* TypeAheadFormField(
+                              suggestionsBoxDecoration:
+                                  SuggestionsBoxDecoration(
+                                      color: Color(0xffDDDEEE),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(5),
+                                        bottomRight: Radius.circular(5),
+                                      )),
+                              textFieldConfiguration: TextFieldConfiguration(
+                                style: GoogleFonts.poppins(fontSize: 15),
+                                decoration: InputDecoration(
+                                  contentPadding:
+                                      EdgeInsets.only(left: width/136.6, bottom: height/82.125),
+                                  border: InputBorder.none,
+                                ),
+                                controller: this._typeAheadControllergender2,
+                              ),
+                              suggestionsCallback: (pattern) {
+                                return getSuggestionsgender2(pattern);
+                              },
+                              itemBuilder: (context, String suggestion) {
+                                return ListTile(
+                                  title: Text(suggestion),
+                                );
+                              },
+                              transitionBuilder:
+                                  (context, suggestionsBox, controller) {
+                                return suggestionsBox;
+                              },
+                              onSuggestionSelected: (String suggestion) {
+                                this._typeAheadControllergender2.text = suggestion;
+
+                              },
+                              suggestionsBoxController: suggestionBoxController2,
+                              validator: (value) => value!.isEmpty
+                                  ? 'Please select a academic year'
+                                  : null,
+                            )*/
+
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: width / 130.33, right: width / 455.33),
+                              child: LayoutBuilder(
                                 builder: (BuildContext, BoxConstraints) =>
                                     Autocomplete<String>(
+                                      fieldViewBuilder: (context, textEditingController,
+                                          focusNode, onFieldSubmitted) {
+                                        return textfield3(
+                                          focusNode,
+                                          textEditingController,
+                                          onFieldSubmitted,
+                                        );
+                                      },
                                   initialValue: TextEditingValue(
-                                      text: hint,
                                       selection: TextSelection(
                                         isDirectional: true,
                                         baseOffset: 5,
@@ -798,16 +1239,13 @@ class _ItemState extends State<Item> {
                                       (context, onSelected, options) => Align(
                                           alignment: Alignment.topLeft,
                                           child: Material(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.vertical(
-                                                      bottom:
-                                                          Radius.circular(4.0)),
+                                            shape: const RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.vertical(
+                                                  bottom: Radius.circular(4.0)),
                                             ),
                                             child: Container(
                                               height: 52.0 * options.length,
-                                              width:
-                                                  BoxConstraints.biggest.width,
+                                              width: BoxConstraints.biggest.width,
                                               child: ListView.builder(
                                                 padding: EdgeInsets.zero,
                                                 itemCount: options.length,
@@ -834,21 +1272,19 @@ class _ItemState extends State<Item> {
                                     if (textEditingValue.text == '') {
                                       return const Iterable<String>.empty();
                                     }
-
-                                    if (textEditingValue.text != "") {
-                                      checkcategoryaddfunction(
-                                          textEditingValue.text);
-                                      categoryitemcode(textEditingValue.text);
+                                    if (textEditingValue.text != '') {
+                                      Branditemcode(textEditingValue.text);
                                     }
 
-                                    return categorylist.where((String option) {
+                                    return Barndlist.where((String option) {
                                       return option.toLowerCase().contains(
                                           textEditingValue.text.toLowerCase());
                                     });
                                   },
                                   onSelected: (String selection) {
+                                    Branditemcode(selection);
                                     setState(() {
-                                      hint = selection;
+                                      _typeAheadControllergender2.text=selection;
                                     });
                                     debugPrint('You just selected $selection');
                                   },
@@ -856,725 +1292,620 @@ class _ItemState extends State<Item> {
                                     return Value;
                                   },
                                 ),
-                              )*/
-
-                              ),
-                          width: width / 5.8,
-                          height: height / 16.42,
-                          //color: Color(0xffDDDEEE),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(4)),
-                        ),
-                        SizedBox(width: 5),
-                        InkWell(
-                          onTap: () {
-                            //popup dialog
-                            AddCateogorys();
-                          },
-                          child: Tooltip(
-                            message: "Add Categorys",
-                            child: Container(
-                              height: height / 26.28,
-                              width: width / 54.64,
-                              child: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.black,
-                                ),
                               ),
                             ),
                           ),
-                        )
-                      ],
+                          SizedBox(width:width/ 273.2),
+                          InkWell(
+                            onTap: () {
+                              //popup dialog
+                              Barnditem();
+                            },
+                            child: Tooltip(
+                              message: "Add Categorys",
+                              child: Container(
+                                height: height / 26.28,
+                                width: width / 54.64,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
 
-                  //brand stream dropdown
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: height / 65.7, right: width / 68.3),
-                    child: Row(
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: height / 65.7, right: width / 68.3),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextField(
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          controller: itemcode,
+                          readOnly: true,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Padding(
+                      padding: EdgeInsets.only(top: height / 65.7),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextField(
+                          controller: HSNcode,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+                  ],
+                ),
+
+                //second row container and text
+                Row(
+                  children: [
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 23.551,
+                          top: height / 32.85,
+                          right: width / 10.0),
+                      child: Text(
+                        "Purchase Price *",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+                    SizedBox(width: width/35.94,),
+
+                    Padding(
+                      padding: EdgeInsets.only(top: height / 32.85),
+                      child: Text(
+                        "Landing Cost",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+                    SizedBox(width: width/68.3,),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: height / 32.85, left: width / 8.1),
+                      child: Text(
+                        "Sale Price *",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+
+                    Padding(
+                      padding:
+                          EdgeInsets.only(top: height / 32.85, left: width / 7.7),
+                      child: Text(
+                        "MRP Price/Unit",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+                  ],
+                ),
+
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: height / 65.7, left: width / 25.773),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextFormField(
+
+                          validator: (value) => value!.isEmpty
+                              ? "Field Can't Empty"
+                              : null,
+                          controller: Purchaseprice,
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+
+                            border: InputBorder.none,
+                          ),
+                          onEditingComplete: () {
+                            checkgst(Purchaseprice.text);
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: width/45.53,),
+                    Padding(
+
+                      padding:
+                          EdgeInsets.only(top: height / 65.7, left: width / 65.7),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextFormField(
+                          validator: (value) => value!.isEmpty
+                              ? "Field Can't Empty"
+                              : null,
+                          controller: Landingcost,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: width/54.64,),
+                    Padding(
+                      padding:
+                          EdgeInsets.only(top: height / 65.7, left: width / 65.7),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextFormField(
+                          validator: (value) => value!.isEmpty
+                              ? "Field Can't Empty"
+                              : null,
+                          controller: Saleprice,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Padding(
+                      padding:
+                          EdgeInsets.only(top: height / 65.7, left: width / 65.7),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextFormField(
+                          validator: (value) => value!.isEmpty
+                              ? "Field Can't Empty"
+                              : null,
+                          controller: MRPPrice,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+                  ],
+                ),
+
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: width / 24.836, top: height / 32.85),
+                  child: Text(
+                    "Item Details",
+                    style: GoogleFonts.poppins(
+                        fontSize: width / 71.894, fontWeight: FontWeight.bold),
+                  ),
+                ),
+
+                //third row container and text
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 25.773, top: height / 82.125),
+                      child: Text("Select Item Unit",
+                          style: GoogleFonts.poppins(
+                              fontSize: width / 97.571,
+                              color: Color(0xff000000))),
+                    ),
+                    SizedBox(width: width/28.45,),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 10.118, top: height / 82.125),
+                      child: Text(
+                        "Low Order Qunaity",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+                    SizedBox(width: width/91.06,),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 9.757, top: height / 82.125),
+                      child: Text(
+                        "Box No",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+
+                  ],
+                ),
+
+                Row(
+                  children: [
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 25.773,
+                          top: height / 82.125,
+                          right: width / 45.53),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              right: width / 136.6, left: width / 136.6),
+                          child: DropdownButton<String>(
+                            isExpanded: true,
+                            value: dropdownValue1,
+                            icon: Icon(Icons.arrow_drop_down_outlined),
+                            style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                            underline: Container(
+                              color: Colors.deepPurpleAccent,
+                            ),
+                            onChanged: (String? value) {
+                              // This is called when the user selects an item.
+                              setState(() {
+                                dropdownValue1 = value!;
+                              });
+                            },
+                            items: list1
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: width/68.3,),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: height / 82.125, ),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextField(
+                          controller: Loworder,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: height / 82.125, left: width / 27.9),
+                      child: Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextField(
+                          controller: BoxNo,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 164.25),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+
+                  ],
+                ),
+
+                //Add Item Tag  container
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 25.773,
+                          top: height / 65.7,
+                          bottom: height / 54.75),
+                      child: Text(
+                        "Add New Item Name *",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: Color(0xff000000)),
+                      ),
+                    ),
+                  ],
+                ),
+
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: width / 24.836, top: height / 164.25),
+                      child: Container(
+                        height: height / 5.6,
+                        width: width / 1.70,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: TextField(
+                          controller: Newitemname,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: width / 455.33, right: width / 455.33),
-                          child: Container(
-                            child: TypeAheadFormField(
-                              suggestionsBoxDecoration:
-                                  SuggestionsBoxDecoration(
-                                      color: Color(0xffDDDEEE),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(5),
-                                        bottomRight: Radius.circular(5),
-                                      )),
-                              textFieldConfiguration: TextFieldConfiguration(
-                                style: GoogleFonts.poppins(fontSize: 15),
-                                decoration: InputDecoration(
-                                  contentPadding:
-                                      EdgeInsets.only(left: 10, bottom: 8),
-                                  border: InputBorder.none,
-                                ),
-                                controller: this._typeAheadControllergender2,
-                              ),
-                              suggestionsCallback: (pattern) {
-                                return getSuggestionsgender2(pattern);
-                              },
-                              itemBuilder: (context, String suggestion) {
-                                return ListTile(
-                                  title: Text(suggestion),
-                                );
-                              },
-                              transitionBuilder:
-                                  (context, suggestionsBox, controller) {
-                                return suggestionsBox;
-                              },
-                              onSuggestionSelected: (String suggestion) {
-                                this._typeAheadControllergender2.text =
-                                    suggestion;
-                                checkbrandaddfunction(
-                                    suggestion.toString());
-                              },
-                              suggestionsBoxController: suggestionBoxController2,
-                              validator: (value) => value!.isEmpty
-                                  ? 'Please select a academic year'
-                                  : null,
-                              onSaved: (value) {
-                                checkbrandaddfunction(
-                                    value.toString());
-                              },
-                            )
-
-                            /*LayoutBuilder(
-                              builder: (BuildContext, BoxConstraints) =>
-                                  Autocomplete<String>(
-                                initialValue: TextEditingValue(
-                                    text: brandhint,
-                                    selection: TextSelection(
-                                      isDirectional: true,
-                                      baseOffset: 5,
-                                      extentOffset: 1,
-                                    )),
-                                optionsViewBuilder:
-                                    (context, onSelected, options) => Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Material(
-                                          shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.vertical(
-                                                bottom: Radius.circular(4.0)),
-                                          ),
-                                          child: Container(
-                                            height: 52.0 * options.length,
-                                            width: BoxConstraints.biggest.width,
-                                            child: ListView.builder(
-                                              padding: EdgeInsets.zero,
-                                              itemCount: options.length,
-                                              shrinkWrap: false,
-                                              itemBuilder:
-                                                  (BuildContext, index) {
-                                                final String option =
-                                                    options.elementAt(index);
-                                                return InkWell(
-                                                  onTap: () =>
-                                                      onSelected(option),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.all(16.0),
-                                                    child: Text(option),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        )),
-                                optionsBuilder:
-                                    (TextEditingValue textEditingValue) {
-                                  if (textEditingValue.text == '') {
-                                    return const Iterable<String>.empty();
-                                  }
-
-                                  if (textEditingValue.text != "") {
-                                    checkbrandaddfunction(
-                                        textEditingValue.text);
-                                  }
-
-                                  return Barndlist.where((String option) {
-                                    return option.toLowerCase().contains(
-                                        textEditingValue.text.toLowerCase());
-                                  });
-                                },
-                                onSelected: (String selection) {
+                          padding: EdgeInsets.only(left: width / 136.6),
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.white,
+                                fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                                value: isChecked,
+                                onChanged: (bool? value) {
                                   setState(() {
-                                    brandhint = selection;
+                                    isChecked = value!;
                                   });
-                                  debugPrint('You just selected $selection');
-                                },
-                                displayStringForOption: (Value) {
-                                  return Value;
                                 },
                               ),
-                            )*/
-                            ,
-
-                            width: width / 5.8,
-                            height: height / 16.42,
-                            //color: Color(0xffDDDEEE),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(4)),
-                          ),
-                        ),
-                        SizedBox(width: 5),
-                        InkWell(
-                          onTap: () {
-                            //popup dialog
-                            Barnditem();
-                          },
-                          child: Tooltip(
-                            message: "Add Categorys",
-                            child: Container(
-                              height: height / 26.28,
-                              width: width / 54.64,
-                              child: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.black,
-                                ),
+                              SizedBox(
+                                width: width / 136.6,
                               ),
-                            ),
+                              Text(
+                                "IMEI Number",
+                                style: GoogleFonts.poppins(
+                                    fontSize: width / 97.571,
+                                    color: Color(0xff000000)),
+                              ),
+                            ],
                           ),
-                        )
+                        ),
+
+                        Padding(
+                          padding: EdgeInsets.only(left: width / 136.6),
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.white,
+                                fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                                value: isChecked2,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked2 = value!;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                width: width / 136.6,
+                              ),
+                              Text(
+                                "Serial Number",
+                                style: GoogleFonts.poppins(
+                                    fontSize: width / 97.571,
+                                    color: Color(0xff000000)),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        //color checkbox
+                        Padding(
+                          padding: EdgeInsets.only(left: width / 136.6),
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.white,
+                                fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                                value: isChecked3,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked3 = value!;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                width: width / 136.6,
+                              ),
+                              Text(
+                                "Color",
+                                style: GoogleFonts.poppins(
+                                    fontSize: width / 97.571,
+                                    color: Color(0xff000000)),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        //image checkbox
+                        Padding(
+                          padding: EdgeInsets.only(left: width / 136.6),
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.white,
+                                fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                                value: isChecked4,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked4 = value!;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                width: width / 136.6,
+                              ),
+                              Text(
+                                "Image",
+                                style: GoogleFonts.poppins(
+                                    fontSize: width / 97.571,
+                                    color: Color(0xff000000)),
+                              ),
+                            ],
+                          ),
+                        ),
+
                       ],
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: height / 65.7, right: width / 68.3),
-                    child: Container(
-                      child: TextField(
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        controller: itemcode,
-                        readOnly: true,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          hintText: "PSDFG004",
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      width: width / 6.504,
-                      height: height / 16.42,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.only(top: height / 65.7),
-                    child: Container(
-                      child: TextField(
-                        controller: HSNcode,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          hintText: "KIJHD0214",
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      width: width / 6.504,
-                      height: height / 16.42,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-
-                ],
-              ),
-
-              //second row container and text
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 23.551,
-                        top: height / 32.85,
-                        right: width / 11.878),
-                    child: Text(
-                      "Purchase Price *",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: height / 32.85),
-                    child: Text(
-                      "Landing Cost",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: height / 32.85, left: width / 10.1),
-                    child: Text(
-                      "Sale Price *",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(top: height / 32.85, left: width / 8.7),
-                    child: Text(
-                      "MRP Price/Unit",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                ],
-              ),
-
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: height / 65.7, left: width / 25.773),
-                    child: Container(
-                      child: TextField(
-                        controller: Purchaseprice,
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          hintText: "0.00",
-                          border: InputBorder.none,
-                        ),
-                        onSubmitted: (_) {
-                          checkgst(Purchaseprice.text);
-                        },
-                      ),
-                      width: width / 6.5,
-                      height: height / 16.42,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-                  Padding(
-
-                    padding:
-                        EdgeInsets.only(top: height / 65.7, left: width / 65.7),
-                    child: Container(
-                      child: TextField(
-                        controller: Landingcost,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      width: width / 6.5,
-                      height: height / 16.42,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-                  Padding(
-                    padding:
-                        EdgeInsets.only(top: height / 65.7, left: width / 65.7),
-                    child: Container(
-                      child: TextField(
-                        controller: Saleprice,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      width: width / 6.5,
-                      height: height / 16.42,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-                  Padding(
-                    padding:
-                        EdgeInsets.only(top: height / 65.7, left: width / 65.7),
-                    child: Container(
-                      child: TextField(
-                        controller: MRPPrice,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      width: width / 6.5,
-                      height: height / 16.42,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.only(left: width / 136.6),
-                    child: Row(
-                      children: [
-                        Checkbox(
-                          checkColor: Colors.white,
-                          fillColor:
-                              MaterialStateProperty.resolveWith(getColor),
-                          value: isChecked,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              isChecked = value!;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          width: width / 136.6,
-                        ),
-                        Text(
-                          "IMEI Number",
-                          style: GoogleFonts.poppins(
-                              fontSize: width / 97.571,
-                              color: Color(0xff000000)),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-
-              Padding(
-                padding:
-                    EdgeInsets.only(left: width / 24.836, top: height / 32.85),
-                child: Text(
-                  "Item Details",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 71.894, fontWeight: FontWeight.bold),
+                    )
+                  ],
                 ),
-              ),
 
-              //third row container and text
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 25.773, top: height / 82.125),
-                    child: Text("Select Item Unit",
-                        style: GoogleFonts.poppins(
-                            fontSize: width / 97.571,
-                            color: Color(0xff000000))),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 10.118, top: height / 82.125),
-                    child: Text(
-                      "Low Order Qunaity",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 9.757, top: height / 82.125),
-                    child: Text(
-                      "Box No",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                ],
-              ),
-
-              Row(
-                children: [
-
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 25.773,
-                        top: height / 82.125,
-                        right: width / 45.53),
-                    child: Container(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            right: width / 136.6, left: width / 136.6),
-                        child: DropdownButton<String>(
-                          isExpanded: true,
-                          value: dropdownValue1,
-                          icon: Icon(Icons.arrow_drop_down_outlined),
-                          style: GoogleFonts.poppins(fontSize: 15),
-                          underline: Container(
-                            color: Colors.deepPurpleAccent,
-                          ),
-                          onChanged: (String? value) {
-                            // This is called when the user selects an item.
-                            setState(() {
-                              dropdownValue1 = value!;
-                            });
-                          },
-                          items: list1
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                      width: width / 6.5,
-                      height: height / 16.42,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: height / 82.125, right: width / 136.6),
-                    child: Container(
-                      child: TextField(
-                        controller: Loworder,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          hintText: "25",
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      width: width / 6.5,
-                      height: height / 16.42,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: height / 82.125, left: width / 27.32),
-                    child: Container(
-                      child: TextField(
-                        controller: BoxNo,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 164.25),
-                          hintText: "Phone BOX NO",
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      width: width / 6.5,
-                      height: height / 16.42,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: width / 136.6,
-                    ),
-                    child: Row(
-                      children: [
-                        Checkbox(
-                          checkColor: Colors.white,
-                          fillColor:
-                              MaterialStateProperty.resolveWith(getColor),
-                          value: isChecked2,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              isChecked2 = value!;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          width: width / 136.6,
-                        ),
-                        Text(
-                          "Serial Number",
-                          style: GoogleFonts.poppins(
-                              fontSize: width / 97.571,
-                              color: Color(0xff000000)),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  //color checkbox
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: width / 106.6,
-                    ),
-                    child: Row(
-                      children: [
-                        Checkbox(
-                          checkColor: Colors.white,
-                          fillColor:
-                              MaterialStateProperty.resolveWith(getColor),
-                          value: isChecked3,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              isChecked3 = value!;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          width: width / 136.6,
-                        ),
-                        Text(
-                          "Color",
-                          style: GoogleFonts.poppins(
-                              fontSize: width / 97.571,
-                              color: Color(0xff000000)),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-
-              //Add Item Tag  container
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 25.773,
-                        top: height / 65.7,
-                        bottom: height / 54.75),
-                    child: Text(
-                      "Add New Item Name *",
-                      style: GoogleFonts.poppins(
-                          fontSize: width / 97.571, color: Color(0xff000000)),
-                    ),
-                  ),
-                ],
-              ),
-
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width / 24.836, top: height / 164.25),
-                    child: Container(
-                      child: TextField(
-                        controller: Newitemname,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
-                          hintText: "Item..",
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      height: height / 7.3,
-                      width: width / 1.70,
-                      //color: Color(0xffDDDEEE),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-                ],
-              ),
-
-              Padding(
-                padding:
-                    EdgeInsets.only(top: height / 36.5, left: width / 19.514),
-                child: Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        checkitemname();
-                      },
-                      child: Container(
-                        child: Center(
-                            child: Text(
-                          "Save",
-                          style: GoogleFonts.poppins(color: Colors.white),
-                        )),
-                        width: width / 13.6,
-                        height: height / 16.42,
-                        //color: Color(0xffD60A0B),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Color(0xffD60A0B),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 75.888),
-                      child: InkWell(
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: height / 36.5, left: width / 19.514),
+                  child: Row(
+                    children: [
+                      InkWell(
                         onTap: () {
-                          clearallcontroller();
+                          final isvalid = Formkey.currentState!.validate();
+                          print(isvalid);
+                          if (Formkey.currentState!.validate()) {
+                            print("fghdddddddddddddd");
+                            checkitemname();
+                          }
+
                         },
                         child: Container(
-                          child: Center(
-                              child: Text(
-                            "Reset",
-                            style: GoogleFonts.poppins(color: Colors.white),
-                          )),
                           width: width / 13.6,
                           height: height / 16.42,
                           //color: Color(0xffD60A0B),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Color(0xff00A0E3),
+                            color: Color(0xff25D366),
+                          ),
+                          child: Center(
+                              child: Text(
+                            "Save",
+                            style: GoogleFonts.poppins(color: Colors.white),
+                          )),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: width / 75.888),
+                        child: InkWell(
+                          onTap: () {
+                            clearallcontroller();
+                          },
+                          child: Container(
+                            width: width / 13.6,
+                            height: height / 16.42,
+                            //color: Color(0xffD60A0B),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.red,
+                            ),
+                            child: Center(
+                                child: Text(
+                              "Reset",
+                              style: GoogleFonts.poppins(color: Colors.white),
+                            )),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          );
+                    ],
+                  ),
+                )
+              ],
+            ),
+        );
   }
 
   String catitemcode = '';
@@ -1606,48 +1937,87 @@ class _ItemState extends State<Item> {
   }
 
   itempage() {
-    FirebaseFirestore.instance
-        .collection("category")
-        .doc(catitemcode)
-        .collection("Item")
-        .doc()
-        .set({
-      "Category": hint,
-      "Brand": brandhint,
-      "Itemcode": itemcode.text,
-      "HSNCode": HSNcode.text,
-      "Newitemname": Newitemname.text,
-      "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
-      "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
-      "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
-      "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
-      "Loworder": Loworder.text,
-      "BoxNo": BoxNo.text,
-      "IMEI NO": isChecked,
-      "Serial NO": isChecked2,
-      "Color": isChecked3,
-      "timestamp": DateTime.now().microsecondsSinceEpoch,
-      "gst": "18%"
-    });
+      FirebaseFirestore.instance.collection("category").doc(catitemcode).collection("Item ShabikaG").doc().set({
+        "Category": _typeAheadControllergender.text,
+        "Brand": _typeAheadControllergender2.text,
+        "Itemcode": itemcode.text,
+        "HSNCode": HSNcode.text,
+        "Newitemname": Newitemname.text,
+        "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
+        "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
+        "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
+        "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+        "Loworder": Loworder.text,
+        "TotalQuvantity": 0,
+        "BoxNo": BoxNo.text,
+        "IMEI NO": isChecked,
+        "Serial NO": isChecked2,
+        "Color": isChecked3,
+        "Image": isChecked4,
+        "timestamp": DateTime.now().microsecondsSinceEpoch,
+        "gst": "18%"
+      });
+      FirebaseFirestore.instance.collection("Item ShabikaG").doc().set({
+        "Category":  _typeAheadControllergender.text,
+        "Brand": _typeAheadControllergender2.text,
+        "Itemcode": itemcode.text,
+        "HSNCode": HSNcode.text,
+        "Newitemname": Newitemname.text,
+        "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
+        "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
+        "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
+        "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+        "Loworder": Loworder.text,
+        "TotalQuvantity": 0,
+        "BoxNo": BoxNo.text,
+        "IMEI NO": isChecked,
+        "Serial NO": isChecked2,
+        "Color": isChecked3,
+        "Image": isChecked4,
+        "timestamp": DateTime.now().microsecondsSinceEpoch,
+        "gst": "18%",
+      });
+      FirebaseFirestore.instance.collection("category").doc(catitemcode).collection("Item ShabikaN").doc().set({
+        "Category": _typeAheadControllergender.text,
+        "Brand": _typeAheadControllergender2.text,
+        "Itemcode": itemcode.text,
+        "HSNCode": HSNcode.text,
+        "Newitemname": Newitemname.text,
+        "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
+        "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
+        "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
+        "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+        "Loworder": Loworder.text,
+        "TotalQuvantity": 0,
+        "BoxNo": BoxNo.text,
+        "IMEI NO": isChecked,
+        "Serial NO": isChecked2,
+        "Color": isChecked3,
+        "Image": isChecked4,
+        "timestamp": DateTime.now().microsecondsSinceEpoch,
+        "gst": "18%"
+      });
+      FirebaseFirestore.instance.collection("Item ShabikaN").doc().set({
+        "Category":  _typeAheadControllergender.text,
+        "Brand": _typeAheadControllergender2.text,
+        "Itemcode": itemcode.text,
+        "HSNCode": HSNcode.text,
+        "Newitemname": Newitemname.text,
+        "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
+        "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
+        "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
+        "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+        "Loworder": Loworder.text,
+        "TotalQuvantity": 0,
+        "BoxNo": BoxNo.text,
+        "IMEI NO": isChecked,
+        "Serial NO": isChecked2,
+        "Color": isChecked3,
+        "Image": isChecked4,
+        "timestamp": DateTime.now().microsecondsSinceEpoch,
+        "gst": "18%",
+      });
 
-    FirebaseFirestore.instance.collection("Item").doc().set({
-      "Category": hint,
-      "Brand": brandhint,
-      "Itemcode": itemcode.text,
-      "HSNCode": HSNcode.text,
-      "Newitemname": Newitemname.text,
-      "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
-      "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
-      "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
-      "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
-      "Loworder": Loworder.text,
-      "BoxNo": BoxNo.text,
-      "IMEI NO": isChecked,
-      "Serial NO": isChecked2,
-      "Color": isChecked3,
-      "timestamp": DateTime.now().microsecondsSinceEpoch,
-      "gst": "18%",
-    });
   }
 
   clearallcontroller() {
@@ -1668,8 +2038,6 @@ class _ItemState extends State<Item> {
     _typeAheadControllergender2.clear();
     suggestionBoxController2 .close();
     setState(() {
-      hint = '';
-      brandhint = "";
       isChecked = false;
       isChecked2 = false;
       isChecked3 = false;
@@ -1682,20 +2050,20 @@ class _ItemState extends State<Item> {
   //already exits ppopup
   checkitemname() async {
 
-
-    var document = await FirebaseFirestore.instance
-        .collection("Item")
-        .where("Newitemname", isEqualTo: Newitemname.text)
-        .get();
-
-    if (document.docs.length > 0) {
-      return alreadyshowdialpogbox();
-    } else {
-      itempage();
-      showdialpogbox();
-    }
-      tagcontroller.clearTextFieldTags();
-
+    print("check1");
+      var document = await FirebaseFirestore.instance
+          .collection("Item")
+          .where("Newitemname", isEqualTo: Newitemname.text)
+          .get();
+      if (document.docs.length > 0) {
+        print("check2");
+        return alreadyshowdialpogbox();
+      }
+      else {
+        print("check3");
+        itempage();
+        showdialpogbox();
+      }
   }
 
 
@@ -1746,14 +2114,164 @@ class _ItemState extends State<Item> {
                         },
                         child: Material(
                           elevation: 15,
-                          color: Colors.red,
+                            color: Color(0xff25D366),
                           borderRadius: BorderRadius.circular(5),
                           child: Container(
                             height: height / 16.425,
                             width: width / 7.588,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.red,
+                              color: Color(0xff25D366)
+                            ),
+                            child: Center(
+                              child: Text("Okay",
+                                  style: GoogleFonts.poppins(
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: width / 85.375,
+                                      color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+          ),
+        );
+      },
+    );
+  }
+
+  alreadyshowdialpogbox2() {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(top: height / 4.761, bottom: height / 4.761),
+          child: SlideInLeft(
+            animate: true,
+            duration: Duration(milliseconds: 800),
+            manualTrigger: false,
+            child: AlertDialog(
+                backgroundColor: Color(0xff264656),
+                content: Container(
+                  width: width / 3.902,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: height / 32.85,
+                      ),
+                      Text(
+                        "Already Item Exits-ShabikaG",
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            fontSize: width / 68.30,
+                            color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: height / 32.85,
+                      ),
+                      Container(
+                        height: height / 4.38,
+                        width: width / 9.106,
+                        child: Lottie.network(
+                            "https://assets10.lottiefiles.com/temporary_files/ofgUtS.json"),
+                      ),
+                      SizedBox(
+                        height: height / 32.85,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Material(
+                          elevation: 15,
+                            color: Color(0xff25D366),
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            height: height / 16.425,
+                            width: width / 7.588,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                                color: Color(0xff25D366)
+                            ),
+                            child: Center(
+                              child: Text("Okay",
+                                  style: GoogleFonts.poppins(
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: width / 85.375,
+                                      color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+          ),
+        );
+      },
+    );
+  }
+
+  alreadyshowdialpogbox3() {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(top: height / 4.761, bottom: height / 4.761),
+          child: SlideInLeft(
+            animate: true,
+            duration: Duration(milliseconds: 800),
+            manualTrigger: false,
+            child: AlertDialog(
+                backgroundColor: Color(0xff264656),
+                content: Container(
+                  width: width / 3.902,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: height / 32.85,
+                      ),
+                      Text(
+                        "Already Item Exits-ShabikaN",
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            fontSize: width / 68.30,
+                            color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: height / 32.85,
+                      ),
+                      Container(
+                        height: height / 4.38,
+                        width: width / 9.106,
+                        child: Lottie.network(
+                            "https://assets10.lottiefiles.com/temporary_files/ofgUtS.json"),
+                      ),
+                      SizedBox(
+                        height: height / 32.85,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Material(
+                          elevation: 15,
+                            color: Color(0xff25D366),
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            height: height / 16.425,
+                            width: width / 7.588,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                                color: Color(0xff25D366)
                             ),
                             child: Center(
                               child: Text("Okay",
@@ -1816,32 +2334,64 @@ class _ItemState extends State<Item> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      InkWell(
-                        onTap: () {
-                          clearallcontroller();
-                          Navigator.pop(context);
-                        },
-                        child: Material(
-                          elevation: 15,
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(5),
-                          child: Container(
-                            height: height / 16.425,
-                            width: width / 7.588,
-                            decoration: BoxDecoration(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              clearallcontroller();
+                              Navigator.pop(context);
+                            },
+                            child: Material(
+                              elevation: 15,
+                                color: Color(0xff25D366),
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.red,
-                            ),
-                            child: Center(
-                              child: Text("Okay",
-                                  style: GoogleFonts.poppins(
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: width / 85.375,
-                                      color: Colors.white)),
+                              child: Container(
+                                height: height / 16.425,
+                                width: width / 9.588,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                    color: Color(0xff25D366)
+                                ),
+                                child: Center(
+                                  child: Text("Okay",
+                                      style: GoogleFonts.poppins(
+                                          letterSpacing: 1.5,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: width / 85.375,
+                                          color: Colors.white)),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          SizedBox(width:width/68.3),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Material(
+                              elevation: 15,
+                              color: Color(0xff263646),
+                              borderRadius: BorderRadius.circular(5),
+                              child: Container(
+                                height: height / 16.425,
+                                width: width / 9.588,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white,
+                                ),
+                                child: Center(
+                                  child: Text("Cancel",
+                                      style: GoogleFonts.poppins(
+                                          letterSpacing: 1.5,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: width / 85.375,
+                                          color: Colors.black)),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       )
                     ],
                   ),
@@ -1876,6 +2426,7 @@ class _ItemState extends State<Item> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+
                   SizedBox(height: height / 21.9),
                   Text(
                     "Are You Sure Want to Delete",
@@ -1889,25 +2440,57 @@ class _ItemState extends State<Item> {
                     child: Lottie.network(deletefile),
                   ),
                   SizedBox(height: height / 32.85),
-                  InkWell(
-                    onTap: () {
-                      delete(itemid);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: height / 16.425,
-                      width: width / 7.588,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Color(0xff263646)),
-                      child: Center(
-                        child: Text(
-                          "Okay",
-                          style: GoogleFonts.poppins(
-                              color: Colors.white, fontWeight: FontWeight.w600),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          delete(itemid);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: height / 16.425,
+                          width: width / 9.588,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: Color(0xff263646)),
+                          child: Center(
+                            child: Text(
+                              "Okay",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white, fontWeight: FontWeight.w600),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      SizedBox(width:width/68.3),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Material(
+                          elevation: 15,
+                          color: Color(0xff263646),
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            height: height / 16.425,
+                            width: width / 9.588,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                            ),
+                            child: Center(
+                              child: Text("Cancel",
+                                  style: GoogleFonts.poppins(
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: width / 85.375,
+                                      color: Colors.black)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -1976,7 +2559,6 @@ class _ItemState extends State<Item> {
                       child: TextField(
                         controller: Categorys,
                         decoration: InputDecoration(
-                            hintText: "Add Category",
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.only(
                                 left: width / 136.6, bottom: height / 65.7)),
@@ -1986,6 +2568,7 @@ class _ItemState extends State<Item> {
                     onTap: () {
                       //create functions
                       addcategory();
+                      categoryaddfunction();
                       Navigator.pop(context);
                     },
                     child: Container(
@@ -2070,7 +2653,6 @@ class _ItemState extends State<Item> {
                       child: TextField(
                         controller: Branditem,
                         decoration: InputDecoration(
-                            hintText: "Add Brand",
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.only(
                                 left: width / 136.6, bottom: height / 65.7)),
@@ -2080,6 +2662,7 @@ class _ItemState extends State<Item> {
                     onTap: () {
                       //create functions
                       addbrand();
+                      barndaddfunction();
                       Navigator.pop(context);
                     },
                     child: Container(
@@ -2105,6 +2688,128 @@ class _ItemState extends State<Item> {
       },
     );
   }
+
+  //eidt item popup
+
+  TextEditingController edititem = new TextEditingController();
+
+
+  edidtheitemfunction(docid){
+    FirebaseFirestore.instance.collection("Item").doc(docid).update({
+      "Newitemname":edititem.text,
+    });
+  }
+
+  ediditemsetfunction(docid)async{
+    var getdatae=await FirebaseFirestore.instance.collection("Item").doc(docid).get();
+    Map<String,dynamic>?value=getdatae.data();
+    setState(() {
+      edititem.text=value!['Newitemname'];
+    });
+  }
+
+  editditem(docid) {
+    ediditemsetfunction(docid);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+              top: height / 3.65,
+              bottom: height / 3.65,
+              left: width / 3.415,
+              right: width / 3.415),
+          child: Scaffold(
+            backgroundColor: Colors.grey.shade200,
+            body: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: height / 21.9),
+                  Text(
+                    "Are You Sure Want To Edit this Item ",
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w700, fontSize: width / 68.3),
+                  ),
+                  SizedBox(height: height / 32.85),
+                  Row(
+                    children: [
+                      SizedBox(width: width / 7.805),
+                      Text(
+                        "Edit Item",
+                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: height / 131.4),
+                  Container(
+                      height: height / 16.425,
+                      width: width / 6.209,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: Colors.cyan),
+                      child: TextField(
+                        controller: edititem,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: width / 136.6, bottom: height / 65.7)),
+                      )),
+                  SizedBox(height: height / 32.85),
+                  InkWell(
+                    onTap: () {
+                      //update functions
+                      edidtheitemfunction(docid);
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      height: height / 16.425,
+                      width: width / 10.507,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: Color(0xff263646)),
+                      child: Center(
+                        child: Text(
+                          "Okay",
+                          style: GoogleFonts.poppins(
+                              color: Colors.white, fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget textfield3(
+      FocusNode focusNode,
+      TextEditingController textEditingController,
+      VoidCallback onFieldSubmitted) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    return TextFormField(
+      style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+      decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding:
+          EdgeInsets.only( bottom: height / 43.8)),
+      controller: textEditingController,
+      focusNode: focusNode,
+      onFieldSubmitted: (String value) {
+        onFieldSubmitted();
+      },
+    );
+  }
+
 
 
 }

@@ -45,14 +45,31 @@ dependencies:
   intl: ^0.16.1
   random_string: ^2.3.1
   keymap: ^0.0.91
-  pdf: ^3.8.4
-  printing: ^5.9.3
+  printing: ^5.0.0
   flutter_svg: any
   dropdown_button2: ^2.1.3
   textfield_tags: ^1.4.2
   flutter_tagging_plus: ^4.0.1
   country_state_city_picker: ^1.2.8
   flutter_typeahead: ^4.3.1
+  location: ^4.4.0
+  flutter_geocoder_alternative: ^1.0.3
+  http: any
+  geolocator: ^8.2.0
+  geocoding_resolver: ^0.0.3+2
+  flutter_google_places_web: ^1.0.2
+  google_places_flutter: ^2.0.5
+  address_search_field: ^5.0.3
+  mapbox_search_flutter: any
+  blinking_text: ^1.0.2
+  firebase_storage: ^11.0.10
+  file_picker: any
+  easy_autocomplete: ^1.6.0
+  autocomplete_textfield: ^2.0.1
+
+
+
+
 
 
 

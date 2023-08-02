@@ -15,29 +15,32 @@ class Supplier_Reports extends StatefulWidget {
 class _Supplier_ReportsState extends State<Supplier_Reports> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return
+      Column(
       children: [
         SizedBox(
-          height: 15,
+          height:height/43.8,
         ),
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding:  EdgeInsets.only(left: width/91.06),
               child: Text(" Supplier Reports",
                 style: GoogleFonts.montserrat(color: Colors.white,
                     fontWeight: FontWeight.w800,
-                    fontSize: 25),),
+                    fontSize: width/54.64),),
             )
           ],
         ),
         SizedBox(
-          height: 15,
+          height:height/43.8,
         ),
 
         Container(
-          height: 550,
-          width: 1300,
+          height: height/1.194,
+          width: width/1.050,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             color: Colors.white,
@@ -45,208 +48,284 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
 
           child: Column(
             children: [
-              SizedBox(height: 10,),
+              SizedBox(height:height/65.7,),
+
+
               Row(
                 children: [
-                  SizedBox(width: 20,),
+                  SizedBox(width:width/68.3,),
 
                   Container(
-                      width:120,
-                      child: Center(child: Text('Supplier name',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                      width:width/11.38,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Supplier Name",
+                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))
+                  ),
 
-                  SizedBox(width: 20,),
 
-
-                  Container(
-                      width:120,
-
-                      child: Center(child: Text('Supplier Code',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                  SizedBox(width: 20,),
 
 
                   Container(
-                      width:125,
+                      width:width/15.38,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Supplier\nCode",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
 
-                      child: Center(child: Text('Supplier address',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
-                  SizedBox(width: 20,),
-
-
-                  Container(
-                      width:120,
-
-                      child: Center(child: Text('Supplier Mobile',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                  SizedBox(width: 20,),
 
 
                   Container(
-                      width:60,
+                      width:width/6.83,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Supplier Address",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
 
-                      child: Center(child: Text('Email',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
-                  SizedBox(width: 20,),
-
-
-                  Container(
-                      width:60,
-                      child: Center(child: Text('City',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                  SizedBox(width: 20,),
 
 
                   Container(
-                      width:60,
-                      child: Center(child: Text('Pincode',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                  SizedBox(width: 20,),
+                      width:width/15.38,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Mobile",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+
+
 
 
                   Container(
-                      width:70,
-                      child: Center(child: Text('Pan No',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                  SizedBox(width: 20,),
+                      width:width/6.83,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Email",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+
+
 
 
                   Container(
-                      width:60,
-                      child: Center(child: Text('State',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                  SizedBox(width: 20,),
+                      width:width/18.76,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("City",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+
+
 
                   Container(
-                      width:60,
-                      child: Center(child: Text('Balance',style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                  SizedBox(width: 20,),
+                      width:width/22.76,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Pin\ncode",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+
+
+
+                  Container(
+                      width:width/8.83,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Pan No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+
+
+
+                  Container(
+                      width:width/13.83,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("State",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+
+
+                  Container(
+                      width:width/22.76,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Bala\nnce",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8),textStyle: TextStyle(
+                          overflow: TextOverflow.ellipsis
+                      )),))),
+
 
 
                 ],
               ),
-              Padding(padding: EdgeInsets.only(left: 5,right: 5),
-                child: Divider(),
-              ),
-              Container(
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: FirebaseFirestore.instance.collection("Supplier").orderBy("timestamp",descending: true).snapshots(),
-                  builder: (context, snapshot) {
-                    if(snapshot.hasData==null){
-                      return Center(child: Container());
-                    }
-                    if(!snapshot.hasData){
-                      return Center(child: Container());
-                    }
 
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, index) {
+              StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance.collection("Supplier").orderBy("timestamp",descending: true).snapshots(),
+                builder: (context, snapshot) {
+                  if(snapshot.hasData==null){
+                    return Center(child: Container());
+                  }
+                  if(!snapshot.hasData){
+                    return Center(child: Container());
+                  }
 
-                        var buillin1=snapshot.data!.docs[index];
-                        return
-                          Padding(
-                            padding: const EdgeInsets.only(top: 6.0),
-                            child:
-                            Row(
-                              children: [
-                                SizedBox(width: 20,),
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: ScrollPhysics(),
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (context, index) {
 
-                                Container(
-                                    width:120,
-                                    child: Center(child: Text(buillin1['Suppliername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                      var buillin1=snapshot.data!.docs[index];
+                      return
+                        Row(
+                          children: [
+                            SizedBox(width:width/68.3,),
 
-                                SizedBox(width: 20,),
-
-
-                                Container(
-                                    width:120,
-
-                                    child: Center(child: Text(buillin1['Suppliercode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                                SizedBox(width: 20,),
-
-
-                                Container(
-                                    width:125,
-
-                                    child: Center(child: Text(buillin1['SupplierAddress'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                                SizedBox(width: 20,),
-
-
-                                Container(
-                                    width:120,
-
-                                    child: Center(child: Text(buillin1['Mobileno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                                SizedBox(width: 20,),
-
-
-                                Container(
-                                    width:60,
-                                    child: Center(child: Text(buillin1['Email'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                                SizedBox(width: 20,),
-
-
-                                Container(
-                                    width:60,
-                                    child: Center(child: Text(buillin1['City'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                                SizedBox(width: 20,),
-
-
-                                Container(
-                                    width:60,
-                                    child: Center(child: Text(buillin1['Pincode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                                SizedBox(width: 20,),
-
-
-                                Container(
-                                    width:70,
-                                    child: Center(child: Text(buillin1['Panno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                                SizedBox(width: 20,),
-
-
-                                Container(
-                                    width:60,
-                                    child: Center(child: Text(buillin1['State'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-                                SizedBox(width: 20,),
-
-                                Container(
-                                    width:60,
-                                    child: Center(child: Text(buillin1['Openingbalance'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,textStyle: TextStyle(
-                                      overflow: TextOverflow.ellipsis
-                                    )),))),
-
-                                SizedBox(width: 50,),
-
-                                InkWell(
-                                  onTap: (){
-                                    showdialpogbox(
-                                      buillin1.id,
-                                    );
-                                  },
-                                  child: Material(
-                                    elevation: 10,
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Container(
-                                        width:100,
-                                        height:30,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(100),
-                                            color: Colors.green
-                                        ),
-                                        child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
-                                  ),
-                                ),
-
-
-                              ],
+                            Container(
+                                width:width/11.38,
+                                height:height/13.0,padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
+                            decoration:BoxDecoration(
+                              border: Border.all(color: Colors.black,width: 1.2)
+                            ),
+                                child: Center(child: Text(buillin1['Suppliername'].toString(),
+                                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))
                             ),
 
-                          );
-                      },);
-                  },
-                ),
+
+
+
+                            Container(
+                                width:width/15.38,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+
+                                child: Center(child: Text(buillin1['Suppliercode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
+
+
+
+                            Container(
+                                width:width/6.83,
+                                height:height/13.0,
+                                padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                                child: Center(child: Text(buillin1['SupplierAddress'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
+
+
+
+                            Container(
+                                width:width/15.38,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                                child: Center(child: Text(buillin1['Mobileno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
+
+
+
+                            Container(
+                                width:width/6.83,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                                child: Center(child: Text(buillin1['Email'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
+
+
+
+                            Container(
+                                width:width/18.76,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                                child: Center(child: Text(buillin1['City'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
+
+
+                            Container(
+                                width:width/22.76,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                                child: Center(child: Text(buillin1['Pincode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
+
+
+                            Container(
+                                width:width/8.83,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                                child: Center(child: Text(buillin1['Panno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
+
+
+                            Container(
+                                width:width/13.83,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                                child: Center(child: Text(buillin1['State'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
+
+                            Container(
+                                width:width/22.76,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                                child: Center(child: Text(buillin1['Openingbalance'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,textStyle: TextStyle(
+                                  overflow: TextOverflow.ellipsis
+                                )),))),
+
+                            SizedBox(width: width/130.32,),
+
+                            InkWell(
+                              onTap: (){
+                                showdialpogbox(buillin1.id);
+                              },
+                              child: Material(
+                                elevation: 10,
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(100),
+                                child: Container(
+                                    width:width/13.66,
+                                    height:height/21.9,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(100),
+                                        color: Colors.green
+                                    ),
+                                    child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                              ),
+                            ),
+
+
+                          ],
+                        );
+                    },);
+                },
               ),
             ],
           ),
@@ -258,302 +337,428 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
 
 
 
-  showdialpogbox(streamid,) {
-    double width = MediaQuery.of(context).size.width;
-  double height = MediaQuery.of(context).size.height;
 
+
+  showdialpogbox(streamid) {
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
     return showDialog(
       context: context,
       builder: (context) {
         return SlideInLeft(
-            animate: true,
-            duration: Duration(milliseconds: 800),
-            manualTrigger: false,
-            child:
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0,bottom: 10.0,left: 200,right: 200),
-              child: Scaffold(
-                backgroundColor:  Colors.white,
-                body: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: Colors.white,
-                  ),
+          animate: true,
+          duration: Duration(milliseconds: 800),
+          manualTrigger: false,
+          child: AlertDialog(
+              backgroundColor: Colors.transparent,
+              content: Container(
+                height: height / 1.194,
+                width: width / 0.5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  color: Colors.white,
+                ),
 
-                  child: SingleChildScrollView(
-                    child: Row(
-                      children: [
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
 
-                        Container(
-                          width: 450,
-                          height: 600,
-                          child: Lottie.network("https://assets8.lottiefiles.com/packages/lf20_j2hgsqs5.json"),
-                        ),
+                      SizedBox(height: height/65.7,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
 
-                        Container(
-                          width: 515,
-                          child: Column(
-                            children: [
-                              SizedBox(height: 10,),
-                              Text("Supplier Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.w700),),
-                              SizedBox(height: 10,),
-
-                              Container(
-                                child: FutureBuilder<dynamic>(
-                                  future: FirebaseFirestore.instance.collection("Supplier").doc(streamid).get(),
-                                  builder: (context, snapshot) {
-                                    if(snapshot.hasData==null){
-                                      return Center(child: Container(),);
-                                    }
-                                    if(!snapshot.hasData){
-                                      return Center(child: Container(),);
-                                    }
-                                    var purchase=snapshot.data.data();
-                                    return
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: [
-                                          SizedBox(width: 30,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier Name ",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['Suppliername'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier Code",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['Suppliercode'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier Address",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['SupplierAddress'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier Mobile",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['Mobileno'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding:  EdgeInsets.only(left: width/27.32),
-                                                child: Container(
-                                                  height: 30,
-                                                  width: 130,
-                                                  child: Text("Supplier Email",style: GoogleFonts.poppins(),),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 180,
-                                                child: Text(": ${purchase['Email'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier City",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['City'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier Pincode",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['Pincode'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier Pan no",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['Panno'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier State",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['State'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier Balance",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text(": ${purchase['Openingbalance'].toString()}",style: GoogleFonts.poppins(),),
-                                              ),
-                                            ],
-                                          ),
-
-                                          SizedBox(width: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 130,
-                                                child: Text("Supplier Remarks",style: GoogleFonts.poppins(),),
-                                              ),
-                                              Container(
-                                                height: 60,
-                                                width: 130,
-                                                child: Text(": ${purchase['Remarks'].toString()}",
-
-                                                  style: GoogleFonts.poppins(),
-                                                textAlign: TextAlign.center,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-
-                                        ],
-                                      );
-                                  },),
+                          InkWell(
+                            onTap: (){
+                              Navigator.pop(context);
+                            },
+                            child: ClipOval(
+                              child: Container(
+                                height: height/26.28,
+                                width:width/ 54.64,
+                                color: Colors.red,
+                                child: Center(child: Icon(Icons.clear,color: Colors.white,)),
                               ),
+                            ),
+                          ),
+                          SizedBox(width: width/65.7,),
 
-                              SizedBox(
-                                height: 30,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Material(
-                                  elevation: 15,
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(5),
-                                  child: Container(
-                                    height: 35,
-                                    width: 160,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.red,
-                                    ),
-                                    child: Center(
-                                      child: Text("Okay",
-                                          style: GoogleFonts.poppins(
-                                              letterSpacing: 1.5,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 16,
-                                              color: Colors.white)),
-                                    ),
-                                  ),
-                                ),
-                              )
 
-                            ],
+                        ],
+                      ),
+                      SizedBox(height: height/65.7,),
+
+
+                      Row(
+                        children: [
+                          SizedBox(width: width / 100.53,),
+                          Container(
+                            height: height / 13.9,
+                            width: width / 13.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(
+                              child: Text("Item\nPurch NO".toString(),
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),),
+                            ),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 5.8,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Description", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 13.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Hsncode", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 13.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Qty", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 10.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Payment", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 13.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Time", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 13.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Date", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 10.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Sales Price", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 13.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text("Tax %",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                          Container(
+                            height: height / 13.9,
+                            width: width / 10.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Total", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                          ),
+
+
+                        ],
+                      ),
+
+
+                      SizedBox(
+                        height: height / 1.602,
+                        child: StreamBuilder<QuerySnapshot>(
+                          stream: FirebaseFirestore.instance.collection("Supplier").doc(streamid)
+                              .collection("billing")
+                              .snapshots(),
+                          builder: (context, snapshot1) {
+                            if (snapshot1.hasData == null) {
+                              return Center(child: Container(),);
+                            }
+                            if (!snapshot1.hasData) {
+                              return Center(child: Container(),);
+                            }
+                            if (snapshot1.data!.docs.length == 0) {
+                              return Center(child: Text("Field is empty",
+                                style: GoogleFonts.poppins(),),);
+                            }
+                            return
+                             ListView.builder(
+                               itemCount: snapshot1.data!.docs.length,
+                               itemBuilder: (context, index) {
+
+                               return
+                                 snapshot1.data!.docs[index]['save']==true?
+                                 StreamBuilder(
+                                 stream: FirebaseFirestore.instance.collection("Supplier").doc(streamid)
+                                     .collection("billing").doc(snapshot1.data!.docs[index].id).collection("Purxhase billing")
+                                     .orderBy("timestamp", descending: true)
+                                     .snapshots(),
+                                 builder: (context, snapshot) {
+                                   if (snapshot.hasData == null) {
+                                     return Center(child: Container(),);
+                                   }
+                                   if (!snapshot.hasData) {
+                                     return Center(child: Container(),);
+                                   }
+                                   if (snapshot.data!.docs.length == 0) {
+                                     return Center(child: Text("Field is empty",
+                                       style: GoogleFonts.poppins(),),);
+                                   }
+                                   return  ListView.builder(
+                                     shrinkWrap: true,
+                                     physics: ScrollPhysics(),
+                                     itemCount: snapshot.data!.docs.length,
+                                     itemBuilder: (context, index) {
+                                       var customer = snapshot.data!.docs[index];
+                                       return
+
+                                         Row(
+                                           children: [
+                                             SizedBox(width: width / 100.53,),
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 13.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 "${customer['itemcode']}${customer['purchaseno']}"
+                                                     .toString(),
+                                                 style: GoogleFonts.poppins(),),
+                                               ),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 5.8,
+                                               padding: EdgeInsets.symmetric(
+                                                   horizontal: width / 683,
+                                                   vertical: height / 328.5),
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Text(
+                                                 customer['Description'].toString(),
+                                                 style: GoogleFonts.poppins(),),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 13.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 customer['Hsncode'].toString(),
+                                                 style: GoogleFonts.poppins(),)),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 13.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 customer['Qty'].toString(),
+                                                 style: GoogleFonts.poppins(),)),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 10.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 customer['Payment mode'].toString(),
+                                                 style: GoogleFonts.poppins(),)),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 13.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 customer['time'].toString(),
+                                                 style: GoogleFonts.poppins(),)),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 13.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 customer['date'].toString(),
+                                                 style: GoogleFonts.poppins(),)),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 10.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 customer['Sales price'].toString(),
+                                                 style: GoogleFonts.poppins(),)),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 13.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 "${customer['tax']}"
+                                                     .toString(),
+                                                 style: GoogleFonts.poppins(),)),
+                                             ),
+
+
+                                             Container(
+                                               height: height / 13.9,
+                                               width: width / 10.66,
+                                               decoration: BoxDecoration(
+                                                   border: Border.all(
+                                                       color: Colors.black,
+                                                       width: 1.2)),
+                                               child: Center(child: Text(
+                                                 customer['Total'].toString(),
+                                                 style: GoogleFonts.poppins(),)),
+                                             ),
+
+
+                                           ],
+                                         );
+                                     },);
+                                 },):SizedBox();
+                             },);
+                          },),
+                      ),
+
+                      SizedBox(
+                        height: height / 32.85,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Material(
+                          elevation: 15,
+                          color: Color(0xff25D366),
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            height: height / 16.425,
+                            width: width / 7.588,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Color(0xff25D366),
+                            ),
+                            child: Center(
+                              child: Text("Okay",
+                                  style: GoogleFonts.poppins(
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: width / 85.37,
+                                      color: Colors.white)),
+                            ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+
+                      SizedBox(
+                        height: height / 32.85,
+                      ),
+
+                    ],
                   ),
                 ),
-              ),
-            )
+              )),
         );
       },
     );
