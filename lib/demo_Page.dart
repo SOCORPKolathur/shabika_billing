@@ -18,7 +18,10 @@ class _TesingState extends State<Tesing> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding:  const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 8
+          ),
           child: Material(
              shadowColor: Colors.indigo,
             child:
@@ -28,14 +31,14 @@ class _TesingState extends State<Tesing> {
                 GooglePlaceAutoCompleteTextField(
                     textEditingController: controller,
                     googleAPIKey: "AIzaSyB_eT3oT-cOgqnn4zY39efA9Spb9j7ZHyM",
-                    inputDecoration: InputDecoration(
+                    inputDecoration: const InputDecoration(
                     ),
                     debounceTime: 800 ,// default 600 ms,
                     countries: ["in","fr"],// optional by default null is set
                     isLatLngRequired:true,// if you required coordinates from place detail
                     getPlaceDetailWithLatLng: (Prediction prediction) {
                       // this method will return latlng with place detail
-                      print("placeDetails" + prediction.lng.toString());
+                      print("placeDetails${prediction.lng}");
 
                     }, // this callback is called when isLatLngRequired is true
                     itmClick: (Prediction prediction) {
