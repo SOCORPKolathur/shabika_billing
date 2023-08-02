@@ -22,7 +22,7 @@ class _TesingState extends State<Tesing> {
             horizontal: 8,
             vertical: 8
           ),
-          child: Material(
+          child: Card(
              shadowColor: Colors.indigo,
             child:
             Column(
