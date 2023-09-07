@@ -6,3 +6,5 @@ const homeicon="https://firebasestorage.googleapis.com/v0/b/crm-kolathur.appspot
 const savefile="https://assets4.lottiefiles.com/packages/lf20_f9e9tqcx.json";
 const deletefile="https://assets5.lottiefiles.com/packages/lf20_tqsLQJ3Q73.json";
 const additem="https://assets10.lottiefiles.com/packages/lf20_qlpiodtk.json";
+
+

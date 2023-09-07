@@ -3,7 +3,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
+
 
 class Supplier_Reports extends StatefulWidget {
   const Supplier_Reports({Key? key}) : super(key: key);
@@ -62,7 +62,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
                       child: Center(child: Text("Supplier Name",
-                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))
+                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))
                   ),
 
 
@@ -76,7 +76,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       ),
                       child: Center(child: Text("Supplier\nCode",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -87,7 +87,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Supplier Address",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                      child: Center(child: Text("Supplier Address",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -98,7 +98,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Mobile",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                      child: Center(child: Text("Mobile",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -109,7 +109,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Email",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                      child: Center(child: Text("Email",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -120,7 +120,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("City",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                      child: Center(child: Text("City",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -132,7 +132,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       ),
                       child: Center(child: Text("Pin\ncode",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -142,7 +142,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Pan No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                      child: Center(child: Text("GST No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -152,7 +152,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("State",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                      child: Center(child: Text("State",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                   Container(
@@ -161,9 +161,17 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Bala\nnce",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8),textStyle: TextStyle(
+                      child: Center(child: Text("Bala\nnce",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                           overflow: TextOverflow.ellipsis
                       )),))),
+
+                  Container(
+                      width:width/10.83,
+                      height:height/13.0,
+                      decoration:BoxDecoration(
+                          border: Border.all(color: Colors.black,width: 1.2)
+                      ),
+                      child: Center(child: Text("Actions",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -182,7 +190,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
 
                   return ListView.builder(
                     shrinkWrap: true,
-                    physics: ScrollPhysics(),
+                    physics: const ScrollPhysics(),
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (context, index) {
 
@@ -296,30 +304,40 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['Openingbalance'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,textStyle: TextStyle(
+                                child: Center(child: Text(buillin1['Openingbalance'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,textStyle: const TextStyle(
                                   overflow: TextOverflow.ellipsis
                                 )),))),
 
-                            SizedBox(width: width/130.32,),
 
-                            InkWell(
-                              onTap: (){
-                                showdialpogbox(buillin1.id);
-                              },
-                              child: Material(
-                                elevation: 10,
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(100),
-                                child: Container(
-                                    width:width/13.66,
-                                    height:height/21.9,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(100),
-                                        color: Colors.green
-                                    ),
-                                    child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                            Container(
+                                width:width/10.83,
+                                height:height/13.0,
+                                decoration:BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2)
+                                ),
+                            child: Padding(
+                              padding:  EdgeInsets.only(left: width/49.028,right: width/49.028,top: height/65.7,bottom: height/65.7),
+                              child: InkWell(
+                                onTap: (){
+                                  showdialpogbox(buillin1.id);
+                                },
+                                child: Material(
+                                  elevation: 10,
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Container(
+                                      width:width/13.66,
+                                      height:height/21.9,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(100),
+                                          color: Colors.green
+                                      ),
+                                      child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                ),
                               ),
                             ),
+                            )
+
 
 
                           ],
@@ -353,7 +371,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
       builder: (context) {
         return SlideInLeft(
           animate: true,
-          duration: Duration(milliseconds: 800),
+          duration: const Duration(milliseconds: 800),
           manualTrigger: false,
           child: AlertDialog(
               backgroundColor: Colors.transparent,
@@ -383,7 +401,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 height: height/26.28,
                                 width:width/ 54.64,
                                 color: Colors.red,
-                                child: Center(child: Icon(Icons.clear,color: Colors.white,)),
+                                child: const Center(child: Icon(Icons.clear,color: Colors.white,)),
                               ),
                             ),
                           ),
@@ -408,7 +426,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                             child: Center(
                               child: Text("Item\nPurch NO".toString(),
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),),
                             ),
                           ),
 
@@ -421,7 +439,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Description", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              "Description", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -433,7 +451,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Hsncode", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              "Hsncode", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -445,7 +463,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Qty", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              "Qty", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -457,7 +475,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Payment", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              "Payment", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -469,7 +487,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Time", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              "Time", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -481,7 +499,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Date", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              "Date", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -493,7 +511,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Sales Price", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              "Sales Price", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -506,7 +524,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                             ),
                             child: Center(child: Text("Tax %",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -518,7 +536,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Total", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              "Total", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -568,7 +586,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                    }
                                    return  ListView.builder(
                                      shrinkWrap: true,
-                                     physics: ScrollPhysics(),
+                                     physics: const ScrollPhysics(),
                                      itemCount: snapshot.data!.docs.length,
                                      itemBuilder: (context, index) {
                                        var customer = snapshot.data!.docs[index];
@@ -716,7 +734,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                            ],
                                          );
                                      },);
-                                 },):SizedBox();
+                                 },):const SizedBox();
                              },);
                           },),
                       ),
@@ -730,14 +748,14 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                         },
                         child: Material(
                           elevation: 15,
-                          color: Color(0xff25D366),
+                          color: const Color(0xff25D366),
                           borderRadius: BorderRadius.circular(5),
                           child: Container(
                             height: height / 16.425,
                             width: width / 7.588,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Color(0xff25D366),
+                              color: const Color(0xff25D366),
                             ),
                             child: Center(
                               child: Text("Okay",

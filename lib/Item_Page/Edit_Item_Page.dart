@@ -30,7 +30,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         setState(() {
           catitemcode = document.docs[i].id;
         });
-        print(catitemcode);
       }
     }
   }
@@ -42,7 +41,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         setState(() {
           branditemcode = document.docs[i].id;
         });
-        print(branditemcode);
       }
     }
   }
@@ -59,7 +57,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
     for (int i = 0; i < Document.docs.length; i++) {
       categorylist.add(Document.docs[i]['categoryname']);
     }
-    print(categorylist);
   }
 
   barndaddfunction() async {
@@ -70,7 +67,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
     for (int i = 0; i < Document.docs.length; i++) {
       Barndlist.add(Document.docs[i]['Brandname']);
     }
-    print(Barndlist);
   }
 
 
@@ -110,17 +106,17 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
   }
 
   //controller
-  TextEditingController itemcode = new TextEditingController();
-  TextEditingController HSNcode = new TextEditingController();
-  TextEditingController Newitemname = new TextEditingController();
-  TextEditingController Purchaseprice = new TextEditingController();
-  TextEditingController Landingcost = new TextEditingController();
-  TextEditingController Saleprice = new TextEditingController();
-  TextEditingController MRPPrice = new TextEditingController();
-  TextEditingController Loworder = new TextEditingController();
-  TextEditingController BoxNo = new TextEditingController();
-  TextEditingController Categorycont = new TextEditingController();
-  TextEditingController Barndcont = new TextEditingController();
+  TextEditingController itemcode = TextEditingController();
+  TextEditingController HSNcode = TextEditingController();
+  TextEditingController Newitemname = TextEditingController();
+  TextEditingController Purchaseprice = TextEditingController();
+  TextEditingController Landingcost = TextEditingController();
+  TextEditingController Saleprice = TextEditingController();
+  TextEditingController MRPPrice = TextEditingController();
+  TextEditingController Loworder = TextEditingController();
+  TextEditingController BoxNo = TextEditingController();
+  TextEditingController Categorycont = TextEditingController();
+  TextEditingController Barndcont = TextEditingController();
   
   
   getdateiten()async{
@@ -329,11 +325,11 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
           padding: EdgeInsets.only(top: height / 4.761, bottom: height / 4.761),
           child: SlideInLeft(
             animate: true,
-            duration: Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 800),
             manualTrigger: false,
             child: AlertDialog(
-                backgroundColor: Color(0xff264656),
-                content: Container(
+                backgroundColor: const Color(0xff264656),
+                content: SizedBox(
                   width: width / 3.902,
                   child: Column(
                     children: [
@@ -350,7 +346,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      Container(
+                      SizedBox(
                         height: height / 4.38,
                         width: width / 9.106,
                         child: Lottie.network(
@@ -396,7 +392,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                             },
                             child: Material(
                               elevation: 15,
-                              color: Color(0xff263646),
+                              color: const Color(0xff263646),
                               borderRadius: BorderRadius.circular(5),
                               child: Container(
                                 height: height / 16.425,
@@ -446,7 +442,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xff00A99D),
+      backgroundColor: const Color(0xff00A99D),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -494,7 +490,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   style: GoogleFonts.cairo(
                       fontWeight: FontWeight.bold,
                       fontSize: width / 59.39,
-                      color: Color(0xffFFFFFF)),
+                      color: const Color(0xffFFFFFF)),
                 ),
               ),
               SizedBox(
@@ -520,7 +516,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "Category Name *",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
               Padding(
@@ -529,7 +525,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "Brand Name",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
               Padding(
@@ -537,7 +533,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "New Item Code *",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
               Padding(
@@ -546,7 +542,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "HSN Code *",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
 
@@ -562,6 +558,12 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     top: height / 65.7,
                     right: width / 68.3),
                 child: Container(
+                  width: width / 5.8,
+                  height: height / 16.42,
+                  //color: Color(0xffDDDEEE),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4)),
                   child: Padding(
                       padding: EdgeInsets.only(
                           left: width / 455.33, right: width / 455.33),
@@ -693,12 +695,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       )*/
 
                   ),
-                  width: width / 5.8,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
                 ),
               ),
 
@@ -710,6 +706,12 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   padding: EdgeInsets.only(
                       left: width / 455.33, right: width / 455.33),
                   child: Container(
+                    width: width / 5.8,
+                    height: height / 16.42,
+                    //color: Color(0xffDDDEEE),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(4)),
                     child:
                     TextField(
                       style: GoogleFonts.poppins(fontSize: 15),
@@ -723,118 +725,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         border: InputBorder.none,
                       ),
                     ),
-                    /* TypeAheadFormField(
-                          suggestionsBoxDecoration:
-                              SuggestionsBoxDecoration(
-                                  color: Color(0xffDDDEEE),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(5),
-                                    bottomRight: Radius.circular(5),
-                                  )),
-                          textFieldConfiguration: TextFieldConfiguration(
-                            style: GoogleFonts.poppins(fontSize: 15),
-                            decoration: InputDecoration(
-                              contentPadding:
-                                  EdgeInsets.only(left: width/136.6, bottom: height/82.125),
-                              border: InputBorder.none,
-                            ),
-                            controller: this._typeAheadControllergender2,
-                          ),
-                          suggestionsCallback: (pattern) {
-                            return getSuggestionsgender2(pattern);
-                          },
-                          itemBuilder: (context, String suggestion) {
-                            return ListTile(
-                              title: Text(suggestion),
-                            );
-                          },
-                          transitionBuilder:
-                              (context, suggestionsBox, controller) {
-                            return suggestionsBox;
-                          },
-                          onSuggestionSelected: (String suggestion) {
-                            this._typeAheadControllergender2.text = suggestion;
-
-                          },
-                          suggestionsBoxController: suggestionBoxController2,
-                          validator: (value) => value!.isEmpty
-                              ? 'Please select a academic year'
-                              : null,
-                        )*/
-                  /*  LayoutBuilder(
-                      builder: (BuildContext, BoxConstraints) =>
-                          Autocomplete<String>(
-                            initialValue: TextEditingValue(
-                                selection: TextSelection(
-                                  isDirectional: true,
-                                  baseOffset: 5,
-                                  extentOffset: 1,
-                                )),
-                            optionsViewBuilder:
-                                (context, onSelected, options) => Align(
-                                alignment: Alignment.topLeft,
-                                child: Material(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        bottom: Radius.circular(4.0)),
-                                  ),
-                                  child: Container(
-                                    height: 52.0 * options.length,
-                                    width: BoxConstraints.biggest.width,
-                                    child: ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      itemCount: options.length,
-                                      shrinkWrap: false,
-                                      itemBuilder:
-                                          (BuildContext, index) {
-                                        final String option =
-                                        options.elementAt(index);
-                                        return InkWell(
-                                          onTap: () =>
-                                              onSelected(option),
-                                          child: Padding(
-                                            padding:
-                                            EdgeInsets.all(16.0),
-                                            child: Text(option),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                )),
-                            optionsBuilder:
-                                (TextEditingValue textEditingValue) {
-                              if (textEditingValue.text == '') {
-                                return const Iterable<String>.empty();
-                              }
-                              if (textEditingValue.text != '') {
-                                Branditemcode(textEditingValue.text);
-                              }
-
-                              return Barndlist.where((String option) {
-                                return option.toLowerCase().contains(
-                                    textEditingValue.text.toLowerCase());
-                              });
-                            },
-                            onSelected: (String selection) {
-                              Branditemcode(selection);
-                              setState(() {
-                                _typeAheadControllergender2.text=selection;
-                              });
-                              debugPrint('You just selected $selection');
-                            },
-                            displayStringForOption: (Value) {
-                              return Value;
-                            },
-                          ),
-                    ),*/
-
-                    width: width / 5.8,
-                    height: height / 16.42,
-                    //color: Color(0xffDDDEEE),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(4)),
                   ),
                 ),
               ),
@@ -843,6 +733,11 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 padding: EdgeInsets.only(
                     top: height / 65.7, right: width / 68.3),
                 child: Container(
+                  width: width / 6.504,
+                  height: height / 16.42,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4)),
                   child:
                   TextField(
                     style: GoogleFonts.poppins(fontSize: 15),
@@ -857,17 +752,18 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       border: InputBorder.none,
                     ),
                   ),
-                  width: width / 6.504,
-                  height: height / 16.42,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
                 ),
               ),
 
               Padding(
                 padding: EdgeInsets.only(top: height / 65.7),
                 child: Container(
+                  width: width / 6.504,
+                  height: height / 16.42,
+                  //color: Color(0xffDDDEEE),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4)),
                   child: TextField(
                     controller: HSNcode,
                     keyboardType: TextInputType.multiline,
@@ -880,12 +776,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       border: InputBorder.none,
                     ),
                   ),
-                  width: width / 6.504,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
                 ),
               ),
 
@@ -904,7 +794,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "Purchase Price *",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
               Padding(
@@ -912,7 +802,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "Landing Cost",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
               Padding(
@@ -921,7 +811,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "Sale Price *",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
               Padding(
@@ -930,7 +820,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "MRP Price/Unit",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
             ],
@@ -944,6 +834,12 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 padding: EdgeInsets.only(
                     top: height / 65.7, left: width / 25.773),
                 child: Container(
+                  width: width / 6.5,
+                  height: height / 16.42,
+                  //color: Color(0xffDDDEEE),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4)),
                   child: TextFormField(
 
                     validator: (value) => value!.isEmpty
@@ -958,12 +854,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       border: InputBorder.none,
                     ),
                   ),
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
                 ),
               ),
 
@@ -972,6 +862,12 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 padding:
                 EdgeInsets.only(top: height / 65.7, left: width / 65.7),
                 child: Container(
+                  width: width / 6.5,
+                  height: height / 16.42,
+                  //color: Color(0xffDDDEEE),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4)),
                   child: TextFormField(
                     validator: (value) => value!.isEmpty
                         ? "Field Can't Empty"
@@ -986,12 +882,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       border: InputBorder.none,
                     ),
                   ),
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
                 ),
               ),
 
@@ -999,6 +889,12 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 padding:
                 EdgeInsets.only(top: height / 65.7, left: width / 65.7),
                 child: Container(
+                  width: width / 6.5,
+                  height: height / 16.42,
+                  //color: Color(0xffDDDEEE),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4)),
                   child: TextFormField(
                     validator: (value) => value!.isEmpty
                         ? "Field Can't Empty"
@@ -1013,12 +909,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       border: InputBorder.none,
                     ),
                   ),
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
                 ),
               ),
 
@@ -1026,6 +916,12 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 padding:
                 EdgeInsets.only(top: height / 65.7, left: width / 65.7),
                 child: Container(
+                  width: width / 6.5,
+                  height: height / 16.42,
+                  //color: Color(0xffDDDEEE),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4)),
                   child: TextFormField(
                     validator: (value) => value!.isEmpty
                         ? "Field Can't Empty"
@@ -1040,12 +936,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       border: InputBorder.none,
                     ),
                   ),
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
                 ),
               ),
 
@@ -1082,7 +972,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "Low Order Qunaity",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
 
@@ -1092,7 +982,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "Box No",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
 
@@ -1153,6 +1043,12 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 padding: EdgeInsets.only(
                     top: height / 82.125, left: width / 27.32),
                 child: Container(
+                  width: width / 6.5,
+                  height: height / 16.42,
+                  //color: Color(0xffDDDEEE),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4)),
                   child: TextField(
                     controller: BoxNo,
                     keyboardType: TextInputType.multiline,
@@ -1165,12 +1061,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       border: InputBorder.none,
                     ),
                   ),
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
                 ),
               ),
 
@@ -1193,7 +1083,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Text(
                   "Add New Item Name *",
                   style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: Color(0xff000000)),
+                      fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
             ],
@@ -1250,7 +1140,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                           "IMEI Number",
                           style: GoogleFonts.poppins(
                               fontSize: width / 97.571,
-                              color: Color(0xff000000)),
+                              color: const Color(0xff000000)),
                         ),
                       ],
                     ),
@@ -1278,7 +1168,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                           "Serial Number",
                           style: GoogleFonts.poppins(
                               fontSize: width / 97.571,
-                              color: Color(0xff000000)),
+                              color: const Color(0xff000000)),
                         ),
                       ],
                     ),
@@ -1307,7 +1197,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                           "Color",
                           style: GoogleFonts.poppins(
                               fontSize: width / 97.571,
-                              color: Color(0xff000000)),
+                              color: const Color(0xff000000)),
                         ),
                       ],
                     ),
@@ -1336,7 +1226,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                           "Image",
                           style: GoogleFonts.poppins(
                               fontSize: width / 97.571,
-                              color: Color(0xff000000)),
+                              color: const Color(0xff000000)),
                         ),
                       ],
                     ),
@@ -1358,18 +1248,18 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     showdialpogbox();
                   },
                   child: Container(
-                    child: Center(
-                        child: Text(
-                          "Save",
-                          style: GoogleFonts.poppins(color: Colors.white),
-                        )),
                     width: width / 13.6,
                     height: height / 16.42,
                     //color: Color(0xffD60A0B),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Color(0xffD60A0B),
+                      color: const Color(0xffD60A0B),
                     ),
+                    child: Center(
+                        child: Text(
+                          "Save",
+                          style: GoogleFonts.poppins(color: Colors.white),
+                        )),
                   ),
                 ),
                 Padding(
@@ -1379,18 +1269,18 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       clearallcontroller();
                     },
                     child: Container(
-                      child: Center(
-                          child: Text(
-                            "Reset",
-                            style: GoogleFonts.poppins(color: Colors.white),
-                          )),
                       width: width / 13.6,
                       height: height / 16.42,
                       //color: Color(0xffD60A0B),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Color(0xff00A0E3),
+                        color: const Color(0xff00A0E3),
                       ),
+                      child: Center(
+                          child: Text(
+                            "Reset",
+                            style: GoogleFonts.poppins(color: Colors.white),
+                          )),
                     ),
                   ),
                 ),

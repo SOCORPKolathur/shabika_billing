@@ -4,6 +4,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:flutter_tagging_plus/flutter_tagging_plus.dart';
@@ -47,17 +48,17 @@ class _ItemState extends State<Item> {
   String dropdownValue = list.first;
   String dropdownValue1 = list1.first;
   String dropdownValue2 = list2.first;
-  TextEditingController itemcode = new TextEditingController();
-  TextEditingController HSNcode = new TextEditingController();
-  TextEditingController Newitemname = new TextEditingController();
-  TextEditingController Purchaseprice = new TextEditingController();
-  TextEditingController Landingcost = new TextEditingController();
-  TextEditingController Saleprice = new TextEditingController();
-  TextEditingController MRPPrice = new TextEditingController();
-  TextEditingController Loworder = new TextEditingController();
-  TextEditingController BoxNo = new TextEditingController();
-  TextEditingController IMEino = new TextEditingController();
-  TextEditingController SerialNo = new TextEditingController();
+  TextEditingController itemcode = TextEditingController();
+  TextEditingController HSNcode = TextEditingController();
+  TextEditingController Newitemname = TextEditingController();
+  TextEditingController Purchaseprice = TextEditingController();
+  TextEditingController Landingcost = TextEditingController();
+  TextEditingController Saleprice = TextEditingController();
+  TextEditingController MRPPrice = TextEditingController();
+  TextEditingController Loworder = TextEditingController();
+  TextEditingController BoxNo = TextEditingController();
+  TextEditingController IMEino = TextEditingController();
+  TextEditingController SerialNo = TextEditingController();
 
   TextEditingController layourbuilderclear2 = TextEditingController();
 
@@ -65,7 +66,7 @@ class _ItemState extends State<Item> {
   bool status=true;
   bool status2=false;
 
-  TextFieldTagsController tagcontroller = new TextFieldTagsController();
+  TextFieldTagsController tagcontroller = TextFieldTagsController();
 
   final TextEditingController _typeAheadControllergender = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
@@ -79,7 +80,9 @@ class _ItemState extends State<Item> {
   }
 
   final TextEditingController _typeAheadControllergender2 = TextEditingController();
+  final TextEditingController _typeAheadControllergender3 = TextEditingController();
   SuggestionsBoxController suggestionBoxController2 = SuggestionsBoxController();
+  SuggestionsBoxController suggestionBoxController3 = SuggestionsBoxController();
 
   List<String> getSuggestionsgender2(String query) {
     List<String> matches = <String>[];
@@ -94,12 +97,10 @@ class _ItemState extends State<Item> {
 
   getdata()async{
     var document=await FirebaseFirestore.instance.collection("Item").get();
-    print(search);
     for(int i=0;i<document.docs.length;i++){
       setState(() {
         search.add(document.docs[i]["Newitemname"],);
       });
-      print(search);
     }
 
   }
@@ -110,13 +111,14 @@ class _ItemState extends State<Item> {
   void initState() {
     categoryaddfunction();
     barndaddfunction();
+    hsncodeaddfunction();
     getdata();
     getitename();
     // TODO: implement initState
     super.initState();
   }
 
-  NumberFormat F = new NumberFormat('00');
+  NumberFormat F = NumberFormat('00');
 
   int itemcodes = 0;
 
@@ -126,7 +128,6 @@ class _ItemState extends State<Item> {
       itemcodes = document.docs.length + 1;
       itemcode.text = "${"SBI"}${F.format(itemcodes)}";
     });
-    print(itemcode.text);
   }
 
   int landingcost = 0;
@@ -137,24 +138,26 @@ class _ItemState extends State<Item> {
           (((double.parse(purchase)) * 18 / 100) + double.parse(purchase))
               .toStringAsFixed(2);
     });
-    print(Landingcost.text);
   }
 
   List<String> categorylist = <String>[];
   List<String> Barndlist = <String>[];
+  List<String> Hsnlist = <String>[];
 
   categoryaddfunction() async {
-    var Document = await FirebaseFirestore.instance
-        .collection('category')
-        .orderBy("categoryname", descending: false)
-        .get();
+    setState((){
+      categorylist.clear();
+    });
+    var Document = await FirebaseFirestore.instance.collection('category').orderBy("categoryname", descending: false).get();
     for (int i = 0; i < Document.docs.length; i++) {
       categorylist.add(Document.docs[i]['categoryname']);
     }
-    print(categorylist);
   }
 
   barndaddfunction() async {
+    setState((){
+      categorylist.clear();
+    });
     var Document = await FirebaseFirestore.instance
         .collection('Brand')
         .orderBy("Brandname", descending: false)
@@ -162,7 +165,19 @@ class _ItemState extends State<Item> {
     for (int i = 0; i < Document.docs.length; i++) {
       Barndlist.add(Document.docs[i]['Brandname']);
     }
-    print(Barndlist);
+  }
+
+  hsncodeaddfunction() async {
+    setState((){
+      Hsnlist.clear();
+    });
+    var Document = await FirebaseFirestore.instance
+        .collection('Hsncode')
+        .orderBy("timestamp", descending: false)
+        .get();
+    for (int i = 0; i < Document.docs.length; i++) {
+      Hsnlist.add(Document.docs[i]['HSNCode']);
+    }
   }
 
 
@@ -193,6 +208,17 @@ class _ItemState extends State<Item> {
   final Formkey=GlobalKey<FormState>();
   TextEditingController Serachcontroller=TextEditingController();
 
+
+  FocusNode Purchasepricefocus = FocusNode();
+  FocusNode Salespricefocus = FocusNode();
+
+  FocusNode MRPpricefocus = FocusNode();
+  FocusNode Loworderfocus = FocusNode();
+  FocusNode Boxnofocus = FocusNode();
+  FocusNode Itenamefocus = FocusNode();
+
+  FocusNode Imeifocus = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     Color getColor(Set<MaterialState> states) {
@@ -221,7 +247,7 @@ class _ItemState extends State<Item> {
                       InkWell(
                         onTap: () {
                           Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => drawer(),
+                            builder: (context) => drawer(" "),
                           ));
                         },
                         child: Padding(
@@ -268,7 +294,7 @@ class _ItemState extends State<Item> {
                         child: GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => drawer(),
+                              builder: (context) => drawer(" "),
                             ));
                           },
                           child: Container(
@@ -277,14 +303,14 @@ class _ItemState extends State<Item> {
                             // color: Color(0xff00A99D),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
-                              color: Color(0xff00A99D),
+                              color: const Color(0xff00A99D),
                             ),
                             child: Row(
                               children: [
                                 Padding(
                                   padding: EdgeInsets.only(
                                       left: width / 170.75, right: width / 170.75),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.home,
                                     color: Colors.white,
                                   ),
@@ -294,7 +320,7 @@ class _ItemState extends State<Item> {
                                   child: Text(
                                     "Home",
                                     style: GoogleFonts.cairo(
-                                        color: Color(0xffFFFFFF),
+                                        color: const Color(0xffFFFFFF),
                                         fontSize: width / 59.39),
                                   ),
                                 )
@@ -329,7 +355,7 @@ class _ItemState extends State<Item> {
                           //color: Color(0xff00A99D),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Color(0xffFFFFFF),
+                            color: const Color(0xffFFFFFF),
                           ),
                           child:
                           TextField(
@@ -383,7 +409,7 @@ class _ItemState extends State<Item> {
                           //color: Color(0xff00A99D),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: Color(0xff00A99D),
+                            color: const Color(0xff00A99D),
                           ),
                           child: Row(
                             children: [
@@ -393,7 +419,6 @@ class _ItemState extends State<Item> {
                                     left: width / 91.066,
                                     right: width / 68.3),
                                 child: Container(
-                                  child: Icon(Icons.add, color: Colors.teal),
                                   width: width / 56.91,
                                   height: height / 27.37,
                                   // color: Colors.white,
@@ -401,6 +426,7 @@ class _ItemState extends State<Item> {
                                     borderRadius: BorderRadius.circular(32),
                                     color: Colors.white,
                                   ),
+                                  child: const Icon(Icons.add, color: Colors.teal),
                                 ),
                               ),
                               Text(
@@ -417,7 +443,7 @@ class _ItemState extends State<Item> {
                       Padding(
                         padding:  EdgeInsets.only(left: width/4.583, right: width/56.916),
                         child: FlutterSwitch(
-                          inactiveColor: Color(0xffC9C9C9),
+                          inactiveColor: const Color(0xffC9C9C9),
                           inactiveToggleColor: Colors.grey,
                           width: width/30.35,
                           height: height/32.85,
@@ -454,7 +480,7 @@ class _ItemState extends State<Item> {
                       SizedBox(width:width/136.6),
 
                       FlutterSwitch(
-                        inactiveColor: Color(0xffC9C9C9),
+                        inactiveColor: const Color(0xffC9C9C9),
                         inactiveToggleColor: Colors.grey,
                         width: width/30.35,
                         height: height/32.85,
@@ -495,24 +521,32 @@ class _ItemState extends State<Item> {
                         horizontal: width / 130.66, vertical: height / 36.5),
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(12),
                             topRight: Radius.circular(12),
                             bottomRight: Radius.circular(3),
                             bottomLeft: Radius.circular(3),
                           ),
-                          color: Color(0xff00A99D),
+                          color: const Color(0xff00A99D),
                           border: Border.all(color: Colors.red)),
 
                       width: width / 1.03,
 
                       height: height / 1.87,
                       child: SingleChildScrollView(
-                        physics: ScrollPhysics(),
+                        physics: const ScrollPhysics(),
                         child: Column(
                           children: [
                             //titles texts
                             Container(
+                              width: width / 1.01,
+                              height: height / 16.42,
+                              // color: Color(0xff00A99D),
+                              decoration: const BoxDecoration(
+                                  color: Color(0xffFFFFFF),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(10),
+                                      topLeft: Radius.circular(10))),
                               child: Row(
                                 children: [
                                   Padding(
@@ -520,54 +554,46 @@ class _ItemState extends State<Item> {
                                         left: width / 42.687, right: width / 34.15),
                                     child: Text("Sl.no",
                                         style: GoogleFonts.cairo(
-                                            color: Color(0xff00A99D),
+                                            color: const Color(0xff00A99D),
                                             fontSize: width / 68.3)),
                                   ),
                                   Text("Item Name",
                                       style: GoogleFonts.cairo(
-                                          color: Color(0xff00A99D),
+                                          color: const Color(0xff00A99D),
                                           fontSize: width / 68.3)),
                                   Padding(
                                     padding: EdgeInsets.only(
                                         left: width / 1.876, right: width / 19.514),
                                     child: Text("Edit",
                                         style: GoogleFonts.cairo(
-                                            color: Color(0xff00A99D),
+                                            color: const Color(0xff00A99D),
                                             fontSize: width / 68.3)),
                                   ),
                                   Text("Delete",
                                       style: GoogleFonts.cairo(
-                                          color: Color(0xff00A99D),
+                                          color: const Color(0xff00A99D),
                                           fontSize: width / 68.3)),
                                   Padding(
                                     padding: EdgeInsets.only(left: width / 15.523),
                                     child: Text("Status",
                                         style: GoogleFonts.cairo(
-                                            color: Color(0xff00A99D),
+                                            color: const Color(0xff00A99D),
                                             fontSize: width / 68.3)),
                                   ),
                                 ],
                               ),
-                              width: width / 1.01,
-                              height: height / 16.42,
-                              // color: Color(0xff00A99D),
-                              decoration: BoxDecoration(
-                                  color: Color(0xffFFFFFF),
-                                  borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(10),
-                                      topLeft: Radius.circular(10))),
                             ),
 
                             //item stream
                             StreamBuilder<QuerySnapshot>(
                               stream:status==true?
                               FirebaseFirestore.instance
-                                  .collection("Item ShabikaG")
+                                  .collection("Item ShabikaG").orderBy("timestamp",descending: true)
                                   .snapshots():
                               status2==true?
                               FirebaseFirestore.instance
-                                  .collection("Item ShabikaN")
-                                  .snapshots():FirebaseFirestore.instance.collection("Item").snapshots(),
+                                  .collection("Item ShabikaN").orderBy("timestamp",descending: true)
+                                  .snapshots():FirebaseFirestore.instance.collection("Item").orderBy("timestamp",descending: true).snapshots(),
                               builder: (context, snapshot2) {
                                 if (snapshot2.hasData == null) {
                                   return Center(
@@ -582,7 +608,7 @@ class _ItemState extends State<Item> {
                                 return
                                   ListView.builder(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   scrollDirection: Axis.vertical,
                                   itemCount: snapshot2.data!.docs.length,
                                   itemBuilder: (context, index) {
@@ -594,14 +620,6 @@ class _ItemState extends State<Item> {
 
                                           //index(serial text)
                                           Container(
-                                            child: Center(
-                                                child: Text(
-                                                  (index + 1).toString(),
-                                                  style: GoogleFonts.cairo(
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: width / 75.888,
-                                                      color: Color(0xffFDFDFD)),
-                                                )),
                                             height: height / 13.14,
                                             width: width / 13.66,
                                             // color: Colors.grey,
@@ -615,25 +633,21 @@ class _ItemState extends State<Item> {
                                                     color: Colors.red,
                                                   ),
                                                 )),
+                                            child: Center(
+                                                child: Text(
+                                                  (index + 1).toString(),
+                                                  style: GoogleFonts.cairo(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: width / 75.888,
+                                                      color: const Color(0xffFDFDFD)),
+                                                )),
                                           ),
 
                                           //item name text
                                           Container(
-                                            child: Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: width / 75.888,
-                                                  top: height / 131.4),
-                                              child: Text(
-                                                item["Newitemname"],
-                                                style: GoogleFonts.cairo(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: width / 75.888,
-                                                    color: Color(0xffFDFDFD)),
-                                              ),
-                                            ),
                                             height: height / 13.14,
                                             width: width / 1.70,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 color: Color(0xff00A99D),
                                                 border: Border(
                                                   right: BorderSide(
@@ -643,6 +657,18 @@ class _ItemState extends State<Item> {
                                                     color: Colors.red,
                                                   ),
                                                 )),
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: width / 75.888,
+                                                  top: height / 131.4),
+                                              child: Text(
+                                                item["Newitemname"],
+                                                style: GoogleFonts.cairo(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: width / 75.888,
+                                                    color: const Color(0xffFDFDFD)),
+                                              ),
+                                            ),
                                           ),
 
                                           //edit icon(img)
@@ -713,7 +739,7 @@ class _ItemState extends State<Item> {
                                                     style: GoogleFonts.cairo(
                                                         fontSize: width / 75.888,
                                                         fontWeight: FontWeight.bold,
-                                                        color: Color(0xffFDFDFD)),
+                                                        color: const Color(0xffFDFDFD)),
                                                   ))),
                                         ],
                                       );
@@ -724,18 +750,10 @@ class _ItemState extends State<Item> {
 
                                           //index(serial text)
                                           Container(
-                                            child: Center(
-                                                child: Text(
-                                                  (index + 1).toString(),
-                                                  style: GoogleFonts.cairo(
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: width / 75.888,
-                                                      color: Color(0xffFDFDFD)),
-                                                )),
                                             height: height / 13.14,
                                             width: width / 13.66,
                                             // color: Colors.grey,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 color: Color(0xff00A99D),
                                                 border: Border(
                                                   right: BorderSide(
@@ -745,10 +763,30 @@ class _ItemState extends State<Item> {
                                                     color: Colors.red,
                                                   ),
                                                 )),
+                                            child: Center(
+                                                child: Text(
+                                                  (index + 1).toString(),
+                                                  style: GoogleFonts.cairo(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: width / 75.888,
+                                                      color: const Color(0xffFDFDFD)),
+                                                )),
                                           ),
 
                                           //item name text
                                           Container(
+                                            height: height / 13.14,
+                                            width: width / 1.70,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
                                             child: Padding(
                                               padding: EdgeInsets.only(
                                                   left: width / 75.888,
@@ -758,21 +796,9 @@ class _ItemState extends State<Item> {
                                                 style: GoogleFonts.cairo(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: width / 75.888,
-                                                    color: Color(0xffFDFDFD)),
+                                                    color: const Color(0xffFDFDFD)),
                                               ),
                                             ),
-                                            height: height / 13.14,
-                                            width: width / 1.70,
-                                            decoration: BoxDecoration(
-                                                color: Color(0xff00A99D),
-                                                border: Border(
-                                                  right: BorderSide(
-                                                    color: Colors.red,
-                                                  ),
-                                                  bottom: BorderSide(
-                                                    color: Colors.red,
-                                                  ),
-                                                )),
                                           ),
 
                                           //edit icon(img)
@@ -843,13 +869,13 @@ class _ItemState extends State<Item> {
                                                     style: GoogleFonts.cairo(
                                                         fontSize: width / 75.888,
                                                         fontWeight: FontWeight.bold,
-                                                        color: Color(0xffFDFDFD)),
+                                                        color: const Color(0xffFDFDFD)),
                                                   ))),
                                         ],
                                       );
                                     }
 
-                                    return  SizedBox();
+                                    return  const SizedBox();
                                   },
                                 );
                               },
@@ -872,7 +898,7 @@ class _ItemState extends State<Item> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(width: width / 91.06),
                     InkWell(
@@ -880,11 +906,9 @@ class _ItemState extends State<Item> {
                         setState(() {
                           itemselect = false;
                         });
-                        print(height);
-                        print(width);
                       },
                       child: Padding(
-                        padding: EdgeInsets.only(top: height / 32.85),
+                        padding: EdgeInsets.only(top: height / 66.85),
                         child: Tooltip(
                           message: "Back",
                           child: Material(
@@ -912,13 +936,13 @@ class _ItemState extends State<Item> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                          left: width / 35.947, top: height / 32.85),
+                          left: width / 35.947, top: height / 66.85),
                       child: Text(
                         "Add Item ",
                         style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
                             fontSize: width / 59.39,
-                            color: Color(0xffFFFFFF)),
+                            color: const Color(0xffFFFFFF)),
                       ),
                     ),
 
@@ -931,13 +955,13 @@ class _ItemState extends State<Item> {
                       },
                       child: Padding(
                         padding: EdgeInsets.only(
-                            left: width / 35.947, top: height / 32.85),
+                            left: width / 35.947, top: height / 66.85),
                         child: Text(
                           "Add Category ",
                           style: GoogleFonts.cairo(
                               fontWeight: FontWeight.bold,
                               fontSize: width / 59.39,
-                              color: Color(0xffFFFFFF)),
+                              color: const Color(0xffFFFFFF)),
                         ),
                       ),
                     ),
@@ -946,7 +970,7 @@ class _ItemState extends State<Item> {
 
                 Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: width / 75.888, vertical: height / 36.5),
+                      horizontal: width / 75.888, vertical: height / 76.5),
                   child: Image.asset("assets/Line13.png"),
                 ),
 
@@ -960,7 +984,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "Select Category Name *",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
                     Padding(
@@ -969,7 +993,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "Brand Name",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
                     Padding(
@@ -977,7 +1001,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "New Item Code *",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
                     Padding(
@@ -986,7 +1010,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "HSN Code *",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
 
@@ -1085,7 +1109,7 @@ class _ItemState extends State<Item> {
                                                         bottom:
                                                             Radius.circular(4.0)),
                                               ),
-                                              child: Container(
+                                              child: SizedBox(
                                                 height: 52.0 * options.length,
                                                 width:
                                                     BoxConstraints.biggest.width,
@@ -1098,7 +1122,7 @@ class _ItemState extends State<Item> {
                                                     return InkWell(
                                                       onTap: () =>
                                                           onSelected(option),
-                                                      child: Padding(padding: EdgeInsets.all(16.0),
+                                                      child: Padding(padding: const EdgeInsets.all(16.0),
                                                         child: Text(option),
                                                       ),
                                                     );
@@ -1145,10 +1169,10 @@ class _ItemState extends State<Item> {
                             },
                             child: Tooltip(
                               message: "Add Categorys",
-                              child: Container(
+                              child: SizedBox(
                                 height: height / 26.28,
                                 width: width / 54.64,
-                                child: CircleAvatar(
+                                child: const CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child: Icon(
                                     Icons.add,
@@ -1218,7 +1242,8 @@ class _ItemState extends State<Item> {
                             Padding(
                               padding: EdgeInsets.only(
                                   left: width / 130.33, right: width / 455.33),
-                              child: LayoutBuilder(
+                              child:
+                              LayoutBuilder(
                                 builder: (BuildContext, BoxConstraints) =>
                                     Autocomplete<String>(
                                       fieldViewBuilder: (context, textEditingController,
@@ -1229,7 +1254,7 @@ class _ItemState extends State<Item> {
                                           onFieldSubmitted,
                                         );
                                       },
-                                  initialValue: TextEditingValue(
+                                  initialValue: const TextEditingValue(
                                       selection: TextSelection(
                                         isDirectional: true,
                                         baseOffset: 5,
@@ -1243,7 +1268,7 @@ class _ItemState extends State<Item> {
                                               borderRadius: BorderRadius.vertical(
                                                   bottom: Radius.circular(4.0)),
                                             ),
-                                            child: Container(
+                                            child: SizedBox(
                                               height: 52.0 * options.length,
                                               width: BoxConstraints.biggest.width,
                                               child: ListView.builder(
@@ -1259,7 +1284,7 @@ class _ItemState extends State<Item> {
                                                         onSelected(option),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(16.0),
+                                                          const EdgeInsets.all(16.0),
                                                       child: Text(option),
                                                     ),
                                                   );
@@ -1303,10 +1328,10 @@ class _ItemState extends State<Item> {
                             },
                             child: Tooltip(
                               message: "Add Categorys",
-                              child: Container(
+                              child: SizedBox(
                                 height: height / 26.28,
                                 width: width / 54.64,
-                                child: CircleAvatar(
+                                child: const CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child: Icon(
                                     Icons.add,
@@ -1353,18 +1378,96 @@ class _ItemState extends State<Item> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4)),
-                        child: TextField(
-                          controller: HSNcode,
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                                left: width / 68.3, bottom: height / 82.125),
+                        child:
 
-                            border: InputBorder.none,
-                          ),
+                        LayoutBuilder(
+                          builder: (BuildContext, BoxConstraints) =>
+                              Autocomplete<String>(
+                                fieldViewBuilder: (context, _Controller,
+                                    focusNode, onFieldSubmitted) {
+                                  return TextFormField(
+                                    onChanged: (_){
+                                      setState(() {
+                                       HSNcode= _Controller;
+                                      });
+                                    },
+                                    style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        contentPadding:
+                                        EdgeInsets.only( bottom: height / 43.8, top: height / 43.8,
+                                            left: width/136.6)),
+                                    controller: _Controller,
+                                    focusNode: focusNode,
+                                    onFieldSubmitted: (String value) {
+                                      onFieldSubmitted();
+                                    },
+                                  );
+                                },
+                                initialValue: const TextEditingValue(
+                                    selection: TextSelection(
+                                      isDirectional: true,
+                                      baseOffset: 5,
+                                      extentOffset: 1,
+                                    )),
+                                optionsViewBuilder:
+                                    (context, onSelected, options) => Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Material(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                            bottom: Radius.circular(4.0)),
+                                      ),
+                                      child: SizedBox(
+                                        height: 52.0 * options.length,
+                                        width: BoxConstraints.biggest.width,
+                                        child: ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          itemCount: options.length,
+                                          shrinkWrap: false,
+                                          itemBuilder:
+                                              (BuildContext, index) {
+                                            final String option =
+                                            options.elementAt(index);
+                                            return InkWell(
+                                              onTap: () =>
+                                                  onSelected(option),
+                                              child: Padding(
+                                                padding:
+                                                const EdgeInsets.all(16.0),
+                                                child: Text(option),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    )),
+                                optionsBuilder:
+                                    (TextEditingValue textEditingValue) {
+
+                                  //if the controlller is not empty set the value
+                                  if (textEditingValue.text == '') {
+                                    return const Iterable<String>.empty();
+                                  }
+
+                                  return Hsnlist.where((String option) {
+                                    return option.toLowerCase().contains(
+                                        textEditingValue.text.toLowerCase());
+                                  });
+                                },
+                                onSelected: (String selection) {
+                                  setState(() {
+                                    _typeAheadControllergender3.text=selection;
+                                    HSNcode.text=selection;
+                                  });
+                                  debugPrint('You just selected $selection');
+                                },
+                                displayStringForOption: (Value) {
+                                  return Value;
+                                },
+                              ),
                         ),
+
                       ),
                     ),
 
@@ -1384,7 +1487,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "Purchase Price *",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
                     SizedBox(width: width/35.94,),
@@ -1394,7 +1497,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "Landing Cost",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
                     SizedBox(width: width/68.3,),
@@ -1404,7 +1507,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "Sale Price *",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
 
@@ -1414,7 +1517,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "MRP Price/Unit",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
                   ],
@@ -1435,7 +1538,7 @@ class _ItemState extends State<Item> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4)),
                         child: TextFormField(
-
+                          focusNode: Purchasepricefocus,
                           validator: (value) => value!.isEmpty
                               ? "Field Can't Empty"
                               : null,
@@ -1449,6 +1552,9 @@ class _ItemState extends State<Item> {
                           ),
                           onEditingComplete: () {
                             checkgst(Purchaseprice.text);
+                            Purchasepricefocus.unfocus();
+                            FocusScope.of(context)
+                                .requestFocus(Salespricefocus);
                           },
                         ),
                       ),
@@ -1471,7 +1577,7 @@ class _ItemState extends State<Item> {
                               : null,
                           controller: Landingcost,
                           keyboardType: TextInputType.multiline,
-                          maxLines: null,
+                          maxLines: 1,
                           style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
@@ -1493,18 +1599,24 @@ class _ItemState extends State<Item> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4)),
                         child: TextFormField(
+                          focusNode: Salespricefocus,
                           validator: (value) => value!.isEmpty
                               ? "Field Can't Empty"
                               : null,
                           controller: Saleprice,
                           keyboardType: TextInputType.multiline,
-                          maxLines: null,
+                          maxLines: 1,
                           style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 82.125),
                             border: InputBorder.none,
                           ),
+                          onEditingComplete: () {
+                            Salespricefocus.unfocus();
+                            FocusScope.of(context)
+                                .requestFocus(MRPpricefocus);
+                          },
                         ),
                       ),
                     ),
@@ -1520,18 +1632,23 @@ class _ItemState extends State<Item> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4)),
                         child: TextFormField(
+                          focusNode: MRPpricefocus,
                           validator: (value) => value!.isEmpty
-                              ? "Field Can't Empty"
-                              : null,
+                              ? "Field Can't Empty" : null,
                           controller: MRPPrice,
                           keyboardType: TextInputType.multiline,
-                          maxLines: null,
+                          maxLines: 1,
                           style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 82.125),
                             border: InputBorder.none,
                           ),
+                          onEditingComplete: () {
+                            MRPpricefocus.unfocus();
+                            FocusScope.of(context)
+                                .requestFocus(Loworderfocus);
+                          },
                         ),
                       ),
                     ),
@@ -1559,7 +1676,7 @@ class _ItemState extends State<Item> {
                       child: Text("Select Item Unit",
                           style: GoogleFonts.poppins(
                               fontSize: width / 97.571,
-                              color: Color(0xff000000))),
+                              color: const Color(0xff000000))),
                     ),
                     SizedBox(width: width/28.45,),
                     Padding(
@@ -1568,7 +1685,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "Low Order Qunaity",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
                     SizedBox(width: width/91.06,),
@@ -1578,7 +1695,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "Box No",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
 
@@ -1606,7 +1723,7 @@ class _ItemState extends State<Item> {
                           child: DropdownButton<String>(
                             isExpanded: true,
                             value: dropdownValue1,
-                            icon: Icon(Icons.arrow_drop_down_outlined),
+                            icon: const Icon(Icons.arrow_drop_down_outlined),
                             style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
                             underline: Container(
                               color: Colors.deepPurpleAccent,
@@ -1641,8 +1758,8 @@ class _ItemState extends State<Item> {
                             borderRadius: BorderRadius.circular(4)),
                         child: TextField(
                           controller: Loworder,
+                          focusNode: Loworderfocus,
                           keyboardType: TextInputType.multiline,
-                          maxLines: null,
                           style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
@@ -1650,6 +1767,11 @@ class _ItemState extends State<Item> {
 
                             border: InputBorder.none,
                           ),
+                          onEditingComplete: () {
+                            Loworderfocus.unfocus();
+                            FocusScope.of(context)
+                                .requestFocus(Boxnofocus);
+                          },
                         ),
                       ),
                     ),
@@ -1666,14 +1788,19 @@ class _ItemState extends State<Item> {
                             borderRadius: BorderRadius.circular(4)),
                         child: TextField(
                           controller: BoxNo,
+                          focusNode: Boxnofocus,
                           keyboardType: TextInputType.multiline,
-                          maxLines: null,
                           style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 164.25),
                             border: InputBorder.none,
                           ),
+                          onEditingComplete: () {
+                            Boxnofocus.unfocus();
+                            FocusScope.of(context)
+                                .requestFocus(Itenamefocus);
+                          },
                         ),
                       ),
                     ),
@@ -1694,7 +1821,7 @@ class _ItemState extends State<Item> {
                       child: Text(
                         "Add New Item Name *",
                         style: GoogleFonts.poppins(
-                            fontSize: width / 97.571, color: Color(0xff000000)),
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
                   ],
@@ -1714,7 +1841,7 @@ class _ItemState extends State<Item> {
                             borderRadius: BorderRadius.circular(4)),
                         child: TextField(
                           controller: Newitemname,
-                          keyboardType: TextInputType.multiline,
+                          focusNode: Itenamefocus,
                           maxLines: null,
                           style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
@@ -1734,6 +1861,7 @@ class _ItemState extends State<Item> {
                           child: Row(
                             children: [
                               Checkbox(
+                                focusNode: Imeifocus,
                                 checkColor: Colors.white,
                                 fillColor:
                                 MaterialStateProperty.resolveWith(getColor),
@@ -1751,7 +1879,7 @@ class _ItemState extends State<Item> {
                                 "IMEI Number",
                                 style: GoogleFonts.poppins(
                                     fontSize: width / 97.571,
-                                    color: Color(0xff000000)),
+                                    color: const Color(0xff000000)),
                               ),
                             ],
                           ),
@@ -1779,7 +1907,7 @@ class _ItemState extends State<Item> {
                                 "Serial Number",
                                 style: GoogleFonts.poppins(
                                     fontSize: width / 97.571,
-                                    color: Color(0xff000000)),
+                                    color: const Color(0xff000000)),
                               ),
                             ],
                           ),
@@ -1808,7 +1936,7 @@ class _ItemState extends State<Item> {
                                 "Color",
                                 style: GoogleFonts.poppins(
                                     fontSize: width / 97.571,
-                                    color: Color(0xff000000)),
+                                    color: const Color(0xff000000)),
                               ),
                             ],
                           ),
@@ -1837,7 +1965,7 @@ class _ItemState extends State<Item> {
                                 "Image",
                                 style: GoogleFonts.poppins(
                                     fontSize: width / 97.571,
-                                    color: Color(0xff000000)),
+                                    color: const Color(0xff000000)),
                               ),
                             ],
                           ),
@@ -1855,11 +1983,10 @@ class _ItemState extends State<Item> {
                     children: [
                       InkWell(
                         onTap: () {
-                          final isvalid = Formkey.currentState!.validate();
-                          print(isvalid);
+
                           if (Formkey.currentState!.validate()) {
-                            print("fghdddddddddddddd");
                             checkitemname();
+
                           }
 
                         },
@@ -1869,7 +1996,7 @@ class _ItemState extends State<Item> {
                           //color: Color(0xffD60A0B),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Color(0xff25D366),
+                            color: const Color(0xff25D366),
                           ),
                           child: Center(
                               child: Text(
@@ -1908,6 +2035,7 @@ class _ItemState extends State<Item> {
         );
   }
 
+
   String catitemcode = '';
   String branditemcode = '';
 
@@ -1919,7 +2047,6 @@ class _ItemState extends State<Item> {
         setState(() {
           catitemcode = document.docs[i].id;
         });
-        print(catitemcode);
       }
     }
   }
@@ -1931,14 +2058,14 @@ class _ItemState extends State<Item> {
         setState(() {
           branditemcode = document.docs[i].id;
         });
-        print(branditemcode);
       }
     }
   }
 
-  itempage() {
-      FirebaseFirestore.instance.collection("category").doc(catitemcode).collection("Item ShabikaG").doc().set({
-        "Category": _typeAheadControllergender.text,
+  itempage() async {
+
+      FirebaseFirestore.instance.collection("Item ShabikaG").doc().set({
+        "Category":  _typeAheadControllergender.text,
         "Brand": _typeAheadControllergender2.text,
         "Itemcode": itemcode.text,
         "HSNCode": HSNcode.text,
@@ -1955,9 +2082,9 @@ class _ItemState extends State<Item> {
         "Color": isChecked3,
         "Image": isChecked4,
         "timestamp": DateTime.now().microsecondsSinceEpoch,
-        "gst": "18%"
+        "gst": "18%",
       });
-      FirebaseFirestore.instance.collection("Item ShabikaG").doc().set({
+      FirebaseFirestore.instance.collection("Item ShabikaN").doc().set({
         "Category":  _typeAheadControllergender.text,
         "Brand": _typeAheadControllergender2.text,
         "Itemcode": itemcode.text,
@@ -1995,10 +2122,10 @@ class _ItemState extends State<Item> {
         "Color": isChecked3,
         "Image": isChecked4,
         "timestamp": DateTime.now().microsecondsSinceEpoch,
-        "gst": "18%"
+        "gst": "18%",
       });
-      FirebaseFirestore.instance.collection("Item ShabikaN").doc().set({
-        "Category":  _typeAheadControllergender.text,
+      FirebaseFirestore.instance.collection("category").doc(catitemcode).collection("Item ShabikaG").doc().set({
+        "Category": _typeAheadControllergender.text,
         "Brand": _typeAheadControllergender2.text,
         "Itemcode": itemcode.text,
         "HSNCode": HSNcode.text,
@@ -2015,9 +2142,25 @@ class _ItemState extends State<Item> {
         "Color": isChecked3,
         "Image": isChecked4,
         "timestamp": DateTime.now().microsecondsSinceEpoch,
-        "gst": "18%",
+        "gst": "18%"
       });
 
+      var document=await FirebaseFirestore.instance.collection("Hsncode").where("HSNCode",isEqualTo:HSNcode.text).get();
+      if(document.docs.length>0){
+
+        FirebaseFirestore.instance.collection("Hsncode").doc(document.docs[0].id).update({
+          "HSNCode":HSNcode.text,
+          "timestamp":DateTime.now().millisecondsSinceEpoch
+        });
+      }
+      else{
+        FirebaseFirestore.instance.collection("Hsncode").doc().set({
+          "HSNCode":HSNcode.text,
+          "timestamp":DateTime.now().millisecondsSinceEpoch
+        });
+      }
+
+      hsncodeaddfunction();
   }
 
   clearallcontroller() {
@@ -2050,17 +2193,14 @@ class _ItemState extends State<Item> {
   //already exits ppopup
   checkitemname() async {
 
-    print("check1");
       var document = await FirebaseFirestore.instance
           .collection("Item")
           .where("Newitemname", isEqualTo: Newitemname.text)
           .get();
       if (document.docs.length > 0) {
-        print("check2");
         return alreadyshowdialpogbox();
       }
       else {
-        print("check3");
         itempage();
         showdialpogbox();
       }
@@ -2078,11 +2218,11 @@ class _ItemState extends State<Item> {
           padding: EdgeInsets.only(top: height / 4.761, bottom: height / 4.761),
           child: SlideInLeft(
             animate: true,
-            duration: Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 800),
             manualTrigger: false,
             child: AlertDialog(
-                backgroundColor: Color(0xff264656),
-                content: Container(
+                backgroundColor: const Color(0xff264656),
+                content: SizedBox(
                   width: width / 3.902,
                   child: Column(
                     children: [
@@ -2099,7 +2239,7 @@ class _ItemState extends State<Item> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      Container(
+                      SizedBox(
                         height: height / 4.38,
                         width: width / 9.106,
                         child: Lottie.network(
@@ -2114,14 +2254,14 @@ class _ItemState extends State<Item> {
                         },
                         child: Material(
                           elevation: 15,
-                            color: Color(0xff25D366),
+                            color: const Color(0xff25D366),
                           borderRadius: BorderRadius.circular(5),
                           child: Container(
                             height: height / 16.425,
                             width: width / 7.588,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Color(0xff25D366)
+                              color: const Color(0xff25D366)
                             ),
                             child: Center(
                               child: Text("Okay",
@@ -2153,11 +2293,11 @@ class _ItemState extends State<Item> {
           padding: EdgeInsets.only(top: height / 4.761, bottom: height / 4.761),
           child: SlideInLeft(
             animate: true,
-            duration: Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 800),
             manualTrigger: false,
             child: AlertDialog(
-                backgroundColor: Color(0xff264656),
-                content: Container(
+                backgroundColor: const Color(0xff264656),
+                content: SizedBox(
                   width: width / 3.902,
                   child: Column(
                     children: [
@@ -2174,7 +2314,7 @@ class _ItemState extends State<Item> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      Container(
+                      SizedBox(
                         height: height / 4.38,
                         width: width / 9.106,
                         child: Lottie.network(
@@ -2189,14 +2329,14 @@ class _ItemState extends State<Item> {
                         },
                         child: Material(
                           elevation: 15,
-                            color: Color(0xff25D366),
+                            color: const Color(0xff25D366),
                           borderRadius: BorderRadius.circular(5),
                           child: Container(
                             height: height / 16.425,
                             width: width / 7.588,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                                color: Color(0xff25D366)
+                                color: const Color(0xff25D366)
                             ),
                             child: Center(
                               child: Text("Okay",
@@ -2228,11 +2368,11 @@ class _ItemState extends State<Item> {
           padding: EdgeInsets.only(top: height / 4.761, bottom: height / 4.761),
           child: SlideInLeft(
             animate: true,
-            duration: Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 800),
             manualTrigger: false,
             child: AlertDialog(
-                backgroundColor: Color(0xff264656),
-                content: Container(
+                backgroundColor: const Color(0xff264656),
+                content: SizedBox(
                   width: width / 3.902,
                   child: Column(
                     children: [
@@ -2249,7 +2389,7 @@ class _ItemState extends State<Item> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      Container(
+                      SizedBox(
                         height: height / 4.38,
                         width: width / 9.106,
                         child: Lottie.network(
@@ -2264,14 +2404,14 @@ class _ItemState extends State<Item> {
                         },
                         child: Material(
                           elevation: 15,
-                            color: Color(0xff25D366),
+                            color: const Color(0xff25D366),
                           borderRadius: BorderRadius.circular(5),
                           child: Container(
                             height: height / 16.425,
                             width: width / 7.588,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                                color: Color(0xff25D366)
+                                color: const Color(0xff25D366)
                             ),
                             child: Center(
                               child: Text("Okay",
@@ -2304,11 +2444,11 @@ class _ItemState extends State<Item> {
           padding: EdgeInsets.only(top: height / 4.761, bottom: height / 4.761),
           child: SlideInLeft(
             animate: true,
-            duration: Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 800),
             manualTrigger: false,
             child: AlertDialog(
-                backgroundColor: Color(0xff264656),
-                content: Container(
+                backgroundColor: const Color(0xff264656),
+                content: SizedBox(
                   width: width / 3.902,
                   child: Column(
                     children: [
@@ -2325,7 +2465,7 @@ class _ItemState extends State<Item> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      Container(
+                      SizedBox(
                         height: height / 4.38,
                         width: width / 9.106,
                         child: Lottie.network(
@@ -2344,14 +2484,14 @@ class _ItemState extends State<Item> {
                             },
                             child: Material(
                               elevation: 15,
-                                color: Color(0xff25D366),
+                                color: const Color(0xff25D366),
                               borderRadius: BorderRadius.circular(5),
                               child: Container(
                                 height: height / 16.425,
                                 width: width / 9.588,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                    color: Color(0xff25D366)
+                                    color: const Color(0xff25D366)
                                 ),
                                 child: Center(
                                   child: Text("Okay",
@@ -2371,7 +2511,7 @@ class _ItemState extends State<Item> {
                             },
                             child: Material(
                               elevation: 15,
-                              color: Color(0xff263646),
+                              color: const Color(0xff263646),
                               borderRadius: BorderRadius.circular(5),
                               child: Container(
                                 height: height / 16.425,
@@ -2404,7 +2544,13 @@ class _ItemState extends State<Item> {
 
   //delete function
   delete(itemid) {
-    FirebaseFirestore.instance.collection("Item").doc(itemid).delete();
+    if(status==true){
+      FirebaseFirestore.instance.collection("Item ShabikaG").doc(itemid).delete();
+    }
+ if(status2==true){
+   FirebaseFirestore.instance.collection("Item ShabikaN").doc(itemid).delete();
+ }
+
   }
 
   //Barnd showpopup(delete popup)
@@ -2434,7 +2580,7 @@ class _ItemState extends State<Item> {
                         fontWeight: FontWeight.w700, fontSize: 18),
                   ),
                   SizedBox(height: height / 32.85),
-                  Container(
+                  SizedBox(
                     height: height / 3.65,
                     width: width / 7.588,
                     child: Lottie.network(deletefile),
@@ -2453,7 +2599,7 @@ class _ItemState extends State<Item> {
                           width: width / 9.588,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
-                              color: Color(0xff263646)),
+                              color: const Color(0xff263646)),
                           child: Center(
                             child: Text(
                               "Okay",
@@ -2470,7 +2616,7 @@ class _ItemState extends State<Item> {
                         },
                         child: Material(
                           elevation: 15,
-                          color: Color(0xff263646),
+                          color: const Color(0xff263646),
                           borderRadius: BorderRadius.circular(5),
                           child: Container(
                             height: height / 16.425,
@@ -2502,12 +2648,12 @@ class _ItemState extends State<Item> {
   }
 
   //Add categorys function
-  TextEditingController Categorys = new TextEditingController();
+  TextEditingController Categorys = TextEditingController();
 
   addcategory() {
     FirebaseFirestore.instance.collection("category").doc().set({
       "Date":
-          "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+      "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
       "categoryname": Categorys.text,
       "timestamp": DateTime.now().microsecondsSinceEpoch
     });
@@ -2576,7 +2722,7 @@ class _ItemState extends State<Item> {
                       width: width / 10.507,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
-                          color: Color(0xff263646)),
+                          color: const Color(0xff263646)),
                       child: Center(
                         child: Text(
                           "Okay",
@@ -2596,7 +2742,7 @@ class _ItemState extends State<Item> {
   }
 
   //add brand funtion
-  TextEditingController Branditem = new TextEditingController();
+  TextEditingController Branditem = TextEditingController();
 
   addbrand() {
     FirebaseFirestore.instance.collection("Brand").doc().set({
@@ -2670,7 +2816,7 @@ class _ItemState extends State<Item> {
                       width: width / 10.507,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
-                          color: Color(0xff263646)),
+                          color: const Color(0xff263646)),
                       child: Center(
                         child: Text(
                           "Okay",
@@ -2691,7 +2837,7 @@ class _ItemState extends State<Item> {
 
   //eidt item popup
 
-  TextEditingController edititem = new TextEditingController();
+  TextEditingController edititem = TextEditingController();
 
 
   edidtheitemfunction(docid){
@@ -2770,7 +2916,7 @@ class _ItemState extends State<Item> {
                       width: width / 10.507,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
-                          color: Color(0xff263646)),
+                          color: const Color(0xff263646)),
                       child: Center(
                         child: Text(
                           "Okay",
@@ -2796,12 +2942,15 @@ class _ItemState extends State<Item> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return TextFormField(
+    return
+      TextFormField(
       style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
       decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding:
-          EdgeInsets.only( bottom: height / 43.8)),
+          EdgeInsets.only( bottom: height / 43.8,
+              top: height / 43.8,
+              left: width/136.6)),
       controller: textEditingController,
       focusNode: focusNode,
       onFieldSubmitted: (String value) {
@@ -2813,3 +2962,5 @@ class _ItemState extends State<Item> {
 
 
 }
+
+

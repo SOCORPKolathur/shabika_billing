@@ -60,7 +60,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xff00A99D),
+      backgroundColor: const Color(0xff00A99D),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -121,7 +121,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                        ),
                        child: Row(
                          children: [
-                           Container(
+                           SizedBox(
                                width:width/11.38,
                                child: Text("Description",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
                            SizedBox(width:width/136.6),
@@ -161,7 +161,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                        ),
                        child: Row(
                          children: [
-                           Container(
+                           SizedBox(
                                width:width/11.38,
                                child: Text("HSN code",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
                            SizedBox(width:width/136.6),
@@ -206,7 +206,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                       ),
                       child: Row(
                         children: [
-                          Container(
+                          SizedBox(
                               width:width/11.38,
                               child: Text("Quantity",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
                           SizedBox(width:width/136.6),
@@ -247,7 +247,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                       ),
                       child: Row(
                         children: [
-                          Container(
+                          SizedBox(
                               width:width/11.38,
                               child: Text("Rate",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
                           SizedBox(width:width/136.6),
@@ -291,7 +291,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                       ),
                       child: Row(
                         children: [
-                          Container(
+                          SizedBox(
                               width:width/11.38,
                               child: Text("Tax",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
                           SizedBox(width:width/136.6),
@@ -332,7 +332,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                       ),
                       child: Row(
                         children: [
-                          Container(
+                          SizedBox(
                               width:width/11.38,
                               child: Text("Total",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
                           SizedBox(width:width/136.6),
@@ -412,14 +412,14 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                 },
                 child: Material(
                   elevation: 15,
-                  color: Color(0xff263646),
+                  color: const Color(0xff263646),
                   borderRadius: BorderRadius.circular(5),
                   child: Container(
                     height: height/16.425,
                     width: width/7.588,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Color(0xff263646),
+                      color: const Color(0xff263646),
                     ),
                     child: Center(
                       child: Text(

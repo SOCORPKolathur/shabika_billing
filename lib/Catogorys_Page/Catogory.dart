@@ -25,8 +25,10 @@ class Category extends StatefulWidget {
 class _CategoryState extends State<Category> {
   bool categoryclick = false;
 
+  bool isserach=false;
 
-
+  String Username="";
+ TextEditingController Serachcontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -54,7 +56,7 @@ class _CategoryState extends State<Category> {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const drawer(),
+                          builder: (context) =>  drawer(" "),
                         ));
                       },
                       child: Container(
@@ -117,16 +119,38 @@ class _CategoryState extends State<Category> {
                         borderRadius: BorderRadius.circular(8),
                         color: const Color(0xffFFFFFF),
                       ),
-                      child: TextField(
+                      child:
+                      TextField(
+                        controller: Serachcontroller,
                         style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.only(left: width/68.3, bottom:width/82.125),
+                                EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/102.125),
                             border: InputBorder.none,
                             suffixIcon: const Icon(
                               Icons.search_outlined,
                               color: Colors.grey,
                             )),
+                        onTap: (){
+                          setState(() {
+                            isserach=true;
+                          });
+                        },
+                        onChanged: (value){
+                          if(Serachcontroller.text==""){
+                            setState(() {
+                              isserach=false;
+                            });
+                          }
+                          else{
+                            setState(() {
+                              isserach=true;
+                            });
+                          }
+                          setState(() {
+                            Username=value;
+                          });
+                        },
                       ),
                     ),
                   ),
@@ -252,7 +276,7 @@ class _CategoryState extends State<Category> {
                         //category stream
                         StreamBuilder<QuerySnapshot>(
                           stream: FirebaseFirestore.instance
-                              .collection("category")
+                              .collection("category").orderBy("timestamp",descending: true)
                               .snapshots(),
                           builder: (context, snapshot) {
                             if (snapshot.hasData == null) {
@@ -271,130 +295,261 @@ class _CategoryState extends State<Category> {
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
-                                return Row(
-                                  children: [
 
-                                    //index (Serial number)
-                                    Container(
+                            if(isserach==true&&snapshot.data!.docs[index]["categoryname"].toString().toLowerCase().startsWith(Username.toLowerCase())){
+                              return Row(
+                                children: [
+
+                                  //index (Serial number)
+                                  Container(
+                                    height: height / 13.14,
+                                    width: width / 13.66,
+                                    // color: Colors.grey,
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xff00A99D),
+                                        border: Border(
+                                          right: BorderSide(
+                                            color: Colors.red,
+                                          ),
+                                          bottom: BorderSide(
+                                            color: Colors.red,
+                                          ),
+                                        )),
+                                    child: Center(
+                                        child: Text(
+                                          (index + 1).toString(),
+                                          style: GoogleFonts.cairo(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: width/75.888,
+                                              color: const Color(0xffFDFDFD)),
+                                        )),
+                                  ),
+
+                                  //name text
+                                  Container(
+                                    height: height / 13.14,
+                                    width: width / 1.70,
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xff00A99D),
+                                        border: Border(
+                                          right: BorderSide(
+                                            color: Colors.red,
+                                          ),
+                                          bottom: BorderSide(
+                                            color: Colors.red,
+                                          ),
+                                        )),
+                                    child: Padding(
+                                      padding:  EdgeInsets.only(
+                                          left: width/75.888, top: height/131.4),
+                                      child: Text(
+                                        snapshot.data!.docs[index]
+                                        ["categoryname"],
+                                        style: GoogleFonts.cairo(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: width/75.888,
+                                            color: const Color(0xffFDFDFD)),
+                                      ),
+                                    ),
+                                  ),
+
+                                  //edit icon(img)
+                                  InkWell(
+                                    onTap:(){
+                                      editditem(snapshot.data!.docs[index].id);
+                                    },
+                                    child: Container(
+                                        height: height / 13.14,
+                                        width: width / 12.64,
+                                        // color: Colors.grey,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xff00A99D),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                            )),
+                                        child: Image.asset("assets/edit.png")),
+                                  ),//
+
+
+                                  //delete icon (img)
+                                  InkWell(
+                                    onTap:(){
+                                      _catogory( snapshot.data!.docs[index].id);
+                                    },
+                                    child: Container(
+                                        height: height / 13.14,
+                                        width: width / 12.41,
+                                        // color: Colors.grey,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xff00A99D),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                            )),
+                                        child: Image.asset("assets/delete.png")),
+                                  ),
+
+                                  //active text
+                                  Container(
                                       height: height / 13.14,
-                                      width: width / 13.66,
+                                      width: width / 6.83,
                                       // color: Colors.grey,
                                       decoration: const BoxDecoration(
                                           color: Color(0xff00A99D),
                                           border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
                                             bottom: BorderSide(
                                               color: Colors.red,
                                             ),
                                           )),
                                       child: Center(
                                           child: Text(
-                                        (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: const Color(0xffFDFDFD)),
-                                      )),
-                                    ),
+                                            "Active",
+                                            style: GoogleFonts.cairo(
+                                                fontSize: width/75.888,
+                                                fontWeight: FontWeight.bold,
+                                                color: const Color(0xffFDFDFD)),
+                                          ))),
 
-                                    //name text
-                                    Container(
-                                      height: height / 13.14,
-                                      width: width / 1.70,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Padding(
-                                        padding:  EdgeInsets.only(
-                                            left: width/75.888, top: height/131.4),
-                                        child: Text(
-                                          snapshot.data!.docs[index]
-                                              ["categoryname"],
-                                          style: GoogleFonts.cairo(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: width/75.888,
-                                              color: const Color(0xffFDFDFD)),
-                                        ),
-                                      ),
-                                    ),
+                                ],
+                              );
+                            }
+                                else if(isserach==false&&snapshot.data!.docs[index]["categoryname"].toString().toLowerCase().startsWith(Username.toLowerCase())){
+                                  return Row(
+                                    children: [
 
-                                    //edit icon(img)
-                                    InkWell(
-                                      onTap:(){
-                                        editditem(snapshot.data!.docs[index].id);
-                                      },
-                                      child: Container(
-                                          height: height / 13.14,
-                                          width: width / 12.64,
-                                          // color: Colors.grey,
-                                          decoration: const BoxDecoration(
-                                              color: Color(0xff00A99D),
-                                              border: Border(
-                                                right: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                                bottom: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                              )),
-                                          child: Image.asset("assets/edit.png")),
-                                    ),//
-
-
-                                    //delete icon (img)
-                                    InkWell(
-                                      onTap:(){
-                                        _catogory( snapshot.data!.docs[index].id);
-                                      },
-                                      child: Container(
-                                          height: height / 13.14,
-                                          width: width / 12.41,
-                                          // color: Colors.grey,
-                                          decoration: const BoxDecoration(
-                                              color: Color(0xff00A99D),
-                                              border: Border(
-                                                right: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                                bottom: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                              )),
-                                          child: Image.asset("assets/delete.png")),
-                                    ),
-
-                                    //active text
-                                    Container(
+                                      //index (Serial number)
+                                      Container(
                                         height: height / 13.14,
-                                        width: width / 6.83,
+                                        width: width / 13.66,
                                         // color: Colors.grey,
                                         decoration: const BoxDecoration(
                                             color: Color(0xff00A99D),
                                             border: Border(
+                                              right: BorderSide(
+                                                color: Colors.red,
+                                              ),
                                               bottom: BorderSide(
                                                 color: Colors.red,
                                               ),
                                             )),
                                         child: Center(
                                             child: Text(
-                                          "Active",
-                                          style: GoogleFonts.cairo(
-                                              fontSize: width/75.888,
-                                              fontWeight: FontWeight.bold,
-                                              color: const Color(0xffFDFDFD)),
-                                        ))),
+                                              (index + 1).toString(),
+                                              style: GoogleFonts.cairo(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: width/75.888,
+                                                  color: const Color(0xffFDFDFD)),
+                                            )),
+                                      ),
 
-                                  ],
-                                );
+                                      //name text
+                                      Container(
+                                        height: height / 13.14,
+                                        width: width / 1.70,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xff00A99D),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                            )),
+                                        child: Padding(
+                                          padding:  EdgeInsets.only(
+                                              left: width/75.888, top: height/131.4),
+                                          child: Text(
+                                            snapshot.data!.docs[index]
+                                            ["categoryname"],
+                                            style: GoogleFonts.cairo(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: width/75.888,
+                                                color: const Color(0xffFDFDFD)),
+                                          ),
+                                        ),
+                                      ),
+
+                                      //edit icon(img)
+                                      InkWell(
+                                        onTap:(){
+                                          editditem(snapshot.data!.docs[index].id);
+                                        },
+                                        child: Container(
+                                            height: height / 13.14,
+                                            width: width / 12.64,
+                                            // color: Colors.grey,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                            child: Image.asset("assets/edit.png")),
+                                      ),//
+
+
+                                      //delete icon (img)
+                                      InkWell(
+                                        onTap:(){
+                                          _catogory( snapshot.data!.docs[index].id);
+                                        },
+                                        child: Container(
+                                            height: height / 13.14,
+                                            width: width / 12.41,
+                                            // color: Colors.grey,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                            child: Image.asset("assets/delete.png")),
+                                      ),
+
+                                      //active text
+                                      Container(
+                                          height: height / 13.14,
+                                          width: width / 6.83,
+                                          // color: Colors.grey,
+                                          decoration: const BoxDecoration(
+                                              color: Color(0xff00A99D),
+                                              border: Border(
+                                                bottom: BorderSide(
+                                                  color: Colors.red,
+                                                ),
+                                              )),
+                                          child: Center(
+                                              child: Text(
+                                                "Active",
+                                                style: GoogleFonts.cairo(
+                                                    fontSize: width/75.888,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: const Color(0xffFDFDFD)),
+                                              ))),
+
+                                    ],
+                                  );
+
+                                }
+                                return const SizedBox();
                               },
                             );
                           },
@@ -820,6 +975,7 @@ class _CategoryState extends State<Category> {
       "categoryname":edititem.text,
     });
   }
+
   ediditemsetfunction(docid)async{
     var getdatae=await FirebaseFirestore.instance.collection("category").doc(docid).get();
     Map<String,dynamic>?value=getdatae.data();

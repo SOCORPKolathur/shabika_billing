@@ -16,6 +16,12 @@ class Brand extends StatefulWidget {
 class _BrandState extends State<Brand> {
   bool brand = false;
 
+
+  bool isserach=false;
+
+  String Username="";
+  TextEditingController Serachcontroller=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -48,7 +54,7 @@ class _BrandState extends State<Brand> {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const drawer(),
+                          builder: (context) =>  drawer(" "),
                         ));
                       },
                       child: Container(
@@ -116,6 +122,7 @@ class _BrandState extends State<Brand> {
                         color: const Color(0xffFFFFFF),
                       ),
                       child: TextField(
+                        controller: Serachcontroller,
                         style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: width/68.3, bottom: 8),
@@ -125,6 +132,26 @@ class _BrandState extends State<Brand> {
                             child: Image.asset("assets/search.png"),
                           ),
                         ),
+                        onTap: (){
+                          setState(() {
+                            isserach=true;
+                          });
+                        },
+                        onChanged: (value){
+                          if(Serachcontroller.text==""){
+                            setState(() {
+                              isserach=false;
+                            });
+                          }
+                          else{
+                            setState(() {
+                              isserach=true;
+                            });
+                          }
+                          setState(() {
+                            Username=value;
+                          });
+                        },
                       ),
                     ),
                   ),
@@ -241,7 +268,7 @@ class _BrandState extends State<Brand> {
                         //Brand stream
                         StreamBuilder<QuerySnapshot>(
                           stream: FirebaseFirestore.instance
-                              .collection("Brand")
+                              .collection("Brand").orderBy("timestamp",descending: true)
                               .snapshots(),
                           builder: (context, snapshot) {
                             if (snapshot.hasData == null) {
@@ -260,64 +287,14 @@ class _BrandState extends State<Brand> {
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
-                                return Row(
-                                  children: [
-                                    //index (Serial number)
-                                    Container(
-                                      height: height / 13.14,
-                                      width: width / 13.66,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Center(
-                                          child: Text(
-                                        (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: const Color(0xffFDFDFD)),
-                                      )),
-                                    ),
 
-                                    //name text
-                                    Container(
-                                      height: height / 13.14,
-                                      width: width / 1.70,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Padding(
-                                        padding:  EdgeInsets.only(
-                                            left: width/75.888, top: height/131.4),
-                                        child: Text(
-                                          snapshot.data!.docs[index]["Brandname"],
-                                          style: GoogleFonts.cairo(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: width/75.888,
-                                              color: const Color(0xffFDFDFD)),
-                                        ),
-                                      ),
-                                    ),
-
-                                    //edit icon(img)
-                                    Container(
+                                if(isserach==true&&snapshot.data!.docs[index]["Brandname"].toString().toLowerCase().startsWith(Username.toLowerCase())){
+                                return   Row(
+                                    children: [
+                                      //index (Serial number)
+                                      Container(
                                         height: height / 13.14,
-                                        width: width / 12.64,
+                                        width: width / 13.66,
                                         // color: Colors.grey,
                                         decoration: const BoxDecoration(
                                             color: Color(0xff00A99D),
@@ -329,52 +306,235 @@ class _BrandState extends State<Brand> {
                                                 color: Colors.red,
                                               ),
                                             )),
-                                        child: Image.asset("assets/edit.png")), //
+                                        child: Center(
+                                            child: Text(
+                                              (index + 1).toString(),
+                                              style: GoogleFonts.cairo(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: width/75.888,
+                                                  color: const Color(0xffFDFDFD)),
+                                            )),
+                                      ),
 
-                                    //delete icon (img)
-                                    InkWell(
-                                      onTap: () {
-                                        _Barnd(snapshot.data!.docs[index].id);
-                                      },
-                                      child: Container(
+                                      //name text
+                                      Container(
+                                        height: height / 13.14,
+                                        width: width / 1.70,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xff00A99D),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                            )),
+                                        child: Padding(
+                                          padding:  EdgeInsets.only(
+                                              left: width/75.888, top: height/131.4),
+                                          child: Text(
+                                            snapshot.data!.docs[index]["Brandname"],
+                                            style: GoogleFonts.cairo(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: width/75.888,
+                                                color: const Color(0xffFDFDFD)),
+                                          ),
+                                        ),
+                                      ),
+
+                                      //edit icon(img)
+                                      GestureDetector(
+                                        onTap:(){
+                                          editditem(snapshot.data!.docs[index].id);
+                                        },
+                                        child: Container(
+                                            height: height / 13.14,
+                                            width: width / 12.64,
+                                            // color: Colors.grey,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                            child: Image.asset("assets/edit.png")),
+                                      ), //
+
+                                      //delete icon (img)
+                                      InkWell(
+                                        onTap: () {
+                                          _Barnd(snapshot.data!.docs[index].id);
+                                        },
+                                        child: Container(
+                                            height: height / 13.14,
+                                            width: width / 12.41,
+                                            // color: Colors.grey,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                            child: Image.asset("assets/delete.png")),
+                                      ),
+
+                                      //active text
+                                      Container(
                                           height: height / 13.14,
-                                          width: width / 12.41,
+                                          width: width / 6.83,
                                           // color: Colors.grey,
                                           decoration: const BoxDecoration(
                                               color: Color(0xff00A99D),
                                               border: Border(
-                                                right: BorderSide(
-                                                  color: Colors.red,
-                                                ),
                                                 bottom: BorderSide(
                                                   color: Colors.red,
                                                 ),
                                               )),
-                                          child: Image.asset("assets/delete.png")),
-                                    ),
-
-                                    //active text
-                                    Container(
+                                          child: Center(
+                                              child: Text(
+                                                "Active",
+                                                style: GoogleFonts.cairo(
+                                                    fontSize: width/75.888,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: const Color(0xffFDFDFD)),
+                                              ))),
+                                    ],
+                                  );
+                                }
+                                else if(isserach==false&&snapshot.data!.docs[index]["Brandname"].toString().toLowerCase().startsWith(Username.toLowerCase())){
+                                  return Row(
+                                    children: [
+                                      //index (Serial number)
+                                      Container(
                                         height: height / 13.14,
-                                        width: width / 6.83,
+                                        width: width / 13.66,
                                         // color: Colors.grey,
                                         decoration: const BoxDecoration(
                                             color: Color(0xff00A99D),
                                             border: Border(
+                                              right: BorderSide(
+                                                color: Colors.red,
+                                              ),
                                               bottom: BorderSide(
                                                 color: Colors.red,
                                               ),
                                             )),
                                         child: Center(
                                             child: Text(
-                                          "Active",
-                                          style: GoogleFonts.cairo(
-                                              fontSize: width/75.888,
-                                              fontWeight: FontWeight.bold,
-                                              color: const Color(0xffFDFDFD)),
-                                        ))),
-                                  ],
-                                );
+                                              (index + 1).toString(),
+                                              style: GoogleFonts.cairo(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: width/75.888,
+                                                  color: const Color(0xffFDFDFD)),
+                                            )),
+                                      ),
+
+                                      //name text
+                                      Container(
+                                        height: height / 13.14,
+                                        width: width / 1.70,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xff00A99D),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.red,
+                                              ),
+                                            )),
+                                        child: Padding(
+                                          padding:  EdgeInsets.only(
+                                              left: width/75.888, top: height/131.4),
+                                          child: Text(
+                                            snapshot.data!.docs[index]["Brandname"],
+                                            style: GoogleFonts.cairo(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: width/75.888,
+                                                color: const Color(0xffFDFDFD)),
+                                          ),
+                                        ),
+                                      ),
+
+                                      //edit icon(img)
+                                      GestureDetector(
+                                        onTap:(){
+                                          editditem(snapshot.data!.docs[index].id);
+                                        },
+                                        child: Container(
+                                            height: height / 13.14,
+                                            width: width / 12.64,
+                                            // color: Colors.grey,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                            child: Image.asset("assets/edit.png")),
+                                      ), //
+
+                                      //delete icon (img)
+                                      InkWell(
+                                        onTap: () {
+                                          _Barnd(snapshot.data!.docs[index].id);
+                                        },
+                                        child: Container(
+                                            height: height / 13.14,
+                                            width: width / 12.41,
+                                            // color: Colors.grey,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xff00A99D),
+                                                border: Border(
+                                                  right: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                  bottom: BorderSide(
+                                                    color: Colors.red,
+                                                  ),
+                                                )),
+                                            child: Image.asset("assets/delete.png")),
+                                      ),
+
+                                      //active text
+                                      Container(
+                                          height: height / 13.14,
+                                          width: width / 6.83,
+                                          // color: Colors.grey,
+                                          decoration: const BoxDecoration(
+                                              color: Color(0xff00A99D),
+                                              border: Border(
+                                                bottom: BorderSide(
+                                                  color: Colors.red,
+                                                ),
+                                              )),
+                                          child: Center(
+                                              child: Text(
+                                                "Active",
+                                                style: GoogleFonts.cairo(
+                                                    fontSize: width/75.888,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: const Color(0xffFDFDFD)),
+                                              ))),
+                                    ],
+                                  );
+
+                                }
+                                return
+                                 const  SizedBox();
                               },
                             );
                           },
@@ -585,7 +745,7 @@ class _BrandState extends State<Brand> {
                 child: Column(
                   children: [
                     SizedBox(height:height/ 32.85,),
-                    Text("Add a Category Item Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Brand Item Successfully",style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -669,6 +829,7 @@ class _BrandState extends State<Brand> {
 
 
   }
+
   Brand() {
     FirebaseFirestore.instance.collection("Brand").doc().set({
       "Brandname":Brandname.text,
@@ -776,4 +937,104 @@ class _BrandState extends State<Brand> {
       },
     );
   }
+
+  //eidt item popup
+
+  TextEditingController edititem = TextEditingController();
+
+
+  edidtheitemfunction(docid){
+    FirebaseFirestore.instance.collection("Brand").doc(docid).update({
+      "Brandname":edititem.text,
+    });
+  }
+  ediditemsetfunction(docid)async{
+    var getdatae=await FirebaseFirestore.instance.collection("Brand").doc(docid).get();
+    Map<String,dynamic>?value=getdatae.data();
+    setState(() {
+      edititem.text=value!['Brandname'];
+    });
+  }
+  editditem(docid) {
+    ediditemsetfunction(docid);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+              top: height / 3.65,
+              bottom: height / 3.65,
+              left: width / 3.415,
+              right: width / 3.415),
+          child: Scaffold(
+            backgroundColor: Colors.grey.shade200,
+            body: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: height / 21.9),
+                  Text(
+                    "Are You Sure Want To Edit this Item ",
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w700, fontSize: width / 68.3),
+                  ),
+                  SizedBox(height: height / 32.85),
+                  Row(
+                    children: [
+                      SizedBox(width: width / 7.805),
+                      Text(
+                        "Edit Item",
+                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: height / 131.4),
+                  Container(
+                      height: height / 16.425,
+                      width: width / 6.209,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: Colors.cyan),
+                      child: TextField(
+                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+                        controller: edititem,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: width / 136.6, bottom: height / 65.7)),
+                      )),
+                  SizedBox(height: height / 32.85),
+                  InkWell(
+                    onTap: () {
+                      //update functions
+                      edidtheitemfunction(docid);
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      height: height / 16.425,
+                      width: width / 10.507,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: const Color(0xff263646)),
+                      child: Center(
+                        child: Text(
+                          "Okay",
+                          style: GoogleFonts.poppins(
+                              color: Colors.white, fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
 }

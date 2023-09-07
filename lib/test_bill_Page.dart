@@ -1,18 +1,18 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dropdown_search/dropdown_search.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:keymap/keymap.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 import 'package:pdf/widgets.dart' as p;
 import 'package:random_string/random_string.dart';
-import 'const Pages.dart';
+
 
 const List<String> list = <String>[
   'Please Select Category',
@@ -81,9 +81,15 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                 Material(
                   elevation: 50,
                   shadowColor: Colors.black38,
-                  color: Color(0xffFFFFFF),
+                  color: const Color(0xffFFFFFF),
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
+                    width: 980,
+                    height: 130,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFFFFFF),
+                        borderRadius: BorderRadius.circular(12)
+                    ),
                     child: Column(
                       children: [
 
@@ -97,7 +103,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                               child: Text(
                                 "Item Code",
                                 style: GoogleFonts.poppins(
-                                    color: Color(0xff000000),
+                                    color: const Color(0xff000000),
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -116,7 +122,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                   child: TextField(
                                     controller: Itemcode,
                                     focusNode: Itemcodes,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         contentPadding: EdgeInsets.only(left:20,bottom:15),
                                         hintText: "Item Code"
@@ -144,7 +150,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Text(
                                   "Si.No",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -154,7 +160,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Text(
                                   "Item Name",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -164,7 +170,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Text(
                                   "Description",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -175,7 +181,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Text(
                                   "QTY",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -184,17 +190,17 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Text(
                                   "Rate",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
 
                               Padding(
-                                padding: EdgeInsets.only(left: 10.0, right: 2),
+                                padding: const EdgeInsets.only(left: 10.0, right: 2),
                                 child: Text(
                                   "GST",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -205,7 +211,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Text(
                                   "Discount",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -214,14 +220,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Text(
                                   "Total",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
                               Text(
                                 "Stock",
                                 style: GoogleFonts.poppins(
-                                    color: Color(0xff000000),
+                                    color: const Color(0xff000000),
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -231,12 +237,20 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                         Padding(
                           padding:  EdgeInsets.only(top: height/131.4),
                           child: Container(
+                            width: 980,
+                            height: 35,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff6EC3C5),
+                                borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(12),
+                                    bottomRight: Radius.circular(12)),
+                                border: Border.all(color: Colors.black)),
                             child:Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
 
                                 //Item Name textfield
-                                SizedBox(width: 70,),
+                                const SizedBox(width: 70,),
 
                                 Container(
                                   width: 130,
@@ -252,7 +266,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         controller: Itemname,
                                         focusNode: Itemcat,
                                         textInputAction: TextInputAction.next,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           contentPadding: EdgeInsets.only(bottom: 15,left: 3),
                                           border: InputBorder.none,
                                           hintText: "Item Name",
@@ -263,7 +277,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 ),
 
                                 //Item Des textfield
-                                SizedBox(width: 25,),
+                                const SizedBox(width: 25,),
                                 Container(
                                   width: 130,
                                   height:25,
@@ -277,7 +291,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                       child: TextField(
                                         controller: Itemdescription,
                                         textInputAction: TextInputAction.next,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           contentPadding: EdgeInsets.only(bottom: 15,left: 3),
                                           border: InputBorder.none,
                                           hintText: "Item description",
@@ -288,7 +302,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 ),
 
                                 //qty textfield
-                                SizedBox(width: 100,),
+                                const SizedBox(width: 100,),
                                 Container(
                                   width: 60,
                                   height:25,
@@ -306,10 +320,9 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         onChanged: (value){
                                           setState(() {
                                             _total = int.parse(value);
-                                            print( _total);
                                           });
                                         },
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           contentPadding: EdgeInsets.only(bottom: 15,left: 25),
                                           border: InputBorder.none,
                                           hintText: "0",
@@ -324,7 +337,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 ),
 
                                 //Rate textfield
-                                SizedBox(width: 20,),
+                                const SizedBox(width: 20,),
                                 Container(
                                   width: 60,
                                   height:25,
@@ -339,7 +352,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         controller: Rate,
                                         textInputAction: TextInputAction.next,
                                         focusNode: rate,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             contentPadding: EdgeInsets.only(bottom: 15,left: 25),
                                             border: InputBorder.none,
                                             hintText: "0"
@@ -354,7 +367,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 ),
 
                                 //Gst textfield
-                                SizedBox(width: 25,),
+                                const SizedBox(width: 25,),
                                 Container(
                                   width: 60,
                                   height:25,
@@ -369,7 +382,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         controller: Gst,
                                         textInputAction: TextInputAction.next,
                                         focusNode: gst,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             contentPadding: EdgeInsets.only(bottom: 15,left: 25),
                                             border: InputBorder.none,
                                             hintText: "0"
@@ -385,7 +398,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
 
                                 //discount textfield
-                                SizedBox(width: 35,),
+                                const SizedBox(width: 35,),
                                 Container(
                                   width: 60,
                                   height:25,
@@ -400,7 +413,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         controller: Discount,
                                         textInputAction: TextInputAction.next,
                                         focusNode: discount,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             contentPadding: EdgeInsets.only(bottom: 15,left: 25),
                                             border: InputBorder.none,
                                             hintText: "0"
@@ -431,7 +444,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 ),
 
                                 //total textfield
-                                SizedBox(width: 25,),
+                                const SizedBox(width: 25,),
                                 Container(
                                   width: 60,
                                   height:25,
@@ -449,7 +462,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 ),
 
                                 //stocks
-                                SizedBox(width: 35,),
+                                const SizedBox(width: 35,),
                                 Container(
                                   width: 60,
                                   height:25,
@@ -464,7 +477,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         TextField(
                                           controller: Stocks,
                                           decoration: InputDecoration(
-                                              contentPadding: EdgeInsets.only(bottom: 15,left: 25),
+                                              contentPadding: const EdgeInsets.only(bottom: 15,left: 25),
                                               border: InputBorder.none,
                                               hintText: stocksvalue.toString()
                                           ),
@@ -476,25 +489,9 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
                               ],
                             ),
-                            // color: Color(0xffFFFFFF),
-                            width: 980,
-                            height: 35,
-                            decoration: BoxDecoration(
-                                color: Color(0xff6EC3C5),
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(12),
-                                    bottomRight: Radius.circular(12)),
-                                border: Border.all(color: Colors.black)),
                           ),
                         ),
                       ],
-                    ),
-                    // color: Color(0xffFFFFFF),
-                    width: 980,
-                    height: 130,
-                    decoration: BoxDecoration(
-                        color: Color(0xffFFFFFF),
-                        borderRadius: BorderRadius.circular(12)
                     ),
                   ),
                 ),
@@ -506,9 +503,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                 child: Material(
                   elevation: 50,
                   shadowColor: Colors.black38,
-                  color: Color(0xffFFFFFF),
+                  color: const Color(0xffFFFFFF),
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
+                    width: 320,
+                    height: 125,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFFFFFF),
+                        borderRadius: BorderRadius.circular(12)),
                     child: Row(
                       children: [
 
@@ -518,7 +520,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                           child: Text(
                             "Previous Bill Amount:",
                             style: GoogleFonts.poppins(
-                                color: Color(0xff000000),
+                                color: const Color(0xff000000),
                                 fontSize: width/75.888,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -526,14 +528,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
 
                         //perivious billing amount price container
-                        Container(
+                        SizedBox(
                           width: 80,
                           child: Text(
                             billingcountval.toString(),
                             style: GoogleFonts.poppins(
-                                color: Color(0xff000000),
+                                color: const Color(0xff000000),
                                 fontSize: width/75.888,
-                                textStyle: TextStyle(
+                                textStyle: const TextStyle(
                                     overflow: TextOverflow.ellipsis
                                 ),
                                 fontWeight: FontWeight.bold),
@@ -541,12 +543,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                         ),
                       ],
                     ),
-                    // color: Color(0xffFFFFFF),
-                    width: 320,
-                    height: 125,
-                    decoration: BoxDecoration(
-                        color: Color(0xffFFFFFF),
-                        borderRadius: BorderRadius.circular(12)),
                   ),
                 ),
               )
@@ -569,25 +565,28 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                     Material(
                       elevation: 50,
                       shadowColor: Colors.black38,
-                      color: Color(0xffFFFFFF),
+                      color: const Color(0xffFFFFFF),
                       borderRadius: BorderRadius.circular(12),
                       child: Container(
                         //color: Color(0xffFFFFFF),
                         width: 980,
                         height: 300,
+                        decoration: BoxDecoration(
+                            color: const Color(0xffFFFFFF),
+                            borderRadius: BorderRadius.circular(12)),
                         child: StreamBuilder(
                           stream: FirebaseFirestore.instance.collection("billing").doc(random).collection(random).snapshots(),
                           builder: (context, snapshot) {
                             if(snapshot.hasData==null){
-                              return Center(child: CircularProgressIndicator(),);
+                              return const Center(child: CircularProgressIndicator(),);
                             }
                             if(!snapshot.hasData){
-                              return Center(child: CircularProgressIndicator(),);
+                              return const Center(child: CircularProgressIndicator(),);
                             }
                             return
                               ListView.builder(
                                 shrinkWrap: true,
-                                physics: ScrollPhysics(),
+                                physics: const ScrollPhysics(),
                                 itemCount: snapshot.data!.docs.length,
                                 itemBuilder: (context, index) {
                                   var billing=snapshot.data!.docs[index];
@@ -596,65 +595,65 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                     child: Row(
                                       children: [
 
-                                        SizedBox(width: 15,),
-                                        Container(
+                                        const SizedBox(width: 15,),
+                                        SizedBox(
                                             width:30,
                                             child: Center(child: Text(billing["billingid"].toString()))),
-                                        SizedBox(width: 25,),
+                                        const SizedBox(width: 25,),
 
-                                        Container(
+                                        SizedBox(
                                             width:300,
                                             child: Row(
                                               children: [
                                                 Text(billing["billingname1"].toString()),
-                                                SizedBox(width:100),
+                                                const SizedBox(width:100),
                                                 Text(billing["billingname2"].toString()),
                                               ],
                                             )),
-                                        SizedBox(width: 85,),
+                                        const SizedBox(width: 85,),
 
-                                        Container(
+                                        SizedBox(
                                             width:30,
                                             child: Center(child: Text(billing["Qty"].toString()))),
-                                        SizedBox(width: 45,),
+                                        const SizedBox(width: 45,),
 
 
-                                        Container(
+                                        SizedBox(
 
                                             width:50,
 
                                             child: Center(child: Text(billing["Rate"].toString()))),
-                                        SizedBox(width: 40,),
+                                        const SizedBox(width: 40,),
 
-                                        Container(
+                                        SizedBox(
                                             width:30,
 
                                             child: Center(child: Text(billing["Gst"].toString()))),
-                                        SizedBox(width: 50,),
+                                        const SizedBox(width: 50,),
 
-                                        Container(
+                                        SizedBox(
                                             width:55,
 
                                             child: Center(child: Text("${billing["Discount"].toString()}%"))),
-                                        SizedBox(width: 40,),
+                                        const SizedBox(width: 40,),
 
-                                        Container(
+                                        SizedBox(
                                             width:60,
 
                                             child: Center(child: Text(billing["Total"].toString()))),
-                                        SizedBox(width: 35,),
+                                        const SizedBox(width: 35,),
 
                                         /*  Container(
                                          width:30,
 
                                          child: Center(child: Text(billing["stocks"].toString()))),*/
-                                        SizedBox(width: 10,),
+                                        const SizedBox(width: 10,),
                                         InkWell(
                                             onTap: (){
                                               deletebittling(billing.id);
                                               billingcount();
                                             },
-                                            child: Tooltip(
+                                            child: const Tooltip(
                                                 message: "Delete",
                                                 child: Icon(Icons.delete)))
 
@@ -664,26 +663,28 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 },);
                           },
                         ),
-                        decoration: BoxDecoration(
-                            color: Color(0xffFFFFFF),
-                            borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
 
-                    SizedBox(height:10),
+                    const SizedBox(height:10),
 
                     //container-4
                     Material(
                       elevation: 50,
                       shadowColor: Colors.black38,
-                      color: Color(0xffFFFFFF),
+                      color: const Color(0xffFFFFFF),
                       borderRadius: BorderRadius.circular(12),
                       child: Container(
+                        width: 980,
+                        height: 120,
+                        decoration: BoxDecoration(
+                            color: const Color(0xffFFFFFF),
+                            borderRadius: BorderRadius.circular(12)),
                         child: Row(
                           children: [
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 10,),
                             Text("Total :",style:GoogleFonts.poppins(
-                                color: Color(0xffFF2C2C),
+                                color: const Color(0xffFF2C2C),
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold)),
 
@@ -694,7 +695,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 "₹${billingtotal.toString()}",
                                 style:
                                 GoogleFonts.poppins(
-                                    color: Color(0xffFF2C2C),
+                                    color: const Color(0xffFF2C2C),
                                     fontSize: 28,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -779,7 +780,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
  */
 
                             //save bill buttton
-                            SizedBox(width: 30,),
+                            const SizedBox(width: 30,),
 
                             KeyboardWidget(
                               bindings: [
@@ -798,18 +799,18 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 15.0),
                                   child: Container(
-                                    child: Center(
-                                        child: Text(
-                                          "Save Bill",
-                                          style: GoogleFonts.poppins(color: Colors.white),
-                                        )),
                                     width: width / 8.6,
                                     height: height / 16.42,
                                     //color: Color(0xffD60A0B),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Color(0xffD60A0B),
+                                      color: const Color(0xffD60A0B),
                                     ),
+                                    child: Center(
+                                        child: Text(
+                                          "Save Bill",
+                                          style: GoogleFonts.poppins(color: Colors.white),
+                                        )),
                                   ),
                                 ),
                               ),
@@ -818,7 +819,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
 
                             //save bill and print buttton
-                            SizedBox(width: 30,),
+                            const SizedBox(width: 30,),
                             KeyboardWidget(
                               bindings: [
                                 KeyAction.fromString('F5','increment the counter', () {
@@ -837,23 +838,23 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 20.0),
                                   child: Container(
-                                    child: Center(
-                                        child: Text(
-                                          "Save and Print Bill",
-                                          style: GoogleFonts.poppins(color: Colors.white),
-                                        )),
                                     width: width / 6.4,
                                     height: height / 16.42,
                                     //color: Color(0xffD60A0B),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Color(0xffD60A0B),
+                                      color: const Color(0xffD60A0B),
                                     ),
+                                    child: Center(
+                                        child: Text(
+                                          "Save and Print Bill",
+                                          style: GoogleFonts.poppins(color: Colors.white),
+                                        )),
                                   ),
                                 ),
                               ),
                             ),
-                            SizedBox(width: 30,),
+                            const SizedBox(width: 30,),
 
                             KeyboardWidget(
                               bindings: [
@@ -867,6 +868,13 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 20.0),
                                   child: Container(
+                                    width: width / 6.4,
+                                    height: height / 16.42,
+                                    //color: Color(0xffD60A0B),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: const Color(0xffD60A0B),
+                                    ),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
@@ -874,19 +882,12 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                           "Save Bill\nShare",
                                           style: GoogleFonts.poppins(color: Colors.white),
                                         ),
-                                        SizedBox(width: 15,),
-                                        Container(
+                                        const SizedBox(width: 15,),
+                                        SizedBox(
                                             height:25,
                                             width:25,
                                             child: SvgPicture.asset("assets/whatsapp.svg",color: Colors.white,)),
                                       ],
-                                    ),
-                                    width: width / 6.4,
-                                    height: height / 16.42,
-                                    //color: Color(0xffD60A0B),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Color(0xffD60A0B),
                                     ),
                                   ),
                                 ),
@@ -897,12 +898,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
                           ],
                         ),
-                        //color: Color(0xffFFFFFF),
-                        width: 980,
-                        height: 120,
-                        decoration: BoxDecoration(
-                            color: Color(0xffFFFFFF),
-                            borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
                   ],
@@ -918,9 +913,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                     child: Material(
                       elevation: 50,
                       shadowColor: Colors.black38,
-                      color: Color(0xffFFFFFF),
+                      color: const Color(0xffFFFFFF),
                       borderRadius: BorderRadius.circular(12),
                       child: Container(
+                        width: 320,
+                        height: 430,
+                        decoration: BoxDecoration(
+                            color: const Color(0xffFFFFFF),
+                            borderRadius: BorderRadius.circular(12)),
                         child: Column(
                           children: [
                             Row(
@@ -933,7 +933,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                   child: Text(
                                     "Bill No:",
                                     style: GoogleFonts.poppins(
-                                        color: Color(0xff000000),
+                                        color: const Color(0xff000000),
                                         fontSize: width/75.888,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -942,14 +942,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 //bill amount text-1
                                 Padding(
                                   padding: const EdgeInsets.only(left: 100.0, top: 10),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 120,
                                     child: Text(
                                       billcount.toString(),
                                       style: GoogleFonts.poppins(
                                           fontSize: width/75.888,
-                                          color: Color(0xff000000),
-                                          textStyle: TextStyle(
+                                          color: const Color(0xff000000),
+                                          textStyle: const TextStyle(
                                               overflow: TextOverflow.ellipsis
                                           ),
                                           fontWeight: FontWeight.bold),
@@ -960,7 +960,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                             ),
 
                             //mobile text
-                            SizedBox(height: 10,),
+                            const SizedBox(height: 10,),
                             Row(
 
                               children: [
@@ -971,12 +971,12 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                     "Mobile:",
                                     style: GoogleFonts.poppins(
                                         fontSize: width/75.888,
-                                        color: Color(0xff000000),
+                                        color: const Color(0xff000000),
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
 
-                                SizedBox(width: 40,),
+                                const SizedBox(width: 40,),
 
                                 Padding(
                                   padding: const EdgeInsets.only(top:18.0),
@@ -1016,7 +1016,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                           FocusScope.of(context).requestFocus(Customernamefield);
                                         },
                                         controller: mobileno,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             contentPadding: EdgeInsets.only(bottom: 15,left: 5),
                                             border: InputBorder.none,
                                             hintText: "Customner mobile"
@@ -1038,16 +1038,16 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                     "Customer:",
                                     style: GoogleFonts.poppins(
                                         fontSize: width/75.888,
-                                        color: Color(0xff000000),
+                                        color: const Color(0xff000000),
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
 
-                                SizedBox(width: 10,),
+                                const SizedBox(width: 10,),
 
                                 Column(
                                   children: [
-                                    SizedBox(height: 20,),
+                                    const SizedBox(height: 20,),
                                     Container(
                                       width:180,
                                       height:30,
@@ -1063,7 +1063,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                           FocusScope.of(context).requestFocus(Customeraddressfield);
                                         },
                                         controller: Cusname,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             contentPadding: EdgeInsets.only(bottom: 15,left: 5),
                                             border: InputBorder.none,
                                             hintText: "Customner Name"
@@ -1071,11 +1071,11 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                       ),
 
                                     ),
-                                    SizedBox(height:8),
+                                    const SizedBox(height:8),
 
                                     Container(
                                       decoration: BoxDecoration(
-                                          color: Color(0xff263646),
+                                          color: const Color(0xff263646),
                                           borderRadius: BorderRadius.circular(4)
                                       ),
                                       child: InkWell(
@@ -1090,7 +1090,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                             child: Row(
                                               children: [
                                                 Text("Add Customer",style: GoogleFonts.poppins(color:Colors.white),),
-                                                Icon(Icons.add,color: Colors.white,),
+                                                const Icon(Icons.add,color: Colors.white,),
                                               ],
                                             ),
                                           )),
@@ -1103,7 +1103,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                             ),
 
                             //Customer Address container
-                            SizedBox(height: 20,),
+                            const SizedBox(height: 20,),
                             Row(
                               children: [
 
@@ -1113,11 +1113,11 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                     "Customer \nAddress:",
                                     style: GoogleFonts.poppins(
                                         fontSize: width/75.888,
-                                        color: Color(0xff000000),
+                                        color: const Color(0xff000000),
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(width: 20,),
+                                const SizedBox(width: 20,),
 
                                 Container(
                                   width:170,
@@ -1130,7 +1130,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                   TextField(
                                     focusNode: Customeraddressfield,
                                     controller: customeraddress,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       contentPadding: EdgeInsets.only(bottom: 15,left: 5),
                                       border: InputBorder.none,
                                       hintText: "Customer Address",
@@ -1152,13 +1152,15 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                     "Payment\nMode:",
                                     style: GoogleFonts.poppins(
                                         fontSize: width/75.888,
-                                        color: Color(0xff000000),
+                                        color: const Color(0xff000000),
                                         fontWeight: FontWeight.bold),
                                   ),
 
                                   //bill type dropdown-2
-                                  SizedBox(width: 30,),
-                                  Container(
+                                  const SizedBox(width: 30,),
+                                  SizedBox(
+                                    height: 40,
+                                    width: 170,
                                     child:
                                     DropdownButton<String>(
                                       value: dropdownValue1,
@@ -1183,8 +1185,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                             );
                                           }).toList(),
                                     ),
-                                    height: 40,
-                                    width: 170,
 
                                   )
                                 ],
@@ -1195,18 +1195,12 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
                           ],
                         ),
-                        //color: Color(0xffFFFFFF),
-                        width: 320,
-                        height: 430,
-                        decoration: BoxDecoration(
-                            color: Color(0xffFFFFFF),
-                            borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
                   ),
 
                   Padding(
-                    padding:  EdgeInsets.only(top:104.0,left:135),
+                    padding:  const EdgeInsets.only(top:104.0,left:135),
                     child: Container(
                       width:180,
                       height:search==false?0:60,
@@ -1246,7 +1240,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         subtitle: Text(data['Customermobileno'].toString()),
                                       ),
                                     );
-                                };
+                                }
                                 return Container();
                               },);
                         },) :
@@ -1293,7 +1287,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
   int _total =0;
   bool onchangefield=false;
 
-  NumberFormat id=new NumberFormat('0');
+  NumberFormat id=NumberFormat('0');
 
 
   String pramount="";
@@ -1302,7 +1296,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
   previousamount()async{
     var docus=await  FirebaseFirestore.instance.collection("billing").orderBy("timestamp",descending: true).get();
-    print(docus.docs.length);
     setState(() {
       billingcountval=docus.docs[1]["Total"];
     });
@@ -1331,8 +1324,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
           stocksvalue=valued["Loworder"];
           Rate.text= valued["Saleprice"].toString();
         });
-        print(stocksvalue.toString());
-        print(Stocks.text.toString());
       }
 
     }
@@ -1341,7 +1332,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
   //craete bills
   billcounts()async{
     var docus=await  FirebaseFirestore.instance.collection("billing").get();
-    print(docus.docs.length);
     setState(() {
       billcount=docus.docs.length;
     });
@@ -1373,7 +1363,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
     product_gst.clear();
     product_discount.clear();
     Product_id.clear();
-    print(qty.text);
 
   }
 
@@ -1381,7 +1370,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
   Updatebillingw()  {
     FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc().set({
       "productid":random,
-      "productno":"${id}${count}",
+      "productno":"$id$count",
       "billingid":billcount,
       "billingname1":Itemname.text,
       "billingname2":Itemdescription.text,
@@ -1421,7 +1410,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
       random = randomAlphaNumeric(10);
       printvalue=random;
     });
-    print(random);
   }
 
   savebills() async {
@@ -1460,7 +1448,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
   counts()async{
     var docus=await  FirebaseFirestore.instance.collection("billing").get();
-    print(docus.docs.length);
     setState(() {
       count=docus.docs.length+1;
     });
@@ -1534,7 +1521,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
     });
     var billingcount=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
     for(int i=0;i<billingcount.docs.length;i++){
-      print(i);
       setState(() {
         billingtotal=billingtotal+int.parse(billingcount.docs[i]["Total"].toString());
       });
@@ -1558,7 +1544,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
         setState(() {
           itemid=document.docs[i].id;
         });
-        print(itemid);
       }
     }
 
@@ -1573,58 +1558,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
   }
 
 
-  //showpopup
-
-  _savebillpoprup(){
-    print("sdfd");
-
-    return showDialog(context: context, builder:(context) {
-
-      return Padding(
-        padding: const EdgeInsets.only(top: 150.0,bottom: 150,left: 350,right:350),
-        child: Scaffold(
-          body: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height:30),
-                Text("Are You Sure Want to Save Bills",style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w700,
-                    fontSize:18
-                ),),
-
-                SizedBox(height:20),
-
-                Container(
-                  height:180,
-                  width:180,
-                  child: Lottie.network(savefile),
-                ),
-                SizedBox(height:20),
-                InkWell(
-                  onTap: (){
-
-                  },
-                  child: Container(
-                    height:40,
-                    width:180,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Color(0xff263646)
-                    ),
-                    child: Center(
-                      child: Text("Okay",style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w600),),
-                    ),
-                  ),
-                )
-
-              ],
-            ),
-          ),
-        ),
-      );
-    },);
-  }
 
   @override
   void initState() {
@@ -1649,7 +1582,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
         setState(() {
           catitemcode=document.docs[i]["categoryItemcode"];
         });
-        print(catitemcode);
 
       }
     }
@@ -1667,12 +1599,10 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
   Userdata()async {
     var details = await FirebaseFirestore.instance.collection("Customer").get();
-    print(User);
     for (int i = 0; i < details.docs.length; i++) {
       setState(() {
         User.add(details.docs[i]["Customermobileno"]);
       });
-      print(User);
     }
   }
 
@@ -1708,106 +1638,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
   TextEditingController customerphone=TextEditingController();
   TextEditingController customeraddress=TextEditingController();
 
-  _customer(){
-    return showDialog(context: context, builder:(context) {
-      return Padding(
-        padding: const EdgeInsets.only(top: 150.0,bottom: 150,left: 350,right:350),
-        child: Scaffold(
-          backgroundColor: Colors.grey.shade200,
-          body: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height:30),
-                Text("Are you sure want Add Customer",style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w700,
-                    fontSize:18
-                ),),
 
-
-
-                Container(
-                  height:120,
-                  width:120,
-                  child: Lottie.network(additem),
-                ),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Customer Name :",style: GoogleFonts.poppins(),),
-                    SizedBox(width:15),
-                    Container(
-                      height:30,
-                      width:200,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Colors.grey.shade400
-                      ),
-                      child: TextField(
-                        controller: customername,
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(left: 10,bottom: 12),
-                            border: InputBorder.none
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-
-
-                SizedBox(height:20),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Customer Phone :",style: GoogleFonts.poppins(),),
-                    SizedBox(width:15),
-                    Container(
-                      height:30,
-                      width:200,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Colors.grey.shade400
-                      ),
-                      child: TextField(
-                        controller: customerphone,
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(left: 10,bottom: 12),
-                            border: InputBorder.none
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(height:20),
-
-                InkWell(
-                  onTap: (){
-                    customeradd();
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    height:40,
-                    width:180,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Color(0xff263646)
-                    ),
-                    child: Center(
-                      child: Text("Okay",style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w600),),
-                    ),
-                  ),
-                )
-
-              ],
-            ),
-          ),
-        ),
-      );
-    },);
-  }
 
   bool getvalue=false;
 
@@ -1862,13 +1693,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
           product_discount.add(document2.docs[i]["Discount"]);
         });
 
-        print(billing_no);
-        print(product_name);
-        print(product_subname);
-        print(product_total);
-        print(product_qty);
-        print(product_gst);
-        print(product_discount);
 
       }
     }
@@ -1899,7 +1723,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
         child: p.Container(
             child:
             p.Padding(
-              padding: p.EdgeInsets.only(top: 175),
+              padding: const p.EdgeInsets.only(top: 175),
               child: p.Row(
                   children: [
                     p.Row(
@@ -1909,7 +1733,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                           p.Container(
                               width: 60,
                               child:  p.Center(
-                                child: p.Text("Bill NO".toString(),style: p.TextStyle(color: PdfColors.black)),
+                                child: p.Text("Bill NO".toString(),style: const p.TextStyle(color: PdfColors.black)),
                               )
                           ),
 
@@ -1918,7 +1742,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                           p.Container(
                               width: 80,
                               child:   p.Center(
-                                child:  p.Text("Product Name".toString(),style: p.TextStyle(color: PdfColors.black)),
+                                child:  p.Text("Product Name".toString(),style: const p.TextStyle(color: PdfColors.black)),
                               )
                           ),
 
@@ -1927,7 +1751,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                           p.Container(
                               width: 60,
                               child:    p.Center(
-                                child:  p.Text("Items".toString(),style: p.TextStyle(color: PdfColors.black)),
+                                child:  p.Text("Items".toString(),style: const p.TextStyle(color: PdfColors.black)),
                               )
                           ),
 
@@ -1935,28 +1759,28 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                           p.Container(
                               width: 60,
                               child: p.Center(
-                                child:  p.Text("Qty".toString(),style: p.TextStyle(color: PdfColors.black)),
+                                child:  p.Text("Qty".toString(),style: const p.TextStyle(color: PdfColors.black)),
                               )
                           ),
                           p.SizedBox(width:5),
                           p.Container(
                               width: 60,
                               child:  p.Center(
-                                child:  p.Text("Dis %".toString(),style: p.TextStyle(color: PdfColors.black)),
+                                child:  p.Text("Dis %".toString(),style: const p.TextStyle(color: PdfColors.black)),
                               )
                           ),
                           p.SizedBox(width:5),
                           p.Container(
                               width: 60,
                               child:  p.Center(
-                                child: p.Text("Gst".toString(),style: p.TextStyle(color: PdfColors.black)),
+                                child: p.Text("Gst".toString(),style: const p.TextStyle(color: PdfColors.black)),
                               )
                           ),
                           p.SizedBox(width:5),
                           p.Container(
                               width: 60,
                               child:p.Center(
-                                child:   p.Text("Total".toString(),style: p.TextStyle(color: PdfColors.black)),
+                                child:   p.Text("Total".toString(),style: const p.TextStyle(color: PdfColors.black)),
                               )
                           )
 
@@ -1988,7 +1812,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                 ),
                 container,
                 p.Padding(
-                    padding: p.EdgeInsets.only(top:90),
+                    padding: const p.EdgeInsets.only(top:90),
                     child: p.Column(
                         children: [
                           p.Row(
@@ -2005,7 +1829,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                               children: [
                                                 p.Container(
                                                   child: p.Center(
-                                                    child:  p.Text("Customer Name :",style: p.TextStyle(color: PdfColors.black)),
+                                                    child:  p.Text("Customer Name :",style: const p.TextStyle(color: PdfColors.black)),
                                                   ),
                                                   width:110,
                                                   height: 20,
@@ -2014,7 +1838,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                                     width:140,
                                                     height: 20,
                                                     child:p.Center(
-                                                      child:  p.Text(Customer_name.toString(),style: p.TextStyle(color: PdfColors.black)),
+                                                      child:  p.Text(Customer_name.toString(),style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 )
                                               ]
@@ -2026,7 +1850,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                                     width:110,
                                                     height: 20,
                                                     child:  p.Center(
-                                                      child: p.Text("Customer Address:",style: p.TextStyle(color: PdfColors.black)),
+                                                      child: p.Text("Customer Address:",style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 ),
                                                 p.Container(
@@ -2034,7 +1858,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                                     height: 20,
                                                     child: p.Center(
                                                       child:
-                                                      p.Text(Customer_address.toString(),style: p.TextStyle(color: PdfColors.black)),
+                                                      p.Text(Customer_address.toString(),style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 )
                                               ]
@@ -2046,14 +1870,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                                     width:110,
                                                     height: 20,
                                                     child:  p.Center(
-                                                      child:  p.Text("Date :",style: p.TextStyle(color: PdfColors.black)),
+                                                      child:  p.Text("Date :",style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 ),
                                                 p.Container(
                                                     width:140,
                                                     height: 20,
                                                     child: p.Center(
-                                                      child:  p.Text(Customer_date.toString(),style: p.TextStyle(color: PdfColors.black)),
+                                                      child:  p.Text(Customer_date.toString(),style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 )
                                               ]
@@ -2077,14 +1901,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                                     width:110,
                                                     height: 20,
                                                     child: p.Center(
-                                                      child: p.Text("Customer phone :",style: p.TextStyle(color: PdfColors.black)),
+                                                      child: p.Text("Customer phone :",style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 ),
                                                 p.Container(
                                                     width:140,
                                                     height: 20,
                                                     child:  p.Center(
-                                                      child: p.Text(Customer_phone.toString(),style: p.TextStyle(color: PdfColors.black)),
+                                                      child: p.Text(Customer_phone.toString(),style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 )
                                               ]
@@ -2096,7 +1920,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                                     width:110,
                                                     height: 20,
                                                     child:  p.Center(
-                                                      child:  p.Text("Payment Type:",style: p.TextStyle(color: PdfColors.black)),
+                                                      child:  p.Text("Payment Type:",style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 ),
                                                 p.Container(
@@ -2104,7 +1928,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                                     height: 20,
                                                     child: p.Center(
 
-                                                      child: p.Text(bill_type.toString(),style: p.TextStyle(color: PdfColors.black)),
+                                                      child: p.Text(bill_type.toString(),style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 )
                                               ]
@@ -2116,14 +1940,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                                     width:110,
                                                     height: 20,
                                                     child: p.Center(
-                                                      child:  p.Text("Time :",style: p.TextStyle(color: PdfColors.black)),
+                                                      child:  p.Text("Time :",style: const p.TextStyle(color: PdfColors.black)),
                                                     )
                                                 ),
                                                 p.Container(
                                                   width:140,
                                                   height: 20,
                                                   child: p.Center(
-                                                      child: p.Text(Customer_time.toString(),style: p.TextStyle(color: PdfColors.black))
+                                                      child: p.Text(Customer_time.toString(),style: const p.TextStyle(color: PdfColors.black))
                                                   ),
                                                 )
                                               ]
@@ -2147,7 +1971,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         p.Container(
                                             width: 60,
                                             child: p.Center(
-                                              child:  p.Text(billing_no[index].toString(),style: p.TextStyle(color: PdfColors.black)),
+                                              child:  p.Text(billing_no[index].toString(),style: const p.TextStyle(color: PdfColors.black)),
                                             )
                                         ),
 
@@ -2156,7 +1980,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         p.Container(
                                             width: 80,
                                             child:   p.Center(
-                                              child:  p.Text(product_name[index].toString(),style: p.TextStyle(color: PdfColors.black)),
+                                              child:  p.Text(product_name[index].toString(),style: const p.TextStyle(color: PdfColors.black)),
                                             )
                                         ),
 
@@ -2165,7 +1989,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         p.Container(
                                             width: 60,
                                             child:     p.Center(
-                                              child: p.Text(product_subname[index].toString(),style: p.TextStyle(color: PdfColors.black)),
+                                              child: p.Text(product_subname[index].toString(),style: const p.TextStyle(color: PdfColors.black)),
                                             )
                                         ),
 
@@ -2173,28 +1997,28 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                         p.Container(
                                             width: 60,
                                             child: p.Center(
-                                              child:  p.Text(product_qty[index].toString(),style: p.TextStyle(color: PdfColors.black)),
+                                              child:  p.Text(product_qty[index].toString(),style: const p.TextStyle(color: PdfColors.black)),
                                             )
                                         ),
                                         p.SizedBox(width:5),
                                         p.Container(
                                             width: 60,
                                             child:   p.Center(
-                                              child: p.Text(product_discount[index].toString(),style: p.TextStyle(color: PdfColors.black)),
+                                              child: p.Text(product_discount[index].toString(),style: const p.TextStyle(color: PdfColors.black)),
                                             )
                                         ),
                                         p.SizedBox(width:5),
                                         p.Container(
                                             width: 60,
                                             child:p.Center(
-                                              child:   p.Text(product_gst[index].toString(),style: p.TextStyle(color: PdfColors.black)),
+                                              child:   p.Text(product_gst[index].toString(),style: const p.TextStyle(color: PdfColors.black)),
                                             )
                                         ),
                                         p.SizedBox(width:5),
                                         p.Container(
                                             width: 60,
                                             child:  p.Center(
-                                              child: p.Text(product_total[index].toString(),style: p.TextStyle(color: PdfColors.black)),
+                                              child: p.Text(product_total[index].toString(),style: const p.TextStyle(color: PdfColors.black)),
                                             )
                                         )
 
@@ -2204,25 +2028,25 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
 
                           p.Padding(
-                              padding: p.EdgeInsets.only(left:10,right: 10,top:200),
+                              padding: const p.EdgeInsets.only(left:10,right: 10,top:200),
                               child: p.Divider(
                                   color: PdfColors.black,
                                   thickness: 0.8
                               )
                           ),
                           p.Padding(
-                              padding: p.EdgeInsets.only(left:10,right: 10,top:210),
+                              padding: const p.EdgeInsets.only(left:10,right: 10,top:210),
                               child: p.Row(
                                   mainAxisAlignment: p.MainAxisAlignment.end,
                                   children: [
                                     p.Container(
                                       width:50,
-                                      child:  p.Text("Total :", style: p.TextStyle(color: PdfColors.black)),
+                                      child:  p.Text("Total :", style: const p.TextStyle(color: PdfColors.black)),
                                     ),
                                     p.SizedBox(width:10),
                                     p.Container(
                                       width:100,
-                                      child:  p.Text(billingtotal.toString(), style: p.TextStyle(color: PdfColors.black)),
+                                      child:  p.Text(billingtotal.toString(), style: const p.TextStyle(color: PdfColors.black)),
                                     )
                                   ]
                               )
@@ -2250,7 +2074,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
             pdf.save(),
       );
 
-      Future.delayed(Duration(seconds: 5),(){
+      Future.delayed(const Duration(seconds: 5),(){
         setState(() {
           getvalue=false;
         });
@@ -2264,16 +2088,6 @@ class _Billin_PAgeState extends State<Billin_PAge> {
 
   printvalues(){
 
-    print(Customer_name);
-    print(Customer_phone);
-    print(Customer_address);
-    print(Customer_date);
-    print(Customer_time);
-    print(Saleman_name);
-    print(product_name);
-    print(product_subname);
-    print(product_total);
-    print(product_qty);
   }
 
 

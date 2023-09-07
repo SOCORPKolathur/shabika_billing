@@ -45,7 +45,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Padding(
               padding:  EdgeInsets.only(left: width/4.583, right: width/56.916),
               child: FlutterSwitch(
-                inactiveColor: Color(0xffC9C9C9),
+                inactiveColor: const Color(0xffC9C9C9),
                 inactiveToggleColor: Colors.grey,
                 width: width/30.35,
                 height: height/32.85,
@@ -81,7 +81,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Padding(
               padding:  EdgeInsets.only(left: width/45.583, right: width/56.916),
               child: FlutterSwitch(
-                inactiveColor: Color(0xffC9C9C9),
+                inactiveColor: const Color(0xffC9C9C9),
                 inactiveToggleColor: Colors.grey,
                 width: width/30.35,
                 height: height/32.85,
@@ -136,6 +136,13 @@ class _Reports_PageState extends State<Reports_Page> {
                   padding:  EdgeInsets.only(left: width/273.2),
                   child: Row(
                     children: [
+                      Container(
+                          width:width/11.383,
+                          height:height/13.14,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black,width: 1.2),
+                          ),
+                          child: Center(child: Text('Date',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/15.588,
@@ -144,7 +151,7 @@ class _Reports_PageState extends State<Reports_Page> {
                             border: Border.all(color: Colors.black,width: 1.2),
 
                           ),
-                          child: Center(child: Text('Invoice No',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          child: Center(child: Text('Invoice No',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/7.588,
@@ -152,7 +159,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Customer name',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          child: Center(child: Text('Customer name',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/6.0,
@@ -160,7 +167,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Customer phone',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          child: Center(child: Text('Customer phone',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/5.0,
@@ -168,15 +175,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Customer address',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
-
-                      Container(
-                          width:width/11.383,
-                          height:height/13.14,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black,width: 1.2),
-                          ),
-                          child: Center(child: Text('Date',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          child: Center(child: Text('Customer address',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/10.0,
@@ -184,7 +183,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Bill Type',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          child: Center(child: Text('Bill Type',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/15.0,
@@ -192,7 +191,15 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Total',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          child: Center(child: Text('Total',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+
+                      Container(
+                          width:width/9.0,
+                          height:height/13.14,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black,width: 1.2),
+                          ),
+                          child: Center(child: Text('Actions',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                     ],
@@ -213,7 +220,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
                       return ListView.builder(
                         shrinkWrap: true,
-                        physics: ScrollPhysics(),
+                        physics: const ScrollPhysics(),
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
 
@@ -222,6 +229,13 @@ class _Reports_PageState extends State<Reports_Page> {
                           buillin1['save']==true?
                             Row(
                               children: [
+
+                                Container(
+                                    width:width/11.383,
+                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
+                                    height:height/12.14 ,
+                                    child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
                                 Container(
                                     decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
                                     height:height/12.14 ,
@@ -256,15 +270,6 @@ class _Reports_PageState extends State<Reports_Page> {
                                     height:height/12.14 ,
                                     child: Center(child: Text(buillin1['customeraddress'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
-                                //SizedBox(width: width/27.32,),
-
-                                Container(
-                                    width:width/11.383,
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                                //SizedBox(width: width/22.76,),
 
                                 Container(
                                     width:width/10.0,
@@ -280,62 +285,72 @@ class _Reports_PageState extends State<Reports_Page> {
                                     width:width/15.0,
                                     child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
-                                SizedBox(width: width/130.32,),
-
-                                InkWell(
-                                  onTap: (){
-                                    showdialpogbox(
-                                      buillin1.id,
-                                      buillin1['customername'],
-                                      buillin1['customerphone'],
-                                      buillin1['purchasedate'],
-                                      buillin1['time'],
-                                      buillin1['Payment mode'],
-                                      buillin1['customeraddress'],
-                                      buillin1['Discountamount'],
-                                      buillin1['Discountamountpercentage'],);
-                                  },
-                                  child: Material(
-                                    elevation: 10,
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Container(
-                                        width:width/15.66,
-                                        height:height/21.9,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(100),
-                                            color: Colors.green
-                                        ),
-                                        child: Center(child: Text("View",style:
-                                        GoogleFonts.montserrat(fontWeight: FontWeight.w600,
-                                            color: Colors.white),))),
+                                Container(
+                                  width:width/9.0,
+                                  height:height/12.14 ,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2),
                                   ),
-                                ),
-
-                                SizedBox(width:width/136.6,),
-                                //edit button
-                                InkWell(
-                                  onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
-                                  },
-                                  child: Material(
-                                    elevation: 10,
-
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Container(
-                                        width:width/45.53,
-                                        height:height/21.9,
-                                        decoration: BoxDecoration(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: (){
+                                          showdialpogbox(
+                                            buillin1.id.toString(),
+                                            buillin1['customername'].toString(),
+                                            buillin1['customerphone'].toString(),
+                                            buillin1['purchasedate'].toString(),
+                                            buillin1['time'].toString(),
+                                            buillin1['Payment mode'].toString(),
+                                            buillin1['customeraddress'].toString(),
+                                            buillin1['Discountamount'].toString(),
+                                            buillin1['Discountamountpercentage'].toString(),);
+                                        },
+                                        child: Material(
+                                          elevation: 10,
+                                          color: Colors.green,
                                           borderRadius: BorderRadius.circular(100),
-
+                                          child: Container(
+                                              width:width/15.66,
+                                              height:height/21.9,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(100),
+                                                  color: Colors.green
+                                              ),
+                                              child: Center(child: Text("View",style:
+                                              GoogleFonts.montserrat(fontWeight: FontWeight.w600,
+                                                  color: Colors.white),))),
                                         ),
-                                        child: Center(child: Icon(Icons.edit,color:
-                                        Colors.black,size:width/68.3))),
+                                      ),
+
+                                      SizedBox(width:width/136.6,),
+                                      //edit button
+                                      InkWell(
+                                        onTap: (){
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
+                                        },
+                                        child: Material(
+                                          elevation: 10,
+
+                                          borderRadius: BorderRadius.circular(100),
+                                          child: Container(
+                                              width:width/45.53,
+                                              height:height/21.9,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(100),
+
+                                              ),
+                                              child: Center(child: Icon(Icons.edit,color:
+                                              Colors.black,size:width/68.3))),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
 
                               ],
-                            ):SizedBox();
+                            ):const SizedBox();
                         },);
                     },
                   ),
@@ -355,7 +370,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
                       return ListView.builder(
                         shrinkWrap: true,
-                        physics: ScrollPhysics(),
+                        physics: const ScrollPhysics(),
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
 
@@ -365,6 +380,11 @@ class _Reports_PageState extends State<Reports_Page> {
                             Row(
                               children: [
 
+                                Container(
+                                    width:width/11.383,
+                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
+                                    height:height/12.14 ,
+                                    child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
                                 Container(
                                     decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
@@ -402,11 +422,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
                                 //SizedBox(width: width/27.32,),
 
-                                Container(
-                                    width:width/11.383,
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
 
                                 //SizedBox(width: width/22.76,),
 
@@ -424,64 +440,72 @@ class _Reports_PageState extends State<Reports_Page> {
                                     width:width/15.0,
                                     child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
-                                SizedBox(width: width/130.32,),
-
-                                InkWell(
-                                  onTap: (){
-                                    showdialpogbox(
-                                      buillin1.id,
-                                      buillin1['customername'],
-                                      buillin1['customerphone'],
-                                      buillin1['purchasedate'],
-                                      buillin1['time'],
-                                      buillin1['Payment mode'],
-                                      buillin1['customeraddress'],
-                                      buillin1['Discountamount'],
-                                      buillin1['Discountamountpercentage'],);
-
-
-                                  },
-                                  child: Material(
-                                    elevation: 10,
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Container(
-                                        width:width/15.66,
-                                        height:height/21.9,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(100),
-                                            color: Colors.green
-                                        ),
-                                        child: Center(child: Text("View",style:
-                                        GoogleFonts.montserrat(fontWeight: FontWeight.w600,
-                                            color: Colors.white),))),
+                                Container(
+                                  width:width/9.0,
+                                  height:height/12.14 ,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2),
                                   ),
-                                ),
-
-                                SizedBox(width:width/136.6,),
-                                //edit button
-                                InkWell(
-                                  onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
-                                  },
-                                  child: Material(
-                                    elevation: 10,
-
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Container(
-                                        width:width/45.53,
-                                        height:height/21.9,
-                                        decoration: BoxDecoration(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: (){
+                                          showdialpogbox(
+                                            buillin1.id,
+                                            buillin1['customername'],
+                                            buillin1['customerphone'],
+                                            buillin1['purchasedate'],
+                                            buillin1['time'],
+                                            buillin1['Payment mode'],
+                                            buillin1['customeraddress'],
+                                            buillin1['Discountamount'],
+                                            buillin1['Discountamountpercentage'],);
+                                        },
+                                        child: Material(
+                                          elevation: 10,
+                                          color: Colors.green,
                                           borderRadius: BorderRadius.circular(100),
-
+                                          child: Container(
+                                              width:width/15.66,
+                                              height:height/21.9,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(100),
+                                                  color: Colors.green
+                                              ),
+                                              child: Center(child: Text("View",style:
+                                              GoogleFonts.montserrat(fontWeight: FontWeight.w600,
+                                                  color: Colors.white),))),
                                         ),
-                                        child: Center(child: Icon(Icons.edit,color:
-                                        Colors.black,size:width/68.3))),
+                                      ),
+
+                                      SizedBox(width:width/136.6,),
+                                      //edit button
+                                      InkWell(
+                                        onTap: (){
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
+                                        },
+                                        child: Material(
+                                          elevation: 10,
+
+                                          borderRadius: BorderRadius.circular(100),
+                                          child: Container(
+                                              width:width/45.53,
+                                              height:height/21.9,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(100),
+
+                                              ),
+                                              child: Center(child: Icon(Icons.edit,color:
+                                              Colors.black,size:width/68.3))),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
 
                               ],
-                            ):SizedBox();
+                            ):const SizedBox();
                         },);
                     },
                   ),
@@ -500,7 +524,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
                       return ListView.builder(
                         shrinkWrap: true,
-                        physics: ScrollPhysics(),
+                        physics: const ScrollPhysics(),
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
 
@@ -510,6 +534,12 @@ class _Reports_PageState extends State<Reports_Page> {
                           Row(
                             children: [
                              // SizedBox(width: width/50.15,),
+
+                              Container(
+                                  width:width/11.383,
+                                  decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
+                                  height:height/12.14 ,
+                                  child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
                               Container(
                                 decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
@@ -547,11 +577,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
                               //SizedBox(width: width/27.32,),
 
-                              Container(
-                                  width:width/11.383,
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                  height:height/12.14 ,
-                                  child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+
 
                               //SizedBox(width: width/22.76,),
 
@@ -569,62 +595,74 @@ class _Reports_PageState extends State<Reports_Page> {
                                   width:width/15.0,
                                   child: Center(child: Text(buillin1['Totalamount'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
-                              SizedBox(width: width/130.32,),
-
-                              InkWell(
-                                onTap: (){
-                                  showdialpogbox(
-                                    buillin1.id,
-                                    buillin1['customername'],
-                                    buillin1['customerphone'],
-                                    buillin1['purchasedate'],
-                                    buillin1['time'],
-                                    buillin1['Payment mode'],
-                                    buillin1['customeraddress'],
-                                    buillin1['Discountamount'],
-                                    buillin1['Discountamountpercentage'],);
-                                },
-                                child: Material(
-                                  elevation: 10,
-                                    color: Colors.green,
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Container(
-                                      width:width/15.66,
-                                      height:height/21.9,
-                                      decoration: BoxDecoration(
+                              Container(
+                                  width:width/9.0,
+                                height:height/12.14 ,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black,width: 1.2),
+                                  ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      onTap: (){
+                                        showdialpogbox(
+                                          buillin1.id,
+                                          buillin1['customername'],
+                                          buillin1['customerphone'],
+                                          buillin1['purchasedate'],
+                                          buillin1['time'],
+                                          buillin1['Payment mode'],
+                                          buillin1['customeraddress'],
+                                          buillin1['Discountamount'],
+                                          buillin1['Discountamountpercentage'],);
+                                      },
+                                      child: Material(
+                                        elevation: 10,
+                                        color: Colors.green,
                                         borderRadius: BorderRadius.circular(100),
-                                        color: Colors.green
+                                        child: Container(
+                                            width:width/15.66,
+                                            height:height/21.9,
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(100),
+                                                color: Colors.green
+                                            ),
+                                            child: Center(child: Text("View",style:
+                                            GoogleFonts.montserrat(fontWeight: FontWeight.w600,
+                                                color: Colors.white),))),
                                       ),
-                                      child: Center(child: Text("View",style:
-                                      GoogleFonts.montserrat(fontWeight: FontWeight.w600,
-                                          color: Colors.white),))),
-                                ),
-                              ),
+                                    ),
 
-                              SizedBox(width:width/136.6,),
-                              //edit button
-                              InkWell(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
-                                },
-                                child: Material(
-                                  elevation: 10,
+                                    SizedBox(width:width/136.6,),
+                                    //edit button
+                                    InkWell(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
+                                      },
+                                      child: Material(
+                                        elevation: 10,
 
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Container(
-                                      width:width/45.53,
-                                      height:height/21.9,
-                                      decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(100),
+                                        child: Container(
+                                            width:width/45.53,
+                                            height:height/21.9,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(100),
 
+                                            ),
+                                            child: Center(child: Icon(Icons.edit,color:
+                                            Colors.black,size:width/68.3))),
                                       ),
-                                      child: Center(child: Icon(Icons.edit,color:
-                                      Colors.black,size:width/68.3))),
+                                    ),
+                                  ],
                                 ),
-                              ),
+                                  ),
+
+
 
                             ],
-                          ):SizedBox();
+                          ):const SizedBox();
                       },);
                     },
                   ),
@@ -650,7 +688,7 @@ class _Reports_PageState extends State<Reports_Page> {
       builder: (context) {
         return SlideInLeft(
           animate: true,
-          duration: Duration(milliseconds: 800),
+          duration: const Duration(milliseconds: 800),
           manualTrigger: false,
           child: AlertDialog(
               backgroundColor: Colors.transparent,
@@ -679,7 +717,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 height: height/26.28,
                                 width:width/ 54.64,
                                 color: Colors.red,
-                                child: Center(child: Icon(Icons.clear,color: Colors.white,)),
+                                child: const Center(child: Icon(Icons.clear,color: Colors.white,)),
                               ),
                             ),
                           ),
@@ -704,7 +742,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               ),
                               child: Center(child: Text("Item Code",
                                 textAlign:TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -715,7 +753,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text('Description',style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              child: Center(child: Text('Description',style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -726,7 +764,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Hsncode",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              child: Center(child: Text("Hsncode",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -737,7 +775,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Payment",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              child: Center(child: Text("Payment",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -750,7 +788,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Qty",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              child: Center(child: Text("Qty",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -760,7 +798,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Sales Price",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              child: Center(child: Text("Sales Price",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -770,7 +808,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text("Without Tax",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              child: Center(child: Text("Without Tax",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -780,7 +818,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Tax",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              child: Center(child: Text("Tax",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -792,7 +830,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               ),
                               child: Center(child: Text("Dis %",
                                 textAlign:TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -805,7 +843,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               child: Center(child: Text("Date\nTime",
                                 textAlign:TextAlign.center,
 
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -833,7 +871,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               }
                               return  ListView.builder(
                                 shrinkWrap: true,
-                                physics: ScrollPhysics(),
+                                physics: const ScrollPhysics(),
                                 itemCount: snapshot.data!.docs.length,
                                 itemBuilder: (context, index) {
                                   var customer=snapshot.data!.docs[index];
@@ -847,7 +885,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           width: width/15.2,
                                           height:height/13.13,
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text("${customer["itemcode"]}",
+                                          child: Center(child: Text(customer["itemcode"].toString(),
                                             textAlign:TextAlign.center,
                                             style: GoogleFonts.poppins(),)),
                                         ),
@@ -858,7 +896,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           height:height/13.13,
                                           padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(customer["Description"],style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer["Description"].toString(),style: GoogleFonts.poppins(),)),
                                         ),
 
 
@@ -867,7 +905,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           width: width/10.17,
 
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(customer['Hsncode'],style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer['Hsncode'].toString(),style: GoogleFonts.poppins(),)),
                                         ),
 
 
@@ -875,7 +913,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           height:height/13.13,
                                           width: width/10.691,
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(payment,style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(payment.toString(),style: GoogleFonts.poppins(),)),
                                         ),
 
 
@@ -883,7 +921,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           height:height/13.13,
                                           width: width/20.075,
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(customer['Qty'],style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer['Qty'].toString(),style: GoogleFonts.poppins(),)),
                                         ),
 
                                         Container(
@@ -914,7 +952,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
                                           width: width/20.66,
 
-                                          child: Center(child: Text("${disamount}\n${disperamount}",
+                                          child: Center(child: Text("$disamount\n$disperamount".toString(),
                                             textAlign:TextAlign.center,
                                             style: GoogleFonts.poppins(),)),
                                         ),
@@ -924,7 +962,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
                                           width: width/13.66,
 
-                                          child: Center(child: Text("${customer['date']}\n${customer['time']}",
+                                          child: Center(child: Text("${customer['date']}\n${customer['time']}".toString(),
                                             textAlign:TextAlign.center,
 
                                             style: GoogleFonts.poppins(),)),

@@ -6,12 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import '../LandingPage/LandingPage.dart';
-import '../const Pages.dart';
 import 'package:flutter/services.dart';
 import 'package:shabika_billing/stmodel.dart' as StatusModel;
 
-import '../edit_suppier_Page.dart';
 
 
 
@@ -64,22 +61,22 @@ class _Edit_suppiler_PagheState extends State<Edit_suppiler_Paghe> {
   bool suplierclick=false;
   String dropdownValue = list.first;
   String dropdownValue1 = list1.first;
-  TextEditingController Suppliername=new TextEditingController();
-  TextEditingController Supplieremail=new TextEditingController();
-  TextEditingController Suppliercode=new TextEditingController();
-  TextEditingController SupplierAddress=new TextEditingController();
-  TextEditingController State=new TextEditingController();
-  TextEditingController City=new TextEditingController();
-  TextEditingController Pincode=new TextEditingController();
-  TextEditingController Mobileno=new TextEditingController();
-  TextEditingController Mobileno2=new TextEditingController();
-  TextEditingController Panno=new TextEditingController();
-  TextEditingController Openingbalance=new TextEditingController();
-  TextEditingController Remarks=new TextEditingController();
-  TextEditingController States=new TextEditingController();
-  TextEditingController city=new TextEditingController();
+  TextEditingController Suppliername=TextEditingController();
+  TextEditingController Supplieremail=TextEditingController();
+  TextEditingController Suppliercode=TextEditingController();
+  TextEditingController SupplierAddress=TextEditingController();
+  TextEditingController State=TextEditingController();
+  TextEditingController City=TextEditingController();
+  TextEditingController Pincode=TextEditingController();
+  TextEditingController Mobileno=TextEditingController();
+  TextEditingController Mobileno2=TextEditingController();
+  TextEditingController Panno=TextEditingController();
+  TextEditingController Openingbalance=TextEditingController();
+  TextEditingController Remarks=TextEditingController();
+  TextEditingController States=TextEditingController();
+  TextEditingController city=TextEditingController();
 
-  NumberFormat F=new NumberFormat('00');
+  NumberFormat F=NumberFormat('00');
   int itemcodes=0;
 
   itemcodegenrate() async {
@@ -88,7 +85,6 @@ class _Edit_suppiler_PagheState extends State<Edit_suppiler_Paghe> {
       itemcodes=document.docs.length+1;
       Suppliercode.text="${"SB"}${F.format(itemcodes)}";
     });
-    print(Suppliercode.text);
 
   }
   String dropdownValue3 = "";
@@ -125,7 +121,7 @@ getsuppilerdata()async{
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xff00A99D),
+      backgroundColor: const Color(0xff00A99D),
       body:
       Column(
         children: [
@@ -138,8 +134,6 @@ getsuppilerdata()async{
               InkWell(
                 onTap: () {
                 Navigator.pop(context);
-                  print(height);
-                  print(width);
                 },
                 child: Tooltip(
                   message: "Back",
@@ -173,7 +167,7 @@ getsuppilerdata()async{
                 child: Text(
                   "Add New Supplier",
                   style: GoogleFonts.cairo(
-                      fontWeight: FontWeight.bold, fontSize:width/59.39,color: Color(0xffFFFFFF)),
+                      fontWeight: FontWeight.bold, fontSize:width/59.39,color: const Color(0xffFFFFFF)),
                 ),
               ),
             ],
@@ -185,15 +179,15 @@ getsuppilerdata()async{
             children: [
               Padding(
                 padding:  EdgeInsets.only(left: width/21.01,top: height/82.125),
-                child: Text("Supplier Name *",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("Supplier Name *",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
               Padding(
                 padding:  EdgeInsets.only(left: width/9.486,top: height/82.125),
-                child: Text("Supplier Code*",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("Supplier Code*",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
               Padding(
                 padding:  EdgeInsets.only(left:width/9.757,top: height/82.125),
-                child: Text("Supplier Address *",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("Supplier Address *",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
             ],
           ),
@@ -206,7 +200,7 @@ getsuppilerdata()async{
                   width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),
                   child:
                   TextField(
                     controller: Suppliername,
@@ -227,7 +221,7 @@ getsuppilerdata()async{
                 Container(width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
                   controller: Suppliercode,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
@@ -244,7 +238,7 @@ getsuppilerdata()async{
                 child: Container(width: width/2.55,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
                   controller: SupplierAddress,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
@@ -266,27 +260,27 @@ getsuppilerdata()async{
 
               Padding(
                 padding:  EdgeInsets.only(left: width/23.55,top:height/32.85),
-                child: Text("State",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("State",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
               Padding(
                 padding:  EdgeInsets.only(left: width/6.266,top:height/32.85),
-                child: Text("City",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("City",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
               Padding(
                 padding:  EdgeInsets.only(left: width/5.991,top:height/32.85),
-                child: Text("Pincode",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("Pincode",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
               Padding(
                 padding:  EdgeInsets.only(left: width/8.130,top:height/32.85),
-                child: Text("Mobile Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("Mobile Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
               Padding(
                 padding:  EdgeInsets.only(left:width/12.418,top:height/32.85),
-                child: Text("Mobile Number-2",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("Mobile Number-2",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
             ],
@@ -300,7 +294,7 @@ getsuppilerdata()async{
                 child: Container(width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child:
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child:
 
 
                   TextField(
@@ -321,7 +315,7 @@ getsuppilerdata()async{
                 child: Container(width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),
                     child:TextField(
                       controller: city,
                       keyboardType: TextInputType.multiline,
@@ -400,7 +394,7 @@ getsuppilerdata()async{
                 child: Container(width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
                   controller: Pincode,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
@@ -419,7 +413,7 @@ getsuppilerdata()async{
                 child: Container(width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
                   controller: Mobileno,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
@@ -437,7 +431,7 @@ getsuppilerdata()async{
                 child: Container(width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
                   controller: Mobileno2,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
@@ -458,11 +452,11 @@ getsuppilerdata()async{
               Padding(
                 padding:  EdgeInsets.only(left: width/24.39,top:height/32.85),
 
-                child: Text("EMail Id",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("EMail Id",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
               Padding(
                 padding:  EdgeInsets.only(left: width/6.89,top:height/32.85),
-                child: Text("GST Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+                child: Text("GST Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
             ],
@@ -477,7 +471,7 @@ getsuppilerdata()async{
                   width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),
                   child:
                   TextField(
                     controller: Supplieremail,
@@ -497,7 +491,7 @@ getsuppilerdata()async{
                 child: Container(width: width/6.83,
                   height: height/16.42,
                   //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
+                  decoration: BoxDecoration(color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(6)),child: TextField(
                   controller: Panno,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
@@ -515,7 +509,7 @@ getsuppilerdata()async{
 
           Padding(
             padding:  EdgeInsets.only(top:height/32.85,right: width/1.1383),
-            child: Text("Remarks",style: GoogleFonts.poppins(fontSize:width/97.57,color: Color(0xff000000)),),
+            child: Text("Remarks",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
           ),
 
           Padding(
@@ -523,7 +517,7 @@ getsuppilerdata()async{
             child: Container(height: height/7.3,
               width: width/1.70,
               //color: Color(0xffDDDEEE),
-              decoration: BoxDecoration( color: Color(0xffFFFFFF),borderRadius: BorderRadius.circular(12)),child: TextField(
+              decoration: BoxDecoration( color: const Color(0xffFFFFFF),borderRadius: BorderRadius.circular(12)),child: TextField(
               controller: Remarks,
               keyboardType: TextInputType.multiline,
               maxLines: null,
@@ -548,7 +542,7 @@ getsuppilerdata()async{
                   child: Container(width:width/8.6,
                     height: height/16.42,
                     //color: Color(0xffD60A0B),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Color(0xffD60A0B),),child: Center(child: Text("Save Supplier",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/91.06),)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: const Color(0xffD60A0B),),child: Center(child: Text("Save Supplier",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/91.06),)),
                   ),
                 ),
               ),
@@ -562,7 +556,7 @@ getsuppilerdata()async{
                     width: width/13.6,
                     height:  height/16.42,
                     //color: Color(0xffD60A0B),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Color(0xff00A0E3),),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: const Color(0xff00A0E3),),
                   ),
                 ),
               ),
@@ -623,13 +617,13 @@ getsuppilerdata()async{
         padding:  EdgeInsets.only(top:height/4.760,bottom: height/4.760),
         child: SlideInLeft(
           animate: true,
-          duration: Duration(
+          duration: const Duration(
               milliseconds: 800),
           manualTrigger: false,
           child: AlertDialog(
-              backgroundColor: Color(0xff264656),
+              backgroundColor: const Color(0xff264656),
               content:
-              Container(
+              SizedBox(
                 width: width/3.902,
                 child: Column(
                   children: [
@@ -639,7 +633,7 @@ getsuppilerdata()async{
                         fontSize: width/68.3,
                         color: Colors.white),),
                     SizedBox(height: height/32.85,),
-                    Container(
+                    SizedBox(
                       height:height/ 4.38,
                       width:width/ 9.106,
                       child: Lottie.network("https://assets10.lottiefiles.com/temporary_files/ofgUtS.json"),
@@ -687,7 +681,7 @@ getsuppilerdata()async{
                           },
                           child: Material(
                             elevation: 15,
-                            color: Color(0xff263646),
+                            color: const Color(0xff263646),
                             borderRadius: BorderRadius.circular(5),
                             child: Container(
                               height: height / 16.425,
@@ -750,14 +744,12 @@ getsuppilerdata()async{
         setState(() {
           var citiesname = ci.map((item) => item.name).toList();
           for (var citynames in citiesname) {
-            print(citynames.toString());
 
             _cities.add(citynames.toString());
           }
         });
       });
     });
-    print(_cities);
     return _cities;
   }
 

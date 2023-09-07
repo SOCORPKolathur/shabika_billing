@@ -46,14 +46,12 @@ class _demo2State extends State<demo2> {
         setState(() {
           var citiesname = ci.map((item) => item.name).toList();
           for (var citynames in citiesname) {
-            print(citynames.toString());
 
             _cities.add(citynames.toString());
           }
         });
       });
     });
-    print(_cities);
     return _cities;
 
   }
@@ -78,7 +76,6 @@ class _demo2State extends State<demo2> {
                   setState(() {
                     countryValue = value;
                   });
-                  print(value);
                 },
                 onStateChanged:(value) {
                   setState(() {

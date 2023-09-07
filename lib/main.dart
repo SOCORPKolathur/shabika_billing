@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'LandingPage/LandingPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'Login-Page/LogIn_Page.dart';
+
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -23,9 +25,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return    MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:drawer(),
+      home:drawer("Admin"),
     );
   }
 }

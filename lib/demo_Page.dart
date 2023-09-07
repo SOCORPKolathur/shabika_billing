@@ -1,60 +1,43 @@
 
-import 'package:dropdown_search/dropdown_search.dart';
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_places_flutter/google_places_flutter.dart';
-import 'package:google_places_flutter/model/prediction.dart';
+import 'package:pattern_lock/pattern_lock.dart';
 
-class Tesing extends StatefulWidget {
-  const Tesing({Key? key}) : super(key: key);
-
+class HomeWidget extends StatefulWidget {
   @override
-  State<Tesing> createState() => _TesingState();
+  _HomeWidgetState createState() => _HomeWidgetState();
 }
 
-class _TesingState extends State<Tesing> {
-  TextEditingController controller=TextEditingController();
+class _HomeWidgetState extends State<HomeWidget> {
+  List<int>? pattern;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding:  const EdgeInsets.symmetric(
-            horizontal: 8,
-            vertical: 8
-          ),
-          child: Card(
-             shadowColor: Colors.indigo,
-            child:
-            Column(
-              children: [
-
-                GooglePlaceAutoCompleteTextField(
-                    textEditingController: controller,
-                    googleAPIKey: "AIzaSyB_eT3oT-cOgqnn4zY39efA9Spb9j7ZHyM",
-                    inputDecoration: const InputDecoration(
-                    ),
-                    debounceTime: 800 ,// default 600 ms,
-                    countries: ["in","fr"],// optional by default null is set
-                    isLatLngRequired:true,// if you required coordinates from place detail
-                    getPlaceDetailWithLatLng: (Prediction prediction) {
-                      // this method will return latlng with place detail
-                      print("placeDetails${prediction.lng}");
-
-                    }, // this callback is called when isLatLngRequired is true
-                    itmClick: (Prediction prediction) {
-                      controller.text=prediction.description!;
-                      controller.selection = TextSelection.fromPosition(TextPosition(offset: prediction.description!.length));
-                    }
-                ),
-
-              ],
-            ),
-          ),
+    return
+      Scaffold(body: Center(
+        child:
+        PatternLock(
+          // color of selected points.
+          selectedColor: Colors.red,
+          // radius of points.
+          pointRadius: 30,
+          // whether show user's input and highlight selected points.
+          showInput: true,
+          // count of points horizontally and vertically.
+          dimension: 3,
+          // padding of points area relative to distance between points.
+          relativePadding: 0.7,
+          // needed distance from input to point to select point.
+          selectThreshold: 25,
+          // whether fill points.
+          fillPoints: true,
+          // callback that called when user's input complete. Called if user selected one or more points.
+          onInputComplete: (List<int> input) {
+            print("pattern is $input");
+          },
         ),
-      ),
-    );
+      ),);
   }
-
-
-
 }

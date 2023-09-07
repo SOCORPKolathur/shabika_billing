@@ -4,7 +4,9 @@ import 'package:flutter_geocoder_alternative/flutter_geocoder_alternative.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:http/http.dart' as http;
+
+import '../Notidication-Page/Notidication_Page.dart';
+
 
 
  class Home extends StatefulWidget {
@@ -25,9 +27,10 @@ class _HomeState extends State<Home> {
 
 @override
   void initState() {
-  Future.delayed(Duration(seconds: 6),(){
+  Future.delayed(const Duration(seconds: 6),(){
   _showAddress();
   });
+  getdatestream();
   billingtotalamount();
   // TODO: implement initState
     super.initState();
@@ -42,16 +45,14 @@ class _HomeState extends State<Home> {
   String _address='';
 
   _showAddress() async {
-    print("_addressddddddddddddddddd");
     _address = await getAddress(-6.1805312, 106.8282181);
-    print(_address);
   }
 
 
 
 
-  TextEditingController pos1=new TextEditingController();
-  TextEditingController pos2=new TextEditingController();
+  TextEditingController pos1=TextEditingController();
+  TextEditingController pos2=TextEditingController();
   final DateFormat formatter = DateFormat('dd / M / yyyy');
   int year1 =0;
   int day1= 0;
@@ -60,6 +61,15 @@ class _HomeState extends State<Home> {
   int day2=0;
   int month2=0;
   List<String> mydate =[];
+
+int totalsales=0;
+int totalpurchase=0;
+int totalcustomer=0;
+double totalprofit=0;
+int Service_entry_count=0;
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,131 +80,6 @@ class _HomeState extends State<Home> {
       Column(
 
         children: [
-          //toggle switchs......
-          Padding(
-            padding:  EdgeInsets.only(top:height/82.125,left: width/9.106),
-            child: Row(
-              children: [
-
-                //toggle switch-1
-                Padding(
-                  padding:  EdgeInsets.only(left: width/4.583, right: width/56.916),
-                  child: FlutterSwitch(
-                    inactiveColor: Color(0xffC9C9C9),
-                    inactiveToggleColor: Colors.grey,
-                    width: width/30.35,
-                    height: height/32.85,
-                    valueFontSize: 5.0,
-                    toggleSize: 20.0,
-                    value: status,
-                    borderRadius: 10.0,
-
-                    padding: 2.0,
-                    //showOnOff: true,
-                    onToggle: (val) {
-                      setState(() {
-                        if(val==true) {
-                          setState(() {
-                            status = val;
-                            statusA = false;
-                            AllReports = false;
-                          });
-                        }
-                        else{
-                          setState(() {
-                            status = val;
-                          });
-                        }
-                      });
-                    },
-                  ),
-                ),
-                Text(
-                  "Shabika",
-                  style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
-                ),
-
-                //toggle switch-2
-                Padding(
-                  padding:  EdgeInsets.only(left:width/56.916),
-                  child: FlutterSwitch(
-                    inactiveColor: Color(0xffC9C9C9),
-                    inactiveToggleColor: Colors.grey,
-                    width:  width/30.35,
-                    height: height/32.85,
-                    valueFontSize: 5.0,
-                    toggleSize: 20.0,
-                    value: statusA,
-                    borderRadius: 10.0,
-                    padding: 2.0,
-                    //showOnOff: true,
-                    onToggle: (val) {
-                      if(val==true) {
-                        setState(() {
-                          statusA = val;
-                          status = false;
-                          AllReports = false;
-                        });
-                      }
-                      else{
-                        setState(() {
-                          statusA = val;
-                        });
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(left: width/56.916, right: width/68.3),
-                  child: Text(
-                    "Shabika  A",
-                    style:
-                    GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
-                  ),
-                ),
-
-                //toggle switch-3
-                Padding(
-                  padding:  EdgeInsets.only(left: width/56.916),
-                  child: FlutterSwitch(
-                    inactiveColor: Color(0xffC9C9C9),
-                    inactiveToggleColor: Colors.grey,
-                    width:  width/30.35,
-                    height:  height/32.85,
-                    valueFontSize: 5.0,
-                    toggleSize: 20.0,
-                    value: AllReports,
-                    borderRadius: 10.0,
-                    padding: 2.0,
-                    //showOnOff: true,
-                    onToggle: (val) {
-                      if(val==true) {
-                        setState(() {
-                          AllReports = val;
-                          statusA = false;
-                          status = false;
-                        });
-                      }
-                      else{
-                        setState(() {
-                          AllReports = val;
-                        });
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(left: width/56.916),
-                  child: Text(
-                    "All Reports",
-                    style:
-                    GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
 
           //fromdate and todate text
           Row(
@@ -219,6 +104,8 @@ class _HomeState extends State<Home> {
                       fontSize:width/68.3, fontWeight: FontWeight.bold),
                 ),
               ),
+
+
             ],
           ),
 
@@ -230,12 +117,18 @@ class _HomeState extends State<Home> {
               Padding(
                 padding:  EdgeInsets.only(left: width/25.77,),
                 child: Container(
+                  height: height / 16.4,
+                  width: width / 9.5,
+                  decoration: BoxDecoration(
+                      color: const Color(0xffE7E7E7),
+                      borderRadius: BorderRadius.circular(7),
+                      border: Border.all(color: const Color(0xff01A99E))),
                   child: TextField(
                     controller: pos1,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(bottom: width/136.6, left: width/91.06),
                       hintText: "mm/dd/yyyy",
-                      hintStyle: TextStyle(color: Color(0xff00A99D)),
+                      hintStyle: const TextStyle(color: Color(0xff00A99D)),
                       border: InputBorder.none,
                     ),
                     onTap: () async {
@@ -247,9 +140,9 @@ class _HomeState extends State<Home> {
                       );
 
                       if(pickedDate != null ){
-                        print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+                        //pickedDate output format => 2021-03-10 00:00:00.000
                         String formattedDate = DateFormat('dd / M / yyyy').format(pickedDate);
-                        print(formattedDate); //formatted date output using intl package =>  2021-03-16
+                        //formatted date output using intl package =>  2021-03-16
                         //you can implement different kind of Date Format here according to your requirement
 
                         setState(() {
@@ -260,17 +153,9 @@ class _HomeState extends State<Home> {
                           //set output date to TextField value.
                         });
                       }else{
-                        print("Date is not selected");
                       }
                     },
                   ),
-                  //color: Colors.teal[300],
-                  height: height / 16.4,
-                  width: width / 9.5,
-                  decoration: BoxDecoration(
-                      color: Color(0xffE7E7E7),
-                      borderRadius: BorderRadius.circular(7),
-                      border: Border.all(color: Color(0xff01A99E))),
                 ),
               ),
 
@@ -278,12 +163,18 @@ class _HomeState extends State<Home> {
 
               //textfield-2 todate
               Container(
+                height: height / 16.4,
+                width: width / 9.5,
+                decoration: BoxDecoration(
+                    color: const Color(0xffE7E7E7),
+                    borderRadius: BorderRadius.circular(7),
+                    border: Border.all(color: const Color(0xff01A99E))),
                 child: TextField(
                   controller: pos2,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(bottom: width/136.6, left: width/91.06),
                     hintText: "mm/dd/yyyy",
-                    hintStyle: TextStyle(color: Color(0xff00A99D)),
+                    hintStyle: const TextStyle(color: Color(0xff00A99D)),
                     border: InputBorder.none,
                   ),
                   onTap: () async {
@@ -294,9 +185,9 @@ class _HomeState extends State<Home> {
                     );
 
                     if(pickedDate != null ){
-                      print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+                      //pickedDate output format => 2021-03-10 00:00:00.000
                       String formattedDate = DateFormat('dd / M / yyyy').format(pickedDate);
-                      print(formattedDate); //formatted date output using intl package =>  2021-03-16
+                      //formatted date output using intl package =>  2021-03-16
                       //you can implement different kind of Date Format here according to your requirement
 
                       setState(() {
@@ -307,16 +198,10 @@ class _HomeState extends State<Home> {
 
                         //set output date to TextField value.
                       });
-                      print(year2);
-                      print(day2);
-                      print(month2);
                       DateTime startDate = DateTime.utc(year1, month1, day1);
                       DateTime endDate = DateTime.utc(year2, month2, day2);
-                      print(startDate);
-                      print(endDate);
                       getDaysInBetween() {
                         final int difference = endDate.difference(startDate).inDays;
-                        print(difference);
                         return difference;
                       }
                       final items = List<DateTime>.generate(getDaysInBetween(), (i) {
@@ -332,35 +217,132 @@ class _HomeState extends State<Home> {
                         });
 
                       }
-                      print(mydate);
                       billingtotalamount();
                     }else{
-                      print("Date is not selected");
                     }
                   },
                 ),
-                //color: Colors.teal[300],
-                height: height / 16.4,
-                width: width / 9.5,
-                decoration: BoxDecoration(
-                    color: Color(0xffE7E7E7),
-                    borderRadius: BorderRadius.circular(7),
-                    border: Border.all(color: Color(0xff01A99E))),
               ),
               SizedBox(width: width/91.066,),
+              //toggle switch-1
+              Padding(
+                padding:  EdgeInsets.only(left: width/20.583, right: width/56.916),
+                child: FlutterSwitch(
+                  inactiveColor: const Color(0xffC9C9C9),
+                  inactiveToggleColor: Colors.grey,
+                  width: width/30.35,
+                  height: height/32.85,
+                  valueFontSize: 5.0,
+                  toggleSize: 20.0,
+                  value: status,
+                  borderRadius: 10.0,
+                  padding: 2.0,
+                  //showOnOff: true,
+                  onToggle: (val) {
+                    setState(() {
+                      if(val==true) {
+                        setState(() {
+                          status = val;
+                          statusA = false;
+                          AllReports = false;
+                        });
+                      }
+
+                    });
+                  },
+                ),
+              ),
+              Text(
+                "Shabika G",
+                style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              ),
+
+              //toggle switch-2
+              Padding(
+                padding:  EdgeInsets.only(left:width/56.916),
+                child: FlutterSwitch(
+                  inactiveColor: const Color(0xffC9C9C9),
+                  inactiveToggleColor: Colors.grey,
+                  width:  width/30.35,
+                  height: height/32.85,
+                  valueFontSize: 5.0,
+                  toggleSize: 20.0,
+                  value: statusA,
+                  borderRadius: 10.0,
+                  padding: 2.0,
+                  //showOnOff: true,
+                  onToggle: (val) {
+                    if(val==true) {
+                      setState(() {
+                        statusA = val;
+                        status = false;
+                        AllReports = false;
+                      });
+                    }
 
 
+                  },
+                ),
+              ),
+              Padding(
+                padding:  EdgeInsets.only(left: width/56.916, right: width/68.3),
+                child: Text(
+                  "Shabika N",
+                  style:
+                  GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                ),
+              ),
+
+              //toggle switch-3
+              Padding(
+                padding:  EdgeInsets.only(left: width/56.916),
+                child: FlutterSwitch(
+                  inactiveColor: const Color(0xffC9C9C9),
+                  inactiveToggleColor: Colors.grey,
+                  width:  width/30.35,
+                  height:  height/32.85,
+                  valueFontSize: 5.0,
+                  toggleSize: 20.0,
+                  value: AllReports,
+                  borderRadius: 10.0,
+                  padding: 2.0,
+                  //showOnOff: true,
+                  onToggle: (val) {
+                    if(val==true) {
+                      setState(() {
+                        AllReports = val;
+                        statusA = false;
+                        status = false;
+                      });
+                    }
+
+                  },
+                ),
+              ),
+              Padding(
+                padding:  EdgeInsets.only(left: width/56.916),
+                child: Text(
+                  "All Reports",
+                  style:
+                  GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                ),
+              ),
 
               //alaram image
-              Padding(
-                padding:  EdgeInsets.only(left: width/1.607),
-                child: Container(
-                  child: Image.asset(
-                    "assets/alarm.png",
-                    fit: BoxFit.cover,
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Notidication_Page(),));
+                },
+                child: Padding(
+                  padding:  EdgeInsets.only(left: width/5.2),
+                  child: SizedBox(
+                    width: width / 45,
+                    height: height / 21.9,
+                    child: Image.asset(
+                      "assets/alarm.png",
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  width: width / 45,
-                  height: height / 21.9,
                 ),
               )
 
@@ -369,8 +351,13 @@ class _HomeState extends State<Home> {
 
           //First container(total sales and total purchase..)
           Padding(
-            padding:  EdgeInsets.only(right: width/34.15, top: height/32.85),
+            padding:  EdgeInsets.only(right: width/34.15, top: height/66.85),
             child: Container(
+              width:width/1.1,
+              height: height / 6.57,
+              decoration: BoxDecoration(
+                  color: const Color(0xffFFFFFF),
+                  borderRadius: BorderRadius.circular(12)),
               child: Column(
                 children: [
                   Row(
@@ -378,13 +365,13 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding:  EdgeInsets.only(top:height/131.4, left: width/50.592),
                         child: Container(
-                          child: Image.asset("assets/image.png"),
                           width: width / 17.07,
                           height: height / 8.2,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffD1F3E0),
+                              color: const Color(0xffD1F3E0),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/image.png"),
                         ),
                       ),
                       Padding(
@@ -399,13 +386,13 @@ class _HomeState extends State<Home> {
                             child: Text(
                               "Total sales",
                               style: GoogleFonts.poppins(
-                                  color: Color(0xffA3A3A3), fontSize:width/105.076),
+                                  color: const Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
                           Padding(
                             padding:  EdgeInsets.only(right:width/75.88),
                             child: Text(
-                              salesamount.toString(),
+                           totalsales.toString(),
                               style: GoogleFonts.poppins(
                                   fontSize:width/85.375, fontWeight: FontWeight.bold),
                             ),
@@ -420,13 +407,13 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding:  EdgeInsets.only(top:height/131.4, right:width/75.888),
                         child: Container(
-                          child: Image.asset("assets/cart.png"),
                           width: width / 17.05,
                           height: height / 8.2,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffE1F1FF),
+                              color: const Color(0xffE1F1FF),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/cart.png"),
                         ),
                       ),
                       Padding(
@@ -443,13 +430,13 @@ class _HomeState extends State<Home> {
                             child: Text(
                               "Total Purchase",
                               style: GoogleFonts.poppins(
-                                  color: Color(0xffA3A3A3), fontSize:width/105.076),
+                                  color: const Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
                           Padding(
                             padding:  EdgeInsets.only(right:width/20.088),
                             child: Text(
-                              purchasetotal.toString(),
+                          totalpurchase.toString(),
                               style: GoogleFonts.poppins(
                                   fontSize:width/85.375, fontWeight: FontWeight.bold),
                             ),
@@ -464,13 +451,13 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding:  EdgeInsets.only(top:height/131.4, left:width/91.06),
                         child: Container(
-                          child: Image.asset("assets/people.png"),
                           width: width / 17.0,
                           height: height / 8,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffFFF2D8),
+                              color: const Color(0xffFFF2D8),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/people.png"),
                         ),
                       ),
                       Padding(
@@ -493,14 +480,14 @@ class _HomeState extends State<Home> {
                                   child: Text(
                                     "Total Profit",
                                     style: GoogleFonts.poppins(
-                                        color: Color(0xffA3A3A3), fontSize:width/105.076),
+                                        color: const Color(0xffA3A3A3), fontSize:width/105.076),
                                   ),
                                 ),
                                 Padding(
                                   padding:  EdgeInsets.only(
                                       bottom: height/82.125, right:width/75.888),
                                   child: Text(
-                                    profitss.abs().toString(),
+                                    profitss.toString(),
                                     style: GoogleFonts.poppins(
                                         fontSize:width/85.375,
                                         fontWeight: FontWeight.bold),
@@ -513,13 +500,13 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding:  EdgeInsets.only(top: height/109.5, left: width/37.94),
                             child: Container(
-                              child: Image.asset("assets/symbol.png"),
                               width: width / 17,
                               height: height / 8.2,
                               //color: Color(0xffD1F3E0),
                               decoration: BoxDecoration(
-                                  color: Color(0xffFFEAEA),
+                                  color: const Color(0xffFFEAEA),
                                   borderRadius: BorderRadius.circular(52)),
+                              child: Image.asset("assets/symbol.png"),
                             ),
                           ),
 
@@ -539,12 +526,12 @@ class _HomeState extends State<Home> {
                                 Text(
                                   "Total Customer",
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xffA3A3A3), fontSize:width/105.076),
+                                      color: const Color(0xffA3A3A3), fontSize:width/105.076),
                                 ),
                                 Padding(
                                   padding:  EdgeInsets.only(right: width/48.785),
                                   child: Text(
-                                    "\$${customtotal.toString()}",
+                                    totalcustomer.toString(),
                                     style: GoogleFonts.poppins(
                                         fontSize:width/85.375,
                                         fontWeight: FontWeight.bold),
@@ -559,19 +546,19 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-              width:width/1.1,
-              height: height / 6.57,
-              decoration: BoxDecoration(
-                  color: Color(0xffFFFFFF),
-                  borderRadius: BorderRadius.circular(12)),
             ),
           ),
 
           //second container(student and teacher and total expensive..)
           Padding(
             padding:
-            EdgeInsets.only(right:width/34.15, top: height/65.7, bottom: height/65.7),
+            EdgeInsets.only(right:width/34.15, top: height/66.7, bottom: height/65.7),
             child: Container(
+              width: width/1.1,
+              height: height / 6.57,
+              decoration: BoxDecoration(
+                  color: const Color(0xffFFFFFF),
+                  borderRadius: BorderRadius.circular(12)),
               child: Column(
                 children: [
                   Row(
@@ -579,13 +566,13 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding:  EdgeInsets.only(top:height/131.4, left: width/52.538),
                         child: Container(
-                          child: Image.asset("assets/group1.png"),
                           width: width / 17.0,
                           height: height / 8.2,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffD1F3E0),
+                              color: const Color(0xffD1F3E0),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/group1.png"),
                         ),
                       ),
                       Padding(
@@ -607,7 +594,7 @@ class _HomeState extends State<Home> {
                             Padding(
                               padding:  EdgeInsets.only(right: width/113.83),
                               child: Text(
-                                "50000",
+                                totalprofits.toString(),
                                 style: GoogleFonts.poppins(
                                     fontSize:width/85.375,
                                     color: Colors.black,
@@ -620,13 +607,13 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding:  EdgeInsets.only(top:height/131.4, left:width/85.375),
                         child: Container(
-                          child: Image.asset("assets/group.png"),
                           width: width / 17,
                           height: height / 8.2,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffE1F1FF),
+                              color: const Color(0xffE1F1FF),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/group.png"),
                         ),
                       ),
                       Padding(
@@ -667,13 +654,13 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding:  EdgeInsets.only(top:height/131.4, left: width/54.64),
                         child: Container(
-                          child: Image.asset("assets/students.png"),
                           width: width / 17,
                           height: height / 8.2,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffFFF2D8),
+                              color: const Color(0xffFFF2D8),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/students.png"),
                         ),
                       ),
                       Padding(
@@ -690,7 +677,7 @@ class _HomeState extends State<Home> {
                             child: Text(
                               "Total Expense",
                               style: GoogleFonts.poppins(
-                                  color: Color(0xffA3A3A3), fontSize:width/105.076),
+                                  color: const Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
                           Padding(
@@ -707,13 +694,13 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding:  EdgeInsets.only(top:height/131.4, left:width/85.375),
                         child: Container(
-                          child: Image.asset("assets/supplier.png"),
                           width: width / 17,
                           height: height / 8.2,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffFFEAEA),
+                              color: const Color(0xffFFEAEA),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/supplier.png"),
                         ),
                       ),
                       Padding(
@@ -731,13 +718,13 @@ class _HomeState extends State<Home> {
                             child: Text(
                               "Supplier Outstanding",
                               style: GoogleFonts.poppins(
-                                  color: Color(0xffA3A3A3), fontSize:width/105.076),
+                                  color: const Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
                           Padding(
                             padding:  EdgeInsets.only(right:width/20.088),
                             child: Text(
-                              "0",
+                              suppilieroutstandingtotal.toStringAsFixed(2),
                               style: GoogleFonts.poppins(
                                   fontSize:width/85.375,
                                   fontWeight: FontWeight.bold),
@@ -749,11 +736,6 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              width: width/1.1,
-              height: height / 6.57,
-              decoration: BoxDecoration(
-                  color: Color(0xffFFFFFF),
-                  borderRadius: BorderRadius.circular(12)),
             ),
           ),
 
@@ -761,6 +743,11 @@ class _HomeState extends State<Home> {
           Padding(
             padding:  EdgeInsets.only(right:width/34.15),
             child: Container(
+              width: width/1.1,
+              height: height / 6.57,
+              decoration: BoxDecoration(
+                  color: const Color(0xffFFFFFF),
+                  borderRadius: BorderRadius.circular(12)),
               child: Column(
                 children: [
 
@@ -770,13 +757,13 @@ class _HomeState extends State<Home> {
                         padding:
                         EdgeInsets.only(top:height/131.4, left: width/52.538),
                         child: Container(
-                          child: Image.asset("assets/newimg.png"),
                           width: width / 17,
                           height: height / 8.2,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffD1F3E0),
+                              color: const Color(0xffD1F3E0),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/newimg.png"),
                         ),
                       ),
                       Padding(
@@ -792,7 +779,7 @@ class _HomeState extends State<Home> {
                             child: Text(
                               "Total Services",
                               style: GoogleFonts.poppins(
-                                  color: Color(0xffA3A3A3),
+                                  color: const Color(0xffA3A3A3),
                                   fontSize:width/91.066),
                             ),
                           ),
@@ -800,7 +787,7 @@ class _HomeState extends State<Home> {
                             padding:  EdgeInsets.only(
                                 right: width/35.947, left:width/136.6),
                             child: Text(
-                              "50000",
+                              Service_entry_count.toString(),
                               style: GoogleFonts.poppins(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
@@ -813,13 +800,13 @@ class _HomeState extends State<Home> {
                         padding:
                         EdgeInsets.only(top:height/131.4, left: width/52.538),
                         child: Container(
-                          child: Image.asset("assets/newimg1.png"),
                           width: width / 17.0,
                           height: height / 8.2,
                           //color: Color(0xffD1F3E0),
                           decoration: BoxDecoration(
-                              color: Color(0xffE1F1FF),
+                              color: const Color(0xffE1F1FF),
                               borderRadius: BorderRadius.circular(52)),
+                          child: Image.asset("assets/newimg1.png"),
                         ),
                       ),
                       Padding(
@@ -835,7 +822,7 @@ class _HomeState extends State<Home> {
                             child: Text(
                               "Total Profit",
                               style: GoogleFonts.poppins(
-                                  color: Color(0xffA3A3A3),
+                                  color: const Color(0xffA3A3A3),
                                   fontSize:width/91.066),
                             ),
                           ),
@@ -856,15 +843,8 @@ class _HomeState extends State<Home> {
 
                 ],
               ),
-              width: width/1.1,
-              height: height / 6.57,
-              decoration: BoxDecoration(
-                  color: Color(0xffFFFFFF),
-                  borderRadius: BorderRadius.circular(12)),
             ),
           ),
-
-
 
           //last container and total amount and name text
           Padding(
@@ -874,18 +854,25 @@ class _HomeState extends State<Home> {
 
                 Padding(
                   padding:  EdgeInsets.only(
-                      top:height/36.5, left: width/30.355, right: width/27.32),
+                      top:height/80.5, left: width/30.355, right: width/27.32),
                   child: Container(
+                    width: width / 2.5,
+                    height: height / 3.9,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFFFFFF),
+                        borderRadius: BorderRadius.circular(22)),
                     child: Column(
                       children: [
 
                         Padding(
                           padding:  EdgeInsets.only(bottom: height/131.4),
-                          child: Container(
+                          child: SizedBox(
+                            width: width /2.5,
+                            height: height / 14.6,
                             child: Column(
                               children: [
                                 Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: Color(0xff000000),
                                       borderRadius: BorderRadius.only(
                                           topLeft:
@@ -901,16 +888,13 @@ class _HomeState extends State<Home> {
                                     child: Text(
                                       "Today Over All Sales Value",
                                       style: GoogleFonts.poppins(
-                                          color: Color(0xffFFFFFF)),
+                                          color: const Color(0xffFFFFFF)),
                                     ),
                                   ),
                                 )
 
                               ],
                             ),
-                            // color: Color(0xff00A99D),
-                            width: width /2.5,
-                            height: height / 14.6,
 
                             //color: Color(0xff00A99D),
                           ),
@@ -922,7 +906,7 @@ class _HomeState extends State<Home> {
                           child: Row(
                             children: [
                               Text(
-                                "Shabika",
+                                "Shabika G",
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/75.888),
@@ -930,7 +914,7 @@ class _HomeState extends State<Home> {
                               Padding(
                                 padding:
                                 EdgeInsets.only(left:width/5.464),
-                                child: Container(
+                                child: SizedBox(
                                   width: width/9.757,
                                   child: Center(
                                     child: Text(
@@ -952,7 +936,7 @@ class _HomeState extends State<Home> {
                           child: Row(
                             children: [
                               Text(
-                                "Shabika A",
+                                "Shabika N",
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/75.888),
@@ -960,7 +944,7 @@ class _HomeState extends State<Home> {
                               Padding(
                                 padding:  EdgeInsets.only(
                                     left: width/5.691, bottom: height/131.4),
-                                child: Container(
+                                child: SizedBox(
                                   width:width/9.757,
                                   child: Center(
                                     child: Text(
@@ -992,7 +976,7 @@ class _HomeState extends State<Home> {
                               Padding(
                                 padding:
                                 EdgeInsets.only(left:width/75.888),
-                                child: Container(
+                                child: SizedBox(
                                   width:width/9.757,
                                   child: Center(
                                     child: Text(
@@ -1009,28 +993,30 @@ class _HomeState extends State<Home> {
                         ),
                       ],
                     ),
-                    width: width / 2.5,
-                    height: height / 3.9,
-                    decoration: BoxDecoration(
-                        color: Color(0xffFFFFFF),
-                        borderRadius: BorderRadius.circular(22)),
                   ),
                 ),
 
                 Padding(
-                  padding:  EdgeInsets.only(top:height/36.5),
+                  padding:  EdgeInsets.only(top:height/80.5),
                   child: Container(
+                    width: width / 2.5,
+                    height: height / 3.9,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFFFFFF),
+                        borderRadius: BorderRadius.circular(22)),
                     child: Column(
                       children: [
                         Padding(
                           padding:  EdgeInsets.only(bottom:height/131.4),
                           child: Stack(
                             children: [
-                              Container(
+                              SizedBox(
+                                width: width /2.5,
+                                height: height / 14.6,
                                 child: Column(
                                   children: [
                                     Container(
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           color: Color(0xff000000),
                                           borderRadius: BorderRadius.only(
                                               topLeft:
@@ -1046,15 +1032,12 @@ class _HomeState extends State<Home> {
                                         child: Text(
                                           "Today Over All Sales Value",
                                           style: GoogleFonts.poppins(
-                                              color: Color(0xffFFFFFF)),
+                                              color: const Color(0xffFFFFFF)),
                                         ),
                                       ),
                                     )
                                   ],
                                 ),
-                                // color: Color(0xff00A99D),
-                                width: width /2.5,
-                                height: height / 14.6,
 
                                 //color: Color(0xff00A99D),
                               ),
@@ -1075,7 +1058,7 @@ class _HomeState extends State<Home> {
                               Padding(
                                 padding:
                                 EdgeInsets.only(left: width/4.913),
-                                child: Container(
+                                child: SizedBox(
                                   width: width/13.66,
                                   child: Center(
                                     child: Text(
@@ -1104,7 +1087,7 @@ class _HomeState extends State<Home> {
                               Padding(
                                 padding:  EdgeInsets.only(
                                     left: width/5.154, bottom: height/131.4),
-                                child: Container(
+                                child: SizedBox(
                                   width:width/13.66,
                                   child: Center(
                                     child: Text(
@@ -1134,7 +1117,7 @@ class _HomeState extends State<Home> {
                               Padding(
                                 padding:
                                 EdgeInsets.only(left:width/75.888),
-                                child: Container(
+                                child: SizedBox(
                                   width:width/13.66,
                                   child: Center(
                                     child: Text(
@@ -1151,83 +1134,324 @@ class _HomeState extends State<Home> {
                         ),
                       ],
                     ),
-                    width: width / 2.5,
-                    height: height / 3.9,
-                    decoration: BoxDecoration(
-                        color: Color(0xffFFFFFF),
-                        borderRadius: BorderRadius.circular(22)),
                   ),
                 ),
               ],
             ),
           )
+
         ],
       );
   }
+
+
+
+  getdatestream() async {
+
+    final collection3 = FirebaseFirestore.instance.collection("Customer");
+    final countQuery3 = collection3.count();
+    final AggregateQuerySnapshot snapshot4 = await countQuery3.get();
+
+    final Serviceentry=await FirebaseFirestore.instance.collection("Service_Entry");
+    final ServiceentrytQuery = Serviceentry.count();
+    final AggregateQuerySnapshot serviceentrycount = await ServiceentrytQuery.get();
+
+
+    setState((){
+      totalcustomer=snapshot4.count;
+      Service_entry_count=serviceentrycount.count;
+    });
+
+  }
   
   double salesamount=0;
+  double profit=0;
+  double totalprofits=0;
+  double purchaseProfits=0;
 
-
+ double servicecostvalue=0;
   billingtotalamount() async {
     setState(() {
       salesamount=0;
     });
-    var billingtotal=await FirebaseFirestore.instance.collection("billing").get();
+    ///billing all reports total amount
+    var billingtotal=await FirebaseFirestore.instance.collection("billing").where("save",isEqualTo: true).get();
     if(mydate.isNotEmpty) {
       for (int i = 0; i < billingtotal.docs.length; i++) {
         if (mydate.contains(billingtotal.docs[i]["date"])) {
           setState(() {
-            salesamount = salesamount + billingtotal.docs[i]["Total"];
+            salesamount = (salesamount + double.parse(billingtotal.docs[i]["Total"].toString()));
           });
         }
       }
     }
     else {
       for (int i = 0; i < billingtotal.docs.length; i++) {
-        if(billingtotal.docs[i]['date']=="${DateTime.now().day} / ${DateTime.now().month} / ${DateTime.now().year}")
+        if (billingtotal.docs[i]["date"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}") {
         setState(() {
-          salesamount = salesamount + billingtotal.docs[i]["Total"];
+          salesamount = (salesamount + double.parse(billingtotal.docs[i]["Total"].toString()));
+          totalsales=billingtotal.docs.length;
         });
       }
     }
-      print("billing");
-     print(salesamount.toString());
+    }
+
+    ///Shabika  G reports Total amount
+   if(status==true){
+
+     ///billing Shabika G Reports Total Amount
+  var billingtotal2=await FirebaseFirestore.instance.collection("billing ShabikaG").where("save",isEqualTo: true).get();
+  if(mydate.isNotEmpty) {
+    for (int i = 0; i < billingtotal2.docs.length; i++) {
+      if (mydate.contains(billingtotal2.docs[i]["date"])) {
+        setState(() {
+          salesamount = (salesamount + double.parse(billingtotal2.docs[i]["Total"].toString()));
+        });
+      }
+    }
+  }
+  else {
+    for (int i = 0; i < billingtotal2.docs.length; i++) {
+      if (billingtotal2.docs[i]["date"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}") {
+        setState(() {
+          salesamount = (salesamount +
+              double.parse(billingtotal2.docs[i]["Total"].toString()));
+        });
+      }
+    }
+  }
+
+   }
+
+    ///Shabika  N reports Total amount
+    if(statusA==true){
+
+      ///billing Shabika N Reports Total Amount
+      var billingtotal2=await FirebaseFirestore.instance.collection("billing ShabikaN").where("save",isEqualTo: true).get();
+      if(mydate.isNotEmpty) {
+        for (int i = 0; i < billingtotal2.docs.length; i++) {
+          if (mydate.contains(billingtotal2.docs[i]["date"])) {
+            setState(() {
+              salesamount = (salesamount + double.parse(billingtotal2.docs[i]["Total"].toString()));
+            });
+          }
+        }
+      }
+      else {
+        for (int i = 0; i < billingtotal2.docs.length; i++) {
+          if (billingtotal2.docs[i]["date"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}") {
+            setState(() {
+              salesamount = (salesamount +
+                  double.parse(billingtotal2.docs[i]["Total"].toString()));
+            });
+          }
+        }
+      }
+
+    }
+
+    ///simcard total amount value
+
+    var profits2=await FirebaseFirestore.instance.collection("Simcard").get();
+
+    for(int i=0;i<profits2.docs.length;i++){
+      if(profits2.docs[i]["Date"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"){
+        setState(() {
+          profit=profit+int.parse(profits2.docs[i]['Quvantity'].toString());
+          totalprofits=profit*100;
+        });
+      }
+
+    }
+
+    ///servide Entry Document length and total amount function
+    var Serviceentry=await FirebaseFirestore.instance.collection("Service_Entry").get();
+
+    for(int k=0;k<Serviceentry.docs.length;k++){
+      if(Serviceentry.docs[k]["date"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"){
+        setState(() {
+          servicecostvalue=(servicecostvalue+double.parse(Serviceentry.docs[k]["servicecost"].toString()));
+          Service_entry_count=Serviceentry.docs.length;
+        });
+      }
+    }
+
     purchasetotalamount();
   }
 
 
   double purchasetotal=0;
+  double suppilieroutstandingtotal=0;
+  double Purchaselandingcost=0;
 
   
   purchasetotalamount() async {
+
     setState(() {
       purchasetotal=0;
+      Purchaselandingcost=0;
+      suppilieroutstandingtotal=0;
     });
-    var billingtotal=await FirebaseFirestore.instance.collection("Purchase entry").get();
+
+    ///all Purchase Total Amount values
+    var billingtotal=await FirebaseFirestore.instance.collection("Purchase entry").where("save",isEqualTo: true).get();
+
     if(mydate.isNotEmpty) {
       for (int i = 0; i < billingtotal.docs.length; i++) {
+        ///billing amount
         if (mydate.contains(billingtotal.docs[i]["date"])) {
           setState(() {
-            purchasetotal = purchasetotal + billingtotal.docs[i]["Sales price"];
+            suppilieroutstandingtotal = (suppilieroutstandingtotal + double.parse(billingtotal.docs[i]["balance amount"]));
           });
         }
-        print("Purchase");
-        print(purchasetotal.toString());
-        custotalamount();
+
+        var billingtotalamount=await FirebaseFirestore.instance.collection("Purchase entry").doc(billingtotal.docs[i].id).collection(billingtotal.docs[i].id.toString())
+        .get();
+
+        for(int j=0;j<billingtotalamount.docs.length;j++){
+          if (mydate.contains(billingtotalamount.docs[j]["purchasedate"])) {
+            setState(() {
+              purchasetotal = (purchasetotal + double.parse(billingtotalamount.docs[j]["Sales price"].toString()));
+              Purchaselandingcost = (Purchaselandingcost + double.parse(billingtotalamount.docs[j]["Landing cost"].toString()));
+              totalpurchase=billingtotalamount.docs.length;
+            });
+          }
+        }
+
       }
     }
+
     else{
+
       for (int i = 0; i < billingtotal.docs.length; i++) {
-        if (billingtotal.docs[i]["date"]=="${DateTime.now().day} / ${DateTime.now().month} / ${DateTime.now().year}") {
-          setState(() {
-            purchasetotal = purchasetotal + billingtotal.docs[i]["Sales price"];
-          });
+        ///billing amount
+        if(billingtotal.docs[i]["date"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"){
+
+          suppilieroutstandingtotal = (suppilieroutstandingtotal +billingtotal.docs[i]["balance amount"]);
         }
-        print("Purchase");
-        print(purchasetotal.toString());
-        custotalamount();
+
+        var billingtotalamount=await FirebaseFirestore.instance.collection("Purchase entry").doc(billingtotal.docs[i].id).collection(billingtotal.docs[i].id.toString()).get();
+        for(int j=0;j<billingtotalamount.docs.length;j++){
+          if (billingtotalamount.docs[j]["purchasedate"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}") {
+            setState(() {
+              purchasetotal = (purchasetotal + double.parse(billingtotalamount.docs[j]["Sales price"].toString()));
+              Purchaselandingcost = (Purchaselandingcost + double.parse(billingtotalamount.docs[j]["Landing cost"].toString()));
+              totalpurchase=billingtotalamount.docs.length;
+
+            });
+
+          }
+        }
+
+
+
       }
     }
+
+
+
+    ///purchas entry shabika G reports Total Amount
+    if(status==true){
+      var billingtotal=await FirebaseFirestore.instance.collection("Purchase ShabikaG").where("save",isEqualTo: true).get();
+      if(mydate.isNotEmpty) {
+        print("enter date function-1");
+        for (int i = 0; i < billingtotal.docs.length; i++) {
+          setState(() {
+            suppilieroutstandingtotal = (suppilieroutstandingtotal + double.parse(billingtotal.docs[i]["balance amount"]));
+          });
+          var billingtotalamount=await FirebaseFirestore.instance.collection("Purchase entry").doc(billingtotal.docs[i].id).collection(billingtotal.docs[i].id.toString())
+              .get();
+          for(int j=0;j<billingtotalamount.docs.length;j++){
+            if (mydate.contains(billingtotalamount.docs[j]["purchasedate"])) {
+              setState(() {
+                purchasetotal = (purchasetotal + double.parse(billingtotalamount.docs[j]["Sales price"].toString()));
+                Purchaselandingcost = (Purchaselandingcost + double.parse(billingtotalamount.docs[j]["Landing cost"].toString()));
+
+              });
+            }
+          }
+
+        }
+      }
+      else{
+        print("enter else function-1");
+        for (int i = 0; i < billingtotal.docs.length; i++) {
+
+          setState(() {
+            suppilieroutstandingtotal = (suppilieroutstandingtotal +billingtotal.docs[i]["balance amount"]);
+          });
+          var billingtotalamount=await FirebaseFirestore.instance.collection("Purchase entry").doc(billingtotal.docs[i].id).collection(billingtotal.docs[i].id.toString()).get();
+          for(int j=0;j<billingtotalamount.docs.length;j++){
+            if (billingtotalamount.docs[j]["purchasedate"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}") {
+              print("enter if function-1");
+              setState(() {
+                purchasetotal = (purchasetotal + double.parse(billingtotalamount.docs[j]["Sales price"].toString()));
+                Purchaselandingcost = (Purchaselandingcost + double.parse(billingtotalamount.docs[j]["Landing cost"].toString()));
+              });
+              print(purchasetotal);
+              print(suppilieroutstandingtotal);
+              print("suppilieroutstandingtotal-value");
+            }
+          }
+
+
+
+        }
+      }
+    }
+
+    ///purchas entry shabika N reports Total Amount
+    if(statusA==true){
+      var billingtotal=await FirebaseFirestore.instance.collection("Purchase ShabikaN").where("save",isEqualTo: true).get();
+      if(mydate.isNotEmpty) {
+        print("enter date function-1");
+        for (int i = 0; i < billingtotal.docs.length; i++) {
+          setState(() {
+            suppilieroutstandingtotal = (suppilieroutstandingtotal + double.parse(billingtotal.docs[i]["balance amount"]));
+          });
+          var billingtotalamount=await FirebaseFirestore.instance.collection("Purchase entry").doc(billingtotal.docs[i].id).collection(billingtotal.docs[i].id.toString())
+              .get();
+          for(int j=0;j<billingtotalamount.docs.length;j++){
+            if (mydate.contains(billingtotalamount.docs[j]["purchasedate"])) {
+              setState(() {
+                purchasetotal = (purchasetotal + double.parse(billingtotalamount.docs[j]["Sales price"].toString()));
+                Purchaselandingcost = (Purchaselandingcost + double.parse(billingtotalamount.docs[j]["Landing cost"].toString()));
+
+              });
+            }
+          }
+
+        }
+      }
+      else{
+        print("enter else function-1");
+        for (int i = 0; i < billingtotal.docs.length; i++) {
+
+          setState(() {
+            suppilieroutstandingtotal = (suppilieroutstandingtotal +billingtotal.docs[i]["balance amount"]);
+          });
+          var billingtotalamount=await FirebaseFirestore.instance.collection("Purchase entry").doc(billingtotal.docs[i].id).collection(billingtotal.docs[i].id.toString()).get();
+          for(int j=0;j<billingtotalamount.docs.length;j++){
+            if (billingtotalamount.docs[j]["purchasedate"]=="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}") {
+              print("enter if function-1");
+              setState(() {
+                purchasetotal = (purchasetotal + double.parse(billingtotalamount.docs[j]["Sales price"].toString()));
+                Purchaselandingcost = (Purchaselandingcost + double.parse(billingtotalamount.docs[j]["Landing cost"].toString()));
+              });
+              print(purchasetotal);
+              print(suppilieroutstandingtotal);
+              print("suppilieroutstandingtotal-value");
+            }
+          }
+
+
+
+        }
+      }
+    }
+
+    ///customer Count Function
+    custotalamount();
   }
 
   
@@ -1240,25 +1464,26 @@ class _HomeState extends State<Home> {
     });
     var cus=await FirebaseFirestore.instance.collection("Customer").get();
    if(mydate.isNotEmpty){
+     print("enter Date function-2");
      for(int i=0;i<cus.docs.length;i++){
        var cus2=await FirebaseFirestore.instance.collection("Customer").doc(cus.docs[i].id).collection("billing").get();
        for(int j=0;j<cus2.docs.length;j++){
          if(mydate.contains(cus2.docs[j]["date"])){
            setState(() {
-             customtotal=customtotal+cus2.docs[j]["Total"];
+             customtotal=(customtotal+double.parse(cus2.docs[j]["Total"].toString()));
            });
          }
        }
      }
    }
-
    else{
+     print("enter else function-2");
      for(int i=0;i<cus.docs.length;i++){
        var cus2=await FirebaseFirestore.instance.collection("Customer").doc(cus.docs[i].id).collection("billing").get();
        for(int j=0;j<cus2.docs.length;j++){
          if(cus2.docs[j]["date"]=="${DateTime.now().day} / ${DateTime.now().month} / ${DateTime.now().year}"){
            setState(() {
-             customtotal=customtotal+cus2.docs[j]["Total"];
+             customtotal=(customtotal+double.parse(cus2.docs[j]["Total"].toString()));
            });
          }
        }
@@ -1274,20 +1499,31 @@ class _HomeState extends State<Home> {
 
 
   profitfuntion(){
+    print("Total Profit function");
+    print(profitss);
+    print(Purchaselandingcost);
+    print(purchasetotal);
     setState(() {
       profitss=0;
     });
     if(mydate.isNotEmpty){
       setState(() {
-        profitss = salesamount-purchasetotal;
+        profitss = (Purchaselandingcost-purchasetotal).abs();
       });
     }
     else{
       setState(() {
-        profitss = salesamount-purchasetotal;
+        profitss = (Purchaselandingcost-purchasetotal).abs();
       });
     }
-    print(profitss.abs().toString());
+    print(profitss);
+    print("Total Profit function--end");
+  }
+
+
+  ServiceTotalamount()async{
+    var Service=await FirebaseFirestore.instance.collection("Service_Entry").get();
+
   }
 
 

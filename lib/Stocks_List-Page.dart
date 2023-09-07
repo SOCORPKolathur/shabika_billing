@@ -3,8 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
-
 import 'LandingPage/LandingPage.dart';
 
 class Stocks_Page extends StatefulWidget {
@@ -34,7 +32,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
             SizedBox(width: width / 91.06),
             InkWell(
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => drawer(),));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => drawer(" "),));
               },
               child: Tooltip(
                 message: "Back",
@@ -73,7 +71,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
               padding:  EdgeInsets.only(left: width/4.583, right: width/56.916),
               child:
                  FlutterSwitch(
-                        inactiveColor: Color(0xffC9C9C9),
+                        inactiveColor: const Color(0xffC9C9C9),
                         inactiveToggleColor: Colors.grey,
                         width: width/30.35,
                         height: height/32.85,
@@ -110,7 +108,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
 
             SizedBox(width:width/136.6),
              FlutterSwitch(
-                      inactiveColor: Color(0xffC9C9C9),
+                      inactiveColor: const Color(0xffC9C9C9),
                       inactiveToggleColor: Colors.grey,
                       width: width/30.35,
                       height: height/32.85,
@@ -166,13 +164,13 @@ class _Stocks_PageState extends State<Stocks_Page> {
                     SizedBox(width:width/68.3,),
 
                     Container(
-                        width:width/15.38,
+                        width:width/6.8,
                         height:height/13.0,
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
                         child: Center(child: Text("Item Name",
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))
+                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))
                     ),
 
 
@@ -186,7 +184,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Category",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -197,7 +195,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Brand",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                        child: Center(child: Text("Brand",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -208,7 +206,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Itemcode",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                        child: Center(child: Text("Itemcode",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -219,7 +217,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("BoxNo",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                        child: Center(child: Text("BoxNo",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -230,7 +228,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("HSNCode",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                        child: Center(child: Text("HSNCode",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -242,7 +240,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Landing\ncost",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -254,7 +252,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Purchase\nprice",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -264,7 +262,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Saleprice",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),))),
+                        child: Center(child: Text("Saleprice",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                     Container(
@@ -273,41 +271,53 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("MRPPrice",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8),textStyle: TextStyle(
+                        child: Center(child: Text("MRPPrice",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                             overflow: TextOverflow.ellipsis
                         )),))),
 
                     Container(
-                        width:width/15.38,
+                        width:width/26.38,
                         height:height/13.0,
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Loworder",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8),textStyle: TextStyle(
+                        child: Center(child: Text("Low\norder",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                             overflow: TextOverflow.ellipsis
                         )),))),
 
                     Container(
-                        width:width/15.38,
+                        width:width/26.38,
                         height:height/13.0,
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("GST",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8),textStyle: TextStyle(
+                        child: Center(child: Text("GST",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                             overflow: TextOverflow.ellipsis
                         )),))),
 
                     Container(
-                        width:width/15.38,
+                        width:width/26.38,
                         height:height/13.0,
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Total\nQuvantity",
+                        child: Center(child: Text("Total\nQty",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Color(0xff5801e8),textStyle: TextStyle(
+                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                             overflow: TextOverflow.ellipsis
                         )),))),
+
+                    Container(
+                        width:width/11.38,
+                        height:height/13.0,
+                        decoration:BoxDecoration(
+                            border: Border.all(color: Colors.black,width: 1.2)
+                        ),
+                        child: Center(child: Text("Actions",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
+                              overflow: TextOverflow.ellipsis
+                          )),)))
 
 
 
@@ -339,7 +349,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               SizedBox(width:width/68.3,),
 
                               Container(
-                                  width:width/15.38,
+                                  width:width/6.8,
                                   height:height/13.0,padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
                                   decoration:BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
@@ -440,7 +450,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
 
                               Container(
-                                  width:width/15.38,
+                                  width:width/26.38,
                                   height:height/13.0,padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
                                   decoration:BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
@@ -450,7 +460,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
 
                               Container(
-                                  width:width/15.38,
+                                  width:width/26.38,
                                   height:height/13.0,padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
                                   decoration:BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
@@ -460,7 +470,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
 
                               Container(
-                                  width:width/15.38,
+                                  width:width/26.38,
                                   height:height/13.0,padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
                                   decoration:BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
@@ -469,26 +479,40 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))
                               ),
 
-                              SizedBox(width:width/68.3,),
+                              Container(
+                                  width:width/11.38,
+                                  height:height/13.0,
+                                  decoration:BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2)
+                                  ),
+                                  child:
 
-                              InkWell(
-                                onTap: (){
-                                  showdialpogbox(buillin1.id);
-                                },
-                                child: Material(
-                                  elevation: 10,
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Container(
-                                      width:width/13.66,
-                                      height:height/21.9,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(100),
-                                          color: Colors.green
-                                      ),
-                                      child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
-                                ),
-                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                    onTap: (){
+                                      showdialpogbox(buillin1.id);
+                                    },
+                                    child: Material(
+                                      elevation: 10,
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Container(
+                                          width:width/13.66,
+                                          height:height/21.9,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(100),
+                                              color: Colors.green
+                                          ),
+                                          child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                    ),
+                                  ),
+                                ],
+                              )
+                              )
+
+
 
 
                             ],
@@ -516,7 +540,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
       builder: (context) {
         return SlideInLeft(
             animate: true,
-            duration: Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 800),
             manualTrigger: false,
             child:
             Padding(
@@ -531,376 +555,374 @@ class _Stocks_PageState extends State<Stocks_Page> {
                   ),
 
                   child: SingleChildScrollView(
-                    child: Container(
-                      child: Column(
-                        children: [
-                          SizedBox(height:height/65.7,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(width: width/2.4,),
-                              Text("History Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.w700),),
-                              SizedBox(width: width/2.4,),
-                              InkWell(
-                                onTap: (){
-                                  Navigator.pop(context);
-                                },
-                                child: ClipOval(
-                                  child: Container(
-                                    height: height/26.28,
-                                    width:width/ 54.64,
-                                    color: Colors.red,
-                                    child: Center(child: Icon(Icons.clear,color: Colors.white,)),
-                                  ),
+                    child: Column(
+                      children: [
+                        SizedBox(height:height/65.7,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(width: width/2.4,),
+                            Text("History Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.w700),),
+                            SizedBox(width: width/2.4,),
+                            InkWell(
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
+                              child: ClipOval(
+                                child: Container(
+                                  height: height/26.28,
+                                  width:width/ 54.64,
+                                  color: Colors.red,
+                                  child: const Center(child: Icon(Icons.clear,color: Colors.white,)),
                                 ),
                               ),
+                            ),
 
-                            ],
-                          ),
-                          SizedBox(height:height/65.7,),
-
-
-
+                          ],
+                        ),
+                        SizedBox(height:height/65.7,),
 
 
-                          Row(
-                            children: [
-                              SizedBox(width:width/136.6,),
-                              Container(
-                                width:width/ 27.32,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text("Si.No",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+
+
+
+                        Row(
+                          children: [
+                            SizedBox(width:width/136.6,),
+                            Container(
+                              width:width/ 27.32,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
+                              child: Center(child: Text("Si.No",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
 
-                              Container(
-                                width: width/17.075,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text("Item\nPurch No",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                            Container(
+                              width: width/17.075,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
+                              child: Center(child: Text("Item\nPurch No",
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
 
-                              Container(
-                                width:width/ 10.507,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Description',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                            Container(
+                              width:width/ 10.507,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
+                              child: Center(child: Text('Description',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
 
-                              Container(
-                                width: width/22.76,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Hsn\nCode',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                            Container(
+                              width: width/22.76,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
+                              child: Center(child: Text('Hsn\nCode',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
 
-                              Container(
-                                width: width/13.66,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Payment',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                            Container(
+                              width: width/13.66,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
+                              child: Center(child: Text('Payment',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
 
-                              Container(
+                            Container(
 
-                                width:width/ 45.53,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text("Qty",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              width:width/ 45.53,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
+                              child: Center(child: Text("Qty",
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
 
-                              Container(
-                                width: width/13.66,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Supplier\nInvoice No',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                            Container(
+                              width: width/13.66,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
+                              child: Center(child: Text('Supplier\nInvoice No',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
 
-                              Container(
-                                width: width/13.66,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Supplier\nID',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                            Container(
+                              width: width/13.66,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              Container(
+                              child: Center(child: Text('Supplier\nID',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
+                            Container(
 
-                                width: width/13.66,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Supplier\nName',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              width: width/13.66,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              Container(
+                              child: Center(child: Text('Supplier\nName',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
+                            Container(
 
-                                width: width/13.66,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Credit\nDays',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              width: width/13.66,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              Container(
+                              child: Center(child: Text('Credit\nDays',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
+                            Container(
 
-                                width: width/13.66,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Purchase\nNote',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              width: width/13.66,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              Container(
+                              child: Center(child: Text('Purchase\nNote',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
+                            Container(
 
-                                width: width/27.32,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text('Tax',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              width: width/27.32,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              Container(
+                              child: Center(child: Text('Tax',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
+                            Container(
 
-                                width: width/13.66,
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                child: Center(child: Text("Date\nTime",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              width: width/13.66,
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              Container(
-                                height:height/13.14,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black,width: 1.2),
-                                ),
-                                width:width/ 10.507,
-
-                                child: Center(child: Text("Total",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Color(0xff5801e8)),)),
+                              child: Center(child: Text("Date\nTime",
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
+                            Container(
+                              height:height/13.14,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black,width: 1.2),
                               ),
+                              width:width/ 10.507,
+
+                              child: Center(child: Text("Total",
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                            ),
 
 
 
-                              SizedBox(width:width/136.6,),
+                            SizedBox(width:width/136.6,),
 
 
 
-                            ],
-                          ),
+                          ],
+                        ),
 
-                          SizedBox(
-                            height: height/1.46,
-                            child: StreamBuilder<QuerySnapshot>(
-                              stream: status3==true?
-                              FirebaseFirestore.instance.collection("Item ShabikaG").doc(streamid).collection("Histroy").snapshots():
-                                  status4==true?
-                                  FirebaseFirestore.instance.collection("Item ShabikaN").doc(streamid).collection("Histroy").snapshots()
-                                  :FirebaseFirestore.instance.collection("Item").doc(streamid).collection("Histroy").snapshots(),
-                              builder: (context, snapshot) {
-                                if(snapshot.hasData==null){
-                                  return Center(child: Container(),);
-                                }
-                                if(!snapshot.hasData){
-                                  return Center(child: Container(),);
-                                }
+                        SizedBox(
+                          height: height/1.46,
+                          child: StreamBuilder<QuerySnapshot>(
+                            stream: status3==true?
+                            FirebaseFirestore.instance.collection("Item ShabikaG").doc(streamid).collection("Histroy").snapshots():
+                                status4==true?
+                                FirebaseFirestore.instance.collection("Item ShabikaN").doc(streamid).collection("Histroy").snapshots()
+                                :FirebaseFirestore.instance.collection("Item").doc(streamid).collection("Histroy").snapshots(),
+                            builder: (context, snapshot) {
+                              if(snapshot.hasData==null){
+                                return Center(child: Container(),);
+                              }
+                              if(!snapshot.hasData){
+                                return Center(child: Container(),);
+                              }
 
-                                return
-                                  ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: snapshot.data!.docs.length,
-                                    itemBuilder: (context, index) {
-                                      var purchase=snapshot.data!.docs[index];
-                                      return  Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(width:width/136.6,),
-                                          Container(
-                                            width: width/27.32,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text("${index+1}",style: GoogleFonts.poppins(),)),
+                              return
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: snapshot.data!.docs.length,
+                                  itemBuilder: (context, index) {
+                                    var purchase=snapshot.data!.docs[index];
+                                    return  Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(width:width/136.6,),
+                                        Container(
+                                          width: width/27.32,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
+                                          ),
+                                          child: Center(child: Text("${index+1}",style: GoogleFonts.poppins(),)),
+                                        ),
+
+                                        Container(
+                                          width:width /17.075,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
+                                          ),
+                                          child: Center(child: Text("${purchase['purchaseno']}",style: GoogleFonts.poppins(),)),
+                                        ),
+
+                                        Container(
+                                          width: width/10.507,
+                                          height:height/13.14,
+                                          padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
+                                          ),
+                                          child: Center(child: Text(purchase['Description'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
+
+                                        Container(
+                                          width: width/22.76,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
+                                          ),
+                                          child: Center(child: Text(purchase['Hsncode'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
+
+                                        Container(
+                                          width: width/13.66,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
+                                          ),
+                                          child: Center(child: Text(purchase['Payment mode'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
+
+                                        Container(
+
+                                          width: width/45.53,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
 
-                                          Container(
-                                            width:width /17.075,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text("${purchase['purchaseno']}",style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase["Qty"].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
+
+                                        Container(
+                                          width: width/13.66,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
+                                          child: Center(child: Text(purchase['suppilierinvoiceno'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
 
-                                          Container(
-                                            width: width/10.507,
-                                            height:height/13.14,
-                                            padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['Description'].toString(),style: GoogleFonts.poppins(),)),
+                                        Container(
+                                          width: width/13.66,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
+                                          child: Center(child: Text(purchase['suppilerid'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
 
-                                          Container(
-                                            width: width/22.76,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['Hsncode'].toString(),style: GoogleFonts.poppins(),)),
+                                        Container(
+
+                                          width: width/13.66,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
+                                          child: Center(child: Text(purchase['suppilername'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
 
-                                          Container(
-                                            width: width/13.66,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['Payment mode'].toString(),style: GoogleFonts.poppins(),)),
+                                        Container(
+
+                                          width: width/13.66,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
+                                          child: Center(child: Text(purchase['credit days'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
 
-                                          Container(
+                                        Container(
 
-                                            width: width/45.53,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-
-                                            child: Center(child: Text(purchase["Qty"].toString(),style: GoogleFonts.poppins(),)),
+                                          width: width/13.66,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
+                                          child: Center(child: Text(purchase['purchasenote'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
 
-                                          Container(
-                                            width: width/13.66,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['suppilierinvoiceno'].toString(),style: GoogleFonts.poppins(),)),
+                                        Container(
+
+                                          width:width/ 27.32,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
+                                          child: Center(child: Text(purchase['tax'].toString(),style: GoogleFonts.poppins(),)),
+                                        ),
 
-                                          Container(
-                                            width: width/13.66,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['suppilerid'].toString(),style: GoogleFonts.poppins(),)),
+                                        Container(
+
+                                          width: width/13.66,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
+                                          child: Center(child: Text("${purchase['date']}\n${purchase['time']}".toString(),style: GoogleFonts.poppins(),)),
+                                        ),
 
-                                          Container(
+                                        Container(
 
-                                            width: width/13.66,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['suppilername'].toString(),style: GoogleFonts.poppins(),)),
+                                          width:width/ 10.507,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.black,width: 1.2)
                                           ),
+                                          child: Center(child: Text("${purchase['Total']}".toString(),style: GoogleFonts.poppins(),)),
+                                        ),
 
-                                          Container(
-
-                                            width: width/13.66,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['credit days'].toString(),style: GoogleFonts.poppins(),)),
-                                          ),
-
-                                          Container(
-
-                                            width: width/13.66,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['purchasenote'].toString(),style: GoogleFonts.poppins(),)),
-                                          ),
-
-                                          Container(
-
-                                            width:width/ 27.32,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text(purchase['tax'].toString(),style: GoogleFonts.poppins(),)),
-                                          ),
-
-                                          Container(
-
-                                            width: width/13.66,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text("${purchase['date']}\n${purchase['time']}".toString(),style: GoogleFonts.poppins(),)),
-                                          ),
-
-                                          Container(
-
-                                            width:width/ 10.507,
-                                            height:height/13.14,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(color: Colors.black,width: 1.2)
-                                            ),
-                                            child: Center(child: Text("${purchase['Total']}".toString(),style: GoogleFonts.poppins(),)),
-                                          ),
-
-                                        ],
-                                      );
-                                    },);
-                              },),
-                          ),
+                                      ],
+                                    );
+                                  },);
+                            },),
+                        ),
 
 
-                          SizedBox(height:height/65.7),
+                        SizedBox(height:height/65.7),
 
-                        ],
-                      ),
+                      ],
                     ),
                   ),
                 ),
@@ -910,4 +932,6 @@ class _Stocks_PageState extends State<Stocks_Page> {
       },
     );
   }
+
+
 }

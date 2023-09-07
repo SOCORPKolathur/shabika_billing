@@ -16,12 +16,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
+        items: const [
+           BottomNavigationBarItem(
             icon: Center(child: Text("1")),
             label: "Simple Use",
           ),
-          BottomNavigationBarItem(
+           BottomNavigationBarItem(
               icon: Center(child: Text("2")),
               label: "Complex Use"
           ),
@@ -49,7 +49,7 @@ class _FirstPageState extends State<FirstPage> {
   _FirstPageState() {
     textField = SimpleAutoCompleteTextField(
       key: key,
-      decoration: InputDecoration(errorText: "Beans"),
+      decoration: const InputDecoration(errorText: "Beans"),
       controller: TextEditingController(text: "Starting Text"),
       suggestions: suggestions,
       textChanged: (text) => currentText = text,
@@ -106,7 +106,7 @@ class _FirstPageState extends State<FirstPage> {
       ListTile(
           title: textField,
           trailing: IconButton(
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               onPressed: () {
                 textField!.triggerSubmitted();
                 showWhichErrorText = !showWhichErrorText;
@@ -122,15 +122,15 @@ class _FirstPageState extends State<FirstPage> {
 
     return Scaffold(
       appBar:
-      AppBar(title: Text('AutoComplete TextField Demo Simple'), actions: [
+      AppBar(title: const Text('AutoComplete TextField Demo Simple'), actions: [
         IconButton(
-            icon: Icon(Icons.edit),
+            icon: const Icon(Icons.edit),
             onPressed: () => showDialog(
                 builder: (_) {
                   String text = "";
 
                   return AlertDialog(
-                      title: Text("Change Suggestions"),
+                      title: const Text("Change Suggestions"),
                       content: TextField(onChanged: (text) => text = text),
                       actions: [
                         TextButton(
@@ -141,7 +141,7 @@ class _FirstPageState extends State<FirstPage> {
                               }
                               Navigator.pop(context);
                             },
-                            child: Text("Add")),
+                            child: const Text("Add")),
                       ]);
                 },
                 context: context))
@@ -211,16 +211,16 @@ class _SecondPageState extends State<SecondPage> {
 
   _SecondPageState() {
     textField = AutoCompleteTextField<ArbitrarySuggestionType>(
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
           hintText: "Search Resturant:", suffixIcon: Icon(Icons.search)),
       itemSubmitted: (item) => setState(() => selected = item),
       key: key,
       suggestions: suggestions,
       itemBuilder: (context, suggestion) => Padding(
+          padding: const EdgeInsets.all(8.0),
           child: ListTile(
               title: Text(suggestion.name),
-              trailing: Text("Stars: ${suggestion.stars}")),
-          padding: EdgeInsets.all(8.0)),
+              trailing: Text("Stars: ${suggestion.stars}"))),
       itemSorter: (a, b) => a.stars == b.stars
           ? 0
           : a.stars > b.stars
@@ -235,25 +235,26 @@ class _SecondPageState extends State<SecondPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AutoComplete TextField Demo Complex'),
+        title: const Text('AutoComplete TextField Demo Complex'),
       ),
       body: Column(children: [
         Padding(
-            child: Container(child: textField), padding: EdgeInsets.all(16.0)),
+            padding: const EdgeInsets.all(16.0),
+            child: Container(child: textField)),
         Padding(
-            padding: EdgeInsets.fromLTRB(0.0, 64.0, 0.0, 0.0),
+            padding: const EdgeInsets.fromLTRB(0.0, 64.0, 0.0, 0.0),
             child: Card(
                 child: selected != null
                     ? Column(children: [
                   ListTile(
                       title: Text(selected!.name),
                       trailing: Text("Rating: ${selected!.stars}/5")),
-                  Container(
-                      child: Image(image: NetworkImage(selected!.imgURL)),
+                  SizedBox(
                       width: 400.0,
-                      height: 300.0)
+                      height: 300.0,
+                      child: Image(image: NetworkImage(selected!.imgURL)))
                 ])
-                    : Icon(Icons.cancel))),
+                    : const Icon(Icons.cancel))),
       ]),
     );
   }

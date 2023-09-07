@@ -34,14 +34,9 @@ class _DmeoPDFState extends State<DmeoPDF> {
 
 
 Future<Uint8List> generateInvoice(
-    PdfPageFormat pageFormat, CustomData data) async {
+    PdfPageFormat pageFormat,  products) async {
   final lorem = pw.LoremText();
 
-  final products = <Product>[
-    Product('001', "First Mid Term Fees", 14999.99, 1),
-
-
-  ];
 
   final invoice = Invoice(
     invoiceNumber: '#0001',

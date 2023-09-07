@@ -66,6 +66,8 @@ dependencies:
   file_picker: any
   easy_autocomplete: ^1.6.0
   autocomplete_textfield: ^2.0.1
+  pattern_lock: ^2.0.0
+  open_file: ^3.3.2
 
 
 
