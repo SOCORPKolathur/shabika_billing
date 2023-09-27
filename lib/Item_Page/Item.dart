@@ -66,7 +66,7 @@ class _ItemState extends State<Item> {
   bool status=true;
   bool status2=false;
 
-  TextFieldTagsController tagcontroller = TextFieldTagsController();
+  TextfieldTagsController tagcontroller = TextfieldTagsController();
 
   final TextEditingController _typeAheadControllergender = TextEditingController();
   SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();

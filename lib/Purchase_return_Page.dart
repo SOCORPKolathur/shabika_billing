@@ -420,7 +420,6 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
     for(int i=0;i<document.docs.length;i++){
      if(code==document.docs[i]['suppilierinvoiceno']){
        setState((){
-         Qtydecrease.clear();
          Totalamountoftopay=0;
          purchasehistroytotalamount=0;
          returnid =document.docs[i].id;
@@ -432,12 +431,36 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
          _typeAheadControllergender9.text=document.docs[i]['suppilierinvoiceno'];
          suppierid.text=document.docs[i]['suppilerid'];
          Suppliername.text=document.docs[i]['suppilername'];
+         purchase_No.text=document.docs[i]['purchaseno'];
          suppiler_gstno.text=document.docs[i]['suppilergst'];
-          Currentdatecontroller .text="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
-          Currenttimecontroller.text=DateFormat.jm().format(DateTime.now());
+         Currentdatecontroller .text="${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
+         Currenttimecontroller.text=DateFormat.jm().format(DateTime.now());
          gettotal=true;
+         if(document.docs[i]['type']=="ShabikaG"){
+           status=true;
+           status2=false;
+         }
+         else{
+           status2=true;
+           status=false;
+         }
        });
        if(returnid.isNotEmpty){
+
+         var getdate = await FirebaseFirestore.instance.collection("Purchase entry").
+         doc(returnid).collection(returnid.toString()).orderBy("timestamp").get();
+
+         for(int i=0;i<getdate.docs.length;i++){
+           setState(() {
+             _Streamcontroller1[i].text= getdate.docs[i]["stocks"].toString();
+           });
+
+
+         }
+       }
+
+
+       /*if(returnid.isNotEmpty){
 
          var getdate = await FirebaseFirestore.instance.collection("Purchase entry").
          doc(returnid).collection(returnid.toString()).get();
@@ -447,7 +470,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
              if (mounted) {
                setState(() {
-                 Totalamountoftopay=Totalamountoftopay+ ((((int.parse(getdate.docs[i]['Qty'].toString())-getdate.docs[i]['stocks'])-getdate.docs[i]['return Quvantity']))*(double.parse(getdate.docs[i]['Landing cost'].toString())));
+                // Totalamountoftopay=Totalamountoftopay+ ((((int.parse(getdate.docs[i]['Qty'].toString())-getdate.docs[i]['stocks'])-getdate.docs[i]['return Quvantity']))*(double.parse(getdate.docs[i]['Landing cost'].toString())));
                });
              }
              print(Totalamountoftopay);
@@ -460,16 +483,17 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
          for(int k=0;k<Purchasehistroy.docs.length;k++){
            setState((){
-             purchasehistroytotalamount=purchasehistroytotalamount+double.parse(Purchasehistroy.docs[k]['Amount'].toString());
+            // purchasehistroytotalamount=purchasehistroytotalamount+double.parse(Purchasehistroy.docs[k]['Amount'].toString());
            });
          }
          print(purchasehistroytotalamount);
 
          setState((){
-           Totalamountoftopay=Totalamountoftopay-purchasehistroytotalamount;
+        //   Totalamountoftopay=Totalamountoftopay-purchasehistroytotalamount;
          });
          
        }
+        */
        print("Qtydecrease lists");
        print(Qtydecrease);
 
@@ -553,7 +577,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
         Selected[i]=true;
       });
       var document=await FirebaseFirestore.instance.collection("Purchase entry").
-      doc(returnid).collection(returnid.toString()).where("return",isEqualTo:false).get();
+      doc(returnid).collection(returnid.toString()).orderBy("timestamp").get();
       for(int k=0;k<document.docs.length;k++){
         if(i==k){
           if((int.parse(document.docs[k]["Qty"].toString())-(((int.parse(document.docs[k]["Qty"].toString()))-document.docs[k]['stocks'])))!=0){
@@ -586,8 +610,9 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
       Returnlists.clear();
       documentlists.clear();
     });
+    print("funcalled");
     var document=await FirebaseFirestore.instance.collection("Purchase entry").
-    doc(returnid).collection(returnid.toString()).where("return",isEqualTo:false).get();
+    doc(returnid).collection(returnid.toString()).orderBy("timestamp").get();
     for(int k=0;k<document.docs.length;k++){
       if((int.parse(document.docs[k]["Qty"].toString())-(((int.parse(document.docs[k]["Qty"].toString()))-document.docs[k]['stocks'])))!=0)
       {
@@ -602,6 +627,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
           CGSTfunction();
           SGSTfunction();
           Totalamounts();
+          print(totalamount);
         }
       }
     }
@@ -616,7 +642,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
   }
 
   ///stream controller add to the quvantity value list
-  List<int>Qtydecrease=[];
+  List<int> Qtydecrease=List.generate(50, (index) => 0);
 
   @override
   Widget build(BuildContext context) {
@@ -1697,33 +1723,9 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
                             ),
                             onSubmitted: (_){
-                              if(suppierid.text.length!=0||suppiler_name.text.length!=0) {
-                                if (Qty.text.length > 0) {
-                                  //Total function
-                                  checkgst(Purchase_price.text, Qty.text);
 
-                                  updatetotalquvantity(Qty.text);
-
-                                  //check the imei and seriall functiom
-
-                                  serialvalue == true || imeivalue == true || color ==
-                                      true ?
-                                  //create a document (Firebase)
-                                  showtextfield(
-                                      int.parse(Qty.text), serialvalue, imeivalue,
-                                      color) : collectioncreatefunction();
-
-                                  //multiple the value functions(Total)
-                                  serialvalue == true || imeivalue == true
-                                      ? updatetotal()
-                                      : empty();
-                                  Quvantitylist.unfocus();
-                                  FocusScope.of(context).requestFocus(items_value);
-                                }
-                              }
-                              else{
                                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please Fill the Suppiler Name and Suppiler ID.....")));
-                              }
+
                             },
                             onChanged: (_){
                               if(suppierid.text.length!=0||suppiler_name.text.length!=0) {
@@ -1822,7 +1824,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               serialvalue == true || imeivalue == true || color ==
                                   true ?
                               //create a document (Firebase)
-                              showtextfield(int.parse(Qty.text), serialvalue, imeivalue, color) :
+                              showtextfield(int.parse(Qty.text), serialvalue, imeivalue, color,0) :
                               collectioncreatefunction();
 
                               updatetotal();
@@ -1933,7 +1935,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                           StreamBuilder<QuerySnapshot>(
                             stream: FirebaseFirestore.instance.collection("Purchase entry").doc(returnid)
-                                .collection(returnid.toString()).where("return",isEqualTo:false).snapshots(),
+                                .collection(returnid.toString()).orderBy("timestamp").snapshots(),
                             builder: (context, snapshot) {
 
                               if (snapshot.hasData == null) {
@@ -1973,9 +1975,9 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                 setState((){
                                                   Selected[index]=!Selected[index];
                                                 });
-                                                if(Selected[index]==true&&_Streamcontroller1[index].text==""){
+                                                if(Selected[index]==true){
                                                   setState((){
-                                                    Qtydecrease.add(stocksitem["stocks"]);
+                                                    Qtydecrease.replaceRange(index,index+1,[stocksitem["stocks"]]);
                                                   });
                                                   streambalnaceamount();
                                                 }
@@ -2080,7 +2082,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                 });
                                                 if(Selected[index]==true){
                                                   setState((){
-                                                    Qtydecrease.add(int.parse(_Streamcontroller1[index].text));
+                                                    Qtydecrease.replaceRange(index,index+1,[int.parse(_Streamcontroller1[index].text)]);
                                                   });
                                                   print("Qtydecrease Listsssss");
                                                   print(Qtydecrease);
@@ -2088,27 +2090,32 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                   if(stocksitem['IMEI NO']==true){
                                                     print("Imei Number True");
                                                     setState((){
-                                                      ImerisrialListitem.clear();
+                                                      ImerisrialListitem[index].clear();
                                                     });
                                                     for (int i = 0; i < stocksitem['Imei no'].length; i++) {
-                                                      ImerisrialListitem.add(stocksitem['Imei no'][i].toString());
+                                                      setState(() {
+                                                        ImerisrialListitem[index].add(stocksitem['Imei no'][i].toString());
+                                                      });
+
                                                     }
                                                   }
+                                                  print(ImerisrialListitem[index]);
+                                                  print(ImerisrialListitem);
                                                    if(stocksitem['Serial NO']==true){
                                                     setState((){
-                                                      ImerisrialListitem1.clear();
+                                                      ImerisrialListitem1[index].clear();
                                                     });
                                                     for (int j = 0; j < stocksitem['Serial no'].length; j++) {
-                                                      ImerisrialListitem1.add(stocksitem['Serial no'][j].toString());
+                                                      ImerisrialListitem1[index].add(stocksitem['Serial no'][j].toString());
                                                     }
 
                                                   }
                                                    if(stocksitem['Color']==true){
                                                     setState((){
-                                                      ImerisrialListitem2.clear();
+                                                      ImerisrialListitem2[index].clear();
                                                     });
                                                     for (int k = 0; k < stocksitem['color'].length; k++) {
-                                                      ImerisrialListitem2.add(stocksitem['color'][k].toString());
+                                                      ImerisrialListitem2[index].add(stocksitem['color'][k].toString());
                                                     }
 
                                                   }
@@ -2142,7 +2149,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                         stocksitem['color'],
                                                         stocksitem.id,
                                                         ///purchase price
-                                                        double.parse( stocksitem['Purchase price'])
+                                                        double.parse( stocksitem['Purchase price']),index
                                                     ):
                                                     totalamountmultiplefunction(int.parse(_Streamcontroller1[index].text),
                                                         double.parse( stocksitem['Purchase price']));
@@ -2604,8 +2611,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
               ),
 
               Padding(
-                padding:
-                EdgeInsets.only(top: height / 131.4, left: width / 27.32),
+                padding: EdgeInsets.only(top: height / 131.4, left: width / 27.32),
                 child: Material(
                   elevation: 50,
                   shadowColor: Colors.black38,
@@ -2631,8 +2637,27 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               child:
                               InkWell(
                                 onTap: () {
-
-                                  showpaymenthistroypopup();
+                                  print("Hello 1 ---------------------------------------------------");
+                                  savedatefunction();
+                                  setState(() {
+                                    Loading = true;
+                                  });
+                                  print("Hello 2 ---------------------------------------------------");
+                                  retrninvoice();
+                                  print("Hello 3 ---------------------------------------------------");
+                                  //check bill no function
+                                 Purchaseitem();
+                                  print("Hello 4 ---------------------------------------------------");
+                                  printdate(returnid);
+                                  //  printdate();
+                                  Future.delayed(const Duration(seconds: 3),(){
+                                    ///stream controller clear function
+                                   // Streamcontrollerclear();
+                                    setState(() {
+                                      Loading = false;
+                                    });
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => drawer(" "),));
+                                  });
 
                                 },
                                 child:
@@ -3116,7 +3141,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                           ),
                                         ),
                                         SizedBox(width:width/91.066),
-                                        Container(
+                                       /* Container(
                                           width: width / 7.0,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(4),
@@ -3164,7 +3189,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                               ),
                                             ],
                                           ),
-                                        ),
+                                        ),*/
                                       ],
                                     ),
                                   ],
@@ -3303,29 +3328,12 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
       );
   }
 
-  updatereturntotalmountfunction(Qty,docsid,Stocks,purchaseprice){
-    FirebaseFirestore.instance.collection("Purchase entry").
-    doc(returnid).collection(returnid.toString()).doc(docsid).update({
-      "stocks":FieldValue.increment(- Qty),
-      "return Quvantity":FieldValue.increment( Qty),
-    });
-
-    ///total bill amount calculation function(Balance Amount)
-    print("Upadte Function-1");
-    streambalnaceamount();
-    print("Upadte Function-2");
-
-   // quvantitybalanceduntion(Qty,Stocks,purchaseprice);
-    print("Upadte Function-3");
-
-
-
-  }
 
 
 
 
-  //supplier functuon start
+
+
 
   //popup update suppier textcontrollers
   TextEditingController Suppliername=TextEditingController();
@@ -4016,8 +4024,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
   }
 
 
-  //total Amount
-  //total Amount
+
 
 
 
@@ -4227,7 +4234,7 @@ String  creaditedatevalue="";
 
 
   Purchaseitem()async {
-    print("exit-1");
+    print("exit-1=================================================");
     setState((){
       reducequvanity=0;
       Itemcode="";
@@ -4237,7 +4244,8 @@ String  creaditedatevalue="";
     Map<String,dynamic>?values=documentget.data();
     setState((){
       values!["credit date"]!=""?creaditedatevalue=values["credit date"].toString():"";
-    });
+    }); print("exit-1===================Credit date check==============================");
+
     if(creditdate.text!=""){
       setState((){
         Changedate = DateTime(year, month, day).add(Duration(days: int.parse(creditdate.text))).toString();
@@ -4282,21 +4290,34 @@ String  creaditedatevalue="";
        if(status==true){
          print("Qtydecrease[s]");
          print(Qtydecrease[s]);
-         FirebaseFirestore.instance.collection("Item ShabikaG").doc(documentlists[s]).update({
-           "TotalQuvantity":FieldValue.increment(-Qtydecrease[s]),
-           "Imei no": FieldValue.arrayRemove(IMEI),
-           "Serial no": FieldValue.arrayRemove(SERIAL),
-           "color": FieldValue.arrayRemove(colorlist),
-         });
+         print(s);
+         print(IMEI[s]);
+         print(SERIAL[s]);
+         print(colorlist[s]);
+         var documentget = await FirebaseFirestore.instance.collection("Purchase entry").doc(returnid).collection(returnid).get();
 
+         for(int a=0;a<documentget.docs.length;a++) {
+           print(IMEI[a]);
+           print(SERIAL[a]);
+           print(colorlist[a]);
+           if(Selected[a]==true) {
+             print(Qtydecrease[s]);
+             FirebaseFirestore.instance.collection("Item ShabikaG").doc(documentlists[s]).update({
+               "TotalQuvantity": FieldValue.increment(-Qtydecrease[s]),
+               "Imei no": FieldValue.arrayRemove(IMEI[a]),
+               "Serial no": FieldValue.arrayRemove(SERIAL[a]),
+               "color": FieldValue.arrayRemove(colorlist[a]),
+             });
+           }
+         }
        }
 
         if(status2==true){
           FirebaseFirestore.instance.collection("Item ShabikaN").doc(documentlists[s]).update({
             "TotalQuvantity":FieldValue.increment(-Qtydecrease[s]),
-            "Imei no": FieldValue.arrayRemove(IMEI),
-            "Serial no": FieldValue.arrayRemove(SERIAL),
-            "color": FieldValue.arrayRemove(colorlist),
+            "Imei no": FieldValue.arrayRemove(IMEI[s]),
+            "Serial no": FieldValue.arrayRemove(SERIAL[s]),
+            "color": FieldValue.arrayRemove(colorlist[s]),
           });
         }
 
@@ -4311,18 +4332,9 @@ String  creaditedatevalue="";
 
     print("exit-5");
     print(TotalAmount2);
-    print(Amounts.text);
-    print(int.parse(Amounts.text.toString()));
-    print((int.parse(Amounts.text.toString())+TotalAmount2));
-    FirebaseFirestore.instance.collection("Purchase entry").doc(returnid).update({
-      "balance amount": FieldValue.increment(-(int.parse(Amounts.text.toString())+TotalAmount2)),
-      "Payment mode 2": Payments2!=""?Payments2:"",
-      "Reason":Reasoncontroller.text,
-      "save":true,
-      "return":true,
-      "credit days": creaditupdatedate,
-      "credit date": formattedDate,
-    });
+
+
+
 
 /// check the amount and subtract to the total amount and to create a purchase Histroy collection and to craete a new document....
 
@@ -4343,44 +4355,16 @@ String  creaditedatevalue="";
     if(Totalamountoftopay!=0){
       print("entered the TotalPay");
       print(creaditupdatedate);
-      FirebaseFirestore.instance.collection("Purchase entry").doc(returnid).
-      collection("Payment Histroy").doc().set({
-        "credit days": creditdate.text,
-        "credit date": creaditupdatedate,
-        "Amount":Amounts.text,
-        "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-        "time":DateFormat.jm().format(DateTime.now()),
-        "payment mode":Payments2,
-        "timstamp":DateTime.now().millisecondsSinceEpoch,
-      });
+
     }
     print("exit-8");
 
     if(status==true&&returnid.isNotEmpty){
       print("exit-8");
 
-      FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(returnid).update({
-        "credit days": Creadit_days.text,
-        "credit date": creaditupdatedate,
-        "balance amount": FieldValue.increment(-(int.parse(Amounts.text.toString())+TotalAmount2)),
-        "Amount":TotalAmount2.toString(),
-        "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-        "time":DateFormat.jm().format(DateTime.now()),
-        "payment mode":"Cash",
-        "timstamp":DateTime.now().millisecondsSinceEpoch,
-      });
 
       if(Totalamountoftopay>0){
-        FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(returnid).
-        collection("Payment Histroy").doc().set({
-          "credit days": creditdate.text,
-          "credit date": creaditupdatedate,
-          "Amount":Amounts.text,
-          "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "time":DateFormat.jm().format(DateTime.now()),
-          "payment mode":Payments2,
-          "timstamp":DateTime.now().millisecondsSinceEpoch,
-        });
+
       }
 
 
@@ -4404,28 +4388,10 @@ String  creaditedatevalue="";
     if(status2==true&&returnid.isNotEmpty){
       print("exit-8");
 
-      FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(returnid).update({
-        "credit days": Creadit_days.text,
-        "credit date": creaditupdatedate,
-        "balance amount": FieldValue.increment(-(int.parse(Amounts.text.toString())+TotalAmount2)),
-        "Amount":TotalAmount2.toString(),
-        "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-        "time":DateFormat.jm().format(DateTime.now()),
-        "payment mode":"Cash",
-        "timstamp":DateTime.now().millisecondsSinceEpoch,
-      });
+
 
       if(Totalamountoftopay>0){
-        FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(returnid).
-        collection("Payment Histroy").doc().set({
-          "credit days": creditdate.text,
-          "credit date": creaditupdatedate,
-          "Amount":Amounts.text,
-          "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "time":DateFormat.jm().format(DateTime.now()),
-          "payment mode":Payments2,
-          "timstamp":DateTime.now().millisecondsSinceEpoch,
-        });
+
       }
 
 
@@ -4447,9 +4413,201 @@ String  creaditedatevalue="";
     print("exit-10");
 
     setState((){
-      Amounts.clear();
+
     });
 
+  }
+
+  retrninvoice() async {
+    print("Retrun invoic e started-------------------------------------");
+    print("Retrun invoic e started-------------------------------------");
+    print("Retrun invoic e started-------------------------------------");
+    var documentget = await FirebaseFirestore.instance.collection("Purchase entry").doc(returnid).collection(returnid).get();
+
+    if (status == true) {
+      FirebaseFirestore.instance.collection("ReturnG entry").doc(returnid).set(
+          {
+            "Total": TotalAmount2.toStringAsFixed(2),
+            "Payment mode": Payments,
+            "Payment mode 2": "",
+            "suppilerid": suppierid.text,
+            "suppilername": Suppliername.text,
+            "suppilergst": suppiler_gstno.text,
+            "purchaseno": purchase_No.text,
+            "purchasedate": purchase_Date.text,
+            "purchasenote": purchase_notes.text,
+            "suppilierinvoiceno": suppiler_invoice.text,
+            "credit days": Creadit_days.text,
+            "credit date":"",
+            "balance amount":0,
+            "purchaseinvoiceid":[],
+            "Reason":"",
+            "save": false,
+            "return": false,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "timestamp": DateTime.now().microsecondsSinceEpoch
+
+          }
+      );
+
+      for(int i=0;i<documentget.docs.length;i++) {
+        print("Retrun invoic e started--------length--------------------${documentget.docs.length}");
+        if (Selected[i] == true) {
+          print("Retrun invoic e started----------------------------${Selected[i]}");
+          print("Retrun invoic e started----------Docid------------------${returnid}");
+          FirebaseFirestore.instance.collection("ReturnG entry").doc(returnid)
+              .collection(returnid).doc()
+              .set({
+            "Total": int.parse(_Streamcontroller1[i].text) * double.parse(documentget.docs[i]["Purchase price"].toString()),
+            "itemcode": documentget.docs[i]["itemcode"],
+            "Hsncode": documentget.docs[i]["Hsncode"],
+            "BoxNo": documentget.docs[i]["BoxNo"],
+            "return Quvantity": 0,
+            "tax": taxitem.text,
+            "stocks": _Streamcontroller1[i].text,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "timestamp": DateTime.now().microsecondsSinceEpoch,
+            "Item": documentget.docs[i]["Item"],
+            "Purchase price": documentget.docs[i]["Purchase price"],
+            "Sales price": documentget.docs[i]["Sales price"],
+            "MRP price": documentget.docs[i]["MRP price"],
+            "Qty": documentget.docs[i]["Qty"],
+            "Landing cost": documentget.docs[i]["Landing cost"],
+            "IMEI NO": IMEI[i],
+            "Serial NO": SERIAL[i],
+            "Color": colorlist[i],
+            "Description": documentget.docs[i]["Description"],
+            "Imei no": IMEI[i],
+            "Serial no": SERIAL[i],
+            "color": colorlist[i],
+          });
+        }
+      }
+    }
+    else if (status2 == true) {
+      FirebaseFirestore.instance.collection("ReturnN entry").doc(returnid).set(
+          {
+            "Total": TotalAmount2.toStringAsFixed(2),
+            "Payment mode": Payments,
+            "Payment mode 2": "",
+            "suppilerid": suppierid.text,
+            "suppilername": Suppliername.text,
+            "suppilergst": suppiler_gstno.text,
+            "purchaseno": purchase_No.text,
+            "purchasedate": purchase_Date.text,
+            "purchasenote": purchase_notes.text,
+            "suppilierinvoiceno": suppiler_invoice.text,
+            "credit days": Creadit_days.text,
+            "credit date":"",
+            "balance amount":0,
+            "purchaseinvoiceid":[],
+            "Reason":"",
+            "save": false,
+            "return": false,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "timestamp": DateTime.now().microsecondsSinceEpoch
+
+          }
+      );
+
+      for(int i=0;i<documentget.docs.length;i++) {
+        print("Retrun invoic e started--------length--------------------${documentget.docs.length}");
+        if (Selected[i] == true) {
+          print("Retrun invoic e started----------------------------${Selected[i]}");
+          print("Retrun invoic e started----------Docid------------------${returnid}");
+          FirebaseFirestore.instance.collection("ReturnN entry").doc(returnid)
+              .collection(returnid).doc()
+              .set({
+            "Total": int.parse(_Streamcontroller1[i].text) * double.parse(documentget.docs[i]["Purchase price"].toString()),
+            "itemcode": documentget.docs[i]["itemcode"],
+            "Hsncode": documentget.docs[i]["Hsncode"],
+            "BoxNo": documentget.docs[i]["BoxNo"],
+            "return Quvantity": 0,
+            "tax": taxitem.text,
+            "stocks": _Streamcontroller1[i].text,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "timestamp": DateTime.now().microsecondsSinceEpoch,
+            "Item": documentget.docs[i]["Item"],
+            "Purchase price": documentget.docs[i]["Purchase price"],
+            "Sales price": documentget.docs[i]["Sales price"],
+            "MRP price": documentget.docs[i]["MRP price"],
+            "Qty": documentget.docs[i]["Qty"],
+            "Landing cost": documentget.docs[i]["Landing cost"],
+            "IMEI NO": IMEI[i],
+            "Serial NO": SERIAL[i],
+            "Color": colorlist[i],
+            "Description": documentget.docs[i]["Description"],
+            "Imei no": IMEI[i],
+            "Serial no": SERIAL[i],
+            "color": colorlist[i],
+          });
+        }
+      }
+    }
+    FirebaseFirestore.instance.collection("Return entry").doc(returnid).set(
+        {
+          "Total": TotalAmount2.toStringAsFixed(2),
+          "Payment mode": Payments,
+          "Payment mode 2": "",
+          "suppilerid": suppierid.text,
+          "suppilername": Suppliername.text,
+          "suppilergst": suppiler_gstno.text,
+          "purchaseno": purchase_No.text,
+          "purchasedate": purchase_Date.text,
+          "purchasenote": purchase_notes.text,
+          "suppilierinvoiceno": suppiler_invoice.text,
+          "credit days": Creadit_days.text,
+          "credit date":"",
+          "balance amount":0,
+          "purchaseinvoiceid":[],
+          "Reason":"",
+          "save": false,
+          "return": false,
+          "time": DateFormat.jm().format(DateTime.now()),
+          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+          "timestamp": DateTime.now().microsecondsSinceEpoch
+
+        }
+    );
+
+    for(int i=0;i<documentget.docs.length;i++) {
+      print("Retrun invoic e started--------length--------------------${documentget.docs.length}");
+      if (Selected[i] == true) {
+        print("Retrun invoic e started----------------------------${Selected[i]}");
+        print("Retrun invoic e started----------Docid------------------${returnid}");
+        FirebaseFirestore.instance.collection("Return entry").doc(returnid)
+            .collection(returnid).doc()
+            .set({
+          "Total": int.parse(_Streamcontroller1[i].text) * double.parse(documentget.docs[i]["Purchase price"].toString()),
+          "itemcode": documentget.docs[i]["itemcode"],
+          "Hsncode": documentget.docs[i]["Hsncode"],
+          "BoxNo": documentget.docs[i]["BoxNo"],
+          "return Quvantity": 0,
+          "tax": taxitem.text,
+          "stocks": _Streamcontroller1[i].text,
+          "time": DateFormat.jm().format(DateTime.now()),
+          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+          "timestamp": DateTime.now().microsecondsSinceEpoch,
+          "Item": documentget.docs[i]["Item"],
+          "Purchase price": documentget.docs[i]["Purchase price"],
+          "Sales price": documentget.docs[i]["Sales price"],
+          "MRP price": documentget.docs[i]["MRP price"],
+          "Qty": documentget.docs[i]["Qty"],
+          "Landing cost": documentget.docs[i]["Landing cost"],
+          "IMEI NO": IMEI[i],
+          "Serial NO": SERIAL[i],
+          "Color": colorlist[i],
+          "Description": documentget.docs[i]["Description"],
+          "Imei no": IMEI[i],
+          "Serial no": SERIAL[i],
+          "color": colorlist[i],
+        });
+      }
+    }
   }
 
   List Destription=[];
@@ -4467,7 +4625,7 @@ String  creaditedatevalue="";
       totalamount = 0;
     });
     var documents = await FirebaseFirestore.instance
-        .collection("Purchase entry").doc(returnid).collection(returnid.toString()).get();
+        .collection("Purchase entry").doc(returnid).collection(returnid.toString()).orderBy("timestamp").get();
     for (int i = 0; i < documents.docs.length; i++) {
       setState(() {
         totalamount = ((totalamount) + double.parse(documents.docs[i]['Total'].toString()));
@@ -4486,7 +4644,7 @@ String  creaditedatevalue="";
       totalamount = 0;
     });
     var documents = await FirebaseFirestore.instance
-        .collection("Purchase entry").doc(returnid).collection(returnid.toString()).get();
+        .collection("Purchase entry").doc(returnid).collection(returnid.toString()).orderBy("timestamp").get();
     for (int i = 0; i < documents.docs.length; i++) {
       setState(() {
         totalamount = ((totalamount) + double.parse(documents.docs[i]['Total'].toString()));
@@ -4627,9 +4785,9 @@ String  creaditedatevalue="";
 
   List IMEISERIAL=[];
 
-  List IMEI=[];
-  List SERIAL=[];
-  List colorlist=[];
+  List<List> IMEI=List.generate(50, (index) => []);
+  List SERIAL=List.generate(50, (index) => []);
+  List colorlist=List.generate(50, (index) => []);
 
   bool popupLoading=false;
 
@@ -4723,11 +4881,11 @@ String  creaditedatevalue="";
 
 
 
-  showtextfield(Quvantity,serial,imei,color){
+  showtextfield(Quvantity,serial,imei,color,index){
 
     setState(() {
       IMEISERIAL.clear();
-      IMEI.clear();
+      IMEI[index].clear();
       SERIAL.clear();
       colorlist.clear();
     });
@@ -4929,9 +5087,9 @@ String  creaditedatevalue="";
                                   for(int i=0;i<Quvantity;i++){
                                     setState(() {
                                       IMEISERIAL.add("${_controller[i].text}${_controller2[i].text}${_controller3[i].text}");
-                                      IMEI.add(_controller[i].text);
-                                      SERIAL.add(_controller2[i].text);
-                                      colorlist.add(_controller3[i].text);
+                                      IMEI[index].add(_controller[i].text);
+                                      SERIAL[index].add(_controller2[i].text);
+                                      colorlist[index].add(_controller3[i].text);
                                     });
                                   }
 
@@ -5015,46 +5173,48 @@ String  creaditedatevalue="";
 
   }
 
-  List<String>ImerisrialListitem=[];
-  List<String>ImerisrialListitem1=[];
-  List<String>ImerisrialListitem2=[];
+
+  List ImerisrialListitem=List.generate(50, (index) => [""]);
+  List ImerisrialListitem1=List.generate(50, (index) => [""]);
+  List ImerisrialListitem2=List.generate(50, (index) => [""]);
+
 
   SuggestionsBoxController suggestionBoxController1 = SuggestionsBoxController();
 
-  List<String> getSuggestionsgender1(String query) {
+  List<String> getSuggestionsgender1(String query,index) {
     List<String> matches = <String>[];
-    matches.addAll(ImerisrialListitem);
+    matches.addAll(ImerisrialListitem[index]);
     matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
     return matches;
   }
 
   SuggestionsBoxController suggestionBoxController2 = SuggestionsBoxController();
 
-  List<String> getSuggestionsgender2(String query) {
+  List<String> getSuggestionsgender2(String query,index) {
     List<String> matches = <String>[];
-    matches.addAll(ImerisrialListitem1);
+    matches.addAll(ImerisrialListitem1[index]);
     matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
     return matches;
   }
 
   SuggestionsBoxController suggestionBoxController3 = SuggestionsBoxController();
 
-  List<String> getSuggestionsgender3(String query) {
+  List<String> getSuggestionsgender3(String query,index) {
     List<String> matches = <String>[];
-    matches.addAll(ImerisrialListitem2);
+    matches.addAll(ImerisrialListitem2[index]);
     matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
     return matches;
   }
 
   List<String> Addlist=[];
 
-  showstocksupdate(Quvantity,serial,imei,color, imeilist,seriallist, colorlistvalue,documentid,purchaseprice){
+  showstocksupdate(Quvantity,serial,imei,color, imeilist,seriallist, colorlistvalue,documentid,purchaseprice,indexm){
     print("Check-enter popup");
   setState((){
   IMEISERIAL.clear();
-  IMEI.clear();
-  SERIAL.clear();
-  colorlist.clear();
+  IMEI[indexm].clear();
+  SERIAL[indexm].clear();
+  colorlist[indexm].clear();
   Addlist.clear();
   });
   print(imei);
@@ -5173,7 +5333,7 @@ String  creaditedatevalue="";
                                                         ),
                                                         suggestionsCallback:
                                                             (pattern) {
-                                                          return getSuggestionsgender1(pattern);
+                                                          return getSuggestionsgender1(pattern,indexm);
                                                         },
                                                         itemBuilder: (context,
                                                             String
@@ -5193,16 +5353,22 @@ String  creaditedatevalue="";
                                                         },
                                                         onSuggestionSelected: (String suggestion) {
                                                           setState(() {
-                                                            ImerisrialListitem.remove(_controller[index].text);
-                                                            _controller[index].text = suggestion;
+                                                             _controller[index].text = suggestion;
+                                                             ImerisrialListitem[indexm].remove(_controller[index].text);
+                                                            print(_controller[index].text);
+                                                             print("Imei Removed=====================================");
+                                                             print("${ImerisrialListitem}=====================================");
+                                                             print("${ImerisrialListitem[index]}=====================================");
+
                                                           });
                                                         },
                                                         suggestionsBoxController: suggestionBoxController1,
                                                         validator: (value) => value!.isEmpty
-                                                            ? 'Please select a academic year'
+                                                            ? 'Please select a  value'
                                                             : null,
                                                         onSaved: (value) {
                                                           setState(() {
+                                                            print("Imei Removed222222=====================================");
                                                             _controller[index].text = value!;
                                                           });
                                                         },
@@ -5291,7 +5457,7 @@ String  creaditedatevalue="";
                                                         ),
                                                         suggestionsCallback:
                                                             (pattern) {
-                                                          return getSuggestionsgender2(pattern);
+                                                          return getSuggestionsgender2(pattern,indexm);
                                                         },
                                                         itemBuilder: (context,
                                                             String
@@ -5313,8 +5479,9 @@ String  creaditedatevalue="";
                                                             (String
                                                         suggestion) {
                                                           setState(() {
-                                                            ImerisrialListitem1.remove(_controller2[index].text);
                                                             _controller2[index].text = suggestion;
+                                                            ImerisrialListitem1[indexm].remove(_controller2[index].text);
+
                                                           });
                                                         },
                                                         suggestionsBoxController:
@@ -5415,7 +5582,7 @@ String  creaditedatevalue="";
                                                         suggestionsCallback:
                                                             (pattern) {
                                                           return getSuggestionsgender3(
-                                                              pattern);
+                                                              pattern,indexm);
                                                         },
                                                         itemBuilder: (context,
                                                             String
@@ -5435,10 +5602,9 @@ String  creaditedatevalue="";
                                                         },
                                                         onSuggestionSelected: (String suggestion) {
                                                           setState(() {
-                                                            ImerisrialListitem2.remove(_controller3[index].text);
-                                                            _controller3[index]
-                                                                .text =
-                                                                suggestion;
+                                                            _controller3[index].text = suggestion;
+                                                            ImerisrialListitem2[indexm].remove(_controller3[index].text);
+
                                                           });
                                                         },
                                                         suggestionsBoxController:
@@ -5482,23 +5648,25 @@ String  creaditedatevalue="";
                                     });
                                     if(imei == true){
                                       setState((){
-                                        IMEI.add(_controller[i].text);
+                                        IMEI[indexm].add(_controller[i].text);
                                       });
                                     }
 
                                     if(serial == true){
                                       setState((){
-                                        SERIAL.add(_controller2[i].text);
+                                        SERIAL[indexm].add(_controller2[i].text);
                                       });
                                     }
 
                                     if(color == true){
                                       setState((){
-                                        colorlist.add(_controller3[i].text);
+                                        colorlist[indexm].add(_controller3[i].text);
                                       });
                                     }
 
                                   }
+                                  print("okkkkkkkkkkkkkkkkkkkkkkk---------------------------------------");
+                                  streambalnaceamount();
 
                                   Future.delayed(const Duration(milliseconds: 1500),(){
                                     print("Show poup-9");
@@ -5511,7 +5679,7 @@ String  creaditedatevalue="";
                                     ///muyltiplication function
                                     totalamountmultiplefunction(Quvantity,purchaseprice);
 
-                                    streambalnaceamount();
+
                                     Navigator.pop(context);
 
                                     //clear the controller
@@ -5982,7 +6150,7 @@ String  creaditedatevalue="";
       }
     }
 
-    Amountstopay.clear();
+
     balancepay.clear();
     creditdate.clear();
     Payment_detatils_Date.clear();
@@ -5992,13 +6160,105 @@ String  creaditedatevalue="";
       Payments = Paymentmode.first;
     });
   }
+  printdate(streamid) async {
+    print("Pay now called");
+    print(streamid);
+
+
+
+    print("Pay now work started");
+    print("Total AMount");
+    print(TotalAmount2);
+
+    FirebaseFirestore.instance
+        .collection("Purchase entry")
+        .doc(streamid)
+        .update({
+      "credit days": "",
+      "credit date": "",
+      "balance amount": FieldValue.increment(-TotalAmount2),
+    });
+    FirebaseFirestore.instance
+        .collection("Purchase entry")
+        .doc(streamid)
+        .collection("Payment Histroy")
+        .doc()
+        .set({
+      "credit days": "",
+      "credit date": "",
+      "balance amount": FieldValue.increment(-TotalAmount2),
+      "Amount": TotalAmount2,
+      "Date": "${DateTime.now().day}/${DateTime.now().hour}/${DateTime.now().year}",
+      "time": "${DateTime.now().hour}:${DateTime.now().minute}",
+      "payment mode": "Return",
+      "discount": "",
+      "timstamp": DateTime.now().millisecondsSinceEpoch,
+    });
+    if (status == true) {
+      FirebaseFirestore.instance
+          .collection("Purchase ShabikaG")
+          .doc(streamid)
+          .update({
+        "credit days": "",
+        "credit date": "",
+        "balance amount": FieldValue.increment(-TotalAmount2),
+      });
+
+      FirebaseFirestore.instance
+          .collection("Purchase ShabikaG")
+          .doc(streamid)
+          .collection("Payment Histroy")
+          .doc()
+          .set({
+        "credit days": "",
+        "credit date": "",
+        "balance amount": FieldValue.increment(-TotalAmount2),
+        "Amount": TotalAmount2,
+        "Date": "${DateTime.now().day}/${DateTime.now().hour}/${DateTime.now().year}",
+        "time": "${DateTime.now().hour}:${DateTime.now().minute}",
+        "payment mode": "Return",
+        "discount": "",
+        "timstamp": DateTime.now().millisecondsSinceEpoch,
+      });
+    }
+    if (status2 == true) {
+      FirebaseFirestore.instance
+          .collection("Purchase ShabikaN")
+          .doc(streamid)
+          .update({
+        "credit days": "",
+        "credit date": "",
+        "balance amount": FieldValue.increment(-TotalAmount2),
+      });
+      FirebaseFirestore.instance
+          .collection("Purchase ShabikaN")
+          .doc(streamid)
+          .collection("Payment Histroy")
+          .doc()
+          .set({
+        "credit days": "",
+        "credit date": "",
+        "balance amount": FieldValue.increment(-TotalAmount2),
+        "Amount": TotalAmount2,
+        "Date": "${DateTime.now().day}/${DateTime.now().hour}/${DateTime.now().year}",
+        "time": "${DateTime.now().hour}:${DateTime.now().minute}",
+        "payment mode": "Return",
+        "discount": "",
+        "timstamp": DateTime.now().millisecondsSinceEpoch,
+      });
+    }
+
+
+    print("POP");
+
+  }
 
 
 
   ///update save poup
 
-  TextEditingController Amounts = TextEditingController();
-  TextEditingController Amountstopay = TextEditingController();
+
+
   TextEditingController balancepay = TextEditingController();
   TextEditingController creditdate = TextEditingController();
   TextEditingController Payment_detatils_Date = TextEditingController();
@@ -6007,729 +6267,6 @@ String  creaditedatevalue="";
   double balanceamount = 0;
   double Payedamount = 0;
 
-  showpaymenthistroypopup() {
-
-    setState((){
-      Amountstopay.text=  Totalamountoftopay .toString();
-    });
-
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return showDialog(
-      context: context,
-      builder: (context) {
-        bool testBool = true;
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return SlideInLeft(
-                animate: true,
-                duration: const Duration(milliseconds: 800),
-                manualTrigger: false,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: height / 110.6,
-                      bottom: height / 110.6,
-                      left: width / 5.53,
-                      right: width / 5.53),
-                  child: Scaffold(
-                    body: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Colors.white,
-                      ),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: width / 8.4,
-                                ),
-                                Text(
-                                  "Item Your Are Returned",
-                                  style: GoogleFonts.poppins(
-                                      decoration: TextDecoration.underline,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                SizedBox(
-                                  width: width / 60.4,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 8.0),
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: ClipOval(
-                                      child: Container(
-                                        height: height / 26.28,
-                                        width: width / 54.64,
-                                        color: Colors.red,
-                                        child: const Center(
-                                            child: Icon(
-                                              Icons.clear,
-                                              color: Colors.white,
-                                            )),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-                            Text(
-                              "Items ",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-
-                            ///streamBuilder selcted item listouts
-
-                            Row(
-                              children: [
-                                SizedBox(width:width/136.6),
-
-                                //itemid
-                                Container(
-                                    width: width/14.2,
-                                    height: height/16.425,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,
-                                      width: 1
-                                      )
-                                    ),
-                                    child: Center(child: Text("Item Code"))
-                                ),
-
-                                //itemname
-                                Container(
-                                    width: width/3.0,
-                                    height: height/16.425,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,
-                                          width: 1
-                                      ),
-                                    ),
-
-                                    child: Center(child: Text('Item Name',textAlign: TextAlign.left,))),
-
-
-                                //Hsn code
-                                Container(
-                                    width: width/11.8,
-                                    height: height/16.425,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,
-                                          width: 1
-                                      ),
-                                    ),
-                                    child:
-                                    Center(child: Text("Hsn Code"))
-                                ),
-
-                                //quvantity
-                                Container(
-                                    width: width/15.18,
-                                  height: height/16.425,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black,
-                                        width: 1
-                                    ),
-                                  ),
-                                    child:
-                                    Center(child: Text("Qty")
-                                ),
-
-                                //value
-
-
-                                ),
-
-                                //Value
-                                Container(
-                                  width: width/15.18,
-                                  height: height/16.425,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black,
-                                        width: 1
-                                    ),
-                                  ),
-                                  child:
-                                  Center(child: Text("Value")
-                                  ),
-
-                                  //value
-
-
-                                )
-
-                              ],
-                            ),
-
-                            SizedBox(
-                              height:height/3.285,
-                              child:StreamBuilder<QuerySnapshot>(
-                                stream: FirebaseFirestore.instance.collection("Purchase entry").doc(returnid)
-                                    .collection(returnid.toString()).where("return",isEqualTo:false).snapshots(),
-                                builder: (context, snapshot) {
-                                  return  ListView.builder(
-                                    physics: const ScrollPhysics(),
-                                    itemCount:snapshot.data!.docs.length,
-                                    itemBuilder: (context, index) {
-                                      var stocksitem=snapshot.data!.docs[index];
-
-                                      return quvanotyblancedunction(int.parse(stocksitem['Qty'].toString()),
-                                          stocksitem['stocks'])!=0&&stocksitem['return']==false&&Selected[index]==true ?
-
-                                      Padding(
-                                        padding:  EdgeInsets.only(bottom:height/164.25),
-                                        child: Row(
-                                          children: [
-                                            SizedBox(width:width/136.6),
-
-                                            //itemid
-                                            Container(
-                                                width: width/14.2,
-                                                height: height/10.425,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(color: Colors.black,
-                                                      width: 1
-                                                  ),
-                                                ),
-                                                child: Center(child: Text("${stocksitem['itemcode']}"))
-                                            ),
-
-                                            //itemname
-                                            Container(
-                                                width: width/3.0,
-                                                height: height/10.425,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(color: Colors.black,
-                                                      width: 1
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding:  EdgeInsets.only(left:5.0),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Text('${stocksitem['Description']},',textAlign: TextAlign.left,),
-                                                      SizedBox(height:height/131.4),
-                                                      stocksitem['IMEI NO']==true?
-                                                      Text(
-                                                        "IMEI No: ${Addlist.toString()}",
-                                                        style: GoogleFonts.poppins(
-                                                            color: Colors.green,
-                                                            textStyle: const TextStyle(
-                                                                overflow: TextOverflow
-                                                                    .ellipsis)),
-                                                      ):
-                                                      stocksitem['Serial NO']==true?
-                                                      Text(
-                                                        "Serial No: ${Addlist.toString()}",
-                                                        style: GoogleFonts.poppins(
-                                                            color: Colors.green,
-                                                            textStyle: const TextStyle(
-                                                                overflow: TextOverflow
-                                                                    .ellipsis)),
-                                                      ):
-                                                      stocksitem['Color']==true?
-                                                      Text(
-                                                        "Color: ${Addlist.toString()}",
-                                                        style: GoogleFonts.poppins(
-                                                            color: Colors.green,
-                                                            textStyle: const TextStyle(
-                                                                overflow: TextOverflow
-                                                                    .ellipsis)),
-                                                      ):const SizedBox()
-                                                    ],
-                                                  ),
-                                                )),
-
-
-                                            //Hsn code
-                                            Container(
-                                                width: width/11.8,
-                                                height: height/10.425,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(color: Colors.black,
-                                                      width: 1
-                                                  ),
-                                                ),
-                                                child:
-                                                Center(child: Text(stocksitem['Hsncode']))
-                                            ),
-
-                                            //quvantity
-                                            Container(
-                                                width: width/15.18,
-                                                height: height/10.425,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(color: Colors.black,
-                                                      width: 1
-                                                  ),
-                                                ),
-                                                child:
-                                                 Center(child: Text(Qtydecrease[index].toString(),))
-                                            ),
-
-                                            //value
-                                            Container(
-                                                width: width/15.18,
-                                                height: height/10.425,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(color: Colors.black,
-                                                      width: 1
-                                                  ),
-                                                ),
-                                                child:
-                                                Center(child: Text(
-                                                  _Streamcontroller1[index].text==""?
-                                                  totalamountmultiplefunction(stocksitem['stocks'],double.parse(stocksitem['Purchase price'].toString())):
-                                                  totalamountmultiplefunction(int.parse( _Streamcontroller1[index].text),double.parse(stocksitem['Purchase price'].toString()))
-                                                  ,style: const TextStyle(color: Colors.red),))
-                                            ),
-
-                                          ],
-                                        ),
-                                      ) :
-                                      Container();
-
-                                  },);
-                                },
-                              )
-                            ),
-
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-                            //sub total and total
-                            SizedBox(
-                              height:50,
-
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    "Sub Total: ",
-                                    style: GoogleFonts.poppins(
-
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                  SizedBox(width:13),
-                                  Material(
-                                    elevation: 25,
-                                    borderRadius: BorderRadius.circular(6),
-                                    color: Colors.white,
-                                    child: Container(
-                                      height: height / 18.14,
-                                      width: width / 13.83,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(6),
-                                          color: Colors.white),
-                                      child:Center(
-                                        child: Text(
-                                          totalamount.toString(),
-                                          style: GoogleFonts.poppins(
-
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                      ),
-
-                                    ),
-                                  ),
-                                  SizedBox(width:13),
-                                  Text(
-                                    "Total: ",
-                                    style: GoogleFonts.poppins(
-
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                  SizedBox(width:13),
-                                  Material(
-                                    elevation: 25,
-                                    borderRadius: BorderRadius.circular(6),
-                                    color: Colors.white,
-                                    child: Container(
-                                      height: height / 18.14,
-                                      width: width / 13.83,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(6),
-                                          color: Colors.white),
-                                      child:Center(
-                                        child: Text(
-                                          TotalAmount2.toString(),
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                      ),
-
-                                    ),
-                                  ),
-                                  SizedBox(width:13),
-
-
-                                ],
-                              ),
-                            ),
-
-                            ///payemnt to suppier controller and container
-                            Text(
-                              "Amount Paying Supplier",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-
-
-                            //total and AMount
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-
-                                //total
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                        width: width / 8.83,
-                                        child: Text(
-                                          "Total",
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        )),
-                                    SizedBox(
-                                      height: height / 136.6,
-                                    ),
-                                    Material(
-
-                                      elevation: 25,
-                                      borderRadius: BorderRadius.circular(6),
-                                      color: Colors.white,
-                                      child: Container(
-                                        height: height / 18.14,
-                                        width: width / 7.83,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(6),
-                                            color: Colors.white),
-                                        child: TextField(
-                                          controller: Amountstopay,
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              contentPadding: EdgeInsets.only(
-                                                  left: width / 130.6)),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                //AMount
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                        width: width / 8.83,
-                                        child: Text(
-                                          "Amount",
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        )),
-                                    SizedBox(
-                                      height: height / 136.6,
-                                    ),
-                                    Material(
-                                      elevation: 25,
-                                      borderRadius: BorderRadius.circular(6),
-                                      color: Colors.white,
-                                      child: Container(
-                                        height: height / 18.14,
-                                        width: width / 7.83,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(6),
-                                            color: Colors.white),
-                                        child: TextField(
-                                          controller: Amounts,
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              contentPadding: EdgeInsets.only(
-                                                  left: width / 130.6)),
-                                          onSubmitted: (_) {
-                                            setState(() {
-                                              balancepay.text = (Totalamountoftopay - double.parse(Amounts.text)).abs().toStringAsFixed(2);
-                                              balanceamount = (Totalamountoftopay - double.parse(Amounts.text)).abs();
-                                              Payedamount = double.parse(Amounts.text).abs();
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-
-
-
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-
-                            //dicount and balance
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                //dicount
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                        width: width / 8.83,
-                                        child: Text(
-                                          "Discount",
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        )),
-                                    SizedBox(
-                                      height: height / 136.6,
-                                    ),
-                                    Material(
-                                      elevation: 25,
-                                      borderRadius: BorderRadius.circular(6),
-                                      color: Colors.white,
-                                      child: Container(
-                                        height: height / 18.14,
-                                        width: width / 7.83,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(6),
-                                            color: Colors.white),
-                                        child: TextField(
-                                          controller: Discountbalnce,
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              contentPadding: EdgeInsets.only(
-                                                  left: width / 130.6)),
-
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                //balance
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                        width: width / 8.83,
-                                        child: Text(
-                                          "Balance",
-                                          style: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        )),
-                                    SizedBox(
-                                      height: height / 136.6,
-                                    ),
-                                    Material(
-                                      elevation: 25,
-                                      borderRadius: BorderRadius.circular(6),
-                                      color: Colors.white,
-                                      child: Container(
-                                        height: height / 18.14,
-                                        width: width / 7.83,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(6),
-                                            color: Colors.white),
-                                        child: TextField(
-                                          controller: balancepay,
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              contentPadding: EdgeInsets.only(
-                                                  left: width / 130.6)),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-
-
-
-
-
-
-                            //payment&& //Credit day
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                //creafit days
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                        width: width / 8.83,
-                                        child: Text(
-                                          "Credit days",
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        )),
-                                    SizedBox(
-                                      height: height / 136.6,
-                                    ),
-                                    Material(
-                                      elevation: 25,
-                                      borderRadius: BorderRadius.circular(6),
-                                      color: Colors.white,
-                                      child: Container(
-                                        height: height / 18.14,
-                                        width: width / 7.83,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(6),
-                                            color: Colors.white),
-                                        child: TextField(
-                                          controller: creditdate,
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              contentPadding: EdgeInsets.only(
-                                                  left: width / 130.6)),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                //payment
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Payment",
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                    SizedBox(width:width/15.6),
-                                    Material(
-                                      elevation: 25,
-                                      borderRadius: BorderRadius.circular(6),
-                                      color: Colors.white,
-                                      child: Container(
-                                        height: height / 18.14,
-                                        width: width / 7.83,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(6),
-                                            color: Colors.white),
-                                        child:
-                                        DropdownButton2<String>(
-                                          value: Payments2,
-                                          isExpanded: true,
-                                          iconStyleData: IconStyleData(
-                                              iconEnabledColor: Colors.white
-                                          ),
-                                          style: GoogleFonts.montserrat(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: width / 105.07),
-                                          underline: Container(
-                                            color: Colors.deepPurpleAccent,
-                                          ),
-                                          onChanged: (String? value) {
-                                            // This is called when the user selects an item.
-                                            setState(() {
-                                              Payments2 = value!;
-                                            });
-                                          },
-                                          items: Paymentmode.map<
-                                              DropdownMenuItem<String>>(
-                                                  (String value) {
-                                                return DropdownMenuItem<String>(
-                                                  value: value,
-                                                  child: Text(value),
-                                                );
-                                              }).toList(),
-                                        ),
-                                      ),
-                                    ),
-
-                                  ],
-                                ),
-
-                              ],
-                            ),
-
-                            SizedBox(
-                              height: height / 65.7,
-                            ),
-
-                            InkWell(
-                              onTap: () {
-
-                            //    Qtydecrease
-                                savedatefunction();
-                                setState(() {
-                                  Loading = true;
-                                });
-                                //check bill no function
-                                Purchaseitem();
-
-                              //  printdate();
-                                Future.delayed(const Duration(seconds: 2),(){
-                                  ///stream controller clear function
-                                  Streamcontrollerclear();
-                                  setState(() {
-                                    Loading = false;
-                                  });
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => drawer(" "),));
-                                });
-
-                              },
-                              child:
-                              Container(
-                                width: width / 7.0,
-                                height: height / 16.42,
-                                //color: Color(0xffD60A0B),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  color: const Color(0xff25D366),
-                                ),
-                                child: Center(
-                                    child: Text(
-                                      "Save",
-                                      style:
-                                      GoogleFonts.poppins(color: Colors.white),
-                                    )),
-                              ),
-                            ),
-
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ));
-          },
-        );
-      },
-    );
-  }
   String Changedate = "";
 
   String creaditupdatedate = "";
@@ -6742,14 +6279,17 @@ String  creaditedatevalue="";
 
 
   savedatefunction()async{
-
+    print("savedatefunction");
+    print(returnid);
     var document=await FirebaseFirestore.instance.collection("Purchase entry").
-    doc(returnid).collection(returnid.toString()).where("return",isEqualTo:false).get();
+    doc(returnid).collection(returnid.toString()).orderBy("timestamp").get();
+    print("Length of k : ${document.docs.length}");
     for(int k=0;k<document.docs.length;k++){
+      print("savedatefunction2");
       if((int.parse(document.docs[k]["Qty"].toString())-(((int.parse(document.docs[k]["Qty"].toString()))-document.docs[k]['stocks'])))!=0)
       {
+        print("savedatefunction");
         if(Selected[k]==true){
-
           print("Qtydecrease List");
           print(Qtydecrease);
 
@@ -6759,7 +6299,7 @@ String  creaditedatevalue="";
             FirebaseFirestore.instance.collection("Purchase entry").
             doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
               "stocks":FieldValue.increment(-Qtydecrease[k]),
-              "Imei no":ImerisrialListitem,
+              "Imei no":ImerisrialListitem[k],
               "return Quvantity":FieldValue.increment(Qtydecrease[k]),
               "returnimei":Addlist
             });
@@ -6770,7 +6310,7 @@ String  creaditedatevalue="";
             FirebaseFirestore.instance.collection("Purchase entry").
             doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
               "stocks":FieldValue.increment(-Qtydecrease[k]),
-              "Serial no":ImerisrialListitem1,
+              "Serial no":ImerisrialListitem1[k],
               "returnserial":Addlist,
               "return Quvantity":FieldValue.increment(Qtydecrease[k]),
             });
@@ -6782,7 +6322,7 @@ String  creaditedatevalue="";
             FirebaseFirestore.instance.collection("Purchase entry").
             doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
               "stocks":FieldValue.increment(-Qtydecrease[k]),
-              "color":ImerisrialListitem2,
+              "color":ImerisrialListitem2[k],
               "return Quvantity":FieldValue.increment(Qtydecrease[k]),
               "returncolor":Addlist
             });
@@ -6797,8 +6337,137 @@ String  creaditedatevalue="";
             });
           }
 
+
         }
       }
+    }
+    print("Status of status${status} --*************************************************");
+    if(status==true){
+      print("Shabika G Started --*************************************************");
+      print("${returnid}--*************************************************");
+
+      var document=await FirebaseFirestore.instance.collection("Purchase ShabikaG").
+      doc(returnid).collection(returnid.toString()).orderBy("timestamp").get();
+      print("YES 00000001--*************************************************");
+      print("${document.docs.length}--*************************************************");
+      for(int k=0;k<document.docs.length;k++){
+        if((int.parse(document.docs[k]["Qty"].toString())-(((int.parse(document.docs[k]["Qty"].toString()))-document.docs[k]['stocks'])))!=0)
+        {
+          print("YES 00000002--*************************************************");
+          if(Selected[k]==true){
+
+            print("Qtydecrease List");
+            print(Qtydecrease);
+
+            ///imei number true
+            print("Show poup-1");
+            if(document.docs[k]['IMEI NO']==true){
+              FirebaseFirestore.instance.collection("Purchase ShabikaG").
+              doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
+                "stocks":FieldValue.increment(-Qtydecrease[k]),
+                "Imei no":ImerisrialListitem[k],
+                "return Quvantity":FieldValue.increment(Qtydecrease[k]),
+                "returnimei":Addlist
+              });
+            }
+
+            ///serial  number true
+            else if(document.docs[k]['Serial NO']==true){
+              FirebaseFirestore.instance.collection("Purchase ShabikaG").
+              doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
+                "stocks":FieldValue.increment(-Qtydecrease[k]),
+                "Serial no":ImerisrialListitem1[k],
+                "returnserial":Addlist,
+                "return Quvantity":FieldValue.increment(Qtydecrease[k]),
+              });
+
+            }
+
+            ///Color true
+            else  if(document.docs[k]['Color']==true){
+              FirebaseFirestore.instance.collection("Purchase ShabikaG").
+              doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
+                "stocks":FieldValue.increment(-Qtydecrease[k]),
+                "color":ImerisrialListitem2[k],
+                "return Quvantity":FieldValue.increment(Qtydecrease[k]),
+                "returncolor":Addlist
+              });
+
+            }
+
+            else{
+              FirebaseFirestore.instance.collection("Purchase ShabikaG").
+              doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
+                "stocks":FieldValue.increment(-Qtydecrease[k]),
+                "return Quvantity":FieldValue.increment(Qtydecrease[k]),
+              });
+            }
+
+
+          }
+        }
+      }
+    }
+    else{
+      var document=await FirebaseFirestore.instance.collection("Purchase ShabikaN").
+      doc(returnid).collection(returnid.toString()).orderBy("timestamp").get();
+      for(int k=0;k<document.docs.length;k++){
+        if((int.parse(document.docs[k]["Qty"].toString())-(((int.parse(document.docs[k]["Qty"].toString()))-document.docs[k]['stocks'])))!=0)
+        {
+          if(Selected[k]==true){
+
+            print("Qtydecrease List");
+            print(Qtydecrease);
+
+            ///imei number true
+            print("Show poup-1");
+            if(document.docs[k]['IMEI NO']==true){
+              FirebaseFirestore.instance.collection("Purchase ShabikaN").
+              doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
+                "stocks":FieldValue.increment(-Qtydecrease[k]),
+                "Imei no":ImerisrialListitem[k],
+                "return Quvantity":FieldValue.increment(Qtydecrease[k]),
+                "returnimei":Addlist
+              });
+            }
+
+            ///serial  number true
+            else if(document.docs[k]['Serial NO']==true){
+              FirebaseFirestore.instance.collection("Purchase ShabikaN").
+              doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
+                "stocks":FieldValue.increment(-Qtydecrease[k]),
+                "Serial no":ImerisrialListitem1[k],
+                "returnserial":Addlist,
+                "return Quvantity":FieldValue.increment(Qtydecrease[k]),
+              });
+
+            }
+
+            ///Color true
+            else  if(document.docs[k]['Color']==true){
+              FirebaseFirestore.instance.collection("Purchase ShabikaN").
+              doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
+                "stocks":FieldValue.increment(-Qtydecrease[k]),
+                "color":ImerisrialListitem2[k],
+                "return Quvantity":FieldValue.increment(Qtydecrease[k]),
+                "returncolor":Addlist
+              });
+
+            }
+
+            else{
+              FirebaseFirestore.instance.collection("Purchase ShabikaN").
+              doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).update({
+                "stocks":FieldValue.increment(-Qtydecrease[k]),
+                "return Quvantity":FieldValue.increment(Qtydecrease[k]),
+              });
+            }
+
+
+          }
+        }
+      }
+
     }
   }
 

@@ -5261,7 +5261,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
   List <String> temporary=[];
 
-  Purchaseitem() async{
+  Purchaseitem() async {
     print("List assign in billing");
     print(imeinu);
     print(serialnu);

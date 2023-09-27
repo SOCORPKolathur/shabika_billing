@@ -15,7 +15,6 @@ import 'package:pdf/widgets.dart' as p;
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:shabika_billing/stmodel.dart' as StatusModel;
-
 import 'Printing_Page/Print_Page.dart';
 
 
@@ -36,13 +35,13 @@ const List<String> list3 = <String>[
 
 const List<String> Stateslect = <String>[
   "Select State",
-  " Andhra Pradesh",
-  " Arunachal Pradesh",
-  " Assam",
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
   "Bihar",
   "Chhattisgarh",
-  " Goa",
-  ' Gujarat',
+  "Goa",
+  'Gujarat',
   "Haryana",
   "Himachal Pradesh",
   "Jharkhand",
@@ -296,10 +295,11 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       purchase_Date.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       Qty.text = "1";
     });
+    checkbillno();
     listoutpaymentfunction();
     clearlistandname();
     suppiernameaddfunction();
-    checkbillno();
+
     itemaddfunction();
     itemcodeaddfunction();
     // TODO: implement initState
@@ -354,7 +354,6 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         Stack(
       alignment: Alignment.center,
       children: [
-
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -457,7 +456,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                 ),
               ],
             ),
-
+            //bill details
             Form(
                 key: Formkey,
               child: Row(
@@ -1160,7 +1159,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                 ],
               ),
             ),
-
+            //entires
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -2374,7 +2373,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                 ),
               ],
             ),
-
+            //bottom
             Padding(
               padding:
                   EdgeInsets.only(top: height / 131.4, left: width / 27.32),
@@ -2401,6 +2400,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             padding: EdgeInsets.only(left: width / 75.888),
                             child: InkWell(
                               onTap: () async {
+                                print("Saving biil");
+                                print(random);
                                 var doccc =await FirebaseFirestore.instance.collection("Purchase entry").doc(random).collection(random).get();
                                 if(doccc.docs.length>0){
                                   setState(() {
@@ -2819,9 +2820,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
           ],
         ),
-
-        Loading == true
-            ?
+        Loading == true ?
         SizedBox(
                 height: height / 2.38,
                 width: width / 5.106,
@@ -2837,11 +2836,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             fontWeight: FontWeight.w600, color: Colors.black))
                   ],
                 ),
-              )
-            : const SizedBox(),
-
-        showrelatedoitem == true
-            ?
+              ) : const SizedBox(),
+        showrelatedoitem == true ?
         SlideInLeft(
             animate: true,
             duration: const Duration(milliseconds: 800),
@@ -3180,8 +3176,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                   ),
                 ),
               )
-            ))
-            : const SizedBox(),
+            )) : const SizedBox(),
 
       ],
     );
@@ -3224,7 +3219,10 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         .orderBy("Suppliername", descending: false)
         .get();
     for (int i = 0; i < Document.docs.length; i++) {
-      Suppierlist.add(Document.docs[i]['Suppliername']);
+      setState(() {
+        Suppierlist.add(Document.docs[i]['Suppliername']);
+      });
+
     }
   }
 
@@ -4760,12 +4758,14 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     setState(() {
       random = randomAlphaNumeric(16);
     });
+    print("DOC ID");
+    print(random);
     billcounts();
   }
 
   ///save bill function its change status  false into true(only show the true documents)
   savebillfunction() {
-    FirebaseFirestore.instance.collection("Purchase entry").doc(random).update({"save": true});
+    FirebaseFirestore.instance.collection("Purchase entry").doc(random).update({"save": true,"type": status==true? "ShabikaG" : "ShabikaN",});
     FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(random).update({"save": true});
     FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(random).update({"save": true});
   }
@@ -5082,6 +5082,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "Reason":"",
         "save": false,
         "return": false,
+        "type":"",
         "time": DateFormat.jm().format(DateTime.now()),
         "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
         "timestamp": DateTime.now().microsecondsSinceEpoch
@@ -5292,6 +5293,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "Reason":"",
         "save": false,
         "return": false,
+        "type":"",
         "time": DateFormat.jm().format(DateTime.now()),
         "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
         "timestamp": DateTime.now().microsecondsSinceEpoch
@@ -6344,7 +6346,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "CGST": Cgst,
         "save": true,
         "Totalamount": TotalAmount2.toStringAsFixed(2),
-        "balance amount":double.parse(TotalAmount2.toStringAsFixed(2)),
+        "balance amount":double.parse(TotalAmount2.toString()),
       });
       FirebaseFirestore.instance.collection("Supplier").doc(customerdocid).collection("billing").doc(random)
           .update({
@@ -6354,7 +6356,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "CGST": Cgst,
         "save": true,
         "Totalamount": TotalAmount2.toStringAsFixed(2),
-        "balance amount":double.parse(TotalAmount2.toStringAsFixed(2))
+        "balance amount":double.parse(TotalAmount2.toString())
       });
       FirebaseFirestore.instance.collection("Purchase entry").doc(random).update({
         "Payment mode": Payments,
@@ -6362,8 +6364,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "SGST": sgst,
         "CGST": Cgst,
         "save": true,
+        "type": status==true? "ShabikaG" : "ShabikaN",
         "Totalamount": TotalAmount2.toStringAsFixed(2),
-        "balance amount":double.parse(TotalAmount2.toStringAsFixed(2))
+        "balance amount":double.parse(TotalAmount2.toString())
       });
       FirebaseFirestore.instance.collection("Accounts").doc("AxQxYGPKUB5qGzllyfpY").update({
         "Totalamount":FieldValue.increment(TotalAmount2)
@@ -6410,6 +6413,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "SGST": sgst,
         "CGST": Cgst,
         "save": true,
+        "type": status==true? "ShabikaG" : "ShabikaN",
         "Totalamount": totalamount.toStringAsFixed(2),
         "balance amount":double.parse(totalamount.toStringAsFixed(2))
       });
@@ -6467,6 +6471,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         purchase_Date.text =
             "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       });
+      print("Bill NO");
+      print(purchase_No.text);
     }
     if (status2 == true) {
       var docus2 = await FirebaseFirestore.instance
@@ -6480,6 +6486,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         purchase_Date.text =
             "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       });
+      print("Bill NO");
+      print(purchase_No.text);
     }
   }
 

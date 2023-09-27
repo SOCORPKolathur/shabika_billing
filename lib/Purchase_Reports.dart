@@ -25,6 +25,7 @@ const List<String> Payment = <String>[
 const List<String> Paymentmode = <String>['Please Select', "Paid", "Un Paid"];
 
 const List<String> Paymentmode2 = <String>['Please Select', "Paid", "Un Paid"];
+const List<String> Paymentmode3 = <String>['Please Select', "G pay", "Cash","Paytm","Phonepe","Card"];
 
 class _Purchase_ReportsState extends State<Purchase_Reports> {
   //toggle switch boolean
@@ -51,6 +52,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   List<String> PaymentType = [];
 
   String Payments = Paymentmode.first;
+
+  String Payments2 = Paymentmode3.first;
 
   String Paymentsmodevalue = Paymentmode2.first;
   String PaymentChangevalue = '';
@@ -149,6 +152,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
     setState(() {
       salesamount = 0;
       balanceamountpurchase = 0;
+      returnalltotal = 0;
+      balancealltotal = 0;
     });
     if (status == true) {
       setState(() {
@@ -180,7 +185,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           });
         }
       }
-    } else if (status2 == true) {
+    }
+    else if (status2 == true) {
       var billingtotal = await FirebaseFirestore.instance
           .collection("Purchase ShabikaN")
           .where("save", isEqualTo: true)
@@ -210,7 +216,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           });
         }
       }
-    } else {
+    }
+    else {
       var billingtotal = await FirebaseFirestore.instance
           .collection("Purchase entry")
           .where("save", isEqualTo: true)
@@ -240,6 +247,134 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           });
         }
       }
+    }
+
+    if(status == true) {
+      var doc1 = await FirebaseFirestore.instance.collection("Purchase ShabikaG")
+          .where("save", isEqualTo: true)
+          .get();
+      if (mydate.isNotEmpty) {
+      for (int i = 0; i < doc1.docs.length; i++) {
+        if (mydate.contains(doc1.docs[i]["purchasedate"])) {
+          var doc2 = await FirebaseFirestore.instance.collection(
+              "Purchase ShabikaG")
+              .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
+              .get();
+          for (int j = 0; j < doc2.docs.length; j++) {
+            setState(() {
+              returnalltotal = returnalltotal +
+                  (double.parse(doc2.docs[j]['return Quvantity'].toString()) *
+                      double.parse(doc2.docs[j]['Landing cost'].toString()));
+            });
+          }
+        }
+      }
+      }
+      else{
+        for (int i = 0; i < doc1.docs.length; i++) {
+
+            var doc2 = await FirebaseFirestore.instance.collection(
+                "Purchase ShabikaG")
+                .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
+                .get();
+            for (int j = 0; j < doc2.docs.length; j++) {
+              setState(() {
+                returnalltotal = returnalltotal +
+                    (double.parse(doc2.docs[j]['return Quvantity'].toString()) *
+                        double.parse(doc2.docs[j]['Landing cost'].toString()));
+              });
+            }
+
+        }
+      }
+      setState(() {
+        balancealltotal = salesamount - returnalltotal;
+      });
+    }
+    else if(status2 == true){
+      var doc1 = await FirebaseFirestore.instance.collection("Purchase ShabikaN")
+          .where("save", isEqualTo: true)
+          .get();
+      if (mydate.isNotEmpty) {
+        for (int i = 0; i < doc1.docs.length; i++) {
+          if (mydate.contains(doc1.docs[i]["purchasedate"])) {
+            var doc2 = await FirebaseFirestore.instance.collection(
+                "Purchase ShabikaN")
+                .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
+                .get();
+            for (int j = 0; j < doc2.docs.length; j++) {
+              setState(() {
+                returnalltotal = returnalltotal +
+                    (double.parse(doc2.docs[j]['return Quvantity'].toString()) *
+                        double.parse(doc2.docs[j]['Landing cost'].toString()));
+              });
+            }
+          }
+        }
+      }
+      else{
+        for (int i = 0; i < doc1.docs.length; i++) {
+
+          var doc2 = await FirebaseFirestore.instance.collection(
+              "Purchase ShabikaN")
+              .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
+              .get();
+          for (int j = 0; j < doc2.docs.length; j++) {
+            setState(() {
+              returnalltotal = returnalltotal +
+                  (double.parse(doc2.docs[j]['return Quvantity'].toString()) *
+                      double.parse(doc2.docs[j]['Landing cost'].toString()));
+            });
+          }
+
+        }
+      }
+      setState(() {
+        balancealltotal = salesamount - returnalltotal;
+      });
+
+    }
+    else{
+      var doc1 = await FirebaseFirestore.instance.collection("Purchase entry")
+          .where("save", isEqualTo: true)
+          .get();
+      if (mydate.isNotEmpty) {
+        for (int i = 0; i < doc1.docs.length; i++) {
+          if (mydate.contains(doc1.docs[i]["purchasedate"])) {
+            var doc2 = await FirebaseFirestore.instance.collection(
+                "Purchase entry")
+                .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
+                .get();
+            for (int j = 0; j < doc2.docs.length; j++) {
+              setState(() {
+                returnalltotal = returnalltotal +
+                    (double.parse(doc2.docs[j]['return Quvantity'].toString()) *
+                        double.parse(doc2.docs[j]['Landing cost'].toString()));
+              });
+            }
+          }
+        }
+      }
+      else{
+        for (int i = 0; i < doc1.docs.length; i++) {
+
+          var doc2 = await FirebaseFirestore.instance.collection(
+              "Purchase entry")
+              .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
+              .get();
+          for (int j = 0; j < doc2.docs.length; j++) {
+            setState(() {
+              returnalltotal = returnalltotal +
+                  (double.parse(doc2.docs[j]['return Quvantity'].toString()) *
+                      double.parse(doc2.docs[j]['Landing cost'].toString()));
+            });
+          }
+
+        }
+      }
+      setState(() {
+        balancealltotal = salesamount - returnalltotal;
+      });
     }
   }
 
@@ -337,7 +472,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         Row(
           children: [
             SizedBox(
-              width: width / 43.8,
+              width: width / 200.8,
             ),
             Text(
               "Date",
@@ -378,7 +513,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                   if (pickedDate != null) {
                     //pickedDate output format => 2021-03-10 00:00:00.000
                     String formattedDate =
-                        DateFormat('dd / M / yyyy').format(pickedDate);
+                        DateFormat('dd/M/yyyy').format(pickedDate);
                     //formatted date output using intl package =>  2021-03-16
                     //you can implement different kind of Date Format here according to your requirement
 
@@ -426,7 +561,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                   if (pickedDate != null) {
                     //pickedDate output format => 2021-03-10 00:00:00.000
                     String formattedDate =
-                        DateFormat('d/M/yyyy').format(pickedDate);
+                        DateFormat('dd/M/yyyy').format(pickedDate);
                     //formatted date output using intl package =>  2021-03-16
                     //you can implement different kind of Date Format here according to your requirement
 
@@ -484,7 +619,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
 
             Container(
               height: height / 21.9,
-              width: width / 3.106, // width: width / 3.415,
+              width: width / 5.506, // width: width / 3.415,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(5)),
               child: LayoutBuilder(
@@ -678,52 +813,6 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
               width: width / 156.6,
             ),
 
-            InkWell(
-              onTap: () {
-                setState(() {
-                  Invoicecontroller.clear();
-                  Datecontroller.clear();
-                  Datecontroller2.clear();
-                  mydate.clear();
-                  Suppilercontroller.clear();
-                  Paymenttype.clear();
-                  Status1 = "";
-                  Status2 = "";
-                  Status3 = "";
-                  PaymentChangevalue = '';
-                  isserach = false;
-                  Username = '';
-                  Username2 = '';
-                });
-                additemduntion();
-                billingtotalamount();
-              },
-              child: Container(
-                height: height / 16.425,
-                width: width / 13.66,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5), color: Colors.red),
-                child: Center(
-                  child: Text(
-                    "Clear",
-                    style: GoogleFonts.montserrat(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: width / 84.64),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: height / 83.8,
-        ),
-        Row(
-          children: [
-            SizedBox(
-              width: width / 43.8,
-            ),
 
             //Status-2
             Text(
@@ -773,7 +862,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                   }
                 },
                 items:
-                    Paymentmode2.map<DropdownMenuItem<String>>((String value) {
+                Paymentmode2.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -782,7 +871,55 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
               ),
             ),
             SizedBox(
-              width: width / 7.9,
+              width: width / 150.8,
+            ),
+
+            InkWell(
+              onTap: () {
+                setState(() {
+                  Invoicecontroller.clear();
+                  Datecontroller.clear();
+                  Datecontroller2.clear();
+                  mydate.clear();
+                  Suppilercontroller.clear();
+                  Paymenttype.clear();
+                  Status1 = "";
+                  Status2 = "";
+                  Status3 = "";
+                  PaymentChangevalue = '';
+                  isserach = false;
+                  Username = '';
+                  Username2 = '';
+                });
+                additemduntion();
+                billingtotalamount();
+              },
+              child: Container(
+                height: height / 21.9,
+                width: width / 13.66,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5), color: Colors.red),
+                child: Center(
+                  child: Text(
+                    "Clear",
+                    style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: width / 84.64),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: height / 83.8,
+        ),
+        Row(
+          children: [
+
+            SizedBox(
+              width: width / 200.8,
             ),
 
             Text(
@@ -794,7 +931,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                   fontSize: width / 98.64),
             ),
             SizedBox(
-              width: width / 70.5,
+              width: width / 100.5,
             ),
             Container(
                 height: height / 21.9,
@@ -812,10 +949,68 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                       fontSize: width / 88.64),
                 ))),
             SizedBox(
-              width: width / 91.066,
+              width: width / 100.066,
             ),
             Text(
-              "Balance Amount",
+              "Returned Amount",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 100.5,
+            ),
+            Container(
+                height: height / 21.9,
+                width: width / 9.5,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Center(
+                    child: Text(
+                      returnalltotal.toStringAsFixed(2),
+                      style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: width / 88.64),
+                    ))),
+            SizedBox(
+              width: width / 100.066,
+            ),
+            Text(
+              "Current Balance",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 100.5,
+            ),
+            Container(
+                height: height / 21.9,
+                width: width / 9.5,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Center(
+                    child: Text(
+                      balancealltotal.toStringAsFixed(2),
+                      style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: width / 88.64),
+                    ))),
+            SizedBox(
+              width: width / 100.066,
+            ),
+            Text(
+              "UnPaid Amount",
               textAlign: TextAlign.start,
               style: GoogleFonts.montserrat(
                   color: Colors.white,
@@ -943,7 +1138,9 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                           style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
-                        ))),
+                        )
+                        )
+                    ),
 
                     Container(
                         width: width / 10.507,
@@ -1027,7 +1224,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                     width: 1.2)),
                                             child: Center(
                                                 child: Text(
-                                              "${buillin1['purchasedate'].toString()}\n${buillin1['return'] == true ? "Return" : ""}",
+                                              "${buillin1['purchasedate'].toString()}",
                                               style: GoogleFonts.montserrat(
                                                   fontWeight: FontWeight.w600),
                                               textAlign: TextAlign.center,
@@ -1052,18 +1249,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                       fontWeight:
                                                           FontWeight.w600),
                                                 ),
-                                                buillin1['return'] == true
-                                                    ? Text(
-                                                        "(Return)",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                fontSize:
-                                                                    width /
-                                                                        97.571,
-                                                                color:
-                                                                    Colors.red),
-                                                      )
-                                                    : const SizedBox(),
+
                                               ],
                                             )),
                                         Container(
@@ -1183,45 +1369,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                 border: Border.all(
                                                     color: Colors.black,
                                                     width: 1.2)),
-                                            child: buillin1['Payment mode'] ==
-                                                    "Credit Amount"
-                                                ? Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        buillin1['Totalamount']
-                                                            .toString(),
-                                                        style: GoogleFonts
-                                                            .montserrat(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                      ),
-                                                      buillin1['balance amount'] !=
-                                                              0
-                                                          ? Text(
-                                                              "(${buillin1['balance amount']})",
-                                                              style: GoogleFonts.montserrat(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  color: Colors
-                                                                      .red),
-                                                            )
-                                                          : Text(
-                                                              "(${buillin1['Totalamount']})",
-                                                              style: GoogleFonts.montserrat(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  color: Colors
-                                                                      .red),
-                                                            ),
-                                                    ],
-                                                  )
-                                                : Center(
+                                            child: Center(
                                                     child: Text(
                                                       buillin1['Totalamount']
                                                           .toString(),
@@ -1351,7 +1499,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                   width: 1.2)),
                                           child: Center(
                                               child: Text(
-                                            "${buillin1['purchasedate'].toString()}\n${buillin1['return'] == true ? "Return" : ""}",
+                                            "${buillin1['purchasedate'].toString()}",
                                             style: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.w600),
                                             textAlign: TextAlign.center,
@@ -1376,17 +1524,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
-                                              buillin1['return'] == true
-                                                  ? Text(
-                                                      "(Return)",
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              fontSize: width /
-                                                                  97.571,
-                                                              color:
-                                                                  Colors.red),
-                                                    )
-                                                  : const SizedBox(),
+
                                             ],
                                           )),
                                       Container(
@@ -1503,46 +1641,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                               border: Border.all(
                                                   color: Colors.black,
                                                   width: 1.2)),
-                                          child: buillin1['Payment mode'] ==
-                                                  "Credit Amount"
-                                              ? Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      buillin1['Totalamount']
-                                                          .toString(),
-                                                      style: GoogleFonts
-                                                          .montserrat(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    buillin1['balance amount'] !=
-                                                            0
-                                                        ? Text(
-                                                            "(${buillin1['balance amount']})",
-                                                            style: GoogleFonts
-                                                                .montserrat(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .red),
-                                                          )
-                                                        : Text(
-                                                            "(${buillin1['Totalamount']})",
-                                                            style: GoogleFonts
-                                                                .montserrat(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .red),
-                                                          ),
-                                                  ],
-                                                )
-                                              : Center(
+                                          child: Center(
                                                   child: Text(
                                                     buillin1['Totalamount']
                                                         .toString(),
@@ -1660,7 +1759,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                   width: 1.2)),
                                           child: Center(
                                               child: Text(
-                                            "${buillin1['purchasedate'].toString()}\n${buillin1['return'] == true ? "Return" : ""}",
+                                            "${buillin1['purchasedate'].toString()}",
                                             style: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.w600),
                                             textAlign: TextAlign.center,
@@ -1685,17 +1784,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
-                                              buillin1['return'] == true
-                                                  ? Text(
-                                                      "(Return)",
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              fontSize: width /
-                                                                  97.571,
-                                                              color:
-                                                                  Colors.red),
-                                                    )
-                                                  : const SizedBox(),
+
                                             ],
                                           )),
                                       Container(
@@ -1812,46 +1901,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                               border: Border.all(
                                                   color: Colors.black,
                                                   width: 1.2)),
-                                          child: buillin1['Payment mode'] ==
-                                                  "Credit Amount"
-                                              ? Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      buillin1['Totalamount']
-                                                          .toString(),
-                                                      style: GoogleFonts
-                                                          .montserrat(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    buillin1['balance amount'] !=
-                                                            0
-                                                        ? Text(
-                                                            "(${buillin1['balance amount']})",
-                                                            style: GoogleFonts
-                                                                .montserrat(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .red),
-                                                          )
-                                                        : Text(
-                                                            "(${buillin1['Totalamount']})",
-                                                            style: GoogleFonts
-                                                                .montserrat(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .red),
-                                                          ),
-                                                  ],
-                                                )
-                                              : Center(
+                                          child: Center(
                                                   child: Text(
                                                     buillin1['Totalamount']
                                                         .toString(),
@@ -1967,7 +2017,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                   width: 1.2)),
                                           child: Center(
                                               child: Text(
-                                            "${buillin1['purchasedate'].toString()}\n${buillin1['return'] == true ? "Return" : ""}",
+                                            "${buillin1['purchasedate'].toString()}",
                                             style: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.w600),
                                             textAlign: TextAlign.center,
@@ -1992,17 +2042,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
-                                              buillin1['return'] == true
-                                                  ? Text(
-                                                      "(Return)",
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              fontSize: width /
-                                                                  97.571,
-                                                              color:
-                                                                  Colors.red),
-                                                    )
-                                                  : const SizedBox(),
+
                                             ],
                                           )),
                                       Container(
@@ -2119,46 +2159,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                               border: Border.all(
                                                   color: Colors.black,
                                                   width: 1.2)),
-                                          child: buillin1['Payment mode'] ==
-                                                  "Credit Amount"
-                                              ? Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      buillin1['Totalamount']
-                                                          .toString(),
-                                                      style: GoogleFonts
-                                                          .montserrat(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                    buillin1['balance amount'] !=
-                                                            0
-                                                        ? Text(
-                                                            "(${buillin1['balance amount']})",
-                                                            style: GoogleFonts
-                                                                .montserrat(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .red),
-                                                          )
-                                                        : Text(
-                                                            "(${buillin1['Totalamount']})",
-                                                            style: GoogleFonts
-                                                                .montserrat(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .red),
-                                                          ),
-                                                  ],
-                                                )
-                                              : Center(
+                                          child:  Center(
                                                   child: Text(
                                                     buillin1['Totalamount']
                                                         .toString(),
@@ -2273,7 +2274,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                 width: 1.2)),
                                         child: Center(
                                             child: Text(
-                                          "${buillin1['purchasedate'].toString()}\n${buillin1['return'] == true ? "Return" : ""}",
+                                          "${buillin1['purchasedate'].toString()}",
                                           style: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
@@ -2296,15 +2297,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                               style: GoogleFonts.montserrat(
                                                   fontWeight: FontWeight.w600),
                                             ),
-                                            buillin1['return'] == true
-                                                ? Text(
-                                                    "(Return)",
-                                                    style: GoogleFonts.poppins(
-                                                        fontSize:
-                                                            width / 97.571,
-                                                        color: Colors.red),
-                                                  )
-                                                : const SizedBox(),
+
                                           ],
                                         )),
                                     Container(
@@ -2357,8 +2350,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                             border: Border.all(
                                                 color: Colors.black,
                                                 width: 1.2)),
-                                        child: buillin1['Payment mode'] ==
-                                                "Credit Amount"
+                                        child: buillin1['balance amount'] != 0
                                             ? Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
@@ -2419,46 +2411,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                             border: Border.all(
                                                 color: Colors.black,
                                                 width: 1.2)),
-                                        child: buillin1['Payment mode'] ==
-                                                "Credit Amount"
-                                            ? Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    buillin1['Totalamount']
-                                                        .toString(),
-                                                    style:
-                                                        GoogleFonts.montserrat(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                  ),
-                                                  buillin1['balance amount'] !=
-                                                          0
-                                                      ? Text(
-                                                          "(${buillin1['balance amount']})",
-                                                          style: GoogleFonts
-                                                              .montserrat(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  color: Colors
-                                                                      .red),
-                                                        )
-                                                      : Text(
-                                                          "(${buillin1['Totalamount']})",
-                                                          style: GoogleFonts
-                                                              .montserrat(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  color: Colors
-                                                                      .red),
-                                                        ),
-                                                ],
-                                              )
-                                            : Center(
+                                        child:  Center(
                                                 child: Text(
                                                   buillin1['Totalamount']
                                                       .toString(),
@@ -2578,46 +2531,52 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
     setState(() {
       qty = 0;
       Total = 0;
+      soldtotal= 0;
+      returnedtotal= 0;
+      balancetotal= 0;
+      viewalltotal= 0;
     });
+
+
+
+
+
     var document = await FirebaseFirestore.instance
         .collection("Purchase entry")
         .doc(streamid)
         .get();
     Map<String, dynamic>? values = document.data();
-    setState(() {
+    setState(()
+    {
       invoice = values!['purchaseno'].toString();
       invoice_date = values['purchasedate'].toString();
       Suppiler = values['suppilername'].toString();
       Amounttype = values['Payment mode'].toString();
-      values['balance amount'] == 0
-          ? balanceamount = double.parse(values['Totalamount'].toString())
-          : balanceamount = double.parse(values['balance amount'].toString());
-      values['credit days'] == ""
-          ? getcreditdays = "0"
-          : getcreditdays = values['credit days'].toString();
+      balanceamount = double.parse(values['balance amount'].toString());
+      values['credit days'] == "" ? getcreditdays = "0" : getcreditdays = values['credit days'].toString();
       SGST = double.parse(values['SGST'].toString()).toStringAsFixed(2);
       CGST = double.parse(values['CGST'].toString()).toStringAsFixed(2);
-      TotalAmount =
-          double.parse(values['Totalamount'].toString()).toStringAsFixed(2);
-      purchasenTotalAmount =
-          double.parse(values['Total'].toString()).toStringAsFixed(2);
-      state = values['state'];
+      TotalAmount = double.parse(values['Totalamount'].toString()).toStringAsFixed(2);
+      purchasenTotalAmount = double.parse(values['Total'].toString()).toStringAsFixed(2);
+     // state = values['state'];
       // if (values['Payment mode'] == "Credit Amount"&&values['credit days']!="") {
       //   Changedate = DateTime(year, month, day).add(Duration(days: int.parse(values['credit days'].toString()))).toString();
       //   formattedDate = DateFormat('d/MM/yyyy').format(DateTime.parse(Changedate));
       // }
-    });
+    }
+    );
 
-    var documents = await FirebaseFirestore.instance
-        .collection("Purchase entry")
-        .doc(streamid)
-        .collection(streamid)
-        .get();
+
+    var documents = await FirebaseFirestore.instance.collection("Purchase entry").doc(streamid).collection(streamid).get();
     for (int i = 0; i < documents.docs.length; i++) {
       setState(() {
         Total = (Total + double.parse(documents.docs[i]['Total'].toString()));
         qty = (qty + int.parse(documents.docs[i]['Qty'].toString()));
         // TotalAmount=(Total+double.parse(SGST)+double.parse(CGST)).toString();
+        soldtotal= soldtotal + ((((double.parse(documents.docs[i]['Qty'].toString())-double.parse(documents.docs[i]['stocks'].toString()))-double.parse(documents.docs[i]['return Quvantity'].toString())) * double.parse(documents.docs[i]['Landing cost'].toString())));
+        returnedtotal= returnedtotal + (double.parse(documents.docs[i]['return Quvantity'].toString()) * double.parse(documents.docs[i]['Landing cost'].toString()));
+        balancetotal= balancetotal + (double.parse(documents.docs[i]['stocks'].toString()) * double.parse(documents.docs[i]['Landing cost'].toString()));
+        viewalltotal= viewalltotal + (double.parse(documents.docs[i]['stocks'].toString()) * double.parse(documents.docs[i]['Landing cost'].toString()));
       });
     }
 
@@ -2644,7 +2603,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
             double.parse(values['Totalamount'].toString()).toStringAsFixed(2);
         purchasenTotalAmount =
             double.parse(values['Total'].toString()).toStringAsFixed(2);
-        state = values['state'];
+       // state = values['state'];
         if (values['Payment mode'] == "Credit Amount" &&
             values['credit days'] != "") {
           Changedate = DateTime(year, month, day)
@@ -2667,8 +2626,14 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         });
       }
     }
-    await showdialpogbox(streamid);
+    histotytotal(streamid);
+
+    showdialpogbox(streamid);
+
   }
+  double returnalltotal=0;
+  double balancealltotal=0;
+
 
   //edit textediticontroller
   TextEditingController Purchasename = TextEditingController();
@@ -2717,6 +2682,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   }
 
   ///edit popup dialog
+
   showtextfield(docid) {
     getvalur(docid);
 
@@ -3499,7 +3465,10 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   quvanotysolddunction(quvantity, stocks, retrun) {
     return (quvantity - stocks) - retrun;
   }
-
+double soldtotal=0;
+double returnedtotal=0;
+double balancetotal=0;
+double viewalltotal=0;
   showdialpogbox(streamid) {
     setState(() {});
     double width = MediaQuery.of(context).size.width;
@@ -3605,16 +3574,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                         fontWeight: FontWeight.bold),
                                   )),
                                 ),
-                                SizedBox(
-                                  height: height / 21.9,
-                                  width: width / 7.58,
-                                  child: Center(
-                                      child: Text(
-                                    "State: ${state.toString()}",
-                                    style: GoogleFonts.poppins(
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                                ),
+
                                 Amounttype == "Credit Amount"
                                     ? Container(
                                         height: height / 21.9,
@@ -3919,21 +3879,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
-                                                purchase['return'] == true
-                                                    ? Text(
-                                                        "(Return)",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                fontSize:
-                                                                    width /
-                                                                        97.571,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color:
-                                                                    Colors.red),
-                                                      )
-                                                    : const SizedBox(),
+
                                               ],
                                             ),
                                           ),
@@ -3961,7 +3907,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                           overflow: TextOverflow
                                                               .ellipsis)),
                                                 ),
-                                                Row(
+                                               /* Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
@@ -3985,7 +3931,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                               FontWeight.bold),
                                                     ),
                                                   ],
-                                                ),
+                                                ),*/
                                               ],
                                             ),
                                           ),
@@ -4170,50 +4116,106 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                 ),
                                 SizedBox(width: width / 170.75),
 
-                                Container(
-                                  height: height / 21.9,
-                                  width: width / 9.7,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey.shade200),
-                                  child: Center(
-                                    child: Text("SGST(9%): ${SGST.toString()}",
-                                        style: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.w600)),
-                                  ),
+                                Column(
+                                  children: [
+
+
+                                    Container(
+                                      height: height / 21.9,
+                                      width: width / 9.7,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: Color(0xff128c7e)),
+                                      child: Center(
+                                        child: Text("Sold Cost: ${soldtotal.toString()}",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                                fontWeight: FontWeight.w600)),
+                                      ),
+                                    ),
+                                    SizedBox(height: height / 65.7),
+                                    Container(
+                                      height: height / 21.9,
+                                      width: width / 9.7,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: Colors.grey.shade200),
+                                      child: Center(
+                                        child: Text("SGST(9%): ${SGST.toString()}",
+                                            style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.w600)),
+                                      ),
+                                    ),
+                                  ],
                                 ),
 
                                 SizedBox(
                                   width: width / 68.3,
                                 ),
-                                Container(
-                                  height: height / 21.9,
-                                  width: width / 9.7,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey.shade200),
-                                  child: Center(
-                                    child: Text("CGST(9%): ${CGST.toString()}",
-                                        style: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.w600)),
-                                  ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: height / 21.9,
+                                      width: width / 9.7,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: Color(0xff128c7e)),
+                                      child: Center(
+                                        child: Text("Return Cost: ${returnedtotal.toString()}",
+                                            style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600)),
+                                      ),
+                                    ),
+                                    SizedBox(height: height / 65.7),
+                                    Container(
+                                      height: height / 21.9,
+                                      width: width / 9.7,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: Colors.grey.shade200),
+                                      child: Center(
+                                        child: Text("CGST(9%): ${CGST.toString()}",
+                                            style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.w600)),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 SizedBox(width: width / 170.75),
 
-                                Container(
-                                  height: height / 21.9,
-                                  width: width / 6.83,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey.shade200),
-                                  child: Center(
-                                    child: Text(
-                                        "Total: ${TotalAmount.toString()}",
-                                        style: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.red,
-                                            fontSize: width / 75.88)),
-                                  ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: height / 21.9,
+                                      width: width / 6.83,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: Color(0xff128c7e)),
+                                      child: Center(
+                                        child: Text("Balance Cost: ${balancetotal.toString()}",
+                                            style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600)),
+                                      ),
+                                    ),
+                                    SizedBox(height: height / 65.7),
+                                    Container(
+                                      height: height / 21.9,
+                                      width: width / 6.83,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: Colors.grey.shade200),
+                                      child: Center(
+                                        child: Text(
+                                            "Total: ${TotalAmount.toString()}",
+                                            style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.red,
+                                                fontSize: width / 75.88)),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 SizedBox(width: width / 170.75),
 
@@ -4232,19 +4234,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: [
-                                            Payedamount == 0
-                                                ? Text("Payed : 0",
-                                                    style: GoogleFonts.poppins(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.white,
-                                                        fontSize:
-                                                            width / 85.375,
-                                                        textStyle: const TextStyle(
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis)))
-                                                : Text("Payed : $Payedamount",
+                                             Text("Payed : ${(double.parse(TotalAmount.toString())-double.parse(balanceamount.toString())).toString()}",
                                                     style: GoogleFonts.poppins(
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -4289,30 +4279,30 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                 SizedBox(width: width / 170.75),
 
                                 //Pay Now
-                                // Amounttype == "Credit Amount"
-                                //     ? GestureDetector(
-                                //         onTap: () {
-                                //           Payedpopup(streamid);
-                                //         },
-                                //         child: Container(
-                                //           height: height / 21.9,
-                                //           width: width / 11.83,
-                                //           decoration: BoxDecoration(
-                                //               borderRadius:
-                                //                   BorderRadius.circular(5),
-                                //               color: const Color(0xff34b7f1)),
-                                //           child: Center(
-                                //             child: Text("Pay Now",
-                                //                 style: GoogleFonts.poppins(
-                                //                   fontWeight: FontWeight.bold,
-                                //                   color: Colors.white,
-                                //                   fontSize: width / 85.375,
-                                //                 )),
-                                //           ),
-                                //         ),
-                                //       )
-                                //     : const SizedBox(),
-                                // SizedBox(width: width / 170.75),
+                                Amounttype == "Credit Amount"
+                                    ? GestureDetector(
+                                        onTap: () {
+                                          Payedpopup(streamid);
+                                        },
+                                        child: Container(
+                                          height: height / 21.9,
+                                          width: width / 11.83,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              color: const Color(0xff34b7f1)),
+                                          child: Center(
+                                            child: Text("Pay Now",
+                                                style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                  fontSize: width / 85.375,
+                                                )),
+                                          ),
+                                        ),
+                                      )
+                                    : const SizedBox(),
+                                SizedBox(width: width / 170.75),
 
                                 Amounttype == "Credit Amount"
                                     ? GestureDetector(
@@ -4353,6 +4343,28 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   }
 
   /// payment histoey popup
+  ///
+  ///
+  histotytotal(streamid) async {
+    setState(() {
+      hisbalanceamount=0;
+    });
+    var document= await FirebaseFirestore.instance
+        .collection("Purchase entry")
+        .doc(streamid)
+        .collection("Payment Histroy").orderBy("timstamp",descending: true).get();
+print("sddfd---------------------------------------------");
+    for(int i=0;i<document.docs.length;i++)
+      {
+        setState(() {
+
+        hisbalanceamount=document.docs[i]['discount'].toString()!=""&&document.docs[i]['discount'].toString()!=" "?
+        (hisbalanceamount + double.parse(document.docs[i]['discount'].toString()) + double.parse(document.docs[i]['Amount'].toString())) : hisbalanceamount +double.parse(document.docs[i]['Amount']);
+        });
+
+        }
+    //showpaymenthistroypopup(streamid);
+  }
 
   showpaymenthistroypopup(streamid) {
     setState(() {});
@@ -4364,6 +4376,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         bool testBool = true;
         return StatefulBuilder(
           builder: (context, setState) {
+
             return SlideInLeft(
                 animate: true,
                 duration: const Duration(milliseconds: 800),
@@ -4372,8 +4385,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                   padding: EdgeInsets.only(
                       top: height / 110.6,
                       bottom: height / 110.6,
-                      left: width / 5.53,
-                      right: width / 5.53),
+            left: width / 45.53,
+            right: width / 45.53),
                   child: Scaffold(
                     body: Container(
                       decoration: BoxDecoration(
@@ -4394,7 +4407,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                   width: width / 8.4,
                                 ),
                                 Text(
-                                  "Purchase Histroy Details",
+                                  "Purchase History Payment Details",
                                   style: GoogleFonts.poppins(
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w700),
@@ -4486,7 +4499,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                   ),
                                   child: Center(
                                       child: Text(
-                                    'Credit\nDays',
+                                    'Extra Credit\nDays',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         fontWeight: FontWeight.bold,
@@ -4502,7 +4515,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                   ),
                                   child: Center(
                                       child: Text(
-                                    'Payment',
+                                    'Payment Mode',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         fontWeight: FontWeight.bold,
@@ -4518,13 +4531,46 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                   ),
                                   child: Center(
                                       child: Text(
-                                    'Amount',
+                                    'Amount Paid',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
                                 ),
+                                Container(
+                                  width: width / 6.32,
+                                  height: height / 13.14,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.black, width: 1.2),
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                    'Discount',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.bold,
+                                        color: const Color(0xff5801e8)),
+                                  )),
+                                ),
+                                Container(
+                                  width: width / 6.32,
+                                  height: height / 13.14,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.black, width: 1.2),
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                    'Total',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.bold,
+                                        color: const Color(0xff5801e8)),
+                                  )),
+                                ),
+
                                 SizedBox(
                                   width: width / 136.6,
                                 ),
@@ -4536,7 +4582,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                 stream: FirebaseFirestore.instance
                                     .collection("Purchase entry")
                                     .doc(streamid)
-                                    .collection("Payment Histroy")
+                                    .collection("Payment Histroy").orderBy("timstamp",descending: true)
                                     .snapshots(),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData == null) {
@@ -4662,6 +4708,37 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                               ),
                                             )),
                                           ),
+                                          Container(
+                                            width: width / 6.32,
+                                            height: height / 13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.black,
+                                                    width: 1.2)),
+                                            child: Center(
+                                                child: Text(
+                                              purchase['discount'].toString(),
+                                              style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            )),
+                                          ),
+                                          Container(
+                                            width: width / 6.32,
+                                            height: height / 13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.black,
+                                                    width: 1.2)),
+                                            child: Center(
+                                                child: Text(
+                                                  purchase['discount'].toString()!=""&&purchase['discount'].toString()!=" "?
+                                      (double.parse(purchase['discount'].toString()) + double.parse(purchase['Amount'].toString())).toString(): purchase['Amount'].toString(),
+                                              style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            )),
+                                          ),
                                         ],
                                       );
                                     },
@@ -4669,6 +4746,35 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                 },
                               ),
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                    height: height / 21.9,
+                                    width: width / 7.83,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                        BorderRadius.circular(5),
+                                        color: const Color(0xff25d366)),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      children: [
+                                        Text("Total : $hisbalanceamount",
+                                            style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                                fontSize: width / 85.375,
+                                                textStyle: const TextStyle(
+                                                    overflow: TextOverflow
+                                                        .ellipsis))),
+                                      ],
+                                    )),
+                                SizedBox(width: 10,)
+                              ],
+                            )
                           ],
                         ),
                       ),
@@ -4692,8 +4798,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   Payedpopup(streamid) {
     setState(() {
       Amountstopay.text = balanceamount.toString();
-      Payment_detatils_Date.text =
-          "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
+      Payment_detatils_Date.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       Payment_detatils_Time.text = DateFormat.jm().format(DateTime.now());
     });
     double width = MediaQuery.of(context).size.width;
@@ -4705,7 +4810,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         return StatefulBuilder(
           builder: (context, setState) {
             return Padding(
-              padding: EdgeInsets.only(top: height / 8.4, bottom: height / 8.4),
+              padding: EdgeInsets.only(top: height / 8.4, bottom: height / 18.4),
               child: SlideInLeft(
                 animate: true,
                 duration: const Duration(milliseconds: 800),
@@ -4714,6 +4819,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                     backgroundColor: const Color(0xff264656),
                     content: SizedBox(
                       width: width / 3.902,
+                      height: 700,
                       child: Column(
                         children: [
                           Text(
@@ -4733,7 +4839,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                               SizedBox(
                                   width: width / 8.83,
                                   child: Text(
-                                    "Amount To Payed",
+                                    "Total Amount:",
                                     style: GoogleFonts.poppins(
                                         color: Colors.white),
                                   )),
@@ -4842,6 +4948,17 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                       borderRadius: BorderRadius.circular(6),
                                       color: Colors.white),
                                   child: TextField(
+                                    onSubmitted: (val){
+            setState(() {
+              balancepay.text = (balanceamount -
+                  double.parse(Discountbalnce.text))
+                  .abs()
+                  .toStringAsFixed(2);
+              balanceamount = (balanceamount -
+                  double.parse(Discountbalnce.text))
+                  .abs();
+            });
+                                    },
                                     controller: Discountbalnce,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
@@ -4901,7 +5018,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                               SizedBox(
                                   width: width / 8.83,
                                   child: Text(
-                                    "Credit days",
+                                    "Extra Credit days",
                                     style: GoogleFonts.poppins(
                                         color: Colors.white),
                                   )),
@@ -4959,7 +5076,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                       borderRadius: BorderRadius.circular(6),
                                       color: Colors.white),
                                   child: DropdownButton2<String>(
-                                    value: Payments,
+                                    value: Payments2,
                                     isExpanded: true,
                                     style: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w700,
@@ -4970,10 +5087,10 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                     onChanged: (String? value) {
                                       // This is called when the user selects an item.
                                       setState(() {
-                                        Payments = value!;
+                                        Payments2 = value!;
                                       });
                                     },
-                                    items: Paymentmode.map<
+                                    items: Paymentmode3.map<
                                             DropdownMenuItem<String>>(
                                         (String value) {
                                       return DropdownMenuItem<String>(
@@ -5074,14 +5191,9 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  if (Payments.isNotEmpty) {
+                                  print("Pay now button pressed");
                                     printdate(streamid);
-                                  } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                            content: Text(
-                                                "Please select the Payment Type...")));
-                                  }
+
                                 },
                                 child: Material(
                                   elevation: 15,
@@ -5108,6 +5220,17 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                               SizedBox(width: width / 68.3),
                               InkWell(
                                 onTap: () {
+                                  Amounts.clear();
+                                  Amountstopay.clear();
+                                  balancepay.clear();
+                                  creditdate.clear();
+                                  Payment_detatils_Date.clear();
+                                  Payment_detatils_Time.clear();
+                                  setState(() {
+                                    balanceamount = 0;
+                                    Payments = Paymentmode.first;
+                                  });
+                                  print("POP");
                                   Navigator.pop(context);
                                 },
                                 child: Material(
@@ -5147,6 +5270,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
 
   String Changedate = "";
   double balanceamount = 0;
+  double hisbalanceamount = 0;
   double Payedamount = 0;
   String creaditupdatedate = "";
   String formattedDate = '';
@@ -5155,25 +5279,26 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   int day = DateTime.now().day;
 
   printdate(streamid) async {
-    setState(() {
-      Changedate = DateTime(year, month, day)
-          .add(Duration(days: int.parse(creditdate.text)))
-          .toString();
-      formattedDate =
-          DateFormat('d/MM/yyyy').format(DateTime.parse(Changedate));
-    });
-    setState(() {
-      creaditupdatedate =
-          (int.parse(getcreditdays.toString()) + int.parse(creditdate.text))
-              .toString();
-    });
+    print("Pay now called");
+    print(streamid);
+    var date = DateTime.now();
+    var newDate=DateTime.now();
+    if(creditdate.text!=""&&creditdate.text!=" ") {
+      print("Pay now has credit day");
+      setState(() {
+        newDate = DateTime(date.year, date.month, date.day + int.parse(creditdate.text));
+      });
+
+    }
+
+    print("Pay now work started");
 
     FirebaseFirestore.instance
         .collection("Purchase entry")
         .doc(streamid)
         .update({
-      "credit days": creaditupdatedate,
-      "credit date": formattedDate,
+      "credit days": creditdate.text,
+      "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
       "balance amount": balanceamount,
     });
     FirebaseFirestore.instance
@@ -5182,14 +5307,14 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         .collection("Payment Histroy")
         .doc()
         .set({
-      "credit days": creaditupdatedate,
-      //"previous credit date":getcreditdays,
-      "credit date": creditdate.text,
+      "credit days": creditdate.text,
+      "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
       "balance amount": balanceamount,
       "Amount": Payedamount.toString(),
       "Date": Payment_detatils_Date.text,
       "time": Payment_detatils_Time.text,
-      "payment mode": Payments,
+      "payment mode": Payments2,
+      "discount": Discountbalnce.text,
       "timstamp": DateTime.now().millisecondsSinceEpoch,
     });
     if (status == true) {
@@ -5197,8 +5322,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           .collection("Purchase ShabikaG")
           .doc(streamid)
           .update({
-        "credit days": creaditupdatedate,
-        "credit date": formattedDate,
+        "credit days": creditdate.text,
+        "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
         "balance amount": balanceamount,
       });
 
@@ -5208,14 +5333,14 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           .collection("Payment Histroy")
           .doc()
           .set({
-        "credit days": creaditupdatedate,
-        //"previous credit date":getcreditdays,
-        "credit date": creditdate.text,
+        "credit days": creditdate.text,
+        "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
         "balance amount": balanceamount,
         "Amount": Payedamount.toString(),
         "Date": Payment_detatils_Date.text,
         "time": Payment_detatils_Time.text,
         "payment mode": Payments,
+        "discount": Discountbalnce.text,
         "timstamp": DateTime.now().millisecondsSinceEpoch,
       });
     }
@@ -5224,8 +5349,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           .collection("Purchase ShabikaN")
           .doc(streamid)
           .update({
-        "credit days": creaditupdatedate,
-        "credit date": formattedDate,
+        "credit days": creditdate.text,
+        "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
         "balance amount": balanceamount,
       });
       FirebaseFirestore.instance
@@ -5234,14 +5359,14 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           .collection("Payment Histroy")
           .doc()
           .set({
-        "credit days": creaditupdatedate,
-        //"previous credit date":getcreditdays,
-        "credit date": creditdate.text,
+        "credit days": creditdate.text,
+        "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
         "balance amount": balanceamount,
         "Amount": Payedamount.toString(),
         "Date": Payment_detatils_Date.text,
         "time": Payment_detatils_Time.text,
         "payment mode": Payments,
+        "discount": Discountbalnce.text,
         "timstamp": DateTime.now().millisecondsSinceEpoch,
       });
     }
@@ -5256,8 +5381,9 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
       balanceamount = 0;
       Payments = Paymentmode.first;
     });
+    print("POP");
     Navigator.pop(context);
-    Navigator.pop(context);
+   Navigator.pop(context);
   }
 
   //payment invalid popup
@@ -5628,7 +5754,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                         style: GoogleFonts.poppins(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
-                                      )),
+                                      )
+                                      ),
                                     ),
                                     Container(
                                       width: width / 20.53,
@@ -6058,7 +6185,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                       width: 1.2)),
                                               child: Center(
                                                   child: Text(
-                                                purchase['Total'].toString(),
+                                                "${(double.parse(purchase['Landing cost']
+                                                    .toString())*double.parse(purchase['Qty'].toString())).toString()}",
                                                 style: GoogleFonts.poppins(
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -6094,8 +6222,39 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                               ],
                             )),
                         SizedBox(height: height / 65.7),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                                height: height / 21.9,
+                                width: width / 7.83,
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                    BorderRadius.circular(5),
+                                    color: const Color(0xff25d366)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.center,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.center,
+                                  children: [
+                                    Text("Total : $viewalltotal",
+                                        style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            fontSize: width / 85.375,
+                                            textStyle: const TextStyle(
+                                                overflow: TextOverflow
+                                                    .ellipsis))),
+                                  ],
+                                )),
+                            SizedBox(width: 10,)
+                          ],
+                        )
+
                       ],
                     ),
+
                   ),
                 ),
               ),

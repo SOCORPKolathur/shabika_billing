@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "billingapp-cab55",
-    "staging": "billingapp-cab55"
+    "staging": "billingapp-cab55",
+    "dist": "billingapp-cab55"
   },
   "targets": {},
   "etags": {}

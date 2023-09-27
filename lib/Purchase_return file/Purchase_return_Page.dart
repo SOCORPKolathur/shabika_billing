@@ -853,10 +853,10 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                 StreamBuilder<QuerySnapshot>(
                   stream:
                    status==true?
-                  FirebaseFirestore.instance.collection("Purchase ShabikaG").orderBy("timestamp",descending: true).snapshots():
+                  FirebaseFirestore.instance.collection("ReturnG entry").orderBy("timestamp",descending: true).snapshots():
                     status2==true?
-                  FirebaseFirestore.instance.collection("Purchase ShabikaN").orderBy("timestamp",descending: true).snapshots():
-                  FirebaseFirestore.instance.collection("Purchase entry").orderBy("timestamp",descending: true).snapshots(),
+                  FirebaseFirestore.instance.collection("ReturnN entry").orderBy("timestamp",descending: true).snapshots():
+                  FirebaseFirestore.instance.collection("Return entry").orderBy("timestamp",descending: true).snapshots(),
                   builder: (context, snapshot) {
                     if(snapshot.hasData==null){
                       return Center(child: Container());
@@ -873,7 +873,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
                         var buillin1=snapshot.data!.docs[index];
 
-                          if (isserach == true && buillin1['return'] == true) {
+                          if (isserach == true) {
 
                             if (mydate.isNotEmpty && Suppilercontroller.text == "" && Invoicecontroller.text == "" && Paymenttype.text == '') {
                               if (mydate.contains(buillin1['purchasedate'].toString())) {
@@ -964,7 +964,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(buillin1['Totalamount'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                          child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
                                       Container(
                                           width:width/8.507,
@@ -979,8 +979,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                               //view button
                                               InkWell(
                                                 onTap: (){
-                                                  checkqty(buillin1.id);
-
+                                                  showallitemapopup(buillin1.id);
                                                 },
                                                 child: Material(
                                                   elevation: 10,
@@ -1121,7 +1120,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Totalamount'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/8.507,
@@ -1136,7 +1135,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             //view button
                                             InkWell(
                                               onTap: (){
-                                                checkqty(buillin1.id);
+                                                showallitemapopup(buillin1.id);
 
                                               },
                                               child: Material(
@@ -1275,7 +1274,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Totalamount'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/8.507,
@@ -1290,7 +1289,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             //view button
                                             InkWell(
                                               onTap: (){
-                                                checkqty(buillin1.id);
+                                                showallitemapopup(buillin1.id);
 
                                               },
                                               child: Material(
@@ -1428,7 +1427,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Totalamount'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/8.507,
@@ -1443,7 +1442,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             //view button
                                             InkWell(
                                               onTap: (){
-                                                checkqty(buillin1.id);
+                                                showallitemapopup(buillin1.id);
 
                                               },
                                               child: Material(
@@ -1492,7 +1491,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
                           }
 
-                        else if(isserach==false&&buillin1['return']==true&&mydate.isEmpty){
+                        else if(isserach==false&&mydate.isEmpty){
 
                          return
                            Row(
@@ -1581,7 +1580,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                  decoration: BoxDecoration(
                                      border: Border.all(color: Colors.black,width: 1.2)
                                  ),
-                                 child: Center(child: Text(buillin1['Totalamount'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                 child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
 
                              Container(
                                  width:width/8.507,
@@ -1596,7 +1595,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                      //view button
                                      InkWell(
                                        onTap: (){
-                                         checkqty(buillin1.id);
+                                         showallitemapopup(buillin1.id);
 
                                        },
                                        child: Material(
@@ -1686,7 +1685,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
       Totalamountitem=0;
     });
 
-    var document=await FirebaseFirestore.instance.collection("Purchase entry").doc(streamid).get();
+    var document=await FirebaseFirestore.instance.collection("ReturnG entry").doc(streamid).get();
     Map<String,dynamic>?values=document.data();
     setState(() {
       invoice=values!['purchaseno'].toString();
@@ -1697,9 +1696,8 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
       payemntype=values['Payment mode 2'].toString();
       SGST=double.parse(values['SGST'].toString()).toStringAsFixed(2);
       CGST=double.parse(values['CGST'].toString()).toStringAsFixed(2);
-      TotalAmount=double.parse(values['Totalamount'].toString());
+      TotalAmount=double.parse(values['Total'].toString());
       // purchasenbalanceAmount=values['balance amount'];
-      state=values['state'];
     });
 
     // ///sold item Total Amount functions  and Balanace Item functions
@@ -2411,7 +2409,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(width: width/2.4,),
-                            Text("Purchase Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
+                            Text("Return Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w700),),
                             SizedBox(width: width/2.4,),
                             InkWell(
@@ -2440,245 +2438,230 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                               SizedBox(height:height/65.7),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text("View all Items",style:TextStyle(fontWeight: FontWeight.w700)),
-                                ],
-                              ),
-                              SizedBox(height:height/65.7),
-
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: const [
-                                  CircleAvatar(
-                                    radius: 8,
-                                 foregroundColor: Colors.pink,
-                                    backgroundColor: Colors.pink,
-                                  ),
-                                  SizedBox(width: 5,),
-                                  Text("Return",style:TextStyle(fontWeight: FontWeight.w700)),
-
-                                  SizedBox(width: 15,),
-                                  CircleAvatar(
-                                    radius: 8,
-                                    foregroundColor: Colors.red,
-                                    backgroundColor: Colors.red,
-                                  ),
-                                  SizedBox(width: 5,),
-                                  Text("Sold",style:TextStyle(fontWeight: FontWeight.w700)),
-
-                                  SizedBox(width: 15,),
-                                  CircleAvatar(
-                                    radius: 8,
-                                    foregroundColor: Colors.green,
-                                    backgroundColor: Colors.green,
-                                  ),
-                                  SizedBox(width: 5,),
-                                  Text("Balance",style:TextStyle(fontWeight: FontWeight.w700)),
-                                  SizedBox(width: 20,),
-                                ],
-                              ),
-                              SizedBox(height:height/65.7),
-                              Row(
                                 children: [
-                                  SizedBox(width:width/136.6,),
-
+                                  SizedBox(
+                                    width: width / 136.6,
+                                  ),
                                   Container(
-                                    width:width/ 27.32,
-                                    height:height/13.14,
+                                    width: width / 27.32,
+                                    height: height / 13.14,
                                     decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
                                     ),
-                                    child: Center(child: Text("Si.No",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                    child: Center(
+                                        child: Text(
+                                          "Si.No",
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
+                                  ),
+                                  Container(
+                                    width: width / 13.66,
+                                    height: height / 13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                          "Date\nTime",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
+                                  ),
+                                  Container(
+                                    width: width / 17.075,
+                                    height: height / 13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                          "Item Code",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
+                                  ),
+                                  Container(
+                                    width: width / 5.54,
+                                    height: height / 13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                          'Description',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
+                                  ),
+                                  Container(
+                                    width: width / 22.76,
+                                    height: height / 13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                          'Hsn\nCode',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
+                                  ),
+                                  Container(
+                                    width: width / 16.66,
+                                    height: height / 13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                          'Payment',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
+                                  ),
+                                  Container(
+                                    width: width / 25.53,
+                                    height: height / 13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                          "Qty",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
+                                  ),
+                                  Container(
+                                    width: width / 25.53,
+                                    height: height / 13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                          "Returned",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )
+                                    ),
                                   ),
 
                                   Container(
-
-                                    width: width/13.66,
-                                    height:height/13.14,
+                                    width: width / 17.66,
+                                    height: height / 13.14,
                                     decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
                                     ),
-                                    child: Center(child: Text("Date\nTime",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                    child: Center(
+                                        child: Text(
+                                          'Purchase\nPrice',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
                                   ),
-
                                   Container(
-                                    width: width/17.075,
-                                    height:height/13.14,
+                                    width: width / 17.66,
+                                    height: height / 13.14,
                                     decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
                                     ),
-                                    child: Center(child: Text("Item Code",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                    child: Center(
+                                        child: Text(
+                                          'Landing\nCost',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
                                   ),
-
                                   Container(
-                                    width: width/5.54,
-                                    height:height/13.14,
+                                    width: width / 17.66,
+                                    height: height / 13.14,
                                     decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
                                     ),
-                                    child: Center(child: Text('Description',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                    child: Center(
+                                        child: Text(
+                                          'Sales\nPrice',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
                                   ),
-
                                   Container(
-                                    width: width/22.76,
-                                    height:height/13.14,
+                                    width: width / 27.32,
+                                    height: height / 13.14,
                                     decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
                                     ),
-                                    child: Center(child: Text('Hsn\nCode',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                    child: Center(
+                                        child: Text(
+                                          'Tax',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
                                   ),
-
                                   Container(
-                                    width: width/16.66,
-                                    height:height/13.14,
+                                    height: height / 13.14,
                                     decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
+                                      border: Border.all(
+                                          color: Colors.black, width: 1.2),
                                     ),
-                                    child: Center(child: Text('Payment',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                    width: width / 17.66,
+                                    child: Center(
+                                        child: Text(
+                                          "Total",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              color: const Color(0xff5801e8)),
+                                        )),
                                   ),
 
-                                  Container(
-
-                                    width:width/ 45.53,
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    child: Center(child: Text("Qty",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                  SizedBox(
+                                    width: width / 136.6,
                                   ),
-
-                                  Container(
-
-                                    width:width/ 25.53,
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    child: Center(child: Text("Sold",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-
-                                  Container(
-
-                                    width:width/ 20.53,
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    child: Center(child: Text("Balance",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-                                  Container(
-
-                                    width:width/ 25.53,
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    child: Center(child: Text("Return",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-                                  Container(
-                                    width: width/17.66,
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    child: Center(child: Text('Purchase\nPrice',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-                                  Container(
-                                    width: width/17.66,
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    child: Center(child: Text('Landing\nCost',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-
-                                  Container(
-
-                                    width: width/17.66,
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    child: Center(child: Text('Sales\nPrice',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-                                  Container(
-
-                                    width: width/27.32,
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    child: Center(child: Text('Tax',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-
-                                  Container(
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    width: width/17.66,
-
-                                    child: Center(child: Text("Total",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-                                  Container(
-                                    height:height/13.14,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black,width: 1.2),
-                                    ),
-                                    width: width/17.66,
-
-                                    child: Center(child: Text("Balance\nAmount",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                                  ),
-
-
-
-                                  SizedBox(width:width/136.6,),
-
-
-
                                 ],
                               ),
+
+
                               StreamBuilder<QuerySnapshot>(
                                 stream:
-                                FirebaseFirestore.instance.collection("Purchase entry").doc(streamid).collection(streamid).snapshots(),
+                                FirebaseFirestore.instance.collection("ReturnG entry").doc(streamid).collection(streamid).snapshots(),
                                 builder: (context, snapshot) {
                                   if(snapshot.hasData==null){
                                     return Center(child: Container(),);
@@ -2698,9 +2681,9 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         //    int.parse(purchase['Qty'].toString()) != purchase['stocks'] ?
                                           Row(
                                             crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
 
-                                              SizedBox(width:width/136.6,),
 
                                               Container(
                                                 width: width/27.32,
@@ -2738,13 +2721,25 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
                                                 child: Center(
-                                                  child: Text(purchase['Description'].toString(),
-                                                    style: GoogleFonts.poppins(
-                                                        textStyle: const TextStyle(
-                                                            overflow:TextOverflow.ellipsis
-                                                        )
+                                                  child: Column(
+                                                    children: [
+                                                      Text(purchase['Description'].toString(),
+                                                        style: GoogleFonts.poppins(
+                                                            textStyle: const TextStyle(
+                                                                overflow:TextOverflow.ellipsis
+                                                            )
 
-                                                    ),),
+                                                        ),),
+                                                      Text(purchase['Imei no'].length>0?purchase['Imei no'].toString():purchase['Serial no'].length>0?purchase['Serial no'].toString():purchase['color'].length>0?purchase['color'].toString():"",
+                                                        style: GoogleFonts.poppins(
+                                                            textStyle: const TextStyle(
+                                                              color:Colors.indigo,
+                                                                overflow:TextOverflow.ellipsis
+                                                            )
+
+                                                        ),),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
 
@@ -2763,12 +2758,12 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text(purchase['Payment mode'].toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text("Return",style: GoogleFonts.poppins(),)),
                                               ),
 
                                               Container(
 
-                                                width: width/45.53,
+                                                width:width/ 25.53,
                                                 height:height/13.14,
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
@@ -2786,32 +2781,11 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
 
-                                                child: Center(child: Text(quvanotysolddunction(int.parse(purchase['Qty'].toString()),purchase['stocks']).toString(),style: GoogleFonts.poppins(color: Colors.red,fontWeight: FontWeight.bold),)),
+                                                child: Center(child: Text(purchase['stocks'].toString(),style: GoogleFonts.poppins(color: Colors.red,fontWeight: FontWeight.bold),)),
                                               ),
 
                                               //balnce items
-                                              Container(
 
-                                                width: width/20.53,
-                                                height:height/13.14,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(color: Colors.black,width: 1.2)
-                                                ),
-
-                                                child: Center(child: Text(quvanotyblancedunction(int.parse(purchase['Qty'].toString()),purchase['stocks']).toString(),style: GoogleFonts.poppins(color: Colors.green,fontWeight: FontWeight.bold),)),
-                                              ),
-
-                                              //return items
-                                              Container(
-
-                                                width:width/ 25.53,
-                                                height:height/13.14,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(color: Colors.black,width: 1.2)
-                                                ),
-
-                                                child: Center(child: Text(purchase['return Quvantity'].toString(),style: GoogleFonts.poppins(color: Colors.pink,fontWeight: FontWeight.bold),)),
-                                              ),
 
                                               Container(
                                                 width: width/17.66,
@@ -2848,7 +2822,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text(purchase['tax'].toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text("18%",style: GoogleFonts.poppins(),)),
                                               ),
 
                                               Container(
@@ -2858,18 +2832,9 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text(quvantitybalanceduntion(int.parse(purchase['Qty'].toString()),purchase['stocks'],double.parse(purchase['Purchase price'].toString())).toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text(purchase['Total'].toString(),style: GoogleFonts.poppins(),)),
                                               ),
 
-                                              Container(
-
-                                                width: width/17.66,
-                                                height:height/13.14,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(color: Colors.black,width: 1.2)
-                                                ),
-                                                child: Center(child: Text(quvantitybalanceAmountduntion(int.parse(purchase['Qty'].toString()),double.parse(purchase['Landing cost'].toString())).toString(),style: GoogleFonts.poppins(),)),
-                                              ),
 
                                             ],
                                           );
