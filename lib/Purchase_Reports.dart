@@ -63,7 +63,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
       Suppilier.clear();
       Invoice.clear();
       PaymentType.clear();
-      isserach = false;
+
     });
 
     if (status == true) {
@@ -71,7 +71,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         Suppilier.clear();
         Invoice.clear();
         PaymentType.clear();
-        isserach = false;
+
       });
       var document = await FirebaseFirestore.instance
           .collection("Purchase ShabikaG")
@@ -88,7 +88,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         Suppilier.clear();
         Invoice.clear();
         PaymentType.clear();
-        isserach = false;
+
       });
       var document = await FirebaseFirestore.instance
           .collection("Purchase ShabikaN")
@@ -105,7 +105,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         Suppilier.clear();
         Invoice.clear();
         PaymentType.clear();
-        isserach = false;
+
       });
       var document = await FirebaseFirestore.instance
           .collection("Purchase entry")
@@ -126,18 +126,6 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
 
     print(PaymentType);
   }
-
-  @override
-  void initState() {
-    additemduntion();
-    billingtotalamount();
-    // TODO: implement initState
-    super.initState();
-  }
-
-  TextEditingController Datecontroller = TextEditingController();
-  TextEditingController Datecontroller2 = TextEditingController();
-  final DateFormat formatter = DateFormat('d/M/yyyy');
   int year1 = 0;
   int day1 = 0;
   int month1 = 0;
@@ -145,6 +133,86 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   int day2 = 0;
   int month2 = 0;
   List<String> mydate = [];
+  TextEditingController Datecontroller = TextEditingController();
+  TextEditingController Datecontroller2 = TextEditingController();
+  final DateFormat formatter = DateFormat('d/M/yyyy');
+datefun(){
+    setState(() {
+
+
+  setState(() {
+    Datecontroller.text = DateFormat('dd/M/yyyy').format(DateTime.now());
+    Datecontroller2.text =
+        DateFormat('dd/M/yyyy').format(DateTime.now());
+  });
+  setState(() {
+
+    year1 = DateTime.now().year;
+    day1 = DateTime.now().day;
+    month1 = DateTime.now().month;
+
+
+    year2 = DateTime.now().year;
+    day2 = DateTime.now().day;
+    month2 = DateTime.now().month;
+
+    //set output date to TextField value.
+  });
+  DateTime startDate = DateTime.utc(year1, month1, day1);
+  DateTime endDate = DateTime.utc(year2, month2, day2);
+  print(startDate);
+  print(endDate);
+  print("+++++++=================");
+  getDaysInBetween() {
+    final int difference =
+        endDate.difference(startDate).inDays;
+    return difference+1;
+  }
+  print(getDaysInBetween());
+
+
+  final items =
+  List<DateTime>.generate(getDaysInBetween(), (i) {
+    DateTime date = startDate;
+    return date.add(Duration(days: i));
+  });
+  setState(() {
+    mydate.clear();
+  });
+  print(items.length);
+  for (int i = 0; i < items.length; i++) {
+    setState(() {
+      isserach = true;
+      mydate.add(formatter.format(items[i]).toString());
+    });
+
+  }
+    });
+  print(mydate);
+
+  print(isserach);
+  print("+++++++++++++000000000+++++++++++");
+  setState(() {
+
+  });
+
+}
+  @override
+  void initState() {
+
+    datefun();
+    additemduntion();
+    setState(() {
+      isserach=true;
+    });
+    print(mydate);
+    billingtotalamount();
+    // TODO: implement initState
+    super.initState();
+  }
+
+
+
   double salesamount = 0;
   double balanceamountpurchase = 0;
 
@@ -172,7 +240,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                   double.parse(billingtotal.docs[i]["Totalamount"]);
               balanceamountpurchase = balanceamountpurchase +
                   billingtotal.docs[i]["balance amount"];
-            });
+            }
+            );
           }
         }
       } else {
@@ -192,10 +261,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           .where("save", isEqualTo: true)
           .get();
       if (mydate.isNotEmpty) {
-        setState(() {
-          salesamount = 0;
-          balanceamountpurchase = 0;
-        });
+
         for (int i = 0; i < billingtotal.docs.length; i++) {
           if (mydate.contains(billingtotal.docs[i]["purchasedate"])) {
             setState(() {
@@ -218,30 +284,34 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
       }
     }
     else {
+      setState(() {
+        salesamount = 0;
+        balanceamountpurchase = 0;
+      });
       var billingtotal = await FirebaseFirestore.instance
           .collection("Purchase entry")
           .where("save", isEqualTo: true)
           .get();
       if (mydate.isNotEmpty) {
+        setState(() {
+          salesamount = 0;
+          balanceamountpurchase = 0;
+        });
         for (int i = 0; i < billingtotal.docs.length; i++) {
           if (mydate.contains(billingtotal.docs[i]["purchasedate"])) {
+
             setState(() {
-              salesamount = 0;
-              balanceamountpurchase = 0;
-            });
-            setState(() {
-              salesamount = salesamount +
-                  double.parse(billingtotal.docs[i]["Totalamount"]);
+              salesamount = salesamount + double.parse(billingtotal.docs[i]["Totalamount"]);
               balanceamountpurchase = balanceamountpurchase +
                   billingtotal.docs[i]["balance amount"];
             });
           }
         }
-      } else {
+      }
+      else {
         for (int i = 0; i < billingtotal.docs.length; i++) {
           setState(() {
-            salesamount =
-                salesamount + double.parse(billingtotal.docs[i]["Totalamount"]);
+            salesamount = salesamount + double.parse(billingtotal.docs[i]["Totalamount"]);
             balanceamountpurchase =
                 balanceamountpurchase + billingtotal.docs[i]["balance amount"];
           });
@@ -250,6 +320,9 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
     }
 
     if(status == true) {
+      setState(() {
+        returnalltotal=0;
+      });
       var doc1 = await FirebaseFirestore.instance.collection("Purchase ShabikaG")
           .where("save", isEqualTo: true)
           .get();
@@ -260,8 +333,10 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
               "Purchase ShabikaG")
               .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
               .get();
+
           for (int j = 0; j < doc2.docs.length; j++) {
             setState(() {
+
               returnalltotal = returnalltotal +
                   (double.parse(doc2.docs[j]['return Quvantity'].toString()) *
                       double.parse(doc2.docs[j]['Landing cost'].toString()));
@@ -271,12 +346,16 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
       }
       }
       else{
+        setState(() {
+          returnalltotal=0;
+        });
         for (int i = 0; i < doc1.docs.length; i++) {
 
             var doc2 = await FirebaseFirestore.instance.collection(
                 "Purchase ShabikaG")
                 .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
                 .get();
+
             for (int j = 0; j < doc2.docs.length; j++) {
               setState(() {
                 returnalltotal = returnalltotal +
@@ -292,6 +371,10 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
       });
     }
     else if(status2 == true){
+      setState(() {
+        returnalltotal=0;
+      });
+      print("Shabika N ================++++++++++++++++++++++++++++++++++++");
       var doc1 = await FirebaseFirestore.instance.collection("Purchase ShabikaN")
           .where("save", isEqualTo: true)
           .get();
@@ -302,6 +385,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                 "Purchase ShabikaN")
                 .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
                 .get();
+
             for (int j = 0; j < doc2.docs.length; j++) {
               setState(() {
                 returnalltotal = returnalltotal +
@@ -313,13 +397,21 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         }
       }
       else{
+        setState(() {
+          returnalltotal=0;
+        });
         for (int i = 0; i < doc1.docs.length; i++) {
 
           var doc2 = await FirebaseFirestore.instance.collection(
               "Purchase ShabikaN")
               .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
               .get();
+
           for (int j = 0; j < doc2.docs.length; j++) {
+            print(returnalltotal);
+
+            print(double.parse(doc2.docs[j]['return Quvantity'].toString()));
+            print("---------------------------------------------");
             setState(() {
               returnalltotal = returnalltotal +
                   (double.parse(doc2.docs[j]['return Quvantity'].toString()) *
@@ -335,6 +427,10 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
 
     }
     else{
+      setState(() {
+        returnalltotal=0;
+      });
+
       var doc1 = await FirebaseFirestore.instance.collection("Purchase entry")
           .where("save", isEqualTo: true)
           .get();
@@ -345,6 +441,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                 "Purchase entry")
                 .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
                 .get();
+
             for (int j = 0; j < doc2.docs.length; j++) {
               setState(() {
                 returnalltotal = returnalltotal +
@@ -356,12 +453,16 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
         }
       }
       else{
+        setState(() {
+          returnalltotal=0;
+        });
         for (int i = 0; i < doc1.docs.length; i++) {
 
           var doc2 = await FirebaseFirestore.instance.collection(
               "Purchase entry")
               .doc(doc1.docs[i].id).collection(doc1.docs[i].id)
               .get();
+
           for (int j = 0; j < doc2.docs.length; j++) {
             setState(() {
               returnalltotal = returnalltotal +
@@ -414,6 +515,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                       setState(() {
                         status = val;
                       });
+                      billingtotalamount();
                     }
                   });
                 },
@@ -453,6 +555,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                       setState(() {
                         status2 = val;
                       });
+                      billingtotalamount();
                     }
                   });
                 },
@@ -498,7 +601,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(
                       bottom: width / 90.6, left: width / 91.06),
-                  hintText: "mm/dd/yyyy",
+                  hintText: "dd/mm/yyyy",
                   hintStyle: const TextStyle(color: Color(0xff00A99D)),
                   border: InputBorder.none,
                 ),
@@ -524,6 +627,31 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                       Datecontroller.text = formattedDate;
                       //set output date to TextField value.
                     });
+                    DateTime startDate = DateTime.utc(year1, month1, day1);
+                    DateTime endDate = DateTime.utc(year2, month2, day2);
+                    getDaysInBetween() {
+                      final int difference =
+                          endDate.difference(startDate).inDays;
+                      return difference+1;
+                    }
+
+                    final items =
+                    List<DateTime>.generate(getDaysInBetween(), (i) {
+                      DateTime date = startDate;
+                      return date.add(Duration(days: i));
+                    });
+                    setState(() {
+                      mydate.clear();
+                    });
+                    for (int i = 0; i < items.length; i++) {
+                      setState(() {
+                        isserach = true;
+                        mydate.add(formatter.format(items[i]).toString());
+                      });
+                      print(mydate);
+                      print("+++++++++++++++++++++++++++++++++++++++kkkk");
+                      billingtotalamount();
+                    }
                   } else {}
                 },
               ),
@@ -546,7 +674,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(
                       bottom: width / 90.6, left: width / 91.06),
-                  hintText: "mm/dd/yyyy",
+                  hintText: "dd/mm/yyyy",
                   hintStyle: const TextStyle(color: Color(0xff00A99D)),
                   border: InputBorder.none,
                 ),
@@ -560,8 +688,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
 
                   if (pickedDate != null) {
                     //pickedDate output format => 2021-03-10 00:00:00.000
-                    String formattedDate =
-                        DateFormat('dd/M/yyyy').format(pickedDate);
+                    String formattedDate = DateFormat('dd/M/yyyy').format(pickedDate);
                     //formatted date output using intl package =>  2021-03-16
                     //you can implement different kind of Date Format here according to your requirement
 
@@ -578,7 +705,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                     getDaysInBetween() {
                       final int difference =
                           endDate.difference(startDate).inDays;
-                      return difference;
+                      return difference+1;
                     }
 
                     final items =
@@ -594,6 +721,8 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                         isserach = true;
                         mydate.add(formatter.format(items[i]).toString());
                       });
+                      print(mydate);
+                      print("+++++++++++++++++++++++++++++++++++++++kkkk");
                       billingtotalamount();
                     }
                   } else {}
@@ -844,6 +973,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                 onChanged: (String? value) {
                   setState(() {
                     Paymentsmodevalue = value!;
+                    isserach = true;
                   });
                   // This is called when the user selects an item.
                   if (value == "Un Paid") {
@@ -852,6 +982,12 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                     });
                     print("PaymentChangevalue");
                     print(Paymenttype.text);
+                    print(Paymentsmodevalue);
+                    print(Suppilercontroller.text);
+                    print(Invoicecontroller.text);
+                    print(Datecontroller2.text);
+                    print(Datecontroller.text);
+                    print("++++++++++++++++++++++++++++++++++++++++++++++++++++");
                   } else {
                     setState(() {
                       Paymenttype.text = "Cash";
@@ -887,6 +1023,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                   Status2 = "";
                   Status3 = "";
                   PaymentChangevalue = '';
+                  Paymentsmodevalue = Paymentmode2.first;
                   isserach = false;
                   Username = '';
                   Username2 = '';
@@ -1200,16 +1337,17 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: snapshot.data!.docs.length,
                             itemBuilder: (context, index) {
+                              print(mydate);
+                              print(Paymentsmodevalue);
+
                               var buillin1 = snapshot.data!.docs[index];
 
-                              if (isserach == true &&
-                                  buillin1['save'] == true) {
+                              if (isserach == true && buillin1['save'] == true) {
                                 if (mydate.isNotEmpty &&
                                     Suppilercontroller.text == "" &&
                                     Invoicecontroller.text == "" &&
-                                    Paymenttype.text == "") {
-                                  if (mydate.contains(
-                                      buillin1['purchasedate'].toString())) {
+                                    Paymentsmodevalue == "Please Select") {
+                                  if (mydate.contains(buillin1['purchasedate'].toString())) {
                                     return Row(
                                       children: [
                                         SizedBox(
@@ -1303,8 +1441,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                                 border: Border.all(
                                                     color: Colors.black,
                                                     width: 1.2)),
-                                            child: buillin1['Payment mode'] ==
-                                                    "Credit Amount"
+                                            child: buillin1['balance amount'] != 0
                                                 ? Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -1469,21 +1606,579 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                     );
                                   }
                                 }
+                                else if(mydate.isNotEmpty &&
+                                    Suppilercontroller.text == "" &&
+                                    Invoicecontroller.text == "" &&
+                                    Paymentsmodevalue != "Please Select") {
+                                  if (mydate.contains(buillin1['purchasedate'].toString())) {
 
-                                else if (buillin1['suppilername']
-                                            .toString()
-                                            .toLowerCase()
-                                            .startsWith(Suppilercontroller.text
-                                                .toLowerCase()) &&
+                                    if (Paymentsmodevalue == "Un Paid") {
+                                      if (buillin1['balance amount'] != 0) {
+                                        return Row(
+                                          children: [
+                                            SizedBox(
+                                              width: width / 34.15,
+                                            ),
+                                            Container(
+                                                width: width / 10.66,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                    child: Text(
+                                                      "${buillin1['purchasedate']
+                                                          .toString()}",
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight: FontWeight
+                                                              .w600),
+                                                      textAlign: TextAlign
+                                                          .center,
+                                                    ))),
+                                            Container(
+                                                width: width / 10.507,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      buillin1['purchaseno']
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight:
+                                                          FontWeight.w600),
+                                                    ),
+
+                                                  ],
+                                                )),
+                                            Container(
+                                                width: width / 15.66,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                    child: Text(
+                                                      buillin1['suppilierinvoiceno']
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight: FontWeight
+                                                              .w600),
+                                                    ))),
+                                            Container(
+                                                width: width / 10.66,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                    child: Text(
+                                                      buillin1['suppilerid']
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight: FontWeight
+                                                              .w600),
+                                                    ))),
+                                            Container(
+                                                width: width / 4.66,
+                                                height: height / 13.14,
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: width / 683,
+                                                    vertical: height / 328.5),
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                    child: Text(
+                                                      buillin1['suppilername']
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight: FontWeight
+                                                              .w600),
+                                                    ))),
+                                            Container(
+                                                width: width / 10.66,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: buillin1['Payment mode'] ==
+                                                    "Credit Amount"
+                                                    ? Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      width: width / 13.66,
+                                                      height: height / 21.9,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                          BorderRadius
+                                                              .circular(
+                                                              100),
+                                                          color: Colors.red),
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Unpaid",
+                                                          style: GoogleFonts
+                                                              .montserrat(
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w600,
+                                                              color: Colors
+                                                                  .white),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                                    : Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                        width: width / 13.66,
+                                                        height: height / 21.9,
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                100),
+                                                            color:
+                                                            Colors.green),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Paid",
+                                                              style: GoogleFonts
+                                                                  .montserrat(
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                                  color: Colors
+                                                                      .white),
+                                                            ))),
+                                                  ],
+                                                )),
+                                            Container(
+                                                width: width / 10.507,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                  child: Text(
+                                                    buillin1['Totalamount']
+                                                        .toString(),
+                                                    style:
+                                                    GoogleFonts.montserrat(
+                                                        fontWeight:
+                                                        FontWeight
+                                                            .w600),
+                                                  ),
+                                                )),
+                                            Container(
+                                                width: width / 6.507,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black)),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    //view button
+                                                    InkWell(
+                                                      onTap: () {
+                                                        checkqty(buillin1.id);
+                                                      },
+                                                      child: Material(
+                                                        elevation: 10,
+                                                        color: Colors.green,
+                                                        borderRadius:
+                                                        BorderRadius.circular(
+                                                            100),
+                                                        child: Container(
+                                                            width: width /
+                                                                13.66,
+                                                            height: height /
+                                                                21.9,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    100),
+                                                                color: Colors
+                                                                    .green),
+                                                            child: Center(
+                                                                child: Text(
+                                                                  "View",
+                                                                  style: GoogleFonts
+                                                                      .montserrat(
+                                                                      fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                      color: Colors
+                                                                          .white),
+                                                                ))),
+                                                      ),
+                                                    ),
+
+                                                    SizedBox(
+                                                      width: width / 136.6,
+                                                    ),
+                                                    //edit button
+                                                    InkWell(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (
+                                                                  context) =>
+                                                                  EditPage1_purchase(
+                                                                      buillin1
+                                                                          .id),
+                                                            ));
+                                                      },
+                                                      child: Material(
+                                                        elevation: 10,
+                                                        borderRadius:
+                                                        BorderRadius.circular(
+                                                            100),
+                                                        child: Container(
+                                                            width: width /
+                                                                45.53,
+                                                            height: height /
+                                                                21.9,
+                                                            decoration: BoxDecoration(
+                                                              borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                  100),
+                                                            ),
+                                                            child: Center(
+                                                                child: Icon(
+                                                                    Icons.edit,
+                                                                    color:
+                                                                    Colors
+                                                                        .black,
+                                                                    size: width /
+                                                                        68.3))),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ],
+                                        );
+                                      }
+                                    }
+                                    else {
+                                      if (buillin1['balance amount'] == 0) {
+                                        return Row(
+                                          children: [
+                                            SizedBox(
+                                              width: width / 34.15,
+                                            ),
+                                            Container(
+                                                width: width / 10.66,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                    child: Text(
+                                                      "${buillin1['purchasedate']
+                                                          .toString()}",
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight: FontWeight
+                                                              .w600),
+                                                      textAlign: TextAlign
+                                                          .center,
+                                                    ))),
+                                            Container(
+                                                width: width / 10.507,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      buillin1['purchaseno']
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight:
+                                                          FontWeight.w600),
+                                                    ),
+
+                                                  ],
+                                                )),
+                                            Container(
+                                                width: width / 15.66,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                    child: Text(
+                                                      buillin1['suppilierinvoiceno']
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight: FontWeight
+                                                              .w600),
+                                                    ))),
+                                            Container(
+                                                width: width / 10.66,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                    child: Text(
+                                                      buillin1['suppilerid']
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight: FontWeight
+                                                              .w600),
+                                                    ))),
+                                            Container(
+                                                width: width / 4.66,
+                                                height: height / 13.14,
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: width / 683,
+                                                    vertical: height / 328.5),
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                    child: Text(
+                                                      buillin1['suppilername']
+                                                          .toString(),
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                          fontWeight: FontWeight
+                                                              .w600),
+                                                    ))),
+                                            Container(
+                                                width: width / 10.66,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: buillin1['balance amount'] !=
+                                                    0
+                                                    ? Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      width: width / 13.66,
+                                                      height: height / 21.9,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                          BorderRadius
+                                                              .circular(
+                                                              100),
+                                                          color: Colors.red),
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Unpaid",
+                                                          style: GoogleFonts
+                                                              .montserrat(
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w600,
+                                                              color: Colors
+                                                                  .white),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                                    : Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                        width: width / 13.66,
+                                                        height: height / 21.9,
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                100),
+                                                            color:
+                                                            Colors.green),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Paid",
+                                                              style: GoogleFonts
+                                                                  .montserrat(
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                                  color: Colors
+                                                                      .white),
+                                                            ))),
+                                                  ],
+                                                )),
+                                            Container(
+                                                width: width / 10.507,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black,
+                                                        width: 1.2)),
+                                                child: Center(
+                                                  child: Text(
+                                                    buillin1['Totalamount']
+                                                        .toString(),
+                                                    style:
+                                                    GoogleFonts.montserrat(
+                                                        fontWeight:
+                                                        FontWeight
+                                                            .w600),
+                                                  ),
+                                                )),
+                                            Container(
+                                                width: width / 6.507,
+                                                height: height / 13.14,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: Colors.black)),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    //view button
+                                                    InkWell(
+                                                      onTap: () {
+                                                        checkqty(buillin1.id);
+                                                      },
+                                                      child: Material(
+                                                        elevation: 10,
+                                                        color: Colors.green,
+                                                        borderRadius:
+                                                        BorderRadius.circular(
+                                                            100),
+                                                        child: Container(
+                                                            width: width /
+                                                                13.66,
+                                                            height: height /
+                                                                21.9,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    100),
+                                                                color: Colors
+                                                                    .green),
+                                                            child: Center(
+                                                                child: Text(
+                                                                  "View",
+                                                                  style: GoogleFonts
+                                                                      .montserrat(
+                                                                      fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                      color: Colors
+                                                                          .white),
+                                                                ))),
+                                                      ),
+                                                    ),
+
+                                                    SizedBox(
+                                                      width: width / 136.6,
+                                                    ),
+                                                    //edit button
+                                                    InkWell(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (
+                                                                  context) =>
+                                                                  EditPage1_purchase(
+                                                                      buillin1
+                                                                          .id),
+                                                            ));
+                                                      },
+                                                      child: Material(
+                                                        elevation: 10,
+                                                        borderRadius:
+                                                        BorderRadius.circular(
+                                                            100),
+                                                        child: Container(
+                                                            width: width /
+                                                                45.53,
+                                                            height: height /
+                                                                21.9,
+                                                            decoration: BoxDecoration(
+                                                              borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                  100),
+                                                            ),
+                                                            child: Center(
+                                                                child: Icon(
+                                                                    Icons.edit,
+                                                                    color:
+                                                                    Colors
+                                                                        .black,
+                                                                    size: width /
+                                                                        68.3))),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )),
+                                          ],
+                                        );
+                                      }
+                                    }
+                                  }
+                                }
+
+                                else if (buillin1['suppilername'].toString().toLowerCase().startsWith(Suppilercontroller.text.toLowerCase()) &&
                                         Invoicecontroller.text == "" &&
                                         Datecontroller.text == "" &&
-                                        Datecontroller.text == "" &&
-                                        Paymenttype.text == "" ||
+                                        Datecontroller2.text == "" &&
+                                    Paymentsmodevalue == "Please Select" ||
                                     buillin1['suppilierinvoiceno'].toString().toLowerCase().
                                     startsWith(Invoicecontroller.text.toLowerCase()) &&
                                         Suppilercontroller.text == "" &&
                                         Datecontroller.text == "" &&
-                                        Paymenttype.text == "" &&
+                                        Paymentsmodevalue == "Please Select" &&
                                         Datecontroller2.text == "") {
                                   return Row(
                                     children: [
@@ -1577,8 +2272,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                               border: Border.all(
                                                   color: Colors.black,
                                                   width: 1.2)),
-                                          child: buillin1['Payment mode'] ==
-                                                  "Credit Amount"
+                                          child: buillin1['balance amount'] != 0
                                               ? Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -1739,263 +2433,552 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                 }
 
 
-                                else if (buillin1['Payment mode'].toString().toLowerCase().startsWith(Paymenttype.text)
+                                else if (Paymentsmodevalue!="Please Select"
                                     && Suppilercontroller.text == "" &&
                                     Invoicecontroller.text == "" &&
                                     Datecontroller.text == "" &&
                                     Datecontroller2.text == "")
                                 {
-                                  return Row(
-                                    children: [
-                                      SizedBox(
-                                        width: width / 34.15,
-                                      ),
-                                      Container(
-                                          width: width / 10.66,
-                                          height: height / 13.14,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black,
-                                                  width: 1.2)),
-                                          child: Center(
-                                              child: Text(
-                                            "${buillin1['purchasedate'].toString()}",
-                                            style: GoogleFonts.montserrat(
-                                                fontWeight: FontWeight.w600),
-                                            textAlign: TextAlign.center,
-                                          ))),
-                                      Container(
-                                          width: width / 10.507,
-                                          height: height / 13.14,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black,
-                                                  width: 1.2)),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                buillin1['purchaseno']
-                                                    .toString(),
-                                                style: GoogleFonts.montserrat(
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
 
-                                            ],
-                                          )),
-                                      Container(
-                                          width: width / 15.66,
-                                          height: height / 13.14,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black,
-                                                  width: 1.2)),
-                                          child: Center(
-                                              child: Text(
-                                            buillin1['suppilierinvoiceno']
-                                                .toString(),
-                                            style: GoogleFonts.montserrat(
-                                                fontWeight: FontWeight.w600),
-                                          ))),
-                                      Container(
-                                          width: width / 10.66,
-                                          height: height / 13.14,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black,
-                                                  width: 1.2)),
-                                          child: Center(
-                                              child: Text(
-                                            buillin1['suppilerid'].toString(),
-                                            style: GoogleFonts.montserrat(
-                                                fontWeight: FontWeight.w600),
-                                          ))),
-                                      Container(
-                                          width: width / 4.66,
-                                          height: height / 13.14,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: width / 683,
-                                              vertical: height / 328.5),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black,
-                                                  width: 1.2)),
-                                          child: Center(
-                                              child: Text(
-                                            buillin1['suppilername'].toString(),
-                                            style: GoogleFonts.montserrat(
-                                                fontWeight: FontWeight.w600),
-                                          ))),
-                                      Container(
-                                          width: width / 10.66,
-                                          height: height / 13.14,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black,
-                                                  width: 1.2)),
-                                          child: buillin1['Payment mode'] ==
-                                                  "Credit Amount"
-                                              ? Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Container(
-                                                      width: width / 13.66,
-                                                      height: height / 21.9,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      100),
-                                                          color: Colors.red),
-                                                      child: Center(
-                                                        child: Text(
-                                                          "Unpaid",
-                                                          style: GoogleFonts
-                                                              .montserrat(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  color: Colors
-                                                                      .white),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                )
-                                              : Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Container(
-                                                        width: width / 13.66,
-                                                        height: height / 21.9,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        100),
-                                                            color:
-                                                                Colors.green),
-                                                        child: Center(
-                                                            child: Text(
-                                                          "Paid",
-                                                          style: GoogleFonts
-                                                              .montserrat(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  color: Colors
-                                                                      .white),
-                                                        ))),
-                                                  ],
-                                                )),
-                                      Container(
-                                          width: width / 10.507,
-                                          height: height / 13.14,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black,
-                                                  width: 1.2)),
-                                          child: Center(
+                                  if(Paymentsmodevalue=="Un Paid") {
+                                    if(buillin1['balance amount']!=0) {
+                                      return Row(
+                                        children: [
+                                          SizedBox(
+                                            width: width / 34.15,
+                                          ),
+                                          Container(
+                                              width: width / 10.66,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
                                                   child: Text(
-                                                    buillin1['Totalamount']
-                                                        .toString(),
-                                                    style:
-                                                        GoogleFonts.montserrat(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                  ),
-                                                )),
-                                      Container(
-                                          width: width / 6.507,
-                                          height: height / 13.14,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.black)),
-                                          child: Row(
-                                            mainAxisAlignment:
+                                                    "${buillin1['purchasedate']
+                                                        .toString()}",
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                    textAlign: TextAlign.center,
+                                                  ))),
+                                          Container(
+                                              width: width / 10.507,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                                mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                            children: [
-                                              //view button
-                                              InkWell(
-                                                onTap: () {
-                                                  checkqty(buillin1.id);
-                                                },
-                                                child: Material(
-                                                  elevation: 10,
-                                                  color: Colors.green,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100),
-                                                  child: Container(
-                                                      width: width / 13.66,
-                                                      height: height / 21.9,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      100),
-                                                          color: Colors.green),
-                                                      child: Center(
-                                                          child: Text(
-                                                        "View",
+                                                children: [
+                                                  Text(
+                                                    buillin1['purchaseno']
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight:
+                                                        FontWeight.w600),
+                                                  ),
+
+                                                ],
+                                              )),
+                                          Container(
+                                              width: width / 15.66,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                  child: Text(
+                                                    buillin1['suppilierinvoiceno']
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                  ))),
+                                          Container(
+                                              width: width / 10.66,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                  child: Text(
+                                                    buillin1['suppilerid']
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                  ))),
+                                          Container(
+                                              width: width / 4.66,
+                                              height: height / 13.14,
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: width / 683,
+                                                  vertical: height / 328.5),
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                  child: Text(
+                                                    buillin1['suppilername']
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                  ))),
+                                          Container(
+                                              width: width / 10.66,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: buillin1['Payment mode'] ==
+                                                  "Credit Amount"
+                                                  ? Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    width: width / 13.66,
+                                                    height: height / 21.9,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                        BorderRadius
+                                                            .circular(
+                                                            100),
+                                                        color: Colors.red),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Unpaid",
                                                         style: GoogleFonts
                                                             .montserrat(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                color: Colors
-                                                                    .white),
-                                                      ))),
-                                                ),
-                                              ),
-
-                                              SizedBox(
-                                                width: width / 136.6,
-                                              ),
-                                              //edit button
-                                              InkWell(
-                                                onTap: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            EditPage1_purchase(
-                                                                buillin1.id),
-                                                      ));
-                                                },
-                                                child: Material(
-                                                  elevation: 10,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100),
-                                                  child: Container(
-                                                      width: width / 45.53,
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .w600,
+                                                            color: Colors
+                                                                .white),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                                  : Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                      width: width / 13.66,
                                                       height: height / 21.9,
                                                       decoration: BoxDecoration(
-                                                        borderRadius:
+                                                          borderRadius:
+                                                          BorderRadius
+                                                              .circular(
+                                                              100),
+                                                          color:
+                                                          Colors.green),
+                                                      child: Center(
+                                                          child: Text(
+                                                            "Paid",
+                                                            style: GoogleFonts
+                                                                .montserrat(
+                                                                fontWeight:
+                                                                FontWeight
+                                                                    .w600,
+                                                                color: Colors
+                                                                    .white),
+                                                          ))),
+                                                ],
+                                              )),
+                                          Container(
+                                              width: width / 10.507,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                child: Text(
+                                                  buillin1['Totalamount']
+                                                      .toString(),
+                                                  style:
+                                                  GoogleFonts.montserrat(
+                                                      fontWeight:
+                                                      FontWeight
+                                                          .w600),
+                                                ),
+                                              )),
+                                          Container(
+                                              width: width / 6.507,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  //view button
+                                                  InkWell(
+                                                    onTap: () {
+                                                      checkqty(buillin1.id);
+                                                    },
+                                                    child: Material(
+                                                      elevation: 10,
+                                                      color: Colors.green,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          100),
+                                                      child: Container(
+                                                          width: width / 13.66,
+                                                          height: height / 21.9,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                  100),
+                                                              color: Colors
+                                                                  .green),
+                                                          child: Center(
+                                                              child: Text(
+                                                                "View",
+                                                                style: GoogleFonts
+                                                                    .montserrat(
+                                                                    fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                    color: Colors
+                                                                        .white),
+                                                              ))),
+                                                    ),
+                                                  ),
+
+                                                  SizedBox(
+                                                    width: width / 136.6,
+                                                  ),
+                                                  //edit button
+                                                  InkWell(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (
+                                                                context) =>
+                                                                EditPage1_purchase(
+                                                                    buillin1
+                                                                        .id),
+                                                          ));
+                                                    },
+                                                    child: Material(
+                                                      elevation: 10,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          100),
+                                                      child: Container(
+                                                          width: width / 45.53,
+                                                          height: height / 21.9,
+                                                          decoration: BoxDecoration(
+                                                            borderRadius:
                                                             BorderRadius
                                                                 .circular(100),
-                                                      ),
-                                                      child: Center(
-                                                          child: Icon(
-                                                              Icons.edit,
-                                                              color:
+                                                          ),
+                                                          child: Center(
+                                                              child: Icon(
+                                                                  Icons.edit,
+                                                                  color:
                                                                   Colors.black,
-                                                              size: width /
-                                                                  68.3))),
+                                                                  size: width /
+                                                                      68.3))),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )),
+                                        ],
+                                      );
+                                    }
+                                  }
+                                  else{
+                                    if(buillin1['balance amount']==0) {
+                                      return Row(
+                                        children: [
+                                          SizedBox(
+                                            width: width / 34.15,
+                                          ),
+                                          Container(
+                                              width: width / 10.66,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                  child: Text(
+                                                    "${buillin1['purchasedate']
+                                                        .toString()}",
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                    textAlign: TextAlign.center,
+                                                  ))),
+                                          Container(
+                                              width: width / 10.507,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    buillin1['purchaseno']
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight:
+                                                        FontWeight.w600),
+                                                  ),
+
+                                                ],
+                                              )),
+                                          Container(
+                                              width: width / 15.66,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                  child: Text(
+                                                    buillin1['suppilierinvoiceno']
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                  ))),
+                                          Container(
+                                              width: width / 10.66,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                  child: Text(
+                                                    buillin1['suppilerid']
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                  ))),
+                                          Container(
+                                              width: width / 4.66,
+                                              height: height / 13.14,
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: width / 683,
+                                                  vertical: height / 328.5),
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                  child: Text(
+                                                    buillin1['suppilername']
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                  ))),
+                                          Container(
+                                              width: width / 10.66,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: buillin1['balance amount'] != 0
+                                                  ? Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    width: width / 13.66,
+                                                    height: height / 21.9,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                        BorderRadius
+                                                            .circular(
+                                                            100),
+                                                        color: Colors.red),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Unpaid",
+                                                        style: GoogleFonts
+                                                            .montserrat(
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .w600,
+                                                            color: Colors
+                                                                .white),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                                  : Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                      width: width / 13.66,
+                                                      height: height / 21.9,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                          BorderRadius
+                                                              .circular(
+                                                              100),
+                                                          color:
+                                                          Colors.green),
+                                                      child: Center(
+                                                          child: Text(
+                                                            "Paid",
+                                                            style: GoogleFonts
+                                                                .montserrat(
+                                                                fontWeight:
+                                                                FontWeight
+                                                                    .w600,
+                                                                color: Colors
+                                                                    .white),
+                                                          ))),
+                                                ],
+                                              )),
+                                          Container(
+                                              width: width / 10.507,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                child: Text(
+                                                  buillin1['Totalamount']
+                                                      .toString(),
+                                                  style:
+                                                  GoogleFonts.montserrat(
+                                                      fontWeight:
+                                                      FontWeight
+                                                          .w600),
                                                 ),
-                                              ),
-                                            ],
-                                          )),
-                                    ],
-                                  );
+                                              )),
+                                          Container(
+                                              width: width / 6.507,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  //view button
+                                                  InkWell(
+                                                    onTap: () {
+                                                      checkqty(buillin1.id);
+                                                    },
+                                                    child: Material(
+                                                      elevation: 10,
+                                                      color: Colors.green,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          100),
+                                                      child: Container(
+                                                          width: width / 13.66,
+                                                          height: height / 21.9,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                  100),
+                                                              color: Colors
+                                                                  .green),
+                                                          child: Center(
+                                                              child: Text(
+                                                                "View",
+                                                                style: GoogleFonts
+                                                                    .montserrat(
+                                                                    fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                    color: Colors
+                                                                        .white),
+                                                              ))),
+                                                    ),
+                                                  ),
+
+                                                  SizedBox(
+                                                    width: width / 136.6,
+                                                  ),
+                                                  //edit button
+                                                  InkWell(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (
+                                                                context) =>
+                                                                EditPage1_purchase(
+                                                                    buillin1
+                                                                        .id),
+                                                          ));
+                                                    },
+                                                    child: Material(
+                                                      elevation: 10,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          100),
+                                                      child: Container(
+                                                          width: width / 45.53,
+                                                          height: height / 21.9,
+                                                          decoration: BoxDecoration(
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(100),
+                                                          ),
+                                                          child: Center(
+                                                              child: Icon(
+                                                                  Icons.edit,
+                                                                  color:
+                                                                  Colors.black,
+                                                                  size: width /
+                                                                      68.3))),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )),
+                                        ],
+                                      );
+                                    }
+                                  }
                                 }
 
 
@@ -2095,8 +3078,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                               border: Border.all(
                                                   color: Colors.black,
                                                   width: 1.2)),
-                                          child: buillin1['Payment mode'] ==
-                                                  "Credit Amount"
+                                          child: buillin1['balance amount'] != 0
                                               ? Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -2257,6 +3239,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                 }
 
                               }
+
                               else if (isserach == false &&
                                   buillin1['save'] == true &&
                                   mydate.isEmpty) {
@@ -2500,7 +3483,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
                                   ],
                                 );
                               }
-                              return const SizedBox();
+                              return  Container();
                             },
                           );
                         },
@@ -2519,6 +3502,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   String state = "";
   String invoice = "";
   String invoice_date = "";
+  String creditdate = "";
   String Suppiler = "";
   String SGST = '';
   String CGST = "";
@@ -2550,6 +3534,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
     {
       invoice = values!['purchaseno'].toString();
       invoice_date = values['purchasedate'].toString();
+      creditdate = values['purchasedate'].toString();
       Suppiler = values['suppilername'].toString();
       Amounttype = values['Payment mode'].toString();
       balanceamount = double.parse(values['balance amount'].toString());
@@ -2558,6 +3543,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
       CGST = double.parse(values['CGST'].toString()).toStringAsFixed(2);
       TotalAmount = double.parse(values['Totalamount'].toString()).toStringAsFixed(2);
       purchasenTotalAmount = double.parse(values['Total'].toString()).toStringAsFixed(2);
+      creaditupdatedate=values['credit date'];
      // state = values['state'];
       // if (values['Payment mode'] == "Credit Amount"&&values['credit days']!="") {
       //   Changedate = DateTime(year, month, day).add(Duration(days: int.parse(values['credit days'].toString()))).toString();
@@ -2609,6 +3595,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
           Changedate = DateTime(year, month, day)
               .add(Duration(days: int.parse(values['credit days'].toString())))
               .toString();
+          creaditupdatedate=values['credit date'];
           formattedDate =
               DateFormat('d/MM/yyyy').format(DateTime.parse(Changedate));
         }
@@ -3586,7 +4573,7 @@ double viewalltotal=0;
                                         ),
                                         child: Center(
                                             child: Text(
-                                          "Date To Be Paid :  ${formattedDate.toString()}",
+                                          "Date To Be Paid :  ${creaditupdatedate.toString()}",
                                           style: GoogleFonts.poppins(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white),
@@ -3805,7 +4792,7 @@ double viewalltotal=0;
                                 stream: FirebaseFirestore.instance
                                     .collection("Purchase entry")
                                     .doc(streamid)
-                                    .collection(streamid)
+                                    .collection(streamid).orderBy("timestamp")
                                     .snapshots(),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData == null) {
@@ -4105,7 +5092,7 @@ double viewalltotal=0;
                                                     color: Colors.indigoAccent,
                                                     fontSize: width / 91.06))
                                             : Text(
-                                                "Sub Total: ${Total.toString()}",
+                                                "Sub Total: ${Total.toStringAsFixed(2)}",
                                                 style: GoogleFonts.poppins(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.indigoAccent,
@@ -4127,7 +5114,7 @@ double viewalltotal=0;
                                           borderRadius: BorderRadius.circular(5),
                                           color: Color(0xff128c7e)),
                                       child: Center(
-                                        child: Text("Sold Cost: ${soldtotal.toString()}",
+                                        child: Text("Sold Cost: ${soldtotal.toStringAsFixed(2)}",
                                             style: GoogleFonts.poppins(
                                               color: Colors.white,
                                                 fontWeight: FontWeight.w600)),
@@ -4161,7 +5148,7 @@ double viewalltotal=0;
                                           borderRadius: BorderRadius.circular(5),
                                           color: Color(0xff128c7e)),
                                       child: Center(
-                                        child: Text("Return Cost: ${returnedtotal.toString()}",
+                                        child: Text("Return Cost: ${returnedtotal.toStringAsFixed(2)}",
                                             style: GoogleFonts.poppins(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w600)),
@@ -4193,7 +5180,7 @@ double viewalltotal=0;
                                           borderRadius: BorderRadius.circular(5),
                                           color: Color(0xff128c7e)),
                                       child: Center(
-                                        child: Text("Balance Cost: ${balancetotal.toString()}",
+                                        child: Text("Balance Cost: ${balancetotal.toStringAsFixed(2)}",
                                             style: GoogleFonts.poppins(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w600)),
@@ -4265,7 +5252,7 @@ double viewalltotal=0;
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: [
-                                            Text("Balance : $balanceamount",
+                                            Text("Balance : ${balanceamount.toStringAsFixed(2)}",
                                                 style: GoogleFonts.poppins(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.white,
@@ -4762,7 +5749,7 @@ print("sddfd---------------------------------------------");
                                       crossAxisAlignment:
                                       CrossAxisAlignment.center,
                                       children: [
-                                        Text("Total : $hisbalanceamount",
+                                        Text("Total : ${hisbalanceamount.toStringAsFixed(2)}",
                                             style: GoogleFonts.poppins(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
@@ -4790,14 +5777,14 @@ print("sddfd---------------------------------------------");
   TextEditingController Amounts = TextEditingController();
   TextEditingController Amountstopay = TextEditingController();
   TextEditingController balancepay = TextEditingController();
-  TextEditingController creditdate = TextEditingController();
+  TextEditingController creditdat = TextEditingController();
   TextEditingController Payment_detatils_Date = TextEditingController();
   TextEditingController Payment_detatils_Time = TextEditingController();
   TextEditingController Discountbalnce = TextEditingController();
 
   Payedpopup(streamid) {
     setState(() {
-      Amountstopay.text = balanceamount.toString();
+      Amountstopay.text = balanceamount.toStringAsFixed(2);
       Payment_detatils_Date.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       Payment_detatils_Time.text = DateFormat.jm().format(DateTime.now());
     });
@@ -5037,7 +6024,7 @@ print("sddfd---------------------------------------------");
                                       borderRadius: BorderRadius.circular(6),
                                       color: Colors.white),
                                   child: TextField(
-                                    controller: creditdate,
+                                    controller: creditdat,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         contentPadding: EdgeInsets.only(
@@ -5223,7 +6210,7 @@ print("sddfd---------------------------------------------");
                                   Amounts.clear();
                                   Amountstopay.clear();
                                   balancepay.clear();
-                                  creditdate.clear();
+                                  creditdat.clear();
                                   Payment_detatils_Date.clear();
                                   Payment_detatils_Time.clear();
                                   setState(() {
@@ -5274,6 +6261,7 @@ print("sddfd---------------------------------------------");
   double Payedamount = 0;
   String creaditupdatedate = "";
   String formattedDate = '';
+
   int year = DateTime.now().year;
   int month = DateTime.now().month;
   int day = DateTime.now().day;
@@ -5283,10 +6271,10 @@ print("sddfd---------------------------------------------");
     print(streamid);
     var date = DateTime.now();
     var newDate=DateTime.now();
-    if(creditdate.text!=""&&creditdate.text!=" ") {
+    if(creditdat.text!=""&&creditdat.text!=" ") {
       print("Pay now has credit day");
       setState(() {
-        newDate = DateTime(date.year, date.month, date.day + int.parse(creditdate.text));
+        newDate = DateTime(date.year, date.month, date.day + int.parse(creditdat.text));
       });
 
     }
@@ -5297,7 +6285,7 @@ print("sddfd---------------------------------------------");
         .collection("Purchase entry")
         .doc(streamid)
         .update({
-      "credit days": creditdate.text,
+      "credit days": creditdat.text,
       "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
       "balance amount": balanceamount,
     });
@@ -5307,7 +6295,7 @@ print("sddfd---------------------------------------------");
         .collection("Payment Histroy")
         .doc()
         .set({
-      "credit days": creditdate.text,
+      "credit days": creditdat.text,
       "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
       "balance amount": balanceamount,
       "Amount": Payedamount.toString(),
@@ -5322,7 +6310,7 @@ print("sddfd---------------------------------------------");
           .collection("Purchase ShabikaG")
           .doc(streamid)
           .update({
-        "credit days": creditdate.text,
+        "credit days": creditdat.text,
         "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
         "balance amount": balanceamount,
       });
@@ -5333,7 +6321,7 @@ print("sddfd---------------------------------------------");
           .collection("Payment Histroy")
           .doc()
           .set({
-        "credit days": creditdate.text,
+        "credit days": creditdat.text,
         "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
         "balance amount": balanceamount,
         "Amount": Payedamount.toString(),
@@ -5349,7 +6337,7 @@ print("sddfd---------------------------------------------");
           .collection("Purchase ShabikaN")
           .doc(streamid)
           .update({
-        "credit days": creditdate.text,
+        "credit days": creditdat.text,
         "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
         "balance amount": balanceamount,
       });
@@ -5359,7 +6347,7 @@ print("sddfd---------------------------------------------");
           .collection("Payment Histroy")
           .doc()
           .set({
-        "credit days": creditdate.text,
+        "credit days": creditdat.text,
         "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
         "balance amount": balanceamount,
         "Amount": Payedamount.toString(),
@@ -5374,7 +6362,7 @@ print("sddfd---------------------------------------------");
     Amounts.clear();
     Amountstopay.clear();
     balancepay.clear();
-    creditdate.clear();
+    creditdat.clear();
     Payment_detatils_Date.clear();
     Payment_detatils_Time.clear();
     setState(() {
@@ -5894,7 +6882,7 @@ print("sddfd---------------------------------------------");
                                   stream: FirebaseFirestore.instance
                                       .collection("Purchase entry")
                                       .doc(streamid)
-                                      .collection(streamid)
+                                      .collection(streamid).orderBy("timestamp")
                                       .snapshots(),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData == null) {
@@ -6238,7 +7226,7 @@ print("sddfd---------------------------------------------");
                                   crossAxisAlignment:
                                   CrossAxisAlignment.center,
                                   children: [
-                                    Text("Total : $viewalltotal",
+                                    Text("Total : ${viewalltotal.toStringAsFixed(2)}",
                                         style: GoogleFonts.poppins(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,

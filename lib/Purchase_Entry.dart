@@ -229,9 +229,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   String Boxno = "";
   String itemcat = '';
   String itembrand = '';
-  String itemimei = '';
-  String itemserial = '';
-  String itemcolor = '';
+  bool itemimei = false;
+  bool itemserial = false;
+  bool itemcolor = false;
   String itemdocuid = '';
 
   ///selected to set the value variables
@@ -279,6 +279,10 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   List SERIAL = [];
   List colorlist = [];
   List Imagelist = [];
+
+  List IMEI2 = [];
+  List SERIAL2 = [];
+  List colorlist2 = [];
 
 
   bool popupLoading = false;
@@ -1957,6 +1961,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               padding: EdgeInsets.only(bottom: height / 164.25),
                               child:
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   //Serial no
                                   SizedBox(
@@ -2009,10 +2014,13 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
                                           controller: _Streamcontroller2[index],
+                                          maxLines: 5,
                                           decoration: InputDecoration(
+
                                               border: InputBorder.none,
                                               hintText: '${billing['Description']},',
-                                              hintStyle: const TextStyle(color: Colors.black)
+
+                                              hintStyle: const TextStyle(color: Colors.black,)
                                           ),
                                           onSubmitted: (_){
                                             FirebaseFirestore.instance.collection("Purchase entry").doc(random)
@@ -4517,7 +4525,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       itemlandingprice = "";
       itempurchaseprice = "";
       itemnames = "";
-      itemcolor = '';
+      itemcolor = false;
+      itemimei = false;
+      itemserial = false;
     });
     Purchase_price.clear();
     Qty.clear();
@@ -4774,15 +4784,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
   bool showrelatedoitem=false;
   String showrelatedoitemname='';
+  DateTime creditdate= DateTime.now();
 
   createpurchase2(name) async {
     print("Document id");
     print(random);
 
     setState((){
+
       IMEISERIAL.clear();
       Itemdocumentid.clear();
       Purchaseinvoice.clear();
+      creditdate.add( Duration(days: int.parse(Creadit_days.text==""?"0":Creadit_days.text)));
     });
 
     if (layourbuilderclear.text != "" &&
@@ -4821,9 +4834,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               }
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
-              itemimei = documents.docs[i]["IMEI NO"].toString();
-              itemserial = documents.docs[i]["Serial NO"].toString();
-              itemcolor = documents.docs[i]["Color"].toString();
+              itemimei = documents.docs[i]["IMEI NO"];
+              itemserial = documents.docs[i]["Serial NO"];
+              itemcolor = documents.docs[i]["Color"];
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
@@ -4836,6 +4849,46 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               color = documents.docs[i]["Color"];
               Purchaseinvoice=documents.docs[i]["purchaseinvoiceid"];
               itemserch = false;
+              print("Checking IMEI++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+              if(documents.docs[i]["Imei no"].isNotEmpty){
+                for (int j = 0; j < documents.docs[i]["Imei no"].length; j++) {
+                  setState((){
+                    IMEI.add(documents.docs[i]["Imei no"][j].toString());
+                    IMEISERIAL.add(documents.docs[i]["Imei no"][j].toString());
+                  });
+                }
+                print("Presentb IMEI++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                print(IMEI);
+              }
+              if(documents.docs[i]["Serial no"].isNotEmpty){
+                for (int k = 0; k < documents.docs[i]["Serial no"].length; k++) {
+                  setState((){
+                    SERIAL.add(documents.docs[i]["Serial no"][k].toString());
+                    IMEISERIAL.add(documents.docs[i]["Serial no"][k].toString());
+                  });
+                }
+                print("Presentb serial++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                print(SERIAL);
+              }
+              if(documents.docs[i]["color"].isNotEmpty){
+                for (int l = 0; l < documents.docs[i]["color"].length; l++) {
+                  setState((){
+                    colorlist.add(documents.docs[i]["color"][l].toString());
+                    IMEISERIAL.add(documents.docs[i]["color"][l].toString());
+                  });
+                }
+                print("Presentb colorlist++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                print(colorlist);
+
+              }
+              if(documents.docs[i]["IMSlist"].isNotEmpty){
+                for (int m = 0; m < documents.docs[i]["IMSlist"].length; m++) {
+                  setState((){
+                    Imagelist.add(documents.docs[i]["IMSlist"][m].toString());
+                  });
+                }
+              }
             });
             landingcost();
           }
@@ -4868,9 +4921,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               }
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
-              itemimei = documents.docs[i]["IMEI NO"].toString();
-              itemserial = documents.docs[i]["Serial NO"].toString();
-              itemcolor = documents.docs[i]["Color"].toString();
+              itemimei = documents.docs[i]["IMEI NO"];
+              itemserial = documents.docs[i]["Serial NO"];
+              itemcolor = documents.docs[i]["Color"];
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
@@ -4883,6 +4936,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               color = documents.docs[i]["Color"];
               Purchaseinvoice=documents.docs[i]["purchaseinvoiceid"];
               itemserch = false;
+              print("Checking IMEI++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
               if(documents.docs[i]["Imei no"].isNotEmpty){
                 for (int j = 0; j < documents.docs[i]["Imei no"].length; j++) {
                   setState((){
@@ -4890,6 +4945,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                     IMEISERIAL.add(documents.docs[i]["Imei no"][j].toString());
                   });
                 }
+                print("Presentb IMEI++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                print(IMEI);
               }
               if(documents.docs[i]["Serial no"].isNotEmpty){
                 for (int k = 0; k < documents.docs[i]["Serial no"].length; k++) {
@@ -4898,6 +4955,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                     IMEISERIAL.add(documents.docs[i]["Serial no"][k].toString());
                   });
                 }
+                print("Presentb serial++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                print(SERIAL);
               }
               if(documents.docs[i]["color"].isNotEmpty){
                 for (int l = 0; l < documents.docs[i]["color"].length; l++) {
@@ -4906,6 +4965,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                     IMEISERIAL.add(documents.docs[i]["color"][l].toString());
                   });
                 }
+                print("Presentb colorlist++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                print(colorlist);
+
               }
               if(documents.docs[i]["Imei no"].isNotEmpty){
                 for (int m = 0; m < documents.docs[i]["Imei no"].length; m++) {
@@ -4960,9 +5022,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               }
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
-              itemimei = documents.docs[i]["IMEI NO"].toString();
-              itemserial = documents.docs[i]["Serial NO"].toString();
-              itemcolor = documents.docs[i]["Color"].toString();
+              itemimei = documents.docs[i]["IMEI NO"];
+              itemserial = documents.docs[i]["Serial NO"];
+              itemcolor = documents.docs[i]["Color"];
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
@@ -5041,9 +5103,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               }
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
-              itemimei = documents.docs[i]["IMEI NO"].toString();
-              itemserial = documents.docs[i]["Serial NO"].toString();
-              itemcolor = documents.docs[i]["Color"].toString();
+              itemimei = documents.docs[i]["IMEI NO"];
+              itemserial = documents.docs[i]["Serial NO"];
+              itemcolor = documents.docs[i]["Color"];
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
@@ -5076,7 +5138,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "purchasenote": purchase_notes.text,
         "suppilierinvoiceno": suppiler_invoice.text,
         "credit days": Creadit_days.text,
-        "credit date":"",
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
         "balance amount":0,
         "purchaseinvoiceid":[],
         "Reason":"",
@@ -5103,7 +5165,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "purchasenote": purchase_notes.text,
           "suppilierinvoiceno": suppiler_invoice.text,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           "balance amount":0,
           "purchaseinvoiceid":[],
           "Reason":"",
@@ -5128,7 +5190,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "purchasenote": purchase_notes.text,
           "suppilierinvoiceno": suppiler_invoice.text,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           "balance amount":0,
           "purchaseinvoiceid":[],
           "Reason":"",
@@ -5152,10 +5214,12 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     print("Document id");
     print(random);
     setState(() {
+
       itemserch = false;
       IMEISERIAL.clear();
       Itemdocumentid.clear();
       Purchaseinvoice.clear();
+      creditdate.add( Duration(days: int.parse(Creadit_days.text==""?"0":Creadit_days.text)));
 
     });
     if (layourbuilderclear3.text != "" &&
@@ -5199,9 +5263,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               }
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
-              itemimei = documents.docs[i]["IMEI NO"].toString();
-              itemserial = documents.docs[i]["Serial NO"].toString();
-              itemcolor = documents.docs[i]["Color"].toString();
+              itemimei = documents.docs[i]["IMEI NO"];
+              itemserial = documents.docs[i]["Serial NO"];
+              itemcolor = documents.docs[i]["Color"];
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
@@ -5253,9 +5317,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               }
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
-              itemimei = documents.docs[i]["IMEI NO"].toString();
-              itemserial = documents.docs[i]["Serial NO"].toString();
-              itemcolor = documents.docs[i]["Color"].toString();
+              itemimei = documents.docs[i]["IMEI NO"];
+              itemserial = documents.docs[i]["Serial NO"];
+              itemcolor = documents.docs[i]["Color"];
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
@@ -5287,7 +5351,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "purchasenote": purchase_notes.text,
         "suppilierinvoiceno": suppiler_invoice.text,
         "credit days": Creadit_days.text,
-        "credit date":"",
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
         "balance amount":0,
         "purchaseinvoiceid":[],
         "Reason":"",
@@ -5312,7 +5376,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "purchasenote": purchase_notes.text,
           "suppilierinvoiceno": suppiler_invoice.text,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           "balance amount":0,
           "purchaseinvoiceid":[],
           "Reason":"",
@@ -5338,7 +5402,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "purchasenote": purchase_notes.text,
           "suppilierinvoiceno": suppiler_invoice.text,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           "balance amount":0,
           "purchaseinvoiceid":[],
           "Reason":"",
@@ -5362,10 +5426,15 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
 
   collectioncreatefunction() async {
+    setState(() {
+
+      creditdate.add( Duration(days: int.parse(Creadit_days.text==""?"0":Creadit_days.text)));
+    });
 
     if (Payments != 'Please Select Type'&&itemdocuid.isNotEmpty) {
       setState((){
         Purchaseinvoice.add(random);
+        creditdate.add( Duration(days: int.parse(Creadit_days.text==""?"0":Creadit_days.text)));
       });
 
       FirebaseFirestore.instance.collection("Purchase entry").doc(random).collection(random).doc().set({
@@ -5404,13 +5473,13 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "Color": color,
         "Itemdocid":itemdocuid,
         "credit days": Creadit_days.text,
-        "credit date":"",
-        "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
+        "Description":  "${itemname.text},${itemimei==true ? IMEI2.toString() : ""}${itemcolor==true ? colorlist2.toString() : ""}${itemserial==true ? SERIAL.toString() : ""}",
         "IMSlist": IMEISERIAL,
-        "Imei no": IMEI,
+        "Imei no": IMEI2,
         "return": false,
-        "Serial no": SERIAL,
-        "color": colorlist,
+        "Serial no": SERIAL2,
+        "color": colorlist2,
       });
 
       FirebaseFirestore.instance.collection("Supplier").doc(customerdocid).collection("billing").doc(random).set({
@@ -5454,10 +5523,11 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Serial NO": serialvalue,
           "Color": color,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           // "Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-          "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-          "IMSlist": IMEISERIAL,
+          "Description":  "${itemname.text},${itemimei==true ? IMEI2.toString() : ""}${itemcolor==true ? colorlist2.toString() : ""}${itemserial==true ? SERIAL.toString() : ""}",
+        "IMSlist": IMEISERIAL,
+
         });
       }
 
@@ -5496,13 +5566,14 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Serial NO": serialvalue,
           "Color": color,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           // "Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-          "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-          "IMSlist": IMEISERIAL,
-          "Imei no": IMEI,
-          "Serial no": SERIAL,
-          "color": colorlist,
+          "Description":  "${itemname.text},${itemimei==true ? IMEI2.toString() : ""}${itemcolor==true ? colorlist2.toString() : ""}${itemserial==true ? SERIAL.toString() : ""}",
+        "IMSlist": IMEISERIAL,
+          "Imei no": IMEI2,
+          "Serial no": SERIAL2,
+          "color": colorlist2,
+          "return": false,
         });
 
         FirebaseFirestore.instance.collection("Item ShabikaG").doc(itemdocuid).
@@ -5537,10 +5608,10 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Serial NO": serialvalue,
           "Color": color,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-          "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-          "IMSlist": IMEISERIAL,
+          "Description":  "${itemname.text},${itemimei==true ? IMEI2.toString() : ""}${itemcolor==true ? colorlist2.toString() : ""}${itemserial==true ? SERIAL.toString() : ""}",
+        "IMSlist": IMEISERIAL,
           "Imei no": IMEI,
           "Serial no": SERIAL,
           "color": colorlist,
@@ -5691,13 +5762,14 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Serial NO": serialvalue,
           "Color": color,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           // "Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-          "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-          "IMSlist": IMEISERIAL,
-          "Imei no": IMEI,
-          "Serial no": SERIAL,
-          "color": colorlist,
+          "Description": "${itemname.text},${IMEI2.isNotEmpty ? IMEI2.toString() : ""}${colorlist2.isNotEmpty ? colorlist2.toString() : ""}${SERIAL2.isNotEmpty ? SERIAL.toString() : ""}",
+        "IMSlist": IMEISERIAL,
+          "Imei no": IMEI2,
+          "Serial no": SERIAL2,
+          "color": colorlist2,
+          "return": false,
         });
 
         FirebaseFirestore.instance.collection("Item ShabikaN").doc(itemdocuid).collection("Histroy").doc().set({
@@ -5733,10 +5805,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Serial NO": serialvalue,
           "Color": color,
           "credit days": Creadit_days.text,
-          "credit date":"",
+          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
           //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-          "Description":
-              "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+          "Description":"${itemname.text},${IMEI2.isNotEmpty ? IMEI2.toString() : ""}${colorlist2.isNotEmpty ? colorlist2.toString() : ""}${SERIAL2.isNotEmpty ? SERIAL.toString() : ""}",
           "IMSlist": IMEISERIAL,
           "Imei no": IMEI,
           "Serial no": SERIAL,
@@ -6346,7 +6417,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "CGST": Cgst,
         "save": true,
         "Totalamount": TotalAmount2.toStringAsFixed(2),
-        "balance amount":double.parse(TotalAmount2.toString()),
+        "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       FirebaseFirestore.instance.collection("Supplier").doc(customerdocid).collection("billing").doc(random)
           .update({
@@ -6356,7 +6427,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "CGST": Cgst,
         "save": true,
         "Totalamount": TotalAmount2.toStringAsFixed(2),
-        "balance amount":double.parse(TotalAmount2.toString())
+        "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       FirebaseFirestore.instance.collection("Purchase entry").doc(random).update({
         "Payment mode": Payments,
@@ -6366,7 +6437,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "save": true,
         "type": status==true? "ShabikaG" : "ShabikaN",
         "Totalamount": TotalAmount2.toStringAsFixed(2),
-        "balance amount":double.parse(TotalAmount2.toString())
+        "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       FirebaseFirestore.instance.collection("Accounts").doc("AxQxYGPKUB5qGzllyfpY").update({
         "Totalamount":FieldValue.increment(TotalAmount2)
@@ -6396,7 +6467,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "CGST": Cgst,
         "save": true,
         "Totalamount": totalamount.toStringAsFixed(2),
-        "balance amount":double.parse(totalamount.toStringAsFixed(2))
+        "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       FirebaseFirestore.instance.collection("Supplier").doc(customerdocid).collection("billing").doc(random).update({
         "Payment mode": Payments,
@@ -6405,7 +6476,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "CGST": Cgst,
         "save": true,
         "Totalamount": totalamount.toStringAsFixed(2),
-        "balance amount":double.parse(totalamount.toStringAsFixed(2))
+        "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       FirebaseFirestore.instance.collection("Purchase entry").doc(random).update({
         "Payment mode": Payments,
@@ -6415,7 +6486,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "save": true,
         "type": status==true? "ShabikaG" : "ShabikaN",
         "Totalamount": totalamount.toStringAsFixed(2),
-        "balance amount":double.parse(totalamount.toStringAsFixed(2))
+        "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       //create histroy collection
       for(int k=0;k<Itemdocumentid.length;k++){
@@ -6673,11 +6744,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   ///image and imei and serial no textfield generate and listview builder function
   showtextfield(Quvantity, serial, imei, color,images) {
 
-   setState((){
-    IMEI.clear();
-    SERIAL.clear();
-    colorlist.clear();
-    });
+
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -7116,8 +7183,11 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
                                             print(IMEISERIAL);
                                             IMEI.add(_controller[i].text);
+                                            IMEI2.add(_controller[i].text);
                                             SERIAL.add(_controller2[i].text);
+                                            SERIAL2.add(_controller2[i].text);
                                             colorlist.add(_controller3[i].text);
+                                            colorlist2.add(_controller3[i].text);
                                           });
                                         }
                                         for (int j=0;j<Imagelist.length;j++){
@@ -7151,7 +7221,14 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                           setState(() {
                                             popupLoading = false;
                                           });
-
+                                          setState((){
+                                            IMEI.clear();
+                                            IMEI2.clear();
+                                            SERIAL.clear();
+                                            SERIAL2.clear();
+                                            colorlist.clear();
+                                            colorlist2.clear();
+                                          });
                                         for (int k = 0; k < Quvantity; k++) {
                                          setState((){
                                            _controller[k].clear();
@@ -7739,19 +7816,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       onTap: () {
                                         print("ime save-1");
                                         setState(() {
-                                          popupLoading = true;
-                                          IMEI.clear();
-                                          SERIAL.clear();
-                                          colorlist.clear();
-                                          IMEISERIAL.clear();
+                                          popupLoading=true;
                                         });
                                         print("ime save-2");
                                         for (int i = 0; i < Quvantity; i++) {
                                           setState(() {
                                             IMEISERIAL.add("${_controller[i].text}${_controller2[i].text}${_controller3[i].text}");
                                             IMEI.add(_controller[i].text);
+                                            IMEI2.add(_controller[i].text);
                                             SERIAL.add(_controller2[i].text);
+                                            SERIAL2.add(_controller2[i].text);
                                             colorlist.add(_controller3[i].text);
+                                            colorlist2.add(_controller3[i].text);
                                           });
                                         }
                                         print("ime save-3");
@@ -7760,11 +7836,11 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         print("ime save-5");
 
                                         FirebaseFirestore.instance.collection("Purchase entry").doc(random).collection(random).doc(purchaseid).update({
-                                           "Description": "$itemname,${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() :""}",
-                                           "IMSlist": IMEISERIAL,
-                                           "Imei no": IMEI,
-                                           "Serial no": SERIAL,
-                                           "color": colorlist,
+                                           "Description":  "${itemname.text},${itemimei==true ? IMEI2.toString() : ""}${itemcolor==true ? colorlist2.toString() : ""}${itemserial==true ? SERIAL.toString() : ""}",
+                                        "IMSlist": IMEISERIAL,
+                                           "Imei no": IMEI2,
+                                           "Serial no": SERIAL2,
+                                           "color": colorlist2,
                                         });
                                         print("Checnkfghgfhfghfghfghgfhfg");
                                         print(IMEISERIAL);
@@ -7827,6 +7903,15 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                               _controller3[k].clear();
                                             });
                                           }
+                                          setState(() {
+                                            IMEI.clear();
+                                            IMEI2.clear();
+                                            SERIAL.clear();
+                                            SERIAL2.clear();
+                                            colorlist.clear();
+                                            colorlist2.clear();
+                                            IMEISERIAL.clear();
+                                          });
                                           Navigator.pop(context);
                                         });
                                         print("ime save-6");

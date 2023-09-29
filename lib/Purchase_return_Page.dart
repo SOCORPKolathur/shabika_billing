@@ -416,7 +416,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
   
   getvalues(code)async{
-    var document=await FirebaseFirestore.instance.collection("Purchase entry").get();
+    var document=await FirebaseFirestore.instance.collection("Purchase entry").where("save",isEqualTo: true).get();
     for(int i=0;i<document.docs.length;i++){
      if(code==document.docs[i]['suppilierinvoiceno']){
        setState((){
@@ -479,7 +479,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
          }
 
          var Purchasehistroy = await FirebaseFirestore.instance.collection("Purchase entry").doc(returnid).
-         collection("Payment Histroy").where("payment mode",isNotEqualTo:"Return").get();
+         collection("Payment Hisroy").where("payment mode",isNotEqualTo:"Return").get();
 
          for(int k=0;k<Purchasehistroy.docs.length;k++){
            setState((){
@@ -587,14 +587,16 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
             });
             totalamount=totalamount+(document.docs[k]["stocks"]*double.parse(document.docs[k]["Purchase price"].toString()));
             salespriceff=salespriceff+(double.parse(document.docs[k]["Purchase price"].toString()));
-            CGSTfunction();
-            SGSTfunction();
-            Totalamounts();
+
           }
         }
 
       }
+
     }
+    CGSTfunction();
+    SGSTfunction();
+    Totalamounts();
   }
 
 
@@ -617,20 +619,21 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
       if((int.parse(document.docs[k]["Qty"].toString())-(((int.parse(document.docs[k]["Qty"].toString()))-document.docs[k]['stocks'])))!=0)
       {
         if(Selected[k]==true){
-          print("Enter The selected quvatity value");
+          print("Enter The selected qty value");
           setState((){
             Returnlists.add(document.docs[k]['itemcode']);
             documentlists.add(document.docs[k]['Itemdocid']);
           });
           totalamount=totalamount+((int.parse(_Streamcontroller1[k].text))*double.parse(document.docs[k]["Purchase price"].toString()));
           salespriceff=salespriceff+(double.parse(document.docs[k]["Purchase price"].toString()));
-          CGSTfunction();
-          SGSTfunction();
-          Totalamounts();
+
           print(totalamount);
         }
       }
     }
+    CGSTfunction();
+    SGSTfunction();
+    Totalamounts();
     print("Qtydecrease add to data list");
     print(Qtydecrease);
     print("return  litssssssss");
@@ -1086,8 +1089,6 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
-
                         //Purchase  Date
                         Padding(
                           padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
@@ -1958,7 +1959,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                                   var stocksitem=snapshot.data!.docs[index];
 
-                                  return quvanotyblancedunction(int.parse(stocksitem['Qty'].toString()),stocksitem['stocks'])!=0&&stocksitem['return']==false ?
+                                  return quvanotyblancedunction(int.parse(stocksitem['Qty'].toString()),stocksitem['stocks'])!=0 ?
 
                                   Padding(
                                     padding:  EdgeInsets.only(bottom:height/164.25),
@@ -2072,8 +2073,8 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                               controller: _Streamcontroller1[index],
                                               decoration: InputDecoration(
                                                 contentPadding: EdgeInsets.only(left:width/34.15),
-                                                hintText: stocksitem['stocks'].toString(),
-                                                  hintStyle: const TextStyle(color:Colors.black),
+
+
                                                   border: InputBorder.none
                                               ),
                                               onSubmitted: (_) async {
@@ -4034,8 +4035,10 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
     });
 
     if(status2==true) {
+
       setState(() {
-        TotalAmount2 = totalamount + sgst + Cgst;
+        TotalAmount2 = totalamount;
+        totalamount = totalamount - sgst - Cgst;
       });
     }
     else{
@@ -4104,9 +4107,12 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
     });
 
     if(status2==true) {
+      print("CGST FUNCTION +++++++++++++++++++++++++++++");
+      print(salespriceff);
       setState(() {
         Cgst =salespriceff-(salespriceff/(1.09));
       });
+      print(Cgst);
     }
     else{
       setState(() {
@@ -4340,16 +4346,7 @@ String  creaditedatevalue="";
 
     print("exit-6");
 
-    FirebaseFirestore.instance.collection("Purchase entry").doc(returnid).collection("Payment Histroy").doc().
-    set({
-      "credit days":"",
-      "credit date": "",
-      "Amount":TotalAmount2.toString(),
-      "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-      "time":DateFormat.jm().format(DateTime.now()),
-      "payment mode":"Return",
-      "timstamp":DateTime.now().millisecondsSinceEpoch,
-    });
+
 
     print("exit-7");
     if(Totalamountoftopay!=0){
@@ -4368,16 +4365,7 @@ String  creaditedatevalue="";
       }
 
 
-      FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(returnid).collection("Payment Histroy").doc().
-      set({
-        "credit days":"",
-        "credit date": "",
-        "Amount":TotalAmount2.toString(),
-        "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-        "time":DateFormat.jm().format(DateTime.now()),
-        "payment mode":"Return",
-        "timstamp":DateTime.now().millisecondsSinceEpoch,
-      });
+
 
 
 
@@ -4395,16 +4383,7 @@ String  creaditedatevalue="";
       }
 
 
-      FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(returnid).collection("Payment Histroy").doc().
-      set({
-        "credit days":"",
-        "credit date": "",
-        "Amount":TotalAmount2.toString(),
-        "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-        "time":DateFormat.jm().format(DateTime.now()),
-        "payment mode":"Return",
-        "timstamp":DateTime.now().millisecondsSinceEpoch,
-      });
+
 
 
 
@@ -5669,7 +5648,7 @@ String  creaditedatevalue="";
                                   streambalnaceamount();
 
                                   Future.delayed(const Duration(milliseconds: 1500),(){
-                                    print("Show poup-9");
+                                    print("Shp-9");
                                     ///total bill amount calculation function(Balance amount)
                                     print("Show poup-10");
                                     setState(() {

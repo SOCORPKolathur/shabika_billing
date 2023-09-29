@@ -5360,7 +5360,7 @@ class _Billing_PageState extends State<Billing_Page> {
                   FirebaseFirestore.instance.collection("Purchase entry").doc(Productinvoicelist[i]).
                   collection(Productinvoicelist[i]).doc(purchasedocument.docs[j].id).update({
                     //"stocks":FieldValue.increment(-(int.parse(Qty.text)+(purchasedocument.docs[j]['stocks']-int.parse(Qty.text)))),
-                    "stocks":(purchasedocument.docs[j]['stocks']-int.parse(Qty.text)),
+                    "stocks":FieldValue.increment(-int.parse(Qty.text)),
                   });
                   break;
                 }
