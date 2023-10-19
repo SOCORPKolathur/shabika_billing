@@ -1,10 +1,27 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:flutter_tagging_plus/flutter_tagging_plus.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import 'Edit_billing_Page.dart';
+
+const List<String> Payment = <String>[
+  'Please Select Type',
+  'Cash',
+  'Card',
+  'Gpay',
+  "Phone Pay",
+  "Split Amount"
+];
+
+const List<String> Paymentmode = <String>['Please Select', "Paid", "Un Paid"];
+
+const List<String> Paymentmode2 = <String>['All','Cash', 'Card', 'Gpay', "Phone Pay", "Split Amount"];
+const List<String> Paymentmode3 = <String>['Please Select', "G pay", "Cash","Paytm","Phonepe","Card"];
 
 
 class Reports_Page extends StatefulWidget {
@@ -20,7 +37,236 @@ class _Reports_PageState extends State<Reports_Page> {
   bool status=true;
   bool status2=false;
 
+  int year1 = 0;
+  int day1 = 0;
+  int month1 = 0;
+  int year2 = 0;
+  int day2 = 0;
+  int month2 = 0;
+  List<String> mydate = [];
+  TextEditingController Datecontroller = TextEditingController();
+  TextEditingController Datecontroller2 = TextEditingController();
+  final DateFormat formatter = DateFormat('d/M/yyyy');
 
+  TextEditingController Invoicecontroller = TextEditingController();
+  TextEditingController Suppilercontroller = TextEditingController();
+  TextEditingController Paymenttype = TextEditingController();
+  bool isserach = false;
+  String Username2 = "";
+  String Username = "";
+  String Status1 = '';
+  String Status2 = '';
+  String Status3 = '';
+  String itemsearch = '';
+  String hsnsearch = '';
+  String catsearch = '';
+  String brandsearch = '';
+
+  List<String> Suppilier = [];
+  List<String> Invoice = [];
+
+  List<String> PaymentType2 = [
+    "Unpaid",
+    "Paid",
+  ];
+  List<String> PaymentType = [];
+
+  String Payments = Paymentmode.first;
+
+  String Payments2 = Paymentmode3.first;
+
+  String Paymentsmodevalue = Paymentmode2.first;
+  String PaymentChangevalue = 'All';
+
+
+  double salesamount=0;
+  double salesamountG=0;
+  double salesamountN=0;
+  additemduntion() async {
+    setState(() {
+      Suppilier.clear();
+      Invoice.clear();
+      PaymentType.clear();
+
+    });
+      var document = await FirebaseFirestore.instance
+          .collection("billing")
+          .where("save", isEqualTo: true)
+          .get();
+      for (int i = 0; i < document.docs.length; i++) {
+        setState(() {
+          Suppilier.add(document.docs[i]['customerphone']);
+          Invoice.add(document.docs[i]['purchaseno']);
+        });
+      }
+
+
+
+    print(PaymentType);
+  }
+  datefun(){
+    setState(() {
+
+
+      setState(() {
+        Datecontroller.text = DateFormat('dd/M/yyyy').format(DateTime.now());
+        Datecontroller2.text =
+            DateFormat('dd/M/yyyy').format(DateTime.now());
+      });
+      setState(() {
+
+        year1 = DateTime.now().year;
+        day1 = DateTime.now().day;
+        month1 = DateTime.now().month;
+
+
+        year2 = DateTime.now().year;
+        day2 = DateTime.now().day;
+        month2 = DateTime.now().month;
+
+        //set output date to TextField value.
+      });
+      DateTime startDate = DateTime.utc(year1, month1, day1);
+      DateTime endDate = DateTime.utc(year2, month2, day2);
+      print(startDate);
+      print(endDate);
+      print("+++++++=================");
+      getDaysInBetween() {
+        final int difference =
+            endDate.difference(startDate).inDays;
+        return difference+1;
+      }
+      print(getDaysInBetween());
+
+
+      final items =
+      List<DateTime>.generate(getDaysInBetween(), (i) {
+        DateTime date = startDate;
+        return date.add(Duration(days: i));
+      });
+      setState(() {
+        mydate.clear();
+      });
+      print(items.length);
+      for (int i = 0; i < items.length; i++) {
+        setState(() {
+          isserach = true;
+          mydate.add(formatter.format(items[i]).toString());
+        });
+
+      }
+    });
+    print(mydate);
+
+    print(isserach);
+    print("+++++++++++++000000000+++++++++++");
+    setState(() {
+
+    });
+
+  }
+
+  gettotal() async {
+
+    setState(() {
+      salesamount = 0;
+      salesamountG = 0;
+      salesamountN = 0;
+    });
+    var document = await FirebaseFirestore.instance.collection("billingItemreports").get();
+    var document2 = await FirebaseFirestore.instance.collection("billingItemreportsG").get();
+    var document3 =  await FirebaseFirestore.instance.collection("billingItemreportsN").get();
+    
+    
+    
+
+        for (int i = 0; i < document2.docs.length; i++) {
+          if(mydate.isNotEmpty) {
+          if(mydate.contains(document2.docs[i]["purchasedate"])) {
+            setState(() {
+              salesamountG = salesamountG + double.parse(document2.docs[i]["Total"].toString());
+            });
+          }
+        }
+          else{
+            setState(() {
+              salesamountG = salesamountG + double.parse(document2.docs[i]["Total"].toString());
+            });
+          }
+      }
+
+      for (int i = 0; i < document3.docs.length; i++) {
+        if(mydate.isNotEmpty) {
+          if(mydate.contains(document3.docs[i]["purchasedate"])) {
+            setState(() {
+              salesamountN = salesamountN + double.parse(document3.docs[i]["Total"].toString());
+            });
+          }
+        }
+        else{
+          setState(() {
+            salesamountN = salesamountN + double.parse(document3.docs[i]["Total"].toString());
+          });
+        }
+      }
+
+      for (int i = 0; i < document.docs.length; i++) {
+        if(mydate.isNotEmpty) {
+          if(mydate.contains(document.docs[i]["purchasedate"])) {
+            setState(() {
+              salesamount = salesamount + double.parse(document.docs[i]["Total"].toString());
+            });
+          }
+        }
+        else{
+          setState(() {
+            salesamount = salesamount + double.parse(document.docs[i]["Total"].toString());
+          });
+        }
+      }
+
+
+  }
+  @override
+  void initState() {
+    categoryaddfunction();
+    barndaddfunction();
+    datefun();
+    additemduntion();
+    gettotal();
+
+    setState(() {
+      isserach=true;
+    });
+
+    print(mydate);
+    //billingtotalamount();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  categoryaddfunction() async {
+    setState((){
+      categorylist.clear();
+    });
+    var Document = await FirebaseFirestore.instance.collection('category').orderBy("categoryname", descending: false).get();
+    for (int i = 0; i < Document.docs.length; i++) {
+      categorylist.add(Document.docs[i]['categoryname']);
+    }
+  }
+
+  barndaddfunction() async {
+    setState((){
+      categorylist.clear();
+    });
+    var Document = await FirebaseFirestore.instance
+        .collection('Brand')
+        .orderBy("Brandname", descending: false)
+        .get();
+    for (int i = 0; i < Document.docs.length; i++) {
+      Barndlist.add(Document.docs[i]['Brandname']);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -69,6 +315,7 @@ class _Reports_PageState extends State<Reports_Page> {
                       });
                     }
                   });
+
                 },
               ),
             ),
@@ -106,6 +353,7 @@ class _Reports_PageState extends State<Reports_Page> {
                       });
                     }
                   });
+
                 },
               ),
             ),
@@ -114,6 +362,624 @@ class _Reports_PageState extends State<Reports_Page> {
               "Shabika N",
               style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
             ),
+          ],
+        ),
+        SizedBox(
+          height: height / 83.8,
+        ),
+        Row(
+          children: [
+            SizedBox(
+              width: width / 200.8,
+            ),
+            Text(
+              "Date",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 151.066,
+            ),
+            //textfield-1 fromdate
+            Container(
+              height: height / 21.9,
+              width: width / 9.106,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: TextField(
+                controller: Datecontroller,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(
+                      bottom: width / 90.6, left: width / 91.06),
+                  hintText: "dd/mm/yyyy",
+                  hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                  border: InputBorder.none,
+                ),
+                onTap: () async {
+                  DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      //DateTime.now() - not to allow to choose before today.
+                      lastDate: DateTime.now());
+
+                  if (pickedDate != null) {
+                    //pickedDate output format => 2021-03-10 00:00:00.000
+                    String formattedDate =
+                    DateFormat('dd/M/yyyy').format(pickedDate);
+                    //formatted date output using intl package =>  2021-03-16
+                    //you can implement different kind of Date Format here according to your requirement
+
+                    setState(() {
+                      year1 = pickedDate.year;
+                      day1 = pickedDate.day;
+                      month1 = pickedDate.month;
+                      Datecontroller.text = formattedDate;
+                      //set output date to TextField value.
+                    });
+                    DateTime startDate = DateTime.utc(year1, month1, day1);
+                    DateTime endDate = DateTime.utc(year2, month2, day2);
+                    getDaysInBetween() {
+                      final int difference =
+                          endDate.difference(startDate).inDays;
+                      return difference+1;
+                    }
+
+                    final items =
+                    List<DateTime>.generate(getDaysInBetween(), (i) {
+                      DateTime date = startDate;
+                      return date.add(Duration(days: i));
+                    });
+                    setState(() {
+                      mydate.clear();
+                    });
+                    for (int i = 0; i < items.length; i++) {
+                      setState(() {
+                        isserach = true;
+                        mydate.add(formatter.format(items[i]).toString());
+                      });
+                      print(mydate);
+                      print("+++++++++++++++++++++++++++++++++++++++kkkk");
+                      //billingtotalamount();
+                    }
+                  } else {}
+                },
+              ),
+            ),
+            SizedBox(
+              width: width / 101.066,
+            ),
+            Text(
+              "To",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 151.066,
+            ),
+
+            //textfield-2 todate
+            Container(
+              height: height / 21.9,
+              width: width / 9.106,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: TextField(
+                controller: Datecontroller2,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(
+                      bottom: width / 90.6, left: width / 91.06),
+                  hintText: "dd/mm/yyyy",
+                  hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                  border: InputBorder.none,
+                ),
+                onTap: () async {
+                  DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      //DateTime.now() - not to allow to choose before today.
+                      lastDate: DateTime(2101));
+
+                  if (pickedDate != null) {
+                    //pickedDate output format => 2021-03-10 00:00:00.000
+                    String formattedDate = DateFormat('dd/M/yyyy').format(pickedDate);
+                    //formatted date output using intl package =>  2021-03-16
+                    //you can implement different kind of Date Format here according to your requirement
+
+                    setState(() {
+                      year2 = pickedDate.year;
+                      day2 = pickedDate.day;
+                      month2 = pickedDate.month;
+                      Datecontroller2.text = formattedDate;
+
+                      //set output date to TextField value.
+                    });
+                    DateTime startDate = DateTime.utc(year1, month1, day1);
+                    DateTime endDate = DateTime.utc(year2, month2, day2);
+                    getDaysInBetween() {
+                      final int difference =
+                          endDate.difference(startDate).inDays;
+                      return difference+1;
+                    }
+
+                    final items =
+                    List<DateTime>.generate(getDaysInBetween(), (i) {
+                      DateTime date = startDate;
+                      return date.add(Duration(days: i));
+                    });
+                    setState(() {
+                      mydate.clear();
+                    });
+                    for (int i = 0; i < items.length; i++) {
+                      setState(() {
+                        isserach = true;
+                        mydate.add(formatter.format(items[i]).toString());
+                      });
+                      print(mydate);
+                      print("+++++++++++++++++++++++++++++++++++++++kkkk");
+                      //billingtotalamount();
+                    }
+                  } else {}
+                },
+              ),
+            ),
+
+            SizedBox(
+              width: width / 136.6,
+            ),
+
+            Text(
+              "Item Name",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 136.6,
+            ),
+
+            Container(
+              height: height / 21.9,
+              width: width / 5.506, // width: width / 3.415,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
+              child: TextFormField(
+                onChanged: (val){
+                  setState(() {
+                    itemsearch=val;
+                  });
+                  print(Suppilercontroller.text);
+                  },
+                style: GoogleFonts.montserrat(
+                    fontSize: width / 91.06, fontWeight: FontWeight.w500),
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        bottom: height / 43.8, left: width / 136.6)),
+                controller: Suppilercontroller,
+              ),
+            ),
+            SizedBox(
+              width: width / 136.6,
+            ),
+            //Status-1
+            Text(
+              "HSN Code",
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 136.6,
+            ),
+            Container(
+                height: height / 21.9,
+                width: width / 9.106,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5)),
+                child: TextFormField(
+                  onChanged: (val){
+                    setState(() {
+                      hsnsearch=val;
+                    });
+                    print(Invoicecontroller.text);
+                  },
+                  style: GoogleFonts.montserrat(
+                      fontSize: width / 91.06, fontWeight: FontWeight.w500),
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(
+                          bottom: height / 43.8, left: width / 136.6)),
+                  controller: Invoicecontroller,
+                ),),
+            SizedBox(
+              width: width / 136.6,
+            ),
+
+            SizedBox(
+              width: width / 156.6,
+            ),
+
+
+            //Status-2
+            Text(
+              "Category",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 100.6,
+            ),
+            Container(
+              height: height / 21.9,
+              width: width / 9.106,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
+             child: TextFormField(
+               onChanged: (val){
+                 setState(() {
+                   catsearch=val;
+                 });
+                 print(_typeAheadControllergender.text);
+               },
+               style: GoogleFonts.montserrat(
+                   fontSize: width / 91.06, fontWeight: FontWeight.w500),
+               decoration: InputDecoration(
+                   border: InputBorder.none,
+                   contentPadding: EdgeInsets.only(
+                       bottom: height / 43.8, left: width / 136.6)),
+               controller: _typeAheadControllergender,
+             ),
+             /* child: LayoutBuilder(
+                builder: (BuildContext, BoxConstraints) =>
+                    Autocomplete<String>(
+                      fieldViewBuilder: (context, textEditingController,
+                          focusNode, onFieldSubmitted) {
+                        return textfield3(
+                          focusNode,
+                          textEditingController,
+                          onFieldSubmitted,
+                        );
+                      },
+                      initialValue: const TextEditingValue(
+                        selection: TextSelection(
+                          isDirectional: true,
+                          baseOffset: 10,
+                          extentOffset: 1,
+                        ),
+
+                      ),
+                      optionsViewBuilder:
+                          (context, onSelected, options) => Align(
+                          alignment: Alignment.topLeft,
+                          child: Material(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius:
+                              BorderRadius.vertical(
+                                  bottom:
+                                  Radius.circular(4.0)),
+                            ),
+                            child: SizedBox(
+                              height: 52.0 * options.length,
+                              width:
+                              BoxConstraints.biggest.width,
+                              child: ListView.builder(
+                                padding: EdgeInsets.zero,
+                                itemCount: options.length,
+                                shrinkWrap: false,
+                                itemBuilder: (BuildContext, index) {
+                                  final String option = options.elementAt(index);
+                                  return InkWell(
+                                    onTap: () =>
+                                        onSelected(option),
+                                    child: Padding(padding: const EdgeInsets.all(16.0),
+                                      child: Text(option),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          )),
+                      optionsBuilder:
+                          (TextEditingValue textEditingValue) {
+                        if (textEditingValue.text == '') {
+                          return const Iterable<String>.empty();
+                        }
+
+                        if (textEditingValue.text != "") {
+                          categoryitemcode(textEditingValue.text);
+
+                        }
+
+                        return categorylist.where((String option) {
+                          return option.toLowerCase().contains(
+                              textEditingValue.text.toLowerCase());
+                        });
+                      },
+                      onSelected: (String selection) {
+                        categoryitemcode(selection);
+                        setState(() {
+                          _typeAheadControllergender.text=selection;
+                        });
+                        debugPrint('You just selected $selection');
+                      },
+                      displayStringForOption: (Value) {
+                        return Value;
+                      },
+                    ),
+              ),*/
+            ),
+            SizedBox(
+              width: width / 150.8,
+            ),
+
+            InkWell(
+              onTap: () {
+                setState(() {
+                  Invoicecontroller.clear();
+                  Suppilercontroller.clear();
+                  Status1 = "";
+                  Status2 = "";
+                  Status3 = "";
+                  Username = '';
+                  Username2 = '';
+                  hsnsearch="";
+                  catsearch="";
+                  brandsearch="";
+                  itemsearch="";
+                  _typeAheadControllergender.clear();
+                  _typeAheadControllergender2.clear();
+                  _typeAheadControllergender.text =="";
+                  _typeAheadControllergender2.text=="";
+
+                });
+
+                //billingtotalamount();
+              },
+              child: Container(
+                height: height / 21.9,
+                width: width / 13.66,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5), color: Colors.red),
+                child: Center(
+                  child: Text(
+                    "Clear",
+                    style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: width / 84.64),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: height / 83.8,
+        ),
+        Row(
+          children: [
+
+            SizedBox(
+              width: width / 200.8,
+            ),
+
+            Text(
+              "Brand",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 100.6,
+            ),
+            Container(
+              height: height / 21.9,
+              width: width / 9.106,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
+             child: TextFormField(
+                onChanged: (val){
+                  setState(() {
+                    brandsearch=val;
+                  });
+                  print(_typeAheadControllergender2.text);
+                },
+                style: GoogleFonts.montserrat(
+                    fontSize: width / 91.06, fontWeight: FontWeight.w500),
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.only(
+                        bottom: height / 43.8, left: width / 136.6)),
+                controller: _typeAheadControllergender2,
+              ),
+              /*child: LayoutBuilder(
+                builder: (BuildContext, BoxConstraints) =>
+                    Autocomplete<String>(
+                      fieldViewBuilder: (context, textEditingController,
+                          focusNode, onFieldSubmitted) {
+                        return textfield3(
+                          focusNode,
+                          textEditingController,
+                          onFieldSubmitted,
+                        );
+                      },
+                      initialValue: const TextEditingValue(
+                          selection: TextSelection(
+                            isDirectional: true,
+                            baseOffset: 5,
+                            extentOffset: 1,
+                          )),
+                      optionsViewBuilder:
+                          (context, onSelected, options) => Align(
+                          alignment: Alignment.topLeft,
+                          child: Material(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  bottom: Radius.circular(4.0)),
+                            ),
+                            child: SizedBox(
+                              height: 52.0 * options.length,
+                              width: BoxConstraints.biggest.width,
+                              child: ListView.builder(
+                                padding: EdgeInsets.zero,
+                                itemCount: options.length,
+                                shrinkWrap: false,
+                                itemBuilder:
+                                    (BuildContext, index) {
+                                  final String option =
+                                  options.elementAt(index);
+                                  return InkWell(
+                                    onTap: () =>
+                                        onSelected(option),
+                                    child: Padding(
+                                      padding:
+                                      const EdgeInsets.all(16.0),
+                                      child: Text(option),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          )),
+                      optionsBuilder:
+                          (TextEditingValue textEditingValue) {
+                        if (textEditingValue.text == '') {
+                          return const Iterable<String>.empty();
+                        }
+                        if (textEditingValue.text != '') {
+                          Branditemcode(textEditingValue.text);
+                        }
+
+                        return Barndlist.where((String option) {
+                          return option.toLowerCase().contains(
+                              textEditingValue.text.toLowerCase());
+                        });
+                      },
+                      onSelected: (String selection) {
+                        Branditemcode(selection);
+                        setState(() {
+                          _typeAheadControllergender2.text=selection;
+                        });
+                        debugPrint('You just selected $selection');
+                      },
+                      displayStringForOption: (Value) {
+                        return Value;
+                      },
+                    ),
+              ),*/
+            ),
+            SizedBox(
+              width: width / 100.8,
+            ),
+            Text(
+              "Shabika G",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 100.5,
+            ),
+            Container(
+                height: height / 21.9,
+                width: width / 9.5,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Center(
+                    child: Text(
+                      salesamountG.toStringAsFixed(2),
+                      style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: width / 88.64),
+                    ))),
+            SizedBox(
+              width: width / 100.066,
+            ),
+            Text(
+              "Shabika N",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 100.5,
+            ),
+            Container(
+                height: height / 21.9,
+                width: width / 9.5,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Center(
+                    child: Text(
+                      salesamountN.toStringAsFixed(2),
+                      style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: width / 88.64),
+                    ))),
+            SizedBox(
+              width: width / 100.066,
+            ),
+            Text(
+              "Total Amount",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 100.5,
+            ),
+            Container(
+                height: height / 21.9,
+                width: width / 9.5,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Center(
+                    child: Text(
+                      salesamount.toStringAsFixed(2),
+                      style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: width / 88.64),
+                    ))),
+            SizedBox(
+              width: width / 100.066,
+            ),
+
           ],
         ),
         SizedBox(
@@ -137,69 +1003,91 @@ class _Reports_PageState extends State<Reports_Page> {
                   child: Row(
                     children: [
                       Container(
-                          width:width/11.383,
+                          width:width/18.383,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Date',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Si.no',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      Container(
+                          width:width/16.383,
+                          height:height/13.14,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black,width: 1.2),
+                          ),
+                          child: Center(child: Text('Date\nTime',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
-                          width:width/15.588,
+                          width:width/18.588,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
 
                           ),
-                          child: Center(child: Text('Invoice No',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Category',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      Container(
+                          width:width/18.588,
+                          height:height/13.14,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black,width: 1.2),
+
+                          ),
+                          child: Center(child: Text('Brand',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
-                          width:width/7.588,
+                          width:width/18.588,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Customer name',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Item ID',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
-                          width:width/6.0,
+                          width:width/3.5,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Customer phone',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Item Name',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
-                          width:width/5.0,
+                          width:width/12.0,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Customer address',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('HSN Code',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
-                          width:width/10.0,
+                          width:width/20.0,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Bill Type',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Quantity',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
-                          width:width/15.0,
+                          width:width/12.0,
+                          height:height/13.14,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black,width: 1.2),
+                          ),
+                          child: Center(child: Text('Without Tax',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+
+                      Container(
+                          width:width/12.0,
+                          height:height/13.14,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black,width: 1.2),
+                          ),
+                          child: Center(child: Text('Sales Price',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      Container(
+                          width:width/12.0,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
                           child: Center(child: Text('Total',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
-
-                      Container(
-                          width:width/9.0,
-                          height:height/13.14,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black,width: 1.2),
-                          ),
-                          child: Center(child: Text('Actions',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                     ],
@@ -209,7 +1097,7 @@ class _Reports_PageState extends State<Reports_Page> {
                 Padding(
                   padding:  EdgeInsets.only(left: width/273.2),
                   child: StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance.collection("billing ShabikaG").orderBy("timestamp",descending: true).snapshots(),
+                    stream: FirebaseFirestore.instance.collection("billingItemreportsG").orderBy("timestamp",descending: true).snapshots(),
                     builder: (context, snapshot) {
                       if(snapshot.hasData==null){
                         return Center(child: Container());
@@ -225,132 +1113,628 @@ class _Reports_PageState extends State<Reports_Page> {
                         itemBuilder: (context, index) {
 
                           var buillin1=snapshot.data!.docs[index];
-                          return
-                          buillin1['save']==true?
-                            Row(
-                              children: [
 
-                                Container(
-                                    width:width/11.383,
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                            if(isserach==true){
+                            if(mydate.isNotEmpty && itemsearch==""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch=="")
+                            {
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                return Row(
+                                  children: [
+                                    Container(
+                                        width:width/18.383,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/16.383,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    width:width/15.588,
-                                    child:
-                                    Center(child:
-                                    Text("${buillin1['purchaseno'].toString()}\n${buillin1['return']==true?"Return":""}",
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
-                                    textAlign: TextAlign.center,
-                                    ))),
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
 
-                                Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    width:width/7.588,
-                                    child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        ),
+                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
 
-                                //SizedBox(width:width/ 45.53,),
+                                        ),
+                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
-                                Container(
-                                    width:width/6.0,
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['customerphone'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                //SizedBox(width: width/ 45.53,),
+                                    Container(
+                                        width:width/3.5,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                Container(
-                                    width:width/5.0,
-                                    padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['customeraddress'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                    Container(
+                                        width:width/20.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
-                                Container(
-                                    width:width/10.0,
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  ],
+                                );
+                              }
+                            }
 
-                                //SizedBox(width: width/27.32,),
-
-                                Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    width:width/15.0,
-                                    child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                                Container(
-                                  width:width/9.0,
-                                  height:height/12.14 ,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black,width: 1.2),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                             if(mydate.isNotEmpty &&itemsearch!=""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch==""){
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Item'].toString().toLowerCase().
+                                startsWith(itemsearch.toLowerCase())
+                                || buillin1['itemcode'].toString().toLowerCase().
+                                    startsWith(itemsearch.toLowerCase()))
+                                {
+                                  return Row(
                                     children: [
-                                      InkWell(
-                                        onTap: (){
-                                          showdialpogbox(
-                                            buillin1.id.toString(),
-                                            buillin1['customername'].toString(),
-                                            buillin1['customerphone'].toString(),
-                                            buillin1['purchasedate'].toString(),
-                                            buillin1['time'].toString(),
-                                            buillin1['Payment mode'].toString(),
-                                            buillin1['customeraddress'].toString(),
-                                            buillin1['Discountamount'].toString(),
-                                            buillin1['Discountamountpercentage'].toString(),);
-                                        },
-                                        child: Material(
-                                          elevation: 10,
-                                          color: Colors.green,
-                                          borderRadius: BorderRadius.circular(100),
-                                          child: Container(
-                                              width:width/15.66,
-                                              height:height/21.9,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(100),
-                                                  color: Colors.green
-                                              ),
-                                              child: Center(child: Text("View",style:
-                                              GoogleFonts.montserrat(fontWeight: FontWeight.w600,
-                                                  color: Colors.white),))),
-                                        ),
-                                      ),
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                      SizedBox(width:width/136.6,),
-                                      //edit button
-                                      InkWell(
-                                        onTap: (){
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
-                                        },
-                                        child: Material(
-                                          elevation: 10,
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
 
-                                          borderRadius: BorderRadius.circular(100),
-                                          child: Container(
-                                              width:width/45.53,
-                                              height:height/21.9,
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(100),
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
 
-                                              ),
-                                              child: Center(child: Icon(Icons.edit,color:
-                                              Colors.black,size:width/68.3))),
-                                        ),
-                                      ),
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
                                     ],
-                                  ),
-                                ),
+                                  );
+                                }
 
-                              ],
-                            ):const SizedBox();
+                              }
+                            }
+                             if(mydate.isNotEmpty &&itemsearch==""
+                                &&hsnsearch!=""&&brandsearch==""&&catsearch==""){
+
+                               if(mydate.contains(buillin1["purchasedate"])) {
+                                 if(
+                                 buillin1['Hsncode'].toString().toLowerCase().
+                                 startsWith(hsnsearch.toLowerCase())
+                                 )
+                                 {
+                                   return Row(
+                                     children: [
+                                       Container(
+                                           width:width/18.383,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                       Container(
+                                           width:width/16.383,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                       Container(
+                                           width:width/18.588,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+
+                                           ),
+                                           child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                       Container(
+                                           width:width/18.588,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+
+                                           ),
+                                           child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                       Container(
+                                           width:width/18.588,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                       Container(
+                                           width:width/3.5,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                       Container(
+                                           width:width/12.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                       Container(
+                                           width:width/20.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                       Container(
+                                           width:width/12.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                       Container(
+                                           width:width/12.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                       Container(
+                                           width:width/12.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                     ],
+                                   );
+                                 }
+
+                               }
+
+                             }
+                            if(mydate.isNotEmpty &&itemsearch==""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch!=""){
+
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Category'].toString().toLowerCase().
+                                startsWith(catsearch.toLowerCase())
+
+                                )
+                                {
+                                  return Row(
+                                    children: [
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                    ],
+                                  );
+                                }
+
+                              }
+
+                            }
+
+                             if(mydate.isNotEmpty &&itemsearch==""
+                                 &&hsnsearch==""&&brandsearch!=""&&catsearch==""){
+                               if(mydate.contains(buillin1["purchasedate"])) {
+                                 if(
+                                 buillin1['Brand'].toString().toLowerCase().
+                                 startsWith(brandsearch.toLowerCase()))
+                                 {
+                                   return Row(
+                                     children: [
+                                       Container(
+                                           width:width/18.383,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                       Container(
+                                           width:width/16.383,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                       Container(
+                                           width:width/18.588,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+
+                                           ),
+                                           child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                       Container(
+                                           width:width/18.588,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+
+                                           ),
+                                           child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                       Container(
+                                           width:width/18.588,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                       Container(
+                                           width:width/3.5,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                       Container(
+                                           width:width/12.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                       Container(
+                                           width:width/20.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                       Container(
+                                           width:width/12.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                       Container(
+                                           width:width/12.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                       Container(
+                                           width:width/12.0,
+                                           height:height/13.14,
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.black,width: 1.2),
+                                           ),
+                                           child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                     ],
+                                   );
+                                 }
+
+                               }
+                             }
+
+                            }
+
+                            else{
+                              return Row(
+                                children: [
+                                  Container(
+                                      width:width/18.383,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                  Container(
+                                      width:width/16.383,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                  Container(
+                                      width:width/18.588,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+
+                                      ),
+                                      child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                  Container(
+                                      width:width/18.588,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+
+                                      ),
+                                      child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                  Container(
+                                      width:width/18.588,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                  Container(
+                                      width:width/3.5,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                  Container(
+                                      width:width/12.0,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                  Container(
+                                      width:width/20.0,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                  Container(
+                                      width:width/12.0,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                  Container(
+                                      width:width/12.0,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                  Container(
+                                      width:width/12.0,
+                                      height:height/13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black,width: 1.2),
+                                      ),
+                                      child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                ],
+                              );
+                            }
+
+
                         },);
                     },
                   ),
@@ -359,7 +1743,7 @@ class _Reports_PageState extends State<Reports_Page> {
                 Padding(
                   padding:  EdgeInsets.only(left: width/273.2),
                   child: StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance.collection("billing ShabikaN").orderBy("timestamp",descending: true).snapshots(),
+                    stream: FirebaseFirestore.instance.collection("billingItemreportsN").orderBy("timestamp",descending: true).snapshots(),
                     builder: (context, snapshot) {
                       if(snapshot.hasData==null){
                         return Center(child: Container());
@@ -375,137 +1759,628 @@ class _Reports_PageState extends State<Reports_Page> {
                         itemBuilder: (context, index) {
 
                           var buillin1=snapshot.data!.docs[index];
-                          return
-                            buillin1['save']==true?
-                            Row(
-                              children: [
 
-                                Container(
-                                    width:width/11.383,
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                          if(isserach==true){
+                            if(mydate.isNotEmpty && itemsearch==""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch=="")
+                            {
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                return Row(
+                                  children: [
+                                    Container(
+                                        width:width/18.383,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/16.383,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    width:width/15.588,
-                                    child:
-                                    Center(child:
-                                    Text("${buillin1['purchaseno'].toString()}\n${buillin1['return']==true?"Return":""}",
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
-                                      textAlign: TextAlign.center,
-                                    ))),
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
 
-                                Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    width:width/7.588,
-                                    child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        ),
+                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
 
-                                //SizedBox(width:width/ 45.53,),
+                                        ),
+                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
-                                Container(
-                                    width:width/6.0,
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['customerphone'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                //SizedBox(width: width/ 45.53,),
+                                    Container(
+                                        width:width/3.5,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                Container(
-                                    width:width/5.0,
-                                    padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['customeraddress'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                //SizedBox(width: width/27.32,),
+                                    Container(
+                                        width:width/20.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
+                                  ],
+                                );
+                              }
+                            }
 
-                                //SizedBox(width: width/22.76,),
-
-                                Container(
-                                    width:width/10.0,
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                                //SizedBox(width: width/27.32,),
-
-                                Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                    height:height/12.14 ,
-                                    width:width/15.0,
-                                    child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                                Container(
-                                  width:width/9.0,
-                                  height:height/12.14 ,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black,width: 1.2),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                            if(mydate.isNotEmpty &&itemsearch!=""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch==""){
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Item'].toString().toLowerCase().
+                                startsWith(itemsearch.toLowerCase())
+                                    || buillin1['itemcode'].toString().toLowerCase().
+                                startsWith(itemsearch.toLowerCase()))
+                                {
+                                  return Row(
                                     children: [
-                                      InkWell(
-                                        onTap: (){
-                                          showdialpogbox(
-                                            buillin1.id,
-                                            buillin1['customername'],
-                                            buillin1['customerphone'],
-                                            buillin1['purchasedate'],
-                                            buillin1['time'],
-                                            buillin1['Payment mode'],
-                                            buillin1['customeraddress'],
-                                            buillin1['Discountamount'],
-                                            buillin1['Discountamountpercentage'],);
-                                        },
-                                        child: Material(
-                                          elevation: 10,
-                                          color: Colors.green,
-                                          borderRadius: BorderRadius.circular(100),
-                                          child: Container(
-                                              width:width/15.66,
-                                              height:height/21.9,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(100),
-                                                  color: Colors.green
-                                              ),
-                                              child: Center(child: Text("View",style:
-                                              GoogleFonts.montserrat(fontWeight: FontWeight.w600,
-                                                  color: Colors.white),))),
-                                        ),
-                                      ),
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                      SizedBox(width:width/136.6,),
-                                      //edit button
-                                      InkWell(
-                                        onTap: (){
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
-                                        },
-                                        child: Material(
-                                          elevation: 10,
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
 
-                                          borderRadius: BorderRadius.circular(100),
-                                          child: Container(
-                                              width:width/45.53,
-                                              height:height/21.9,
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(100),
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
 
-                                              ),
-                                              child: Center(child: Icon(Icons.edit,color:
-                                              Colors.black,size:width/68.3))),
-                                        ),
-                                      ),
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
                                     ],
-                                  ),
-                                ),
+                                  );
+                                }
+
+                              }
+                            }
+                            if(mydate.isNotEmpty &&itemsearch==""
+                                &&hsnsearch!=""&&brandsearch==""&&catsearch==""){
+
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Hsncode'].toString().toLowerCase().
+                                startsWith(hsnsearch.toLowerCase())
+                                )
+                                {
+                                  return Row(
+                                    children: [
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                    ],
+                                  );
+                                }
+
+                              }
+
+                            }
+                            if(mydate.isNotEmpty &&itemsearch==""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch!=""){
+
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Category'].toString().toLowerCase().
+                                startsWith(catsearch.toLowerCase())
+
+                                )
+                                {
+                                  return Row(
+                                    children: [
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                    ],
+                                  );
+                                }
+
+                              }
+
+                            }
+
+                            if(mydate.isNotEmpty &&itemsearch==""
+                                &&hsnsearch==""&&brandsearch!=""&&catsearch==""){
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Brand'].toString().toLowerCase().
+                                startsWith(brandsearch.toLowerCase()))
+                                {
+                                  return Row(
+                                    children: [
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                    ],
+                                  );
+                                }
+
+                              }
+                            }
+
+                          }
+
+                          else{
+                            return Row(
+                              children: [
+                                Container(
+                                    width:width/18.383,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                Container(
+                                    width:width/16.383,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                Container(
+                                    width:width/18.588,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+
+                                    ),
+                                    child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                Container(
+                                    width:width/18.588,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+
+                                    ),
+                                    child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                Container(
+                                    width:width/18.588,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                Container(
+                                    width:width/3.5,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                Container(
+                                    width:width/12.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                Container(
+                                    width:width/20.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                Container(
+                                    width:width/12.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                Container(
+                                    width:width/12.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                Container(
+                                    width:width/12.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
 
                               ],
-                            ):const SizedBox();
+                            );
+                          }
+
+
                         },);
                     },
                   ),
@@ -513,7 +2388,7 @@ class _Reports_PageState extends State<Reports_Page> {
                 Padding(
                   padding:  EdgeInsets.only(left: width/273.2),
                   child: StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance.collection("billing").orderBy("timestamp",descending: true).snapshots(),
+                    stream: FirebaseFirestore.instance.collection("billingItemreports").orderBy("timestamp",descending: true).snapshots(),
                     builder: (context, snapshot) {
                       if(snapshot.hasData==null){
                         return Center(child: Container());
@@ -529,141 +2404,629 @@ class _Reports_PageState extends State<Reports_Page> {
                         itemBuilder: (context, index) {
 
                           var buillin1=snapshot.data!.docs[index];
-                        return
-                          buillin1['save']==true?
-                          Row(
-                            children: [
-                             // SizedBox(width: width/50.15,),
 
-                              Container(
-                                  width:width/11.383,
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                  height:height/12.14 ,
-                                  child: Center(child: Text(buillin1['purchasedate'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                              Container(
-                                decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                  height:height/12.14 ,
-                                  width:width/15.588,
-                                  child:
-                                  Center(child:
-                                  Text("${buillin1['purchaseno'].toString()}\n${buillin1['return']==true?"Return":""}",
-                                    style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
-                                    textAlign: TextAlign.center,
-                                  ))),
-
-                              Container(
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                  height:height/12.14 ,
-                                  width:width/7.588,
-                                  child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                              //SizedBox(width:width/ 45.53,),
-
-                              Container(
-                                 width:width/6.0,
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                  height:height/12.14 ,
-                                  child: Center(child: Text(buillin1['customerphone'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                              //SizedBox(width: width/ 45.53,),
-
-                              Container(
-                                  width:width/5.0,
-                                  padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                  height:height/12.14 ,
-                                  child: Center(child: Text(buillin1['customeraddress'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                              //SizedBox(width: width/27.32,),
-
-
-
-                              //SizedBox(width: width/22.76,),
-
-                              Container(
-                                  width:width/10.0,
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                  height:height/12.14 ,
-                                  child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                              //SizedBox(width: width/27.32,),
-
-                              Container(
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                  height:height/12.14 ,
-                                  width:width/15.0,
-                                  child: Center(child: Text(buillin1['Totalamount'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
-
-                              Container(
-                                  width:width/9.0,
-                                height:height/12.14 ,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black,width: 1.2),
-                                  ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                          if(isserach==true){
+                            if(mydate.isNotEmpty && itemsearch==""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch=="")
+                            {
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                return Row(
                                   children: [
-                                    InkWell(
-                                      onTap: (){
-                                        showdialpogbox(
-                                          buillin1.id,
-                                          buillin1['customername'],
-                                          buillin1['customerphone'],
-                                          buillin1['purchasedate'],
-                                          buillin1['time'],
-                                          buillin1['Payment mode'],
-                                          buillin1['customeraddress'],
-                                          buillin1['Discountamount'],
-                                          buillin1['Discountamountpercentage'],);
-                                      },
-                                      child: Material(
-                                        elevation: 10,
-                                        color: Colors.green,
-                                        borderRadius: BorderRadius.circular(100),
-                                        child: Container(
-                                            width:width/15.66,
-                                            height:height/21.9,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(100),
-                                                color: Colors.green
-                                            ),
-                                            child: Center(child: Text("View",style:
-                                            GoogleFonts.montserrat(fontWeight: FontWeight.w600,
-                                                color: Colors.white),))),
-                                      ),
-                                    ),
+                                    Container(
+                                        width:width/18.383,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/16.383,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
 
-                                    SizedBox(width:width/136.6,),
-                                    //edit button
-                                    InkWell(
-                                      onTap: (){
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_Billing_Page(buillin1.id),));
-                                      },
-                                      child: Material(
-                                        elevation: 10,
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
 
-                                        borderRadius: BorderRadius.circular(100),
-                                        child: Container(
-                                            width:width/45.53,
-                                            height:height/21.9,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(100),
+                                        ),
+                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
 
-                                            ),
-                                            child: Center(child: Icon(Icons.edit,color:
-                                            Colors.black,size:width/68.3))),
-                                      ),
-                                    ),
+                                        ),
+                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                    Container(
+                                        width:width/18.588,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                    Container(
+                                        width:width/3.5,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                    Container(
+                                        width:width/20.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    Container(
+                                        width:width/12.0,
+                                        height:height/13.14,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 1.2),
+                                        ),
+                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
                                   ],
-                                ),
-                                  ),
+                                );
+                              }
+                            }
+
+                            if(mydate.isNotEmpty &&itemsearch!=""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch==""){
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Item'].toString().toLowerCase().
+                                startsWith(itemsearch.toLowerCase())
+                                    || buillin1['itemcode'].toString().toLowerCase().
+                                startsWith(itemsearch.toLowerCase()))
+                                {
+                                  return Row(
+                                    children: [
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
+                                    ],
+                                  );
+                                }
 
-                            ],
-                          ):const SizedBox();
-                      },);
+                              }
+                            }
+                            if(mydate.isNotEmpty &&itemsearch==""
+                                &&hsnsearch!=""&&brandsearch==""&&catsearch==""){
+
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Hsncode'].toString().toLowerCase().
+                                startsWith(hsnsearch.toLowerCase())
+                                )
+                                {
+                                  return Row(
+                                    children: [
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                    ],
+                                  );
+                                }
+
+                              }
+
+                            }
+                            if(mydate.isNotEmpty &&itemsearch==""
+                                &&hsnsearch==""&&brandsearch==""&&catsearch!=""){
+
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Category'].toString().toLowerCase().
+                                startsWith(catsearch.toLowerCase())
+
+                                )
+                                {
+                                  return Row(
+                                    children: [
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                    ],
+                                  );
+                                }
+
+                              }
+
+                            }
+
+                            if(mydate.isNotEmpty &&itemsearch==""
+                                &&hsnsearch==""&&brandsearch!=""&&catsearch==""){
+                              if(mydate.contains(buillin1["purchasedate"])) {
+                                if(
+                                buillin1['Brand'].toString().toLowerCase().
+                                startsWith(brandsearch.toLowerCase()))
+                                {
+                                  return Row(
+                                    children: [
+                                      Container(
+                                          width:width/18.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/16.383,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+
+                                          ),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                      Container(
+                                          width:width/18.588,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/3.5,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                      Container(
+                                          width:width/20.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      Container(
+                                          width:width/12.0,
+                                          height:height/13.14,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.black,width: 1.2),
+                                          ),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                                    ],
+                                  );
+                                }
+
+                              }
+                            }
+
+                          }
+
+                          else{
+                            return Row(
+                              children: [
+                                Container(
+                                    width:width/18.383,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                Container(
+                                    width:width/16.383,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                Container(
+                                    width:width/18.588,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+
+                                    ),
+                                    child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                Container(
+                                    width:width/18.588,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+
+                                    ),
+                                    child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+
+                                Container(
+                                    width:width/18.588,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                Container(
+                                    width:width/3.5,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                Container(
+                                    width:width/12.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+
+                                Container(
+                                    width:width/20.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                Container(
+                                    width:width/12.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+                                Container(
+                                    width:width/12.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                Container(
+                                    width:width/12.0,
+                                    height:height/13.14,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black,width: 1.2),
+                                    ),
+                                    child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+
+
+                              ],
+                            );
+                          }
+
+
+                        },);
                     },
                   ),
                 ),
@@ -1004,8 +3367,83 @@ class _Reports_PageState extends State<Reports_Page> {
   String CGST="";
   String TotalAmount="";
 
+  List<String> categorylist = <String>[];
+  List<String> Barndlist = <String>[];
 
+  String catitemcode = '';
+  String branditemcode = '';
 
+  categoryitemcode(itemcode) async {
+    var document =
+    await FirebaseFirestore.instance.collection("category").get();
+    for (int i = 0; i < document.docs.length; i++) {
+      if (document.docs[i]["categoryname"] == itemcode) {
+        setState(() {
+          catitemcode = document.docs[i].id;
+        });
+      }
+    }
+  }
 
+  Branditemcode(itemcode) async {
+    var document = await FirebaseFirestore.instance.collection("Brand").get();
+    for (int i = 0; i < document.docs.length; i++) {
+      if (document.docs[i]["Brandname"] == itemcode) {
+        setState(() {
+          branditemcode = document.docs[i].id;
+        });
+      }
+    }
+  }
 
+   TextEditingController _typeAheadControllergender = TextEditingController();
+  SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
+
+  List<String> getSuggestionsgender(String query) {
+    List<String> matches = <String>[];
+    matches.addAll(categorylist);
+
+    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    return matches;
+  }
+
+   TextEditingController _typeAheadControllergender2 = TextEditingController();
+   TextEditingController _typeAheadControllergender3 = TextEditingController();
+  SuggestionsBoxController suggestionBoxController2 = SuggestionsBoxController();
+  SuggestionsBoxController suggestionBoxController3 = SuggestionsBoxController();
+
+  List<String> getSuggestionsgender2(String query) {
+    List<String> matches = <String>[];
+    matches.addAll(Barndlist);
+
+    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    return matches;
+  }
+
+  Widget textfield3(
+      FocusNode focusNode,
+      TextEditingController textEditingController,
+      VoidCallback onFieldSubmitted) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    return
+      TextFormField(
+        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+        decoration: InputDecoration(
+            border: InputBorder.none,
+            contentPadding:
+            EdgeInsets.only( bottom: height / 43.8,
+                top: height / 43.8,
+                left: width/136.6)),
+        controller: textEditingController,
+        focusNode: focusNode,
+        onFieldSubmitted: (String value) {
+          onFieldSubmitted();
+        },
+      );
+  }
 }
+
+
+

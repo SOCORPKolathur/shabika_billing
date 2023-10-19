@@ -40,14 +40,7 @@ const List<String> list3 = <String>[
   "IGST",
 ];
 
-const List<String> Payment = <String>[
-  'Please Select Type',
-  'Cash',
-  'Card',
-  'Gpay',
-  "Phone Pay",
-  "Split Amount"
-];
+
 
 const List<String> Payment2 = <String>[
   'Please Select Type',
@@ -77,12 +70,14 @@ class Billing_Page extends StatefulWidget {
 
 class _Billing_PageState extends State<Billing_Page> {
   String dropdownValue3 = list3.first;
-  String Payments = Payment.first;
+  String Payments = "Please Select Type";
   String Payments2 = Payment2.first;
   String Payments3 = Payment3.first;
   TextEditingController Qty = TextEditingController();
   TextEditingController Landing_cost = TextEditingController();
-
+   List<String> Payment = <String>[
+    'Please Select Type',
+  ];
   //purchase number
   TextEditingController purchase_No = TextEditingController();
 
@@ -134,21 +129,40 @@ class _Billing_PageState extends State<Billing_Page> {
   //item focus node
   FocusNode items_id = FocusNode();
 
+  addpaymentmode() async {
+    setState((){
+      Payment.clear();
+      Payment.add("Please Select Type");
+    });
+    var listofpayment=await FirebaseFirestore.instance.collection('PaymentTypes').orderBy("Paymentname").get();
+    for(int k=0;k<listofpayment.docs.length;k++){
+      setState((){
+        Payment.add(listofpayment.docs[k]['Paymentname']);
+      });
+    }
+  }
+
+
   @override
   void initState() {
     setState(() {
       status = true;
       _typeAheadControllergender9.text="Walking Customer";
       customername.text="Walking Customer";
+      customerphone.text="Walking Customer";
+
     });
+
     check("Walking Customer");
     checkbillno();
+    addpaymentmode();
     clearlistandname();
     Userdata();
     itemaddfunction();
     categoryaddfunction();
     barndaddfunction();
     itemcodeaddfunction();
+
     setState(() {
       purchase_Date.text =
       "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
@@ -574,7 +588,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
                                 Text(
                                   "Add IMEI No /SERIAL No/Color/Image ",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.w700
                                   ),
                                 ),
@@ -610,7 +624,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                           width: width / 11.38,
                                                           child: Text(
                                                             "IMEi No",
-                                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                           )),
                                                       SizedBox(
                                                           width: width / 136.6),
@@ -650,7 +664,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                               textFieldConfiguration:
                                                               TextFieldConfiguration(
                                                                 maxLines: null,
-                                                                style: GoogleFonts.poppins(fontWeight: FontWeight.w700,fontSize: width / 91.06),
+                                                                style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width / 91.06),
                                                                 decoration:
                                                                 InputDecoration(
                                                                   contentPadding: EdgeInsets.only(left: width / 136.6, bottom: 8),
@@ -669,7 +683,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                                   suggestion) {
                                                                 return ListTile(
                                                                   title: Text(
-                                                                      suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                      suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                       maxLines:
                                                                       null),
                                                                 );
@@ -718,7 +732,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                           child: Text(
                                                             "Serial No",
                                                             style: GoogleFonts
-                                                                .montserrat(
+                                                                .openSans(
                                                                 fontWeight:
                                                                 FontWeight
                                                                     .w700),
@@ -760,7 +774,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                               TextFieldConfiguration(
                                                                 maxLines: null,
                                                                 style: GoogleFonts
-                                                                    .poppins(
+                                                                    .openSans(
                                                                     fontSize:
                                                                     width /
                                                                         91.06 ,fontWeight: FontWeight.w700),
@@ -789,7 +803,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                                   suggestion) {
                                                                 return ListTile(
                                                                   title: Text(
-                                                                      suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                      suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                       maxLines:
                                                                       null),
                                                                 );
@@ -842,7 +856,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                           child: Text(
                                                             "Color",
                                                             style: GoogleFonts
-                                                                .montserrat(
+                                                                .openSans(
                                                                 fontWeight:
                                                                 FontWeight
                                                                     .w700),
@@ -884,7 +898,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                               TextFieldConfiguration(
                                                                 maxLines: null,
                                                                 style: GoogleFonts
-                                                                    .poppins(
+                                                                    .openSans(
                                                                     fontSize:
                                                                     width /
                                                                         91.06,fontWeight: FontWeight.w700),
@@ -914,7 +928,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                                   suggestion) {
                                                                 return ListTile(
                                                                   title: Text(
-                                                                      suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                      suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                       maxLines:
                                                                       null),
                                                                 );
@@ -1017,7 +1031,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           ),
                                           child: Center(
                                             child: Text("Okay",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     letterSpacing: 1.5,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: width / 85.375,
@@ -1044,7 +1058,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           ),
                                           child: Center(
                                             child: Text("Cancel",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     letterSpacing: 1.5,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: width / 85.375,
@@ -1139,7 +1153,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
                              Text(
                                "Add IMEI No/SERIAL No/Color/Image",
-                               style: GoogleFonts.montserrat(
+                               style: GoogleFonts.openSans(
                                    fontWeight: FontWeight.w700
                                ),
                              ),
@@ -1175,7 +1189,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                      child: Text(
                                                        "IMEi No",
                                                        style: GoogleFonts
-                                                           .montserrat(
+                                                           .openSans(
                                                            fontWeight:
                                                            FontWeight
                                                                .w700),
@@ -1217,7 +1231,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                          TextFieldConfiguration(
                                                            maxLines: null,
                                                            style: GoogleFonts
-                                                               .poppins(fontWeight: FontWeight.w700,
+                                                               .openSans(fontWeight: FontWeight.w700,
                                                                fontSize:
                                                                width /
                                                                    91.06),
@@ -1246,7 +1260,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                              suggestion) {
                                                            return ListTile(
                                                              title: Text(
-                                                                 suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                 suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                  maxLines:
                                                                  null),
                                                            );
@@ -1299,7 +1313,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                      child: Text(
                                                        "Serial No",
                                                        style: GoogleFonts
-                                                           .montserrat(
+                                                           .openSans(
                                                            fontWeight:
                                                            FontWeight
                                                                .w700),
@@ -1341,7 +1355,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                          TextFieldConfiguration(
                                                            maxLines: null,
                                                            style: GoogleFonts
-                                                               .poppins(fontWeight: FontWeight.w700,
+                                                               .openSans(fontWeight: FontWeight.w700,
                                                                fontSize:
                                                                width /
                                                                    91.06),
@@ -1370,7 +1384,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                              suggestion) {
                                                            return ListTile(
                                                              title: Text(
-                                                                 suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                 suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                  maxLines:
                                                                  null),
                                                            );
@@ -1411,13 +1425,13 @@ class _Billing_PageState extends State<Billing_Page> {
                                                          },
                                                        ),
                                                        /* TextField(
-                                                          style: GoogleFonts.montserrat(),
+                                                          style: GoogleFonts.openSans(),
                                                           controller: _controller2[index],
                                                           decoration: InputDecoration(
                                                             hintText: "Enter the Serial NO",
                                                             border: InputBorder.none,
                                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                                            hintStyle: GoogleFonts.montserrat(),
+                                                            hintStyle: GoogleFonts.openSans(),
                                                           ),
                                                           onSubmitted: (_){
 
@@ -1441,7 +1455,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                      child: Text(
                                                        "Color",
                                                        style: GoogleFonts
-                                                           .montserrat(
+                                                           .openSans(
                                                            fontWeight:
                                                            FontWeight
                                                                .w700),
@@ -1482,7 +1496,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                          textFieldConfiguration:
                                                          TextFieldConfiguration(
                                                            maxLines: null,
-                                                           style: GoogleFonts.poppins(fontWeight: FontWeight.w700, fontSize: width / 91.06),
+                                                           style: GoogleFonts.openSans(fontWeight: FontWeight.w700, fontSize: width / 91.06),
                                                            decoration:
                                                            InputDecoration(
                                                              contentPadding:
@@ -1509,7 +1523,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                              suggestion) {
                                                            return ListTile(
                                                              title: Text(
-                                                                 suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                 suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                  maxLines:
                                                                  null),
                                                            );
@@ -1588,12 +1602,18 @@ class _Billing_PageState extends State<Billing_Page> {
                                      if(status==true){
                                        FirebaseFirestore.instance.collection('Item ShabikaG').doc(itemdocuid).update({
                                          "TotalQuvantity": FieldValue.increment(-(int.parse(Quvantity.toString()))),
+                                         'Imei no': FieldValue.arrayRemove(imeinu),
+                                         'Serial no': FieldValue.arrayRemove(serialnu),
+                                         'color': FieldValue.arrayRemove(colornu),
                                        });
                                      }
 
                                      if(status2==true){
                                        FirebaseFirestore.instance.collection('Item ShabikaN').doc(itemdocuid).update({
                                          "TotalQuvantity": FieldValue.increment(-(int.parse(Quvantity.toString()))),
+                                         'Imei no': FieldValue.arrayRemove(imeinu),
+                                         'Serial no': FieldValue.arrayRemove(serialnu),
+                                         'color': FieldValue.arrayRemove(colornu),
                                        });
                                      }
 
@@ -1623,7 +1643,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                        ),
                                        child: Center(
                                          child: Text("Okay",
-                                             style: GoogleFonts.poppins(
+                                             style: GoogleFonts.openSans(
                                                  letterSpacing: 1.5,
                                                  fontWeight: FontWeight.w500,
                                                  fontSize: width / 85.375,
@@ -1650,7 +1670,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                        ),
                                        child: Center(
                                          child: Text("Cancel",
-                                             style: GoogleFonts.poppins(
+                                             style: GoogleFonts.openSans(
                                                  letterSpacing: 1.5,
                                                  fontWeight: FontWeight.w500,
                                                  fontSize: width / 85.375,
@@ -1686,8 +1706,10 @@ class _Billing_PageState extends State<Billing_Page> {
       sgst = 0;
     });
     setState(() {
-      sgst = salespriceff - (salespriceff / (1.09));
+      sgst = (salespriceff - (salespriceff / (1.18)))/2;
     });
+
+    roundoff=totalamount-(subtotalamount+Cgst+sgst);
     return sgst.toStringAsFixed(2);
   }
 
@@ -1712,7 +1734,7 @@ class _Billing_PageState extends State<Billing_Page> {
       Cgst = 0;
     });
     setState(() {
-      Cgst = salespriceff - (salespriceff / (1.09));
+      Cgst = (salespriceff - (salespriceff / (1.18)))/2;
     });
     return Cgst.toStringAsFixed(2);
   }
@@ -1913,7 +1935,8 @@ class _Billing_PageState extends State<Billing_Page> {
 
 
   totalcollectionamount() async{
-
+    print("identifi+++++++++++++++++++++++++++++3");
+    print(random);
      var document1=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
      for(int i=0;i<document1.docs.length;i++){
        FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(document1.docs[i].id).update({
@@ -1936,6 +1959,150 @@ class _Billing_PageState extends State<Billing_Page> {
        "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
        "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
      });
+    if (status == true) {
+      FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
+        "Total": totalamount,
+        "Payment mode": Payments,
+        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+        "save": true,
+        "purchasenote": purchase_notes.text,
+        'customerdocid': customerdocid,
+        "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
+        "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+        "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+        "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+        "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+        "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+        "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+      });
+      var document3=await FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).collection(random).get();
+      for(int i=0;i<document3.docs.length;i++){
+        FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).collection(random).doc(document3.docs[i].id).update({
+          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+        });
+      }
+    }
+
+    if (status2 == true) {
+
+      FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
+        "Total": totalamount,
+        "Payment mode": Payments,
+        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+        "save": true,
+        'customerdocid': customerdocid,
+        "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
+        "purchasenote": purchase_notes.text,
+        "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+        "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+        "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+        "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+        "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+        "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+      });
+
+      var document2=await FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).get();
+      for(int i=0;i<document2.docs.length;i++){
+        FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).doc(document2.docs[i].id).update({
+          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+        });
+      }
+
+    }
+
+
+
+    var document2=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
+    for(int i=0;i<document2.docs.length;i++){
+      FirebaseFirestore.instance.collection("billingItemreports").doc().set({
+        "Total": document2.docs[i]["Total"],
+        "Totalamount": document2.docs[i]["Totalamount"],
+        "Payment mode": document2.docs[i]["Payment mode"],
+        "itemcode": document2.docs[i]["itemcode"],
+        "Hsncode": document2.docs[i]["Hsncode"],
+        "BoxNo": document2.docs[i]["BoxNo"],
+        "customername": document2.docs[i]["customername"],
+        "customerphone": document2.docs[i]["customerphone"],
+        "customeraddress": document2.docs[i]["customeraddress"],
+        "purchaseno": document2.docs[i]["purchaseno"],
+        "purchasedate": document2.docs[i]["purchasedate"],
+        "purchasenote": document2.docs[i]["purchasenote"],
+        "tax": document2.docs[i]["tax"],
+        "time": document2.docs[i]["time"],
+        "date": document2.docs[i]["date"],
+        "timestamp": document2.docs[i]["timestamp"],
+        "Category": document2.docs[i]["Category"],
+        "Brand": document2.docs[i]["Brand"],
+        "Item": document2.docs[i]["Item"],
+        "withouttaxprice": document2.docs[i]["withouttaxprice"],
+        "Sales price": document2.docs[i]["Sales price"],
+        "Qty": document2.docs[i]["Qty"],
+        "Description": document2.docs[i]["Description"],
+        "Imei no": document2.docs[i]["Imei no"],
+        "Serial no": document2.docs[i]["Serial no"],
+        "color": document2.docs[i]["color"],
+      });
+      if(status==true){
+      FirebaseFirestore.instance.collection("billingItemreportsG").doc().set({
+        "Total": document2.docs[i]["Total"],
+        "Totalamount": document2.docs[i]["Totalamount"],
+        "Payment mode": document2.docs[i]["Payment mode"],
+        "itemcode": document2.docs[i]["itemcode"],
+        "Hsncode": document2.docs[i]["Hsncode"],
+        "BoxNo": document2.docs[i]["BoxNo"],
+        "customername": document2.docs[i]["customername"],
+        "customerphone": document2.docs[i]["customerphone"],
+        "customeraddress": document2.docs[i]["customeraddress"],
+        "purchaseno": document2.docs[i]["purchaseno"],
+        "purchasedate": document2.docs[i]["purchasedate"],
+        "purchasenote": document2.docs[i]["purchasenote"],
+        "tax": document2.docs[i]["tax"],
+        "time": document2.docs[i]["time"],
+        "date": document2.docs[i]["date"],
+        "timestamp": document2.docs[i]["timestamp"],
+        "Category": document2.docs[i]["Category"],
+        "Brand": document2.docs[i]["Brand"],
+        "Item": document2.docs[i]["Item"],
+        "withouttaxprice": document2.docs[i]["withouttaxprice"],
+        "Sales price": document2.docs[i]["Sales price"],
+        "Qty": document2.docs[i]["Qty"],
+        "Description": document2.docs[i]["Description"],
+        "Imei no": document2.docs[i]["Imei no"],
+        "Serial no": document2.docs[i]["Serial no"],
+        "color": document2.docs[i]["color"],
+      });}
+      if(status2==true){
+      FirebaseFirestore.instance.collection("billingItemreportsN").doc().set({
+        "Total": document2.docs[i]["Total"],
+        "Totalamount": document2.docs[i]["Totalamount"],
+        "Payment mode": document2.docs[i]["Payment mode"],
+        "itemcode": document2.docs[i]["itemcode"],
+        "Hsncode": document2.docs[i]["Hsncode"],
+        "BoxNo": document2.docs[i]["BoxNo"],
+        "customername": document2.docs[i]["customername"],
+        "customerphone": document2.docs[i]["customerphone"],
+        "customeraddress": document2.docs[i]["customeraddress"],
+        "purchaseno": document2.docs[i]["purchaseno"],
+        "purchasedate": document2.docs[i]["purchasedate"],
+        "purchasenote": document2.docs[i]["purchasenote"],
+        "tax": document2.docs[i]["tax"],
+        "time": document2.docs[i]["time"],
+        "date": document2.docs[i]["date"],
+        "timestamp": document2.docs[i]["timestamp"],
+        "Category": document2.docs[i]["Category"],
+        "Brand": document2.docs[i]["Brand"],
+        "Item": document2.docs[i]["Item"],
+        "withouttaxprice": document2.docs[i]["withouttaxprice"],
+        "Sales price": document2.docs[i]["Sales price"],
+        "Qty": document2.docs[i]["Qty"],
+        "Description": document2.docs[i]["Description"],
+        "Imei no": document2.docs[i]["Imei no"],
+        "Serial no": document2.docs[i]["Serial no"],
+        "color": document2.docs[i]["color"],
+      });
+      }
+    }
+
 
       FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing")
          .doc(random).update({
@@ -1958,56 +2125,11 @@ class _Billing_PageState extends State<Billing_Page> {
        "Totalamount":Discountamount.text == "0"&&Discountamountpercentage.text == "0" ? FieldValue.increment(TotalAmount2):FieldValue.increment(disacountamountcalue),
      });
 
-     if (status == true) {
-       await  FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
-         "Total": totalamount,
-         "Payment mode": Payments,
-         "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-         "save": true,
-         "purchasenote": purchase_notes.text,
-         'customerdocid': customerdocid,
-         "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
-         "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-         "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-         "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-         "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-         "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-         "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-       });
-       var document3=await FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).collection(random).get();
-       for(int i=0;i<document3.docs.length;i++){
-         FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).collection(random).doc(document3.docs[i].id).update({
-           "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-         });
-       }
-     }
 
-     if (status2 == true) {
-
-         FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
-         "Total": totalamount,
-         "Payment mode": Payments,
-         "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-         "save": true,
-         'customerdocid': customerdocid,
-           "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
-         "purchasenote": purchase_notes.text,
-         "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-         "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-         "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-         "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-         "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-         "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-       });
-
-       var document2=await FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).get();
-       for(int i=0;i<document2.docs.length;i++){
-         FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).doc(document2.docs[i].id).update({
-           "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-         });
-       }
-
-     }
+     print(itemdocuid);
+     print(imeinu);
+     print(imeivalue);
+     print("Identification+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
      if (imeivalue == true&&status==true) {
         FirebaseFirestore.instance.collection('Item ShabikaG').doc(itemdocuid).update({
          'Imei no': FieldValue.arrayRemove(imeinu),
@@ -2084,7 +2206,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       children: [
                         Text(
                           "Please Select Payment Type",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.w600,
                               color: Colors.black,
                               fontSize: 18),
@@ -2101,7 +2223,7 @@ class _Billing_PageState extends State<Billing_Page> {
                               ),
                               Text(
                                 "Payment Mode",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontSize: width / 97.571,
                                     color: const Color(0xff000000)),
                               ),
@@ -2163,7 +2285,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 13.66,
                                           child: Text(
                                             'Cash',
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width / 97.571,
                                                 color: const Color(0xff000000)),
                                           ),
@@ -2183,14 +2305,14 @@ class _Billing_PageState extends State<Billing_Page> {
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: paymenttype1,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
                                                   contentPadding: EdgeInsets.only(
                                                       left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {
                                                   setState(() {
@@ -2221,7 +2343,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 13.66,
                                           child: Text(
                                             "Card",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width / 97.571,
                                                 color: const Color(0xff000000)),
                                           ),
@@ -2241,14 +2363,14 @@ class _Billing_PageState extends State<Billing_Page> {
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: paymenttype2,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
                                                   contentPadding: EdgeInsets.only(
                                                       left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {
                                                   setState(() {
@@ -2279,7 +2401,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 13.66,
                                           child: Text(
                                             "Gpay",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width / 97.571,
                                                 color: const Color(0xff000000)),
                                           ),
@@ -2299,14 +2421,14 @@ class _Billing_PageState extends State<Billing_Page> {
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: paymenttype3,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
                                                   contentPadding: EdgeInsets.only(
                                                       left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {
                                                   setState(() {
@@ -2336,7 +2458,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 13.66,
                                           child: Text(
                                             "Phone Pay",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width / 97.571,
                                                 color: const Color(0xff000000)),
                                           ),
@@ -2356,14 +2478,14 @@ class _Billing_PageState extends State<Billing_Page> {
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: paymenttype4,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
                                                   contentPadding: EdgeInsets.only(
                                                       left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {
                                                   setState(() {
@@ -2394,7 +2516,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 13.66,
                                           child: Text(
                                             "Total To be\nPay",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width / 97.571,
                                                 color: const Color(0xff000000)),
                                           ),
@@ -2416,7 +2538,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                 child: Center(
                                                     child: Text(
                                                   "RS: $decreaseamount",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w700,
                                                       fontSize: width / 75.88),
                                                 )))),
@@ -2439,7 +2561,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 13.66,
                                           child: Text(
                                             "Total",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width / 97.571,
                                                 color: const Color(0xff000000)),
                                           ),
@@ -2461,7 +2583,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                 child: Center(
                                                     child: Text(
                                                         "RS: ${TotalAmount2.toStringAsFixed(2)}",
-                                                        style: GoogleFonts.poppins(
+                                                        style: GoogleFonts.openSans(
                                                             fontWeight:
                                                                 FontWeight.w700,
                                                             fontSize:
@@ -2479,10 +2601,10 @@ class _Billing_PageState extends State<Billing_Page> {
                           children: [
                             InkWell(
                               onTap: () {
+                                print("identifi+++++++++++++++++++++++++++++1");
                                 if (Payments.isNotEmpty&& Payments!="Please Select Type") {
-
+                                  print("identifi+++++++++++++++++++++++++++++2");
                                   totalcollectionamount();
-
                                   setState((){
                                     Loading=true;
                                   });
@@ -2499,11 +2621,12 @@ class _Billing_PageState extends State<Billing_Page> {
                                       HSNcode.clear();
                                       _typeAheadControllergender9.text="Walking Customer";
                                       customername.text="Walking Customer";
+                                      customerphone.text="Walking Customer";
                                     });
 
                                   ///customer name fetch document  fucntion
 
-                                    check("Walking Customer");
+                                    //check("Walking Customer");
                                     checkbillno();
                                     Navigator.pop(context);
                                     Savebillpopup();
@@ -2526,7 +2649,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                   ),
                                   child: Center(
                                     child: Text("Okay",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             letterSpacing: 1.5,
                                             fontWeight: FontWeight.w500,
                                             fontSize: width / 85.375,
@@ -2555,7 +2678,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                   ),
                                   child: Center(
                                     child: Text("Cancel",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             letterSpacing: 1.5,
                                             fontWeight: FontWeight.w500,
                                             fontSize: width / 85.375,
@@ -2579,7 +2702,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       Lottie.asset("assets/FsRGzkbt6x.json",
                         height:height/ 3.38,
                         width: width/6.106,),
-                      Text("Please Wait",style:GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.black))
+                      Text("Please Wait",style:GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.black))
                     ],
                   ),
                 ):const SizedBox(),
@@ -2649,7 +2772,7 @@ class _Billing_PageState extends State<Billing_Page> {
               ),
               Text(
                 "Shabika G",
-                style: GoogleFonts.solway(
+                style: GoogleFonts.openSans(
                     color: Colors.white, fontSize: width / 80.353),
               ),
               SizedBox(width: width / 5.0),
@@ -2692,7 +2815,7 @@ class _Billing_PageState extends State<Billing_Page> {
               ),
               Text(
                 "Shabika N",
-                style: GoogleFonts.solway(
+                style: GoogleFonts.openSans(
                     color: Colors.white, fontSize: width / 80.353),
               ),
             ],
@@ -2717,16 +2840,18 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Customer Phone",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Customer Phone",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 43.0,
-                          ),
+
                           Container(
                             width: width / 3.415,
                             height: height / 21.9,
@@ -2752,20 +2877,39 @@ class _Billing_PageState extends State<Billing_Page> {
                                                   _typeAheadControllergender9.text=textEditingController.text;
                                                 });
                                               },
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                              style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,fontSize: width/85,),
                                               decoration: InputDecoration(
+
                                                   suffixIcon: InkWell(
                                                       onTap: (){
-                                                        customername.clear();
-                                                        textEditingController.clear();
-                                                        customeraddress.clear();
-                                                        AddnewcustomeGst.clear();
+                                                        if(customername.text=="Walking Customer") {
+                                                          customername.clear();
+                                                          textEditingController
+                                                              .clear();
+                                                          customeraddress
+                                                              .clear();
+                                                          AddnewcustomeGst
+                                                              .clear();
+                                                        }
+                                                        else{
+                                                          _typeAheadControllergender9.text="Walking Customer";
+                                                          customername.text="Walking Customer";
+                                                          customerphone.text="Walking Customer";
+                                                          textEditingController.text="Walking Customer";
+                                                          customeraddress
+                                                              .clear();
+                                                          AddnewcustomeGst
+                                                              .clear();
+                                                        }
                                                       },
                                                       child:  const Icon(Icons.clear,size: 20)),
                                                   border: InputBorder.none,
-                                                  contentPadding:
-                                                  EdgeInsets.only(
-                                                      top: height / 83.8,left:width/220.3)),
+                                                contentPadding: EdgeInsets.only(
+                                                    left: width /90.78,
+                                                    top: height / 153.8),
+
+                                              ),
                                               controller: textEditingController,
                                               focusNode: focusNode,
                                               onFieldSubmitted: (String value) {
@@ -2881,12 +3025,17 @@ class _Billing_PageState extends State<Billing_Page> {
                                     ],
                                   )),
                             )
-                                : ClipOval(
-                                child: Container(
-                                    height: height / 21.9,
-                                    width: width / 45.53,
-                                    color: Colors.white,
-                                    child: const Icon(Icons.add))),
+                                : GestureDetector(
+                              onTap: (){
+                                showdialpogbox();
+                              },
+                                  child: ClipOval(
+                                  child: Container(
+                                      height: height / 21.9,
+                                      width: width / 45.53,
+                                      color: Colors.white,
+                                      child: const Icon(Icons.add))),
+                                ),
                           )
                         ],
                       ),
@@ -2903,15 +3052,16 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Customer Name",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
-                          ),
-                          SizedBox(
-                            width: width / 40.0,
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Customer Name",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
                           Container(
                             width: width / 3.415,
@@ -2921,14 +3071,16 @@ class _Billing_PageState extends State<Billing_Page> {
                               color: Colors.white,
                             ),
                             child: TextField(
-                              style: GoogleFonts.montserrat(
-                                  fontWeight:FontWeight.w700
-                              ),
+                              style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,fontSize: width/85,),
                               focusNode: customername2,
                               controller: customername,
                               decoration: InputDecoration(
+                                  suffixIcon:
+                                Icon(Icons.circle,color:Colors.white),
                                 contentPadding: EdgeInsets.only(
-                                  left: width /90.78,  bottom: height / 83.8),
+                                    left: width /90.78,
+                                    top: height / 153.8),
                                 border: InputBorder.none,
                               ),
                               onSubmitted: (_) {
@@ -2953,16 +3105,18 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Customer Address",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Customer Address",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 75.88,
-                          ),
+
                           Container(
                             width: width / 3.415,
                             height: height / 21.9,
@@ -2971,15 +3125,16 @@ class _Billing_PageState extends State<Billing_Page> {
                               color: Colors.white,
                             ),
                             child: TextField(
-                              style: GoogleFonts.montserrat(
-                                  fontWeight:FontWeight.w700
-                              ),
+                              style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,fontSize: width/85,),
                               focusNode: customeraddress2,
                               controller: customeraddress,
                               decoration: InputDecoration(
+                                suffixIcon:
+                                Icon(Icons.circle,color:Colors.white),
                                 contentPadding: EdgeInsets.only(
                                     left: width /90.78,
-                                    bottom: height / 83.8),
+                                    top: height / 153.8),
                                 border: InputBorder.none,
                               ),
                               onSubmitted: (_) {
@@ -3004,16 +3159,18 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Tax Type",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Tax Type",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 15.5,
-                          ),
+
                           Container(
                             width: width / 3.415,
                             height: height / 21.9,
@@ -3037,12 +3194,8 @@ class _Billing_PageState extends State<Billing_Page> {
                                     isExpanded: true,
                                     isDense: true,
                                     alignment: Alignment.topCenter,
-                                    style: GoogleFonts.montserrat(
-                                        color: Colors.black,
-                                        fontSize: width / 105.07,
-                                        fontWeight:FontWeight.w700
-                                    ),
-
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,fontSize: width/85,),
 
                                     underline: Container(
                                       color: Colors.deepPurpleAccent,
@@ -3076,7 +3229,7 @@ class _Billing_PageState extends State<Billing_Page> {
                     ),
 
                     //Customer  gstno
-                    status2==true? const SizedBox():
+
                     Padding(
                       padding: EdgeInsets.only(
                           top: height / 328.5, left: width / 273.2),
@@ -3087,16 +3240,18 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Customer GST NO",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Customer GST NO",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 53.0,
-                          ),
+
                           Container(
                             width: width / 3.415,
                             height: height / 21.9,
@@ -3111,15 +3266,16 @@ class _Billing_PageState extends State<Billing_Page> {
                               decoration: const BoxDecoration(
                                 color: Colors.white,
                               ),
-                              child: TextField(
-                                style:  GoogleFonts.montserrat(
-                                    fontWeight:FontWeight.w700
-                                ),
+                              child:  status2==true? SizedBox():TextField(
+                              style: GoogleFonts.openSans(
+    fontWeight: FontWeight.w700,fontSize: width/85,),
                                 controller: AddnewcustomeGst,
                                 decoration: InputDecoration(
+                                    suffixIcon:
+                                  Icon(Icons.circle,color:Colors.white),
                                   contentPadding: EdgeInsets.only(
                                       left: width /90.78,
-                                      bottom: height / 83.8),
+                                      top: height / 153.8),
                                   border: InputBorder.none,
                                 ),
                                 onSubmitted: (_) {
@@ -3153,16 +3309,18 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Bill No",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Bill No",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 17.74,
-                          ),
+
                           Container(
                             width: width / 3.415,
                             height: height / 21.9,
@@ -3171,15 +3329,16 @@ class _Billing_PageState extends State<Billing_Page> {
                               color: Colors.white,
                             ),
                             child: TextField(
-                              style:  GoogleFonts.montserrat(
-                                  fontWeight:FontWeight.w700
-                              ),
+                              style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w700,fontSize: width/85,),
                               controller: purchase_No,
                               focusNode: purchase_no,
                               decoration: InputDecoration(
+                                suffixIcon:
+                                Icon(Icons.circle,color:Colors.white),
                                 contentPadding: EdgeInsets.only(
                                     left: width /90.78,
-                                    bottom: height / 83.8),
+                                    top: height / 153.8),
                                 border: InputBorder.none,
                               ),
                               onSubmitted: (_) {
@@ -3202,16 +3361,18 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Sales  Date",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Sales  Date",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 31.9,
-                          ),
+
                           Container(
                             width: width / 3.415,
                             height: height / 21.9,
@@ -3220,15 +3381,15 @@ class _Billing_PageState extends State<Billing_Page> {
                               color: Colors.white,
                             ),
                             child: TextField(
-                              style:  GoogleFonts.montserrat(
-                                  fontWeight:FontWeight.w700
-                              ),
+                              style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w700,fontSize: width/85,),
                               controller: purchase_Date,
                               focusNode: purchase_date,
                               decoration: InputDecoration(
+
                                   contentPadding: EdgeInsets.only(
                                       left: width /90.78,
-                                      top: height / 83.8),
+                                      top: height / 153.8),
                                   hintText: "Invoice Date",
                                   border: InputBorder.none,
                                   suffixIcon: const Icon(Icons.calendar_month)),
@@ -3270,19 +3431,19 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Category",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Category",
+                              style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w700,fontSize: width/85,),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 31.1,
-                          ),
+
                           Padding(
                             padding: EdgeInsets.only(
-                                left: width / 130, right: width / 170),
+                               right: width / 170),
                             child: LayoutBuilder(
                               builder: (BuildContext, BoxConstraints) =>
                                   Autocomplete<String>(
@@ -3374,19 +3535,21 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Brand",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Brand",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 20.0,
-                          ),
+
                           Padding(
                             padding: EdgeInsets.only(
-                              left: width / 130,
+
                               right: width / 170,
                             ),
                             child: LayoutBuilder(
@@ -3482,16 +3645,18 @@ class _Billing_PageState extends State<Billing_Page> {
                           SizedBox(
                             width: width / 273.2,
                           ),
-                          Text(
-                            "Remarks",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: width / 97.571,
-                                color: const Color(0xff000000)),
+                          Container(
+                            width: width / 9.0,
+                            child: Text(
+                              "Remarks",
+                              style:GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+
+                            ),
                           ),
-                          SizedBox(
-                            width: width / 23.5,
-                          ),
+
                           Container(
                             width: width / 3.415,
                             height: height / 21.9,
@@ -3500,16 +3665,17 @@ class _Billing_PageState extends State<Billing_Page> {
                               color: Colors.white,
                             ),
                             child: TextField(
-                              style:  GoogleFonts.montserrat(
-                                  fontWeight:FontWeight.w700
-                              ),
+                              style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w700,fontSize: width/85,),
                               controller: purchase_notes,
                               focusNode: purchase_note,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width /90.78,
-                                    bottom: height / 83.8),
+                                    top: height / 153.8),
                                 border: InputBorder.none,
+                                suffixIcon:
+                                Icon(Icons.circle,color:Colors.white),
                               ),
                               onSubmitted: (_) {
                                 purchase_note.unfocus();
@@ -3550,7 +3716,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Si No",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3561,7 +3727,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Item ID",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3572,7 +3738,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Item Name",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3585,7 +3751,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Box No",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3596,7 +3762,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "HSN Code",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3607,7 +3773,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Tax %",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3618,7 +3784,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Qnty",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3629,7 +3795,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Price",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3640,7 +3806,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Sales Price",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3651,7 +3817,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Stocks",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
 
@@ -3662,7 +3828,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Clear ",
                               style:
-                              GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             )),
                       ),
                     ],
@@ -3705,7 +3871,7 @@ class _Billing_PageState extends State<Billing_Page> {
                               fieldViewBuilder: (context, textEditingController, focusNode, onFieldSubmitted) {
                                 return
                                   TextFormField(
-                                    style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                    style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                     onChanged: (_){
                                       setState(() {
                                         layourbuilderclear3=textEditingController;
@@ -3741,7 +3907,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                             onTap: () => onSelected(option),
                                             child: Padding(
                                               padding: const EdgeInsets.all(16.0),
-                                              child: Text(option,     style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),),
+                                              child: Text(option,     style:GoogleFonts.openSans(fontWeight: FontWeight.w700),),
                                             ),
                                           );
                                         },
@@ -3780,6 +3946,7 @@ class _Billing_PageState extends State<Billing_Page> {
                     //itemname
                     Container(
                       width: width / 2.7,
+                      height: height / 21.9,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child:
@@ -3787,7 +3954,7 @@ class _Billing_PageState extends State<Billing_Page> {
                         padding: EdgeInsets.only(
                             left: width / 130,
                             right: width / 170,
-                            bottom: height / 65.7),
+                            ),
                         child:
                         LayoutBuilder(
                           builder: (BuildContext, BoxConstraints) =>
@@ -3795,17 +3962,18 @@ class _Billing_PageState extends State<Billing_Page> {
                                 fieldViewBuilder: (context, textEditingController,
                                     focusNode, onFieldSubmitted) {
                                   return TextFormField(
-                                    style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                    style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                     onChanged: (_) {
                                       setState(() {
                                         layourbuilderclear2 = textEditingController;
                                       });
                                     },
                                     decoration: InputDecoration(
+                                      isDense: true,
                                         border: InputBorder.none,
                                         contentPadding: EdgeInsets.only(
-                                            left: width / 273.2,
-                                            bottom: height / 43.8)),
+                                            left: width / 273.2,top:height/80.8
+                                            )),
                                     controller: layourbuilderclear2,
                                     focusNode: focusNode,
                                     onFieldSubmitted: (String value) {
@@ -3837,7 +4005,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                     padding:
                                                     const EdgeInsets.all(16.0),
                                                     child: Text(
-                                                      option, style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                      option, style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                     ),
                                                   ),
                                                 );
@@ -3861,7 +4029,6 @@ class _Billing_PageState extends State<Billing_Page> {
                                     layourbuilderclear2.text = selection;
                                     showpopup = false;
                                   });
-
                                   debugPrint('You just selected $selection');
                                 },
                                 displayStringForOption: (Value) {
@@ -3879,7 +4046,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child: TextField(
-                        style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                        style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: Box_NO,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -3897,7 +4064,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child: TextField(
-                        style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                        style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: HSN_Code,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -3914,7 +4081,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child: TextField(
-                        style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                        style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: taxitem,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -3931,7 +4098,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child: TextField(
-                        style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                        style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: Qty,
                         focusNode: Quvantitylist,
                         decoration: InputDecoration(
@@ -3994,7 +4161,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child: TextField(
-                        style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                        style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: without_tax,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -4011,7 +4178,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child: TextField(
-                        style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                        style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: Sales,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -4028,7 +4195,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child: TextField(
-                        style:GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                        style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: Stocks,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -4096,12 +4263,17 @@ class _Billing_PageState extends State<Billing_Page> {
                     itemBuilder: (context, index) {
                       var billing = snapshot.data!.docs[index];
                       return Padding(
-                        padding: EdgeInsets.only(bottom: height / 164.25),
+                        padding: EdgeInsets.only(bottom: 0),
                         child:
                         Row(
                           children: [
                             //Serial no
-                            SizedBox(
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),
                                 width: width / 45.533,
                                 height: height / 16.425,
                                 child:
@@ -4115,7 +4287,12 @@ class _Billing_PageState extends State<Billing_Page> {
                             ),
 
                             //itemid
-                            SizedBox(
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),
                                 width: width / 14.2,
                                 height: height / 16.425,
 
@@ -4137,34 +4314,46 @@ class _Billing_PageState extends State<Billing_Page> {
                             ),
 
                             //itemname
-                            SizedBox(
-                              width: width / 2.7,
-
-                              child:
-                              TextField(
-                                controller: _Streamcontroller2[index],
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "${billing['Description']}",
-                                    hintStyle: const TextStyle(color: Colors.black)
+                            Tooltip(
+                              message:"${billing['Description']}",
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border:Border.all(
+                                    color:Colors.black87
+                                  )
                                 ),
-                                onSubmitted: (_){
-                                  FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                    'Description':_Streamcontroller2[index].text,
-                                  });
+                                width: width / 2.7+width / 13.32,
+                                height: height / 16.425,
+                                child:
+                                TextField(
 
-                                },
+                                  controller: _Streamcontroller2[index],
+                                  decoration: InputDecoration(
+
+                                      border: InputBorder.none,
+                                      hintText: "${billing['Description']}",
+                                      hintStyle: const TextStyle(color: Colors.black)
+                      ),
+                                  onSubmitted: (_){
+                                    FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                      'Description':_Streamcontroller2[index].text,
+                                    });
+
+                                  },
+                                ),
+
+
                               ),
-
-
                             ),
 
-                            SizedBox(
-                              width: width / 13.32,
-                            ),
 
                             //Hsn code
-                            SizedBox(
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),
 
                                 width: width / 15.9,
                                 height: height / 16.425,
@@ -4186,7 +4375,12 @@ class _Billing_PageState extends State<Billing_Page> {
                                 )),
 
                             //tax
-                            SizedBox(
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),
 
                               width: width / 17.8,
                               height: height / 16.425,
@@ -4210,7 +4404,12 @@ class _Billing_PageState extends State<Billing_Page> {
                             ),
 
                             //quvantity
-                            SizedBox(
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),
                                 width: width / 15.8,
                                 height: height / 16.425,
                                 child: Padding(
@@ -4248,7 +4447,12 @@ class _Billing_PageState extends State<Billing_Page> {
                                 )),
 
                             // Price
-                            SizedBox(
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),
 
                                 width: width / 14.18,
                                 height: height / 16.425,
@@ -4276,7 +4480,12 @@ class _Billing_PageState extends State<Billing_Page> {
                                 )),
 
                             //Sales Price
-                            SizedBox(
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),
                                 width: width / 11.18,
                                 height: height / 16.425,
                                 child: Padding(
@@ -4301,10 +4510,20 @@ class _Billing_PageState extends State<Billing_Page> {
                                     },
                                   ),
                                 )),
-                            SizedBox(width:width/22.766),
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),width:width/22.766, height: height / 16.425,),
 
                             //remove
-                            SizedBox(
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),
                                 width: width / 14.0,
                                 height: height / 16.425,
                                 child: Center(
@@ -4335,7 +4554,7 @@ class _Billing_PageState extends State<Billing_Page> {
               color: const Color(0xffFFFFFF),
               borderRadius: BorderRadius.circular(12),
               child: Container(
-                width: width / 1.093,
+                width: width / 1.05,
                 height: height / 6.14,
                 decoration: BoxDecoration(
                     color: const Color(0xffFFFFFF),
@@ -4376,7 +4595,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                               child: Text(
                                                 "Save Invoice",
                                                 style:
-                                                GoogleFonts.poppins(color: Colors.white),
+                                                GoogleFonts.openSans(color: Colors.white),
                                               )),
                                         ),
                                       ),
@@ -4405,7 +4624,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                             children: [
                                               Text(
                                                 "WhatsApp",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     color: Colors.white),
                                               ),
                                               const SizedBox(
@@ -4448,7 +4667,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                     child: Text(
                                                       "L-BILL No: ",
                                                       textAlign: TextAlign.center,
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           color: Colors.white),
                                                     ),
                                                   ),
@@ -4460,7 +4679,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                 child: Center(
                                                   child: Text(
                                                     prevousbillcount,
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white),
                                                   ),
                                                 ),
@@ -4498,7 +4717,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                               child: Text(
                                                 "Print Invoice",
                                                 style:
-                                                GoogleFonts.poppins(color: Colors.white),
+                                                GoogleFonts.openSans(color: Colors.white),
                                               )),
                                         ),
                                       ),
@@ -4520,7 +4739,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           children: [
                                             Text(
                                               "P-Price",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.w500),
                                             ),
@@ -4577,7 +4796,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                     child: Text(
                                                       "L-BILL Amt: ",
                                                       textAlign: TextAlign.center,
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           color: Colors.white),
                                                     ),
                                                   ),
@@ -4589,7 +4808,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                 child: Center(
                                                   child: Text(
                                                     prevouscountamount,
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white),
                                                   ),
                                                 ),
@@ -4632,7 +4851,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                             children: [
                                               Text(
                                                 "Dis %      ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -4676,7 +4895,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
                                               Text(
                                                 "Dis Amt ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -4731,13 +4950,13 @@ class _Billing_PageState extends State<Billing_Page> {
                                               dropdownValue3=="IGST"?
                                               Text(
                                                 "IGST(18%) ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ):
                                               Text(
                                                 "C GST(9%) ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -4785,7 +5004,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                             children: [
                                               Text(
                                                 "S GST(9%) ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -4829,10 +5048,80 @@ class _Billing_PageState extends State<Billing_Page> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Row(
+                                  children: [
+                                    Container(
+                                      width: width / 8.6,
+                                      height: height / 16.42,
+                                      //color: Color(0xffD60A0B),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: const Color(0xff1D5B79),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Round Off ",
+                                            style: GoogleFonts.openSans(
+                                                color:Colors.white,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          Container(
+                                              width:width / 18.2,
+                                              height: height / 21.9,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.grey.shade300,
+                                                  borderRadius: BorderRadius.circular(5)),
+                                              child:
+                                              Center(child: Text(roundoff.toStringAsFixed(2),
+                                                style: const TextStyle(
+                                                    fontWeight:FontWeight.w600
+                                                ),))
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: width / 140.4),
+                                    Container(
+                                      width: width / 8.6,
+                                      height: height / 16.42,
+                                      //color: Color(0xffD60A0B),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: const Color(0xff1D5B79),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Sub Total ",
+                                            style: GoogleFonts.openSans(
+                                                color:Colors.white,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          Container(
+                                              width:width / 18.2,
+                                              height: height / 21.9,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.grey.shade300,
+                                                  borderRadius: BorderRadius.circular(5)),
+                                              child:
+                                              Center(child: Text(subtotalamount.toStringAsFixed(2),
+                                                style: const TextStyle(
+                                                    fontWeight:FontWeight.w600
+                                                ),))
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height / 140.4),
+                                Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                        width: width / 5.5,
+                                        width: width / 4.2,
                                         decoration: BoxDecoration(
                                             color: const Color(0xff00A99D),
                                             borderRadius:
@@ -4840,10 +5129,10 @@ class _Billing_PageState extends State<Billing_Page> {
                                         child: Center(
                                           child: Text(
                                             TotalAmount2.toStringAsFixed(2),
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
-                                                fontSize: width / 30.88),
+                                                fontSize: width / 40.88),
                                           ),
                                         )),
                                   ],
@@ -4994,11 +5283,13 @@ class _Billing_PageState extends State<Billing_Page> {
           "Customer homeno ": customerhomeno.text,
           "Customer area ": customerarea.text,
         });
+        check(Addnewcustomenumber.text);
         clearcontroller();
       }
       else{
         itemcodegenrate();
         await FirebaseFirestore.instance.collection("Customer").doc().set({
+          "Alphone":"",
           "Customermobileno": Addnewcustomenumber.text,
           "Customername": customername.text,
           "Customerid":"${"CUS"}${F.format(itemcodes)}",
@@ -5016,6 +5307,7 @@ class _Billing_PageState extends State<Billing_Page> {
         setState(() {
           customervalid = false;
         });
+        check(Addnewcustomenumber.text);
         clearcontroller();
       }
 
@@ -5079,7 +5371,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       ),
                       Text(
                         "This Customer Already Exist in List.....",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
                             color: Colors.white),
@@ -5116,7 +5408,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -5141,12 +5433,18 @@ class _Billing_PageState extends State<Billing_Page> {
       if(status==true){
         FirebaseFirestore.instance.collection('Item ShabikaG').doc(itemdocuid).update({
           "TotalQuvantity": FieldValue.increment(-(int.parse(Qty.text))),
+          'Imei no': FieldValue.arrayRemove(imeinu),
+          'Serial no': FieldValue.arrayRemove(serialnu),
+          'color': FieldValue.arrayRemove(colornu),
         });
       }
 
       if(status2==true){
         FirebaseFirestore.instance.collection('Item ShabikaN').doc(itemdocuid).update({
           "TotalQuvantity": FieldValue.increment(-(int.parse(Qty.text))),
+          'Imei no': FieldValue.arrayRemove(imeinu),
+          'Serial no': FieldValue.arrayRemove(serialnu),
+          'color': FieldValue.arrayRemove(colornu),
         });
       }
 
@@ -5156,8 +5454,9 @@ class _Billing_PageState extends State<Billing_Page> {
   clearcontroller() {
     mobileno.clear();
     Cusname.clear();
-    customerphone.clear();
-    customername.clear();
+    _typeAheadControllergender9.text="Walking Customer";
+    customername.text="Walking Customer";
+    customerphone.text="Walking Customer";
     customeraddress.clear();
     customerpincode.clear();
     customerstate.clear();
@@ -5194,17 +5493,22 @@ class _Billing_PageState extends State<Billing_Page> {
 
 
   double totalamount = 0;
+  double subtotalamount = 0;
+  double roundoff = 0;
 
   updatetotal() async {
     setState(() {
       totalamount = 0;
+      subtotalamount = 0;
     });
     var documents = await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
     for (int i = 0; i < documents.docs.length; i++) {
       setState(() {
         totalamount = ((totalamount) + double.parse(documents.docs[i]['Sales price'].toString()));
+        subtotalamount = ((subtotalamount) + double.parse(documents.docs[i]['withouttaxprice'].toString()));
       });
     }
+
     CGSTfunction();
     SGSTfunction();
     Totalamounts();
@@ -5482,6 +5786,7 @@ class _Billing_PageState extends State<Billing_Page> {
       updatetotal();
 
       updatetotalquvantity();
+
 
     }
     clearallcontroller();
@@ -5800,6 +6105,7 @@ class _Billing_PageState extends State<Billing_Page> {
       }
 
       if(status2==true){
+        print("shabika N-------------------------------------");
          var documents = await FirebaseFirestore.instance.collection("Item ShabikaN").get();
          for (int i = 0; i < documents.docs.length; i++) {
            if ('${documents.docs[i]["Newitemname"]}-(${documents.docs[i]["Itemcode"]})' == name) {
@@ -5821,6 +6127,10 @@ class _Billing_PageState extends State<Billing_Page> {
                Box_NO.text = documents.docs[i]["BoxNo"].toString();
                HSN_Code.text = documents.docs[i]["HSNCode"].toString();
                Sales.text = documents.docs[i]["Saleprice"].toString();
+               print(documents.docs[i]["Saleprice"].toString());
+               print(documents.docs[i]["Landingcost"].toString());
+               print("ppppppppp=========================================");
+               print(documents.docs[i]["Landingcost"].toString());
                PPrice.text=documents.docs[i]["Landingcost"].toString();
                salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());
                serialvalue = documents.docs[i]["Serial NO"];
@@ -6183,6 +6493,7 @@ class _Billing_PageState extends State<Billing_Page> {
       }
 
       if(status2==true){
+        print("shabika N-------------------------------------");
         var documents = await FirebaseFirestore.instance.collection("Item ShabikaN").get();
         for (int i = 0; i < documents.docs.length; i++) {
           if (documents.docs[i]["Newitemname"] == name) {
@@ -6204,6 +6515,8 @@ class _Billing_PageState extends State<Billing_Page> {
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              print(documents.docs[i]["Saleprice"].toString());
+              print(documents.docs[i]["Landingcost"].toString());
               PPrice.text=documents.docs[i]["Landingcost"].toString();
               salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());
               serialvalue = documents.docs[i]["Serial NO"];
@@ -6426,7 +6739,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       Text(
                         "Please fill the Customer Details.....",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6462,7 +6775,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6489,7 +6802,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6536,7 +6849,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       Text(
                         "Save Purchase Bill Succesfully..",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6557,6 +6870,11 @@ class _Billing_PageState extends State<Billing_Page> {
                           InkWell(
                             onTap: () {
                                 Navigator.pop(context);
+                                setState(() {
+                                  _typeAheadControllergender9.text="Walking Customer";
+                                  customername.text="Walking Customer";
+                                  customerphone.text="Walking Customer";
+                                });
 
                             },
                             child: Material(
@@ -6572,7 +6890,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6599,7 +6917,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6646,7 +6964,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       Text(
                         "Alert Stocks are Low..",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6682,7 +7000,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6709,7 +7027,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6755,7 +7073,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       Text(
                         "Incorrect Format..",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6791,7 +7109,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6818,7 +7136,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -7057,12 +7375,20 @@ class _Billing_PageState extends State<Billing_Page> {
       for(int k=0;k<itemdata.docs.length;k++){
         if(status==true){
           await FirebaseFirestore.instance.collection('Item ShabikaG').doc(itemdata.docs[k].id).update(
-              {"TotalQuvantity": FieldValue.increment(int.parse(deletewuvantity))});
+              {"TotalQuvantity": FieldValue.increment(int.parse(deletewuvantity)),
+                'Imei no': FieldValue.arrayUnion(imeinu),
+                'Serial no': FieldValue.arrayUnion(serialnu),
+                'color': FieldValue.arrayUnion(colornu),
+
+              });
         }
 
         if(status2==true){
           await FirebaseFirestore.instance.collection('Item ShabikaN').doc(itemdata.docs[k].id).update(
-              {"TotalQuvantity": FieldValue.increment(int.parse(deletewuvantity))});
+              {"TotalQuvantity": FieldValue.increment(int.parse(deletewuvantity)),
+                'Imei no': FieldValue.arrayUnion(imeinu),
+                'Serial no': FieldValue.arrayUnion(serialnu),
+                'color': FieldValue.arrayUnion(colornu),});
         }
       }
 
@@ -7117,7 +7443,7 @@ class _Billing_PageState extends State<Billing_Page> {
                       ),
                       Text(
                         "Are You Sure Want to Add Customer..",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
                             color: Colors.white),
@@ -7139,7 +7465,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 6.83,
                                           child: Text(
                                             "Customer Name ",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           )),
                                       SizedBox(
@@ -7177,7 +7503,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 6.83,
                                           child: Text(
                                             "Customer Phone",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           )),
                                       SizedBox(
@@ -7223,7 +7549,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 6.83,
                                           child: Text(
                                             "Customer Home No",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           )),
                                       SizedBox(
@@ -7264,7 +7590,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 6.83,
                                           child: Text(
                                             "Customer Street",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           )),
                                       SizedBox(
@@ -7310,7 +7636,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 6.83,
                                           child: Text(
                                             "Customer Area",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           )),
                                       SizedBox(
@@ -7351,7 +7677,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 6.83,
                                           child: Text(
                                             "City/District",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           )),
                                       SizedBox(
@@ -7461,7 +7787,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 6.83,
                                           child: Text(
                                             "Customer State",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           )),
                                       SizedBox(
@@ -7572,7 +7898,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                           width: width / 6.83,
                                           child: Text(
                                             "Customer PinCode",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           )),
                                       SizedBox(
@@ -7620,7 +7946,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                         children: [
                                           Text(
                                             "Customer GST No",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white),
                                           ),
                                           SizedBox(
@@ -7682,6 +8008,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 customeradd();
                                 Userdata();
                                 Navigator.pop(context);
+
                               }
                             },
                             child: Material(
@@ -7697,7 +8024,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -7724,7 +8051,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -8130,7 +8457,7 @@ class _Billing_PageState extends State<Billing_Page> {
             color: Colors.white,
           ),
           child: TextFormField(
-            style:  GoogleFonts.montserrat(
+            style:  GoogleFonts.openSans(
                 fontWeight:FontWeight.w700
             ),
             decoration: InputDecoration(

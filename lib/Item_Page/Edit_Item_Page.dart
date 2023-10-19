@@ -247,6 +247,45 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
   }
 
   updatedocument(){
+    FirebaseFirestore.instance.collection("Item ShabikaG").doc(widget.docid).update({
+      "Category": Categorycont.text,
+      "Brand": Barndcont.text,
+      "Itemcode": itemcode.text,
+      "HSNCode": HSNcode.text,
+      "Newitemname": Newitemname.text,
+      "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
+      "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
+      "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
+      "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+      "Loworder": Loworder.text,
+      "BoxNo": BoxNo.text,
+      "IMEI NO": isChecked,
+      "Serial NO": isChecked2,
+      "Color": isChecked3,
+      "Image": isChecked4,
+      "timestamp": DateTime.now().microsecondsSinceEpoch,
+      "gst": "18%"
+    });
+
+    FirebaseFirestore.instance.collection("Item ShabikaN").doc(widget.docid).update({
+      "Category": Categorycont.text,
+      "Brand": Barndcont.text,
+      "Itemcode": itemcode.text,
+      "HSNCode": HSNcode.text,
+      "Newitemname": Newitemname.text,
+      "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
+      "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
+      "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
+      "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+      "Loworder": Loworder.text,
+      "BoxNo": BoxNo.text,
+      "IMEI NO": isChecked,
+      "Serial NO": isChecked2,
+      "Color": isChecked3,
+      "Image": isChecked4,
+      "timestamp": DateTime.now().microsecondsSinceEpoch,
+      "gst": "18%"
+    });
     if(widget.type=='Item'){
       FirebaseFirestore.instance.collection("Item").doc(widget.docid).update({
         "Category": Categorycont.text,
@@ -268,48 +307,9 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         "gst": "18%"
       });
     }
-    if(widget.type=='ShabikaG'){
-      FirebaseFirestore.instance.collection("Item ShabikaG").doc(widget.docid).update({
-        "Category": Categorycont.text,
-        "Brand": Barndcont.text,
-        "Itemcode": itemcode.text,
-        "HSNCode": HSNcode.text,
-        "Newitemname": Newitemname.text,
-        "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
-        "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
-        "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
-        "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
-        "Loworder": Loworder.text,
-        "BoxNo": BoxNo.text,
-        "IMEI NO": isChecked,
-        "Serial NO": isChecked2,
-        "Color": isChecked3,
-        "Image": isChecked4,
-        "timestamp": DateTime.now().microsecondsSinceEpoch,
-        "gst": "18%"
-      });
-    }
-    if(widget.type=='ShabikaN'){
-      FirebaseFirestore.instance.collection("Item ShabikaN").doc(widget.docid).update({
-        "Category": Categorycont.text,
-        "Brand": Barndcont.text,
-        "Itemcode": itemcode.text,
-        "HSNCode": HSNcode.text,
-        "Newitemname": Newitemname.text,
-        "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
-        "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
-        "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
-        "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
-        "Loworder": Loworder.text,
-        "BoxNo": BoxNo.text,
-        "IMEI NO": isChecked,
-        "Serial NO": isChecked2,
-        "Color": isChecked3,
-        "Image": isChecked4,
-        "timestamp": DateTime.now().microsecondsSinceEpoch,
-        "gst": "18%"
-      });
-    }
+
+
+
 
   }
 

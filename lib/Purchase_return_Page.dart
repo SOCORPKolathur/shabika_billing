@@ -1565,6 +1565,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                         //itemname
                         Container(
                           width: width/3.7,
+                          height: height/21.9,
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: Colors.black,width: 0.6
@@ -1962,14 +1963,20 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                   return quvanotyblancedunction(int.parse(stocksitem['Qty'].toString()),stocksitem['stocks'])!=0 ?
 
                                   Padding(
-                                    padding:  EdgeInsets.only(bottom:height/164.25),
+                                    padding:  EdgeInsets.only(),
                                     child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
 
                                         //Serial no
-                                        SizedBox(
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                           width: width/45.533,
-                                          height: height/16.425,
+                                         height: height/20.0,
                                            child: Checkbox(
                                               value:Selected[index] ,
                                               onChanged:(_) async {
@@ -1988,91 +1995,119 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                         ),
 
                                         //itemid
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/14.2,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child: Center(child: Text("${stocksitem['itemcode']}"))
                                         ),
 
                                         //itemname
-                                        SizedBox(
-                                            width: width/3.7,
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('${stocksitem['Description']},',textAlign: TextAlign.left,),
-                                                SizedBox(height:height/131.4),
-                                                Row(
-                                                  children: [
-                                                    Text("Balance item : ${stocksitem['stocks'].toString()}",textAlign: TextAlign.left,
-                                                      style: const TextStyle(color: Colors.green,fontWeight: FontWeight.w700),
-                                                    ),
-                                                  ],
-                                                ),
-                                                stocksitem['IMEI NO']==true?
-                                                Text(
-                                                  "IMEI No: ${stocksitem['Imei no']
-                                                      .toString()}",
-                                                  style: GoogleFonts.poppins(
-                                                    color: Colors.green,
-                                                      textStyle: const TextStyle(
-                                                          overflow: TextOverflow
-                                                              .ellipsis)),
-                                                ):
-                                                stocksitem['Serial NO']==true?
-                                                Text(
-                                                  "Serial No: ${stocksitem['Serial no']
-                                                      .toString()}",
-                                                  style: GoogleFonts.poppins(
+                                         Tooltip(
+                                           message: "${stocksitem['Description']}\n${stocksitem['Imei no']
+                                               .toString()}\n${stocksitem['Serial no']
+                                               .toString()}\n${stocksitem['color']
+                                               .toString()}",
+                                           child: Container(
+                                            decoration: BoxDecoration(
+                                              border:Border.all(
+                                                color:Colors.black87
+                                              )
+                                            ),
+                                              width: width/3.7 +width/ 27.32,
+                                               height: height/20.0,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                      width: width/3.7 +width/ 27.32,
+                                                      height: height/35.9,
+                                                      child: Text('${stocksitem['Description']},',textAlign: TextAlign.left,)),
+                                                  stocksitem['IMEI NO']==true?
+                                                  Text(
+                                                    "IMEI No: ${stocksitem['Imei no']
+                                                        .toString()}",
+                                                    style: GoogleFonts.poppins(
                                                       color: Colors.green,
-                                                      textStyle: const TextStyle(
-                                                          overflow: TextOverflow
-                                                              .ellipsis)),
-                                                ):
-                                                stocksitem['Color']==true?
-                                                Text(
-                                                  "Color: ${stocksitem['color']
-                                                      .toString()}",
-                                                  style: GoogleFonts.poppins(
-                                                      color: Colors.green,
-                                                      textStyle: const TextStyle(
-                                                          overflow: TextOverflow
-                                                              .ellipsis)),
-                                                ):const SizedBox()
+                                                        textStyle: const TextStyle(
+                                                            overflow: TextOverflow
+                                                                .ellipsis)),
+                                                  ):
+                                                  stocksitem['Serial NO']==true?
+                                                  Text(
+                                                    "Serial No: ${stocksitem['Serial no']
+                                                        .toString()}",
+                                                    style: GoogleFonts.poppins(
+                                                        color: Colors.green,
+                                                        textStyle: const TextStyle(
+                                                            overflow: TextOverflow
+                                                                .ellipsis)),
+                                                  ):
+                                                  stocksitem['Color']==true?
+                                                  Text(
+                                                    "Color: ${stocksitem['color']
+                                                        .toString()}",
+                                                    style: GoogleFonts.poppins(
+                                                        color: Colors.green,
+                                                        textStyle: const TextStyle(
+                                                            overflow: TextOverflow
+                                                                .ellipsis)),
+                                                  ):const SizedBox()
 
-                                              ],
-                                            )),
+                                                ],
+                                              )),
+                                         ),
 
-                                        SizedBox(width:width/ 27.32,),
+
 
 
                                         //Hsn code
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/11.8,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             Center(child: Text(stocksitem['Hsncode']))
                                         ),
 
 
                                         //tax
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/15.18,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             Center(child: Text(stocksitem['tax']))
                                         ),
 
 
                                         //quvantity
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/15.18,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             TextField(
                                               controller: _Streamcontroller1[index],
+
                                               decoration: InputDecoration(
-                                                contentPadding: EdgeInsets.only(left:width/34.15),
+                                                contentPadding: EdgeInsets.only(left:width/34.15,bottom:10),
 
 
                                                   border: InputBorder.none
@@ -2164,33 +2199,53 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
 
                                         //price
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/15.18,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             Center(child: Text(stocksitem['Purchase price'].toString()))
                                         ),
 
                                         //landing cost
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/15.18,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             Center(child: Text(stocksitem['Landing cost'].toString()))
                                         ),
 
                                         //Sales Price
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/15.18,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             Center(child: Text(stocksitem['Sales price'].toString()))
                                         ),
 
                                         //value
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/15.18,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             Center(child: Text(
                                                 _Streamcontroller1[index].text==""?
@@ -2201,17 +2256,27 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                         ),
 
                                         //A Quvantity
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/18.5,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             const Center(child: Text(""))
                                         ),
 
                                         //remove
-                                        SizedBox(
+                                         Container(
+                                          decoration: BoxDecoration(
+                                            border:Border.all(
+                                              color:Colors.black87
+                                            )
+                                          ),
                                             width: width/15.18,
-                                            height: height/16.425,
+                                            height: height/20.0,
                                             child:
                                             Center(
                                               child: InkWell(

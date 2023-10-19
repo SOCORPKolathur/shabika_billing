@@ -5,6 +5,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:flutter_tagging_plus/flutter_tagging_plus.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
@@ -14,8 +15,26 @@ import 'package:random_string/random_string.dart';
 import 'package:pdf/widgets.dart' as p;
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:shabika_billing/itemapppp.dart';
 import 'package:shabika_billing/stmodel.dart' as StatusModel;
+import 'Item_Page/Item.dart';
 import 'Printing_Page/Print_Page.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_switch/flutter_switch.dart';
+import 'package:flutter_tagging_plus/flutter_tagging_plus.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
+import 'package:textfield_tags/textfield_tags.dart';
+import '../LandingPage/LandingPage.dart';
+import '../const Pages.dart';
 
 
 
@@ -87,6 +106,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   TextEditingController Box_NO = TextEditingController();
   TextEditingController HSN_Code = TextEditingController();
   TextEditingController Sales = TextEditingController();
+  TextEditingController margin = TextEditingController();
+  double marginval = 0;
 
   //purchase number
   TextEditingController purchase_No = TextEditingController();
@@ -182,11 +203,13 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   ///Item name Search TextEditing controller
   TextEditingController layourbuilderclear2 = TextEditingController();
 
+
   ///Item Code Search TextEditing controller
   TextEditingController layourbuilderclear3 = TextEditingController();
 
   ///supplier functuon start
   ///popup updat suppier textcontrollers
+  String toolhint= "";
   TextEditingController Suppliername = TextEditingController();
   TextEditingController Supplieremail = TextEditingController();
   TextEditingController Suppliercode = TextEditingController();
@@ -300,6 +323,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       Qty.text = "1";
     });
     checkbillno();
+    categoryaddfunction();
+    barndaddfunction();
     listoutpaymentfunction();
     clearlistandname();
     suppiernameaddfunction();
@@ -338,6 +363,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   final List<TextEditingController> _Streamcontroller8= List.generate(1000, (index) => TextEditingController());
   final List<TextEditingController> _Streamcontroller9= List.generate(1000, (index) => TextEditingController());
   final List<TextEditingController> _Streamcontroller10= List.generate(1000, (index) => TextEditingController());
+  final List<TextEditingController> _Streamcontroller11= List.generate(1000, (index) => TextEditingController());
 
   String UpdateItemlistid="";
 
@@ -410,7 +436,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                 ),
                 Text(
                   "Shabika G",
-                  style: GoogleFonts.solway(
+                  style: GoogleFonts.openSans(
                       color: Colors.white, fontSize: width / 80.353),
                 ),
                 SizedBox(width: width / 5.0),
@@ -455,7 +481,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                 ),
                 Text(
                   "Shabika N",
-                  style: GoogleFonts.solway(
+                  style: GoogleFonts.openSans(
                       color: Colors.white, fontSize: width / 80.353),
                 ),
               ],
@@ -483,16 +509,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 SizedBox(
                                   width: width / 273.2,
                                 ),
-                                Text(
-                                  "Supplier ID",
-                                  style: GoogleFonts.poppins(
-                                      fontSize: width / 97.57,
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color(0xff000000)),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier ID",
+                                    style: GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+                                  ),
                                 ),
-                                SizedBox(
-                                  width: width / 21.9,
-                                ),
+
                                 Container(
                                   width: width / 3.415,
                                   height: height / 21.9,
@@ -502,16 +529,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   ),
                                   child: TextField(
 
-                                    style: GoogleFonts.montserrat(
-                                        fontWeight: FontWeight.w700),
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,fontSize: width/85,),
                                     controller: suppierid,
                                     focusNode: suppier_id,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           left: width /90.78,
-                                          bottom: height / 83.8
-                                      ),
+                                          top: height / 153.8),
+
                                       border: InputBorder.none,
+                                      suffixIcon:
+                                      Icon(Icons.circle,color:Colors.white),
                                     ),
                                     onSubmitted: (_) {
                                       suppier_id.unfocus();
@@ -555,12 +584,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                 ],
                                               )),
                                         )
-                                      : ClipOval(
-                                          child: Container(
-                                              height: height / 21.9,
-                                              width: width / 45.53,
-                                              color: Colors.white,
-                                              child: const Icon(Icons.add))),
+                                      : GestureDetector(
+                                      onTap: (){
+                                        itemcodegenrate();
+                                        showdialpogbox2();
+                                      },
+                                        child: ClipOval(
+                                            child: Container(
+                                                height: height / 21.9,
+                                                width: width / 45.53,
+                                                color: Colors.white,
+                                                child: const Icon(Icons.add))),
+                                      ),
                                 )
                               ],
                             ),
@@ -576,16 +611,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 SizedBox(
                                   width: width / 273.2,
                                 ),
-                                Text(
-                                  "Supplier Name",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: width / 97.57,
-                                      color: const Color(0xff000000)),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Name",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
                                 ),
-                                SizedBox(
-                                  width: width / 41.5,
-                                ),
+
                                 Container(
                                   width: width / 3.415,
                                   height: height / 21.9,
@@ -607,13 +643,16 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                   yourbuilderclear;
                                             });
                                           },
-                                          style: GoogleFonts.montserrat(
-                                              fontWeight: FontWeight.w700),
+                                          style: GoogleFonts.openSans(
+                                              fontWeight: FontWeight.w700,fontSize: width/85,),
                                           decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              contentPadding: EdgeInsets.only(
-                                                  left: width /90.78,
-                                                  bottom: height / 83.8)),
+                                            contentPadding: EdgeInsets.only(
+                                                left: width /90.78,
+                                                top: height / 153.8),
+
+                                            border: InputBorder.none,
+                                            suffixIcon:
+                                            Icon(Icons.circle,color:Colors.white),),
                                           controller: layourbuilderclear,
                                           focusNode: focusNode,
                                           onFieldSubmitted: (String value) {
@@ -704,6 +743,26 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                     ),
                                   ),
                                 ),
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                GestureDetector(
+                                  onTap: (){
+                                   setState(() {
+                                     suppierid.clear();
+                                     layourbuilderclear.clear();
+                                     suppiler_invoice.clear();
+                                     suppiler_gstno.clear();
+                                   });
+                                  },
+                                  child: ClipOval(
+                                    
+                                      child: Container(
+                                          height: height / 21.9,
+                                          width: width / 45.53,
+                                          color: Colors.white,
+                                          child: IgnorePointer(child: const Icon(Icons.cancel_outlined,size: 20,)))),
+                                ),
                               ],
                             ),
                           ),
@@ -718,17 +777,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 SizedBox(
                                   width: width / 273.2,
                                 ),
-                                Text(
-                                  "Tax Type",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: width / 97.57,
-                                      color: const Color(0xff000000)),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Tax Type",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
                                 ),
 
-                                SizedBox(
-                                  width: width / 18.2,
-                                ),
+
                                 Container(
                                   width: width / 3.415,
                                   height: height / 21.9,
@@ -747,9 +807,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         isExpanded: true,
                                         isDense: true,
                                         alignment: Alignment.topCenter,
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,
-                                            fontSize: width / 105.07),
+                                          fontSize: width/85,),
                                         underline: Container(
                                           color: Colors.deepPurpleAccent,
                                         ),
@@ -791,16 +851,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 SizedBox(
                                   width: width / 273.2,
                                 ),
-                                Text(
-                                  "Supplier Invoice No",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: width / 97.57,
-                                      color: const Color(0xff000000)),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Invoice",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
                                 ),
-                                const SizedBox(
-                                  width: 2,
-                                ),
+
                                 Container(
                                   width: width / 3.415,
                                   height: height / 21.9,
@@ -814,15 +875,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         : null,
                                     controller: suppiler_invoice,
                                     focusNode: suppierincoice_no,
-                                    style: GoogleFonts.montserrat(
-                                      fontWeight: FontWeight.w700,
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,fontSize: width/85,
                                     ),
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           left: width /90.78,
-                                          bottom: height / 83.8
-                                      ),
+                                          top: height / 153.8),
+
                                       border: InputBorder.none,
+                                      suffixIcon:
+                                      Icon(Icons.circle,color:Colors.white),
                                     ),
                                   ),
                                 ),
@@ -840,16 +903,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 SizedBox(
                                   width: width / 273.2,
                                 ),
-                                Text(
-                                  "Supplier Gst No",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: width / 97.57,
-                                      color: const Color(0xff000000)),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Gst No",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
                                 ),
-                                SizedBox(
-                                  width: width / 46.2,
-                                ),
+
                                 Container(
                                   width: width / 3.415,
                                   height: height / 21.9,
@@ -861,15 +925,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                     validator: (value) => value!.isEmpty
                                         ? "Field Can't Empty"
                                         : null,
-                                    style: GoogleFonts.montserrat(
-                                      fontWeight: FontWeight.w700,
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,fontSize: width/85,
                                     ),
                                     controller: suppiler_gstno,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           left: width /90.78,
-                                          bottom: height / 83.8),
+                                          top: height / 153.8),
+
                                       border: InputBorder.none,
+                                      suffixIcon:
+                                      Icon(Icons.circle,color:Colors.white),
                                     ),
 
                                   ),
@@ -898,16 +965,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               SizedBox(
                                 width: width / 273.2,
                               ),
-                              Text(
-                                "Purchase No",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width / 97.57,
-                                    color: const Color(0xff000000)),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase No",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
                               ),
-                              SizedBox(
-                                width: width / 44.0,
-                              ),
+
                               Container(
                                 width: width / 3.415,
                                 height: height / 21.9,
@@ -916,16 +984,20 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   color: Colors.white,
                                 ),
                                 child: TextFormField(
-                                  style: GoogleFonts.montserrat(
-                                    fontWeight: FontWeight.w700,
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
                                   ),
                                   controller: purchase_No,
                                   focusNode: purchase_no,
                                   decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(
                                         left: width /90.78,
-                                        bottom: height / 83.8),
+                                        top: height / 153.8),
+
                                     border: InputBorder.none,
+                                    suffixIcon:
+                                     Icon(Icons.circle,color:Colors.white),
+
                                   ),
 
                                 ),
@@ -944,16 +1016,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               SizedBox(
                                 width: width / 273.2,
                               ),
-                              Text(
-                                "Purchase  Date",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width / 97.57,
-                                    color: const Color(0xff000000)),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase  Date",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
                               ),
-                              SizedBox(
-                                width: width / 98.0,
-                              ),
+
                               Container(
                                 width: width / 3.415,
                                 height: height / 21.9,
@@ -962,15 +1035,16 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   color: Colors.white,
                                 ),
                                 child: TextField(
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w700,
+                                    fontSize: width/85,
                                   ),
                                   controller: purchase_Date,
                                   focusNode: purchase_date,
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           left: width /90.78,
-                                          top: height / 83.8),
+                                          top: height / 153.8),
                                       hintText: "Invoice Date",
                                       border: InputBorder.none,
                                       suffixIcon:
@@ -1016,16 +1090,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               SizedBox(
                                 width: width / 273.2,
                               ),
-                              Text(
-                                "Payment Mode",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width / 97.57,
-                                    color: const Color(0xff000000)),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Payment Mode",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
                               ),
-                              SizedBox(
-                                width: width / 105.08,
-                              ),
+
                               Container(
                                 width: width / 3.415,
                                 height: height / 21.9,
@@ -1039,9 +1114,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   value: Payments,
                                   focusNode: purchase_payment,
                                   isExpanded: true,
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: width / 105.07),
+                                    fontSize: width/85,),
                                   underline: Container(
                                     color: Colors.deepPurpleAccent,
                                   ),
@@ -1077,16 +1152,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               SizedBox(
                                 width: width / 273.2,
                               ),
-                              Text(
-                                "Purchase Notes",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width / 97.57,
-                                    color: const Color(0xff000000)),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase Notes",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
                               ),
-                              SizedBox(
-                                width: width / 147.6,
-                              ),
+
                               Container(
                                 width: width / 3.415,
                                 height: height / 21.9,
@@ -1095,16 +1171,19 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   color: Colors.white,
                                 ),
                                 child: TextFormField(
-                                  style: GoogleFonts.montserrat(
-                                    fontWeight: FontWeight.w700,
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
                                   ),
                                   controller: purchase_notes,
                                   focusNode: purchase_note,
                                   decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(
                                         left: width /90.78,
-                                        bottom: height / 83.8),
+                                        top: height / 153.8),
+
                                     border: InputBorder.none,
+                                    suffixIcon:
+                                    Icon(Icons.circle,color:Colors.white),
                                   ),
 
                                 ),
@@ -1123,16 +1202,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               SizedBox(
                                 width: width / 273.2,
                               ),
-                              Text(
-                                "Credit Days",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width / 97.57,
-                                    color: const Color(0xff000000)),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Credit Days",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
                               ),
-                              SizedBox(
-                                width: width / 36.0,
-                              ),
+
                               Container(
                                 width: width / 3.415,
                                 height: height / 21.9,
@@ -1141,15 +1221,19 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   color: Colors.white,
                                 ),
                                 child: TextFormField(
-                                  style: GoogleFonts.montserrat(
-                                    fontWeight: FontWeight.w700,
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
                                   ),
                                   controller: Creadit_days,
                                   focusNode: Creditnoptes,
                                   decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(
-                                        left: width /90.78,bottom: height / 46.5),
+                                        left: width /90.78,
+                                        top: height / 153.8),
+
                                     border: InputBorder.none,
+                                    suffixIcon:
+                                    Icon(Icons.circle,color:Colors.white),
                                   ),
 
                                 ),
@@ -1187,7 +1271,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Si No",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1198,7 +1282,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Item ID",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1212,7 +1296,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             //   showdialpogboxitem();
                               Text(
                                 "Item Name",
-                                style: GoogleFonts.montserrat(
+                                style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                               ),
                               SizedBox(width:width/170.75),
@@ -1229,63 +1313,75 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                     decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.circular(5)),
                                         child: const Center(child: Text("View",style: TextStyle(color:Colors.white),)),
                                 ),
+                              ),
+                              SizedBox(width:width/170.75),
+                              InkWell(
+                                onTap:(){
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Item("Purchase")));
+                              },
+                                child: Container(
+                                    height:height/21.9,
+                                    width:width/20.76,
+                                    decoration: BoxDecoration(color: Colors.purple,borderRadius: BorderRadius.circular(5)),
+                                        child: const Center(child: Text("Add Item",style: TextStyle(color:Colors.white),)),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: InkWell(
+                                  onTap:(){
+    itemaddfunction();
+    },
+                                    child: Icon(Icons.refresh)),
                               )
-                              
+
                             ],
                           ),
                         ),
 
                         //Box No
                         SizedBox(
-                          width: width / 18.0,
+                          width: width / 23.0,
                           child: Center(
                               child: Text(
                             "Box No",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
 
                         //Hsn Code
                         SizedBox(
-                          width: width / 17.8,
+                          width: width / 12.0,
                           child: Center(
                               child: Text(
                             "HSN Code",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
 
                         //tax
-                        SizedBox(
-                          width: width / 27.18,
-                          child: Center(
-                              child: Text(
-                            "Tax %",
-                            style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w700),
-                          )),
-                        ),
+
 
                         //quvantity
                         SizedBox(
-                          width: width / 21.7,
+                          width: width / 24.7,
                           child: Center(
                               child: Text(
                             "Qnty",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
 
                         //price
                         SizedBox(
-                          width: width / 15.18,
+                          width: width / 15.50,
                           child: Center(
                               child: Text(
                             "Price",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1296,7 +1392,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Landing Cost",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                             textAlign: TextAlign.center,
                           )),
@@ -1308,7 +1404,16 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Sales Price",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w700),
+                          )),
+                        ),
+                        SizedBox(
+                          width: width / 15.18,
+                          child: Center(
+                              child: Text(
+                            "Profit",
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1319,7 +1424,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "MRP Price",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1330,7 +1435,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Value",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700,
                                 color: Colors.redAccent),
                           )),
@@ -1338,32 +1443,32 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
                         //Low order quvantity
                         SizedBox(
-                          width: width / 33.18,
+                          width: width / 35.18,
                           child: Center(
                               child: Text(
                             "A\nQnty",
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
 
                         SizedBox(
-                          width: width / 25.18,
+                          width: width / 30.18,
                           child: Center(
                               child: Text(
                             "Stk",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
                         //Clear controllers
                         SizedBox(
-                          width: width / 16.18,
+                          width: width / 30.18,
                           child: Center(
                               child: Text(
                             "Clear ",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1390,6 +1495,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
+                          textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(
@@ -1411,7 +1517,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             fieldViewBuilder: (context, textEditingController,
                                 focusNode, onFieldSubmitted) {
                               return TextFormField(
-                                style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                                 onChanged: (_) {
                                   setState(() {
                                     layourbuilderclear3 = textEditingController;
@@ -1419,9 +1526,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 },
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    contentPadding: EdgeInsets.only(
-                                        left: width /90.78,
-                                        bottom: height / 83.8)),
+                              /*contentPadding: EdgeInsets.only(
+                              left: width /90.78,
+                              top: height / 150.0),*/),
                                 controller: layourbuilderclear3,
                                 focusNode: focusNode,
                                 onFieldSubmitted: (String value) {
@@ -1453,7 +1560,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                 padding:
                                                     const EdgeInsets.all(16.0),
                                                 child: Text(
-                                                  option,  style: GoogleFonts.montserrat(
+                                                  option,  style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w700),
                                                 ),
                                               ),
@@ -1492,132 +1599,143 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       ),
 
                       //itemname
-                      Container(
-                        width: width / 4.0,
-                        decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Colors.black, width: 0.6)),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: width / 130, right: width / 170),
-                          child:
-                          LayoutBuilder(
-                            builder: (BuildContext , BoxConstraints )=>
-                                Autocomplete<String>(
-                                  fieldViewBuilder: (context, textEditingController, focusNode, onFieldSubmitted) {
-                                    return
-                                      TextFormField(
-                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
-                                      onChanged: (_){
-                                        setState(() {
-                                          layourbuilderclear2=textEditingController;
-                                        });
-                                      },
-                                      decoration: InputDecoration(
-                                          border: InputBorder.none,
-                                          contentPadding: EdgeInsets.only(left:width/273.2,bottom:height/43.8)
-                                      ),
-                                      controller: layourbuilderclear2,
-                                      focusNode: focusNode,
-                                      onFieldSubmitted: (String value) {
-                                        onFieldSubmitted();
-                                      },
-                                    );
-                                  },
-                                  initialValue: TextEditingValue(
-                                    text: itemnames,
-                                  ),
-                                  optionsViewBuilder:(context, onSelected, options) => Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Material(
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.vertical(bottom: Radius.circular(4.0)),
+                      Tooltip(
+    message:toolhint,
+                        child: Container(
+                          width: width / 4.0,
+                          height: height / 21.9,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.black, width: 0.6)),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: width / 130, right: width / 170),
+                            child:
+                            LayoutBuilder(
+                              builder: (BuildContext , BoxConstraints )=>
+                                  Autocomplete<String>(
+                                    fieldViewBuilder: (context, textEditingController, focusNode, onFieldSubmitted) {
+                                      return
+                                        TextFormField(
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
+                                        onChanged: (_){
+                                          setState(() {
+                                            layourbuilderclear2=textEditingController;
+                                          });
+                                        },
+                                        decoration: InputDecoration(
+                                            border: InputBorder.none,
+
+                                       /*   contentPadding: EdgeInsets.only(
+                                              left: width /90.78,
+                                              top: height / 150.0),*/
                                         ),
-                                        child: SizedBox(
-                                          height: 52.0 * options.length,
-                                          width: BoxConstraints.biggest.width,
-                                          child: ListView.builder(
-                                            padding: EdgeInsets.zero,
-                                            itemCount: options.length,
-                                            shrinkWrap: false,
-                                            itemBuilder: (BuildContext , index) {
-                                              final String option = options.elementAt(index);
-                                              return InkWell(
-                                                onTap: () => onSelected(option),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(16.0),
-                                                  child: Text(option, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),),
-                                                ),
-                                              );
-                                            },
+                                        controller: layourbuilderclear2,
+                                        focusNode: focusNode,
+                                        onFieldSubmitted: (String value) {
+                                          onFieldSubmitted();
+                                        },
+                                      );
+                                    },
+                                    initialValue: TextEditingValue(
+                                      text: itemnames,
+                                    ),
+                                    optionsViewBuilder:(context, onSelected, options) => Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Material(
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.vertical(bottom: Radius.circular(4.0)),
                                           ),
-                                        ),
-                                      )
+                                          child: SizedBox(
+                                            height: 52.0 * options.length,
+                                            width: BoxConstraints.biggest.width,
+                                            child: ListView.builder(
+                                              padding: EdgeInsets.zero,
+                                              itemCount: options.length,
+                                              shrinkWrap: false,
+                                              itemBuilder: (BuildContext , index) {
+                                                final String option = options.elementAt(index);
+                                                return InkWell(
+                                                  onTap: () => onSelected(option),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(16.0),
+                                                    child: Text(option, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        )
+                                    ),
+                                    optionsBuilder: (TextEditingValue textEditingValue) {
+
+                                      if (textEditingValue.text == '') {
+                                        return const Iterable<String>.empty();
+
+                                      }
+
+                                      return
+                                        Itemlist.where((String option) {
+                                          return option.toLowerCase().contains(textEditingValue.text.toLowerCase());
+                                        });
+                                    },
+                                    onSelected: (String selection) async {
+                                           if (Formkey.currentState!.validate()) {
+                                             createpurchase2(selection.toString());
+                                             setState(() {
+                                               itemname.text = selection;
+
+                                             });
+                                             if(status==true){
+                                               var documents2 = await FirebaseFirestore.instance.collection("Item ShabikaG").where("Newitemname",isEqualTo:itemname.text).get();
+                                               if(documents2.docs.length>0){
+                                                 setState((){
+                                                   showrelatedoitem=true;
+                                                   showrelatedoitemname=itemname.text;
+                                                 });
+
+                                               }
+                                             }
+                                             if(status2==true){
+                                               var documents2 = await FirebaseFirestore.instance.collection("Item ShabikaN").where("Newitemname",isEqualTo:itemname.text).get();
+                                               if(documents2.docs.length>0){
+                                                 setState((){
+                                                   showrelatedoitem=true;
+                                                   showrelatedoitemname=itemname.text;
+                                                 });
+
+                                               }
+                                             }
+                                             debugPrint('You just selected $selection');
+                                           }
+
+                                    },
+                                    displayStringForOption: (value){
+                                      return value;
+                                    },
                                   ),
-                                  optionsBuilder: (TextEditingValue textEditingValue) {
-
-                                    if (textEditingValue.text == '') {
-                                      return const Iterable<String>.empty();
-
-                                    }
-
-                                    return
-                                      Itemlist.where((String option) {
-                                        return option.toLowerCase().contains(textEditingValue.text.toLowerCase());
-                                      });
-                                  },
-                                  onSelected: (String selection) async {
-                                         if (Formkey.currentState!.validate()) {
-                                           createpurchase2(selection.toString());
-                                           setState(() {
-                                             itemname.text = selection;
-                                           });
-                                           if(status==true){
-                                             var documents2 = await FirebaseFirestore.instance.collection("Item ShabikaG").where("Newitemname",isEqualTo:itemname.text).get();
-                                             if(documents2.docs.length>0){
-                                               setState((){
-                                                 showrelatedoitem=true;
-                                                 showrelatedoitemname=itemname.text;
-                                               });
-
-                                             }
-                                           }
-                                           if(status2==true){
-                                             var documents2 = await FirebaseFirestore.instance.collection("Item ShabikaN").where("Newitemname",isEqualTo:itemname.text).get();
-                                             if(documents2.docs.length>0){
-                                               setState((){
-                                                 showrelatedoitem=true;
-                                                 showrelatedoitemname=itemname.text;
-                                               });
-
-                                             }
-                                           }
-                                           debugPrint('You just selected $selection');
-                                         }
-
-                                  },
-                                  displayStringForOption: (value){
-                                    return value;
-                                  },
-                                ),
+                            ),
                           ),
                         ),
                       ),
 
                       //Box No
                       Container(
-                        width: width / 18.0,
+                        width: width / 23.0,
                         height: height / 21.9,
                         decoration: BoxDecoration(
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                           controller: Box_NO,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                           /* contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
                           ),
                           onSubmitted: (_) {},
                         ),
@@ -1625,55 +1743,44 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
                       //Hsn Code
                       Container(
-                        width: width / 17.8,
+                        width: width / 12.0,
                         height: height / 21.9,
                         decoration: BoxDecoration(
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                           controller: HSN_Code,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                           /* contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
                           ),
                         ),
                       ),
 
                       //tax
-                      Container(
-                        width: width / 27.18,
-                        height: height / 21.9,
-                        decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Colors.black, width: 0.6)),
-                        child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
-                          controller: taxitem,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
-                          ),
-                        ),
-                      ),
+
 
                       //quvantity
                       Container(
-                        width: width / 21.7,
+                        width: width / 24.7,
                         height: height / 21.9,
                         decoration: BoxDecoration(
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                           controller: Qty,
                           focusNode: Quvantitylist,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                          /*  contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
                           ),
                           onSubmitted: (_) {
                             if (suppierid.text.length != 0 &&
@@ -1739,12 +1846,12 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                           controller: Purchase_price,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+
                           ),
                           onSubmitted: (_) {
                             alteritemcode();
@@ -1762,12 +1869,14 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                           controller: Landing_cost,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                          /*  contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
                           ),
                           onSubmitted: (_) {
                             alteritemcode();
@@ -1783,12 +1892,35 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                           controller: Sales,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                         /*   contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
+                          ),
+                          onSubmitted: (_) {
+                            alteritemcode();
+                          },
+                        ),
+                      ),
+                      Container(
+                        width: width / 15.18,
+                        height: height / 21.9,
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(color: Colors.black, width: 0.6)),
+                        child: TextField(
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
+                          controller: margin,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                         /*   contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
                           ),
                           onSubmitted: (_) {
                             alteritemcode();
@@ -1804,12 +1936,14 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                           controller: Mrp_Price,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                          /*  contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
                           ),
                           onSubmitted: (_) {
                             alteritemcode();
@@ -1825,14 +1959,16 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.red),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.red,),
 
                           controller: valueitem,
                           focusNode: items_value,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                                left: width /90.78,
+                                top: height / 150.0),
                           ),
                           onSubmitted: (_) {
                             if (suppierid.text.length != 0 &&
@@ -1866,43 +2002,47 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
                       //Low order quvantity
                       Container(
-                        width: width / 33.18,
+                        width: width / 35.18,
                         height: height / 21.9,
                         decoration: BoxDecoration(
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                           controller: Loworder,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                           /* contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
                           ),
                         ),
                       ),
 
                       //Stock
                       Container(
-                        width: width / 25.18,
+                        width: width / 30.18,
                         height: height / 21.9,
                         decoration: BoxDecoration(
                             border:
                                 Border.all(color: Colors.black, width: 0.6)),
                         child: TextField(
-                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                           controller: Stocks,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7),
+                            /*contentPadding: EdgeInsets.only(
+                                left: width /90.78,
+                                top: height / 150.0),*/
                           ),
                         ),
                       ),
 
                       //Clear controllers
                       Container(
-                          width: width / 16.18,
+                          width: width / 30.18,
                           height: height / 21.9,
                           decoration: BoxDecoration(
                               border:
@@ -1958,19 +2098,24 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           itemBuilder: (context, index) {
                             var billing = snapshot.data!.docs[index];
                             return Padding(
-                              padding: EdgeInsets.only(bottom: height / 164.25),
+                              padding: EdgeInsets.only(bottom: 0),
                               child:
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   //Serial no
-                                  SizedBox(
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      border:Border.all(color:Colors.black54)
+                                    ),
                                       width: width / 45.533,
-                                      height: height / 16.425,
+                                      height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: " ${index + 1}",
@@ -1982,14 +2127,20 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   ),
 
                                   //itemid
-                                  SizedBox(
-                                      width: width / 14.2,
-                                      height: height / 16.425,
+                                  Container(
+
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
+                                      width: width / 14.8,
+                                      height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
                                           controller: _Streamcontroller1[index],
+                                          textAlign: TextAlign.center,
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "${billing['itemcode']}",
@@ -2007,45 +2158,62 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                    ),
 
                                   //itemname
-                                  SizedBox(
-                                      width: width / 4.0,
-                                      child:
-                                      Padding(
-                                        padding:  EdgeInsets.only(left:width/136.6),
-                                        child: TextField(
-                                          controller: _Streamcontroller2[index],
-                                          maxLines: 5,
-                                          decoration: InputDecoration(
-
-                                              border: InputBorder.none,
-                                              hintText: '${billing['Description']},',
-
-                                              hintStyle: const TextStyle(color: Colors.black,)
-                                          ),
-                                          onSubmitted: (_){
-                                            FirebaseFirestore.instance.collection("Purchase entry").doc(random)
-                                                .collection(random).doc(billing.id).update({
-                                              "Description":_Streamcontroller2[index].text
-                                            });
-
-                                          },
+                                   Tooltip(
+                                     message: '${billing['Description']}',
+                                     child: Container(
+                                        decoration: BoxDecoration(
+                                            border:Border.all(color:Colors.black54)
                                         ),
-                                      )
+                                        width: width / 4.0,
+                                         height: height / 21.9,
+                                        child:
+                                        Padding(
+                                          padding:  EdgeInsets.only(left:width/136.6),
+                                          child: TextField(
+                                            textAlign: TextAlign.center,
+                                            controller: _Streamcontroller2[index],
+
+                                            decoration: InputDecoration(
+
+                                                border: InputBorder.none,
+                                                hintText: '${billing['Description']},',
+
+                                                hintStyle: const TextStyle(color: Colors.black,)
+                                            ),
+                                            onSubmitted: (_){
+                                              FirebaseFirestore.instance.collection("Purchase entry").doc(random)
+                                                  .collection(random).doc(billing.id).update({
+                                                "Description":_Streamcontroller2[index].text
+                                              });
+
+                                            },
+                                          ),
+                                        )
                                   ),
+                                   ),
 
 
-                                  SizedBox(
-                                    width: width / 18.0,
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
+                                     width: width / 23.0,
+                                     height: height / 21.9,
                                   ),
 
                                   //Hsn code
-                                  SizedBox(
-                                      width: width / 17.8,
-                                      height: height / 16.425,
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
+                                      width: width / 12.0,
+                                       height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           controller: _Streamcontroller3[index],
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
@@ -2064,38 +2232,21 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       ),
 
                                   //tax
-                                  SizedBox(
-                                      width: width / 27.18,
-                                      height: height / 16.425,
-                                      child:
-                                      Padding(
-                                        padding:  EdgeInsets.only(left:width/136.6),
-                                        child: TextField(
-                                          controller: _Streamcontroller4[index],
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: billing['tax'],
-                                              hintStyle: const TextStyle(color: Colors.black)
-                                          ),
-                                          onSubmitted: (_){
-                                            FirebaseFirestore.instance.collection("Purchase entry").doc(random)
-                                                .collection(random).doc(billing.id).update({
-                                              "tax":_Streamcontroller4[index].text
-                                            });
 
-                                          },
-                                        ),
-                                      )
-                                        ),
 
                                   //quvantity
-                                  SizedBox(
-                                      width: width / 21.7,
-                                      height: height / 16.425,
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
+                                      width: width / 24.7,
+                                       height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           controller: _Streamcontroller5[index],
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
@@ -2203,14 +2354,19 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                     ),
 
                                   //price
-                                  SizedBox(
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
 
                                       width: width / 15.18,
-                                      height: height / 16.425,
+                                       height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           controller: _Streamcontroller6[index],
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
@@ -2252,13 +2408,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       ),
 
                                   //landing cost
-                                  SizedBox(
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
                                       width: width / 15.18,
-                                      height: height / 16.425,
+                                       height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           controller: _Streamcontroller7[index],
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
@@ -2277,13 +2438,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       ),
 
                                   //Sales Price
-                                  SizedBox(
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
                                       width: width / 15.18,
-                                      height: height / 16.425,
+                                       height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           controller: _Streamcontroller8[index],
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
@@ -2300,16 +2466,46 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         ),
                                       )
                                       ),
-
-                                  //MRP Price
-                                  SizedBox(
-
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
                                       width: width / 15.18,
-                                      height: height / 16.425,
+                                       height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
+                                          controller: _Streamcontroller11[index],
+                                          decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              hintText: billing['margin'],
+                                              hintStyle: const TextStyle(color: Colors.black)
+                                          ),
+                                          onSubmitted: (_){
+
+
+                                          },
+                                        ),
+                                      )
+                                      ),
+
+                                  //MRP Price
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
+
+                                      width: width / 15.18,
+                                       height: height / 21.9,
+                                      child:
+                                      Padding(
+                                        padding:  EdgeInsets.only(left:width/136.6),
+                                        child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           controller: _Streamcontroller9[index],
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
@@ -2328,13 +2524,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       ),
 
                                   //value
-                                  SizedBox(
+                                   Container(
+                                      decoration: BoxDecoration(
+                                          border:Border.all(color:Colors.black54)
+                                      ),
                                       width: width / 15.18,
-                                      height: height / 16.425,
+                                       height: height / 21.9,
                                       child:
                                       Padding(
                                         padding:  EdgeInsets.only(left:width/136.6),
                                         child: TextField(
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
                                           controller: _Streamcontroller10[index],
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
@@ -2353,15 +2554,21 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       ),
 
                                   //A Quvantity
-                                  SizedBox(
-                                      width: width / 18.5,
-                                      height: height / 16.425,
+                                   Container(
+                                    decoration: BoxDecoration(
+                                        border:Border.all(color:Colors.black54)
+                                    ),
+                                      width: width / 35.18 + width / 30.18,
+                                       height: height / 21.9,
                                       child: const Center(child: Text(""))),
 
                                   //remove
-                                  SizedBox(
-                                      width: width / 15.18,
-                                      height: height / 16.425,
+                                   Container(
+                                    decoration: BoxDecoration(
+                                        border:Border.all(color:Colors.black54)
+                                    ),
+                                      width: width / 30.18,
+                                       height: height / 21.9,
                                       child: Center(
                                         child: InkWell(
                                           onTap: () {
@@ -2448,7 +2655,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                     child: Text(
                                   "Save Invoice",
                                   style:
-                                      GoogleFonts.poppins(color: Colors.white),
+                                      GoogleFonts.openSans(color: Colors.white),
                                 )),
                               ),
                             ),
@@ -2475,7 +2682,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                     child: Text(
                                   "Save And Print Invoice",
                                   style:
-                                      GoogleFonts.poppins(color: Colors.white),
+                                      GoogleFonts.openSans(color: Colors.white),
                                 )),
                               ),
                             ),
@@ -2531,7 +2738,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                   width: width / 14.0,
                                                   child: Text(
                                                     "IGST(18%):",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         fontWeight:
                                                         FontWeight.w600,
                                                         color: Colors.white,
@@ -2543,7 +2750,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                   height: height / 21.9,
                                                   child: Text(
                                                     "C GST(9%):",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         fontWeight:
                                                         FontWeight.w600,
                                                         color: Colors.white,
@@ -2561,7 +2768,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                   child: Center(
                                                     child: Text(
                                                       IStfuntion(),
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight:
                                                           FontWeight.w600,
                                                           color: Colors.black,
@@ -2579,7 +2786,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                   child: Center(
                                                     child: Text(
                                                       Cgst.toStringAsFixed(2),
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight:
                                                           FontWeight.w600,
                                                           color: Colors.black,
@@ -2620,7 +2827,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                   height: height / 21.9,
                                                   child: Text(
                                                     "S GST(9%):",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         fontWeight:
                                                         FontWeight.w600,
                                                         color: Colors.white,
@@ -2639,7 +2846,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                   child: Center(
                                                     child: Text(
                                                       sgst.toStringAsFixed(2),
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight:
                                                           FontWeight.w600,
                                                           color: Colors.black,
@@ -2677,7 +2884,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                 height: height / 19.42,
                                                 child: Text(
                                                   "Round Value",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600,
                                                       color: Colors.white,
                                                       fontSize: width / 85.375),
@@ -2696,7 +2903,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                 controller: rounof,
                                                 keyboardType:
                                                 TextInputType.multiline,
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: width / 91.06),
@@ -2743,7 +2950,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                             width: width / 17.075,
                                             child: Text(
                                               "Sub Total",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.white,
                                                   fontSize: width / 85.375),
@@ -2757,7 +2964,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                             ": ${totalamount.toStringAsFixed(2)}":
                                             ": ${(totalamount-sgst-Cgst).toStringAsFixed(2)}"
                                             ,
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white,
                                                 fontSize: width / 85.375),
@@ -2785,7 +2992,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                             child: Center(
                                               child: Text(
                                                 "Total :",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     color:  Colors.white,
                                                     fontSize: width / 55.88),
@@ -2802,7 +3009,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                             children: [
                                               Text(
                                                 TotalAmount2.toStringAsFixed(2),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     textStyle: const TextStyle(
                                                         overflow:
@@ -2840,7 +3047,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       width: width / 6.106,
                     ),
                     Text("Please Wait",
-                        style: GoogleFonts.montserrat(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600, color: Colors.black))
                   ],
                 ),
@@ -2873,7 +3080,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           SizedBox(width: width / 2.276),
                           Text(
                             "Multiple Item Lists...",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w700),
                           ),
@@ -3274,7 +3481,6 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       });
       var Document = await FirebaseFirestore.instance
           .collection('Item ShabikaG')
-          .orderBy("Newitemname", descending: false)
           .get();
       for (int i = 0; i < Document.docs.length; i++) {
         setState(() {
@@ -3288,7 +3494,6 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       });
       var Document = await FirebaseFirestore.instance
           .collection('Item ShabikaN')
-          .orderBy("Newitemname", descending: false)
           .get();
       for (int i = 0; i < Document.docs.length; i++) {
         setState(() {
@@ -3338,6 +3543,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       if (name == details.docs[i]['Suppliername']) {
         setState(() {
           customervalid = false;
+          layourbuilderclear.text = name;
           suppiler_name.text = details.docs[i]['Suppliername'];
           suppiler_gstno.text = details.docs[i]['Panno'];
           customerdocid = details.docs[i].id;
@@ -3403,7 +3609,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             SizedBox(width: width / 2.276),
                             Text(
                               "Purchase Histroy",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w700),
                             ),
@@ -3724,9 +3930,591 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       },
     );
   }
+ additemdialogbox() {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return showDialog(
+      barrierDismissible: true,
+      barrierColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        bool isChecked = false; //imei
+        bool isChecked2 = false; //serial
+        bool isChecked3 = false; //color
+        bool isChecked4 = false;
+        String itemcodeid = "";
+        return SlideInLeft(
+            animate: true,
+            duration: const Duration(milliseconds: 800),
+            manualTrigger: false,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: height / 1.990,
+                  bottom: height / 6.57,
+                  left: width / 45.53,
+                  right: width / 45.53),
+              child: StatefulBuilder(
+                builder: (context,sets) {
+
+                  return Scaffold(
+                    backgroundColor: Colors.transparent,
+                    body: Container(
+                      height: height / 2.8,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: Colors.white,
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: height / 65.7,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(width: width / 2.276),
+                                Text(
+                                  "Add New Item",
+                                  style: GoogleFonts.openSans(
+                                      decoration: TextDecoration.underline,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                                SizedBox(width: width / 2.577),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: ClipOval(
+                                    child: Container(
+                                      height: height / 26.28,
+                                      width: width / 54.64,
+                                      color: Colors.red,
+                                      child: const Center(
+                                          child: Icon(
+                                        Icons.close,
+                                        color: Colors.white,
+                                      )),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: height / 65.0,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 0),
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+
+                                            checkColor: Colors.white,
+                                            fillColor:
+                                            MaterialStateProperty.resolveWith(getColor),
+                                            value: isChecked,
+                                            onChanged: (bool? value) {
+                                              sets(() {
+                                                isChecked = value!;
+                                              });
+                                            },
+                                          ),
+                                          SizedBox(
+                                            width: width / 136.6,
+                                          ),
+                                          Text(
+                                            "IMEI Number",
+                                            style: GoogleFonts.openSans(
+                                                fontSize: width / 97.571,
+                                                color: const Color(0xff000000)),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 0),
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                            checkColor: Colors.white,
+                                            fillColor:
+                                            MaterialStateProperty.resolveWith(getColor),
+                                            value: isChecked2,
+                                            onChanged: (bool? value) {
+                                              sets(() {
+                                                isChecked2 = value!;
+                                              });
+                                            },
+                                          ),
+                                          SizedBox(
+                                            width: width / 136.6,
+                                          ),
+                                          Text(
+                                            "Serial Number",
+                                            style: GoogleFonts.openSans(
+                                                fontSize: width / 97.571,
+                                                color: const Color(0xff000000)),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                    //color checkbox
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 0),
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                            checkColor: Colors.white,
+                                            fillColor:
+                                            MaterialStateProperty.resolveWith(getColor),
+                                            value: isChecked3,
+                                            onChanged: (bool? value) {
+                                              sets(() {
+                                                isChecked3 = value!;
+                                              });
+                                            },
+                                          ),
+                                          SizedBox(
+                                            width: width / 136.6,
+                                          ),
+                                          Text(
+                                            "Color",
+                                            style: GoogleFonts.openSans(
+                                                fontSize: width / 97.571,
+                                                color: const Color(0xff000000)),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                    //image checkbox
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 0),
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                            checkColor: Colors.white,
+                                            fillColor:
+                                            MaterialStateProperty.resolveWith(getColor),
+                                            value: isChecked4,
+                                            onChanged: (bool? value) {
+                                              sets(() {
+                                                isChecked4 = value!;
+                                              });
+                                            },
+                                          ),
+                                          SizedBox(
+                                            width: width / 136.6,
+                                          ),
+                                          Text(
+                                            "Image",
+                                            style: GoogleFonts.openSans(
+                                                fontSize: width / 97.571,
+                                                color: const Color(0xff000000)),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                                Padding(
+                                  padding:  EdgeInsets.only(left:width / 25.773),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          left: 0,
+                                        ),
+                                        child: Text(
+                                          "Select Category Name *",
+                                          style: GoogleFonts.openSans(
+                                              fontSize: width / 97.571, color: const Color(0xff000000)),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 0,
+                                            top: height / 65.7,
+                                            right: width / 68.3),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              width: width / 5.8,
+                                              height: height / 16.42,
 
 
-///Add New Supplier Popup its click the new supplier its show the popup
+                                              decoration: BoxDecoration(
+                                                  color: Colors.grey.shade300,
+                                                  borderRadius: BorderRadius.circular(4)),
+                                              child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: width / 130.33, right: width / 455.33),
+                                                  child:
+
+                                                  LayoutBuilder(
+                                                    builder: (BuildContext, BoxConstraints) =>
+                                                        Autocomplete<String>(
+                                                          fieldViewBuilder: (context, textEditingController,
+                                                              focusNode, onFieldSubmitted) {
+                                                            return TextFormField(
+                                                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                                              decoration: InputDecoration(
+                                                                  border: InputBorder.none,
+                                                                  contentPadding:
+                                                                  EdgeInsets.only( bottom: height / 43.8,
+                                                                      top: height / 43.8,
+                                                                      left: width/136.6)),
+                                                              controller: textEditingController,
+                                                              focusNode: focusNode,
+                                                              onFieldSubmitted: (String value) {
+                                                                onFieldSubmitted;
+                                                              },
+                                                            );
+                                                          },
+                                                          initialValue: const TextEditingValue(
+                                                            selection: TextSelection(
+                                                              isDirectional: true,
+                                                              baseOffset: 10,
+                                                              extentOffset: 1,
+                                                            ),
+
+                                                          ),
+                                                          optionsViewBuilder:
+                                                              (context, onSelected, options) => Align(
+                                                              alignment: Alignment.topLeft,
+                                                              child: Material(
+                                                                shape: const RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.vertical(
+                                                                      bottom:
+                                                                      Radius.circular(4.0)),
+                                                                ),
+                                                                child: SizedBox(
+                                                                  height: 52.0 * options.length,
+                                                                  width:
+                                                                  BoxConstraints.biggest.width,
+                                                                  child: ListView.builder(
+                                                                    padding: EdgeInsets.zero,
+                                                                    itemCount: options.length,
+                                                                    shrinkWrap: false,
+                                                                    itemBuilder: (BuildContext, index) {
+                                                                      final String option = options.elementAt(index);
+                                                                      return InkWell(
+                                                                        onTap: () =>
+                                                                            onSelected(option),
+                                                                        child: Padding(padding: const EdgeInsets.all(16.0),
+                                                                          child: Text(option),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              )),
+                                                          optionsBuilder:
+                                                              (TextEditingValue textEditingValue) {
+                                                            if (textEditingValue.text == '') {
+                                                              return const Iterable<String>.empty();
+                                                            }
+
+                                                            if (textEditingValue.text != "") {
+                                                              categoryitemcode(textEditingValue.text);
+
+                                                            }
+
+                                                            return categorylist.where((String option) {
+                                                              return option.toLowerCase().contains(
+                                                                  textEditingValue.text.toLowerCase());
+                                                            });
+                                                          },
+                                                          onSelected: (String selection) {
+                                                            categoryitemcode(selection);
+                                                            setState(() {
+                                                              _typeAheadControllergender.text=selection;
+                                                            });
+                                                            debugPrint('You just selected $selection');
+                                                          },
+                                                          displayStringForOption: (Value) {
+                                                            return Value;
+                                                          },
+                                                        ),
+                                                  )
+
+                                              ),
+                                            ),
+                                            SizedBox(width: width/273.2),
+
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                //brand stream dropdown
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 0, top: height / 82.125),
+                                      child: Text(
+                                        "Brand Name",
+                                        style: GoogleFonts.openSans(
+                                            fontSize: width / 97.571, color: const Color(0xff000000)),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          top: height / 65.7, right: width / 68.3),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: width / 5.8,
+                                            height: height / 16.42,
+                                            //color: Color(0xffDDDEEE),
+                                            decoration: BoxDecoration(
+                                               color: Colors.grey.shade300,
+                                                borderRadius: BorderRadius.circular(4)),
+                                            child:
+
+
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: width / 130.33, right: width / 455.33),
+                                              child:
+                                              LayoutBuilder(
+                                                builder: (BuildContext, BoxConstraints) =>
+                                                    Autocomplete<String>(
+                                                      fieldViewBuilder: (context, textEditingController,
+                                                          focusNode, onFieldSubmitted) {
+                                                        return TextFormField(
+                                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                                          decoration: InputDecoration(
+                                                              border: InputBorder.none,
+                                                              contentPadding:
+                                                              EdgeInsets.only( bottom: height / 43.8,
+                                                                  top: height / 43.8,
+                                                                  left: width/136.6)),
+                                                          controller: textEditingController,
+                                                          focusNode: focusNode,
+                                                          onFieldSubmitted: (String value) {
+                                                            onFieldSubmitted;
+                                                          },
+                                                        );
+                                                      },
+                                                      initialValue: const TextEditingValue(
+                                                          selection: TextSelection(
+                                                            isDirectional: true,
+                                                            baseOffset: 5,
+                                                            extentOffset: 1,
+                                                          )),
+                                                      optionsViewBuilder:
+                                                          (context, onSelected, options) => Align(
+                                                          alignment: Alignment.topLeft,
+                                                          child: Material(
+                                                            shape: const RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius.vertical(
+                                                                  bottom: Radius.circular(4.0)),
+                                                            ),
+                                                            child: SizedBox(
+                                                              height: 52.0 * options.length,
+                                                              width: BoxConstraints.biggest.width,
+                                                              child: ListView.builder(
+                                                                padding: EdgeInsets.zero,
+                                                                itemCount: options.length,
+                                                                shrinkWrap: false,
+                                                                itemBuilder:
+                                                                    (BuildContext, index) {
+                                                                  final String option =
+                                                                  options.elementAt(index);
+                                                                  return InkWell(
+                                                                    onTap: () =>
+                                                                        onSelected(option),
+                                                                    child: Padding(
+                                                                      padding:
+                                                                      const EdgeInsets.all(16.0),
+                                                                      child: Text(option),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ),
+                                                          )),
+                                                      optionsBuilder:
+                                                          (TextEditingValue textEditingValue) {
+                                                        if (textEditingValue.text == '') {
+                                                          return const Iterable<String>.empty();
+                                                        }
+                                                        if (textEditingValue.text != '') {
+                                                          Branditemcode(textEditingValue.text);
+                                                        }
+
+                                                        return Barndlist.where((String option) {
+                                                          return option.toLowerCase().contains(
+                                                              textEditingValue.text.toLowerCase());
+                                                        });
+                                                      },
+                                                      onSelected: (String selection) {
+                                                        Branditemcode(selection);
+                                                        setState(() {
+                                                          _typeAheadControllergender2.text=selection;
+                                                        });
+                                                        debugPrint('You just selected $selection');
+                                                      },
+                                                      displayStringForOption: (Value) {
+                                                        return Value;
+                                                      },
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(width:width/ 273.2),
+
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                InkWell(
+                                  onTap:() async {
+                                    var document = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
+                                    sets(() {
+                                      itemcodeid = "${"SBI"}${F.format(document.docs.length + 1)}";
+                                    });
+                                    FirebaseFirestore.instance.collection("Item ShabikaG").doc().set({
+                                      "Category":  _typeAheadControllergender.text,
+                                      "Brand": _typeAheadControllergender2.text,
+                                      "Itemcode": itemcodeid,
+                                      "HSNCode": HSN_Code.text,
+                                      "Newitemname": layourbuilderclear2.text,
+                                      "Purchaseprice": double.parse(Purchase_price.text).toStringAsFixed(2),
+                                      "Landingcost": double.parse(Landing_cost.text).toStringAsFixed(2),
+                                      "Saleprice": double.parse(Sales.text).toStringAsFixed(2),
+                                      "MRPPrice": double.parse(Mrp_Price.text).toStringAsFixed(2),
+                                      "Loworder": Loworder.text,
+                                      "TotalQuvantity": Qty.text==""?0:int.parse(Qty.text),
+                                      "BoxNo": Box_NO.text,
+                                      "IMEI NO": isChecked,
+                                      "Serial NO": isChecked2,
+                                      "Color": isChecked3,
+                                      "Image": isChecked4,
+                                      "timestamp": DateTime.now().microsecondsSinceEpoch,
+                                      "gst": "18%",
+                                      "purchaseinvoiceid":[random],
+                                    });
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Text("Item Added Sucessfully"))
+                                    );
+                                    Navigator.of(context).pop();
+                                    itemaddfunction();
+                                  },
+                                  child: Container(
+                                    height:height/21.9,
+                                    width:width/20.76,
+                                    decoration: BoxDecoration(color: Color(0xff00A99D),borderRadius: BorderRadius.circular(5)),
+                                    child: const Center(child: Text("Save",style: TextStyle(color:Colors.white),)),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              ),
+            ));
+      },
+    );
+  }
+  categoryaddfunction() async {
+    setState((){
+      categorylist.clear();
+    });
+    var Document = await FirebaseFirestore.instance.collection('category').orderBy("categoryname", descending: false).get();
+    for (int i = 0; i < Document.docs.length; i++) {
+      categorylist.add(Document.docs[i]['categoryname']);
+    }
+  }
+
+  barndaddfunction() async {
+    setState((){
+      categorylist.clear();
+    });
+    var Document = await FirebaseFirestore.instance
+        .collection('Brand')
+        .orderBy("Brandname", descending: false)
+        .get();
+    for (int i = 0; i < Document.docs.length; i++) {
+      Barndlist.add(Document.docs[i]['Brandname']);
+    }
+  }
+  Color getColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.blue;
+    }
+    return Colors.red;
+  }
+//image
+  List<String> categorylist = <String>[];
+  List<String> Barndlist = <String>[];
+  List<String> Hsnlist = <String>[];
+
+  String catitemcode = '';
+  String branditemcode = '';
+
+  final TextEditingController _typeAheadControllergender = TextEditingController();
+  SuggestionsBoxController suggestionBoxController = SuggestionsBoxController();
+
+  List<String> getSuggestionsgender(String query) {
+    List<String> matches = <String>[];
+    matches.addAll(categorylist);
+
+    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    return matches;
+  }
+
+  final TextEditingController _typeAheadControllergender2 = TextEditingController();
+  final TextEditingController _typeAheadControllergender3 = TextEditingController();
+  categoryitemcode(itemcode) async {
+    var document =
+    await FirebaseFirestore.instance.collection("category").get();
+    for (int i = 0; i < document.docs.length; i++) {
+      if (document.docs[i]["categoryname"] == itemcode) {
+        setState(() {
+          catitemcode = document.docs[i].id;
+        });
+      }
+    }
+  }
+
+  Branditemcode(itemcode) async {
+    var document = await FirebaseFirestore.instance.collection("Brand").get();
+    for (int i = 0; i < document.docs.length; i++) {
+      if (document.docs[i]["Brandname"] == itemcode) {
+        setState(() {
+          branditemcode = document.docs[i].id;
+        });
+      }
+    }
+  }
+
+  ///Add New Supplier Popup its click the new supplier its show the popup
   showdialpogbox2() {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -3755,7 +4543,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               bottom: height / 65.7),
                           child: Text(
                             "Add New Supplier",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.bold,
                                 fontSize: width / 59.39,
                                 color: const Color(0xffFFFFFF)),
@@ -3773,7 +4561,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 21.015, top: height / 82.125),
                           child: Text(
                             "Supplier Name *",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -3781,7 +4569,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           padding: EdgeInsets.only(
                               left: width / 9.486, top: height / 82.125),
                           child: Text("Supplier Code*",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize: width / 97.57,
                                   color: Colors.white)),
                         ),
@@ -3790,7 +4578,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 9.757, top: height / 82.125),
                           child: Text(
                             "Supplier Address *",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -3816,7 +4604,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.poppins(fontSize: width / 91.06),
+                                  GoogleFonts.openSans(fontSize: width / 91.06),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: 8),
@@ -3841,7 +4629,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.poppins(fontSize: width / 136.6),
+                                  GoogleFonts.openSans(fontSize: width / 136.6),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: width / 82.125),
@@ -3865,7 +4653,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.poppins(fontSize: width / 91.06),
+                                  GoogleFonts.openSans(fontSize: width / 91.06),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: 8),
@@ -3885,7 +4673,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 23.55, top: height / 32.85),
                           child: Text(
                             "State",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -3894,7 +4682,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 6.266, top: height / 32.85),
                           child: Text(
                             "City",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -3903,7 +4691,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 5.991, top: height / 32.85),
                           child: Text(
                             "Pincode",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -3912,7 +4700,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 8.130, top: height / 32.85),
                           child: Text(
                             "Mobile Number",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -3921,7 +4709,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 12.418, top: height / 32.85),
                           child: Text(
                             "Mobile Number-2",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -4121,7 +4909,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.poppins(fontSize: width / 91.06),
+                                  GoogleFonts.openSans(fontSize: width / 91.06),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: 8),
@@ -4146,7 +4934,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.poppins(fontSize: width / 91.06),
+                                  GoogleFonts.openSans(fontSize: width / 91.06),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: 8),
@@ -4172,7 +4960,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.poppins(fontSize: width / 91.06),
+                                  GoogleFonts.openSans(fontSize: width / 91.06),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: 8),
@@ -4192,7 +4980,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 24.39, top: height / 32.85),
                           child: Text(
                             "EMail Id",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -4201,7 +4989,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               left: width / 6.898, top: height / 32.85),
                           child: Text(
                             "GST Number",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.57, color: Colors.white),
                           ),
                         ),
@@ -4227,7 +5015,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.poppins(fontSize: width / 91.06),
+                                  GoogleFonts.openSans(fontSize: width / 91.06),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: 8),
@@ -4254,7 +5042,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.poppins(fontSize: width / 91.06),
+                                  GoogleFonts.openSans(fontSize: width / 91.06),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: 8),
@@ -4272,7 +5060,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           top: height / 32.85, right: width / 1.258),
                       child: Text(
                         "Remarks",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.57, color: Colors.white),
                       ),
                     ),
@@ -4291,10 +5079,10 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           controller: Remarks,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
-                          style: GoogleFonts.poppins(fontSize: width / 91.06),
+                          style: GoogleFonts.openSans(fontSize: width / 91.06),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: width / 68.3),
-                            hintStyle: GoogleFonts.poppins(color: Colors.black),
+                            hintStyle: GoogleFonts.openSans(color: Colors.black),
                             border: InputBorder.none,
                           ),
                         ),
@@ -4321,7 +5109,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               child: Center(
                                   child: Text(
                                 "Save Supplier",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     color: Colors.white,
                                     fontSize: width / 91.06),
                               )),
@@ -4346,7 +5134,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               child: Center(
                                   child: Text(
                                 "Reset",
-                                style: GoogleFonts.poppins(color: Colors.white),
+                                style: GoogleFonts.openSans(color: Colors.white),
                               )),
                             ),
                           ),
@@ -4385,7 +5173,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       ),
                       Text(
                         "Add a Supplier Item Successfully",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
                             color: Colors.white),
@@ -4408,6 +5196,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             onTap: () {
                               Supplierfunction();
                               suppiernameaddfunction();
+                              check(Suppliername.text);
                               clearallcontrollers();
                               Navigator.pop(context);
                               Navigator.pop(context);
@@ -4425,7 +5214,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -4452,7 +5241,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -4543,6 +5332,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     taxitem.clear();
     valueitem.clear();
     Sales.clear();
+    margin.clear();
     Mrp_Price.clear();
     Box_NO.clear();
     HSN_Code.clear();
@@ -4605,6 +5395,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     taxitem.clear();
     valueitem.clear();
     Sales.clear();
+    margin.clear();
     Mrp_Price.clear();
     Box_NO.clear();
     HSN_Code.clear();
@@ -4643,6 +5434,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   checkgst(purchase, qty) {
     setState(() {
       valueitem.text = (((double.parse(purchase.toString())) * double.parse(qty)).toString());
+      margin.text = ((marginval * double.parse(qty)).toStringAsFixed(2));
     });
 
   }
@@ -4662,7 +5454,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   }
 
 
-///sgst function
+  ///sgst function
   SGSTfunction() {
     setState(() {
       sgst = 0;
@@ -4790,24 +5582,105 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     print("Document id");
     print(random);
 
+    FirebaseFirestore.instance.collection("Purchase entry").doc(random).set({
+      "Total": "",
+      "Payment mode": Payments,
+      "Payment mode 2": "",
+      "suppilerid": suppierid.text,
+      "suppilername": suppiler_name.text,
+      "suppilergst": suppiler_gstno.text,
+      "purchaseno": purchase_No.text,
+      "purchasedate": purchase_Date.text,
+      "purchasenote": purchase_notes.text,
+      "suppilierinvoiceno": suppiler_invoice.text,
+      "credit days": Creadit_days.text,
+      "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
+      "balance amount":0,
+      "purchaseinvoiceid":[],
+      "Reason":"",
+      "save": false,
+      "return": false,
+      "type":"",
+      "time": DateFormat.jm().format(DateTime.now()),
+      "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+      "timestamp": DateTime.now().microsecondsSinceEpoch
+    });
+
+
+    if (status == true) {
+
+      FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(random).set({
+        "Total": "",
+        "Payment mode": Payments,
+        "Payment mode 2": "",
+        "suppilerid": suppierid.text,
+        "suppilername": suppiler_name.text,
+        "suppilergst": suppiler_gstno.text,
+        "purchaseno": purchase_No.text,
+        "purchasedate": purchase_Date.text,
+        "purchasenote": purchase_notes.text,
+        "suppilierinvoiceno": suppiler_invoice.text,
+        "credit days": Creadit_days.text,
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
+        "balance amount":0,
+        "purchaseinvoiceid":[],
+        "Reason":"",
+        "save": false,
+        "return": false,
+        "time": DateFormat.jm().format(DateTime.now()),
+        "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        "timestamp": DateTime.now().microsecondsSinceEpoch
+      });
+    }
+
+    if (status2 == true) {
+      FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(random).set({
+        "Total": "",
+        "Payment mode": Payments,
+        "Payment mode 2": "",
+        "suppilerid": suppierid.text,
+        "suppilername": suppiler_name.text,
+        "suppilergst": suppiler_gstno.text,
+        "purchaseno": purchase_No.text,
+        "purchasedate": purchase_Date.text,
+        "purchasenote": purchase_notes.text,
+        "suppilierinvoiceno": suppiler_invoice.text,
+        "credit days": Creadit_days.text,
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
+        "balance amount":0,
+        "purchaseinvoiceid":[],
+        "Reason":"",
+        "save": false,
+        "return": false,
+        "time": DateFormat.jm().format(DateTime.now()),
+        "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        "timestamp": DateTime.now().microsecondsSinceEpoch
+      });
+    }
+
     setState((){
 
       IMEISERIAL.clear();
       Itemdocumentid.clear();
       Purchaseinvoice.clear();
-      creditdate.add( Duration(days: int.parse(Creadit_days.text==""?"0":Creadit_days.text)));
+      creditdate= DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+      );
     });
+
+
 
     if (layourbuilderclear.text != "" &&
         Suppliername.text != "" &&
         suppiler_invoice.text != "") {
 
       if (status == true) {
-
         var documents = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
         for (int i = 0; i < documents.docs.length; i++) {
           if (name == documents.docs[i]["Newitemname"]) {
-            setState(() {
+            setState((){
               itemcode = documents.docs[i]["Itemcode"].toString();
               valueitem.text = documents.docs[i]["Purchaseprice"].toString();
               itemcategory = documents.docs[i]["Category"].toString();
@@ -4827,6 +5700,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               Landing_cost.text = documents.docs[i]["Landingcost"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
               Mrp_Price.text = documents.docs[i]["MRPPrice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               if (documents.docs[i]["Purchaseprice"] != "") {
                 salespriceff = double.parse(documents.docs[i]["Purchaseprice"].toString());
               } else {
@@ -4840,6 +5715,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               itemsalesprice = documents.docs[i]["Saleprice"].toString();
               itemlandingprice = documents.docs[i]["Landingcost"].toString();
               itempurchaseprice = documents.docs[i]["Purchaseprice"].toString();
@@ -4914,6 +5791,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               Landing_cost.text = documents.docs[i]["Landingcost"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
               Mrp_Price.text = documents.docs[i]["MRPPrice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               if (documents.docs[i]["Purchaseprice"] != "") {
                 salespriceff = double.parse(documents.docs[i]["Purchaseprice"].toString());
               } else {
@@ -4927,6 +5806,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               itemsalesprice = documents.docs[i]["Saleprice"].toString();
               itemlandingprice = documents.docs[i]["Landingcost"].toString();
               itempurchaseprice = documents.docs[i]["Purchaseprice"].toString();
@@ -5014,6 +5895,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               valueitem.text = documents.docs[i]["Purchaseprice"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
               Mrp_Price.text = documents.docs[i]["MRPPrice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               if (documents.docs[i]["Purchaseprice"] != "") {
                 salespriceff =
                     double.parse(documents.docs[i]["Purchaseprice"].toString());
@@ -5028,6 +5911,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               itemsalesprice = documents.docs[i]["Saleprice"].toString();         //itemsalesprice itemlandingprice itempurchaseprice
               itemlandingprice = documents.docs[i]["Landingcost"].toString();
               itempurchaseprice = documents.docs[i]["Purchaseprice"].toString();
@@ -5095,6 +5980,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               valueitem.text = documents.docs[i]["Purchaseprice"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
               Mrp_Price.text = documents.docs[i]["MRPPrice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               if (documents.docs[i]["Purchaseprice"] != "") {
                 salespriceff =
                     double.parse(documents.docs[i]["Purchaseprice"].toString());
@@ -5109,6 +5996,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               itemsalesprice = documents.docs[i]["Saleprice"].toString();         //itemsalesprice itemlandingprice itempurchaseprice
               itemlandingprice = documents.docs[i]["Landingcost"].toString();
               itempurchaseprice = documents.docs[i]["Purchaseprice"].toString();
@@ -5126,7 +6015,45 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       }
 
 
-      FirebaseFirestore.instance.collection("Purchase entry").doc(random).set({
+
+      checkgst(Purchase_price.text, Qty.text);
+
+    } else {
+      showdialpogboxsss1();
+    }
+  }
+
+  ///item ID search and set the value function
+  createpurchase3(name) async {
+    print("Document id");
+    print(random);
+
+    FirebaseFirestore.instance.collection("Purchase entry").doc(random).set({
+      "Total": "",
+      "Payment mode": Payments,
+      "Payment mode 2": "",
+      "suppilerid": suppierid.text,
+      "suppilername": suppiler_name.text,
+      "suppilergst": suppiler_gstno.text,
+      "purchaseno": purchase_No.text,
+      "purchasedate": purchase_Date.text,
+      "purchasenote": purchase_notes.text,
+      "suppilierinvoiceno": suppiler_invoice.text,
+      "credit days": Creadit_days.text,
+      "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
+      "balance amount":0,
+      "purchaseinvoiceid":[],
+      "Reason":"",
+      "save": false,
+      "return": false,
+      "type":"",
+      "time": DateFormat.jm().format(DateTime.now()),
+      "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+      "timestamp": DateTime.now().microsecondsSinceEpoch
+    });
+
+    if (status == true) {
+      FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(random).set({
         "Total": "",
         "Payment mode": Payments,
         "Payment mode 2": "",
@@ -5144,82 +6071,48 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "Reason":"",
         "save": false,
         "return": false,
-        "type":"",
         "time": DateFormat.jm().format(DateTime.now()),
         "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
         "timestamp": DateTime.now().microsecondsSinceEpoch
       });
-
-
-      if (status == true) {
-
-        FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(random).set({
-          "Total": "",
-          "Payment mode": Payments,
-          "Payment mode 2": "",
-          "suppilerid": suppierid.text,
-          "suppilername": suppiler_name.text,
-          "suppilergst": suppiler_gstno.text,
-          "purchaseno": purchase_No.text,
-          "purchasedate": purchase_Date.text,
-          "purchasenote": purchase_notes.text,
-          "suppilierinvoiceno": suppiler_invoice.text,
-          "credit days": Creadit_days.text,
-          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
-          "balance amount":0,
-          "purchaseinvoiceid":[],
-          "Reason":"",
-          "save": false,
-          "return": false,
-          "time": DateFormat.jm().format(DateTime.now()),
-          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "timestamp": DateTime.now().microsecondsSinceEpoch
-        });
-      }
-
-      if (status2 == true) {
-        FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(random).set({
-          "Total": "",
-          "Payment mode": Payments,
-          "Payment mode 2": "",
-          "suppilerid": suppierid.text,
-          "suppilername": suppiler_name.text,
-          "suppilergst": suppiler_gstno.text,
-          "purchaseno": purchase_No.text,
-          "purchasedate": purchase_Date.text,
-          "purchasenote": purchase_notes.text,
-          "suppilierinvoiceno": suppiler_invoice.text,
-          "credit days": Creadit_days.text,
-          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
-          "balance amount":0,
-          "purchaseinvoiceid":[],
-          "Reason":"",
-          "save": false,
-          "return": false,
-          "time": DateFormat.jm().format(DateTime.now()),
-          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "timestamp": DateTime.now().microsecondsSinceEpoch
-        });
-      }
-
-      checkgst(Purchase_price.text, Qty.text);
-
-    } else {
-      showdialpogboxsss1();
     }
-  }
 
-  ///item ID search and set the value function
-  createpurchase3(name) async {
-    print("Document id");
-    print(random);
+    if (status2 == true) {
+
+      FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(random).set({
+        "Total": "",
+        "Payment mode": Payments,
+        "Payment mode 2": "",
+        "suppilerid": suppierid.text,
+        "suppilername": suppiler_name.text,
+        "suppilergst": suppiler_gstno.text,
+        "purchaseno": purchase_No.text,
+        "purchasedate": purchase_Date.text,
+        "purchasenote": purchase_notes.text,
+        "suppilierinvoiceno": suppiler_invoice.text,
+        "credit days": Creadit_days.text,
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
+        "balance amount":0,
+        "purchaseinvoiceid":[],
+        "Reason":"",
+        "save": false,
+        "return": false,
+        "time": DateFormat.jm().format(DateTime.now()),
+        "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        "timestamp": DateTime.now().microsecondsSinceEpoch
+      });
+    }
     setState(() {
 
       itemserch = false;
       IMEISERIAL.clear();
       Itemdocumentid.clear();
       Purchaseinvoice.clear();
-      creditdate.add( Duration(days: int.parse(Creadit_days.text==""?"0":Creadit_days.text)));
+      creditdate= DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+      );
 
     });
     if (layourbuilderclear3.text != "" &&
@@ -5255,6 +6148,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               valueitem.text = documents.docs[i]["Purchaseprice"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
               Mrp_Price.text = documents.docs[i]["MRPPrice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               if (documents.docs[i]["Purchaseprice"] != "") {
                 salespriceff =
                     double.parse(documents.docs[i]["Purchaseprice"].toString());
@@ -5269,6 +6164,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               itemsalesprice = documents.docs[i]["Saleprice"].toString();
               itemlandingprice = documents.docs[i]["Landingcost"].toString();
               itempurchaseprice = documents.docs[i]["Purchaseprice"].toString();
@@ -5323,6 +6220,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              margin.text = documents.docs[i]["margin"].toString();
+              marginval=double.parse(documents.docs[i]["margin"].toString());
               itemsalesprice = documents.docs[i]["Saleprice"].toString();
               itemlandingprice = documents.docs[i]["Landingcost"].toString();
               itempurchaseprice = documents.docs[i]["Purchaseprice"].toString();
@@ -5339,80 +6238,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       }
       print("Fun in");
 
-      FirebaseFirestore.instance.collection("Purchase entry").doc(random).set({
-        "Total": "",
-        "Payment mode": Payments,
-        "Payment mode 2": "",
-        "suppilerid": suppierid.text,
-        "suppilername": suppiler_name.text,
-        "suppilergst": suppiler_gstno.text,
-        "purchaseno": purchase_No.text,
-        "purchasedate": purchase_Date.text,
-        "purchasenote": purchase_notes.text,
-        "suppilierinvoiceno": suppiler_invoice.text,
-        "credit days": Creadit_days.text,
-        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
-        "balance amount":0,
-        "purchaseinvoiceid":[],
-        "Reason":"",
-        "save": false,
-        "return": false,
-        "type":"",
-        "time": DateFormat.jm().format(DateTime.now()),
-        "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-        "timestamp": DateTime.now().microsecondsSinceEpoch
-      });
 
-      if (status == true) {
-        FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(random).set({
-          "Total": "",
-          "Payment mode": Payments,
-          "Payment mode 2": "",
-          "suppilerid": suppierid.text,
-          "suppilername": suppiler_name.text,
-          "suppilergst": suppiler_gstno.text,
-          "purchaseno": purchase_No.text,
-          "purchasedate": purchase_Date.text,
-          "purchasenote": purchase_notes.text,
-          "suppilierinvoiceno": suppiler_invoice.text,
-          "credit days": Creadit_days.text,
-          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
-          "balance amount":0,
-          "purchaseinvoiceid":[],
-          "Reason":"",
-          "save": false,
-          "return": false,
-          "time": DateFormat.jm().format(DateTime.now()),
-          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "timestamp": DateTime.now().microsecondsSinceEpoch
-        });
-      }
-
-      if (status2 == true) {
-
-        FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(random).set({
-          "Total": "",
-          "Payment mode": Payments,
-          "Payment mode 2": "",
-          "suppilerid": suppierid.text,
-          "suppilername": suppiler_name.text,
-          "suppilergst": suppiler_gstno.text,
-          "purchaseno": purchase_No.text,
-          "purchasedate": purchase_Date.text,
-          "purchasenote": purchase_notes.text,
-          "suppilierinvoiceno": suppiler_invoice.text,
-          "credit days": Creadit_days.text,
-          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
-          "balance amount":0,
-          "purchaseinvoiceid":[],
-          "Reason":"",
-          "save": false,
-          "return": false,
-          "time": DateFormat.jm().format(DateTime.now()),
-          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "timestamp": DateTime.now().microsecondsSinceEpoch
-        });
-      }
 
       checkgst(Purchase_price.text, Qty.text);
 
@@ -5428,13 +6254,22 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   collectioncreatefunction() async {
     setState(() {
 
-      creditdate.add( Duration(days: int.parse(Creadit_days.text==""?"0":Creadit_days.text)));
+      creditdate= DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+      );
     });
-
+    print(IMEI2);
+    print("Idendivication++++++++++++++++++++++++++++++++++");
     if (Payments != 'Please Select Type'&&itemdocuid.isNotEmpty) {
       setState((){
         Purchaseinvoice.add(random);
-        creditdate.add( Duration(days: int.parse(Creadit_days.text==""?"0":Creadit_days.text)));
+        creditdate= DateTime(
+          DateTime.now().year,
+          DateTime.now().month,
+          Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+        );
       });
 
       FirebaseFirestore.instance.collection("Purchase entry").doc(random).collection(random).doc().set({
@@ -5465,6 +6300,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "returnimei":[],
         "Purchase price": double.parse(Purchase_price.text).toStringAsFixed(2),
         "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+        "margin": double.parse(margin.text).toStringAsFixed(2),
         "MRP price": double.parse(Mrp_Price.text).toStringAsFixed(2),
         "Qty": Qty.text,
         "Landing cost": double.parse(Landing_cost.text).toStringAsFixed(2),
@@ -5516,6 +6352,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Purchase price":
               double.parse(Purchase_price.text).toStringAsFixed(2),
           "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+          "margin": double.parse(margin.text).toStringAsFixed(2),
           "MRP price": double.parse(Mrp_Price.text).toStringAsFixed(2),
           "Qty": Qty.text,
           "Landing cost": double.parse(Landing_cost.text).toStringAsFixed(2),
@@ -5559,6 +6396,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Item": itemname.text,
           "Purchase price": double.parse(Purchase_price.text).toStringAsFixed(2),
           "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+          "margin": double.parse(margin.text).toStringAsFixed(2),
           "MRP price": double.parse(Mrp_Price.text).toStringAsFixed(2),
           "Qty": Qty.text,
           "Landing cost": double.parse(Landing_cost.text).toStringAsFixed(2),
@@ -5576,46 +6414,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "return": false,
         });
 
-        FirebaseFirestore.instance.collection("Item ShabikaG").doc(itemdocuid).
-        collection("Histroy").doc().set({
-          "Total": double.parse(valueitem.text).toStringAsFixed(2),
-          "Payment mode": Payments,
-          "itemcode": itemcode,
-          "Hsncode": HSN_Code.text,
-          "BoxNo": Box_NO.text,
-          "Itemdocid":itemdocuid,
-          "suppilerid": suppierid.text,
-          "suppilername": suppiler_name.text,
-          "suppilergst": suppiler_gstno.text,
-          "purchaseno": purchase_No.text,
-          "purchasedate": purchase_Date.text,
-          "purchasenote": purchase_notes.text,
-          "tax": taxitem.text,
-          "save": false,
-          "suppilierinvoiceno": suppiler_invoice.text,
-          "time": DateFormat.jm().format(DateTime.now()),
-          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "timestamp": DateTime.now().microsecondsSinceEpoch,
-          "Category": itemcat,
-          "Brand": itembrand,
-          "Item": itemname.text,
-          "Purchase price": double.parse(Purchase_price.text).toStringAsFixed(2),
-          "Sales price": double.parse(Sales.text).toStringAsFixed(2),
-          "MRP price": double.parse(Mrp_Price.text).toStringAsFixed(2),
-          "Qty": Qty.text,
-          "Landing cost": double.parse(Landing_cost.text).toStringAsFixed(2),
-          "IMEI NO": imeivalue,
-          "Serial NO": serialvalue,
-          "Color": color,
-          "credit days": Creadit_days.text,
-          "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
-          //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-          "Description":  "${itemname.text},${itemimei==true ? IMEI2.toString() : ""}${itemcolor==true ? colorlist2.toString() : ""}${itemserial==true ? SERIAL.toString() : ""}",
-        "IMSlist": IMEISERIAL,
-          "Imei no": IMEI,
-          "Serial no": SERIAL,
-          "color": colorlist,
-        });
+
 
 
         if (itemlandingprice != Landing_cost.text || itempurchaseprice != Purchase_price.text ||
@@ -5657,7 +6456,12 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
           else{
             print("Chenck----------------------------------------3");
+            print(IMEI2);
+            print(IMEI);
+            print(IMEISERIAL);
+            print(Imagelist);
             FirebaseFirestore.instance.collection("Item ShabikaG").doc().set({
+              "purchaseinvoiceid":[random],
               "Category": itemcategory,
               "Brand": itembarnd,
               "Loworder": Loworder.text,
@@ -5676,9 +6480,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               "Saleprice": Sales.text != "" ? double.parse(Sales.text).toStringAsFixed(2) : "",
               "MRPPrice": Mrp_Price.text != "" ? double.parse(Mrp_Price.text).toStringAsFixed(2) : "",
               "IMSlist": IMEISERIAL,
-              "Imei no": IMEI,
-              "Serial no": SERIAL,
-              "color": colorlist,
+              "Imei no": IMEI2,
+              "Serial no": SERIAL2,
+              "color": colorlist2,
               //"Image list": Imagelist,
               "Newitemname": layourbuilderclear2.text,
               "Itemcode": layourbuilderclear3.text
@@ -5689,6 +6493,48 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         }
 
         else{
+          FirebaseFirestore.instance.collection("Item ShabikaG").doc(itemdocuid).
+          collection("Histroy").doc().set({
+            "Total": double.parse(valueitem.text).toStringAsFixed(2),
+            "Payment mode": Payments,
+            "itemcode": itemcode,
+            "Hsncode": HSN_Code.text,
+            "BoxNo": Box_NO.text,
+            "Itemdocid":itemdocuid,
+            "suppilerid": suppierid.text,
+            "suppilername": suppiler_name.text,
+            "suppilergst": suppiler_gstno.text,
+            "purchaseno": purchase_No.text,
+            "purchasedate": purchase_Date.text,
+            "purchasenote": purchase_notes.text,
+            "tax": taxitem.text,
+            "save": false,
+            "suppilierinvoiceno": suppiler_invoice.text,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "timestamp": DateTime.now().microsecondsSinceEpoch,
+            "Category": itemcat,
+            "Brand": itembrand,
+            "Item": itemname.text,
+            "Purchase price": double.parse(Purchase_price.text).toStringAsFixed(2),
+            "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+            "margin": double.parse(margin.text).toStringAsFixed(2),
+            "MRP price": double.parse(Mrp_Price.text).toStringAsFixed(2),
+            "Qty": Qty.text,
+            "Landing cost": double.parse(Landing_cost.text).toStringAsFixed(2),
+            "IMEI NO": imeivalue,
+            "Serial NO": serialvalue,
+            "Color": color,
+            "credit days": Creadit_days.text,
+            "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
+            //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
+            "Description":  "${itemname.text},${itemimei==true ? IMEI2.toString() : ""}${itemcolor==true ? colorlist2.toString() : ""}${itemserial==true ? SERIAL.toString() : ""}",
+            "IMSlist": IMEISERIAL,
+            "Imei no": IMEI,
+            "Serial no": SERIAL,
+            "color": colorlist,
+          });
+
           print("Chenck----------------------------------------4");
           FirebaseFirestore.instance.collection("Item ShabikaG").doc(itemdocuid).update({
             "Category": itemcategory,
@@ -5755,6 +6601,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Purchase price":
               double.parse(Purchase_price.text).toStringAsFixed(2),
           "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+          "margin": double.parse(margin.text).toStringAsFixed(2),
           "MRP price": double.parse(Mrp_Price.text).toStringAsFixed(2),
           "Qty": Qty.text,
           "Landing cost": double.parse(Landing_cost.text).toStringAsFixed(2),
@@ -5798,6 +6645,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
           "Purchase price":
               double.parse(Purchase_price.text).toStringAsFixed(2),
           "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+          "margin": double.parse(margin.text).toStringAsFixed(2),
           "MRP price": double.parse(Mrp_Price.text).toStringAsFixed(2),
           "Qty": Qty.text,
           "Landing cost": double.parse(Landing_cost.text).toStringAsFixed(2),
@@ -5853,6 +6701,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
           else{
             FirebaseFirestore.instance.collection("Item ShabikaN").doc().set({
+              "purchaseinvoiceid":[random],
               "Category": itemcategory,
               "Brand": itembarnd,
               "Loworder": Loworder.text,
@@ -5871,9 +6720,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               "Saleprice": Sales.text != "" ? double.parse(Sales.text).toStringAsFixed(2) : "",
               "MRPPrice": Mrp_Price.text != "" ? double.parse(Mrp_Price.text).toStringAsFixed(2) : "",
               "IMSlist": IMEISERIAL,
-              "Imei no": IMEI,
-              "Serial no": SERIAL,
-              "color": colorlist,
+              "Imei no": IMEI2,
+              "Serial no": SERIAL2,
+              "color": colorlist2,
               //"Image list": Imagelist,
               "Newitemname": layourbuilderclear2.text,
               "Itemcode": layourbuilderclear3.text
@@ -5966,14 +6815,14 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       ),
                       Payments=="Credit Amount"? Text(
                         "Please Fill the Payment Mode And Credit Days",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
                       ):
                       Text(
                         "Please Fill the Payment Mode",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6010,7 +6859,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6037,7 +6886,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6064,7 +6913,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       var document = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
       setState(() {
         Itemcount=document.docs.length+1;
-        layourbuilderclear3.text="SBI${(Itemcount).toString().padLeft(2, "0")}";
+        layourbuilderclear3.text="SBG${(Itemcount).toString().padLeft(2, "0")}";
         Stocks.text="0";
       });
 
@@ -6074,14 +6923,39 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       var document3 = await FirebaseFirestore.instance.collection("Item ShabikaN").get();
       setState(() {
         Itemcount=document3.docs.length+1;
-        layourbuilderclear3.text="SBI${(Itemcount).toString().padLeft(2, "0")}";
+        layourbuilderclear3.text="SBN${(Itemcount).toString().padLeft(2, "0")}";
         Stocks.text="0";
       });
 
 
     }
+    print("Called");
+    updatemargin();
 
 
+  }
+
+  updatemargin(){
+    print("Margin Update called");
+    if(status==true) {
+      setState(() {
+      print("Margin Update called for SG");
+        margin.text =
+            ((double.parse(Sales.text) - double.parse(Landing_cost.text)) -
+                (double.parse(Sales.text) - (double.parse(Sales.text) / 1.18)))
+                .toStringAsFixed(2);
+        marginval=((double.parse(Sales.text) - double.parse(Landing_cost.text)) -
+            (double.parse(Sales.text) - (double.parse(Sales.text) / 1.18)));
+      });
+
+    }
+    if(status2==true){
+      print("Margin Update called for SN");
+  setState(() {
+      margin.text = (double.parse(Sales.text) - double.parse(Landing_cost.text)).toStringAsFixed(2);
+      marginval = (double.parse(Sales.text) - double.parse(Landing_cost.text));
+  });
+    }
   }
 
   ///"Please Fill the Suppiler Name and Suppiler ID....."--popup function
@@ -6110,7 +6984,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       Text(
                         "Please Fill the Suppiler \nName and Suppiler ID.....",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6144,7 +7018,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6171,7 +7045,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6217,7 +7091,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       Text(
                         "Save Purchase Bill Succesfully..",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6251,7 +7125,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6278,7 +7152,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6326,7 +7200,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       Text(
                           "Please Place Minimum 1 Item...",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6360,7 +7234,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6387,7 +7261,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6686,7 +7560,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       ),
                       Text(
                         "This Customer Already Exist in List.....",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
                             color: Colors.white),
@@ -6723,7 +7597,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -6771,531 +7645,534 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       Center(
                         child: SizedBox(
                           height: height / 1.02,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: height / 131.4,
-                              ),
-
-                              Text(
-                                "Add IMEI No/SERIAL No/Color/Image ",
-                                style: GoogleFonts.montserrat(
-                                    fontWeight: FontWeight.w700
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: height / 131.4,
                                 ),
-                              ),
 
-                              SizedBox(
-                                height: height / 131.4,
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  //imei and serial and color textfield
+                                Text(
+                                  "Add IMEI No/SERIAL No/Color/Image ",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700
+                                  ),
+                                ),
 
-                                  serial == true ||
-                                      imei == true ||
-                                          color == true
-                                      ? SizedBox(
-                                          height: height / 2.628,
-                                          width: width / 1.821,
-                                          child: ListView.builder(
-                                            itemCount: Quvantity,
-                                            scrollDirection: Axis.vertical,
-                                            shrinkWrap: true,
-                                            itemBuilder: (context, index) {
-                                              return Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: width / 4.55),
-                                                child: SizedBox(
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      imei == true
-                                                          ? Padding(
-                                                              padding: EdgeInsets.symmetric(
-                                                                  horizontal:
-                                                                      width /
-                                                                          341.5,
-                                                                  vertical:
-                                                                      height /
-                                                                          164.25),
-                                                              child: Row(
-                                                                children: [
-                                                                  SizedBox(
-                                                                      width: width /
-                                                                          11.38,
-                                                                      child:
-                                                                          Text(
-                                                                        "IMEi No",
-                                                                        style: GoogleFonts.montserrat(
-                                                                            fontWeight:
-                                                                                FontWeight.w700),
-                                                                      )),
-                                                                  SizedBox(
-                                                                      width: width /
-                                                                          136.6),
-                                                                  Material(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      elevation:
-                                                                          20,
-                                                                      shadowColor:
-                                                                          Colors
-                                                                              .black12,
-                                                                      child:
-                                                                          Container(
-                                                                        height: height /
-                                                                            16.425,
-                                                                        width: width /
-                                                                            4.55,
-                                                                        decoration: BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                            color: Colors.grey.shade200),
-                                                                        child:
-                                                                            TextField(
-                                                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
-                                                                          controller:
-                                                                              _controller[index],
-                                                                          decoration:
-                                                                              InputDecoration(
-                                                                            hintText:
-                                                                                "Enter the IMEI NO",
-                                                                            border:
-                                                                                InputBorder.none,
-                                                                            contentPadding:
-                                                                                EdgeInsets.only(left: width / 136.6),
-                                                                            hintStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
-                                                                          ),
-                                                                          onSubmitted:
-                                                                              (_) {},
-                                                                        ),
-                                                                      )),
-                                                                ],
-                                                              ),
-                                                            )
-                                                          : const SizedBox(),
-                                                      serial == true
-                                                          ? Padding(
-                                                              padding: EdgeInsets.symmetric(
-                                                                  horizontal:
-                                                                      width /
-                                                                          341.5,
-                                                                  vertical:
-                                                                      height /
-                                                                          164.25),
-                                                              child: Row(
-                                                                children: [
-                                                                  SizedBox(
-                                                                      width: width /
-                                                                          11.38,
-                                                                      child:
-                                                                          Text(
-                                                                        "Serial No",
-                                                                        style: GoogleFonts.montserrat(
-                                                                            fontWeight:
-                                                                                FontWeight.w700),
-                                                                      )),
-                                                                  SizedBox(
-                                                                      width: width /
-                                                                          136.6),
-                                                                  Material(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      elevation:
-                                                                          20,
-                                                                      shadowColor:
-                                                                          Colors
-                                                                              .black12,
-                                                                      child: Container(
-                                                                          height: height / 16.425,
-                                                                          width: width / 4.55,
-                                                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey.shade200),
-                                                                          child: TextField(
-                                                                            style:
-                                                                            GoogleFonts.montserrat(fontWeight: FontWeight.w700),
-                                                                            controller:
-                                                                                _controller2[index],
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              hintText: "Enter the Serial NO",
-                                                                              border: InputBorder.none,
-                                                                              contentPadding: EdgeInsets.only(left: width / 136.6),
-                                                                              hintStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
-                                                                            ),
-                                                                            onSubmitted:
-                                                                                (_) {},
-                                                                          ))),
-                                                                ],
-                                                              ),
-                                                            )
-                                                          : const SizedBox(),
-                                                      color == true
-                                                          ? Padding(
-                                                              padding: EdgeInsets.symmetric(
-                                                                  horizontal:
-                                                                      width /
-                                                                          341.5,
-                                                                  vertical:
-                                                                      height /
-                                                                          164.25),
-                                                              child: Row(
-                                                                children: [
-                                                                  SizedBox(
-                                                                      width: width /
-                                                                          11.38,
-                                                                      child:
-                                                                          Text(
-                                                                        "Color",
-                                                                        style: GoogleFonts.montserrat(
-                                                                            fontWeight:
-                                                                                FontWeight.w700),
-                                                                      )),
-                                                                  SizedBox(
-                                                                      width: width /
-                                                                          136.6),
-                                                                  Material(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      elevation:
-                                                                          20,
-                                                                      shadowColor:
-                                                                          Colors
-                                                                              .black12,
-                                                                      child: Container(
-                                                                          height: height / 16.425,
-                                                                          width: width / 4.55,
-                                                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey.shade200),
-                                                                          child: TextField(
-                                                                            style:
-                                                                            GoogleFonts.montserrat(fontWeight: FontWeight.w700),
-                                                                            controller:
-                                                                                _controller3[index],
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              hintText: "Color",
-                                                                              border: InputBorder.none,
-                                                                              contentPadding: EdgeInsets.only(left: width / 136.6),
-                                                                              hintStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
-                                                                            ),
-                                                                            onSubmitted:
-                                                                                (_) {},
-                                                                          ))),
-                                                                ],
-                                                              ),
-                                                            )
-                                                          : const SizedBox(),
-                                                    ],
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        )
-                                      : SizedBox(width: width / 3.415),
+                                SizedBox(
+                                  height: height / 131.4,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    //imei and serial and color textfield
 
-                                  //image secelction
-                                  images==true?
-                                  SizedBox(
-                                    width: width / 2.732,
-                                    child: Material(
-                                      color: Colors.white,
-                                      elevation: 20,
-                                      shadowColor: Colors.black12,
-                                      borderRadius: BorderRadius.circular(4),
-                                      child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(4),
-                                          ),
-                                          width: width / 20.732,
-                                          child: SizedBox(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(
-                                                    height: height / 131.4),
-                                                Padding(
+                                    serial == true ||
+                                        imei == true ||
+                                            color == true
+                                        ? SizedBox(
+                                            height: height / 2.628,
+                                            width: width / 1.821,
+                                            child: ListView.builder(
+                                              itemCount: Quvantity,
+                                              scrollDirection: Axis.vertical,
+                                              shrinkWrap: true,
+                                              itemBuilder: (context, index) {
+                                                return Padding(
                                                   padding: EdgeInsets.only(
-                                                    left: width / 170.75,
-                                                  ),
-                                                  child: Text(
-                                                    "Image",
-                                                    style:
-                                                        GoogleFonts.montserrat(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w700),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                    height: height / 131.4),
-                                                const Divider(),
-                                                SizedBox(
-                                                  width: width / 2.732,
-                                                  child: ListView.builder(
-                                                    itemCount: int.parse(Qty.text),
-                                                    shrinkWrap: true,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return
-                                                        SizedBox(
-                                                          width: width / 2.732,
-                                                          height:height/4.38,
-                                                          child: Row(
-                                                            children: [
-                                                              Flexible(
-                                                                child: ListView.builder(
-                                                                  shrinkWrap: true,
-                                                                  scrollDirection: Axis.horizontal,
-                                                                  itemCount: Imagelistitem[index].length,
-                                                                  itemBuilder: (context, index2) {
-                                                                    return
-                                                                      Row(
-                                                                        children: [
-                                                                          SizedBox(
-                                                                            width: width / 13.66,
-                                                                            child: Column(
-                                                                              children: [
-                                                                                Text("Product Img${index2+1}",style: GoogleFonts.poppins(fontWeight: FontWeight.w700),),
-                                                                                Padding(
-                                                                                    padding: EdgeInsets
-                                                                                        .symmetric(
-                                                                                      vertical:
-                                                                                      height / 82.125,
-                                                                                      horizontal:
-                                                                                      width / 170.75,
-                                                                                    ),
-                                                                                    child:
-                                                                                    Material(
-                                                                                      elevation: 20,
-                                                                                      borderRadius:
-                                                                                      BorderRadius.circular(4),
-                                                                                      color: const Color(0xffe6ebef),
-                                                                                      shadowColor: Colors.grey.shade100,
-                                                                                      child: Container(
-                                                                                          height: height / 6.212,
-                                                                                          decoration: BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(4),
-                                                                                              color: const Color(0xffe6ebef),
-                                                                                              image: DecorationImage(fit: BoxFit.cover,
-                                                                                                  image: Imagelistitem[index][index2] != "" && Imagelistitem[index][index2] != "loading"
-                                                                                                      ? NetworkImage(Imagelistitem[index][index2].toString())
-                                                                                                      : const NetworkImage(
-                                                                                                      ""))),
-                                                                                          child: Center(
-                                                                                              child: Imagelistitem[index]== "loading" ?
-                                                                                                   const CircularProgressIndicator():
-                                                                                              Icon(Icons.add, color: const Color(0xffa3c9e2),
-                                                                                            size: width / 34.15,
-                                                                                          ))),
-                                                                                    )
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                  },),
-                                                              ),
-                                                              Padding(
-                                                                padding:  EdgeInsets.symmetric(
-                                                                  vertical: height/82.125,
-                                                                  horizontal: width/170.75,
-                                                                ),
-                                                                child: InkWell(
-                                                                    onTap: () {
-                                                                      setState((){
-                                                                        Loading2=true;
-                                                                      });
-                                                                      InputElement input =
-                                                                      FileUploadInputElement()
-                                                                      as InputElement
-                                                                        ..accept = 'image/*';
-                                                                      FirebaseStorage fs =
-                                                                          FirebaseStorage
-                                                                              .instance;
-                                                                      input.click();
-                                                                      input.onChange
-                                                                          .listen(
-                                                                              (event) {
-                                                                            final file = input
-                                                                                .files!.first;
-                                                                            final reader =
-                                                                            FileReader();
-                                                                            reader.readAsDataUrl(file);
-                                                                            reader.onLoadEnd.listen(
-                                                                                    (event) async {
-                                                                                  var snapshot = await fs.ref().child('ImageLIst').child(file.name).putBlob(file);
-                                                                                  String downloadUrl = await snapshot.ref.getDownloadURL();
-                                                                                  setState(() {
-                                                                                    Imagelistitem[index].add(downloadUrl);
-                                                                                    Imagelist=Imagelistitem;
-                                                                                    Loading2=false;
-                                                                                  });
-
-                                                                                    });
-                                                                          });
-                                                                    },
-                                                                  child: Material(
-                                                                      elevation: 15,
-                                                                      borderRadius: BorderRadius.circular(100),
-                                                                      child:  Padding(
-                                                                        padding: const EdgeInsets.all(8.0),
+                                                      left: width / 4.55),
+                                                  child: SizedBox(
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.start,
+                                                      children: [
+                                                        imei == true
+                                                            ? Padding(
+                                                                padding: EdgeInsets.symmetric(
+                                                                    horizontal:
+                                                                        width /
+                                                                            341.5,
+                                                                    vertical:
+                                                                        height /
+                                                                            164.25),
+                                                                child: Row(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: width /
+                                                                            11.38,
                                                                         child:
-                                                                          Loading2==true?const CircularProgressIndicator():
-                                                                        const Icon(Icons.add),
-                                                                      )),
+                                                                            Text(
+                                                                          "IMEi No",
+                                                                          style: GoogleFonts.openSans(
+                                                                              fontWeight:
+                                                                                  FontWeight.w700),
+                                                                        )),
+                                                                    SizedBox(
+                                                                        width: width /
+                                                                            136.6),
+                                                                    Material(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        elevation:
+                                                                            20,
+                                                                        shadowColor:
+                                                                            Colors
+                                                                                .black12,
+                                                                        child:
+                                                                            Container(
+                                                                          height: height /
+                                                                              16.425,
+                                                                          width: width /
+                                                                              4.55,
+                                                                          decoration: BoxDecoration(
+                                                                              borderRadius:
+                                                                                  BorderRadius.circular(5),
+                                                                              color: Colors.grey.shade200),
+                                                                          child:
+                                                                              TextField(
+                                                                                style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                                                            controller:
+                                                                                _controller[index],
+                                                                            decoration:
+                                                                                InputDecoration(
+                                                                              hintText:
+                                                                                  "Enter the IMEI NO",
+                                                                              border:
+                                                                                  InputBorder.none,
+                                                                              contentPadding:
+                                                                                  EdgeInsets.only(left: width / 136.6),
+                                                                              hintStyle: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                                                            ),
+                                                                            onSubmitted:
+                                                                                (_) {},
+                                                                          ),
+                                                                        )),
+                                                                  ],
                                                                 ),
                                                               )
-                                                            ],
-                                                          ),
-                                                        );
-                                                    },
+                                                            : const SizedBox(),
+                                                        serial == true
+                                                            ? Padding(
+                                                                padding: EdgeInsets.symmetric(
+                                                                    horizontal:
+                                                                        width /
+                                                                            341.5,
+                                                                    vertical:
+                                                                        height /
+                                                                            164.25),
+                                                                child: Row(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: width /
+                                                                            11.38,
+                                                                        child:
+                                                                            Text(
+                                                                          "Serial No",
+                                                                          style: GoogleFonts.openSans(
+                                                                              fontWeight:
+                                                                                  FontWeight.w700),
+                                                                        )),
+                                                                    SizedBox(
+                                                                        width: width /
+                                                                            136.6),
+                                                                    Material(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        elevation:
+                                                                            20,
+                                                                        shadowColor:
+                                                                            Colors
+                                                                                .black12,
+                                                                        child: Container(
+                                                                            height: height / 16.425,
+                                                                            width: width / 4.55,
+                                                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey.shade200),
+                                                                            child: TextField(
+                                                                              style:
+                                                                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                                                              controller:
+                                                                                  _controller2[index],
+                                                                              decoration:
+                                                                                  InputDecoration(
+                                                                                hintText: "Enter the Serial NO",
+                                                                                border: InputBorder.none,
+                                                                                contentPadding: EdgeInsets.only(left: width / 136.6),
+                                                                                hintStyle: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                                                              ),
+                                                                              onSubmitted:
+                                                                                  (_) {},
+                                                                            ))),
+                                                                  ],
+                                                                ),
+                                                              )
+                                                            : const SizedBox(),
+                                                        color == true
+                                                            ? Padding(
+                                                                padding: EdgeInsets.symmetric(
+                                                                    horizontal:
+                                                                        width /
+                                                                            341.5,
+                                                                    vertical:
+                                                                        height /
+                                                                            164.25),
+                                                                child: Row(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: width /
+                                                                            11.38,
+                                                                        child:
+                                                                            Text(
+                                                                          "Color",
+                                                                          style: GoogleFonts.openSans(
+                                                                              fontWeight:
+                                                                                  FontWeight.w700),
+                                                                        )),
+                                                                    SizedBox(
+                                                                        width: width /
+                                                                            136.6),
+                                                                    Material(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        elevation:
+                                                                            20,
+                                                                        shadowColor:
+                                                                            Colors
+                                                                                .black12,
+                                                                        child: Container(
+                                                                            height: height / 16.425,
+                                                                            width: width / 4.55,
+                                                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey.shade200),
+                                                                            child: TextField(
+                                                                              style:
+                                                                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                                                              controller:
+                                                                                  _controller3[index],
+                                                                              decoration:
+                                                                                  InputDecoration(
+                                                                                hintText: "Color",
+                                                                                border: InputBorder.none,
+                                                                                contentPadding: EdgeInsets.only(left: width / 136.6),
+                                                                                hintStyle: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                                                              ),
+                                                                              onSubmitted:
+                                                                                  (_) {},
+                                                                            ))),
+                                                                  ],
+                                                                ),
+                                                              )
+                                                            : const SizedBox(),
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
+                                                );
+                                              },
                                             ),
-                                          )),
-                                    ),
-                                  ):
-                                  const SizedBox(),
-                                ],
-                              ),
+                                          )
+                                        : SizedBox(width: width / 3.415),
 
-                              //button okay and cancle.....
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  //okay button
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        popupLoading = true;
-                                      });
-                                        for (int i = 0; i < Quvantity; i++) {
-                                          setState(() {
-                                            IMEISERIAL.add("${_controller[i].text}${_controller2[i].text}${_controller3[i].text}");
+                                    //image secelction
+                                    images==true?
+                                    SizedBox(
+                                      width: width / 2.732,
+                                      child: Material(
+                                        color: Colors.white,
+                                        elevation: 20,
+                                        shadowColor: Colors.black12,
+                                        borderRadius: BorderRadius.circular(4),
+                                        child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(4),
+                                            ),
+                                            width: width / 20.732,
+                                            child: SizedBox(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(
+                                                      height: height / 131.4),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: width / 170.75,
+                                                    ),
+                                                    child: Text(
+                                                      "Image",
+                                                      style:
+                                                          GoogleFonts.openSans(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                      height: height / 131.4),
+                                                  const Divider(),
+                                                  SizedBox(
+                                                    width: width / 2.732,
+                                                    child: ListView.builder(
+                                                      itemCount: int.parse(Qty.text),
+                                                      shrinkWrap: true,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return
+                                                          SizedBox(
+                                                            width: width / 2.732,
+                                                            height:height/4.38,
+                                                            child: Row(
+                                                              children: [
+                                                                Flexible(
+                                                                  child: ListView.builder(
+                                                                    shrinkWrap: true,
+                                                                    scrollDirection: Axis.horizontal,
+                                                                    itemCount: Imagelistitem[index].length,
+                                                                    itemBuilder: (context, index2) {
+                                                                      return
+                                                                        Row(
+                                                                          children: [
+                                                                            SizedBox(
+                                                                              width: width / 13.66,
+                                                                              child: Column(
+                                                                                children: [
+                                                                                  Text("Product Img${index2+1}",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),),
+                                                                                  Padding(
+                                                                                      padding: EdgeInsets
+                                                                                          .symmetric(
+                                                                                        vertical:
+                                                                                        height / 82.125,
+                                                                                        horizontal:
+                                                                                        width / 170.75,
+                                                                                      ),
+                                                                                      child:
+                                                                                      Material(
+                                                                                        elevation: 20,
+                                                                                        borderRadius:
+                                                                                        BorderRadius.circular(4),
+                                                                                        color: const Color(0xffe6ebef),
+                                                                                        shadowColor: Colors.grey.shade100,
+                                                                                        child: Container(
+                                                                                            height: height / 6.212,
+                                                                                            decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(4),
+                                                                                                color: const Color(0xffe6ebef),
+                                                                                                image: DecorationImage(fit: BoxFit.cover,
+                                                                                                    image: Imagelistitem[index][index2] != "" && Imagelistitem[index][index2] != "loading"
+                                                                                                        ? NetworkImage(Imagelistitem[index][index2].toString())
+                                                                                                        : const NetworkImage(
+                                                                                                        ""))),
+                                                                                            child: Center(
+                                                                                                child: Imagelistitem[index]== "loading" ?
+                                                                                                     const CircularProgressIndicator():
+                                                                                                Icon(Icons.add, color: const Color(0xffa3c9e2),
+                                                                                              size: width / 34.15,
+                                                                                            ))),
+                                                                                      )
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                    },),
+                                                                ),
+                                                                Padding(
+                                                                  padding:  EdgeInsets.symmetric(
+                                                                    vertical: height/82.125,
+                                                                    horizontal: width/170.75,
+                                                                  ),
+                                                                  child: InkWell(
+                                                                      onTap: () {
+                                                                        setState((){
+                                                                          Loading2=true;
+                                                                        });
+                                                                        InputElement input =
+                                                                        FileUploadInputElement()
+                                                                        as InputElement
+                                                                          ..accept = 'image/*';
+                                                                        FirebaseStorage fs =
+                                                                            FirebaseStorage
+                                                                                .instance;
+                                                                        input.click();
+                                                                        input.onChange
+                                                                            .listen(
+                                                                                (event) {
+                                                                              final file = input
+                                                                                  .files!.first;
+                                                                              final reader =
+                                                                              FileReader();
+                                                                              reader.readAsDataUrl(file);
+                                                                              reader.onLoadEnd.listen(
+                                                                                      (event) async {
+                                                                                    var snapshot = await fs.ref().child('ImageLIst').child(file.name).putBlob(file);
+                                                                                    String downloadUrl = await snapshot.ref.getDownloadURL();
+                                                                                    setState(() {
+                                                                                      Imagelistitem[index].add(downloadUrl);
+                                                                                      Imagelist=Imagelistitem;
+                                                                                      Loading2=false;
+                                                                                    });
 
-                                            print(IMEISERIAL);
-                                            IMEI.add(_controller[i].text);
-                                            IMEI2.add(_controller[i].text);
-                                            SERIAL.add(_controller2[i].text);
-                                            SERIAL2.add(_controller2[i].text);
-                                            colorlist.add(_controller3[i].text);
-                                            colorlist2.add(_controller3[i].text);
-                                          });
-                                        }
-                                        for (int j=0;j<Imagelist.length;j++){
+                                                                                      });
+                                                                            });
+                                                                      },
+                                                                    child: Material(
+                                                                        elevation: 15,
+                                                                        borderRadius: BorderRadius.circular(100),
+                                                                        child:  Padding(
+                                                                          padding: const EdgeInsets.all(8.0),
+                                                                          child:
+                                                                            Loading2==true?const CircularProgressIndicator():
+                                                                          const Icon(Icons.add),
+                                                                        )),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )),
+                                      ),
+                                    ):
+                                    const SizedBox(),
+                                  ],
+                                ),
 
-                                          if(status==true){
-                                            FirebaseFirestore.instance.collection("Item ShabikaG").
-                                            doc(itemdocuid).collection("Image").doc().set({
-                                              "Image list1": Imagelist[j].length>0?Imagelist[j][0]:"",
-                                              "Image list2": Imagelist[j].length>1?Imagelist[j][1]:"",
-                                              "Image list3": Imagelist[j].length>2?Imagelist[j][2]:"",
-                                              "Image list4": Imagelist[j].length>3?Imagelist[j][3]:"",
-                                              "Image list5": Imagelist[j].length>4?Imagelist[j][4]:"",
-                                              "Image list6": Imagelist[j].length>5?Imagelist[j][5]:"",
+                                //button okay and cancle.....
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    //okay button
+                                    InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          popupLoading = true;
+                                        });
+                                          for (int i = 0; i < Quvantity; i++) {
+                                            setState(() {
+                                              IMEISERIAL.add("${_controller[i].text}${_controller2[i].text}${_controller3[i].text}");
+
+                                              print(IMEISERIAL);
+                                              IMEI.add(_controller[i].text);
+                                              IMEI2.add(_controller[i].text);
+                                              SERIAL.add(_controller2[i].text);
+                                              SERIAL2.add(_controller2[i].text);
+                                              colorlist.add(_controller3[i].text);
+                                              colorlist2.add(_controller3[i].text);
                                             });
                                           }
+                                          for (int j=0;j<Imagelist.length;j++){
 
-                                          if(status2==true){
-                                            FirebaseFirestore.instance.collection("Item ShabikaN").doc(itemdocuid).
-                                            collection("Image").doc().set({
-                                              "Image list1": Imagelist[j].length>0?Imagelist[j][0]:"",
-                                              "Image list2": Imagelist[j].length>1?Imagelist[j][1]:"",
-                                              "Image list3": Imagelist[j].length>2?Imagelist[j][2]:"",
-                                              "Image list4": Imagelist[j].length>3?Imagelist[j][3]:"",
-                                              "Image list5": Imagelist[j].length>4?Imagelist[j][4]:"",
-                                              "Image list6": Imagelist[j].length>5?Imagelist[j][5]:"",
-                                            });
+                                            if(status==true){
+                                              FirebaseFirestore.instance.collection("Item ShabikaG").
+                                              doc(itemdocuid).collection("Image").doc().set({
+                                                "Image list1": Imagelist[j].length>0?Imagelist[j][0]:"",
+                                                "Image list2": Imagelist[j].length>1?Imagelist[j][1]:"",
+                                                "Image list3": Imagelist[j].length>2?Imagelist[j][2]:"",
+                                                "Image list4": Imagelist[j].length>3?Imagelist[j][3]:"",
+                                                "Image list5": Imagelist[j].length>4?Imagelist[j][4]:"",
+                                                "Image list6": Imagelist[j].length>5?Imagelist[j][5]:"",
+                                              });
+                                            }
+
+                                            if(status2==true){
+                                              FirebaseFirestore.instance.collection("Item ShabikaN").doc(itemdocuid).
+                                              collection("Image").doc().set({
+                                                "Image list1": Imagelist[j].length>0?Imagelist[j][0]:"",
+                                                "Image list2": Imagelist[j].length>1?Imagelist[j][1]:"",
+                                                "Image list3": Imagelist[j].length>2?Imagelist[j][2]:"",
+                                                "Image list4": Imagelist[j].length>3?Imagelist[j][3]:"",
+                                                "Image list5": Imagelist[j].length>4?Imagelist[j][4]:"",
+                                                "Image list6": Imagelist[j].length>5?Imagelist[j][5]:"",
+                                              });
+                                            }
                                           }
-                                        }
-                                        Future.delayed(const Duration(milliseconds: 1800), () {
-                                          collectioncreatefunction();
-                                          setState(() {
-                                            popupLoading = false;
-                                          });
-                                          setState((){
-                                            IMEI.clear();
-                                            IMEI2.clear();
-                                            SERIAL.clear();
-                                            SERIAL2.clear();
-                                            colorlist.clear();
-                                            colorlist2.clear();
-                                          });
-                                        for (int k = 0; k < Quvantity; k++) {
-                                         setState((){
-                                           _controller[k].clear();
-                                           _controller2[k].clear();
-                                           _controller3[k].clear();
-                                                  });
-                                                  }
-                                          Navigator.pop(context);
+                                        collectioncreatefunction();
+                                          Future.delayed(const Duration(milliseconds: 1800), () {
+
+                                            setState(() {
+                                              popupLoading = false;
                                             });
-                                    },
-                                    child: Material(
-                                      elevation: 15,
-                                      color: const Color(0xff25D366),
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: Container(
-                                        height: height / 16.425,
-                                        width: width / 7.588,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          color: const Color(0xff25D366),
-                                        ),
-                                        child: Center(
-                                          child: Text("Okay",
-                                              style: GoogleFonts.poppins(
-                                                  letterSpacing: 1.5,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: width / 85.375,
-                                                  color: Colors.white)),
+                                            setState((){
+                                              IMEI.clear();
+                                              IMEI2.clear();
+                                              SERIAL.clear();
+                                              SERIAL2.clear();
+                                              colorlist.clear();
+                                              colorlist2.clear();
+                                            });
+                                          for (int k = 0; k < Quvantity; k++) {
+                                           setState((){
+                                             _controller[k].clear();
+                                             _controller2[k].clear();
+                                             _controller3[k].clear();
+                                                    });
+                                                    }
+                                            Navigator.pop(context);
+                                              });
+                                      },
+                                      child: Material(
+                                        elevation: 15,
+                                        color: const Color(0xff25D366),
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: Container(
+                                          height: height / 16.425,
+                                          width: width / 7.588,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            color: const Color(0xff25D366),
+                                          ),
+                                          child: Center(
+                                            child: Text("Okay",
+                                                style: GoogleFonts.openSans(
+                                                    letterSpacing: 1.5,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: width / 85.375,
+                                                    color: Colors.white)),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
 
-                                  SizedBox(width: width / 136.6),
+                                    SizedBox(width: width / 136.6),
 
-                                  //cancel buttton
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Material(
-                                      elevation: 15,
-                                      color: Colors.red,
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: Container(
-                                        height: height / 16.425,
-                                        width: width / 7.588,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          color: const Color(0xff263646),
-                                        ),
-                                        child: Center(
-                                          child: Text("Cancel",
-                                              style: GoogleFonts.poppins(
-                                                  letterSpacing: 1.5,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: width / 85.375,
-                                                  color: Colors.white)),
+                                    //cancel buttton
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Material(
+                                        elevation: 15,
+                                        color: Colors.red,
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: Container(
+                                          height: height / 16.425,
+                                          width: width / 7.588,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            color: const Color(0xff263646),
+                                          ),
+                                          child: Center(
+                                            child: Text("Cancel",
+                                                style: GoogleFonts.openSans(
+                                                    letterSpacing: 1.5,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: width / 85.375,
+                                                    color: Colors.white)),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              )
-                            ],
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -7419,7 +8296,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
                                 Text(
                                   "Add IMEI No/SERIAL No/Color/Image ",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.w700
                                   ),
                                 ),
@@ -7468,7 +8345,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                             child:
                                                             Text(
                                                               "IMEi No",
-                                                              style: GoogleFonts.montserrat(
+                                                              style: GoogleFonts.openSans(
                                                                   fontWeight:
                                                                   FontWeight.w700),
                                                             )),
@@ -7496,7 +8373,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                               child:
                                                               TextField(
                                                                 style:
-                                                                GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                 controller:
                                                                 _controller[index],
                                                                 decoration:
@@ -7508,7 +8385,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                                   contentPadding:
                                                                   EdgeInsets.only(left: width / 136.6),
                                                                   hintStyle:
-                                                                  GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                  GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                 ),
                                                                 onSubmitted:
                                                                     (_) {},
@@ -7535,7 +8412,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                             child:
                                                             Text(
                                                               "Serial No",
-                                                              style: GoogleFonts.montserrat(
+                                                              style: GoogleFonts.openSans(
                                                                   fontWeight:
                                                                   FontWeight.w700),
                                                             )),
@@ -7556,7 +8433,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey.shade200),
                                                                 child: TextField(
                                                                   style:
-                                                                  GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                  GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                   controller:
                                                                   _controller2[index],
                                                                   decoration:
@@ -7564,7 +8441,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                                     hintText: "Enter the Serial NO",
                                                                     border: InputBorder.none,
                                                                     contentPadding: EdgeInsets.only(left: width / 136.6),
-                                                                    hintStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                    hintStyle: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                   ),
                                                                   onSubmitted:
                                                                       (_) {},
@@ -7590,7 +8467,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                             child:
                                                             Text(
                                                               "Color",
-                                                              style: GoogleFonts.montserrat(
+                                                              style: GoogleFonts.openSans(
                                                                   fontWeight:
                                                                   FontWeight.w700),
                                                             )),
@@ -7611,7 +8488,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey.shade200),
                                                                 child: TextField(
                                                                   style:
-                                                                  GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                  GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                   controller:
                                                                   _controller3[index],
                                                                   decoration:
@@ -7619,7 +8496,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                                     hintText: "Color",
                                                                     border: InputBorder.none,
                                                                     contentPadding: EdgeInsets.only(left: width / 136.6),
-                                                                    hintStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                    hintStyle: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                   ),
                                                                   onSubmitted:
                                                                       (_) {},
@@ -7666,7 +8543,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                     child: Text(
                                                       "Image",
                                                       style:
-                                                      GoogleFonts.montserrat(
+                                                      GoogleFonts.openSans(
                                                           fontWeight:
                                                           FontWeight
                                                               .w700),
@@ -7701,7 +8578,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                                               width: width / 13.66,
                                                                               child: Column(
                                                                                 children: [
-                                                                                  Text("Product Img${index2+1}",style: GoogleFonts.poppins(fontWeight: FontWeight.w700),),
+                                                                                  Text("Product Img${index2+1}",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),),
                                                                                   Padding(
                                                                                       padding: EdgeInsets
                                                                                           .symmetric(
@@ -7874,35 +8751,36 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                           }
 
                                         }
+                                        collectioncreatefunction();
+                                        if(status==true){
+                                          FirebaseFirestore.instance.collection("Item ShabikaG").doc(docid).update({
+                                            "Imei no": IMEI,
+                                            "Serial no": SERIAL,
+                                            "color": colorlist,
+                                          });
+                                        }
+
+                                        if(status2==true){
+                                          FirebaseFirestore.instance.collection("Item ShabikaN").doc(docid).update({
+                                            "Imei no": IMEI,
+                                            "Serial no": SERIAL,
+                                            "color": colorlist,
+                                          });
+                                        }
+                                        setState(() {
+                                          popupLoading = false;
+
+                                        });
+                                        for (int k = 0; k < Quvantity; k++) {
+                                          setState((){
+                                            _controller[k].clear();
+                                            _controller2[k].clear();
+                                            _controller3[k].clear();
+                                          });
+                                        }
                                         print("ime save-4");
                                         Future.delayed(const Duration(milliseconds: 1800), () {
-                                          collectioncreatefunction();
-                                          if(status==true){
-                                            FirebaseFirestore.instance.collection("Item ShabikaG").doc(docid).update({
-                                              "Imei no": IMEI,
-                                              "Serial no": SERIAL,
-                                              "color": colorlist,
-                                            });
-                                          }
 
-                                          if(status2==true){
-                                            FirebaseFirestore.instance.collection("Item ShabikaN").doc(docid).update({
-                                              "Imei no": IMEI,
-                                              "Serial no": SERIAL,
-                                              "color": colorlist,
-                                            });
-                                          }
-                                          setState(() {
-                                            popupLoading = false;
-
-                                          });
-                                          for (int k = 0; k < Quvantity; k++) {
-                                            setState((){
-                                              _controller[k].clear();
-                                              _controller2[k].clear();
-                                              _controller3[k].clear();
-                                            });
-                                          }
                                           setState(() {
                                             IMEI.clear();
                                             IMEI2.clear();
@@ -7930,7 +8808,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                           ),
                                           child: Center(
                                             child: Text("Okay",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     letterSpacing: 1.5,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: width / 85.375,
@@ -7961,7 +8839,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                           ),
                                           child: Center(
                                             child: Text("Cancel",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     letterSpacing: 1.5,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: width / 85.375,
@@ -8434,6 +9312,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     });
     return _cities;
   }
+
 }
 
 class Location {
@@ -8448,4 +9327,6 @@ class Location {
     return Location(
         json['Name'], json['District'], json['Region'], json['State']);
   }
+
+
 }

@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shabika_billing/Service_Job_sheet_File/techservices.dart';
 import '../Banking_Page/Banking_Page.dart';
 import '../Brand_Page/Brand.dart';
 import '../Catogorys_Page/Catogory.dart';
@@ -49,8 +50,8 @@ const List<String> list = <String>[
 
 const List<String> saleslist = <String>[
   'Sales',
-  'Sales\nReports',
   'Sales\nEntry',
+  'Sales\nReports',
   "Sales\nReturns",
   "SL-Returns\nReports",
 
@@ -58,8 +59,8 @@ const List<String> saleslist = <String>[
 
 const List<String> Purchaselist = <String>[
   'Purchase',
-  'Purchase\nReports',
   'Purchase\nEntry',
+  'Purchase\nReports',
   "Purchase\nReturns",
   "Returns\nReports"
 
@@ -111,7 +112,7 @@ const List<String> Supportlists = <String>[
   'Service\nStatus',
   'Service\nEntry',
   'Service\nReports',
-  'Update\nStatus',
+  'Work\nSheet',
 ];
 
 const List<String> Simcardlists = <String>[
@@ -1174,8 +1175,8 @@ class _drawerState extends State<drawer> {
               Pages== 'Service\nProblem'?  const Service_Problem_Page():
               Pages== 'Service\nBrand'?   const Service_Brand_Page():
               Pages== 'Service\nStatus'?  const  Service_Status_Page():
-              Pages== 'Service\nEntry'?    Service_Entry_Page(widget.loginperson,"",""):
-              Pages== 'Update\nStatus'?   const Service_Update_Status_Page():
+              Pages== 'Service\nEntry'?    Service_Entry_Page2(widget.loginperson,"",""):
+              Pages== 'Work\nSheet'?    techService():
               Pages== 'Service\nReports'?   const Service_Reports_Page():
               Pages== 'Items\nMaster'?  const  Item_Description_Page():
               Pages== "Payment"?  const  Payment_Page():

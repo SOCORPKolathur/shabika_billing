@@ -5078,7 +5078,7 @@ double viewalltotal=0;
 
                                     Container(
                                       height: height / 21.9,
-                                      width: width / 9.7,
+                                      width: width / 7.7,
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(5),
@@ -5210,7 +5210,7 @@ double viewalltotal=0;
                                 Amounttype == "Credit Amount"
                                     ? Container(
                                         height: height / 21.9,
-                                        width: width / 7.83,
+                                        width: width / 8.83,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
@@ -5241,7 +5241,7 @@ double viewalltotal=0;
                                 Amounttype == "Credit Amount"
                                     ? Container(
                                         height: height / 21.9,
-                                        width: width / 7.83,
+                                        width: width / 8.83,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
@@ -5266,7 +5266,7 @@ double viewalltotal=0;
                                 SizedBox(width: width / 170.75),
 
                                 //Pay Now
-                                Amounttype == "Credit Amount"
+                                balanceamount != 0
                                     ? GestureDetector(
                                         onTap: () {
                                           Payedpopup(streamid);
@@ -6265,10 +6265,19 @@ print("sddfd---------------------------------------------");
   int year = DateTime.now().year;
   int month = DateTime.now().month;
   int day = DateTime.now().day;
+  String billtype ="";
 
   printdate(streamid) async {
     print("Pay now called");
     print(streamid);
+   var testdoc= await FirebaseFirestore.instance
+        .collection("Purchase entry")
+        .doc(streamid).get();
+
+   Map<String, dynamic>? val = testdoc.data();
+   setState(() {
+     billtype=val!["type"];
+   });
     var date = DateTime.now();
     var newDate=DateTime.now();
     if(creditdat.text!=""&&creditdat.text!=" ") {
@@ -6289,6 +6298,7 @@ print("sddfd---------------------------------------------");
       "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
       "balance amount": balanceamount,
     });
+    print("Pay now work started");
     FirebaseFirestore.instance
         .collection("Purchase entry")
         .doc(streamid)
@@ -6305,7 +6315,9 @@ print("sddfd---------------------------------------------");
       "discount": Discountbalnce.text,
       "timstamp": DateTime.now().millisecondsSinceEpoch,
     });
-    if (status == true) {
+    print("Pay now work started++++++++++++++++++++++++++");
+    if (billtype == "ShabikaG") {
+      print("Pay now -2 ${balanceamount}");
       FirebaseFirestore.instance
           .collection("Purchase ShabikaG")
           .doc(streamid)
@@ -6332,7 +6344,8 @@ print("sddfd---------------------------------------------");
         "timstamp": DateTime.now().millisecondsSinceEpoch,
       });
     }
-    if (status2 == true) {
+    if (billtype == "ShabikaN") {
+      print("Pay now -3 ${balanceamount}");
       FirebaseFirestore.instance
           .collection("Purchase ShabikaN")
           .doc(streamid)
@@ -6372,6 +6385,7 @@ print("sddfd---------------------------------------------");
     print("POP");
     Navigator.pop(context);
    Navigator.pop(context);
+    billingtotalamount();
   }
 
   //payment invalid popup
