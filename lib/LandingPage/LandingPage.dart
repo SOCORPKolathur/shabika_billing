@@ -26,6 +26,7 @@ import '../Service_Job_sheet_File/Service_Problem_Page.dart';
 import '../Service_Job_sheet_File/Service_Reports_Page.dart';
 import '../Service_Job_sheet_File/Service_Status.dart';
 import '../Service_Job_sheet_File/Service_Update_Status_Page.dart';
+import '../Service_Job_sheet_File/servicefullviewreports.dart';
 import '../Simcard_Page-Files/Operator_Page.dart';
 import '../Simcard_Page-Files/Simacard_Operator_Page.dart';
 import '../Simcard_Page-Files/SimcardReport_Page.dart';
@@ -113,6 +114,7 @@ const List<String> Supportlists = <String>[
   'Service\nEntry',
   'Service\nReports',
   'Work\nSheet',
+  'Service\nReports Main',
 ];
 
 const List<String> Simcardlists = <String>[
@@ -1178,6 +1180,7 @@ class _drawerState extends State<drawer> {
               Pages== 'Service\nEntry'?    Service_Entry_Page2(widget.loginperson,"",""):
               Pages== 'Work\nSheet'?    techService():
               Pages== 'Service\nReports'?   const Service_Reports_Page():
+              Pages== 'Service\nReports Main'?   const ServiceFullview():
               Pages== 'Items\nMaster'?  const  Item_Description_Page():
               Pages== "Payment"?  const  Payment_Page():
               Pages== 'Replace\nEntry'?    const ReplaceMent_Page():

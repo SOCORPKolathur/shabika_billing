@@ -554,7 +554,6 @@ String random ="";
     setState(() {
       docid= randomAlphaNumeric(16);
     });
-
     FirebaseFirestore.instance.collection("Service Bills").doc(docid).set({
       "save":true,
       "billno":billno.text,
@@ -5277,7 +5276,9 @@ child:TextField(
             "IMEI NO": imeivalue,
             "Image": image,
             "Color": color,
+            "Landing Cost": Landingcost,
           });
+
 
       if (status == true) {
         FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
@@ -5359,7 +5360,7 @@ child:TextField(
         });
       }
 
-      FirebaseFirestore.instance.collection("Service Bills").doc(documentid).collection("Items").doc().set({
+      FirebaseFirestore.instance.collection("Service Bills").doc(documentid).collection("Itemsused").doc().set({
         "itemcode": itemcode,
         "Hsncode": HSN_Code.text,
         "BoxNo": Box_NO.text,
@@ -5377,6 +5378,7 @@ child:TextField(
         "Imei no": imeinu,
         "Serial no": serialnu,
         "color": colornu,
+        "Landing Cost": Landingcost,
       });
 
       updatetotalquvantity();
@@ -5419,14 +5421,11 @@ child:TextField(
     });
     print(random);
 
-    FirebaseFirestore.instance.collection("Service Bills").doc(documentid).update({
-      "status":statustype,
-      "remarks":remarkscon.text
-    });
+
 
     var document1=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
     for(int i=0;i<document1.docs.length;i++){
-      TotalAmount2= TotalAmount2 + double.parse(document1.docs[i]["Sales price"]);
+      TotalAmount2= TotalAmount2 + double.parse(document1.docs[i]["Landing Cost"]);
     }
 
     FirebaseFirestore.instance.collection("billing").doc(random).update({
@@ -5444,6 +5443,12 @@ child:TextField(
       "Discountamount": "0",
       "Discountamountpercentage": "0",
     });
+    FirebaseFirestore.instance.collection("Service Bills").doc(documentid).update(
+        {
+          "status":statustype,
+          "remarks":remarkscon.text,
+          "itemtotal":TotalAmount2.toStringAsFixed(2)
+        });
     if (status == true) {
       FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
         "Total": totalamount,
@@ -5634,6 +5639,7 @@ child:TextField(
   String itemimei = '';
   String itemserial = '';
   String itemcolor = '';
+  String Landingcost = '';
   createpurchase2(name) async {
 
       setState(() {
@@ -5667,6 +5673,7 @@ child:TextField(
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
               PPrice.text=documents.docs[i]["Landingcost"].toString();
+              Landingcost=documents.docs[i]["Landingcost"].toString();
               salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());//sales price
               serialvalue = documents.docs[i]["Serial NO"];
               imeivalue = documents.docs[i]["IMEI NO"];
@@ -5729,6 +5736,7 @@ child:TextField(
               print("ppppppppp=========================================");
               print(documents.docs[i]["Landingcost"].toString());
               PPrice.text=documents.docs[i]["Landingcost"].toString();
+              Landingcost=documents.docs[i]["Landingcost"].toString();
               salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());
               serialvalue = documents.docs[i]["Serial NO"];
               imeivalue = documents.docs[i]["IMEI NO"];

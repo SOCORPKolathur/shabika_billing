@@ -1,4 +1,4 @@
-
+import 'package:flutter/material.dart';
 import 'dart:html';
 
 import 'package:animate_do/animate_do.dart';
@@ -18,31 +18,21 @@ import 'package:shabika_billing/Customer-Page/Customer.dart';
 import 'package:shabika_billing/Edit_customer_Page.dart';
 import 'package:shabika_billing/pattern_page.dart';
 
-
-
-
-
 const List<String> list3 = <String>[
   "GST",
   "IGST",
 ];
 
 
-
-
-class Service_Entry_Page2 extends StatefulWidget {
-  String?Receivedperson;
-  String?setvalue;
-  String?docid;
-  Service_Entry_Page2(this.Receivedperson,this.setvalue,this.docid);
+class Serviceeditpage extends StatefulWidget {
+  String docid;
+  Serviceeditpage(this.docid);
 
   @override
-  State<Service_Entry_Page2> createState() => _Service_Entry_Page2State();
+  State<Serviceeditpage> createState() => _ServiceeditpageState();
 }
 
-class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
-
-
+class _ServiceeditpageState extends State<Serviceeditpage> {
   String dropdownValue3 = list3.first;
   FocusNode suppiertax = FocusNode();
   FocusNode suppierincoice_no = FocusNode();
@@ -125,7 +115,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
 
 
   final TextEditingController _typeAheadControllerbrand = TextEditingController();
-   TextEditingController _typeAheadControllerbrand2 = TextEditingController();
+  TextEditingController _typeAheadControllerbrand2 = TextEditingController();
 
   final TextEditingController _typeAheadControlleritem = TextEditingController();
   final TextEditingController _typeAheadControllerproblem = TextEditingController();
@@ -136,7 +126,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
   List<String> brandlist2 = <String>[];
   List<String> problemlist = <String>[];
   List<String> problemlist2 = <String>[];
-  List<TextEditingController> problemcost = List.generate(20, (index) => TextEditingController());
+  List problemcost = [];
   bool check=false;
   bool check2=false;
   bool check3=false;
@@ -173,6 +163,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
   TextEditingController  remarkscon = new TextEditingController();
   TextEditingController  totalcon = new TextEditingController();
   TextEditingController  advancecon = new TextEditingController();
+  TextEditingController  topaycon = new TextEditingController();
   TextEditingController  discountcon = new TextEditingController();
   TextEditingController  deliverydate = new TextEditingController();
   TextEditingController  deliverytime = new TextEditingController();
@@ -254,9 +245,9 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
           .orderBy("Newitemname", descending: false)
           .get();
       for (int i = 0; i < Document.docs.length; i++) {
-       setState(() {
-         itemlist.add("${Document.docs[i]['Newitemname']} - ${Document.docs[i]['Saleprice']} Stocks -  ${Document.docs[i]['TotalQuvantity']}");
-       });
+        setState(() {
+          itemlist.add("${Document.docs[i]['Newitemname']} - ${Document.docs[i]['Saleprice']} Stocks -  ${Document.docs[i]['TotalQuvantity']}");
+        });
       }
     }
     else{
@@ -387,15 +378,15 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
       problemlist.clear();
     });
 
-      var Document = await FirebaseFirestore.instance
-          .collection('Service_problem')
-          .orderBy("Description", descending: false)
-          .get();
-      for (int i = 0; i < Document.docs.length; i++) {
-        setState(() {
-          problemlist.add("${Document.docs[i]['Description']}");
-        });
-      }
+    var Document = await FirebaseFirestore.instance
+        .collection('Service_problem')
+        .orderBy("Description", descending: false)
+        .get();
+    for (int i = 0; i < Document.docs.length; i++) {
+      setState(() {
+        problemlist.add("${Document.docs[i]['Description']}");
+      });
+    }
 
   }
   statusaddfunction() async {
@@ -406,15 +397,15 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
       statustypelist.add("Please Select");
     });
 
-      var Document = await FirebaseFirestore.instance
-          .collection('Service_Status')
-          .orderBy("service status", descending: false)
-          .get();
-      for (int i = 0; i < Document.docs.length; i++) {
-        setState(() {
-          statustypelist.add("${Document.docs[i]['service status']}");
-        });
-      }
+    var Document = await FirebaseFirestore.instance
+        .collection('Service_Status')
+        .orderBy("service status", descending: false)
+        .get();
+    for (int i = 0; i < Document.docs.length; i++) {
+      setState(() {
+        statustypelist.add("${Document.docs[i]['service status']}");
+      });
+    }
 
   }
 
@@ -500,20 +491,20 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
           onTap: () {
             //clearitemaddfunction();
 
-           setState(() {
-             problemlist2.add(textEditingController.text);
-             textEditingController.clear();
-             _typeAheadControllerproblem.clear();
-             servicepro = false;
-           });
-           print(problemlist2);
+            setState(() {
+              problemlist2.add(textEditingController.text);
+              textEditingController.clear();
+              _typeAheadControllerproblem.clear();
+              servicepro = false;
+            });
+            print(problemlist2);
           },
           child: Container(
               height: height / 26.28,
               width: width / 54.64,
               decoration: BoxDecoration(
-                border: Border.all(color:Colors.black),
-                borderRadius: BorderRadius.circular(50)
+                  border: Border.all(color:Colors.black),
+                  borderRadius: BorderRadius.circular(50)
               ),
 
               child: const Icon(Icons.add)),
@@ -539,25 +530,21 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
     var docus1 = await FirebaseFirestore.instance.collection("Service Bills").get();
     print("ok 2++++++++++++++++");
     print("ok 2+++++++++${docus1.docs.length}");
-      setState(() {
-        billcount=docus1.docs.length + 1;
-        print(billcount);
-        billno.text = "${(billcount).toString().padLeft(3, "0")}";
-      });
+    setState(() {
+      billcount=docus1.docs.length + 1;
+      print(billcount);
+      billno.text = "${(billcount).toString().padLeft(3, "0")}";
+    });
     print(billno.text);
 
   }
 
- bool servicepro = false;
- bool savetapped = false;
+  bool servicepro = false;
+  bool savetapped = false;
 
 
   @override
   void initState() {
-    setState(() {
-      purchase_Date.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
-      deliverydate.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
-    });
     Userdata();
     categoryaddfunction();
     barndaddfunction();
@@ -566,9 +553,55 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
     problemaddfunction();
     statusaddfunction();
     addpaymentmode();
-    billcounts();
+    setdata();
+
     // TODO: implement initState
     super.initState();
+  }
+
+  setdata() async {
+    var docsu = await FirebaseFirestore.instance.collection("Service Bills").doc(widget.docid).get();
+    Map<String,dynamic> ? val =  docsu.data();
+
+    billno.text=val!["billno"];
+    purchase_Date.text=val["date"];
+   // billno.text=val["time"];
+    _typeAheadControllergender9.text=val["cusmob"];
+    alphone.text=val["cusalmob"];
+    customername.text=val["cusname"];
+    _typeAheadControllerbrand2.text=val["brand"];
+    modelcon.text=val["model"];
+    colorcon.text=val["color"];
+    imeicon.text=val["imei"];
+    check=val["battery"];
+    check2=val["sim"];
+    check3=val["mmc"];
+    check4=val["charger"];
+    locktype=val["phonelocktype"];
+    passwordcon.text=val["password"];
+    statustype=val["status"];
+    totalamount=val["totalcost"];
+    advancecon.text=val["advance"];
+    balanceamount=val["balance"];
+    discountcon.text=val["discount"];
+    deliverydate.text=val["deliverydate"];
+    deliverytime.text=val["deliverytime"];
+    Payments=val["Paymentmode"];
+    remarkscon.text=val["remarks"];
+    for(int i=0;i<val["patternlist"].length;i++){
+    Patterlist.add(val["patternlist"][i]);
+    }
+    var doc2= await FirebaseFirestore.instance.collection("Service Bills").doc(widget.docid)
+        .collection("Problems").get();
+    for(int i=0;i<doc2.docs.length;i++) {
+
+          setState((){
+       problemlist2.add(doc2.docs[i]["problem"]);
+       problemcost.add(doc2.docs[i]["cost"]);
+      });
+    }
+
+
   }
 
 
@@ -577,65 +610,65 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
     setState(() {
       docid= randomAlphaNumeric(16);
     });
-
-    FirebaseFirestore.instance.collection("Service Bills").doc(docid).set({
+    FirebaseFirestore.instance.collection("Service Bills").doc(widget.docid).update({
       "save":true,
       "billno":billno.text,
       "date": purchase_Date.text,
-    "time": "${DateFormat('hh:mm a').format(DateTime.now())}",
-    "cusmob": _typeAheadControllergender9.text,
-    "cusalmob": alphone.text,
-    "cusname": customername.text,
-    "brand": _typeAheadControllerbrand2.text,
-    "model": modelcon.text,
-    "color":colorcon.text,
-    "imei":imeicon.text,
-    "battery":check,
-    "sim":check2,
-    "mmc":check3,
-    "charger":check4,
-    "phonelocktype":locktype,
-    "password":passwordcon.text,
-    "status":statustype,
-    "received person":"",
-    "totalcost":totalamount,
-    "advance":advancecon.text,
-    "balance":balanceamount,
-    "discount":discountcon.text,
-      "pending":discountcon.text!=""? totalamount- double.parse(discountcon.text) : totalamount,
-    "img1":img1url,
-    "img2":img2url,
-    "img3":img3url,
+      "time": "${DateFormat('hh:mm a').format(DateTime.now())}",
+      "cusmob": _typeAheadControllergender9.text,
+      "cusalmob": alphone.text,
+      "cusname": customername.text,
+      "brand": _typeAheadControllerbrand2.text,
+      "model": modelcon.text,
+      "color":colorcon.text,
+      "imei":imeicon.text,
+      "battery":check,
+      "sim":check2,
+      "mmc":check3,
+      "charger":check4,
+      "phonelocktype":locktype,
+      "password":passwordcon.text,
+      "status":statustype,
+      "received person":"",
+      "totalcost":totalamount,
+      "advance":advancecon.text,
+      "balance":balanceamount,
+      "discount":discountcon.text,
+      "img1":img1url,
+      "img2":img2url,
+      "img3":img3url,
       "deliverydate":deliverydate.text,
       "deliverytime":deliverytime.text,
       "patternlist":Patterlist,
       "timestamp":DateTime.now().millisecondsSinceEpoch,
       "Paymentmode":Payments,
-      "remarks":remarkscon.text,
-      "itemtotal":"0"
+      "remarks":remarkscon.text
     });
-    for(int i=0;i<problemlist2.length;i++) {
-      FirebaseFirestore.instance.collection("Service Bills").doc(docid)
+    /*for(int i=0;i<problemlist2.length;i++) {
+      FirebaseFirestore.instance.collection("Service Bills").doc(widget.docid)
           .collection("Problems").doc()
           .set({
         "problem":problemlist2[i],
         "cost":problemcost[i].text
       });
-    }
-    if(advancecon.text!="") {
-      FirebaseFirestore.instance.collection("Service Bills").doc(docid)
+    }*/
+
+    if(topaycon.text!="") {
+      FirebaseFirestore.instance.collection("Service Bills").doc(widget.docid)
           .collection("Payment Histroy").doc()
           .set({
-        "type":"Advance",
-        "date": purchase_Date.text,
+        "type":"Payment",
+        "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
         "time": "${DateFormat('hh:mm a').format(DateTime.now())}",
         'payment mode':Payments,
-        'Amount':advancecon.text,
+        'Amount':topaycon.text,
         "balance":balanceamount,
         "timestamp":DateTime.now().millisecondsSinceEpoch,
 
       });
     }
+
+
   }
   Savebillpopup() {
     double width = MediaQuery.of(context).size.width;
@@ -660,7 +693,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                         height: height / 99.85,
                       ),
                       Text(
-                        "Bill Saved Successfully..",
+                        "Bill Edited Successfully..",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
@@ -693,28 +726,28 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                 modelcon.clear();
                                 colorcon.clear();
                                 imeicon.clear();
-                                 passwordcon.clear();
-                                 remarkscon.clear();
-                                 totalcon.clear();
-                                 advancecon.clear();
-                                 discountcon.clear();
-                                 check=false;
-                                 check2=false;
-                                 check3=false;
-                                 check4=false;
-                                 problemlist2.clear();
-                                 problemcost.clear();
-                                 totalamount=0;
-                                 advancecon.clear();
-                                 balanceamount=0;
-                                 discountcon.clear();
-                                 locktype ="Please Select";
-                                 statustype= "Please Select";
-                                 _typeAheadControllercateory.clear();
-                                 _typeAheadControllerbrand.clear();
-                                 _typeAheadControlleritem.clear();
-                                 price.clear();
-                                 boxno.clear();
+                                passwordcon.clear();
+                                remarkscon.clear();
+                                totalcon.clear();
+                                advancecon.clear();
+                                discountcon.clear();
+                                check=false;
+                                check2=false;
+                                check3=false;
+                                check4=false;
+                                problemlist2.clear();
+                                problemcost.clear();
+                                totalamount=0;
+                                advancecon.clear();
+                                balanceamount=0;
+                                discountcon.clear();
+                                locktype ="Please Select";
+                                statustype= "Please Select";
+                                _typeAheadControllercateory.clear();
+                                _typeAheadControllerbrand.clear();
+                                _typeAheadControlleritem.clear();
+                                price.clear();
+                                boxno.clear();
 
 
 
@@ -723,6 +756,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                               setState(() {
                                 savetapped=false;
                               });
+                              Navigator.pop(context);
 
                             },
                             child: Material(
@@ -1008,9 +1042,19 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Form(
-      key: Formkey,
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff263646),
+        title: Text("Edit Bill Details",style: GoogleFonts.cairo(
+          fontWeight: FontWeight.bold,
+          fontSize: width/70.39,
+          color:Colors.white,
+        )),
+      ),
+      backgroundColor: Color(0xff00A99D),
+      body: Form(
+        key: Formkey,
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -1148,21 +1192,11 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                         left: width / 130, right: width / 170),
-                                    child:
-                                    LayoutBuilder(
-                                      builder: (BuildContext, BoxConstraints) =>
-                                          Autocomplete<String>(
-                                            fieldViewBuilder: (context, textEditingController,
-                                                focusNode, onFieldSubmitted) {
-
-                                              return  TextFormField(
+                                    child: TextFormField(
                                                 onChanged: (_){
-                                                 if(savetapped==true){
-                                                   Formkey.currentState!.validate();
-                                                 }
-                                                  setState((){
-                                                    _typeAheadControllergender9.text=textEditingController.text;
-                                                  });
+                                                  if(savetapped==true){
+                                                    Formkey.currentState!.validate();
+                                                  }
                                                 },
                                                 style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize: width/85,),
@@ -1176,20 +1210,19 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                                         InkWell(
                                                             onTap: (){
                                                               Userdata();
-                                                                //AddnewcustomeGst.clear();
+                                                              //AddnewcustomeGst.clear();
                                                             },
                                                             child:  const Icon(Icons.refresh,size: 20)),
                                                         InkWell(
                                                             onTap: (){
 
-                                                               setState(() {
-                                                                 customerphone.clear();
-                                                                 alphone.clear();
-                                                                 customername.clear();
-                                                                 textEditingController.clear();
-                                                               });
+                                                              setState(() {
+                                                                customerphone.clear();
+                                                                alphone.clear();
+                                                                customername.clear();
+                                                              });
 
-                                                                //AddnewcustomeGst.clear();
+                                                              //AddnewcustomeGst.clear();
                                                             },
                                                             child:  const Icon(Icons.clear,size: 20)),
                                                       ],
@@ -1201,98 +1234,23 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                                       top: height / 153.8),
 
                                                 ),
-                                                controller: textEditingController,
+                                                controller: _typeAheadControllergender9,
 
                                                 validator: (value) => value!.isEmpty
                                                     ? "Field Can't Empty"
                                                     : null,
-                                                focusNode: focusNode,
+
                                                 onFieldSubmitted: (String value) {
-                                                  onFieldSubmitted();
+
                                                   if(savetapped==true){
                                                     Formkey.currentState!.validate();
                                                   }
                                                 },
-                                              );
-
-                                            },
-                                            initialValue: const TextEditingValue(
-                                                text:"",
-                                                selection: TextSelection(
-                                                  isDirectional: true,
-                                                  baseOffset: 5,
-                                                  extentOffset: 1,
-                                                )),
-                                            optionsViewBuilder:
-                                                (context, onSelected, options) => Align(
-                                                alignment: Alignment.topLeft,
-                                                child: Material(
-                                                  shape: const RoundedRectangleBorder(
-                                                    borderRadius:
-                                                    BorderRadius.vertical(
-                                                        bottom: Radius.circular(
-                                                            4.0)),
-                                                  ),
-                                                  child: SizedBox(
-                                                    height: 52.0 * options.length,
-                                                    width: BoxConstraints
-                                                        .biggest.width,
-                                                    child: ListView.builder(
-                                                      padding: EdgeInsets.zero,
-                                                      itemCount: options.length,
-                                                      shrinkWrap: false,
-                                                      itemBuilder:
-                                                          (BuildContext, index) {
-                                                        final String option =
-                                                        options
-                                                            .elementAt(index);
-                                                        return InkWell(
-                                                          onTap: () =>
-                                                              onSelected(option),
-                                                          child: Padding(
-                                                            padding: const EdgeInsets.all(
-                                                                16.0),
-                                                            child: Text(option),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  ),
-                                                )),
-                                            optionsBuilder:
-                                                (TextEditingValue textEditingValue) {
-                                              if (textEditingValue.text == '') {
-                                                return const Iterable<String>.empty();
-                                              }
-
-                                              if (textEditingValue.text != "") {
-                                                //check(textEditingValue.text.toString());
-                                              }
-
-                                              return User.where((String option) {
-                                                return option.toLowerCase().contains(
-                                                    textEditingValue.text
-                                                        .toLowerCase());
-                                              });
-                                            },
-                                            onSelected: (String selection) {
-                                              setState(() {
-                                                customerphone.text = selection;
-                                                _typeAheadControllergender9.text = selection;
-                                              });
-                                              getcutomerdetails(selection);
+                                              )
 
 
-                                             // check(_typeAheadControllergender9.text.toString());
 
-                                              debugPrint(
-                                                  'You just selected $selection');
-                                            },
-                                            displayStringForOption: (Value) {
-                                              return Value;
-                                            },
-                                          ),
-                                    ),
+
                                   )),
                             ),
                             SizedBox(
@@ -1305,7 +1263,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                               child:  GestureDetector(
                                 onTap: () async {
                                   Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (context)=>Customer("Entry"))
+                                      MaterialPageRoute(builder: (context)=>Customer("Entry"))
                                   );
                                 },
                                 child: ClipOval(
@@ -1756,87 +1714,87 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
 
                               ),
                             ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              right: width / 170),
-                          child: LayoutBuilder(
-                            builder: (BuildContext, BoxConstraints) =>
-                                Autocomplete<String>(
-                                  fieldViewBuilder: (context, textEditingController,
-                                      focusNode, onFieldSubmitted) {
-                                    return textfield2(
-                                      focusNode,
-                                      textEditingController,
-                                      onFieldSubmitted,
-                                    );
-                                  },
-                                  initialValue: const TextEditingValue(
-                                      selection: TextSelection(
-                                        isDirectional: true,
-                                        baseOffset: 5,
-                                        extentOffset: 1,
-                                      )),
-                                  optionsViewBuilder:
-                                      (context, onSelected, options) => Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Material(
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.vertical(
-                                              bottom: Radius.circular(4.0)),
-                                        ),
-                                        child: SizedBox(
-                                          height: 52.0 * options.length,
-                                          width: BoxConstraints.biggest.width,
-                                          child: ListView.builder(
-                                            padding: EdgeInsets.zero,
-                                            itemCount: options.length,
-                                            shrinkWrap: false,
-                                            itemBuilder: (BuildContext, index) {
-                                              final String option =
-                                              options.elementAt(index);
-                                              return InkWell(
-                                                onTap: () => onSelected(option),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(16.0),
-                                                  child: Text(option),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      )),
-                                  optionsBuilder:
-                                      (TextEditingValue textEditingValue) {
-                                    if (textEditingValue.text == '') {
-                                      return const Iterable<String>.empty();
-                                    }
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  right: width / 170),
+                              child: LayoutBuilder(
+                                builder: (BuildContext, BoxConstraints) =>
+                                    Autocomplete<String>(
+                                      fieldViewBuilder: (context, textEditingController,
+                                          focusNode, onFieldSubmitted) {
+                                        return textfield2(
+                                          focusNode,
+                                          textEditingController,
+                                          onFieldSubmitted,
+                                        );
+                                      },
+                                      initialValue: const TextEditingValue(
+                                          selection: TextSelection(
+                                            isDirectional: true,
+                                            baseOffset: 5,
+                                            extentOffset: 1,
+                                          )),
+                                      optionsViewBuilder:
+                                          (context, onSelected, options) => Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Material(
+                                            shape: const RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.vertical(
+                                                  bottom: Radius.circular(4.0)),
+                                            ),
+                                            child: SizedBox(
+                                              height: 52.0 * options.length,
+                                              width: BoxConstraints.biggest.width,
+                                              child: ListView.builder(
+                                                padding: EdgeInsets.zero,
+                                                itemCount: options.length,
+                                                shrinkWrap: false,
+                                                itemBuilder: (BuildContext, index) {
+                                                  final String option =
+                                                  options.elementAt(index);
+                                                  return InkWell(
+                                                    onTap: () => onSelected(option),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.all(16.0),
+                                                      child: Text(option),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          )),
+                                      optionsBuilder:
+                                          (TextEditingValue textEditingValue) {
+                                        if (textEditingValue.text == '') {
+                                          return const Iterable<String>.empty();
+                                        }
 
-                                    if (textEditingValue.text != "") {
-                                      setState(() {
-                                        _typeAheadControllerbrand.text =
-                                            textEditingValue.text;
-                                      });
-                                      itemaddfunctionbybrand();
-                                      //itemaddfunction();
-                                      //itemcodeaddfunction();
-                                    }
-                                    return Barndlist.where((String option) {
-                                      return option.toLowerCase().contains(
-                                          textEditingValue.text.toLowerCase());
-                                    });
-                                  },
-                                  onSelected: (String selection) {
-                                    setState(() {
-                                      _typeAheadControllerbrand.text = selection;
-                                    });
-                                    //itemaddfunction();
-                                    //itemcodeaddfunction();
-                                  },
-                                  displayStringForOption: (Value) {
-                                    return Value;
-                                  },
-                                ),
-                          ),),
+                                        if (textEditingValue.text != "") {
+                                          setState(() {
+                                            _typeAheadControllerbrand.text =
+                                                textEditingValue.text;
+                                          });
+                                          itemaddfunctionbybrand();
+                                          //itemaddfunction();
+                                          //itemcodeaddfunction();
+                                        }
+                                        return Barndlist.where((String option) {
+                                          return option.toLowerCase().contains(
+                                              textEditingValue.text.toLowerCase());
+                                        });
+                                      },
+                                      onSelected: (String selection) {
+                                        setState(() {
+                                          _typeAheadControllerbrand.text = selection;
+                                        });
+                                        //itemaddfunction();
+                                        //itemcodeaddfunction();
+                                      },
+                                      displayStringForOption: (Value) {
+                                        return Value;
+                                      },
+                                    ),
+                              ),),
 
 
                           ],
@@ -2068,7 +2026,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
               ],
             ),
 
-        Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -2210,9 +2168,9 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
 
                                     onChanged: (_) {
 
-                                        if(savetapped==true) {
-                                          Formkey.currentState!.validate();
-                                        }
+                                      if(savetapped==true) {
+                                        Formkey.currentState!.validate();
+                                      }
                                       setState(() {
                                         _typeAheadControllerbrand2 = textEditingController;
                                       });
@@ -2721,8 +2679,8 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                           );
 
                           if (picked != null && picked != TimeOfDay.now()) {
-        _formatTime(picked!);
-      }
+                            _formatTime(picked!);
+                          }
 
                         },
                       ),
@@ -2843,22 +2801,22 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.black, width: 0.6)),
-                    child: TextField(
-      controller: image2,
-      onTap: (){
-        if(img2url=="") {
-          selectimage2();
-        }
-        else{
-          viewimage(2,img2url,image2.text);
-        }
-      },
-      decoration: InputDecoration(
-      border: InputBorder.none,
-      contentPadding: EdgeInsets.only(
-      left: width / 136.6, bottom: height / 65.7),
-      hintText: ""),
-      ),
+                      child: TextField(
+                        controller: image2,
+                        onTap: (){
+                          if(img2url=="") {
+                            selectimage2();
+                          }
+                          else{
+                            viewimage(2,img2url,image2.text);
+                          }
+                        },
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: width / 136.6, bottom: height / 65.7),
+                            hintText: ""),
+                      ),
                     ),
                   ],
                 ),
@@ -2942,235 +2900,146 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
             ),
 
 
-          Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding:  EdgeInsets.only(top: height / 100.4, left: width / 80.32),
-                child: Material(
-                  elevation: 50,
-                  shadowColor: Colors.black38,
-                  color: const Color(0xffFFFFFF),
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    width: width / 2.05,
-                    height: height / 5.14,
-                    decoration: BoxDecoration(
-                        color: const Color(0xffFFFFFF),
-                        borderRadius: BorderRadius.circular(12)),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding:  EdgeInsets.only(top: height / 100.4, left: width / 80.32),
+                  child: Material(
+                    elevation: 50,
+                    shadowColor: Colors.black38,
+                    color: const Color(0xffFFFFFF),
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                        width: width / 2.05,
+                        height: height / 5.14,
+                        decoration: BoxDecoration(
+                            color: const Color(0xffFFFFFF),
+                            borderRadius: BorderRadius.circular(12)),
 
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                        child: Stack(
+                          alignment: Alignment.center,
                           children: [
-                            Row(
-                                children:[
-                                  Container(
-                                    width: 552,
-                                    height: height / 21.9,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xff1D5B79),
-                                        border: Border.all(color: Colors.black, width: 0.6),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(12)
-                                      )
-                                    ),
-                                    child: Center(
-                                      child: Text( "Service Problems",
-                                        style: GoogleFonts.openSans(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w800),),
-                                    ),
-                                  ),
-                                  Container(
-
-                                    width: width / 9.6,
-                                    height: height / 21.9,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xff1D5B79),
-                                        border: Border.all(color: Colors.black, width: 0.6),
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(12)
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Row(
+                                    children:[
+                                      Container(
+                                        width: 552,
+                                        height: height / 21.9,
+                                        decoration: BoxDecoration(
+                                            color: Color(0xff1D5B79),
+                                            border: Border.all(color: Colors.black, width: 0.6),
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(12)
+                                            )
+                                        ),
+                                        child: Center(
+                                          child: Text( "Service Problems",
+                                            style: GoogleFonts.openSans(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w800),),
+                                        ),
                                       ),
-                                    ),
-                                    child: Center(
-                                      child: Text( "Cost",
-                                        style: GoogleFonts.openSans(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w800),),
-                                    ),
+                                      Container(
+
+                                        width: width / 9.6,
+                                        height: height / 21.9,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xff1D5B79),
+                                          border: Border.all(color: Colors.black, width: 0.6),
+                                          borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(12)
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text( "Cost",
+                                            style: GoogleFonts.openSans(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w800),),
+                                        ),
+                                      ),
+                                    ]
+                                ),
+
+                                Container(
+                                  height: height / 5.14-height / 21.9,
+                                  child: ListView.builder(
+                                    itemCount: problemlist2.length,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemBuilder: (context,index){
+                                      return  Row(
+                                          children:[
+                                            Container(
+                                              width: 552,
+                                              height: height / 21.9,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black, width: 0.6),
+
+                                              ),
+                                              child: Center(
+                                                child: Text(problemlist2[index],
+                                                  style: GoogleFonts.openSans(
+                                                      color: Colors.black,
+                                                      fontWeight: FontWeight.w800),overflow: TextOverflow.ellipsis,),
+                                              ),
+                                            ),
+                                            Container(
+
+                                              width: width / 9.6,
+                                              height: height / 21.9,
+                                              decoration: BoxDecoration(
+
+                                                border: Border.all(color: Colors.black, width: 0.6),
+
+                                              ),
+                                              child: Text(
+                                               problemcost[index],
+
+                                                style: GoogleFonts.openSans(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w800),
+
+
+
+                                              ),
+                                            ),
+                                          ]
+                                      );
+
+                                    },
+
                                   ),
-                                ]
+                                )
+                              ],
                             ),
 
-                            Container(
-                              height: height / 5.14-height / 21.9,
-                              child: ListView.builder(
-                                itemCount: problemlist2.length,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemBuilder: (context,index){
-                                  return  Row(
-                                      children:[
-                                        Container(
-                                          width: 552,
-                                          height: height / 21.9,
-                                          decoration: BoxDecoration(
-                                              border: Border.all(color: Colors.black, width: 0.6),
-
-                                          ),
-                                          child: Center(
-                                            child: Text(problemlist2[index],
-                                              style: GoogleFonts.openSans(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w800),overflow: TextOverflow.ellipsis,),
-                                          ),
-                                        ),
-                                        Container(
-
-                                          width: width / 9.6,
-                                          height: height / 21.9,
-                                          decoration: BoxDecoration(
-
-                                            border: Border.all(color: Colors.black, width: 0.6),
-
-                                          ),
-                                          child: TextField(
-                                            controller:problemcost[index],
-
-                                            style: GoogleFonts.openSans(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w800),
-                                            decoration: InputDecoration(
-                                                contentPadding: EdgeInsets.only(
-                                                    left: width / 136.6, bottom: height / 65.7),
-                                              suffixIcon: InkWell(
-                                                  onTap:(){
-                                                    setState(() {
-                                                      problemlist2.removeAt(index);
-                                                      problemcost[index].clear();
-                                                    });
-                                                    },
-                                                  child: Icon(Icons.cancel_outlined))
-                                            ),
-                                            onSubmitted: (val){
-                                              setState(() {
-                                                totalamount=0;
-                                              });
-                                              if(index==problemlist2.length-1){
-
-                                                for(int i=0;i<problemlist2.length;i++){
-                                                  setState(() {
-                                                    totalamount= totalamount + double.parse(problemcost[i].text);
-                                                  });
-
-                                                }
-                                                setState(() {
-                                                  totalcon.text =totalamount.toString();
-                                                  advancecon.text ="0";
-                                                  discountcon.text ="0";
-                                                  balanceamount=totalamount;
-                                                });
-
-                                              }
-
-                                            },
-
-
-                                          ),
-                                        ),
-                                      ]
-                                  );
-
-                                },
-
-                              ),
-                            )
+                            servicepro == true ?Text("Service Problem Cannot be empty",style: TextStyle(color:Colors.red),) : SizedBox()
                           ],
-                        ),
-
-                        servicepro == true ?Text("Service Problem Cannot be empty",style: TextStyle(color:Colors.red),) : SizedBox()
-                      ],
-                    )
+                        )
+                    ),
                   ),
                 ),
-              ),
-              locktype=="Pattern"?
-              Padding(
-                padding:  EdgeInsets.only(top: height / 100.4, left: width / 80.32),
-                child: Container(
-                  height: height / 5.14,
-                  width:width/7.732,
-                  color:Colors.white,
-                  child: Column(
+                locktype=="Pattern"?
+                Padding(
+                  padding:  EdgeInsets.only(top: height / 100.4, left: width / 80.32),
+                  child: Container(
+                    height: height / 5.14,
+                    width:width/7.732,
+                    color:Colors.white,
+                    child: Column(
 
-                    children: [
-                      Text( "Draw Pattern",
-                        style: GoogleFonts.openSans(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600),),
-                      SizedBox(
-                        width:width/8.415,
-                        height: height / 6,
-                        child: PatternLock(
-                          // color of selected points.
-                          selectedColor: Colors.red,
-                          // radius of points.
-                          pointRadius: 10,
-                          // whether show user's input and highlight selected points.
-                          showInput: true,
-                          // count of points horizontally and vertically.
-                          dimension: 3,
-                          // padding of points area relative to distance between points.
-                          relativePadding: 0.7,
-                          // needed distance from input to point to select point.
-                          selectThreshold: 25,
-                          // whether fill points.
-                          fillPoints: true,
-                          // callback that called when user's input complete. Called if user selected one or more points.
-                          onInputComplete: (List<int> input) {
-                            setState(() {
-                              Patterlist.clear();
-                            });
-                            Future.delayed(const Duration(seconds: 1), () {
-                              setState(() {
-                                Patterlist=input;
-                                passwordcon.text=input.toString();
-                              });
-                            });
-
-
-                          },
-                        ),
-                      ),
-
-                    ],
-                  ),
-                ),
-              ): SizedBox(),
-              locktype=="Pattern" && Patterlist.isNotEmpty?  Padding(
-                padding:  EdgeInsets.only(top: height / 100.4, left: width / 80.32),
-                child: Container(
-                  height: height / 5.14,
-                  width:width/7.732,
-                  color:Colors.white,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-
-                    children: [
-                      Text( "Confirm Pattern",
-  style: GoogleFonts.openSans(
-        color: Colors.black,
-        fontWeight: FontWeight.w600),),
-                      SizedBox(
-                        width:width/8.415,
-                        height: height / 6,
-                        child:  IgnorePointer(
-                          ignoring: true,
-                          child: PatternLock2(
-                            used: Patterlist,
+                      children: [
+                        Text( "Draw Pattern",
+                          style: GoogleFonts.openSans(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600),),
+                        SizedBox(
+                          width:width/8.415,
+                          height: height / 6,
+                          child: PatternLock(
                             // color of selected points.
                             selectedColor: Colors.red,
                             // radius of points.
@@ -3187,103 +3056,159 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                             fillPoints: true,
                             // callback that called when user's input complete. Called if user selected one or more points.
                             onInputComplete: (List<int> input) {
+                              setState(() {
+                                Patterlist.clear();
+                              });
+                              Future.delayed(const Duration(seconds: 1), () {
+                                setState(() {
+                                  Patterlist=input;
+                                  passwordcon.text=input.toString();
+                                });
+                              });
+
+
                             },
                           ),
                         ),
-                      ),
 
+                      ],
+                    ),
+                  ),
+                ): SizedBox(),
+                locktype=="Pattern" && Patterlist.isNotEmpty?  Padding(
+                  padding:  EdgeInsets.only(top: height / 100.4, left: width / 80.32),
+                  child: Container(
+                    height: height / 5.14,
+                    width:width/7.732,
+                    color:Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+
+                      children: [
+                        Text( "Confirm Pattern",
+                          style: GoogleFonts.openSans(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600),),
+                        SizedBox(
+                          width:width/8.415,
+                          height: height / 6,
+                          child:  IgnorePointer(
+                            ignoring: true,
+                            child: PatternLock2(
+                              used: Patterlist,
+                              // color of selected points.
+                              selectedColor: Colors.red,
+                              // radius of points.
+                              pointRadius: 10,
+                              // whether show user's input and highlight selected points.
+                              showInput: true,
+                              // count of points horizontally and vertically.
+                              dimension: 3,
+                              // padding of points area relative to distance between points.
+                              relativePadding: 0.7,
+                              // needed distance from input to point to select point.
+                              selectThreshold: 25,
+                              // whether fill points.
+                              fillPoints: true,
+                              // callback that called when user's input complete. Called if user selected one or more points.
+                              onInputComplete: (List<int> input) {
+                              },
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ): SizedBox(),
+                Padding(
+                  padding:  EdgeInsets.only(right: width / 80.32),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: width / 5.6,
+                        height: height / 16.42,
+                        //color: Color(0xffD60A0B),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: const Color(0xff1D5B79),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Last Bill No  ",
+                              style: GoogleFonts.openSans(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Container(
+                              width:width / 12.2,
+                              height: height / 21.9,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade300,
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: TextField(
+                                // controller: PPrice,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                      left: width / 136.6,
+                                      bottom: height / 65.7),
+                                ),
+                                onSubmitted: (_) {
+
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(
+                        width: width / 5.6,
+                        height: height / 16.42,
+                        //color: Color(0xffD60A0B),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: const Color(0xff075E54),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Received By   ",
+                              style: GoogleFonts.openSans(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Container(
+                              width:width / 12.2,
+                              height: height / 21.9,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade300,
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: TextField(
+                                // controller: PPrice,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                      left: width / 136.6,
+                                      bottom: height / 65.7),
+                                ),
+                                onSubmitted: (_) {
+
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ): SizedBox(),
-              Padding(
-                padding:  EdgeInsets.only(right: width / 80.32),
-                child: Column(
-                  children: [
-                    Container(
-                      width: width / 5.6,
-                      height: height / 16.42,
-                      //color: Color(0xffD60A0B),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: const Color(0xff1D5B79),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Last Bill No  ",
-                            style: GoogleFonts.openSans(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          Container(
-                            width:width / 12.2,
-                            height: height / 21.9,
-                            decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(5)),
-                            child: TextField(
-                              // controller: PPrice,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.only(
-                                    left: width / 136.6,
-                                    bottom: height / 65.7),
-                              ),
-                              onSubmitted: (_) {
-
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(
-                      width: width / 5.6,
-                      height: height / 16.42,
-                      //color: Color(0xffD60A0B),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: const Color(0xff075E54),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Received By   ",
-                            style: GoogleFonts.openSans(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          Container(
-                            width:width / 12.2,
-                            height: height / 21.9,
-                            decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(5)),
-                            child: TextField(
-                              // controller: PPrice,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.only(
-                                    left: width / 136.6,
-                                    bottom: height / 65.7),
-                              ),
-                              onSubmitted: (_) {
-
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+              ],
+            ),
 
             Padding(
               padding: EdgeInsets.only(top: height / 100.4, ),
@@ -3314,14 +3239,9 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                   savetapped= true;
                                 });
                                 if (Formkey.currentState!.validate() && problemlist2.length!=0) {
-                                  if(Payments!="Please Select Type"){
-                                    Saveinvoice();
-                                    Savebillpopup();
-                                  }
-                                  else{
-                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please select Payment type")));
-                                  }
 
+                                  Saveinvoice();
+                                  Savebillpopup();
                                 }
 
                                 if(problemlist2.length!=0){
@@ -3337,7 +3257,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
 
                               },
                               child: Container(
-                                width: width / 9.6,
+                                width: width / 10.6,
                                 height: height / 16.42,
                                 //color: Color(0xffD60A0B),
                                 decoration: BoxDecoration(
@@ -3346,13 +3266,13 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                 ),
                                 child: Center(
                                     child: Text(
-                                      "Save Invoice",
+                                      "Update Invoice",
                                       style:
                                       GoogleFonts.openSans(color: Colors.white),
                                     )),
                               ),
                             ),
-                            SizedBox(
+                           /* SizedBox(
                               width: width/90.53,
                             ),
                             InkWell(
@@ -3370,19 +3290,19 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                 ),
                                 child: Center(
                                     child: Text(
-                                      "Save & Print",
+                                      "Update & Print",
                                       style:
                                       GoogleFonts.openSans(color: Colors.white),
                                     )),
                               ),
                             ),
-
+*/
                             SizedBox(
-                              width: width/90.53,
+                              width: width/100.53,
                             ),
 
                             Container(
-                              width: width / 6.3,
+                              width: width / 7.3,
                               height: height / 16.42,
                               //color: Color(0xffD60A0B),
                               decoration: BoxDecoration(
@@ -3399,7 +3319,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Container(
-                                    width:width / 13.2,
+                                    width:width / 14.2,
                                     height: height / 21.9,
                                     decoration: BoxDecoration(
                                         color: Colors.grey.shade300,
@@ -3433,7 +3353,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                             ),
 
                             SizedBox(
-                              width: width/90.53,
+                              width: width/100.53,
                             ),
 
                             //L-BILL button
@@ -3462,7 +3382,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                         color: Colors.grey.shade300,
                                         borderRadius: BorderRadius.circular(5)),
                                     child: TextField(
-                                       controller: totalcon,
+                                      controller: totalcon,
                                       decoration: InputDecoration(
                                         border: InputBorder.none,
                                         contentPadding: EdgeInsets.only(
@@ -3616,6 +3536,54 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                             SizedBox(
                               width: width/90.53,
                             ),
+                            Container(
+                              width: width / 7.3,
+                              height: height / 16.42,
+                              //color: Color(0xffD60A0B),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: const Color(0xff075E54),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Pay Now: ",
+                                    style: GoogleFonts.openSans(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  Container(
+                                    width:width / 13.2,
+                                    height: height / 21.9,
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey.shade300,
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: TextField(
+                                      controller: topaycon,
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        contentPadding: EdgeInsets.only(
+                                            left: width / 136.6,
+                                            bottom: height / 65.7),
+                                      ),
+                                      onSubmitted: (_) {
+                                        if(topaycon.text!="") {
+                                            setState(() {
+                                              balanceamount = balanceamount -
+                                                  double.parse(topaycon.text);
+                                            });
+                                        }
+
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: width/90.53,
+                            ),
                             InkWell(
                               onTap: () {
 
@@ -3660,8 +3628,11 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
             )
           ],
         ),
+      ),
     );
   }
+
+
   String _formatTime(TimeOfDay time) {
     int hour = time.hourOfPeriod;
     int minute = time.minute;
@@ -3672,6 +3643,4 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
 
     return  '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')} $period';
   }
-
 }
-
