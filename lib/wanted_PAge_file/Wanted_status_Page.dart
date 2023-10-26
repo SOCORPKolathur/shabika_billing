@@ -32,8 +32,8 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return categoryclick==false?
-    Column(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -95,7 +95,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
           padding:  EdgeInsets.symmetric(horizontal: width/75.888,vertical: height/36.5),
           child: Image.asset("assets/Line13.png"),
         ),
-        Padding(
+       /* Padding(
           padding:  EdgeInsets.only(left: width/27.32),
           child: Row(
             children: [
@@ -199,496 +199,440 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
               ),
             ),
           ],
-        ),
+        ),*/
+        Padding(
+          padding:  EdgeInsets.symmetric(horizontal: width/75.88),
+          child: Row(
+            children: [
 
+              //index (Serial number)
+              Container(
+                height: height / 16.42,
+                width: width / 13.66,
+                // color: Colors.grey,
+                decoration: const BoxDecoration(
+                    color: Color(0xffFFFFFF),
+                    borderRadius: BorderRadius.only(
+
+                        topLeft: Radius.circular(12),
+                        bottomLeft: Radius.circular(12)),
+                    ),
+                child: Center(
+                    child: Text(
+                      "Add",
+                      style: GoogleFonts.cairo(
+                          fontWeight: FontWeight.bold,
+                          fontSize: width/75.888,
+                         ),
+                    )),
+              ),
+
+              //name text
+              Container(
+                height: height / 16.42,
+                width: width / 5.10,
+                decoration: const BoxDecoration(
+                  color: Color(0xffFFFFFF),
+                   ),
+                child: Padding(
+                  padding:  EdgeInsets.only(
+                      left: width/75.888, top: height/131.4),
+                  child: TextField(
+                    controller: Operator1,
+
+                    style: GoogleFonts.cairo(
+                        fontWeight: FontWeight.bold,
+                        fontSize: width/75.888,
+                       ),
+                    decoration:  InputDecoration(
+                        hintText: "Status 1",
+                        contentPadding: EdgeInsets.only(bottom: height/100),
+                      border: InputBorder.none,
+                        suffixIcon: InkWell(
+                            onTap: (){
+                              FirebaseFirestore.instance.collection("Status1").doc().set({
+                                "name":Operator1.text,
+                                "timestamp":DateTime.now().millisecondsSinceEpoch
+                              });
+                              setState(() {
+                                Operator1.clear();
+                              });
+                            },
+                            child: Icon(Icons.add))
+                    ),
+                  ),
+                ),
+              ),
+
+              Container(
+                height: height / 16.42,
+                width: width / 5.10,
+                decoration: const BoxDecoration(
+                  color: Color(0xffFFFFFF),
+                   ),
+                child: Padding(
+                  padding:  EdgeInsets.only(
+                      left: width/75.888, top: height/131.4),
+                  child: TextField(
+                    controller: Operator2,
+                    style: GoogleFonts.cairo(
+                        fontWeight: FontWeight.bold,
+                        fontSize: width/75.888,
+                        ),
+                    decoration:  InputDecoration(
+                        hintText: "Status 2",
+                        contentPadding: EdgeInsets.only(bottom: height/100),
+                        border: InputBorder.none,
+                        suffixIcon: InkWell(
+                            onTap: (){
+                              FirebaseFirestore.instance.collection("Status2").doc().set({
+                                "name":Operator2.text,
+                                "timestamp":DateTime.now().millisecondsSinceEpoch
+                              });
+                              setState(() {
+                                Operator2.clear();
+                              });
+                            },
+                            child: Icon(Icons.add))
+                    ),
+                  ),
+                ),
+              ),
+
+              Container(
+                height: height / 16.42,
+                width: width / 5.10,
+                decoration: const BoxDecoration(
+                  color: Color(0xffFFFFFF),
+                  borderRadius: BorderRadius.only(
+
+                      topRight: Radius.circular(12),
+                      bottomRight: Radius.circular(12)),
+
+                    ),
+                child: Padding(
+                  padding:  EdgeInsets.only(
+                      left: width/75.888, top: height/131.4),
+                  child: TextField(
+                    controller: Operator3,
+
+                    style: GoogleFonts.cairo(
+                        fontWeight: FontWeight.bold,
+                        fontSize: width/75.888,
+                       ),
+                    decoration:  InputDecoration(
+                      hintText: "Status 3",
+                      contentPadding: EdgeInsets.only(bottom: height/100),
+                        border: InputBorder.none,
+                      suffixIcon: InkWell(
+                          onTap: (){
+                            FirebaseFirestore.instance.collection("Status3").doc().set({
+                              "name":Operator3.text,
+                              "timestamp":DateTime.now().millisecondsSinceEpoch
+                            });
+                            setState(() {
+                              Operator3.clear();
+                            });
+                          },
+                          child: Icon(Icons.add))
+                    ),
+                  ),
+                ),
+              ),
+
+
+
+              //active text
+
+
+            ],
+          ),
+        ),
+        SizedBox(height: height / 26.42,),
+        Padding(
+          padding:  EdgeInsets.symmetric( horizontal: width/75.88),
+          child: Container(
+            width: (  width / 5.10* 3)+ width / 13.66 +15,
+            height: height / 16.42,
+            // color: Color(0xff00A99D),
+            decoration: const BoxDecoration(
+                color: Color(0xffFFFFFF),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(12),
+                    topLeft: Radius.circular(12))),
+            child: Row(
+              children: [
+                Padding(
+                  padding:
+                  EdgeInsets.only(left: width/42.68, right: width/34.15),
+                  child: Text("Sl.no",
+                      style: GoogleFonts.cairo(
+                          color: const Color(0xff00A99D),
+                          fontSize: width/68.3,
+                          fontWeight: FontWeight.w600)),
+                ),
+                SizedBox(
+                  height: height / 13.14,
+                  width: width / 5.10,
+                  child: Text("Status-1",
+                      style: GoogleFonts.cairo(
+                          color: const Color(0xff00A99D),
+                          fontSize: width/68.3,
+                          fontWeight: FontWeight.w600)),
+                ),
+                SizedBox(
+                  height: height / 13.14,
+                  width: width / 5.10,
+                  child: Text("Status-2",
+                      style: GoogleFonts.cairo(
+                          color: const Color(0xff00A99D),
+                          fontSize: width/68.3,
+                          fontWeight: FontWeight.w600)),
+                ),
+                SizedBox(
+                  height: height / 13.14,
+                  width: width / 5.10,
+                  child: Text("Status-3",
+                      style: GoogleFonts.cairo(
+                          color: const Color(0xff00A99D),
+                          fontSize: width/68.3,
+                          fontWeight: FontWeight.w600)),
+                ),
+
+              ],
+            ),
+          ),
+        ),
         //table details
         Padding(
           padding:  EdgeInsets.symmetric(
-              vertical: height/36.5,
+
               horizontal: width/75.88
           ),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12),bottomRight: Radius.circular(12)),
                 color: const Color(0xff00A99D),
                 border: Border.all(color: Colors.red)),
 
-            width: width / 1.03,
+            width: (  width / 5.10* 3)+ width / 13.66 +15,
 
             height: height / 1.87,
             child: SingleChildScrollView(
               child: Column(
-                children: [
 
-                  //titilesssss....
+                children: [
                   Container(
-                    width: width / 1.03,
-                    height: height / 16.42,
-                    // color: Color(0xff00A99D),
-                    decoration: const BoxDecoration(
-                        color: Color(0xffFFFFFF),
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(12),
-                            topLeft: Radius.circular(12))),
+                    width: (  width / 5.10* 3)+ width / 13.66 +15,
+                    height: height / 1.87,
                     child: Row(
+
+                      crossAxisAlignment: CrossAxisAlignment.start,
+
+
                       children: [
-                        Padding(
-                          padding:
-                          EdgeInsets.only(left: width/42.68, right: width/34.15),
-                          child: Text("Sl.no",
-                              style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D),
-                                  fontSize: width/68.3,
-                                  fontWeight: FontWeight.w600)),
+
+                        //index (Serial number)
+                        Container(
+                          width: width / 13.66,
+                          child: ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: 25,
+                            itemBuilder: (context,index) {
+                              return Container(
+                                height: height / 13.14,
+                                width: width / 13.66,
+                                // color: Colors.grey,
+                                decoration: const BoxDecoration(
+                                    color: Color(0xff00A99D),
+                                    border: Border(
+                                      right: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                      bottom: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    )),
+                                child: Center(
+                                    child: Text(
+                                      (index + 1).toString(),
+                                      style: GoogleFonts.cairo(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: width / 75.888,
+                                          color: const Color(0xffFDFDFD)),
+                                    )),
+                              );
+
+                            },
+                          ),
                         ),
-                        SizedBox(
-                          height: height / 13.14,
+
+
+                        Container(
                           width: width / 5.10,
-                          child: Text("Status-1",
-                              style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D),
-                                  fontSize: width/68.3,
-                                  fontWeight: FontWeight.w600)),
+                          child: StreamBuilder(stream: FirebaseFirestore.instance.collection("Status1").orderBy("timestamp").snapshots(),
+                              builder: (context,snap){
+
+                            return ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: snap.data!.docs.length,
+                              itemBuilder: (context,index) {
+                                return Container(
+                                  height: height / 13.14,
+                                  width: width / 5.10,
+                                  decoration: const BoxDecoration(
+                                      color: Color(0xff00A99D),
+                                      border: Border(
+                                        right: BorderSide(
+                                          color: Colors.red,
+                                        ),
+                                        bottom: BorderSide(
+                                          color: Colors.red,
+                                        ),
+                                      )),
+                                  child: Padding(
+                                    padding:  EdgeInsets.only(
+                                        left: width/75.888, top: height/131.4),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: width / 6.2,
+                                          child: Text(
+                                            snap.data!.docs[index]
+                                            ["name"],
+                                            style: GoogleFonts.cairo(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: width/75.888,
+                                                color: const Color(0xffFDFDFD)),
+                                          ),
+                                        ),
+                                        InkWell(
+                                            onTap: (){
+                                              delete1(snap.data!.docs[index].id);
+                                            },
+                                            child: Icon(Icons.delete))
+                                      ],
+                                    ),
+                                  ),
+                                );
+
+                              },
+                            );
+                          }),
                         ),
-                        SizedBox(
-                          height: height / 13.14,
+                        Container(
                           width: width / 5.10,
-                          child: Text("Status-2",
-                              style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D),
-                                  fontSize: width/68.3,
-                                  fontWeight: FontWeight.w600)),
+                          child: StreamBuilder(stream: FirebaseFirestore.instance.collection("Status2").orderBy("timestamp").snapshots(),
+                              builder: (context,snap){
+
+                            return ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: snap.data!.docs.length,
+                              itemBuilder: (context,index) {
+                                return Container(
+                                  height: height / 13.14,
+                                  width: width / 5.10,
+                                  decoration: const BoxDecoration(
+                                      color: Color(0xff00A99D),
+                                      border: Border(
+                                        right: BorderSide(
+                                          color: Colors.red,
+                                        ),
+                                        bottom: BorderSide(
+                                          color: Colors.red,
+                                        ),
+                                      )),
+                                  child: Padding(
+                                    padding:  EdgeInsets.only(
+                                        left: width/75.888, top: height/131.4),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: width / 6.2,
+                                          child: Text(
+                                            snap.data!.docs[index]
+                                            ["name"],
+                                            style: GoogleFonts.cairo(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: width/75.888,
+                                                color: const Color(0xffFDFDFD)),
+                                          ),
+                                        ),
+                                        InkWell(
+                                            onTap: (){
+                                              delete2(snap.data!.docs[index].id);
+                                            },
+                                            child: Icon(Icons.delete))
+                                      ],
+                                    ),
+                                  ),
+                                );
+
+                              },
+                            );
+                          }),
                         ),
-                        SizedBox(
-                          height: height / 13.14,
+                        Container(
                           width: width / 5.10,
-                          child: Text("Status-3",
-                              style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D),
-                                  fontSize: width/68.3,
-                                  fontWeight: FontWeight.w600)),
+                          child: StreamBuilder(stream: FirebaseFirestore.instance.collection("Status3").orderBy("timestamp").snapshots(),
+                              builder: (context,snap){
+
+                            return ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: snap.data!.docs.length,
+                              itemBuilder: (context,index) {
+                                return Container(
+                                  height: height / 13.14,
+                                  width: width / 5.10,
+                                  decoration: const BoxDecoration(
+                                      color: Color(0xff00A99D),
+                                      border: Border(
+
+                                        bottom: BorderSide(
+                                          color: Colors.red,
+                                        ),
+                                      )),
+                                  child: Padding(
+                                    padding:  EdgeInsets.only(
+                                        left: width/75.888, top: height/131.4),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: width / 6.2,
+                                          child: Text(
+                                            snap.data!.docs[index]
+                                            ["name"],
+                                            style: GoogleFonts.cairo(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: width/75.888,
+                                                color: const Color(0xffFDFDFD)),
+                                          ),
+                                        ),
+                                        InkWell(
+                                            onTap: (){
+                                              delete3(snap.data!.docs[index].id);
+                                            },
+                                            child: Icon(Icons.delete))
+                                      ],
+                                    ),
+                                  ),
+                                );
+
+                              },
+                            );
+                          }),
                         ),
-                        Padding(
-                          padding:
-                          EdgeInsets.only(left: width/55.985, right: width/19.514),
-                          child: Text("Edit",
-                              style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D),
-                                  fontSize: width/68.3,
-                                  fontWeight: FontWeight.w600)),
-                        ),
-                        Text("Delete",
-                            style: GoogleFonts.cairo(
-                                color: const Color(0xff00A99D),
-                                fontSize: width/68.3,
-                                fontWeight: FontWeight.w600)),
-                        Padding(
-                          padding:  EdgeInsets.only(left: width/15.523),
-                          child: Text("Status",
-                              style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D),
-                                  fontSize: width/68.3,
-                                  fontWeight: FontWeight.w600)),
-                        ),
+
+
+
+
                       ],
                     ),
-                  ),
-
-                  //category stream
-                  StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance
-                        .collection("Wantedstatus").orderBy("timestamp",descending: true)
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData == null) {
-                        return Center(
-                          child: Container(),
-                        );
-                      }
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: Container(),
-                        );
-                      }
-
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data!.docs.length,
-                        itemBuilder: (context, index) {
-
-                          if(isserach==true&&snapshot.data!.docs[index]["Wantedstatus1"].toString().toLowerCase().
-                          startsWith(Username.toLowerCase()) ||
-                              isserach==true&&snapshot.data!.docs[index]["Wantedstatus2"].toString().toLowerCase().
-                              startsWith(Username.toLowerCase())||
-                              isserach==true&&snapshot.data!.docs[index]["Wantedstatus3"].toString().toLowerCase().
-                              startsWith(Username.toLowerCase())
-                          ){
-                            return Row(
-                              children: [
-
-                                //index (Serial number)
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 13.66,
-                                  // color: Colors.grey,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Center(
-                                      child: Text(
-                                        (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: const Color(0xffFDFDFD)),
-                                      )),
-                                ),
-
-                                //name text
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 5.10,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: width/75.888, top: height/131.4),
-                                    child: Text(
-                                      snapshot.data!.docs[index]
-                                      ["Wantedstatus1"],
-                                      style: GoogleFonts.cairo(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
-                                    ),
-                                  ),
-                                ),
-
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 5.10,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: width/75.888, top: height/131.4),
-                                    child: Text(
-                                      snapshot.data!.docs[index]
-                                      ["Wantedstatus2"],
-                                      style: GoogleFonts.cairo(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
-                                    ),
-                                  ),
-                                ),
-
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 5.10,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: width/75.888, top: height/131.4),
-                                    child: Text(
-                                      snapshot.data!.docs[index]
-                                      ["Wantedstatus3"],
-                                      style: GoogleFonts.cairo(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
-                                    ),
-                                  ),
-                                ),
-
-                                //edit icon(img)
-                                InkWell(
-                                  onTap:(){
-                                    editditem(snapshot.data!.docs[index].id);
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 12.64,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Image.asset("assets/edit.png")),
-                                ),//
-
-
-                                //delete icon (img)
-                                InkWell(
-                                  onTap:(){
-                                    _catogory( snapshot.data!.docs[index].id);
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 12.41,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Image.asset("assets/delete.png")),
-                                ),
-
-                                //active text
-                                Container(
-                                    height: height / 13.14,
-                                    width: width / 6.83,
-                                    // color: Colors.grey,
-                                    decoration: const BoxDecoration(
-                                        color: Color(0xff00A99D),
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color: Colors.red,
-                                          ),
-                                        )),
-                                    child: Center(
-                                        child: Text(
-                                          "Active",
-                                          style: GoogleFonts.cairo(
-                                              fontSize: width/75.888,
-                                              fontWeight: FontWeight.bold,
-                                              color: const Color(0xffFDFDFD)),
-                                        ))),
-
-                              ],
-                            );
-                          }
-                          else if(isserach==false){
-                            return Row(
-                              children: [
-
-                                //index (Serial number)
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 13.66,
-                                  // color: Colors.grey,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Center(
-                                      child: Text(
-                                        (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: const Color(0xffFDFDFD)),
-                                      )),
-                                ),
-
-                                //name text
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 5.10,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: width/75.888, top: height/131.4),
-                                    child: Text(
-                                      snapshot.data!.docs[index]
-                                      ["Wantedstatus1"],
-                                      style: GoogleFonts.cairo(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
-                                    ),
-                                  ),
-                                ),
-
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 5.10,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: width/75.888, top: height/131.4),
-                                    child: Text(
-                                      snapshot.data!.docs[index]
-                                      ["Wantedstatus2"],
-                                      style: GoogleFonts.cairo(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
-                                    ),
-                                  ),
-                                ),
-
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 5.10,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: width/75.888, top: height/131.4),
-                                    child: Text(
-                                      snapshot.data!.docs[index]
-                                      ["Wantedstatus3"],
-                                      style: GoogleFonts.cairo(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
-                                    ),
-                                  ),
-                                ),
-
-                                //edit icon(img)
-                                InkWell(
-                                  onTap:(){
-                                    editditem(snapshot.data!.docs[index].id);
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 12.64,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Image.asset("assets/edit.png")),
-                                ),//
-
-
-                                //delete icon (img)
-                                InkWell(
-                                  onTap:(){
-                                    _catogory( snapshot.data!.docs[index].id);
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 12.41,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Image.asset("assets/delete.png")),
-                                ),
-
-                                //active text
-                                Container(
-                                    height: height / 13.14,
-                                    width: width / 6.83,
-                                    // color: Colors.grey,
-                                    decoration: const BoxDecoration(
-                                        color: Color(0xff00A99D),
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color: Colors.red,
-                                          ),
-                                        )),
-                                    child: Center(
-                                        child: Text(
-                                          "Active",
-                                          style: GoogleFonts.cairo(
-                                              fontSize: width/75.888,
-                                              fontWeight: FontWeight.bold,
-                                              color: const Color(0xffFDFDFD)),
-                                        ))),
-
-                              ],
-                            );
-
-                          }
-                          return const SizedBox();
-                        },
-                      );
-                    },
-                  ),
+                  )
                 ],
               ),
             ),
@@ -698,641 +642,33 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
         )
 
       ],
-    )
-        : Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              width: 15,
-            ),
-            InkWell(
-              onTap: () {
-                setState(() {
-                  categoryclick = false;
-                });
-              },
-              child: Padding(
-                padding:  EdgeInsets.only(top: height/32.85),
-                child: Tooltip(
-                  message: "Back",
-                  child: Material(
-                    elevation: 10,
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(100),
-                    shadowColor: Colors.indigo,
-                    child: Container(
-                      height: height/21.9,
-                      width: width/45.53,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Center(
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.black,
-                          size: width/91.06,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            Padding(
-              padding:  EdgeInsets.only(left: width/35.947, top: height/32.85),
-              child: Text(
-                "Add Operators ",
-                style: GoogleFonts.cairo(
-                    fontWeight: FontWeight.bold,
-                    fontSize:width/59.391,
-                    color: const Color(0xffFFFFFF)),
-              ),
-            ),
-
-            SizedBox(
-              width: width/1.517,
-            ),
-            InkWell(
-              onTap: () {
-
-              },
-              child: Padding(
-                padding:
-                EdgeInsets.only(left: width/35.94, top: height/32.85),
-                child: Text(
-                  "Add Operators ",
-                  style: GoogleFonts.cairo(
-                      fontWeight: FontWeight.bold,
-                      fontSize:width/59.391,
-                      color: const Color(0xffFFFFFF)),
-                ),
-              ),
-            ),
-          ],
-        ),
-
-        Padding(
-          padding:  EdgeInsets.symmetric(
-              horizontal: width/75.88,
-              vertical: height/36.5
-          ),
-          child: Image.asset("assets/Line13.png"),
-        ),
-
-        //First row container and text
-
-        SizedBox(height:height/65.7),
-
-        Row(
-          children: [
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                 padding:  EdgeInsets.only(left:width/23.55,),
-                  child: Text(
-                    "Status-1 *",
-                    style: GoogleFonts.poppins(
-                        fontSize: width/97.57, color: const Color(0xff000000)),
-                  ),
-                ),
-                Padding(
-                  padding:
-                  EdgeInsets.only(left:width/23.55,),
-                  child: Container(
-                    width: width / 6.504,
-                    height: height / 16.42,
-                    decoration: BoxDecoration(
-                        color: const Color(0xffDDDEEE),
-                        borderRadius: BorderRadius.circular(4)),
-                    child: TextField(
-                      controller: Operator1,
-                      keyboardType: TextInputType.multiline,
-                      maxLines: null,
-                      style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
-                      decoration: InputDecoration(
-                        contentPadding:
-                        EdgeInsets.only(left: width/68.3, bottom: height/82.125),
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:  EdgeInsets.only(left:width/23.55,),
-                  child: Text(
-                    "Status-2 *",
-                    style: GoogleFonts.poppins(
-                        fontSize: width/97.57, color: const Color(0xff000000)),
-                  ),
-                ),
-                Padding(
-                  padding:
-                  EdgeInsets.only(left:width/23.55,),
-                  child: Container(
-                    width: width / 6.504,
-                    height: height / 16.42,
-                    decoration: BoxDecoration(
-                        color: const Color(0xffDDDEEE),
-                        borderRadius: BorderRadius.circular(4)),
-                    child: TextField(
-                      controller: Operator2,
-                      keyboardType: TextInputType.multiline,
-                      maxLines: null,
-                      style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
-                      decoration: InputDecoration(
-                        contentPadding:
-                        EdgeInsets.only(left: width/68.3, bottom: height/82.125),
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                  EdgeInsets.only(left:width/23.55,),
-                  child: Text(
-                    "Status-3 *",
-                    style: GoogleFonts.poppins(
-                        fontSize: width/97.57, color: const Color(0xff000000)),
-                  ),
-                ),
-                Padding(
-                  padding:
-                  EdgeInsets.only(left:width/23.55,),
-                  child: Container(
-                    width: width / 6.504,
-                    height: height / 16.42,
-                    decoration: BoxDecoration(
-                        color: const Color(0xffDDDEEE),
-                        borderRadius: BorderRadius.circular(4)),
-                    child: TextField(
-                      controller: Operator3,
-                      keyboardType: TextInputType.multiline,
-                      maxLines: null,
-                      style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
-                      decoration: InputDecoration(
-                        contentPadding:
-                        EdgeInsets.only(left: width/68.3, bottom: height/82.125),
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-          ],
-        ),
-
-        Padding(
-          padding:  EdgeInsets.only(top: height/36.5, left: width/19.51),
-          child: Row(
-            children: [
-              InkWell(
-                onTap: () {
-                  showdialpogbox();
-                },
-                child: Container(
-                  width: width / 13.6,
-                  height: height / 16.42,
-                  //color: Color(0xffD60A0B),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: const Color(0xff25D366)
-                  ),
-                  child: Center(
-                      child: Text(
-                        "Save",
-                        style:
-                        GoogleFonts.poppins(color: Colors.white),
-                      )),
-                ),
-              ),
-              Padding(
-                padding:  EdgeInsets.only(left: width/75.888),
-                child: InkWell(
-                  onTap: () {
-                    claercate();
-                  },
-                  child: Container(
-                    width: width / 13.6,
-                    height: height / 16.42,
-                    //color: Color(0xffD60A0B),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.red,
-                    ),
-                    child: Center(
-                        child: Text(
-                          "Reset",
-                          style: GoogleFonts.poppins(
-                              color: Colors.white),
-                        )),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
-
-      ],
     );
-  }
-
-
-  category() {
-    FirebaseFirestore.instance.collection("Wantedstatus").doc().set({
-      "Wantedstatus1":Operator1.text,
-      "Wantedstatus2":Operator2.text,
-      "Wantedstatus3":Operator3.text,
-      "Date":"${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-      "timestamp":DateTime.now().microsecondsSinceEpoch,
-    });
-    claercate();
-  }
-
-  claercate(){
-    Operator1.clear();
-    Operator2.clear();
-    Operator3.clear();
-  }
-
-  //showdialogbox..
-  showdialpogbox() {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return showDialog(context: context, builder:
-        (context) {
-      return Padding(
-        padding:  EdgeInsets.only(top: height/4.76,bottom:height/4.76),
-        child: SlideInLeft(
-          animate: true,
-          duration: const Duration(
-              milliseconds: 800),
-          manualTrigger: false,
-          child: AlertDialog(
-              backgroundColor: const Color(0xff264656),
-              content:
-              SizedBox(
-                width: width/3.902,
-                child: Column(
-                  children: [
-                    SizedBox(height: height/32.85,),
-                    Text("Add a Operator Item Successfully",style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        fontSize: width/68.3,
-                        color: Colors.white),),
-                    SizedBox(height: height/32.85,),
-                    SizedBox(
-                      height:height/ 4.38,
-                      width: width/9.106,
-                      child: Lottie.network("https://assets10.lottiefiles.com/temporary_files/ofgUtS.json"),
-                    ),
-                    SizedBox(height: height/32.85,),
-
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: (){
-                            category();
-                            Navigator.pop(context);
-                          },
-                          child: Material(
-                            elevation: 15,
-                            color: const Color(0xff25D366),
-                            borderRadius: BorderRadius.circular(5),
-                            child: Container(
-                              height: height/16.425,
-                              width: width/9.588,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: const Color(0xff25D366)
-                              ),
-                              child: Center(
-                                child: Text(
-                                    "Okay",
-                                    style: GoogleFonts.poppins(
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: width/85.375, color: Colors.white)
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width:width/68.3),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Material(
-                            elevation: 15,
-                            color: const Color(0xff263646),
-                            borderRadius: BorderRadius.circular(5),
-                            child: Container(
-                              height: height / 16.425,
-                              width: width / 9.588,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.white,
-                              ),
-                              child: Center(
-                                child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: width / 85.375,
-                                        color: Colors.black)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-
-
-                  ],
-                ),
-
-              )
-          ),
-        ),
-      );
-    },);
-
 
   }
+
+
+
+
+
 
 
 
 //delete function
-  delete(catid){
-    FirebaseFirestore.instance.collection("Wantedstatus").doc(catid).delete();
+  delete1(catid){
+    FirebaseFirestore.instance.collection("Status1").doc(catid).delete();
+
+  }
+  delete2(catid){
+    FirebaseFirestore.instance.collection("Status2").doc(catid).delete();
+
+  }
+  delete3(catid){
+    FirebaseFirestore.instance.collection("Status3").doc(catid).delete();
 
   }
 
   //_catogory showpopup(delete popup)
-  _catogory(catid){
-
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-    return showDialog(context: context, builder:(context) {
-
-      return Padding(
-        padding:  EdgeInsets.only(top: height/4.38,bottom: height/4.38,left: width/3.902,right:width/3.902),
-        child: Scaffold(
-          backgroundColor: Colors.grey.shade200,
-          body: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height:height/21.9),
-                Text("Are You Sure Want to Delete",style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w700,
-                    fontSize:width/75.88
-                ),),
-
-                SizedBox(height:height/32.85),
-
-                SizedBox(
-                  height:height/3.65,
-                  width:width/7.588,
-                  child: Lottie.network(deletefile),
-                ),
-                SizedBox(height:height/32.85),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: (){
-                        delete(catid);
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        height:height/16.425,
-                        width:width/9.588,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            color: const Color(0xff263646)
-                        ),
-                        child: Center(
-                          child: Text("Okay",style: GoogleFonts.poppins(color: Colors.white,
-                              fontWeight: FontWeight.w600),),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width:width/68.3),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Material(
-                        elevation: 15,
-                        color: const Color(0xff263646),
-                        borderRadius: BorderRadius.circular(5),
-                        child: Container(
-                          height: height / 16.425,
-                          width: width / 9.588,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.white,
-                          ),
-                          child: Center(
-                            child: Text("Cancel",
-                                style: GoogleFonts.poppins(
-                                    letterSpacing: 1.5,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: width / 85.375,
-                                    color: Colors.black)),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-
-              ],
-            ),
-          ),
-        ),
-      );
-    },);
-  }
-
-  //eidt item popup
-
-  TextEditingController edititem1 = TextEditingController();
-  TextEditingController edititem2 = TextEditingController();
-  TextEditingController edititem3 = TextEditingController();
 
 
-  edidtheitemfunction(docid){
-    FirebaseFirestore.instance.collection("Wantedstatus").doc(docid).update({
-      "Wantedstatus1":edititem1.text,
-      "Wantedstatus2":edititem2.text,
-      "Wantedstatus3":edititem3.text,
-    });
-  }
 
-  ediditemsetfunction(docid)async{
-    var getdatae=await FirebaseFirestore.instance.collection("Wantedstatus").doc(docid).get();
-    Map<String,dynamic>?value=getdatae.data();
-    setState(() {
-      edititem1.text=value!['Wantedstatus1'];
-      edititem2.text=value['Wantedstatus2'];
-      edititem3.text=value['Wantedstatus3'];
-    });
-  }
-
-  editditem(docid) {
-    ediditemsetfunction(docid);
-
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return Padding(
-          padding: EdgeInsets.only(
-              top: height / 5.35,
-              bottom: height / 5.35,
-              left: width / 3.415,
-              right: width / 3.415),
-          child: Scaffold(
-            backgroundColor: Colors.grey.shade200,
-            body: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: height / 21.9),
-                  Text(
-                    "Are You Sure Want To Edit this Item ",
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w700, fontSize: width / 68.3),
-                  ),
-                  SizedBox(height: height / 32.85),
-                  Row(
-                    children: [
-                      SizedBox(width: width / 7.805),
-                      Text(
-                        "Edit Status-1",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: height / 131.4),
-                  Container(
-                      height: height / 16.425,
-                      width: width / 6.209,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Colors.cyan),
-                      child: TextField(
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
-                        controller: edititem1,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7)),
-                      )),
-                  SizedBox(height: height / 32.85),
-                  Row(
-                    children: [
-                      SizedBox(width: width / 7.805),
-                      Text(
-                        "Edit Status-2",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: height / 131.4),
-                  Container(
-                      height: height / 16.425,
-                      width: width / 6.209,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Colors.cyan),
-                      child: TextField(
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
-                        controller: edititem2,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7)),
-                      )),
-                  SizedBox(height: height / 32.85),
-                  Row(
-                    children: [
-                      SizedBox(width: width / 7.805),
-                      Text(
-                        "Edit Status-3",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: height / 131.4),
-                  Container(
-                      height: height / 16.425,
-                      width: width / 6.209,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: Colors.cyan),
-                      child: TextField(
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
-                        controller: edititem3,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: width / 136.6, bottom: height / 65.7)),
-                      )),
-                  SizedBox(height: height / 32.85),
-                  InkWell(
-                    onTap: () {
-                      //update functions
-                      edidtheitemfunction(docid);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: height / 16.425,
-                      width: width / 10.507,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: const Color(0xff263646)),
-                      child: Center(
-                        child: Text(
-                          "Okay",
-                          style: GoogleFonts.poppins(
-                              color: Colors.white, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
 }

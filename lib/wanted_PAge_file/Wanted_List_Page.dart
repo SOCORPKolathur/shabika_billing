@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +16,8 @@ final List<String> Type = <String>[
   "Service",
   "Accessories"
 ];
+
+const List<String> Paymentmode3 = <String>['Please Select', "G pay", "Cash","Paytm","Phonepe","Card"];
 
 
 final List<String> Payment = <String>[
@@ -36,7 +41,40 @@ class _WantedList_PageState extends State<WantedList_Page> {
 
    TextEditingController Date=TextEditingController();
    TextEditingController Time=TextEditingController();
+   TextEditingController image=TextEditingController();
+   String imageurl="";
+   selectimage1(){
+     setState(() {
+       image.text="Loading...";
+     });
+     InputElement input =
+     FileUploadInputElement()
+     as InputElement
+       ..accept = 'image/*';
+     FirebaseStorage fs =
+         FirebaseStorage
+             .instance;
+     input.click();
+     input.onChange
+         .listen(
+             (event) {
+           final file = input
+               .files!.first;
+           final reader =
+           FileReader();
+           reader.readAsDataUrl(file);
+           reader.onLoadEnd.listen(
+                   (event) async {
+                 var snapshot = await fs.ref().child('ImageLIst').child(file.name).putBlob(file);
+                 String downloadUrl = await snapshot.ref.getDownloadURL();
+                 setState(() {
+                   image.text=file.name;
+                   imageurl=downloadUrl;
+                 });
 
+               });
+         });
+   }
    @override
   void initState() {
      datetimefunction();
@@ -51,22 +89,34 @@ class _WantedList_PageState extends State<WantedList_Page> {
    List <String>StatusType=[];
    List <String> StatusType2=[];
    List  <String> StatusType3=[];
-
+   String Payments2 = Paymentmode3.first;
   Starusnamelist()async{
      setState(() {
        StatusType.clear();
        StatusType2.clear();
        StatusType3.clear();
      });
-     var document=await FirebaseFirestore.instance.collection("Wantedstatus").get();
+     var document=await FirebaseFirestore.instance.collection("Status1").get();
+     var document2=await FirebaseFirestore.instance.collection("Status2").get();
+     var document3=await FirebaseFirestore.instance.collection("Status3").get();
+     setState(() {
+       StatusType.add("Status-1");
+       StatusType2.add("Status-2");
+       StatusType3.add("Status-3");
+     });
      for(int i=0;i<document.docs.length;i++){
        setState(() {
-         StatusType.add("Status-1");
-         StatusType2.add("Status-2");
-         StatusType3.add("Status-3");
-         StatusType.add(document.docs[i]['Wantedstatus1']);
-         StatusType2.add(document.docs[i]['Wantedstatus2']);
-         StatusType3.add(document.docs[i]['Wantedstatus3']);
+         StatusType.add(document.docs[i]['name']);
+       });
+     }
+     for(int i=0;i<document2.docs.length;i++){
+       setState(() {
+         StatusType2.add(document2.docs[i]['name']);
+       });
+     }
+     for(int i=0;i<document3.docs.length;i++){
+       setState(() {
+         StatusType3.add(document3.docs[i]['name']);
        });
      }
 
@@ -114,7 +164,9 @@ String WantedType=Type.first;
      Customername  .clear();
      Customerphone  .clear();
      Category.clear();
+     image.clear();
      setState(() {
+       imageurl="";
        Date.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
        Time.text = DateFormat.jm().format(DateTime.now());
         Status1=StatusType.first;
@@ -144,6 +196,9 @@ String WantedType=Type.first;
       "staus3":Status3,
       "WantedType":WantedType,
       "Update Person":"",
+      "Amount2":"0.00",
+      "imageurl":imageurl,
+      "paymentmode":Payments2,
       "timestamp": DateTime.now().microsecondsSinceEpoch,
     });
   }
@@ -312,7 +367,7 @@ String WantedType=Type.first;
             children: [
               SizedBox(width: width / 91.06),
 
-              Padding(
+            /*  Padding(
                 padding: EdgeInsets.only(
                     left: width / 27.947, top: height / 32.85),
                 child: Text(
@@ -322,106 +377,134 @@ String WantedType=Type.first;
                       fontSize: width / 59.39,
                       color: const Color(0xffFFFFFF)),
                 ),
-              ),
+              ),*/
 
             ],
           ),
 
           Padding(
             padding: EdgeInsets.only(
-                left: width / 27.947, top: height / 32.85),
+                left: width/303.55, top: height / 32.85),
             child: Row(
               children: [
 
-                SizedBox(width: width / 91.06),
-                Text("Type : ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
-                SizedBox(width: width/136.6,),
-                Container(
-                  width: width / 7.415,
-                  height: height / 18.9,
-                  //color:Colors.white,
-                  decoration:  BoxDecoration(
-                      color:  Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
-                  child:
-                  DropdownButton2<String>(
-                    value: WantedType,
-                    style:GoogleFonts.montserrat(
-                        fontSize: width/113.833,
-                        color:dawer==1?Colors.black:Colors.white,
-                        fontWeight: FontWeight.bold),
-                    underline: Container(
-                      color: Colors.deepPurpleAccent,
+                SizedBox(width: width / 20.06),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Type : ",style: GoogleFonts.poppins(color: Colors.white),),
+                    SizedBox(
+                      height: height / 136.6,
                     ),
-                    iconStyleData: const IconStyleData(
-                        icon:Icon(Icons.arrow_back_ios_outlined),
-                        iconSize: 0
-                    ),
-                    onMenuStateChange: (isOpen){
-                      setState(() {
-                        dawer=0;
-                      });
-                    },
+                    Container(
+                      width: width / 6.83,
+                      height: height / 18.9,
+                      //color:Colors.white,
+                      decoration:  BoxDecoration(
+                          color:  Colors.white,
+                          borderRadius: BorderRadius.circular(5)
+                      ),
+                      child:
+                      DropdownButton2<String>(
+                        value: WantedType,
+                        style:GoogleFonts.montserrat(
+                            fontSize: width/113.833,
+                            color:dawer==1?Colors.black:Colors.white,
+                            fontWeight: FontWeight.bold),
+                        underline: Container(
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        iconStyleData: const IconStyleData(
+                            icon:Icon(Icons.arrow_back_ios_outlined),
+                            iconSize: 0
+                        ),
+                        onMenuStateChange: (isOpen){
+                          setState(() {
+                            dawer=0;
+                          });
+                        },
 
-                    onChanged: (String? value) {
-                      setState(() {
-                        dawer=1;
-                        WantedType=value!;
-                      });
-                    },
-                    items:
-                    Type.map<DropdownMenuItem<String>>(
-                            (String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value,style:GoogleFonts.montserrat(
-                                fontSize: width/113.833,
-                                color:Colors.black,
-                                fontWeight: FontWeight.bold),),
-                          );
-                        }).toList(),
-                    dropdownStyleData: const DropdownStyleData(
-                        decoration: BoxDecoration(
-                            color: Colors.white
-                        )
+                        onChanged: (String? value) {
+                          setState(() {
+                            dawer=1;
+                            WantedType=value!;
+                          });
+                        },
+                        items:
+                        Type.map<DropdownMenuItem<String>>(
+                                (String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value,style:GoogleFonts.montserrat(
+                                    fontSize: width/113.833,
+                                    color:Colors.black,
+                                    fontWeight: FontWeight.bold),),
+                              );
+                            }).toList(),
+                        dropdownStyleData: const DropdownStyleData(
+                            decoration: BoxDecoration(
+                                color: Colors.white
+                            )
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                SizedBox(width: width/136.6,),
+
+                SizedBox(
+                  width: width / 18.83,
+                ),
 
                 //Date time conatainer
-                Text("Date : ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
-                SizedBox(width: width/136.6,),
-                Container(
-                    width: width / 7.415,
-                    height: height / 18.9,
-                  //color:Colors.white,
-                  decoration:  BoxDecoration(
-                      color:  Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
-                  child:
-                  Center(child:
-                  Text(Date.text,style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.black),))
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Date : ",style: GoogleFonts.poppins(color: Colors.white),),
+                    SizedBox(
+                      height: height / 136.6,
+                    ),
+                    Container(
+                        width: width / 6.83,
+                        height: height / 18.9,
+                        //color:Colors.white,
+                        decoration:  BoxDecoration(
+                            color:  Colors.white,
+                            borderRadius: BorderRadius.circular(5)
+                        ),
+                        child:
+                        Center(child:
+                        Text(Date.text,style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.black),))
+                    ),
+                  ],
                 ),
-                SizedBox(width: width/136.6,),
+
+                SizedBox(
+                  width: width / 18.83,
+                ),
 
                 //Time container and text
-                Text("Time : ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
-                SizedBox(width: width/136.6,),
-                Container(
-                    width: width / 7.415,
-                    height: height / 18.9,
-                    //color:Colors.white,
-                    decoration:  BoxDecoration(
-                        color:  Colors.white,
-                        borderRadius: BorderRadius.circular(5)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Time : ",style: GoogleFonts.poppins(color: Colors.white),),
+                    SizedBox(
+                      height: height / 136.6,
                     ),
-                    child:
-                    Center(child:
-                    Text(Time.text,style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.black),))
+                    Container(
+                        width: width / 6.83,
+                        height: height / 18.9,
+                        //color:Colors.white,
+                        decoration:  BoxDecoration(
+                            color:  Colors.white,
+                            borderRadius: BorderRadius.circular(5)
+                        ),
+                        child:
+                        Center(child:
+                        Text(Time.text,style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.black),))
+                    ),
+                  ],
                 ),
+
 
               ],
             ),
@@ -435,79 +518,13 @@ String WantedType=Type.first;
               children: [
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Column(
-                      children: [
-                        SizedBox(
-                            width: width / 6.83,
-                            child: Text(
-                              "Order No",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white),
-                            )),
-                        SizedBox(
-                          height: height / 136.6,
-                        ),
-                        Material(
-                          shadowColor: Colors.indigo,
-                          elevation: 25,
-                          borderRadius: BorderRadius.circular(6),
-                          color: Colors.white,
-                          child: Container(
-                            height: height / 13.14,
-                            width: width / 6.83,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.circular(6),
-                                color: Colors.white),
-                            child: TextField(
-                              controller: Order,
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(
-                                      left: width / 130.6)),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
 
-                    Column(
-                      children: [
-                        SizedBox(
-                            width: width / 6.83,
-                            child: Text(
-                              "Date",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white),
-                            )),
-                        SizedBox(
-                          height: height / 136.6,
-                        ),
-                        Material(
-                          shadowColor: Colors.indigo,
-                          elevation: 25,
-                          borderRadius: BorderRadius.circular(6),
-                          color: Colors.white,
-                          child: Container(
-                            height: height / 13.14,
-                            width: width / 6.83,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.circular(6),
-                                color: Colors.white),
-                            child: TextField(
-                              controller: Date,
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(
-                                      left: width / 130.6)),
-                            ),
-                          ),
-                        )
-                      ],
+
+                    SizedBox(
+                      width: width / 20.83,
                     ),
 
                     Column(
@@ -528,7 +545,7 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
+                            height: height / 18.9,
                             width: width / 6.83,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -630,8 +647,11 @@ String WantedType=Type.first;
                         )
                       ],
                     ),
-
+                    SizedBox(
+                      width: width / 18.83,
+                    ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
                             width: width / 6.83,
@@ -649,8 +669,8 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
-                            width: width / 6.83,
+                          height: height / 18.9,
+                            width: width / 1.83,
                             decoration: BoxDecoration(
                                 borderRadius:
                                 BorderRadius.circular(6),
@@ -749,13 +769,15 @@ String WantedType=Type.first;
                         )
                       ],
                     ),
-
+                    SizedBox(
+                      width: width / 18.83,
+                    ),
                     Column(
                       children: [
                         SizedBox(
-                            width: width / 6.83,
+                            width: width / 6.95,
                             child: Text(
-                              "Payment",
+                              "Item Image",
                               style: GoogleFonts.poppins(
                                   color: Colors.white),
                             )),
@@ -768,54 +790,28 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
-                            width: width / 6.83,
+                            height: height / 18.9,
+                            width: width / 6.95,
                             decoration: BoxDecoration(
                                 borderRadius:
                                 BorderRadius.circular(6),
                                 color: Colors.white),
-                            child:
-                            DropdownButton2<String>(
-                              value:Paymenttype,
-                              style:GoogleFonts.montserrat(
-                                  fontSize: width/113.833,
-                                  fontWeight: FontWeight.bold),
-                              underline: Container(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                              iconStyleData: const IconStyleData(
-                                  icon:Icon(Icons.arrow_back_ios_outlined),
-                                  iconSize: 0
-                              ),
-                              onMenuStateChange: (isOpen){
-                                setState(() {
-                                  dawer=5;
-                                });
+                            child: TextField(
+                              onTap: (){
+                                selectimage1();
                               },
-
-                              onChanged: (String? value) {
-                                setState(() {
-                                  dawer=5;
-                                  Paymenttype=value!;
-                                });
-                              },
-                              items:
-                              Payment.map<DropdownMenuItem<String>>(
-                                      (String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value,style:GoogleFonts.montserrat(
-                                          fontSize: width/113.833,
-
-                                          fontWeight: FontWeight.bold),),
-                                    );
-                                  }).toList(),
-
-                            ),
+                            controller: image,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                      left: width / 130.6)),
+                            )
                           ),
                         )
                       ],
                     ),
+
+
 
                   ],
                 ),
@@ -823,9 +819,11 @@ String WantedType=Type.first;
 
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-
+                    SizedBox(
+                      width: width / 20.83,
+                    ),
                     Column(
                       children: [
                         SizedBox(
@@ -844,7 +842,7 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
+                          height: height / 18.9,
                             width: width / 6.83,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -857,18 +855,20 @@ String WantedType=Type.first;
                                   contentPadding: EdgeInsets.only(
                                       left: width / 130.6)),
                               onSubmitted: (_){
-                                if(Amount.text!=""){
+                               /* if(Amount.text!=""){
                                   setState((){
                                     Paymenttype="Payment Paid";
-                                  });
-                                }
+                                  });*/
+
                               },
                             ),
                           ),
                         )
                       ],
                     ),
-
+                    SizedBox(
+                      width: width / 18.83,
+                    ),
                     Column(
                       children: [
                         SizedBox(
@@ -887,7 +887,7 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
+                          height: height / 18.9,
                             width: width / 6.83,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -902,7 +902,18 @@ String WantedType=Type.first;
                               onSubmitted: (_){
                                 setState(() {
                                   BalanceAmount.text=(double.parse(Amount.text)-double.parse(AdvanceAmount.text)).toString();
-                                  Paymenttype="Payment Paid";
+                                  if((double.parse(Amount.text)-double.parse(AdvanceAmount.text))==0){
+                                    setState(() {
+                                      Paymenttype="Payment Paid";
+                                    });
+                                  }
+                                  else{
+                                    setState(() {
+                                      Paymenttype="Payment Unpaid";
+                                    });
+                                  }
+
+
                                 });
                               },
                             ),
@@ -910,7 +921,9 @@ String WantedType=Type.first;
                         )
                       ],
                     ),
-
+                    SizedBox(
+                      width: width / 18.83,
+                    ),
                     Column(
                       children: [
                         SizedBox(
@@ -929,7 +942,7 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
+                          height: height / 18.9,
                             width: width / 6.83,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -946,7 +959,9 @@ String WantedType=Type.first;
                         )
                       ],
                     ),
-
+                    SizedBox(
+                      width: width / 18.83,
+                    ),
                     Column(
                       children: [
                         SizedBox(
@@ -965,7 +980,7 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
+                          height: height / 18.9,
                             width: width / 6.83,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -982,7 +997,9 @@ String WantedType=Type.first;
                         )
                       ],
                     ),
-
+                    SizedBox(
+                      width: width / 18.83,
+                    ),
                     Column(
                       children: [
                         SizedBox(
@@ -1001,7 +1018,7 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
+                          height: height / 18.9,
                             width: width / 6.83,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -1019,15 +1036,74 @@ String WantedType=Type.first;
                       ],
                     ),
 
+
                   ],
                 ),
                 SizedBox(height:height/32.85 ,),
 
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-
+                    SizedBox(
+                      width: width / 20.83,
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                            width: width / 6.83,
+                            child: Text(
+                              "Payment",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white),
+                            )),
+                        SizedBox(
+                          height: height / 136.6,
+                        ),
+                        Material(
+                          shadowColor: Colors.indigo,
+                          elevation: 25,
+                          borderRadius: BorderRadius.circular(6),
+                          color: Colors.white,
+                          child: Container(
+                            height: height / 18.9,
+                            width: width / 6.83,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                BorderRadius.circular(6),
+                                color: Colors.white),
+                            child:
+                            DropdownButton2<String>(
+                              value: Payments2,
+                              isExpanded: true,
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: width / 105.07),
+                              underline: Container(
+                                color: Colors.deepPurpleAccent,
+                              ),
+                              onChanged: (String? value) {
+                                // This is called when the user selects an item.
+                                setState(() {
+                                  Payments2 = value!;
+                                });
+                              },
+                              items: Paymentmode3.map<
+                                  DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: width / 18.83,
+                    ),
                     Column(
                       children: [
                         SizedBox(
@@ -1046,7 +1122,7 @@ String WantedType=Type.first;
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.white,
                           child: Container(
-                            height: height / 13.14,
+                          height: height / 18.9,
                             width: width / 6.83,
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -1094,137 +1170,10 @@ String WantedType=Type.first;
                       ],
                     ),
 
-                    Column(
-                      children: [
-                        SizedBox(
-                            width: width / 6.83,
-                            child: Text(
-                              "Status-2",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white),
-                            )),
-                        SizedBox(
-                          height: height / 136.6,
-                        ),
-                        Material(
-                          shadowColor: Colors.indigo,
-                          elevation: 25,
-                          borderRadius: BorderRadius.circular(6),
-                          color: Colors.white,
-                          child: Container(
-                            height: height / 13.14,
-                            width: width / 6.83,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.circular(6),
-                                color: Colors.white),
-                            child:
-                            DropdownButton2<String>(
-                              value:Status2,
-                              style:GoogleFonts.montserrat(
-                                  fontSize: width/113.833,
-                                  fontWeight: FontWeight.bold),
-                              underline: Container(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                              iconStyleData: const IconStyleData(
-                                  icon:Icon(Icons.arrow_back_ios_outlined),
-                                  iconSize: 0
-                              ),
-                              onMenuStateChange: (isOpen){
-                                setState(() {
-                                  dawer=3;
-                                });
-                              },
-
-                              onChanged: (String? value) {
-                                setState(() {
-                                  dawer=3;
-                                  Status2=value!;
-                                });
-                              },
-                              items:
-                              StatusType2.map<DropdownMenuItem<String>>(
-                                      (String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value,style:GoogleFonts.montserrat(
-                                          fontSize: width/113.833,
-                                          fontWeight: FontWeight.bold),),
-                                    );
-                                  }).toList(),
-
-                            ),
-                          ),
-                        )
-                      ],
+                    SizedBox(
+                      width: width / 18.83,
                     ),
 
-                    Column(
-                      children: [
-                        SizedBox(
-                            width: width / 6.83,
-                            child: Text(
-                              "Status-3",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white),
-                            )),
-                        SizedBox(
-                          height: height / 136.6,
-                        ),
-                        Material(
-                          shadowColor: Colors.indigo,
-                          elevation: 25,
-                          borderRadius: BorderRadius.circular(6),
-                          color: Colors.white,
-                          child: Container(
-                            height: height / 13.14,
-                            width: width / 6.83,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.circular(6),
-                                color: Colors.white),
-                            child:
-                            DropdownButton2<String>(
-                              value:Status3,
-                              style:GoogleFonts.montserrat(
-                                  fontSize: width/113.833,
-                                  fontWeight: FontWeight.bold),
-                              underline: Container(
-                                color: Colors.deepPurpleAccent,
-                              ),
-                              iconStyleData: const IconStyleData(
-                                  icon:Icon(Icons.arrow_back_ios_outlined),
-                                  iconSize: 0
-                              ),
-                              onMenuStateChange: (isOpen){
-                                setState(() {
-                                  dawer=4;
-                                });
-                              },
-
-                              onChanged: (String? value) {
-                                setState(() {
-                                  dawer=4;
-                                  Status3=value!;
-                                });
-                              },
-                              items:
-                              StatusType3.map<DropdownMenuItem<String>>(
-                                      (String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value,style:GoogleFonts.montserrat(
-                                          fontSize: width/113.833,
-                                          fontWeight: FontWeight.bold),),
-                                    );
-                                  }).toList(),
-
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
 
                     Column(
                       children: [
@@ -1239,12 +1188,12 @@ String WantedType=Type.first;
                           height: height / 136.6,
                         ),
                         SizedBox(
-                          height: height / 13.14,
+                        height: height / 18.9,
                           width: width / 6.83,
+
                         )
                       ],
                     ),
-
                     Column(
                       children: [
                         SizedBox(
@@ -1258,9 +1207,26 @@ String WantedType=Type.first;
                           height: height / 136.6,
                         ),
                         SizedBox(
-                          height: height / 13.14,
+                        height: height / 18.9,
                           width: width / 6.83,
-
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                            width: width / 6.83,
+                            child: Text(
+                              "",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white),
+                            )),
+                        SizedBox(
+                          height: height / 136.6,
+                        ),
+                        SizedBox(
+                        height: height / 18.9,
+                          width: width / 6.83,
                         )
                       ],
                     ),
@@ -1291,7 +1257,7 @@ String WantedType=Type.first;
                         //color: Color(0xffD60A0B),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
-                          color:  const Color(0xff013220),
+                          color:   Colors.green
                         ),
                         child: Center(
                             child: Text(
@@ -1306,24 +1272,7 @@ String WantedType=Type.first;
                       width: width / 70.83,
                     ),
                     //Print Invoice button
-                    InkWell(
-                      onTap:(){},
-                      child: Container(
-                        width: width / 8.6,
-                        height: height / 16.42,
-                        //color: Color(0xffD60A0B),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: const Color(0xff0079FF),
-                        ),
-                        child: Center(
-                            child: Text(
-                              "Print",
-                              style:
-                              GoogleFonts.poppins(color: Colors.white),
-                            )),
-                      ),
-                    ),
+
 
 
 

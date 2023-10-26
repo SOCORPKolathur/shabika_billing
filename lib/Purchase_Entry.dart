@@ -1627,7 +1627,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
 
-                                       /*   contentPadding: EdgeInsets.only(
+                                       /*   contentPadding: EgeInsets.only(
                                               left: width /90.78,
                                               top: height / 150.0),*/
                                         ),
