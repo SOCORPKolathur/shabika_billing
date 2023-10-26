@@ -504,7 +504,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                           ),
                           Text(
                             "Add IMEI And SERIAL No ",
-                            style: GoogleFonts.montserrat(),
+                            style: GoogleFonts.openSans(),
                           ),
                           SizedBox(
                             height: height / 131.4,
@@ -643,13 +643,13 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                     ),
 
                                                     /*TextField(
-                                                        style: GoogleFonts.montserrat(),
+                                                        style: GoogleFonts.openSans(),
                                                         controller: _controller[index],
                                                         decoration: InputDecoration(
                                                           hintText: "Enter the IMEI NO",
                                                           border: InputBorder.none,
                                                           contentPadding: EdgeInsets.only(left:width/136.6),
-                                                          hintStyle: GoogleFonts.montserrat(),
+                                                          hintStyle: GoogleFonts.openSans(),
                                                         ),
                                                         onSubmitted: (_){
 
@@ -787,13 +787,13 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                       },
                                                     ),
                                                     /* TextField(
-                                                          style: GoogleFonts.montserrat(),
+                                                          style: GoogleFonts.openSans(),
                                                           controller: _controller2[index],
                                                           decoration: InputDecoration(
                                                             hintText: "Enter the Serial NO",
                                                             border: InputBorder.none,
                                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                                            hintStyle: GoogleFonts.montserrat(),
+                                                            hintStyle: GoogleFonts.openSans(),
                                                           ),
                                                           onSubmitted: (_){
 
@@ -930,13 +930,13 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                       },
                                                     ),
                                                     /*TextField(
-                                                          style: GoogleFonts.montserrat(),
+                                                          style: GoogleFonts.openSans(),
                                                           controller: _controller3[index],
                                                           decoration: InputDecoration(
                                                             hintText: "Color",
                                                             border: InputBorder.none,
                                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                                            hintStyle: GoogleFonts.montserrat(),
+                                                            hintStyle: GoogleFonts.openSans(),
                                                           ),
                                                           onSubmitted: (_){
 
@@ -973,7 +973,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                         children: [
                                           Container(
                                               width:width/11.38,
-                                              child: Text("IMEi No",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),)),
+                                              child: Text("IMEi No",style: GoogleFonts.openSans(fontWeight: FontWeight.w600),)),
                                           SizedBox(width:width/136.6),
                                           Material(
                                               color: Colors.white,
@@ -997,7 +997,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                   ),
                                                   textFieldConfiguration: TextFieldConfiguration(
                                                     maxLines: null,
-                                                    style:  GoogleFonts.poppins(
+                                                    style:  GoogleFonts.openSans(
                                                         fontSize:width/91.06
                                                     ),
                                                     decoration: InputDecoration(
@@ -1056,7 +1056,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                           Container(
                                               width:width/11.38,
-                                              child: Text("Serial No",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),)),
+                                              child: Text("Serial No",style: GoogleFonts.openSans(fontWeight: FontWeight.w600),)),
 
                                           SizedBox(width:width/136.6),
 
@@ -1082,7 +1082,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                     ),
                                                     textFieldConfiguration: TextFieldConfiguration(
                                                       maxLines: null,
-                                                      style:  GoogleFonts.poppins(
+                                                      style:  GoogleFonts.openSans(
                                                           fontSize:width/91.06
                                                       ),
                                                       decoration: InputDecoration(
@@ -1141,7 +1141,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                           Container(
                                               width:width/11.38,
-                                              child: Text("Color",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),)),
+                                              child: Text("Color",style: GoogleFonts.openSans(fontWeight: FontWeight.w600),)),
 
                                           SizedBox(width:width/136.6),
 
@@ -1167,7 +1167,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                     ),
                                                     textFieldConfiguration: TextFieldConfiguration(
                                                       maxLines: null,
-                                                      style:  GoogleFonts.poppins(
+                                                      style:  GoogleFonts.openSans(
                                                           fontSize:width/91.06
                                                       ),
                                                       decoration: InputDecoration(
@@ -1270,7 +1270,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     ),
                                     child: Center(
                                       child: Text("Okay",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width / 85.375,
@@ -1297,7 +1297,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     ),
                                     child: Center(
                                       child: Text("Cancel",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width / 85.375,
@@ -1383,7 +1383,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                           Text(
                             "Add IMEI And SERIAL No ",
-                            style: GoogleFonts.montserrat(),
+                            style: GoogleFonts.openSans(),
                           ),
 
                           SizedBox(
@@ -1656,13 +1656,13 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                       },
                                                     ),
                                                     /* TextField(
-                                                          style: GoogleFonts.montserrat(),
+                                                          style: GoogleFonts.openSans(),
                                                           controller: _controller2[index],
                                                           decoration: InputDecoration(
                                                             hintText: "Enter the Serial NO",
                                                             border: InputBorder.none,
                                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                                            hintStyle: GoogleFonts.montserrat(),
+                                                            hintStyle: GoogleFonts.openSans(),
                                                           ),
                                                           onSubmitted: (_){
 
@@ -1795,13 +1795,13 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                       },
                                                     ),
                                                     /*TextField(
-                                                          style: GoogleFonts.montserrat(),
+                                                          style: GoogleFonts.openSans(),
                                                           controller: _controller3[index],
                                                           decoration: InputDecoration(
                                                             hintText: "Color",
                                                             border: InputBorder.none,
                                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                                            hintStyle: GoogleFonts.montserrat(),
+                                                            hintStyle: GoogleFonts.openSans(),
                                                           ),
                                                           onSubmitted: (_){
 
@@ -1886,7 +1886,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     ),
                                     child: Center(
                                       child: Text("Okay",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width / 85.375,
@@ -1913,7 +1913,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     ),
                                     child: Center(
                                       child: Text("Cancel",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width / 85.375,
@@ -2321,7 +2321,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
               child: AlertDialog(
                 content: Column(
                   children: [
-                    Text("Please Select Payment Type",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,
+                    Text("Please Select Payment Type",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,
                         color: Colors.black,fontSize: 18),),
                     SizedBox(height:height/65.7),
 
@@ -2336,7 +2336,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                           ),
                           Text(
                             "Payment Mode",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -2401,7 +2401,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       'Cash',
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -2422,12 +2422,12 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                             color: Colors.grey.shade200
                                         ),
                                         child: TextField(
-                                          style: GoogleFonts.montserrat(),
+                                          style: GoogleFonts.openSans(),
                                           controller:paymenttype1,
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                            hintStyle: GoogleFonts.montserrat(),
+                                            hintStyle: GoogleFonts.openSans(),
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -2456,7 +2456,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Card",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -2477,12 +2477,12 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                             color: Colors.grey.shade200
                                         ),
                                         child: TextField(
-                                          style: GoogleFonts.montserrat(),
+                                          style: GoogleFonts.openSans(),
                                           controller:paymenttype2,
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                            hintStyle: GoogleFonts.montserrat(),
+                                            hintStyle: GoogleFonts.openSans(),
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -2511,7 +2511,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Gpay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -2532,12 +2532,12 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                             color: Colors.grey.shade200
                                         ),
                                         child: TextField(
-                                          style: GoogleFonts.montserrat(),
+                                          style: GoogleFonts.openSans(),
                                           controller:paymenttype3,
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                            hintStyle: GoogleFonts.montserrat(),
+                                            hintStyle: GoogleFonts.openSans(),
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -2565,7 +2565,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Phone Pay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -2586,12 +2586,12 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                             color: Colors.grey.shade200
                                         ),
                                         child: TextField(
-                                          style: GoogleFonts.montserrat(),
+                                          style: GoogleFonts.openSans(),
                                           controller:paymenttype4,
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                            hintStyle: GoogleFonts.montserrat(),
+                                            hintStyle: GoogleFonts.openSans(),
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -2621,7 +2621,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Total To be\nPay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -2642,7 +2642,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                               color: Colors.grey.shade200
                                           ),
                                           child:
-                                          Center(child: Text("RS: $decreaseamount",style: GoogleFonts.poppins(fontWeight: FontWeight.w700,fontSize: width/75.88),))
+                                          Center(child: Text("RS: $decreaseamount",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/75.88),))
                                       )),
                                 ],
                               ),
@@ -2664,7 +2664,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Total",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -2685,7 +2685,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                               color: Colors.grey.shade200
                                           ),
                                           child:
-                                          Center(child: Text("RS: ${TotalAmount2.toStringAsFixed(2)}",style: GoogleFonts.poppins(fontWeight: FontWeight.w700,fontSize: width/75.88)))
+                                          Center(child: Text("RS: ${TotalAmount2.toStringAsFixed(2)}",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/75.88)))
                                       )),
                                 ],
                               ),
@@ -2739,7 +2739,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                               child: Center(
                                 child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -2769,7 +2769,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                               child: Center(
                                 child: Text(
                                     "Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -2952,7 +2952,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                       ),
                       Text(
                         "This Customer Already Exist in List.....",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
                             color: Colors.white),
@@ -2989,7 +2989,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -3605,7 +3605,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                       ),
                       Text(
                         "Are You Sure Want to Add Customer..",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
                             color: Colors.white),
@@ -3629,7 +3629,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Name ",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Name ",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -3662,7 +3662,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Phone",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Phone",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -3704,7 +3704,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Home No",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Home No",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -3738,7 +3738,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Street",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Street",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -3779,7 +3779,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Area",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Area",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -3817,7 +3817,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("City/District",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("City/District",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -3847,7 +3847,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                 onSubmitted: (_){
                                                   getCity(_typeAheadControllergender11.text);
                                                 },
-                                                style: GoogleFonts.poppins(fontSize: 15),
+                                                style: GoogleFonts.openSans(fontSize: 15),
                                                 decoration: InputDecoration(
                                                   contentPadding:
                                                   EdgeInsets.only(left: width/136.6, bottom: height/82.125),
@@ -3906,7 +3906,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer State",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer State",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -3936,7 +3936,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                                 onSubmitted: (_){
                                                   getCity(_typeAheadControllergender10.text);
                                                 },
-                                                style: GoogleFonts.poppins(fontSize: 15),
+                                                style: GoogleFonts.openSans(fontSize: 15),
                                                 decoration: InputDecoration(
                                                   contentPadding:
                                                   EdgeInsets.only(left: width/136.6, bottom: height/82.125),
@@ -3983,7 +3983,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer PinCode",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer PinCode",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -4026,7 +4026,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
 
-                                          Text("Customer GST No",style: GoogleFonts.poppins(color: Colors.white),),
+                                          Text("Customer GST No",style: GoogleFonts.openSans(color: Colors.white),),
                                           SizedBox(height: height/136.6,),
                                           Material(
                                             shadowColor: Colors.indigo,
@@ -4092,7 +4092,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -4119,7 +4119,7 @@ class _Edit_Billing_PageState extends State<Edit_Billing_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -4653,7 +4653,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                    ),
                    Text(
                      "Shabika G",
-                     style: GoogleFonts.solway(
+                     style: GoogleFonts.openSans(
                          color: Colors.white, fontSize: width / 80.353),
                    ),
                    SizedBox(width: width / 5.0),
@@ -4692,7 +4692,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                    ),
                    Text(
                      "Shabika N",
-                     style: GoogleFonts.solway(
+                     style: GoogleFonts.openSans(
                          color: Colors.white, fontSize: width / 80.353),
                    ),
                  ],
@@ -4719,7 +4719,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Customer Phone",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -4736,7 +4736,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Focus(
                                      focusNode: customerphone2,
                                      child:   TextField(
-                                       style: GoogleFonts.montserrat(
+                                       style: GoogleFonts.openSans(
                                          fontWeight:FontWeight.w700,
 
                                        ),
@@ -4816,7 +4816,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Customer Name",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -4832,7 +4832,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  ),
                                  child:
                                  TextField(
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                      fontWeight:FontWeight.w700,
 
                                    ),
@@ -4867,7 +4867,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Customer Address",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -4883,7 +4883,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  ),
                                  child:
                                  TextField(
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                      fontWeight:FontWeight.w700,
 
                                    ),
@@ -4919,7 +4919,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Tax Type",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -4949,7 +4949,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                          isExpanded: true,
                                          isDense: true,
                                          alignment: Alignment.topCenter,
-                                         style: GoogleFonts.montserrat(
+                                         style: GoogleFonts.openSans(
                                            fontWeight:FontWeight.w700,
                                              color: Colors.black,
                                              fontSize: width / 105.07
@@ -4996,7 +4996,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Customer GST NO",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -5018,7 +5018,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                      color: Colors.white,
                                    ),
                                    child: TextField(
-                                     style: GoogleFonts.montserrat(
+                                     style: GoogleFonts.openSans(
                                          fontWeight:FontWeight.w700,
                                      ),
                                      controller: AddnewcustomeGst,
@@ -5061,7 +5061,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Bill No",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -5076,7 +5076,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                    color: Colors.white,
                                  ),
                                  child: TextField(
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                      fontWeight:FontWeight.w700,
                                    ),
                                    controller: purchase_No,
@@ -5108,7 +5108,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Category",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -5213,7 +5213,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Brand",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -5322,7 +5322,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Purchase  Date",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -5337,7 +5337,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                    color: Colors.white,
                                  ),
                                  child: TextField(
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                      fontWeight:FontWeight.w700,
                                    ),
                                    controller: purchase_Date,
@@ -5390,7 +5390,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                             ),
                             Text(
                               "Payment Mode",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize: width / 97.571,
                                   color: const Color(0xff000000)),
                             ),
@@ -5451,7 +5451,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                ),
                                Text(
                                  "Remarks",
-                                 style: GoogleFonts.poppins(
+                                 style: GoogleFonts.openSans(
                                      fontSize: width / 97.571,
                                      color: const Color(0xff000000)),
                                ),
@@ -5466,7 +5466,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                    color: Colors.white,
                                  ),
                                  child: TextField(
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                      fontWeight:FontWeight.w700,
                                    ),
                                    controller: purchase_notes,
@@ -5515,7 +5515,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Si No",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5526,7 +5526,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Item ID",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5537,7 +5537,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Item Name",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5550,7 +5550,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Box No",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5562,7 +5562,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "HSN Code",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5573,7 +5573,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Tax %",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5585,7 +5585,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Qnty",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5598,7 +5598,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Price",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5611,7 +5611,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Sales Price",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5622,7 +5622,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Stocks",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5633,7 +5633,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                              child: Center(
                                  child: Text(
                                    "Clear ",
-                                   style: GoogleFonts.montserrat(
+                                   style: GoogleFonts.openSans(
                                        fontWeight: FontWeight.w500),
                                  )),
                            ),
@@ -5703,7 +5703,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                               )),
                           textFieldConfiguration: TextFieldConfiguration(
                             maxLines: null,
-                            style: GoogleFonts.poppins(fontSize: width / 91.06),
+                            style: GoogleFonts.openSans(fontSize: width / 91.06),
                             decoration: InputDecoration(
                               contentPadding:
                                   EdgeInsets.only(left: width / 136.6, bottom: 8),
@@ -6344,7 +6344,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                    child: Text(
                                                      "Update Invoice",
                                                      style:
-                                                     GoogleFonts.poppins(color: Colors.white),
+                                                     GoogleFonts.openSans(color: Colors.white),
                                                    )),
                                              ),
                                            ),
@@ -6370,7 +6370,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                  children: [
                                                    Text(
                                                      "WhatsApp",
-                                                     style: GoogleFonts.poppins(
+                                                     style: GoogleFonts.openSans(
                                                          color: Colors.white),
                                                    ),
                                                    const SizedBox(
@@ -6412,7 +6412,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                          child: Text(
                                                            "L-BILL No: ",
                                                            textAlign: TextAlign.center,
-                                                           style: GoogleFonts.poppins(
+                                                           style: GoogleFonts.openSans(
                                                                color: Colors.white),
                                                          ),
                                                        ),
@@ -6424,7 +6424,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                      child: Center(
                                                        child: Text(
                                                          "0",
-                                                         style: GoogleFonts.poppins(
+                                                         style: GoogleFonts.openSans(
                                                              color: Colors.white),
                                                        ),
                                                      ),
@@ -6474,7 +6474,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                    child: Text(
                                                      "Print Invoice",
                                                      style:
-                                                     GoogleFonts.poppins(color: Colors.white),
+                                                     GoogleFonts.openSans(color: Colors.white),
                                                    )),
                                              ),
                                            ),
@@ -6496,7 +6496,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                children: [
                                                  Text(
                                                    "P-Price",
-                                                   style: GoogleFonts.montserrat(
+                                                   style: GoogleFonts.openSans(
                                                        color: Colors.white,
                                                        fontWeight: FontWeight.w500),
                                                  ),
@@ -6551,7 +6551,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                          child: Text(
                                                            "L-BILL Amt: ",
                                                            textAlign: TextAlign.center,
-                                                           style: GoogleFonts.poppins(
+                                                           style: GoogleFonts.openSans(
                                                                color: Colors.white),
                                                          ),
                                                        ),
@@ -6563,7 +6563,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                      child: Center(
                                                        child: Text(
                                                          "0",
-                                                         style: GoogleFonts.poppins(
+                                                         style: GoogleFonts.openSans(
                                                              color: Colors.white),
                                                        ),
                                                      ),
@@ -6606,7 +6606,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                  children: [
                                                    Text(
                                                      "Dis %      ",
-                                                     style: GoogleFonts.montserrat(
+                                                     style: GoogleFonts.openSans(
                                                          color:Colors.white,
                                                          fontWeight: FontWeight.w500),
                                                    ),
@@ -6650,7 +6650,7 @@ TextEditingController layourbuilderclear=TextEditingController();
 
                                                    Text(
                                                      "Dis Amt ",
-                                                     style: GoogleFonts.montserrat(
+                                                     style: GoogleFonts.openSans(
                                                          color:Colors.white,
                                                          fontWeight: FontWeight.w500),
                                                    ),
@@ -6705,13 +6705,13 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                    dropdownValue3=="IGST"?
                                                    Text(
                                                      "IGST(18%) ",
-                                                     style: GoogleFonts.montserrat(
+                                                     style: GoogleFonts.openSans(
                                                          color:Colors.white,
                                                          fontWeight: FontWeight.w500),
                                                    ):
                                                    Text(
                                                      "C GST(9%) ",
-                                                     style: GoogleFonts.montserrat(
+                                                     style: GoogleFonts.openSans(
                                                          color:Colors.white,
                                                          fontWeight: FontWeight.w500),
                                                    ),
@@ -6759,7 +6759,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                                  children: [
                                                    Text(
                                                      "S GST(9%) ",
-                                                     style: GoogleFonts.montserrat(
+                                                     style: GoogleFonts.openSans(
                                                          color:Colors.white,
                                                          fontWeight: FontWeight.w500),
                                                    ),
@@ -6814,7 +6814,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                              child: Center(
                                                child: Text(
                                                  TotalAmount2.toStringAsFixed(2),
-                                                 style: GoogleFonts.poppins(
+                                                 style: GoogleFonts.openSans(
                                                      fontWeight: FontWeight.bold,
                                                      color: Colors.white,
                                                      fontSize: width / 30.88),
@@ -6848,7 +6848,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                    width: width / 6.106,
                  ),
                  Text("Please Wait",
-                     style: GoogleFonts.montserrat(
+                     style: GoogleFonts.openSans(
                          fontWeight: FontWeight.w600, color: Colors.black))
                ],
              ),
@@ -6874,7 +6874,7 @@ TextEditingController layourbuilderclear=TextEditingController();
             color: Colors.white,
           ),
           child: TextFormField(
-            style: GoogleFonts.montserrat(
+            style: GoogleFonts.openSans(
               fontWeight:FontWeight.w700,
             ),
             decoration: InputDecoration(

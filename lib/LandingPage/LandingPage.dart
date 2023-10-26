@@ -259,7 +259,7 @@ class _drawerState extends State<drawer> {
                          children: [
                            Icon(Icons.home,color: dawer==0?Colors.black:Colors.white,),
                            SizedBox(width: width/273.2,),
-                           Text("Home",style:  GoogleFonts.montserrat(
+                           Text("Home",style:  GoogleFonts.openSans(
                                fontSize: width/113.833,
                                color:dawer==0?Colors.black:Colors.white,
                                fontWeight: FontWeight.bold),),
@@ -289,7 +289,7 @@ class _drawerState extends State<drawer> {
 
                            DropdownButton2<String>(
                              value: dropdownValue,
-                              style:GoogleFonts.montserrat(
+                              style:GoogleFonts.openSans(
                                fontSize: width/113.833,
                                color:dawer==1?Colors.black:Colors.white,
                                fontWeight: FontWeight.bold),
@@ -347,7 +347,7 @@ class _drawerState extends State<drawer> {
                                      (String value) {
                                    return DropdownMenuItem<String>(
                                      value: value,
-                                     child: Text(value,style:GoogleFonts.montserrat(
+                                     child: Text(value,style:GoogleFonts.openSans(
                                          fontSize: width/113.833,
                                          color:dawer==1?Colors.black:Colors.white,
                                          fontWeight: FontWeight.bold),),
@@ -402,7 +402,7 @@ class _drawerState extends State<drawer> {
                            children: [
                              Icon(Icons.data_thresholding_sharp,color: dawer==9?Colors.black:Colors.white,),
                              SizedBox(width: width/273.2,),
-                             Text("Items",style:  GoogleFonts.montserrat(
+                             Text("Items",style:  GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==9?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),),
@@ -432,7 +432,7 @@ class _drawerState extends State<drawer> {
                            SizedBox(width: width/273.2,),
                            DropdownButton2<String>(
                              value: dropdownValue3,
-                             style:GoogleFonts.montserrat(
+                             style:GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==3?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),
@@ -478,7 +478,7 @@ class _drawerState extends State<drawer> {
                                      (String value) {
                                    return DropdownMenuItem<String>(
                                      value: value,
-                                     child: Text(value,style:GoogleFonts.montserrat(
+                                     child: Text(value,style:GoogleFonts.openSans(
                                          fontSize: width/113.833,
                                          color:dawer==3?Colors.black:Colors.white,
                                          fontWeight: FontWeight.bold),),
@@ -516,7 +516,7 @@ class _drawerState extends State<drawer> {
 
                            DropdownButton2<String>(
                              value: dropdownValue2,
-                             style:GoogleFonts.montserrat(
+                             style:GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==2?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),
@@ -559,7 +559,7 @@ class _drawerState extends State<drawer> {
                                      (String value) {
                                    return DropdownMenuItem<String>(
                                      value: value,
-                                     child: Text(value,style:GoogleFonts.montserrat(
+                                     child: Text(value,style:GoogleFonts.openSans(
                                          fontSize: width/113.833,
                                          color:dawer==2?Colors.black:Colors.white,
                                          fontWeight: FontWeight.bold),),
@@ -614,7 +614,7 @@ class _drawerState extends State<drawer> {
                            children: [
                              Icon(Icons.barcode_reader,color: dawer==10?Colors.black:Colors.white,),
                              SizedBox(width: width/273.2,),
-                             Text("Barcode",style:  GoogleFonts.montserrat(
+                             Text("Barcode",style:  GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==10?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),),
@@ -755,7 +755,7 @@ class _drawerState extends State<drawer> {
                            SizedBox(width: width/273.2,),
                            DropdownButton2<String>(
                              value: dropdownValue7,
-                             style:GoogleFonts.montserrat(
+                             style:GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==7?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),
@@ -798,7 +798,7 @@ class _drawerState extends State<drawer> {
                                      (String value) {
                                    return DropdownMenuItem<String>(
                                      value: value,
-                                     child: Text(value,style:GoogleFonts.montserrat(
+                                     child: Text(value,style:GoogleFonts.openSans(
                                          fontSize: width/113.833,
                                          color:dawer==7?Colors.black:Colors.white,
                                          fontWeight: FontWeight.bold),),
@@ -838,7 +838,7 @@ class _drawerState extends State<drawer> {
 
                            DropdownButton2<String>(
                              value: dropdownValue8,
-                             style:GoogleFonts.montserrat(
+                             style:GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==8?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),
@@ -880,7 +880,7 @@ class _drawerState extends State<drawer> {
                                      (String value) {
                                    return DropdownMenuItem<String>(
                                      value: value,
-                                     child: Text(value,style:GoogleFonts.montserrat(
+                                     child: Text(value,style:GoogleFonts.openSans(
                                          fontSize: width/113.833,
                                          color:dawer==8?Colors.black:Colors.white,
                                          fontWeight: FontWeight.bold),),
@@ -918,7 +918,7 @@ class _drawerState extends State<drawer> {
                            SizedBox(width: width/273.2,),
                            DropdownButton2<String>(
                              value: dropdownValue10,
-                             style:GoogleFonts.montserrat(
+                             style:GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==12?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),
@@ -959,7 +959,7 @@ class _drawerState extends State<drawer> {
                                      (String value) {
                                    return DropdownMenuItem<String>(
                                      value: value,
-                                     child: Text(value,style:GoogleFonts.montserrat(
+                                     child: Text(value,style:GoogleFonts.openSans(
                                          fontSize: width/113.833,
                                          color:dawer==11?Colors.black:Colors.white,
                                          fontWeight: FontWeight.bold),),
@@ -1000,7 +1000,7 @@ class _drawerState extends State<drawer> {
                            SizedBox(width: width/273.2,),
                            DropdownButton2<String>(
                              value: dropdownValue9,
-                             style:GoogleFonts.montserrat(
+                             style:GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==12?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),
@@ -1041,7 +1041,7 @@ class _drawerState extends State<drawer> {
                                      (String value) {
                                    return DropdownMenuItem<String>(
                                      value: value,
-                                     child: Text(value,style:GoogleFonts.montserrat(
+                                     child: Text(value,style:GoogleFonts.openSans(
                                          fontSize: width/113.833,
                                          color:dawer==12?Colors.black:Colors.white,
                                          fontWeight: FontWeight.bold),),
@@ -1081,7 +1081,7 @@ class _drawerState extends State<drawer> {
                            SizedBox(width: width/273.2,),
                            DropdownButton2<String>(
                              value: dropdownValue11,
-                             style:GoogleFonts.montserrat(
+                             style:GoogleFonts.openSans(
                                  fontSize: width/113.833,
                                  color:dawer==13?Colors.black:Colors.white,
                                  fontWeight: FontWeight.bold),
@@ -1120,7 +1120,7 @@ class _drawerState extends State<drawer> {
                                      (String value) {
                                    return DropdownMenuItem<String>(
                                      value: value,
-                                     child: Text(value,style:GoogleFonts.montserrat(
+                                     child: Text(value,style:GoogleFonts.openSans(
                                          fontSize: width/113.833,
                                          color:dawer==13?Colors.black:Colors.white,
                                          fontWeight: FontWeight.bold),),

@@ -507,7 +507,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                               width:width/6.276,
                                 child:charger==false?
-                                Text(": No",style: GoogleFonts.cairo(
+                                Text(": No",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -1292,7 +1292,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               child: Center(
                                 child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -1319,7 +1319,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               ),
                               child: Center(
                                 child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,
@@ -1349,7 +1349,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
     double height = MediaQuery.of(context).size.height;
 
     return TextFormField(
-      style: GoogleFonts.poppins(fontSize: width/86.6,fontWeight: FontWeight.w700),
+      style: GoogleFonts.openSans(fontSize: width/86.6,fontWeight: FontWeight.w700),
       decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding:
@@ -1368,7 +1368,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
 
     return
       TextFormField(
-        style: GoogleFonts.poppins(fontSize: width/86.6,fontWeight: FontWeight.w700),
+        style: GoogleFonts.openSans(fontSize: width/86.6,fontWeight: FontWeight.w700),
       decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding:

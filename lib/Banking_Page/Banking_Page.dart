@@ -313,7 +313,7 @@ class _Banking_PageState extends State<Banking_Page> {
                       padding:  EdgeInsets.only(left: width/23.551, right: width/34.15),
                       child: Text(
                         "From Date",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontSize:width/68.3, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -325,7 +325,7 @@ class _Banking_PageState extends State<Banking_Page> {
                       ),
                       child: Text(
                         "To Date",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontSize:width/68.3, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -467,7 +467,7 @@ class _Banking_PageState extends State<Banking_Page> {
                         Center(
                           child: Text(
                             "Submit",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize:width/68.3, fontWeight: FontWeight.bold,color: Colors.white),
                           ),
                         ),
@@ -495,7 +495,7 @@ class _Banking_PageState extends State<Banking_Page> {
                         Center(
                           child: Text(
                             "Clear",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize:width/68.3, fontWeight: FontWeight.bold,color: Colors.white),
                           ),
                         ),
@@ -519,7 +519,7 @@ class _Banking_PageState extends State<Banking_Page> {
                         Center(
                           child: Text(
                             "Download Excel",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize:width/68.3, fontWeight: FontWeight.bold,color: Colors.indigo),
                           ),
                         ),
@@ -552,7 +552,7 @@ class _Banking_PageState extends State<Banking_Page> {
                       ),
                       Text(
                         "Shabika G",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontSize:width/68.3, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: width/68.3,),
@@ -570,7 +570,7 @@ class _Banking_PageState extends State<Banking_Page> {
                       ),
                       Text(
                         "Shabika N",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontSize:width/68.3, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: width/68.3,),
@@ -588,7 +588,7 @@ class _Banking_PageState extends State<Banking_Page> {
                       ),
                       Text(
                         "Both",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontSize:width/68.3, fontWeight: FontWeight.bold),
                       ),
 
@@ -596,7 +596,7 @@ class _Banking_PageState extends State<Banking_Page> {
                       SizedBox(width: width/68.3,),
                       Text(
                         "Total Balance : ",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontSize:width/68.3, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: width/68.3,),
@@ -611,7 +611,7 @@ class _Banking_PageState extends State<Banking_Page> {
                         Center(
                           child: Text(
                             totalprofitamount.toStringAsFixed(2),
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize:width/68.3, fontWeight: FontWeight.bold,color: Colors.white),
                           ),
                         ),
@@ -621,7 +621,7 @@ class _Banking_PageState extends State<Banking_Page> {
                       SizedBox(width: width/68.3,),
                       Text(
                         "Credit Balance : ",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontSize:width/68.3, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: width/68.3,),
@@ -636,7 +636,7 @@ class _Banking_PageState extends State<Banking_Page> {
                         Center(
                           child: Text(
                             totalamount2.toStringAsFixed(2),
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize:width/68.3, fontWeight: FontWeight.bold,color: Colors.white),
                           ),
                         ),
@@ -646,7 +646,7 @@ class _Banking_PageState extends State<Banking_Page> {
                       SizedBox(width: width/68.3,),
                       Text(
                         "Debit Balance : ",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontSize:width/68.3, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: width/68.3,),
@@ -661,7 +661,7 @@ class _Banking_PageState extends State<Banking_Page> {
                         Center(
                           child: Text(
                             totalamount.toStringAsFixed(2),
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize:width/68.3, fontWeight: FontWeight.bold,color: Colors.white),
                           ),
                         ),
@@ -693,10 +693,10 @@ class _Banking_PageState extends State<Banking_Page> {
               child: Center(child:
         datesearch==true&&pos1.text!=""&&pos2.text!=""?
            Text("From Date : ${pos1.text} - To Date : ${pos2.text}",
-          style: GoogleFonts.cairo(fontWeight: FontWeight.w700 ,fontSize:width/68.3),) :
+          style: GoogleFonts.openSans(fontWeight: FontWeight.w700 ,fontSize:width/68.3),) :
               Text("Today Reports",
 
-                style: GoogleFonts.cairo(fontWeight: FontWeight.w700 ,fontSize:width/68.3),))),
+                style: GoogleFonts.openSans(fontWeight: FontWeight.w700 ,fontSize:width/68.3),))),
         ),
         SizedBox(height: height/101.9,),
 
@@ -717,7 +717,7 @@ class _Banking_PageState extends State<Banking_Page> {
                   child: Center(
                     child: Text(
                       "Credits",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           fontSize:width/68.3, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -742,7 +742,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                     border: Border.all(color: Colors.black,width: 1.5),
                                     borderRadius: const BorderRadius.only(topLeft: Radius.circular(7))
                                 ),
-                                child: Center(child: Text("Date/Time",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                child: Center(child: Text("Date/Time",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
                             Container(
                                 height: 40,
                                 width:450,
@@ -750,7 +750,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                     border: Border.all(color: Colors.black,width: 1.5)
                                 ),
 
-                                child: Center(child: Text("Descriptions",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                child: Center(child: Text("Descriptions",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
                             Container(
                                 height: 40,
                                 width:120,
@@ -758,7 +758,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                     border: Border.all(color: Colors.black,width: 1.5),
                                     borderRadius: const BorderRadius.only(topRight: Radius.circular(7))
                                 ),
-                                child: Center(child: Text("Amount",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                child: Center(child: Text("Amount",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
 
                           ],
                         ),
@@ -804,7 +804,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                     width: width / 6.106,
                                                   ),
                                                   Text("Please Wait",
-                                                      style: GoogleFonts.montserrat(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight: FontWeight.w600, color: Colors.black))
                                                 ],
                                               ),
@@ -824,7 +824,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                     width: width / 6.106,
                                                   ),
                                                   Text("Please Wait",
-                                                      style: GoogleFonts.montserrat(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight: FontWeight.w600, color: Colors.black))
                                                 ],
                                               ),
@@ -853,7 +853,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                             border: Border.all(color: Colors.black,width: 1.5)
                                                         ),
                                                         child: Center(child: Text("${debitdata['date']}\n${debitdata['time']}",
-                                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                           textAlign: TextAlign.center,
                                                         ))),
 
@@ -864,7 +864,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                             border: Border.all(color: Colors.black,width: 1.5)
                                                         ),
 
-                                                        child: Center(child: Text(debitdata['Description'],style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                                        child: Center(child: Text(debitdata['Description'],style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
 
                                                     Container(
                                                         height: 40,
@@ -872,7 +872,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                         decoration: BoxDecoration(
                                                           border: Border.all(color: Colors.black,width: 1.5),
                                                         ),
-                                                        child: Center(child: Text(debitdata['Total'],style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.green),))),
+                                                        child: Center(child: Text(debitdata['Total'],style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.green),))),
 
                                                   ],
                                                 );
@@ -890,7 +890,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                           border: Border.all(color: Colors.black,width: 1.5)
                                                       ),
                                                       child: Center(child: Text("${debitdata['date']}\n${debitdata['time']}",
-                                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                         textAlign: TextAlign.center,
                                                       ))),
 
@@ -901,7 +901,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                           border: Border.all(color: Colors.black,width: 1.5)
                                                       ),
 
-                                                      child: Center(child: Text(debitdata['Description'],style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                                      child: Center(child: Text(debitdata['Description'],style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
 
                                                   Container(
                                                       height: 40,
@@ -909,7 +909,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                       decoration: BoxDecoration(
                                                         border: Border.all(color: Colors.black,width: 1.5),
                                                       ),
-                                                      child: Center(child: Text(debitdata['Total'],style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.green),))),
+                                                      child: Center(child: Text(debitdata['Total'],style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.green),))),
 
                                                 ],
                                               );
@@ -948,7 +948,7 @@ class _Banking_PageState extends State<Banking_Page> {
                   child: Center(
                     child: Text(
                       "Debits",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           fontSize:width/68.3, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -973,7 +973,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                     border: Border.all(color: Colors.black,width: 1.5),
                                     borderRadius: const BorderRadius.only(topLeft: Radius.circular(7))
                                 ),
-                                child: Center(child: Text("Date/Time",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                child: Center(child: Text("Date/Time",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
                             Container(
                                 height: 40,
                                 width:450,
@@ -981,7 +981,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                     border: Border.all(color: Colors.black,width: 1.5)
                                 ),
 
-                                child: Center(child: Text("Descriptions",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                child: Center(child: Text("Descriptions",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
                             Container(
                                 height: 40,
                                 width:120,
@@ -989,7 +989,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                     border: Border.all(color: Colors.black,width: 1.5),
                                   borderRadius: const BorderRadius.only(topRight: Radius.circular(7))
                                 ),
-                                child: Center(child: Text("Amount",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                child: Center(child: Text("Amount",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
 
                           ],
                         ),
@@ -1013,7 +1013,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                         width: width / 6.106,
                                       ),
                                       Text("Please Wait",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600, color: Colors.black))
                                     ],
                                   ),
@@ -1033,7 +1033,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                         width: width / 6.106,
                                       ),
                                       Text("Please Wait",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600, color: Colors.black))
                                     ],
                                   ),
@@ -1086,7 +1086,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                             border: Border.all(color: Colors.black,width: 1.5)
                                                         ),
                                                         child: Center(child: Text("${debitdata['date']}\n${debitdata['time']}",
-                                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                           textAlign: TextAlign.center,
                                                         ))),
 
@@ -1097,7 +1097,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                             border: Border.all(color: Colors.black,width: 1.5)
                                                         ),
 
-                                                        child: Center(child: Text(debitdata['Description'],style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                                        child: Center(child: Text(debitdata['Description'],style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
 
                                                     Container(
                                                         height: 40,
@@ -1105,7 +1105,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                         decoration: BoxDecoration(
                                                           border: Border.all(color: Colors.black,width: 1.5),
                                                         ),
-                                                        child: Center(child: Text(debitdata['Total'],style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.red),))),
+                                                        child: Center(child: Text(debitdata['Total'],style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.red),))),
 
                                                   ],
                                                 );
@@ -1123,7 +1123,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                           border: Border.all(color: Colors.black,width: 1.5)
                                                       ),
                                                       child: Center(child: Text("${debitdata['date']}\n${debitdata['time']}",
-                                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                         textAlign: TextAlign.center,
                                                       ))),
 
@@ -1134,7 +1134,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                           border: Border.all(color: Colors.black,width: 1.5)
                                                       ),
 
-                                                      child: Center(child: Text(debitdata['Description'],style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),))),
+                                                      child: Center(child: Text(debitdata['Description'],style: GoogleFonts.openSans(fontWeight: FontWeight.w700),))),
 
                                                   Container(
                                                       height: 40,
@@ -1142,7 +1142,7 @@ class _Banking_PageState extends State<Banking_Page> {
                                                       decoration: BoxDecoration(
                                                         border: Border.all(color: Colors.black,width: 1.5),
                                                       ),
-                                                      child: Center(child: Text(debitdata['Total'],style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.red),))),
+                                                      child: Center(child: Text(debitdata['Total'],style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.red),))),
 
                                                 ],
                                               );

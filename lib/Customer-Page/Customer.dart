@@ -107,7 +107,7 @@ class _CustomerState extends State<Customer> {
                 padding:  EdgeInsets.only(right: width/1.232,top: height/65.7,bottom: height/65.7),
                 child: Text(
                   "Add New Customer",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontWeight: FontWeight.bold, fontSize:width/ 59.39,color: const Color(0xffFFFFFF)),
                 ),
               ),
@@ -122,7 +122,7 @@ class _CustomerState extends State<Customer> {
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Customer ID",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Customer ID",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -136,7 +136,7 @@ class _CustomerState extends State<Customer> {
                         readOnly: true,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize: width/136.6,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -152,7 +152,7 @@ class _CustomerState extends State<Customer> {
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Customer Name",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Customer Name",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -166,7 +166,7 @@ class _CustomerState extends State<Customer> {
                         controller: Suppliername,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
 
@@ -182,7 +182,7 @@ class _CustomerState extends State<Customer> {
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Mobile",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Mobile",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -193,7 +193,7 @@ class _CustomerState extends State<Customer> {
                         controller:  Mobileno,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -208,7 +208,7 @@ class _CustomerState extends State<Customer> {
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Alternative Mobile",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Alternative Mobile",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -222,7 +222,7 @@ class _CustomerState extends State<Customer> {
                         controller: alMobileno,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
 
@@ -260,7 +260,7 @@ class _CustomerState extends State<Customer> {
                     height: height/16.42,
                     //color: Color(0xffD60A0B),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                      color: const Color(0xff25D366),),child: Center(child: Text("Save Customer",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/ 91.06),)),
+                      color: const Color(0xff25D366),),child: Center(child: Text("Save Customer",style: GoogleFonts.openSans(color: Colors.white,fontSize:width/ 91.06),)),
                   ),
                 ),
               ),
@@ -273,7 +273,7 @@ class _CustomerState extends State<Customer> {
                   child: Container(width: width/13.6,
                     height:  height/16.42,
                     //color: Color(0xffD60A0B),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.poppins(color: Colors.white),)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.openSans(color: Colors.white),)),
                   ),
                 ),
               ),
@@ -301,7 +301,7 @@ class _CustomerState extends State<Customer> {
                 ),
                 child: TextField(
                   controller: Serachcontroller,
-                  style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
+                  style: GoogleFonts.openSans(fontSize: width/68.3,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(
                     contentPadding:   EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/70.125),
                     border: InputBorder.none,
@@ -368,7 +368,7 @@ class _CustomerState extends State<Customer> {
                         ),
                         Text(
                           "Add Customer",
-                          style: GoogleFonts.cairo(
+                          style: GoogleFonts.openSans(
                               fontSize: width/68.3, color: Colors.white),
                         ),
                       ],
@@ -418,13 +418,13 @@ class _CustomerState extends State<Customer> {
                           padding:
                           EdgeInsets.only(left: width/42.68, right: width/26.15),
                           child: Text("Sl.no",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color:  Colors.white,
                                   fontSize: width / 88.3,
                                   fontWeight: FontWeight.w600)),
                         ),
                         Text("Customer Name",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 color:Colors.white,
                                 fontSize: width / 88.3,
                                 fontWeight: FontWeight.w600)),
@@ -432,20 +432,20 @@ class _CustomerState extends State<Customer> {
                           padding:
                           EdgeInsets.only(left: width/1.88, right: width/18.514),
                           child: Text("Edit",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white,
                                   fontSize: width / 88.3,
                                   fontWeight: FontWeight.w600)),
                         ),
                         Text("Delete",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 color: Colors.white,
                                 fontSize: width / 88.3,
                                 fontWeight: FontWeight.w600)),
                         Padding(
                           padding:  EdgeInsets.only(left: width/12.523),
                           child: Text("Status",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white,
                                   fontSize: width / 88.3,
                                   fontWeight: FontWeight.w600)),
@@ -499,7 +499,7 @@ class _CustomerState extends State<Customer> {
                                     child: Center(
                                         child: Text(
                                           (index + 1).toString(),
-                                          style: GoogleFonts.cairo(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               fontSize: width / 95.888,
                                               color:  Colors.black),
@@ -526,7 +526,7 @@ class _CustomerState extends State<Customer> {
                                       child: Text(
                                         snapshot.data!.docs[index]
                                         ["Customername"],
-                                        style: GoogleFonts.cairo(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             fontSize: width / 95.888,
                                             color:  Colors.black),
@@ -599,7 +599,7 @@ class _CustomerState extends State<Customer> {
                                         child: Center(
                                             child: Text(
                                               "View",
-                                              style: GoogleFonts.cairo(
+                                              style: GoogleFonts.openSans(
                                                   fontSize: width / 95.888,
                                                   fontWeight: FontWeight.bold,
                                                   color:  Colors.black),
@@ -631,7 +631,7 @@ class _CustomerState extends State<Customer> {
                                   child: Center(
                                       child: Text(
                                         (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             fontSize: width / 95.888,
                                             color:  Colors.black),
@@ -658,7 +658,7 @@ class _CustomerState extends State<Customer> {
                                     child: Text(
                                       snapshot.data!.docs[index]
                                       ["Customername"],
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width / 95.888,
                                           color:  Colors.black),
@@ -731,7 +731,7 @@ class _CustomerState extends State<Customer> {
                                       child: Center(
                                           child: Text(
                                             "View",
-                                            style: GoogleFonts.cairo(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width / 95.888,
                                                 fontWeight: FontWeight.bold,
                                                 color:  Colors.black),
@@ -805,7 +805,7 @@ class _CustomerState extends State<Customer> {
               padding:  EdgeInsets.only(right: width/1.232,top: height/65.7,bottom: height/65.7),
               child: Text(
                 "Add New Customer",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold, fontSize:width/ 59.39,color: const Color(0xffFFFFFF)),
               ),
             ),
@@ -821,7 +821,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("Customer Code",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("Customer Code",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -835,7 +835,7 @@ class _CustomerState extends State<Customer> {
                       readOnly: true,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/136.6,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
                       ),
@@ -851,7 +851,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("Customer Name",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("Customer Name",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -865,7 +865,7 @@ class _CustomerState extends State<Customer> {
                       controller: Suppliername,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
 
@@ -881,7 +881,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("Mobile",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("Mobile",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -892,7 +892,7 @@ class _CustomerState extends State<Customer> {
                       controller:  Mobileno,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
                       ),
@@ -908,7 +908,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("Home No",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("Home No",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -920,7 +920,7 @@ class _CustomerState extends State<Customer> {
                       controller: homeno,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
                       ),
@@ -943,7 +943,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("Street",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("Street",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -957,7 +957,7 @@ class _CustomerState extends State<Customer> {
                       controller: street,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
 
@@ -974,7 +974,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("Area",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("Area",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -988,7 +988,7 @@ class _CustomerState extends State<Customer> {
                       controller: Area,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
 
@@ -1005,7 +1005,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("City/District",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("City/District",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -1017,7 +1017,7 @@ class _CustomerState extends State<Customer> {
                       controller: CityDis,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
                       ),
@@ -1033,7 +1033,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("State",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("State",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -1045,7 +1045,7 @@ class _CustomerState extends State<Customer> {
                       controller: State,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
                       ),
@@ -1068,7 +1068,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("Pincode",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("Pincode",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -1082,7 +1082,7 @@ class _CustomerState extends State<Customer> {
                       controller: Pincode,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
 
@@ -1099,7 +1099,7 @@ class _CustomerState extends State<Customer> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                  child: Text("GST NO",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                  child: Text("GST NO",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -1113,7 +1113,7 @@ class _CustomerState extends State<Customer> {
                       controller: Gstno,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
 
@@ -1148,7 +1148,7 @@ class _CustomerState extends State<Customer> {
                   height: height/16.42,
                   //color: Color(0xffD60A0B),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                    color: const Color(0xff25D366),),child: Center(child: Text("Save Customer",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/ 91.06),)),
+                    color: const Color(0xff25D366),),child: Center(child: Text("Save Customer",style: GoogleFonts.openSans(color: Colors.white,fontSize:width/ 91.06),)),
                 ),
               ),
             ),
@@ -1161,7 +1161,7 @@ class _CustomerState extends State<Customer> {
                 child: Container(width: width/13.6,
                   height:  height/16.42,
                   //color: Color(0xffD60A0B),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.poppins(color: Colors.white),)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.openSans(color: Colors.white),)),
                 ),
               ),
             ),
@@ -1223,7 +1223,7 @@ class _CustomerState extends State<Customer> {
                 child: Column(
                   children: [
                     SizedBox(height:height/32.85,),
-                    Text("Add a Customer Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Customer Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -1253,7 +1253,7 @@ class _CustomerState extends State<Customer> {
                     //       child: Center(
                     //         child: Text(
                     //             "Okay",
-                    //             style: GoogleFonts.poppins(
+                    //             style: GoogleFonts.openSans(
                     //                 letterSpacing: 1.5,
                     //                 fontWeight: FontWeight.w500,
                     //                 fontSize: width/85.375, color: Colors.white)
@@ -1297,7 +1297,7 @@ class _CustomerState extends State<Customer> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height:height/21.9),
-                Text("Are You Sure Want to Delete",style: GoogleFonts.poppins(
+                Text("Are You Sure Want to Delete",style: GoogleFonts.openSans(
                     fontWeight: FontWeight.w700,
                     fontSize:width/75.88
                 ),),
@@ -1326,7 +1326,7 @@ class _CustomerState extends State<Customer> {
                             color: const Color(0xff25D366)
                         ),
                         child: Center(
-                          child: Text("Okay",style: GoogleFonts.poppins(color:
+                          child: Text("Okay",style: GoogleFonts.openSans(color:
                           Colors.white,fontWeight: FontWeight.w600),),
                         ),
                       ),
@@ -1349,7 +1349,7 @@ class _CustomerState extends State<Customer> {
                           ),
                           child: Center(
                             child: Text("Cancel",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 85.375,

@@ -102,7 +102,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                               const EdgeInsets.only(left: 20.0, top:20),
                               child: Text(
                                 "Item Code",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     color: const Color(0xff000000),
                                     fontWeight: FontWeight.bold),
                               ),
@@ -149,7 +149,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 const EdgeInsets.only(left: 20.0, ),
                                 child: Text(
                                   "Si.No",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -159,7 +159,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 padding: const EdgeInsets.only(left:20.0),
                                 child: Text(
                                   "Item Name",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -169,7 +169,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 padding: const EdgeInsets.only(left:80.0),
                                 child: Text(
                                   "Description",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -180,7 +180,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 const EdgeInsets.only(left: 145.0, right: 50),
                                 child: Text(
                                   "QTY",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -189,7 +189,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 padding: const EdgeInsets.only(right: 48.0),
                                 child: Text(
                                   "Rate",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -199,7 +199,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 padding: const EdgeInsets.only(left: 10.0, right: 2),
                                 child: Text(
                                   "GST",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -210,7 +210,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 EdgeInsets.only(left:width/28.458, right: 30),
                                 child: Text(
                                   "Discount",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -219,14 +219,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 padding: const EdgeInsets.only(right: 55.0),
                                 child: Text(
                                   "Total",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xff000000),
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
                               Text(
                                 "Stock",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     color: const Color(0xff000000),
                                     fontWeight: FontWeight.bold),
                               ),
@@ -519,7 +519,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                           padding: const EdgeInsets.only(left: 28.0, right: 5),
                           child: Text(
                             "Previous Bill Amount:",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 color: const Color(0xff000000),
                                 fontSize: width/75.888,
                                 fontWeight: FontWeight.bold),
@@ -532,7 +532,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                           width: 80,
                           child: Text(
                             billingcountval.toString(),
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 color: const Color(0xff000000),
                                 fontSize: width/75.888,
                                 textStyle: const TextStyle(
@@ -683,7 +683,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                         child: Row(
                           children: [
                             const SizedBox(width: 10,),
-                            Text("Total :",style:GoogleFonts.poppins(
+                            Text("Total :",style:GoogleFonts.openSans(
                                 color: const Color(0xffFF2C2C),
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold)),
@@ -694,7 +694,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                               child: Text(
                                 "₹${billingtotal.toString()}",
                                 style:
-                                GoogleFonts.poppins(
+                                GoogleFonts.openSans(
                                     color: const Color(0xffFF2C2C),
                                     fontSize: 28,
                                     fontWeight: FontWeight.bold),
@@ -709,7 +709,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                               padding: const EdgeInsets.only(left: 20.0, right: 20),
                               child: Text(
                                 "Rate Type:",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     color: Color(0xff000000), fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -753,7 +753,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                               padding: const EdgeInsets.only(left: 58.0, right: 20),
                               child: Text(
                                 "Sales Man:",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     color: Color(0xff000000), fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -764,7 +764,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                 controller: Saleman,
                                 keyboardType: TextInputType.multiline,
                                 maxLines: null,
-                                style: GoogleFonts.poppins(fontSize: 10),
+                                style: GoogleFonts.openSans(fontSize: 10),
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.only(left: 20, bottom: 8),
                                   border: InputBorder.none,
@@ -809,7 +809,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                     child: Center(
                                         child: Text(
                                           "Save Bill",
-                                          style: GoogleFonts.poppins(color: Colors.white),
+                                          style: GoogleFonts.openSans(color: Colors.white),
                                         )),
                                   ),
                                 ),
@@ -848,7 +848,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                     child: Center(
                                         child: Text(
                                           "Save and Print Bill",
-                                          style: GoogleFonts.poppins(color: Colors.white),
+                                          style: GoogleFonts.openSans(color: Colors.white),
                                         )),
                                   ),
                                 ),
@@ -880,7 +880,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                       children: [
                                         Text(
                                           "Save Bill\nShare",
-                                          style: GoogleFonts.poppins(color: Colors.white),
+                                          style: GoogleFonts.openSans(color: Colors.white),
                                         ),
                                         const SizedBox(width: 15,),
                                         SizedBox(
@@ -932,7 +932,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                   const EdgeInsets.only(left: 28.0, top: 10),
                                   child: Text(
                                     "Bill No:",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: const Color(0xff000000),
                                         fontSize: width/75.888,
                                         fontWeight: FontWeight.bold),
@@ -946,7 +946,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                     width: 120,
                                     child: Text(
                                       billcount.toString(),
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width/75.888,
                                           color: const Color(0xff000000),
                                           textStyle: const TextStyle(
@@ -969,7 +969,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                   padding: const EdgeInsets.only(left: 28.0, ),
                                   child: Text(
                                     "Mobile:",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontSize: width/75.888,
                                         color: const Color(0xff000000),
                                         fontWeight: FontWeight.bold),
@@ -1036,7 +1036,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                   padding: const EdgeInsets.only(left: 28.0,),
                                   child: Text(
                                     "Customer:",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontSize: width/75.888,
                                         color: const Color(0xff000000),
                                         fontWeight: FontWeight.bold),
@@ -1082,14 +1082,14 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                           onTap: (){
                                             customeradd();
                                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                content: Text("Add Customer Successfully",style: GoogleFonts.poppins(),)));
+                                                content: Text("Add Customer Successfully",style: GoogleFonts.openSans(),)));
 
                                           },
                                           child: Padding(
                                             padding: const EdgeInsets.all(4.0),
                                             child: Row(
                                               children: [
-                                                Text("Add Customer",style: GoogleFonts.poppins(color:Colors.white),),
+                                                Text("Add Customer",style: GoogleFonts.openSans(color:Colors.white),),
                                                 const Icon(Icons.add,color: Colors.white,),
                                               ],
                                             ),
@@ -1111,7 +1111,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                   padding: const EdgeInsets.only(left: 28.0, ),
                                   child: Text(
                                     "Customer \nAddress:",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontSize: width/75.888,
                                         color: const Color(0xff000000),
                                         fontWeight: FontWeight.bold),
@@ -1150,7 +1150,7 @@ class _Billin_PAgeState extends State<Billin_PAge> {
                                   //bill type text
                                   Text(
                                     "Payment\nMode:",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontSize: width/75.888,
                                         color: const Color(0xff000000),
                                         fontWeight: FontWeight.bold),

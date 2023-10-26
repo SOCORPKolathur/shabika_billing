@@ -1158,7 +1158,7 @@ final Formkey=GlobalKey<FormState>();
                       Center(
                           child: Text(
                             "Si No",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
@@ -1170,7 +1170,7 @@ final Formkey=GlobalKey<FormState>();
                       child: Center(
                           child: Text(
                             "Item ID",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
@@ -1182,7 +1182,7 @@ final Formkey=GlobalKey<FormState>();
                       child: Center(
                           child: Text(
                             "Item Name",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
@@ -1196,7 +1196,7 @@ final Formkey=GlobalKey<FormState>();
                       child: Center(
                           child: Text(
                             "Problem",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
@@ -1213,7 +1213,7 @@ final Formkey=GlobalKey<FormState>();
                       child: Center(
                           child: Text(
                             "Qnty",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
@@ -1230,7 +1230,7 @@ final Formkey=GlobalKey<FormState>();
                       child: Center(
                           child: Text(
                             "Clear ",
-                            style: GoogleFonts.montserrat(
+                            style: GoogleFonts.openSans(
                               color: Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
@@ -1660,7 +1660,7 @@ final Formkey=GlobalKey<FormState>();
                       child: Text(
                         "Save Invoice",
                         style:
-                        GoogleFonts.poppins(color: Colors.white),
+                        GoogleFonts.openSans(color: Colors.white),
                       )),
                 ),
               ),
@@ -1779,7 +1779,7 @@ print(name);
                     Text(
                       "Replace Bill Saved Successfully..",
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontWeight: FontWeight.w600,
                           fontSize: width / 68.30,
                           color: Colors.white),
@@ -1824,7 +1824,7 @@ print(name);
                               ),
                               child: Center(
                                 child: Text("Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,
@@ -1851,7 +1851,7 @@ print(name);
                               ),
                               child: Center(
                                 child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,

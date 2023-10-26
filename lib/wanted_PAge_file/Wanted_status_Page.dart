@@ -41,7 +41,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
               padding:  EdgeInsets.only(left:width/48.785, top: height/32.85),
               child: Text(
                 "Status",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold,
                     fontSize:width/59.391,
                     color: Colors.white),
@@ -80,7 +80,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                         padding:  EdgeInsets.only(bottom:height/136.6),
                         child: Text(
                           "Home",
-                          style: GoogleFonts.cairo(
+                          style: GoogleFonts.openSans(
                               color: const Color(0xffFFFFFF), fontSize:width/59.391),
                         ),
                       )
@@ -100,7 +100,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
           child: Row(
             children: [
               Text("Search",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontSize: width/68.3, fontWeight: FontWeight.bold)),
             ],
           ),
@@ -121,7 +121,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                 child:
                 TextField(
                   controller: Serachcontroller,
-                  style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
+                  style: GoogleFonts.openSans(fontSize: width/68.3,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(
                       contentPadding:
                       EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/102.125),
@@ -188,7 +188,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                           ),
                           Text(
                             "Add Category",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize: width/68.3, color: Colors.white),
                           ),
                         ],
@@ -220,7 +220,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                 child: Center(
                     child: Text(
                       "Add",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           fontWeight: FontWeight.bold,
                           fontSize: width/75.888,
                          ),
@@ -240,7 +240,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                   child: TextField(
                     controller: Operator1,
 
-                    style: GoogleFonts.cairo(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.bold,
                         fontSize: width/75.888,
                        ),
@@ -275,7 +275,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                       left: width/75.888, top: height/131.4),
                   child: TextField(
                     controller: Operator2,
-                    style: GoogleFonts.cairo(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.bold,
                         fontSize: width/75.888,
                         ),
@@ -316,7 +316,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                   child: TextField(
                     controller: Operator3,
 
-                    style: GoogleFonts.cairo(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.bold,
                         fontSize: width/75.888,
                        ),
@@ -366,7 +366,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                   padding:
                   EdgeInsets.only(left: width/42.68, right: width/34.15),
                   child: Text("Sl.no",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           color: const Color(0xff00A99D),
                           fontSize: width/68.3,
                           fontWeight: FontWeight.w600)),
@@ -375,7 +375,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                   height: height / 13.14,
                   width: width / 5.10,
                   child: Text("Status-1",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           color: const Color(0xff00A99D),
                           fontSize: width/68.3,
                           fontWeight: FontWeight.w600)),
@@ -384,7 +384,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                   height: height / 13.14,
                   width: width / 5.10,
                   child: Text("Status-2",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           color: const Color(0xff00A99D),
                           fontSize: width/68.3,
                           fontWeight: FontWeight.w600)),
@@ -393,7 +393,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                   height: height / 13.14,
                   width: width / 5.10,
                   child: Text("Status-3",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           color: const Color(0xff00A99D),
                           fontSize: width/68.3,
                           fontWeight: FontWeight.w600)),
@@ -457,7 +457,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                                 child: Center(
                                     child: Text(
                                       (index + 1).toString(),
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width / 75.888,
                                           color: const Color(0xffFDFDFD)),
@@ -502,7 +502,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                                           child: Text(
                                             snap.data!.docs[index]
                                             ["name"],
-                                            style: GoogleFonts.cairo(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: width/75.888,
                                                 color: const Color(0xffFDFDFD)),
@@ -555,7 +555,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                                           child: Text(
                                             snap.data!.docs[index]
                                             ["name"],
-                                            style: GoogleFonts.cairo(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: width/75.888,
                                                 color: const Color(0xffFDFDFD)),
@@ -606,7 +606,7 @@ class _Wanted_status_PageState extends State<Wanted_status_Page> {
                                           child: Text(
                                             snap.data!.docs[index]
                                             ["name"],
-                                            style: GoogleFonts.cairo(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: width/75.888,
                                                 color: const Color(0xffFDFDFD)),

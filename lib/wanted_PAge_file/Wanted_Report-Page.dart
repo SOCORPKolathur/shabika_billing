@@ -113,7 +113,7 @@ String nameval="";
               //textfield-1 fromdate
               Text("Sort by\nDate :",
                 textAlign: TextAlign.start,
-                style: GoogleFonts.montserrat(color: Colors.white,
+                style: GoogleFonts.openSans(color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: width/84.64),),
               SizedBox(width: width/136.6,),
@@ -161,7 +161,7 @@ String nameval="";
 
               Text("Sort by\nCategory :",
                 textAlign: TextAlign.start,
-                style: GoogleFonts.montserrat(color: Colors.white,
+                style: GoogleFonts.openSans(color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: width/84.64),),
               SizedBox(width: width/136.6,),
@@ -187,7 +187,7 @@ String nameval="";
                                   Category=textEditingController;
                                 });
                               },
-                              style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                              style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding:
@@ -272,7 +272,7 @@ String nameval="";
               SizedBox(width: width/136.6,),
 
               //Status-1
-              Text("Status-1 : ",style: GoogleFonts.montserrat(color: Colors.white,
+              Text("Status-1 : ",style: GoogleFonts.openSans(color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width/84.64),),
               Container(
@@ -302,7 +302,7 @@ String nameval="";
                                   Serachstatus=textEditingController;
                                 });
                               },
-                              style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                              style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding:
@@ -374,7 +374,7 @@ String nameval="";
               SizedBox(width: width/136.6,),
 
               //Status-2
-              Text("Status-2 : ",style: GoogleFonts.montserrat(color: Colors.white,
+              Text("Status-2 : ",style: GoogleFonts.openSans(color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width/84.64),),
               Container(
@@ -404,7 +404,7 @@ String nameval="";
                                     Serachstatus2=Controller2;
                                   });
                                 },
-                                style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                                style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding:
@@ -477,7 +477,7 @@ String nameval="";
               SizedBox(width: width/136.6,),
 
               //Status-3
-              Text("Status-3 : ",style: GoogleFonts.montserrat(color: Colors.white,
+              Text("Status-3 : ",style: GoogleFonts.openSans(color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width/84.64),),
               Container(
@@ -506,7 +506,7 @@ String nameval="";
                                     Serachstatus3=Controller3;
                                   });
                                 },
-                                style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                                style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding:
@@ -605,7 +605,7 @@ String nameval="";
                       borderRadius: BorderRadius.circular(5),color:Colors.red
                   ),
                   child:  Center(
-                    child: Text("Clear",style: GoogleFonts.montserrat(color: Colors.white,
+                    child: Text("Clear",style: GoogleFonts.openSans(color: Colors.white,
                         fontWeight: FontWeight.w800,
                         fontSize: width/84.64),),
                   ),
@@ -626,7 +626,7 @@ String nameval="";
               //textfield-1 fromdate
               Text("Customer Phone/Name :",
                 textAlign: TextAlign.start,
-                style: GoogleFonts.montserrat(color: Colors.white,
+                style: GoogleFonts.openSans(color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: width/84.64),),
               SizedBox(width: width/136.6,),
@@ -688,7 +688,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Si No',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Si No',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/15.383,
@@ -698,7 +698,7 @@ String nameval="";
                               ),
                               child: Center(child: Text('Date\nTime',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -709,7 +709,7 @@ String nameval="";
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text('Category',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Category',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/11.383+ width/11.383,
@@ -717,7 +717,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Item Name',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Item Name',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/18.383,
@@ -725,7 +725,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Amount',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Amount',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/18.383,
@@ -735,7 +735,7 @@ String nameval="";
                               ),
                               child: Center(child: Text('Advance\nAmount',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                           Container(
                               width:width/18.383,
                               height:height/13.14,
@@ -744,7 +744,7 @@ String nameval="";
                               ),
                               child: Center(child: Text('Second\nPayment',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/18.383,
@@ -752,7 +752,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Balance\nAmount',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Balance\nAmount',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/11.383,
@@ -762,7 +762,7 @@ String nameval="";
                               ),
                               child: Center(child: Text('Customer\nName\nMobile',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/15.383,
@@ -770,7 +770,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Payment',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Payment',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/15.383,
@@ -778,7 +778,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Status-1',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Status-1',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/15.383,
@@ -786,7 +786,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Status-2',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Status-2',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/15.383,
@@ -794,7 +794,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Status-3',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Status-3',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                           Container(
                               width:width/14.583,
@@ -802,7 +802,7 @@ String nameval="";
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text('Actions',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              child: Center(child: Text('Actions',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -869,7 +869,7 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text('${index+1}',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text('${index+1}',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/15.383,
@@ -879,7 +879,7 @@ String nameval="";
                                           ),
                                           child: Center(child: Text('${wantedlist['Date']}\n${wantedlist['time']}',
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -890,7 +890,7 @@ String nameval="";
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/11.383 +width/11.383,
@@ -898,7 +898,7 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/18.383,
@@ -906,7 +906,7 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/18.383,
@@ -916,7 +916,7 @@ String nameval="";
                                           ),
                                           child: Center(child: Text(wantedlist['AdvanceAmount'],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -926,14 +926,14 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                       Container(
                                           width:width/18.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/11.383,
@@ -944,7 +944,7 @@ String nameval="";
                                           child: Center(child: Text("${wantedlist['Customer name']}\n${wantedlist['Customer Phone']}",
 
                                             textAlign : TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/15.383,
@@ -954,7 +954,7 @@ String nameval="";
                                           ),
                                           child: Center(child: Text(wantedlist['Payment'],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,
                                                 color: wantedlist['Payment']=="Payment Paid"? Colors.green : Colors.red
 
                                             ),))),
@@ -968,7 +968,7 @@ String nameval="";
                                           child: Center(child: Text(wantedlist['staus1'],
 
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       InkWell(
                                         onTap:(){
@@ -982,7 +982,7 @@ String nameval="";
                                             ),
                                             child: Center(child: Text(wantedlist['staus2'],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                       ),
 
                                       InkWell(
@@ -998,7 +998,7 @@ String nameval="";
                                             ),
                                             child: Center(child: Text(wantedlist['staus3'],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                       ),
 
                                       InkWell(
@@ -1011,7 +1011,7 @@ String nameval="";
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text('Pay ',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.green),))),
+                                            child: Center(child: Text('Pay ',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.green),))),
                                       ),
                                       InkWell(
                                         onTap:(){
@@ -1041,7 +1041,7 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text('${index+1}',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text('${index+1}',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/15.383,
@@ -1051,7 +1051,7 @@ String nameval="";
                                           ),
                                           child: Center(child: Text('${wantedlist['Date']}\n${wantedlist['time']}',
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -1062,7 +1062,7 @@ String nameval="";
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/11.383 +width/11.383,
@@ -1070,7 +1070,7 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/18.383,
@@ -1078,7 +1078,7 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/18.383,
@@ -1088,7 +1088,7 @@ String nameval="";
                                           ),
                                           child: Center(child: Text(wantedlist['AdvanceAmount'],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -1098,14 +1098,14 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                       Container(
                                           width:width/18.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/11.383,
@@ -1116,7 +1116,7 @@ String nameval="";
                                           child: Center(child: Text("${wantedlist['Customer name']}\n${wantedlist['Customer Phone']}",
 
                                             textAlign : TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       Container(
                                           width:width/15.383,
@@ -1126,7 +1126,7 @@ String nameval="";
                                           ),
                                           child: Center(child: Text(wantedlist['Payment'],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,
                                                 color: wantedlist['Payment']=="Payment Paid"? Colors.green : Colors.red
 
                                             ),))),
@@ -1140,7 +1140,7 @@ String nameval="";
                                           child: Center(child: Text(wantedlist['staus1'],
 
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                       InkWell(
                                         onTap:(){
@@ -1154,7 +1154,7 @@ String nameval="";
                                             ),
                                             child: Center(child: Text(wantedlist['staus2'],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                       ),
 
                                       InkWell(
@@ -1170,7 +1170,7 @@ String nameval="";
                                             ),
                                             child: Center(child: Text(wantedlist['staus3'],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                       ),
 
                                       InkWell(
@@ -1183,7 +1183,7 @@ String nameval="";
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text('Pay ',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.green),))),
+                                            child: Center(child: Text('Pay ',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.green),))),
                                       ),
                                       InkWell(
                                         onTap:(){
@@ -1217,7 +1217,7 @@ String nameval="";
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text('${index+1}',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                        child: Center(child: Text('${index+1}',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                     Container(
                                         width:width/15.383,
@@ -1227,7 +1227,7 @@ String nameval="";
                                         ),
                                         child: Center(child: Text('${wantedlist['Date']}\n${wantedlist['time']}',
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -1238,7 +1238,7 @@ String nameval="";
                                           border: Border.all(color: Colors.black,width: 1.2),
 
                                         ),
-                                        child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                        child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                     Container(
                                         width:width/11.383 +width/11.383,
@@ -1246,7 +1246,7 @@ String nameval="";
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                        child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                     Container(
                                         width:width/18.383,
@@ -1254,7 +1254,7 @@ String nameval="";
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                        child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                     Container(
                                         width:width/18.383,
@@ -1264,7 +1264,7 @@ String nameval="";
                                         ),
                                         child: Center(child: Text(wantedlist['AdvanceAmount'],
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -1274,14 +1274,14 @@ String nameval="";
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                        child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                     Container(
                                         width:width/18.383,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                        child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                     Container(
                                         width:width/11.383,
@@ -1292,7 +1292,7 @@ String nameval="";
                                         child: Center(child: Text("${wantedlist['Customer name']}\n${wantedlist['Customer Phone']}",
 
                                           textAlign : TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                     Container(
                                         width:width/15.383,
@@ -1302,7 +1302,7 @@ String nameval="";
                                         ),
                                         child: Center(child: Text(wantedlist['Payment'],
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,
                                               color: wantedlist['Payment']=="Payment Paid"? Colors.green : Colors.red
 
                                           ),))),
@@ -1316,7 +1316,7 @@ String nameval="";
                                         child: Center(child: Text(wantedlist['staus1'],
 
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                     InkWell(
                                       onTap:(){
@@ -1330,7 +1330,7 @@ String nameval="";
                                           ),
                                           child: Center(child: Text(wantedlist['staus2'],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                     ),
 
                                     InkWell(
@@ -1346,7 +1346,7 @@ String nameval="";
                                           ),
                                           child: Center(child: Text(wantedlist['staus3'],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                     ),
 
                                     InkWell(
@@ -1359,7 +1359,7 @@ String nameval="";
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text('Pay ',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.green),))),
+                                          child: Center(child: Text('Pay ',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.green),))),
                                     ),
                                     InkWell(
                                       onTap:(){
@@ -1393,7 +1393,7 @@ String nameval="";
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text('${index+1}',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                           child: Center(child: Text('${index+1}',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                        Container(
                                            width:width/15.383,
@@ -1403,7 +1403,7 @@ String nameval="";
                                            ),
                                            child: Center(child: Text('${wantedlist['Date']}\n${wantedlist['time']}',
                                              textAlign: TextAlign.center,
-                                             style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                             style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -1414,7 +1414,7 @@ String nameval="";
                                              border: Border.all(color: Colors.black,width: 1.2),
 
                                            ),
-                                           child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                           child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                        Container(
                                            width:width/11.383 +width/11.383,
@@ -1422,7 +1422,7 @@ String nameval="";
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                           child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                        Container(
                                            width:width/18.383,
@@ -1430,7 +1430,7 @@ String nameval="";
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                           child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                        Container(
                                            width:width/18.383,
@@ -1440,7 +1440,7 @@ String nameval="";
                                            ),
                                            child: Center(child: Text(wantedlist['AdvanceAmount'],
                                              textAlign: TextAlign.center,
-                                             style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                             style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -1450,14 +1450,14 @@ String nameval="";
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                           child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                        Container(
                                            width:width/18.383,
                                            height:height/13.14,
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                           child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                        Container(
                                            width:width/11.383,
@@ -1468,7 +1468,7 @@ String nameval="";
                                            child: Center(child: Text("${wantedlist['Customer name']}\n${wantedlist['Customer Phone']}",
 
                                              textAlign : TextAlign.center,
-                                             style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                             style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                        Container(
                                            width:width/15.383,
@@ -1478,7 +1478,7 @@ String nameval="";
                                            ),
                                            child: Center(child: Text(wantedlist['Payment'],
                                              textAlign: TextAlign.center,
-                                             style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,
+                                             style: GoogleFonts.openSans(fontWeight: FontWeight.bold,
                                                  color: wantedlist['Payment']=="Payment Paid"? Colors.green : Colors.red
 
                                              ),))),
@@ -1492,7 +1492,7 @@ String nameval="";
                                            child: Center(child: Text(wantedlist['staus1'],
 
                                              textAlign: TextAlign.center,
-                                             style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                             style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                        InkWell(
                                          onTap:(){
@@ -1506,7 +1506,7 @@ String nameval="";
                                              ),
                                              child: Center(child: Text(wantedlist['staus2'],
                                                textAlign: TextAlign.center,
-                                               style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                               style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                        ),
 
                                        InkWell(
@@ -1522,7 +1522,7 @@ String nameval="";
                                              ),
                                              child: Center(child: Text(wantedlist['staus3'],
                                                textAlign: TextAlign.center,
-                                               style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                               style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                        ),
 
                                        InkWell(
@@ -1535,7 +1535,7 @@ String nameval="";
                                              decoration: BoxDecoration(
                                                border: Border.all(color: Colors.black,width: 1.2),
                                              ),
-                                             child: Center(child: Text('Pay ',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.green),))),
+                                             child: Center(child: Text('Pay ',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.green),))),
                                        ),
                                        InkWell(
                                          onTap:(){
@@ -1568,7 +1568,7 @@ String nameval="";
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text('${index+1}',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            child: Center(child: Text('${index+1}',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                         Container(
                                             width:width/15.383,
@@ -1578,7 +1578,7 @@ String nameval="";
                                             ),
                                             child: Center(child: Text('${wantedlist['Date']}\n${wantedlist['time']}',
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -1589,7 +1589,7 @@ String nameval="";
                                               border: Border.all(color: Colors.black,width: 1.2),
 
                                             ),
-                                            child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            child: Center(child: Text(wantedlist['Category'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                         Container(
                                             width:width/11.383 +width/11.383,
@@ -1597,7 +1597,7 @@ String nameval="";
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            child: Center(child: Text(wantedlist['Itemname'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                         Container(
                                             width:width/18.383,
@@ -1605,7 +1605,7 @@ String nameval="";
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            child: Center(child: Text(wantedlist['Amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                         Container(
                                             width:width/18.383,
@@ -1615,7 +1615,7 @@ String nameval="";
                                             ),
                                             child: Center(child: Text(wantedlist['AdvanceAmount'],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
 
 
@@ -1625,14 +1625,14 @@ String nameval="";
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            child: Center(child: Text(wantedlist['Amount2'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                         Container(
                                             width:width/18.383,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                            child: Center(child: Text(wantedlist['Balance amount'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                         Container(
                                             width:width/11.383,
@@ -1643,7 +1643,7 @@ String nameval="";
                                             child: Center(child: Text("${wantedlist['Customer name']}\n${wantedlist['Customer Phone']}",
 
                                               textAlign : TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                         Container(
                                             width:width/15.383,
@@ -1653,7 +1653,7 @@ String nameval="";
                                             ),
                                             child: Center(child: Text(wantedlist['Payment'],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,
                                             color: wantedlist['Payment']=="Payment Paid"? Colors.green : Colors.red
 
                                             ),))),
@@ -1667,7 +1667,7 @@ String nameval="";
                                             child: Center(child: Text(wantedlist['staus1'],
 
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
 
                                         InkWell(
                                           onTap:(){
@@ -1681,7 +1681,7 @@ String nameval="";
                                               ),
                                               child: Center(child: Text(wantedlist['staus2'],
                                                 textAlign: TextAlign.center,
-                                                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                         ),
 
                                         InkWell(
@@ -1697,7 +1697,7 @@ String nameval="";
                                               ),
                                               child: Center(child: Text(wantedlist['staus3'],
                                                 textAlign: TextAlign.center,
-                                                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,),))),
+                                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,),))),
                                         ),
 
                                         InkWell(
@@ -1710,7 +1710,7 @@ String nameval="";
                                               decoration: BoxDecoration(
                                                 border: Border.all(color: Colors.black,width: 1.2),
                                               ),
-                                              child: Center(child: Text('Pay ',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.green),))),
+                                              child: Center(child: Text('Pay ',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.green),))),
                                         ),
                                         InkWell(
                                           onTap:(){
@@ -1789,7 +1789,7 @@ String nameval="";
                           Text(
                             "Payment Details..",
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w600,
                                 fontSize: width / 68.30,
                                 color: Colors.white),
@@ -1804,7 +1804,7 @@ String nameval="";
                                   width: width / 8.83,
                                   child: Text(
                                     "Total Amount:",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -1843,7 +1843,7 @@ String nameval="";
                                   width: width / 8.83,
                                   child: Text(
                                     "To Pay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -1894,7 +1894,7 @@ String nameval="";
                                   width: width / 8.83,
                                   child: Text(
                                     "Amount",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -1938,7 +1938,7 @@ String nameval="";
                                   width: width / 8.83,
                                   child: Text(
                                     "Balance",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -1980,7 +1980,7 @@ String nameval="";
                                   width: width / 8.83,
                                   child: Text(
                                     "Payment Mode",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -2000,7 +2000,7 @@ String nameval="";
                                   child: DropdownButton2<String>(
                                     value: Payments2,
                                     isExpanded: true,
-                                    style: GoogleFonts.montserrat(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.w700,
                                         fontSize: width / 105.07),
                                     underline: Container(
@@ -2054,7 +2054,7 @@ String nameval="";
                                     ),
                                     child: Center(
                                       child: Text("Okay",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width / 85.375,
@@ -2086,7 +2086,7 @@ String nameval="";
                                     ),
                                     child: Center(
                                       child: Text("Cancel",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width / 85.375,
@@ -2203,7 +2203,7 @@ String nameval="";
           Serachstatus.text=Controller1.text;
         });
       },
-      style:  GoogleFonts.montserrat(
+      style:  GoogleFonts.openSans(
           fontWeight:FontWeight.w700
       ),
       decoration: InputDecoration(
@@ -2225,7 +2225,7 @@ String nameval="";
     double height = MediaQuery.of(context).size.height;
 
     return TextFormField(
-      style:  GoogleFonts.montserrat(
+      style:  GoogleFonts.openSans(
           fontWeight:FontWeight.w700
       ),
       decoration: InputDecoration(
@@ -2248,7 +2248,7 @@ String nameval="";
     double height = MediaQuery.of(context).size.height;
 
     return TextFormField(
-      style:  GoogleFonts.montserrat(
+      style:  GoogleFonts.openSans(
           fontWeight:FontWeight.w700
       ),
       decoration: InputDecoration(
@@ -2319,12 +2319,12 @@ String nameval="";
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: height/22.53,),
-                        Text("Status Update",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                        Text("Status Update",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                         SizedBox(height:height/6.56),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Status : ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                            Text("Status : ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                             SizedBox(width: width/136.6,),
                             Container(
                               width: width / 7.415,
@@ -2337,7 +2337,7 @@ String nameval="";
                               child:
                               DropdownButton2<String>(
                                 value: WantedType,
-                                style:GoogleFonts.montserrat(
+                                style:GoogleFonts.openSans(
                                     fontSize: width/113.833,
                                     color:Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -2360,7 +2360,7 @@ String nameval="";
                                         (String value) {
                                       return DropdownMenuItem<String>(
                                         value: value,
-                                        child: Text(value,style:GoogleFonts.montserrat(
+                                        child: Text(value,style:GoogleFonts.openSans(
                                             fontSize: width/113.833,
                                             color:Colors.black,
                                             fontWeight: FontWeight.bold),),
@@ -2417,7 +2417,7 @@ String nameval="";
                             child: Center(
                                 child: Text(
                                   "Okay",
-                                  style: GoogleFonts.poppins(color: Colors.white),
+                                  style: GoogleFonts.openSans(color: Colors.white),
                                 )),
                           ),
                         ),
@@ -2455,12 +2455,12 @@ String nameval="";
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: height/22.53,),
-                        Text("Status Update",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                        Text("Status Update",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                         SizedBox(height:height/6.56),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Status : ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                            Text("Status : ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                             SizedBox(width: width/136.6,),
                             Container(
                               width: width / 7.415,
@@ -2473,7 +2473,7 @@ String nameval="";
                               child:
                               DropdownButton2<String>(
                                 value: Status2,
-                                style:GoogleFonts.montserrat(
+                                style:GoogleFonts.openSans(
                                     fontSize: width/113.833,
                                     color:Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -2496,7 +2496,7 @@ String nameval="";
                                         (String value) {
                                       return DropdownMenuItem<String>(
                                         value: value,
-                                        child: Text(value,style:GoogleFonts.montserrat(
+                                        child: Text(value,style:GoogleFonts.openSans(
                                             fontSize: width/113.833,
                                             color:Colors.black,
                                             fontWeight: FontWeight.bold),),
@@ -2531,7 +2531,7 @@ String nameval="";
                             child: Center(
                                 child: Text(
                                   "Okay",
-                                  style: GoogleFonts.poppins(color: Colors.white),
+                                  style: GoogleFonts.openSans(color: Colors.white),
                                 )),
                           ),
                         ),
@@ -2569,12 +2569,12 @@ String nameval="";
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: height/22.53,),
-                        Text("Status Update",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                        Text("Status Update",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                         SizedBox(height:height/6.56),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Status : ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                            Text("Status : ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                             SizedBox(width: width/136.6,),
                             Container(
                               width: width / 7.415,
@@ -2587,7 +2587,7 @@ String nameval="";
                               child:
                               DropdownButton2<String>(
                                 value: Status3,
-                                style:GoogleFonts.montserrat(
+                                style:GoogleFonts.openSans(
                                     fontSize: width/113.833,
                                     color:Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -2610,7 +2610,7 @@ String nameval="";
                                         (String value) {
                                       return DropdownMenuItem<String>(
                                         value: value,
-                                        child: Text(value,style:GoogleFonts.montserrat(
+                                        child: Text(value,style:GoogleFonts.openSans(
                                             fontSize: width/113.833,
                                             color:Colors.black,
                                             fontWeight: FontWeight.bold),),
@@ -2645,7 +2645,7 @@ String nameval="";
                             child: Center(
                                 child: Text(
                                   "Okay",
-                                  style: GoogleFonts.poppins(color: Colors.white),
+                                  style: GoogleFonts.openSans(color: Colors.white),
                                 )),
                           ),
                         ),

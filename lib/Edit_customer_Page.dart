@@ -105,7 +105,7 @@ String itemcodes='';
                 padding:  EdgeInsets.only(right: width/1.232,top: height/65.7,bottom: height/65.7),
                 child: Text(
                   "Edit Customer",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontWeight: FontWeight.bold, fontSize:width/ 59.39,color: const Color(0xffFFFFFF)),
                 ),
               ),
@@ -121,7 +121,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Customer ID",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Customer ID",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -135,7 +135,7 @@ String itemcodes='';
                         readOnly: true,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize: width/136.6,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -151,7 +151,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Customer Name",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Customer Name",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -165,7 +165,7 @@ String itemcodes='';
                         controller: Suppliername,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
 
@@ -181,7 +181,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Mobile",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Mobile",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -192,7 +192,7 @@ String itemcodes='';
                         controller:  Mobileno,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -208,7 +208,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Alternative Mobile",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Alternative Mobile",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -220,7 +220,7 @@ String itemcodes='';
                         controller: alMobileno,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -250,7 +250,7 @@ String itemcodes='';
                     height: height/16.42,
                     //color: Color(0xffD60A0B),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                      color: const Color(0xff25D366),),child: Center(child: Text("Edit Customer",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/ 91.06),)),
+                      color: const Color(0xff25D366),),child: Center(child: Text("Edit Customer",style: GoogleFonts.openSans(color: Colors.white,fontSize:width/ 91.06),)),
                   ),
                 ),
               ),
@@ -263,7 +263,7 @@ String itemcodes='';
                   child: Container(width: width/13.6,
                     height:  height/16.42,
                     //color: Color(0xffD60A0B),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.poppins(color: Colors.white),)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.openSans(color: Colors.white),)),
                   ),
                 ),
               ),
@@ -318,7 +318,7 @@ String itemcodes='';
                 padding:  EdgeInsets.only(right: width/1.232,top: height/65.7,bottom: height/65.7),
                 child: Text(
                   "Edit Customer",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontWeight: FontWeight.bold, fontSize:width/ 59.39,color: const Color(0xffFFFFFF)),
                 ),
               ),
@@ -334,7 +334,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Customer Code",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Customer Code",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -348,7 +348,7 @@ String itemcodes='';
                         readOnly: true,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize: width/136.6,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -364,7 +364,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Customer Name",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Customer Name",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -378,7 +378,7 @@ String itemcodes='';
                         controller: Suppliername,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
 
@@ -394,7 +394,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Mobile",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Mobile",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -405,7 +405,7 @@ String itemcodes='';
                         controller:  Mobileno,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -421,7 +421,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Home No",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Home No",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -433,7 +433,7 @@ String itemcodes='';
                         controller: homeno,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -456,7 +456,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Street",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Street",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -470,7 +470,7 @@ String itemcodes='';
                         controller: street,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
 
@@ -487,7 +487,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Area",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Area",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -501,7 +501,7 @@ String itemcodes='';
                         controller: Area,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
 
@@ -518,7 +518,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("City/District",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("City/District",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -530,7 +530,7 @@ String itemcodes='';
                         controller: CityDis,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -546,7 +546,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("State",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("State",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -558,7 +558,7 @@ String itemcodes='';
                         controller: State,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
                         ),
@@ -581,7 +581,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("Pincode",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("Pincode",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -595,7 +595,7 @@ String itemcodes='';
                         controller: Pincode,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
 
@@ -612,7 +612,7 @@ String itemcodes='';
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
-                    child: Text("GST NO",style: GoogleFonts.poppins(fontSize:width/ 97.57,color: const Color(0xff000000)),),
+                    child: Text("GST NO",style: GoogleFonts.openSans(fontSize:width/ 97.57,color: const Color(0xff000000)),),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left:width/25.77,top: height/65.7,right: width/62.76),
@@ -626,7 +626,7 @@ String itemcodes='';
                         controller: Gstno,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize:width/ 91.06,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                           border: InputBorder.none,
 
@@ -654,7 +654,7 @@ String itemcodes='';
                     height: height/16.42,
                     //color: Color(0xffD60A0B),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                      color: const Color(0xff25D366),),child: Center(child: Text("Edit Customer",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/ 91.06),)),
+                      color: const Color(0xff25D366),),child: Center(child: Text("Edit Customer",style: GoogleFonts.openSans(color: Colors.white,fontSize:width/ 91.06),)),
                   ),
                 ),
               ),
@@ -667,7 +667,7 @@ String itemcodes='';
                   child: Container(width: width/13.6,
                     height:  height/16.42,
                     //color: Color(0xffD60A0B),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.poppins(color: Colors.white),)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.openSans(color: Colors.white),)),
                   ),
                 ),
               ),
@@ -699,7 +699,7 @@ String itemcodes='';
                 child: Column(
                   children: [
                     SizedBox(height:height/32.85,),
-                    Text("Edit Customer  Successfully",style: GoogleFonts.poppins(
+                    Text("Edit Customer  Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -732,7 +732,7 @@ String itemcodes='';
                           child: Center(
                             child: Text(
                                 "Okay",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w500,
                                     fontSize: width/85.375, color: Colors.white)

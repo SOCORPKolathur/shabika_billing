@@ -104,7 +104,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       Text(
                         "Save Succesfully..",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -140,7 +140,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -167,7 +167,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -231,7 +231,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                   left: width / 27.947, top: height / 32.85),
               child: Text(
                 "SimCard Opeartor",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold,
                     fontSize: width / 59.39,
                     color: const Color(0xffFFFFFF)),
@@ -255,7 +255,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       width: width / 6.83,
                       child: Text(
                         "Bill No",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             color: Colors.white),
                       )),
                   SizedBox(
@@ -296,7 +296,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       width: width / 6.83,
                       child: Text(
                         "Date/Time",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             color: Colors.white),
                       )),
                   SizedBox(
@@ -336,7 +336,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       width: width / 6.83,
                       child: Text(
                         "Operator Name",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             color: Colors.white),
                       )),
                   SizedBox(
@@ -440,7 +440,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       width: width / 6.83,
                       child: Text(
                         "Rate",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             color: Colors.white),
                       )),
                   SizedBox(
@@ -496,7 +496,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       width: width / 6.83,
                       child: Text(
                         "Quantity",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             color: Colors.white),
                       )),
                   SizedBox(
@@ -545,7 +545,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       width: width / 6.83,
                       child: Text(
                         "Mobile No",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             color: Colors.white),
                       )),
                   SizedBox(
@@ -586,7 +586,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       width: width / 6.83,
                       child: Text(
                         "Customer Name",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             color: Colors.white),
                       )),
                   SizedBox(
@@ -627,7 +627,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                       width: width / 6.83,
                       child: Text(
                         "Amount",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             color: Colors.white),
                       )),
                   SizedBox(
@@ -719,7 +719,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                                     child: Text(
                                       "Save",
                                       style:
-                                      GoogleFonts.poppins(color: Colors.white),
+                                      GoogleFonts.openSans(color: Colors.white),
                                     )),
                               ),
                             ),
@@ -741,7 +741,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                                     child: Text(
                                       "Print",
                                       style:
-                                      GoogleFonts.poppins(color: Colors.white),
+                                      GoogleFonts.openSans(color: Colors.white),
                                     )),
                               ),
                             ),
@@ -757,7 +757,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                                 child: Center(
                                   child: Text(
                                     "Total : ",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff00A99D),
                                         fontSize: width / 40.88),
@@ -773,7 +773,7 @@ class _Simacard_Operator_PageState extends State<Simacard_Operator_Page> {
                                 child: Center(
                                   child: Text(
                                     total.toStringAsFixed(2),
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                         fontSize: width / 40.88),

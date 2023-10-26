@@ -89,13 +89,13 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
               Padding(
                 padding:  EdgeInsets.only(left: width/91.06),
                 child: Text("Simcard Reports",
-                  style: GoogleFonts.montserrat(color: Colors.white,
+                  style: GoogleFonts.openSans(color: Colors.white,
                       fontWeight: FontWeight.w800,
                       fontSize: width/54.64),),
               ),
               SizedBox(width: width/9.106,),
 
-              Text("Sort by Operator :",style: GoogleFonts.montserrat(color: Colors.white,
+              Text("Sort by Operator :",style: GoogleFonts.openSans(color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width/84.64),),
               SizedBox(width: width/136.6,),
@@ -128,7 +128,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                 Serachcontroller=Controller ;
                               });
                             },
-                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             decoration: InputDecoration(
                                 contentPadding:
                                 EdgeInsets.only(  left: width / 130.6),
@@ -216,7 +216,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                   borderRadius: BorderRadius.circular(5),color:Colors.white
                 ),
                 child:  Center(
-                  child: Text("Clear",style: GoogleFonts.montserrat(color: Colors.black,
+                  child: Text("Clear",style: GoogleFonts.openSans(color: Colors.black,
                       fontWeight: FontWeight.w800,
                       fontSize: width/84.64),),
                 ),
@@ -224,7 +224,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
               ),
               const SizedBox(width: 10,),
 
-              Text("Total Profits:",style: GoogleFonts.montserrat(color: Colors.white,
+              Text("Total Profits:",style: GoogleFonts.openSans(color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width/84.64),),
               const SizedBox(width: 10,),
@@ -235,7 +235,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                   color:Colors.white,
                   borderRadius: BorderRadius.circular(5)
                 ),
-                child: Center(child:Text(totalprofits.toStringAsFixed(2),style: GoogleFonts.montserrat(color: Colors.black,
+                child: Center(child:Text(totalprofits.toStringAsFixed(2),style: GoogleFonts.openSans(color: Colors.black,
                     fontWeight: FontWeight.w800,
                     fontSize: width/84.64),),),
               ),
@@ -266,7 +266,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Si No',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Si No',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/11.383,
@@ -274,7 +274,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Date',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Date',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/11.383,
@@ -282,7 +282,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Time',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Time',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/15.588,
@@ -291,7 +291,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                             border: Border.all(color: Colors.black,width: 1.2),
 
                           ),
-                          child: Center(child: Text('Bill No',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Bill No',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/7.588,
@@ -299,7 +299,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Customer name',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Customer name',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/8.0,
@@ -307,7 +307,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Mobile No',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Mobile No',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/5.0,
@@ -315,7 +315,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Operator Name',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Operator Name',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/23.588,
@@ -324,7 +324,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                             border: Border.all(color: Colors.black,width: 1.2),
 
                           ),
-                          child: Center(child: Text('Qty',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Qty',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/11.5,
@@ -332,7 +332,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Rate',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Rate',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/11.5,
@@ -340,7 +340,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Amount',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Amount',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -377,7 +377,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child:Text("${index+1}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    child: Center(child:Text("${index+1}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -387,7 +387,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Date"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Date"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     )
                                     )
                                 ),
@@ -399,7 +399,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["time"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["time"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -410,7 +410,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
 
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["billno"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["billno"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -420,7 +420,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Customer name"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Customer name"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -430,7 +430,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Mobileno"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Mobileno"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -440,7 +440,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Operator name"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Operator name"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -450,7 +450,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
 
                                     ),
-                                    child: Center(child: Text(Simacrd['Quvantity'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(Simacrd['Quvantity'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/11.5,
@@ -460,7 +460,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                     ),
                                     child: Center(
                                         child:
-                                        Text(Simacrd["Rate"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                        Text(Simacrd["Rate"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                         ))),
 
                                 Container(
@@ -470,7 +470,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Totalamount"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Totalamount"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                               ],
@@ -485,7 +485,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child:Text("${index+1}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    child: Center(child:Text("${index+1}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -495,7 +495,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Date"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Date"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     )
                                     )
                                 ),
@@ -507,7 +507,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["time"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["time"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -518,7 +518,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
 
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["billno"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["billno"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -528,7 +528,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Customer name"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Customer name"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -538,7 +538,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Mobileno"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Mobileno"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -548,7 +548,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Operator name"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Operator name"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
                                 Container(
@@ -558,7 +558,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
 
                                     ),
-                                    child: Center(child: Text(Simacrd['Quvantity'],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(Simacrd['Quvantity'],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/11.5,
@@ -568,7 +568,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                     ),
                                     child: Center(
                                         child:
-                                        Text(Simacrd["Rate"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                        Text(Simacrd["Rate"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                         ))),
 
                                 Container(
@@ -578,7 +578,7 @@ class _SimcardReport_PageState extends State<SimcardReport_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
                                     child: Center(child:
-                                    Text(Simacrd["Totalamount"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),
+                                    Text(Simacrd["Totalamount"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),
                                     ))),
 
 

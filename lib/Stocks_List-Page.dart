@@ -120,7 +120,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
             Padding(
               padding:  EdgeInsets.only(left: width/91.06),
               child: Text("Item Lists",
-                style: GoogleFonts.montserrat(color: Colors.white,
+                style: GoogleFonts.openSans(color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: width/54.64),),
             ),
@@ -162,7 +162,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
             ),
             Text(
               "Shabika G-Item",
-              style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
             ),
 
             SizedBox(width:width/136.6),
@@ -196,7 +196,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
             SizedBox(width:width/136.6),
             Text(
               "Shabika N-Item",
-              style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
             ),
           ],
         ),
@@ -214,7 +214,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 Text(
                   "Category Name",
                   textAlign: TextAlign.start,
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
                       fontSize: width / 98.64),
@@ -237,7 +237,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                       });
                       print(catsearch);
                     },
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 91.06, fontWeight: FontWeight.w500),
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -261,7 +261,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 Text(
                   "Brand Name",
                   textAlign: TextAlign.start,
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
                       fontSize: width / 98.64),
@@ -282,7 +282,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         brandsearch=val;
                       });
                     },
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 91.06, fontWeight: FontWeight.w500),
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -305,7 +305,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 Text(
                   "HSN Code",
                   textAlign: TextAlign.start,
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
                       fontSize: width / 98.64),
@@ -326,7 +326,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         hsnsearch=val;
                       });
                     },
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 91.06, fontWeight: FontWeight.w500),
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -350,7 +350,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 Text(
                   "Item Name",
                   textAlign: TextAlign.start,
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
                       fontSize: width / 98.64),
@@ -371,7 +371,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         itemsearch=val;
                       });
                     },
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 91.06, fontWeight: FontWeight.w500),
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -411,7 +411,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 child: Center(
                   child: Text(
                     "Clear",
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
                         fontSize: width / 84.64),
@@ -449,7 +449,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Si.No",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                               overflow: TextOverflow.ellipsis
                           )),))),
                     Container(
@@ -460,7 +460,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Category",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/15.38,
@@ -468,21 +468,21 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Brand",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Brand",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                     Container(
                         width:width/15.38,
                         height:height/13.0,
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Itemcode",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Itemcode",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                     Container(
                         width:width/15.38,
                         height:height/13.0,
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("HSNCode",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("HSNCode",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                     Container(
                         width:width/6.8,
                         height:height/13.0,
@@ -490,7 +490,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
                         child: Center(child: Text("Item Name",
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))
                     ),
                     Container(
                         width:width/15.38,
@@ -498,7 +498,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("BoxNo",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("BoxNo",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                     Container(
                         width:width/15.38,
                         height:height/13.0,
@@ -507,7 +507,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Purchase\nprice",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                     Container(
                         width:width/15.38,
                         height:height/13.0,
@@ -516,7 +516,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Landing\ncost",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -530,7 +530,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Saleprice",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Saleprice",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                     Container(
@@ -539,7 +539,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("MRPPrice",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
+                        child: Center(child: Text("MRPPrice",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                             overflow: TextOverflow.ellipsis
                         )),))),
 
@@ -549,7 +549,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("Low\norder",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
+                        child: Center(child: Text("Low\norder",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                             overflow: TextOverflow.ellipsis
                         )),))),
 
@@ -559,7 +559,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         decoration:BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2)
                         ),
-                        child: Center(child: Text("GST",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
+                        child: Center(child: Text("GST",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                             overflow: TextOverflow.ellipsis
                         )),))),
 
@@ -571,7 +571,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Total\nQty",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                             overflow: TextOverflow.ellipsis
                         )),))),
 
@@ -583,7 +583,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                         ),
                         child: Center(child: Text("Actions",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                               overflow: TextOverflow.ellipsis
                           )),)))
 
@@ -628,7 +628,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text((index+1).toString(),
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,textStyle: const TextStyle(
+                                        style: GoogleFonts.openSans(fontWeight: FontWeight.bold,textStyle: const TextStyle(
                                             overflow: TextOverflow.ellipsis
                                         )),))),
                                   Container(
@@ -643,7 +643,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Category'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -659,7 +659,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Brand'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -675,7 +675,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Itemcode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
                                   Container(
@@ -690,7 +690,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['HSNCode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -706,7 +706,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Text(
                                         buillin1['Newitemname'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),)
                                   ),
 
@@ -726,7 +726,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['BoxNo'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -743,7 +743,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Purchaseprice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
                                   Container(
@@ -758,7 +758,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Landingcost'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -774,7 +774,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Saleprice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -790,7 +790,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['MRPPrice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -806,7 +806,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Loworder'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -822,7 +822,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['gst'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -838,7 +838,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['TotalQuvantity'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -905,7 +905,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text((index+1).toString(),
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,textStyle: const TextStyle(
+                                        style: GoogleFonts.openSans(fontWeight: FontWeight.bold,textStyle: const TextStyle(
                                             overflow: TextOverflow.ellipsis
                                         )),))),
                                   Container(
@@ -920,7 +920,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Category'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -936,7 +936,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Brand'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -952,7 +952,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Itemcode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
                                   Container(
@@ -967,7 +967,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['HSNCode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -983,7 +983,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Text(
                                         buillin1['Newitemname'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),)
                                   ),
 
@@ -1003,7 +1003,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['BoxNo'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1020,7 +1020,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Purchaseprice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
                                   Container(
@@ -1035,7 +1035,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Landingcost'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1051,7 +1051,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Saleprice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1067,7 +1067,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['MRPPrice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1083,7 +1083,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Loworder'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1099,7 +1099,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['gst'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1115,7 +1115,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['TotalQuvantity'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1182,7 +1182,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text((index+1).toString(),
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,textStyle: const TextStyle(
+                                        style: GoogleFonts.openSans(fontWeight: FontWeight.bold,textStyle: const TextStyle(
                                             overflow: TextOverflow.ellipsis
                                         )),))),
                                   Container(
@@ -1197,7 +1197,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Category'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1213,7 +1213,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Brand'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1229,7 +1229,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Itemcode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
                                   Container(
@@ -1244,7 +1244,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['HSNCode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1260,7 +1260,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Text(
                                         buillin1['Newitemname'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),)
                                   ),
 
@@ -1280,7 +1280,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['BoxNo'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1297,7 +1297,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Purchaseprice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
                                   Container(
@@ -1312,7 +1312,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Landingcost'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1328,7 +1328,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Saleprice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1344,7 +1344,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['MRPPrice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1360,7 +1360,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Loworder'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1376,7 +1376,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['gst'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1392,7 +1392,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['TotalQuvantity'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1461,7 +1461,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       child: Center(
                                           child: Text((index + 1).toString(),
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 textStyle: const TextStyle(
                                                     overflow: TextOverflow
@@ -1479,7 +1479,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Category'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1495,7 +1495,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Brand'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1511,7 +1511,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Itemcode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
                                   Container(
@@ -1526,7 +1526,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['HSNCode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1542,7 +1542,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Text(
                                         buillin1['Newitemname'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),)
                                   ),
 
@@ -1562,7 +1562,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['BoxNo'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1579,7 +1579,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Purchaseprice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
                                   Container(
@@ -1594,7 +1594,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Landingcost'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1610,7 +1610,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Saleprice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1626,7 +1626,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['MRPPrice'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1642,7 +1642,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['Loworder'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1658,7 +1658,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['gst'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1674,7 +1674,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1['TotalQuvantity'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),))
                                   ),
 
@@ -1745,7 +1745,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text((index+1).toString(),
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,textStyle: const TextStyle(
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.bold,textStyle: const TextStyle(
                                           overflow: TextOverflow.ellipsis
                                       )),))),
                                 Container(
@@ -1760,7 +1760,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['Category'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1776,7 +1776,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['Brand'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1792,7 +1792,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['Itemcode'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
                                 Container(
@@ -1807,7 +1807,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['HSNCode'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1823,7 +1823,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Text(
                                       buillin1['Newitemname'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),)
                                 ),
 
@@ -1843,7 +1843,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['BoxNo'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1860,7 +1860,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['Purchaseprice'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
                                 Container(
@@ -1875,7 +1875,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['Landingcost'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1891,7 +1891,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['Saleprice'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1907,7 +1907,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['MRPPrice'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1923,7 +1923,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['Loworder'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1939,7 +1939,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(
                                         child: Text(buillin1['gst'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1955,7 +1955,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                     ),
                                     child: Center(child: Text(
                                       buillin1['TotalQuvantity'].toString(),
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600),))
                                 ),
 
@@ -1991,7 +1991,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                                 ),
                                                 child: Center(child: Text(
                                                   "View",
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight
                                                           .w600,
                                                       color: Colors.white),))),
@@ -2049,7 +2049,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(width: width/2.4,),
-                            Text("History Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
+                            Text("History Details",style: GoogleFonts.openSans(decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w700),),
                             SizedBox(width: width/2.4,),
                             InkWell(
@@ -2083,7 +2083,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text("Si.No",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              child: Center(child: Text("Si.No",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
                             Container(
 
@@ -2094,7 +2094,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text("Date\nTime",
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -2105,7 +2105,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Supplier\nID',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
                             Container(
 
@@ -2116,7 +2116,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Supplier\nName',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
                             Container(
                               width: width/13.66,
@@ -2126,7 +2126,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Supplier\nInvoice No',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
                             Container(
                               width: width/22.76,
@@ -2136,7 +2136,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Hsn\nCode',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -2147,7 +2147,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text("Item\nID",
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -2158,7 +2158,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Description',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -2171,7 +2171,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Payment',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -2183,7 +2183,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text("Qty",
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -2197,7 +2197,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Credit\nDays',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
                             Container(
 
@@ -2208,7 +2208,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Purchase\nNote',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
                             Container(
 
@@ -2219,7 +2219,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               ),
                               child: Center(child: Text('Tax',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -2231,7 +2231,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
 
                               child: Center(child: Text("Total",
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -2275,7 +2275,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text("${index+1}",style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text("${index+1}",style: GoogleFonts.openSans(),)),
                                         ),
                                         Container(
 
@@ -2284,7 +2284,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text("${purchase['date']}\n${purchase['time']}".toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text("${purchase['date']}\n${purchase['time']}".toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -2293,7 +2293,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['suppilerid'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['suppilerid'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -2303,7 +2303,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['suppilername'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['suppilername'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -2313,7 +2313,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['suppilierinvoiceno'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
                                         Container(
                                           width: width/22.76,
@@ -2321,7 +2321,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['Hsncode'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['Hsncode'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -2332,7 +2332,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text("${purchase['purchaseno']}",style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text("${purchase['purchaseno']}",style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -2342,7 +2342,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['Description'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['Description'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -2353,7 +2353,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['Payment mode'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['Payment mode'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -2364,7 +2364,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
 
-                                          child: Center(child: Text(purchase["Qty"].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase["Qty"].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -2377,7 +2377,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['credit days'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['credit days'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -2387,7 +2387,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['purchasenote'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['purchasenote'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -2397,7 +2397,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(purchase['tax'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(purchase['tax'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -2409,7 +2409,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text("${purchase['Total']}".toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text("${purchase['Total']}".toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                       ],

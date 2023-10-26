@@ -1045,7 +1045,7 @@ class _ServiceeditpageState extends State<Serviceeditpage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff263646),
-        title: Text("Edit Bill Details",style: GoogleFonts.cairo(
+        title: Text("Edit Bill Details",style: GoogleFonts.openSans(
           fontWeight: FontWeight.bold,
           fontSize: width/70.39,
           color:Colors.white,

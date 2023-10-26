@@ -304,7 +304,7 @@ class _ItemState extends State<Item> {
                       left: width / 35.947, top: height / 66.85),
                   child: Text(
                     "Add Item ",
-                    style: GoogleFonts.cairo(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.bold,
                         fontSize: width / 59.39,
                         color: const Color(0xffFFFFFF)),
@@ -323,7 +323,7 @@ class _ItemState extends State<Item> {
                         left: width / 35.947, top: height / 66.85),
                     child: Text(
                       "Add Category ",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           fontWeight: FontWeight.bold,
                           fontSize: width / 59.39,
                           color: const Color(0xffFFFFFF)),
@@ -348,7 +348,7 @@ class _ItemState extends State<Item> {
                   ),
                   child: Text(
                     "Select Category Name *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -357,7 +357,7 @@ class _ItemState extends State<Item> {
                       left: width / 11.383, top: height / 82.125),
                   child: Text(
                     "Brand Name",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -365,7 +365,7 @@ class _ItemState extends State<Item> {
                   padding: EdgeInsets.only(left: width / 7.0),
                   child: Text(
                     "New Item Code *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -374,7 +374,7 @@ class _ItemState extends State<Item> {
                       left: width / 10.3, right: width / 9.106),
                   child: Text(
                     "HSN Code *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -643,7 +643,7 @@ class _ItemState extends State<Item> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(4)),
                     child: TextField(
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       controller: itemcode,
                       readOnly: true,
                       keyboardType: TextInputType.multiline,
@@ -679,7 +679,7 @@ class _ItemState extends State<Item> {
                                     HSNcode= _Controller;
                                   });
                                 },
-                                style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                                style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding:
@@ -774,7 +774,7 @@ class _ItemState extends State<Item> {
                       right: width / 10.0),
                   child: Text(
                     "Purchase Price *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -784,7 +784,7 @@ class _ItemState extends State<Item> {
                   padding: EdgeInsets.only(top: height / 32.85),
                   child: Text(
                     "Landing Cost",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -794,7 +794,7 @@ class _ItemState extends State<Item> {
                       top: height / 32.85, left: width / 8.1),
                   child: Text(
                     "Sale Price *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -804,7 +804,7 @@ class _ItemState extends State<Item> {
                   EdgeInsets.only(top: height / 32.85, left: width / 7.7),
                   child: Text(
                     "MRP Price/Unit",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -831,7 +831,7 @@ class _ItemState extends State<Item> {
                           ? "Field Can't Empty"
                           : null,
                       controller: Purchaseprice,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -867,7 +867,7 @@ class _ItemState extends State<Item> {
                       controller: Landingcost,
                       keyboardType: TextInputType.multiline,
                       maxLines: 1,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -895,7 +895,7 @@ class _ItemState extends State<Item> {
                       controller: Saleprice,
                       keyboardType: TextInputType.multiline,
                       maxLines: 1,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -928,7 +928,7 @@ class _ItemState extends State<Item> {
                       controller: MRPPrice,
                       keyboardType: TextInputType.multiline,
                       maxLines: 1,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -952,7 +952,7 @@ class _ItemState extends State<Item> {
               EdgeInsets.only(left: width / 24.836, top: height / 32.85),
               child: Text(
                 "Item Details",
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.openSans(
                     fontSize: width / 71.894, fontWeight: FontWeight.bold),
               ),
             ),
@@ -964,7 +964,7 @@ class _ItemState extends State<Item> {
                   padding: EdgeInsets.only(
                       left: width / 25.773, top: height / 82.125),
                   child: Text("Select Item Unit",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571,
                           color: const Color(0xff000000))),
                 ),
@@ -974,7 +974,7 @@ class _ItemState extends State<Item> {
                       left: width / 10.118, top: height / 82.125),
                   child: Text(
                     "Low Order Quantity",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -984,7 +984,7 @@ class _ItemState extends State<Item> {
                       left: width / 9.757, top: height / 82.125),
                   child: Text(
                     "Box No",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -994,7 +994,7 @@ class _ItemState extends State<Item> {
                       left: width / 6.7, top: height / 82.125),
                   child: Text(
                     "Profit",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -1024,7 +1024,7 @@ class _ItemState extends State<Item> {
                         isExpanded: true,
                         value: dropdownValue1,
                         icon: const Icon(Icons.arrow_drop_down_outlined),
-                        style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                         underline: Container(
                           color: Colors.deepPurpleAccent,
                         ),
@@ -1060,7 +1060,7 @@ class _ItemState extends State<Item> {
                       controller: Loworder,
                       focusNode: Loworderfocus,
                       keyboardType: TextInputType.multiline,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -1090,7 +1090,7 @@ class _ItemState extends State<Item> {
                       controller: BoxNo,
                       focusNode: Boxnofocus,
                       keyboardType: TextInputType.multiline,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 164.25),
@@ -1118,7 +1118,7 @@ class _ItemState extends State<Item> {
                       controller: margin,
                       focusNode: marginfocus,
                       keyboardType: TextInputType.multiline,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w800),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w800),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 164.25),
@@ -1147,7 +1147,7 @@ class _ItemState extends State<Item> {
                       bottom: height / 54.75),
                   child: Text(
                     "Add New Item Name *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -1170,7 +1170,7 @@ class _ItemState extends State<Item> {
                       controller: Newitemname,
                       focusNode: Itenamefocus,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -1204,7 +1204,7 @@ class _ItemState extends State<Item> {
                           ),
                           Text(
                             "IMEI Number",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1232,7 +1232,7 @@ class _ItemState extends State<Item> {
                           ),
                           Text(
                             "Serial Number",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1261,7 +1261,7 @@ class _ItemState extends State<Item> {
                           ),
                           Text(
                             "Color",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1290,7 +1290,7 @@ class _ItemState extends State<Item> {
                           ),
                           Text(
                             "Image",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1335,7 +1335,7 @@ class _ItemState extends State<Item> {
                       child: Center(
                           child: Text(
                             "Save",
-                            style: GoogleFonts.poppins(color: Colors.white),
+                            style: GoogleFonts.openSans(color: Colors.white),
                           )),
                     ),
                   ),
@@ -1356,7 +1356,7 @@ class _ItemState extends State<Item> {
                         child: Center(
                             child: Text(
                               "Reset",
-                              style: GoogleFonts.poppins(color: Colors.white),
+                              style: GoogleFonts.openSans(color: Colors.white),
                             )),
                       ),
                     ),
@@ -1392,7 +1392,7 @@ class _ItemState extends State<Item> {
                       child:
                       TextField(
                         controller: Serachcontroller,
-                        style: GoogleFonts.poppins(fontSize: width / 68.3,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize: width / 68.3,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(
                           contentPadding:
                           EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/70.125),
@@ -1461,7 +1461,7 @@ class _ItemState extends State<Item> {
                           ),
                           Text(
                             "Add Item",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 68.3, color: Colors.white),
                           ),
                         ],
@@ -1504,7 +1504,7 @@ class _ItemState extends State<Item> {
                   ),
                   Text(
                     "Shabika G",
-                    style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                    style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
                   ),
 
                   SizedBox(width:width/136.6),
@@ -1541,7 +1541,7 @@ class _ItemState extends State<Item> {
                   SizedBox(width:width/136.6),
                   Text(
                     "Shabika N",
-                    style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                    style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
                   ),
 
                 ],
@@ -1587,7 +1587,7 @@ class _ItemState extends State<Item> {
                                 padding: EdgeInsets.only(
                                     left: 5, right: width / 64.15),
                                 child: Text("Sl.no",
-                                    style: GoogleFonts.cairo(
+                                    style: GoogleFonts.openSans(
                                         color:  Colors.white,
                                         fontSize: width / 88.3)),
                               ),
@@ -1595,30 +1595,30 @@ class _ItemState extends State<Item> {
                                 padding: EdgeInsets.only(
                                     left: 5, right: width / 40.15),
                                 child: Text("Item ID",
-                                    style: GoogleFonts.cairo(
+                                    style: GoogleFonts.openSans(
                                         color:  Colors.white,
                                         fontSize: width / 88.3)),
                               ),
                               Text("Item Name",
-                                  style: GoogleFonts.cairo(
+                                  style: GoogleFonts.openSans(
                                       color: Colors.white,
                                       fontSize: width / 88.3)),
                               Padding(
                                 padding: EdgeInsets.only(
                                     left: width / 1.45, right: 0),
                                 child: Text("Edit  ",
-                                    style: GoogleFonts.cairo(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white,
                                         fontSize: width / 88.3)),
                               ),
                               Text(" Delete  ",
-                                  style: GoogleFonts.cairo(
+                                  style: GoogleFonts.openSans(
                                       color: Colors.white,
                                       fontSize: width / 88.3)),
                               Padding(
                                 padding: EdgeInsets.only(left: width / 50.55),
                                 child: Text("Status",
-                                    style: GoogleFonts.cairo(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white,
                                         fontSize: width / 88.3)),
                               ),
@@ -1680,7 +1680,7 @@ class _ItemState extends State<Item> {
                                           child: Center(
                                               child: Text(
                                                 (index + 1).toString(),
-                                                style: GoogleFonts.cairo(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: width / 95.888,
                                                     color: Colors.black),
@@ -1703,7 +1703,7 @@ class _ItemState extends State<Item> {
                                           child: Center(
                                               child: Text(
                                                 item["Itemcode"],
-                                                style: GoogleFonts.cairo(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: width / 95.888,
                                                     color: Colors.black),
@@ -1732,7 +1732,7 @@ class _ItemState extends State<Item> {
                                                   padding: const EdgeInsets.only(left: 8.0),
                                                   child: Text(
                                                     "${item["Newitemname"]}",
-                                                    style: GoogleFonts.cairo(
+                                                    style: GoogleFonts.openSans(
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: width / 95.888,
                                                         color: Colors.black),
@@ -1797,7 +1797,7 @@ class _ItemState extends State<Item> {
                                                   child: Center(
                                                       child: Text(
                                                         "Active",
-                                                        style: GoogleFonts.cairo(
+                                                        style: GoogleFonts.openSans(
                                                             fontSize: width / 95.888,
                                                             fontWeight: FontWeight.bold,
                                                             color: Colors.black),
@@ -1836,7 +1836,7 @@ class _ItemState extends State<Item> {
                                           child: Center(
                                               child: Text(
                                                 (index + 1).toString(),
-                                                style: GoogleFonts.cairo(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: width / 95.888,
                                                     color: Colors.black),
@@ -1859,7 +1859,7 @@ class _ItemState extends State<Item> {
                                           child: Center(
                                               child: Text(
                                                 item["Itemcode"],
-                                                style: GoogleFonts.cairo(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: width / 95.888,
                                                     color: Colors.black),
@@ -1888,7 +1888,7 @@ class _ItemState extends State<Item> {
                                                   padding: const EdgeInsets.only(left: 8.0),
                                                   child: Text(
                                                     "${item["Newitemname"]}",
-                                                    style: GoogleFonts.cairo(
+                                                    style: GoogleFonts.openSans(
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: width / 95.888,
                                                         color: Colors.black),
@@ -1953,7 +1953,7 @@ class _ItemState extends State<Item> {
                                                   child: Center(
                                                       child: Text(
                                                         "Active",
-                                                        style: GoogleFonts.cairo(
+                                                        style: GoogleFonts.openSans(
                                                             fontSize: width / 95.888,
                                                             fontWeight: FontWeight.bold,
                                                             color: Colors.black),
@@ -2030,7 +2030,7 @@ class _ItemState extends State<Item> {
                           left: width / 35.947, top: height / 66.85),
                       child: Text(
                         "Add Item ",
-                        style: GoogleFonts.cairo(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.bold,
                             fontSize: width / 59.39,
                             color: const Color(0xffFFFFFF)),
@@ -2049,7 +2049,7 @@ class _ItemState extends State<Item> {
                             left: width / 35.947, top: height / 66.85),
                         child: Text(
                           "Add Category ",
-                          style: GoogleFonts.cairo(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               fontSize: width / 59.39,
                               color: const Color(0xffFFFFFF)),
@@ -2074,7 +2074,7 @@ class _ItemState extends State<Item> {
                       ),
                       child: Text(
                         "Select Category Name *",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2083,7 +2083,7 @@ class _ItemState extends State<Item> {
                           left: width / 11.383, top: height / 82.125),
                       child: Text(
                         "Brand Name",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2091,7 +2091,7 @@ class _ItemState extends State<Item> {
                       padding: EdgeInsets.only(left: width / 7.0),
                       child: Text(
                         "New Item Code *",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2100,7 +2100,7 @@ class _ItemState extends State<Item> {
                           left: width / 10.3, right: width / 9.106),
                       child: Text(
                         "HSN Code *",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2369,7 +2369,7 @@ class _ItemState extends State<Item> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4)),
                         child: TextField(
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           controller: itemcode,
                           readOnly: true,
                           keyboardType: TextInputType.multiline,
@@ -2405,7 +2405,7 @@ class _ItemState extends State<Item> {
                                        HSNcode= _Controller;
                                       });
                                     },
-                                    style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                                    style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         contentPadding:
@@ -2500,7 +2500,7 @@ class _ItemState extends State<Item> {
                           right: width / 10.0),
                       child: Text(
                         "Purchase Price *",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2510,7 +2510,7 @@ class _ItemState extends State<Item> {
                       padding: EdgeInsets.only(top: height / 32.85),
                       child: Text(
                         "Landing Cost",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2520,7 +2520,7 @@ class _ItemState extends State<Item> {
                           top: height / 32.85, left: width / 8.1),
                       child: Text(
                         "Sale Price *",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2530,7 +2530,7 @@ class _ItemState extends State<Item> {
                           EdgeInsets.only(top: height / 32.85, left: width / 7.7),
                       child: Text(
                         "MRP Price/Unit",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2557,7 +2557,7 @@ class _ItemState extends State<Item> {
                               ? "Field Can't Empty"
                               : null,
                           controller: Purchaseprice,
-                        style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 82.125),
@@ -2593,7 +2593,7 @@ class _ItemState extends State<Item> {
                           controller: Landingcost,
                           keyboardType: TextInputType.multiline,
                           maxLines: 1,
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 82.125),
@@ -2621,7 +2621,7 @@ class _ItemState extends State<Item> {
                           controller: Saleprice,
                           keyboardType: TextInputType.multiline,
                           maxLines: 1,
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 82.125),
@@ -2654,7 +2654,7 @@ class _ItemState extends State<Item> {
                           controller: MRPPrice,
                           keyboardType: TextInputType.multiline,
                           maxLines: 1,
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 82.125),
@@ -2678,7 +2678,7 @@ class _ItemState extends State<Item> {
                       EdgeInsets.only(left: width / 24.836, top: height / 32.85),
                   child: Text(
                     "Item Details",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 71.894, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -2690,7 +2690,7 @@ class _ItemState extends State<Item> {
                       padding: EdgeInsets.only(
                           left: width / 25.773, top: height / 82.125),
                       child: Text("Select Item Unit",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               fontSize: width / 97.571,
                               color: const Color(0xff000000))),
                     ),
@@ -2700,7 +2700,7 @@ class _ItemState extends State<Item> {
                           left: width / 10.118, top: height / 82.125),
                       child: Text(
                         "Low Order Quantity",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2710,7 +2710,7 @@ class _ItemState extends State<Item> {
                           left: width / 9.757, top: height / 82.125),
                       child: Text(
                         "Box No",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2720,7 +2720,7 @@ class _ItemState extends State<Item> {
                           left: width / 6.7, top: height / 82.125),
                       child: Text(
                         "Profit",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2750,7 +2750,7 @@ class _ItemState extends State<Item> {
                             isExpanded: true,
                             value: dropdownValue1,
                             icon: const Icon(Icons.arrow_drop_down_outlined),
-                            style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                            style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                             underline: Container(
                               color: Colors.deepPurpleAccent,
                             ),
@@ -2786,7 +2786,7 @@ class _ItemState extends State<Item> {
                           controller: Loworder,
                           focusNode: Loworderfocus,
                           keyboardType: TextInputType.multiline,
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 82.125),
@@ -2816,7 +2816,7 @@ class _ItemState extends State<Item> {
                           controller: BoxNo,
                           focusNode: Boxnofocus,
                           keyboardType: TextInputType.multiline,
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 164.25),
@@ -2844,7 +2844,7 @@ class _ItemState extends State<Item> {
                           controller: margin,
                           focusNode: marginfocus,
                           keyboardType: TextInputType.multiline,
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w800),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w800),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 164.25),
@@ -2873,7 +2873,7 @@ class _ItemState extends State<Item> {
                           bottom: height / 54.75),
                       child: Text(
                         "Add New Item Name *",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                     ),
@@ -2896,7 +2896,7 @@ class _ItemState extends State<Item> {
                           controller: Newitemname,
                           focusNode: Itenamefocus,
                           maxLines: null,
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: width / 68.3, bottom: height / 82.125),
@@ -2930,7 +2930,7 @@ class _ItemState extends State<Item> {
                               ),
                               Text(
                                 "IMEI Number",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontSize: width / 97.571,
                                     color: const Color(0xff000000)),
                               ),
@@ -2958,7 +2958,7 @@ class _ItemState extends State<Item> {
                               ),
                               Text(
                                 "Serial Number",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontSize: width / 97.571,
                                     color: const Color(0xff000000)),
                               ),
@@ -2987,7 +2987,7 @@ class _ItemState extends State<Item> {
                               ),
                               Text(
                                 "Color",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontSize: width / 97.571,
                                     color: const Color(0xff000000)),
                               ),
@@ -3016,7 +3016,7 @@ class _ItemState extends State<Item> {
                               ),
                               Text(
                                 "Image",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontSize: width / 97.571,
                                     color: const Color(0xff000000)),
                               ),
@@ -3061,7 +3061,7 @@ class _ItemState extends State<Item> {
                           child: Center(
                               child: Text(
                             "Save",
-                            style: GoogleFonts.poppins(color: Colors.white),
+                            style: GoogleFonts.openSans(color: Colors.white),
                           )),
                         ),
                       ),
@@ -3082,7 +3082,7 @@ class _ItemState extends State<Item> {
                             child: Center(
                                 child: Text(
                               "Reset",
-                              style: GoogleFonts.poppins(color: Colors.white),
+                              style: GoogleFonts.openSans(color: Colors.white),
                             )),
                           ),
                         ),
@@ -3302,7 +3302,7 @@ class _ItemState extends State<Item> {
                       ),
                       Text(
                         "Already Item Exits",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -3336,7 +3336,7 @@ class _ItemState extends State<Item> {
                       //       ),
                       //       child: Center(
                       //         child: Text("Okay",
-                      //             style: GoogleFonts.poppins(
+                      //             style: GoogleFonts.openSans(
                       //                 letterSpacing: 1.5,
                       //                 fontWeight: FontWeight.w500,
                       //                 fontSize: width / 85.375,
@@ -3377,7 +3377,7 @@ class _ItemState extends State<Item> {
                       ),
                       Text(
                         "Already Item Exits-ShabikaG",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -3411,7 +3411,7 @@ class _ItemState extends State<Item> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -3452,7 +3452,7 @@ class _ItemState extends State<Item> {
                       ),
                       Text(
                         "Already Item Exits-ShabikaN",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -3486,7 +3486,7 @@ class _ItemState extends State<Item> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -3528,7 +3528,7 @@ class _ItemState extends State<Item> {
                       ),
                       Text(
                         "Add a Item Successfully",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -3566,7 +3566,7 @@ class _ItemState extends State<Item> {
                       //           ),
                       //           child: Center(
                       //             child: Text("Okay",
-                      //                 style: GoogleFonts.poppins(
+                      //                 style: GoogleFonts.openSans(
                       //                     letterSpacing: 1.5,
                       //                     fontWeight: FontWeight.w500,
                       //                     fontSize: width / 85.375,
@@ -3593,7 +3593,7 @@ class _ItemState extends State<Item> {
                       //           ),
                       //           child: Center(
                       //             child: Text("Cancel",
-                      //                 style: GoogleFonts.poppins(
+                      //                 style: GoogleFonts.openSans(
                       //                     letterSpacing: 1.5,
                       //                     fontWeight: FontWeight.w500,
                       //                     fontSize: width / 85.375,
@@ -3647,7 +3647,7 @@ class _ItemState extends State<Item> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Are You Sure Want to Delete",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: 18),
                   ),
                   SizedBox(height: height / 32.85),
@@ -3674,7 +3674,7 @@ class _ItemState extends State<Item> {
                           child: Center(
                             child: Text(
                               "Okay",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white, fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -3698,7 +3698,7 @@ class _ItemState extends State<Item> {
                             ),
                             child: Center(
                               child: Text("Cancel",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -3756,7 +3756,7 @@ class _ItemState extends State<Item> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Add Category Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -3765,7 +3765,7 @@ class _ItemState extends State<Item> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Add Category",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -3800,7 +3800,7 @@ class _ItemState extends State<Item> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -3855,7 +3855,7 @@ class _ItemState extends State<Item> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Add Brand Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -3864,7 +3864,7 @@ class _ItemState extends State<Item> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Add Brand",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -3899,7 +3899,7 @@ class _ItemState extends State<Item> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -3956,7 +3956,7 @@ class _ItemState extends State<Item> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Are You Sure Want To Edit this Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -3965,7 +3965,7 @@ class _ItemState extends State<Item> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Edit Item",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -3999,7 +3999,7 @@ class _ItemState extends State<Item> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -4023,7 +4023,7 @@ class _ItemState extends State<Item> {
 
     return
       TextFormField(
-      style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+      style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
       decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding:

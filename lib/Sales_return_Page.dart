@@ -485,7 +485,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                             ),
                             Text(
                               "Add IMEI No/SERIAL No/Color/Image ",
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             ),
                             SizedBox(
                               height: height / 131.4,
@@ -557,7 +557,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                         textFieldConfiguration:
                                                         TextFieldConfiguration(
                                                           maxLines: null,
-                                                          style: GoogleFonts.poppins(fontWeight: FontWeight.w700, fontSize: width / 91.06),
+                                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700, fontSize: width / 91.06),
                                                           decoration:
                                                           InputDecoration(
                                                             contentPadding:
@@ -583,7 +583,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                             suggestion) {
                                                           return ListTile(
                                                             title: Text(
-                                                                suggestion,style: GoogleFonts.poppins(fontWeight: FontWeight.w700,),
+                                                                suggestion,style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                                                                 maxLines:
                                                                 null),
                                                           );
@@ -710,7 +710,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                             suggestion) {
                                                           return ListTile(
                                                             title: Text(
-                                                                suggestion,   style: GoogleFonts.poppins(fontWeight: FontWeight.w700,),
+                                                                suggestion,   style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                                                                 maxLines:
                                                                 null),
                                                           );
@@ -811,7 +811,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                         textFieldConfiguration:
                                                         TextFieldConfiguration(
                                                           maxLines: null,
-                                                          style: GoogleFonts.poppins(fontWeight:FontWeight.w700, fontSize: width / 91.06),
+                                                          style: GoogleFonts.openSans(fontWeight:FontWeight.w700, fontSize: width / 91.06),
                                                           decoration:
                                                           InputDecoration(
                                                             contentPadding:
@@ -837,7 +837,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                             suggestion) {
                                                           return ListTile(
                                                             title: Text(
-                                                                suggestion,   style: GoogleFonts.poppins(fontWeight: FontWeight.w700, fontSize: width / 91.06),
+                                                                suggestion,   style: GoogleFonts.openSans(fontWeight: FontWeight.w700, fontSize: width / 91.06),
                                                                 maxLines:
                                                                 null),
                                                           );
@@ -949,7 +949,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                       ),
                                       child: Center(
                                         child: Text("Okay",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 letterSpacing: 1.5,
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: width / 85.375,
@@ -976,7 +976,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                       ),
                                       child: Center(
                                         child: Text("Cancel",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 letterSpacing: 1.5,
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: width / 85.375,
@@ -1354,7 +1354,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
               child: AlertDialog(
                 content: Column(
                   children: [
-                    Text("Please Select Payment Type",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,
+                    Text("Please Select Payment Type",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,
                         color: Colors.black,fontSize: 18),),
                     SizedBox(height:height/65.7),
 
@@ -1369,7 +1369,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Payment Mode",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1434,7 +1434,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       'Cash',
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -1455,12 +1455,12 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             color: Colors.grey.shade200
                                         ),
                                         child: TextField(
-                                          style: GoogleFonts.montserrat(),
+                                          style: GoogleFonts.openSans(),
                                           controller:paymenttype1,
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                            hintStyle: GoogleFonts.montserrat(),
+                                            hintStyle: GoogleFonts.openSans(),
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -1489,7 +1489,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Card",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -1510,12 +1510,12 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             color: Colors.grey.shade200
                                         ),
                                         child: TextField(
-                                          style: GoogleFonts.montserrat(),
+                                          style: GoogleFonts.openSans(),
                                           controller:paymenttype2,
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                            hintStyle: GoogleFonts.montserrat(),
+                                            hintStyle: GoogleFonts.openSans(),
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -1544,7 +1544,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Gpay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -1565,12 +1565,12 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             color: Colors.grey.shade200
                                         ),
                                         child: TextField(
-                                          style: GoogleFonts.montserrat(),
+                                          style: GoogleFonts.openSans(),
                                           controller:paymenttype3,
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                            hintStyle: GoogleFonts.montserrat(),
+                                            hintStyle: GoogleFonts.openSans(),
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -1598,7 +1598,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Phone Pay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -1619,12 +1619,12 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             color: Colors.grey.shade200
                                         ),
                                         child: TextField(
-                                          style: GoogleFonts.montserrat(),
+                                          style: GoogleFonts.openSans(),
                                           controller:paymenttype4,
                                           decoration: InputDecoration(
                                             border: InputBorder.none,
                                             contentPadding: EdgeInsets.only(left:width/136.6),
-                                            hintStyle: GoogleFonts.montserrat(),
+                                            hintStyle: GoogleFonts.openSans(),
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -1654,7 +1654,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Total To be\nPay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -1675,7 +1675,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                               color: Colors.grey.shade200
                                           ),
                                           child:
-                                          Center(child: Text("RS: $decreaseamount",style: GoogleFonts.poppins(fontWeight: FontWeight.w700,fontSize: width/75.88),))
+                                          Center(child: Text("RS: $decreaseamount",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/75.88),))
                                       )),
                                 ],
                               ),
@@ -1697,7 +1697,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     width:width/13.66,
                                     child: Text(
                                       "Total",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontSize: width / 97.571,
                                           color: const Color(0xff000000)),
                                     ),
@@ -1718,7 +1718,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                               color: Colors.grey.shade200
                                           ),
                                           child:
-                                          Center(child: Text("RS: ${TotalAmount2.toStringAsFixed(2)}",style: GoogleFonts.poppins(fontWeight: FontWeight.w700,fontSize: width/75.88)))
+                                          Center(child: Text("RS: ${TotalAmount2.toStringAsFixed(2)}",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/75.88)))
                                       )),
                                 ],
                               ),
@@ -1758,7 +1758,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                               child: Center(
                                 child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -1788,7 +1788,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                               child: Center(
                                 child: Text(
                                     "Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -1972,7 +1972,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                       ),
                       Text(
                         "This Customer Already Exist in List.....",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
                             color: Colors.white),
@@ -2009,7 +2009,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -2615,7 +2615,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                       ),
                       Text(
                         "Are You Sure Want to Add Customer..",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
                             color: Colors.white),
@@ -2639,7 +2639,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Name ",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Name ",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -2672,7 +2672,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Phone",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Phone",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -2714,7 +2714,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Home No",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Home No",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -2748,7 +2748,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Street",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Street",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -2789,7 +2789,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer Area",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer Area",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -2827,7 +2827,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("City/District",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("City/District",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -2857,7 +2857,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                 onSubmitted: (_){
                                                   getCity(_typeAheadControllergender11.text);
                                                 },
-                                                style: GoogleFonts.poppins(fontSize: 15),
+                                                style: GoogleFonts.openSans(fontSize: 15),
                                                 decoration: InputDecoration(
                                                   contentPadding:
                                                   EdgeInsets.only(left: width/136.6, bottom: height/82.125),
@@ -2916,7 +2916,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer State",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer State",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -2946,7 +2946,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                 onSubmitted: (_){
                                                   getCity(_typeAheadControllergender10.text);
                                                 },
-                                                style: GoogleFonts.poppins(fontSize: 15),
+                                                style: GoogleFonts.openSans(fontSize: 15),
                                                 decoration: InputDecoration(
                                                   contentPadding:
                                                   EdgeInsets.only(left: width/136.6, bottom: height/82.125),
@@ -2993,7 +2993,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                       SizedBox(
                                           width:width/6.83,
-                                          child: Text("Customer PinCode",style: GoogleFonts.poppins(color: Colors.white),)),
+                                          child: Text("Customer PinCode",style: GoogleFonts.openSans(color: Colors.white),)),
                                       SizedBox(height: height/136.6,),
                                       Material(
                                         shadowColor: Colors.indigo,
@@ -3036,7 +3036,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
 
-                                          Text("Customer GST No",style: GoogleFonts.poppins(color: Colors.white),),
+                                          Text("Customer GST No",style: GoogleFonts.openSans(color: Colors.white),),
                                           SizedBox(height: height/136.6,),
                                           Material(
                                             shadowColor: Colors.indigo,
@@ -3102,7 +3102,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -3129,7 +3129,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -3625,7 +3625,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
               ),
               Text(
                 "Shabika G",
-                style: GoogleFonts.solway(
+                style: GoogleFonts.openSans(
                     color: Colors.white, fontSize: width / 80.353),
               ),
               SizedBox(width: width / 5.0),
@@ -3664,7 +3664,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
               ),
               Text(
                 "Shabika N",
-                style: GoogleFonts.solway(
+                style: GoogleFonts.openSans(
                     color: Colors.white, fontSize: width / 80.353),
               ),
             ],
@@ -3691,7 +3691,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Customer Phone",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -3717,7 +3717,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                           fieldViewBuilder: (context, textEditingController, focusNode, onFieldSubmitted) {
                                             return
                                               TextFormField(
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontSize: width / 97.571,
                                                     fontWeight: FontWeight.w700,
                                                     color: const Color(0xff000000)),
@@ -3872,7 +3872,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Customer Name",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -3888,7 +3888,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                               color: Colors.white,
                             ),
                             child: TextField(
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize: width / 97.571,
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xff000000)),
@@ -3924,7 +3924,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Customer Address",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                  fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -3943,7 +3943,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                             TextField(
                               focusNode: customeraddress2,
                               controller: customeraddress,
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize: width / 97.571,
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xff000000)),
@@ -3978,7 +3978,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Tax Type",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -4054,7 +4054,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Customer GST NO",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -4077,7 +4077,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                 color: Colors.white,
                               ),
                               child: TextField(
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                     fontSize: width / 97.571,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xff000000)),
@@ -4122,7 +4122,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Bill No",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -4149,7 +4149,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                   getvalues(_typeAheadControllergender15.text);
                                 },
                                 maxLength: 10,
-                                style: GoogleFonts.poppins(fontSize: 15,fontWeight: FontWeight.w700),
+                                style: GoogleFonts.openSans(fontSize: 15,fontWeight: FontWeight.w700),
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.only(
                                       left: width /90.78,
@@ -4164,7 +4164,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                               },
                               itemBuilder: (context, String suggestion) {
                                 return ListTile(
-                                  title: Text(suggestion,style: GoogleFonts.poppins(fontSize: 15,fontWeight: FontWeight.w700),),
+                                  title: Text(suggestion,style: GoogleFonts.openSans(fontSize: 15,fontWeight: FontWeight.w700),),
                                 );
                               },
                               transitionBuilder:
@@ -4201,7 +4201,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Category",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -4307,7 +4307,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Brand",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -4417,7 +4417,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Purchase  Date",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -4433,7 +4433,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                               color: Colors.white,
                             ),
                             child: TextField(
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                   fontSize: width / 97.571,
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xff000000)),
@@ -4489,7 +4489,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           ),
                           Text(
                             "Remarks",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff000000)),
@@ -4505,7 +4505,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                               color: Colors.white,
                             ),
                             child: TextField(
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                   fontSize: width / 97.571,
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xff000000)),
@@ -4557,7 +4557,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         Center(
                             child: Text(
                               "Si No",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4568,7 +4568,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Item ID",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4579,7 +4579,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Item Name",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4592,7 +4592,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Box No",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4604,7 +4604,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "HSN Code",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4615,7 +4615,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Tax %",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4627,7 +4627,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Qnty",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4640,7 +4640,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Price",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4653,7 +4653,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Sales Price",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4664,7 +4664,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Stocks",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4675,7 +4675,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         child: Center(
                             child: Text(
                               "Clear ",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700),
                             )),
                       ),
@@ -4773,7 +4773,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                           )),
                       textFieldConfiguration: TextFieldConfiguration(
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: width / 91.06),
+                        style: GoogleFonts.openSans(fontSize: width / 91.06),
                         decoration: InputDecoration(
                           contentPadding:
                               EdgeInsets.only(left: width / 136.6, bottom: 8),
@@ -5302,7 +5302,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                               child: Text(
                                                 "Update Invoice",
                                                 style:
-                                                GoogleFonts.poppins(color: Colors.white),
+                                                GoogleFonts.openSans(color: Colors.white),
                                               )),
                                         ),
                                       ),
@@ -5328,7 +5328,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             children: [
                                               Text(
                                                 "WhatsApp",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     color: Colors.white),
                                               ),
                                               const SizedBox(
@@ -5370,7 +5370,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                     child: Text(
                                                       "L-BILL No: ",
                                                       textAlign: TextAlign.center,
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           color: Colors.white),
                                                     ),
                                                   ),
@@ -5382,7 +5382,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                 child: Center(
                                                   child: Text(
                                                     "",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white),
                                                   ),
                                                 ),
@@ -5432,7 +5432,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                               child: Text(
                                                 "Print Invoice",
                                                 style:
-                                                GoogleFonts.poppins(color: Colors.white),
+                                                GoogleFonts.openSans(color: Colors.white),
                                               )),
                                         ),
                                       ),
@@ -5454,7 +5454,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                           children: [
                                             Text(
                                               "P-Price",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.w500),
                                             ),
@@ -5510,7 +5510,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                     child: Text(
                                                       "L-BILL Amt: ",
                                                       textAlign: TextAlign.center,
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           color: Colors.white),
                                                     ),
                                                   ),
@@ -5522,7 +5522,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                                 child: Center(
                                                   child: Text(
                                                     "",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white),
                                                   ),
                                                 ),
@@ -5565,7 +5565,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             children: [
                                               Text(
                                                 "Dis %      ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -5609,7 +5609,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
 
                                               Text(
                                                 "Dis Amt ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -5664,13 +5664,13 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                               dropdownValue3=="IGST"?
                                               Text(
                                                 "IGST(18%) ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ):
                                               Text(
                                                 "C GST(9%) ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -5718,7 +5718,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             children: [
                                               Text(
                                                 "S GST(9%) ",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     color:Colors.white,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -5773,7 +5773,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                         child: Center(
                                           child: Text(
                                             TotalAmount2.toStringAsFixed(2),
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
                                                 fontSize: width / 30.88),
@@ -5845,7 +5845,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                       child: Text(
                                         "Update Invoice",
                                         style:
-                                        GoogleFonts.poppins(color: Colors.white),
+                                        GoogleFonts.openSans(color: Colors.white),
                                       )),
                                 ),
                               ),
@@ -5867,7 +5867,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     children: [
                                       Text(
                                         "Share On WhatsApp",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             color: Colors.white),
                                       ),
                                       const SizedBox(
@@ -5923,7 +5923,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                   child: Center(
                                       child: Text(
                                         "Save And Print Invoice",
-                                        style: GoogleFonts.poppins(color: Colors.white),
+                                        style: GoogleFonts.openSans(color: Colors.white),
                                       )),
                                 ),
                               ),
@@ -5940,7 +5940,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                 child: Center(
                                     child: Text(
                                       "Discount\nAmount",
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w500),
                                     )),
                               ),
@@ -5971,7 +5971,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                 child: Center(
                                     child: Text(
                                       "Discount %",
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w500),
                                     )),
                               ),
@@ -6032,7 +6032,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             width: width / 15.5,
                                             child: Text(
                                               "C GST(9%)",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.black,
                                                   fontSize: width / 85.375),
@@ -6042,7 +6042,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             width: width / 13.66,
                                             child: Text(
                                               ": ${Cgst.toStringAsFixed(2)}",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.black,
                                                   fontSize: width / 85.375),
@@ -6064,7 +6064,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             width: width / 15.5,
                                             child: Text(
                                               "S GST(9%)",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.black,
                                                   fontSize: width / 85.375),
@@ -6074,7 +6074,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                             width: width / 13.66,
                                             child: Text(
                                               ": ${sgst.toStringAsFixed(2)}",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.black,
                                                   fontSize: width / 85.375),
@@ -6097,7 +6097,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                       width: width / 10.5,
                                       child: Text(
                                         "Round Value",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600,
                                             color: Colors.black,
                                             fontSize: width / 85.375),
@@ -6107,7 +6107,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                       child: TextField(
                                         controller: rounof,
                                         keyboardType: TextInputType.multiline,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontSize: width / 91.06),
                                         decoration: InputDecoration(
                                           contentPadding: EdgeInsets.only(
@@ -6150,7 +6150,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     width: width / 17.075,
                                     child: Text(
                                       "Sub Total",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600,
                                           color: Colors.indigoAccent,
                                           fontSize: width / 85.375),
@@ -6160,7 +6160,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                     width: width / 13.66,
                                     child: Text(
                                       ": ${totalamount.toStringAsFixed(2)}",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600,
                                           color: Colors.indigoAccent,
                                           fontSize: width / 85.375),
@@ -6182,7 +6182,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                         children: [
                                           Text(
                                             "Total :",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.red,
                                                 fontSize: width / 50.88),
@@ -6202,7 +6202,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                                           child: Text(( Discountamount.text==""||Discountamount.text=="0")?
                                           (TotalAmount2-int.parse(Discountamount.text)).toStringAsFixed(2):
                                           "${TotalAmount2.toStringAsFixed(2)}" ,
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.red,
                                                 fontSize: width / 30.88),
@@ -6239,7 +6239,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
             color: Colors.white,
           ),
           child: TextFormField(
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.openSans(
                 fontSize: width / 97.571,
                 fontWeight: FontWeight.w700,
                 color: const Color(0xff000000)),
@@ -6303,7 +6303,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                       Text(
                         "Save Purchase Bill Succesfully..",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6339,7 +6339,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                       //           ),
                       //           child: Center(
                       //             child: Text("Okay",
-                      //                 style: GoogleFonts.poppins(
+                      //                 style: GoogleFonts.openSans(
                       //                     letterSpacing: 1.5,
                       //                     fontWeight: FontWeight.w500,
                       //                     fontSize: width / 85.375,
@@ -6366,7 +6366,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                       //           ),
                       //           child: Center(
                       //             child: Text("Cancel",
-                      //                 style: GoogleFonts.poppins(
+                      //                 style: GoogleFonts.openSans(
                       //                     letterSpacing: 1.5,
                       //                     fontWeight: FontWeight.w500,
                       //                     fontSize: width / 85.375,

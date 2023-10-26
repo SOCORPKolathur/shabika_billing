@@ -29,13 +29,13 @@ class _SigninpageState extends State<Signinpage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 28.0, right: 60),
                     child: Text("Welcome Admin",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: 29, color: const Color(0xffFFFFFF))),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 18, right: 149),
                     child: Text("Shabika Billing",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width/68.3, color: const Color(0xffFFFFFF))),
                   ),
                   Padding(
@@ -48,7 +48,7 @@ class _SigninpageState extends State<Signinpage> {
                   Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Text("Developed by SO CORP",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: 17, color: const Color(0xffFFFFFF))),
                   ),
                 ],
@@ -63,11 +63,11 @@ class _SigninpageState extends State<Signinpage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 220,top: 60),
-                      child: Text("Sign In",style: GoogleFonts.poppins(fontSize: 30,fontWeight: FontWeight.bold),),
+                      child: Text("Sign In",style: GoogleFonts.openSans(fontSize: 30,fontWeight: FontWeight.bold),),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 28.0,right: 146,bottom: 8),
-                      child: Text("Enter your username or email address",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,fontSize: 10),),
+                      child: Text("Enter your username or email address",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,fontSize: 10),),
                     ),
                     SizedBox(
                       height: height/16,
@@ -89,7 +89,7 @@ class _SigninpageState extends State<Signinpage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 38.0,right: 240,bottom: 8),
-                      child: Text("Enter your password",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,fontSize: 10),),
+                      child: Text("Enter your password",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,fontSize: 10),),
                     ),
                     SizedBox(
                       height: height/16.4,
@@ -111,7 +111,7 @@ class _SigninpageState extends State<Signinpage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 258.0,top: 8),
-                      child: Text("Forgot Password",style: GoogleFonts.poppins(color: Colors.blue,fontSize: 10),),
+                      child: Text("Forgot Password",style: GoogleFonts.openSans(color: Colors.blue,fontSize: 10),),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 100.0,top: 30),
@@ -121,7 +121,7 @@ class _SigninpageState extends State<Signinpage> {
                         child: Container(width: width/7.5,
                           height: height/13.14,
                           // color: Colors.teal,
-                          decoration: BoxDecoration(color: const Color(0xff00A99D),borderRadius: BorderRadius.circular(12)),child: Center(child: Text("Sign in",style: GoogleFonts.poppins(color: Colors.white),)),
+                          decoration: BoxDecoration(color: const Color(0xff00A99D),borderRadius: BorderRadius.circular(12)),child: Center(child: Text("Sign in",style: GoogleFonts.openSans(color: Colors.white),)),
 
                         ),
                       ),

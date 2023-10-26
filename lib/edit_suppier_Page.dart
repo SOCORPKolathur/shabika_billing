@@ -166,7 +166,7 @@ getsuppilerdata()async{
                 padding:  EdgeInsets.only(right: width/1.232,top: height/65.7,bottom: height/65.7),
                 child: Text(
                   "Add New Supplier",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontWeight: FontWeight.bold, fontSize:width/59.39,color: const Color(0xffFFFFFF)),
                 ),
               ),
@@ -179,15 +179,15 @@ getsuppilerdata()async{
             children: [
               Padding(
                 padding:  EdgeInsets.only(left: width/21.01,top: height/82.125),
-                child: Text("Supplier Name *",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("Supplier Name *",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
               Padding(
                 padding:  EdgeInsets.only(left: width/9.486,top: height/82.125),
-                child: Text("Supplier Code*",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("Supplier Code*",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
               Padding(
                 padding:  EdgeInsets.only(left:width/9.757,top: height/82.125),
-                child: Text("Supplier Address *",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("Supplier Address *",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
             ],
           ),
@@ -206,7 +206,7 @@ getsuppilerdata()async{
                     controller: Suppliername,
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
-                    style: GoogleFonts.poppins(fontSize:width/91.06),
+                    style: GoogleFonts.openSans(fontSize:width/91.06),
                     decoration: InputDecoration(contentPadding:
                     EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                       border: InputBorder.none,
@@ -225,7 +225,7 @@ getsuppilerdata()async{
                   controller: Suppliercode,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize: 10),
+                  style: GoogleFonts.openSans(fontSize: 10),
                   decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                     border: InputBorder.none,
                   ),
@@ -242,7 +242,7 @@ getsuppilerdata()async{
                   controller: SupplierAddress,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize:width/91.06),
+                  style: GoogleFonts.openSans(fontSize:width/91.06),
                   decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,
                       bottom:height/82.125),
                     hintText: "Suppiler Address",
@@ -260,27 +260,27 @@ getsuppilerdata()async{
 
               Padding(
                 padding:  EdgeInsets.only(left: width/23.55,top:height/32.85),
-                child: Text("State",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("State",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
               Padding(
                 padding:  EdgeInsets.only(left: width/6.266,top:height/32.85),
-                child: Text("City",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("City",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
               Padding(
                 padding:  EdgeInsets.only(left: width/5.991,top:height/32.85),
-                child: Text("Pincode",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("Pincode",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
               Padding(
                 padding:  EdgeInsets.only(left: width/8.130,top:height/32.85),
-                child: Text("Mobile Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("Mobile Number",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
               Padding(
                 padding:  EdgeInsets.only(left:width/12.418,top:height/32.85),
-                child: Text("Mobile Number-2",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("Mobile Number-2",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
             ],
@@ -301,7 +301,7 @@ getsuppilerdata()async{
                     controller: States,
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
-                    style: GoogleFonts.poppins(fontSize:width/91.06),
+                    style: GoogleFonts.openSans(fontSize:width/91.06),
                     decoration: InputDecoration(contentPadding:
                     EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                       border: InputBorder.none,
@@ -320,7 +320,7 @@ getsuppilerdata()async{
                       controller: city,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize:width/91.06),
+                      style: GoogleFonts.openSans(fontSize:width/91.06),
                       decoration: InputDecoration(contentPadding:
                       EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                         border: InputBorder.none,
@@ -398,7 +398,7 @@ getsuppilerdata()async{
                   controller: Pincode,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize:width/91.06),
+                  style: GoogleFonts.openSans(fontSize:width/91.06),
                   decoration: InputDecoration(contentPadding:
                   EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                     hintText: "",
@@ -417,7 +417,7 @@ getsuppilerdata()async{
                   controller: Mobileno,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize:width/91.06),
+                  style: GoogleFonts.openSans(fontSize:width/91.06),
                   decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                     hintText: "Mobile No 1",
                     border: InputBorder.none,
@@ -435,7 +435,7 @@ getsuppilerdata()async{
                   controller: Mobileno2,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize:width/91.06),
+                  style: GoogleFonts.openSans(fontSize:width/91.06),
                   decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                     hintText: "Mobile No 2",
                     border: InputBorder.none,
@@ -452,11 +452,11 @@ getsuppilerdata()async{
               Padding(
                 padding:  EdgeInsets.only(left: width/24.39,top:height/32.85),
 
-                child: Text("EMail Id",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("EMail Id",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
               Padding(
                 padding:  EdgeInsets.only(left: width/6.89,top:height/32.85),
-                child: Text("GST Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+                child: Text("GST Number",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
               ),
 
             ],
@@ -477,7 +477,7 @@ getsuppilerdata()async{
                     controller: Supplieremail,
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
-                    style: GoogleFonts.poppins(fontSize:width/91.06),
+                    style: GoogleFonts.openSans(fontSize:width/91.06),
                     decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                       border: InputBorder.none,  hintText: "Email",
 
@@ -495,7 +495,7 @@ getsuppilerdata()async{
                   controller: Panno,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize:width/91.06),
+                  style: GoogleFonts.openSans(fontSize:width/91.06),
                   decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                     hintText: "Gst No",
                     border: InputBorder.none,
@@ -509,7 +509,7 @@ getsuppilerdata()async{
 
           Padding(
             padding:  EdgeInsets.only(top:height/32.85,right: width/1.1383),
-            child: Text("Remarks",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+            child: Text("Remarks",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
           ),
 
           Padding(
@@ -521,9 +521,9 @@ getsuppilerdata()async{
               controller: Remarks,
               keyboardType: TextInputType.multiline,
               maxLines: null,
-              style: GoogleFonts.poppins(fontSize:width/91.06),
+              style: GoogleFonts.openSans(fontSize:width/91.06),
               decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3),
-                hintStyle: GoogleFonts.poppins(color: Colors.black),
+                hintStyle: GoogleFonts.openSans(color: Colors.black),
                 border: InputBorder.none,
               ),
             ),
@@ -542,7 +542,7 @@ getsuppilerdata()async{
                   child: Container(width:width/8.6,
                     height: height/16.42,
                     //color: Color(0xffD60A0B),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: const Color(0xff25D366),),child: Center(child: Text("Save Supplier",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/91.06),)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: const Color(0xff25D366),),child: Center(child: Text("Save Supplier",style: GoogleFonts.openSans(color: Colors.white,fontSize:width/91.06),)),
                   ),
                 ),
               ),
@@ -552,7 +552,7 @@ getsuppilerdata()async{
                 },
                 child: Padding(
                   padding:  EdgeInsets.only(left: width/75.888,top:height/32.85),
-                  child: Container(child: Center(child: Text("Reset",style: GoogleFonts.poppins(color: Colors.white),)),
+                  child: Container(child: Center(child: Text("Reset",style: GoogleFonts.openSans(color: Colors.white),)),
                     width: width/13.6,
                     height:  height/16.42,
                     //color: Color(0xffD60A0B),
@@ -628,7 +628,7 @@ getsuppilerdata()async{
                 child: Column(
                   children: [
                     SizedBox(height: height/32.85,),
-                    Text("Add a Supplier Item Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Supplier Item Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -665,7 +665,7 @@ getsuppilerdata()async{
                               child: Center(
                                 child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -692,7 +692,7 @@ getsuppilerdata()async{
                               ),
                               child: Center(
                                 child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,

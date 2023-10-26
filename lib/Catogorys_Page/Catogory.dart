@@ -55,7 +55,7 @@ class _CategoryState extends State<Category> {
                       child:
                       TextField(
                         controller: Serachcontroller,
-                        style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize: width/68.3,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(
                             contentPadding:
                                 EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/70.125),
@@ -122,7 +122,7 @@ class _CategoryState extends State<Category> {
                                 ),
                                 Text(
                                   "Add Category",
-                                  style: GoogleFonts.cairo(
+                                  style: GoogleFonts.openSans(
                                       fontSize: width/68.3, color: Colors.white),
                                 ),
                               ],
@@ -175,13 +175,13 @@ class _CategoryState extends State<Category> {
                                 padding:
                                      EdgeInsets.only(left: width/42.68, right: width/26.15),
                                 child: Text("Sl.no",
-                                    style: GoogleFonts.cairo(
+                                    style: GoogleFonts.openSans(
                                         color:  Colors.white,
                                         fontSize: width / 88.3,
                                         fontWeight: FontWeight.w600)),
                               ),
                               Text("Category Name",
-                                  style: GoogleFonts.cairo(
+                                  style: GoogleFonts.openSans(
                                       color:Colors.white,
                                       fontSize: width / 88.3,
                                       fontWeight: FontWeight.w600)),
@@ -189,20 +189,20 @@ class _CategoryState extends State<Category> {
                                 padding:
                                      EdgeInsets.only(left: width/1.88, right: width/18.514),
                                 child: Text("Edit",
-                                    style: GoogleFonts.cairo(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white,
                                         fontSize: width / 88.3,
                                         fontWeight: FontWeight.w600)),
                               ),
                               Text("Delete",
-                                  style: GoogleFonts.cairo(
+                                  style: GoogleFonts.openSans(
                                       color: Colors.white,
                                       fontSize: width / 88.3,
                                       fontWeight: FontWeight.w600)),
                               Padding(
                                 padding:  EdgeInsets.only(left: width/12.523),
                                 child: Text("Status",
-                                    style: GoogleFonts.cairo(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white,
                                         fontSize: width / 88.3,
                                         fontWeight: FontWeight.w600)),
@@ -257,7 +257,7 @@ class _CategoryState extends State<Category> {
                                       child: Center(
                                           child: Text(
                                             (index + 1).toString(),
-                                            style: GoogleFonts.cairo(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: width / 95.888,
                                                 color: Colors.black),
@@ -284,7 +284,7 @@ class _CategoryState extends State<Category> {
                                         child: Text(
                                           snapshot.data!.docs[index]
                                           ["categoryname"],
-                                          style: GoogleFonts.cairo(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               fontSize: width / 95.888,
                                               color: Colors.black),
@@ -352,7 +352,7 @@ class _CategoryState extends State<Category> {
                                         child: Center(
                                             child: Text(
                                               "Active",
-                                              style: GoogleFonts.cairo(
+                                              style: GoogleFonts.openSans(
                                                   fontSize: width / 95.888,
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.black),
@@ -384,7 +384,7 @@ class _CategoryState extends State<Category> {
                                           child: Center(
                                               child: Text(
                                                 (index + 1).toString(),
-                                                style: GoogleFonts.cairo(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: width / 95.888,
                                                     color: Colors.black),
@@ -411,7 +411,7 @@ class _CategoryState extends State<Category> {
                                             child: Text(
                                               snapshot.data!.docs[index]
                                               ["categoryname"],
-                                              style: GoogleFonts.cairo(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: width / 95.888,
                                                   color: Colors.black),
@@ -479,7 +479,7 @@ class _CategoryState extends State<Category> {
                                             child: Center(
                                                 child: Text(
                                                   "Active",
-                                                  style: GoogleFonts.cairo(
+                                                  style: GoogleFonts.openSans(
                                                       fontSize: width / 95.888,
                                                       fontWeight: FontWeight.bold,
                                                       color: Colors.black),
@@ -551,7 +551,7 @@ class _CategoryState extends State<Category> {
                             padding:  EdgeInsets.only(left: width/35.947, top: height/32.85),
                             child: Text(
                               "Add Category ",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize:width/59.391,
                                   color: const Color(0xffFFFFFF)),
@@ -570,7 +570,7 @@ class _CategoryState extends State<Category> {
                                    EdgeInsets.only(left: width/35.94, top: height/32.85),
                               child: Text(
                                 "Add Category ",
-                                style: GoogleFonts.cairo(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/59.391,
                                     color: const Color(0xffFFFFFF)),
@@ -595,7 +595,7 @@ class _CategoryState extends State<Category> {
                             padding:  EdgeInsets.only(left:width/23.55,),
                             child: Text(
                               "Category Name *",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize: width/97.57, color: const Color(0xff000000)),
                             ),
                           ),
@@ -619,7 +619,7 @@ class _CategoryState extends State<Category> {
                                 controller: catName,
                                 keyboardType: TextInputType.multiline,
                                 maxLines: null,
-                                style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
+                                style: GoogleFonts.openSans(fontSize: width/136.6,fontWeight: FontWeight.w700),
                                 decoration: InputDecoration(
                                   contentPadding:
                                       EdgeInsets.only(left: width/68.3, bottom: height/82.125),
@@ -658,7 +658,7 @@ class _CategoryState extends State<Category> {
                                     child: Text(
                                   "Save",
                                   style:
-                                      GoogleFonts.poppins(color: Colors.white),
+                                      GoogleFonts.openSans(color: Colors.white),
                                 )),
                               ),
                             ),
@@ -679,7 +679,7 @@ class _CategoryState extends State<Category> {
                                   child: Center(
                                       child: Text(
                                     "Reset",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                                 ),
@@ -733,7 +733,7 @@ class _CategoryState extends State<Category> {
                 child: Column(
                   children: [
                     SizedBox(height: height/32.85,),
-                    Text("Add a Category Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Category Successfully",style: GoogleFonts.openSans(
                       fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -765,7 +765,7 @@ class _CategoryState extends State<Category> {
                     //           child: Center(
                     //             child: Text(
                     //               "Okay",
-                    //                 style: GoogleFonts.poppins(
+                    //                 style: GoogleFonts.openSans(
                     //                   letterSpacing: 1.5,
                     //                   fontWeight: FontWeight.w500,
                     //                     fontSize: width/85.375, color: Colors.white)
@@ -792,7 +792,7 @@ class _CategoryState extends State<Category> {
                     //           ),
                     //           child: Center(
                     //             child: Text("Cancel",
-                    //                 style: GoogleFonts.poppins(
+                    //                 style: GoogleFonts.openSans(
                     //                     letterSpacing: 1.5,
                     //                     fontWeight: FontWeight.w500,
                     //                     fontSize: width / 85.375,
@@ -842,7 +842,7 @@ class _CategoryState extends State<Category> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height:height/21.9),
-                Text("Are You Sure Want to Delete",style: GoogleFonts.poppins(
+                Text("Are You Sure Want to Delete",style: GoogleFonts.openSans(
                     fontWeight: FontWeight.w700,
                     fontSize:width/75.88
                 ),),
@@ -871,7 +871,7 @@ class _CategoryState extends State<Category> {
                             color: const Color(0xff25D366)
                         ),
                         child: Center(
-                          child: Text("Okay",style: GoogleFonts.poppins(color: Colors.white,
+                          child: Text("Okay",style: GoogleFonts.openSans(color: Colors.white,
                               fontWeight: FontWeight.w600),),
                         ),
                       ),
@@ -894,7 +894,7 @@ class _CategoryState extends State<Category> {
                           ),
                           child: Center(
                             child: Text("Cancel",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 85.375,
@@ -956,7 +956,7 @@ class _CategoryState extends State<Category> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Are You Sure Want To Edit this Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -965,7 +965,7 @@ class _CategoryState extends State<Category> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Edit Item",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -977,7 +977,7 @@ class _CategoryState extends State<Category> {
                           borderRadius: BorderRadius.circular(4),
                           color: Colors.cyan),
                       child: TextField(
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: edititem,
                         decoration: InputDecoration(
                             border: InputBorder.none,
@@ -1000,7 +1000,7 @@ class _CategoryState extends State<Category> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),

@@ -229,7 +229,7 @@ String WantedType=Type.first;
                        Text(
                          "Save Succesfully..",
                          textAlign: TextAlign.center,
-                         style: GoogleFonts.poppins(
+                         style: GoogleFonts.openSans(
                              fontWeight: FontWeight.w600,
                              fontSize: width / 68.30,
                              color: Colors.white),
@@ -265,7 +265,7 @@ String WantedType=Type.first;
                                  ),
                                  child: Center(
                                    child: Text("Okay",
-                                       style: GoogleFonts.poppins(
+                                       style: GoogleFonts.openSans(
                                            letterSpacing: 1.5,
                                            fontWeight: FontWeight.w500,
                                            fontSize: width / 85.375,
@@ -292,7 +292,7 @@ String WantedType=Type.first;
                                  ),
                                  child: Center(
                                    child: Text("Cancel",
-                                       style: GoogleFonts.poppins(
+                                       style: GoogleFonts.openSans(
                                            letterSpacing: 1.5,
                                            fontWeight: FontWeight.w500,
                                            fontSize: width / 85.375,
@@ -372,7 +372,7 @@ String WantedType=Type.first;
                     left: width / 27.947, top: height / 32.85),
                 child: Text(
                   "Wanted Lists",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontWeight: FontWeight.bold,
                       fontSize: width / 59.39,
                       color: const Color(0xffFFFFFF)),
@@ -392,7 +392,7 @@ String WantedType=Type.first;
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Type : ",style: GoogleFonts.poppins(color: Colors.white),),
+                    Text("Type : ",style: GoogleFonts.openSans(color: Colors.white),),
                     SizedBox(
                       height: height / 136.6,
                     ),
@@ -407,7 +407,7 @@ String WantedType=Type.first;
                       child:
                       DropdownButton2<String>(
                         value: WantedType,
-                        style:GoogleFonts.montserrat(
+                        style:GoogleFonts.openSans(
                             fontSize: width/113.833,
                             color:dawer==1?Colors.black:Colors.white,
                             fontWeight: FontWeight.bold),
@@ -435,7 +435,7 @@ String WantedType=Type.first;
                                 (String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
-                                child: Text(value,style:GoogleFonts.montserrat(
+                                child: Text(value,style:GoogleFonts.openSans(
                                     fontSize: width/113.833,
                                     color:Colors.black,
                                     fontWeight: FontWeight.bold),),
@@ -459,7 +459,7 @@ String WantedType=Type.first;
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Date : ",style: GoogleFonts.poppins(color: Colors.white),),
+                    Text("Date : ",style: GoogleFonts.openSans(color: Colors.white),),
                     SizedBox(
                       height: height / 136.6,
                     ),
@@ -473,7 +473,7 @@ String WantedType=Type.first;
                         ),
                         child:
                         Center(child:
-                        Text(Date.text,style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.black),))
+                        Text(Date.text,style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.black),))
                     ),
                   ],
                 ),
@@ -486,7 +486,7 @@ String WantedType=Type.first;
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Time : ",style: GoogleFonts.poppins(color: Colors.white),),
+                    Text("Time : ",style: GoogleFonts.openSans(color: Colors.white),),
                     SizedBox(
                       height: height / 136.6,
                     ),
@@ -500,7 +500,7 @@ String WantedType=Type.first;
                         ),
                         child:
                         Center(child:
-                        Text(Time.text,style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.black),))
+                        Text(Time.text,style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.black),))
                     ),
                   ],
                 ),
@@ -533,7 +533,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Category",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -564,7 +564,7 @@ String WantedType=Type.first;
                                               Category=textEditingController;
                                             });
                                           },
-                                          style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               contentPadding:
@@ -657,7 +657,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Item Name",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -688,7 +688,7 @@ String WantedType=Type.first;
                                               Itemname=textEditingController1;
                                             });
                                           },
-                                          style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               contentPadding:
@@ -778,7 +778,7 @@ String WantedType=Type.first;
                             width: width / 6.95,
                             child: Text(
                               "Item Image",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -830,7 +830,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Amount",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -875,7 +875,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Advance Amount",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -930,7 +930,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Balance Amount",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -968,7 +968,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Customer Name",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -1006,7 +1006,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Customer Phone",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -1054,7 +1054,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Payment",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -1076,7 +1076,7 @@ String WantedType=Type.first;
                             DropdownButton2<String>(
                               value: Payments2,
                               isExpanded: true,
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w700,
                                   fontSize: width / 105.07),
                               underline: Container(
@@ -1110,7 +1110,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "Status-1",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -1131,7 +1131,7 @@ String WantedType=Type.first;
                             child:
                             DropdownButton2<String>(
                               value:Status1,
-                              style:GoogleFonts.montserrat(
+                              style:GoogleFonts.openSans(
                                   fontSize: width/113.833,
                                   fontWeight: FontWeight.bold),
                               underline: Container(
@@ -1158,7 +1158,7 @@ String WantedType=Type.first;
                                       (String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
-                                      child: Text(value,style:GoogleFonts.montserrat(
+                                      child: Text(value,style:GoogleFonts.openSans(
                                           fontSize: width/113.833,
                                           fontWeight: FontWeight.bold),),
                                     );
@@ -1181,7 +1181,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -1200,7 +1200,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -1218,7 +1218,7 @@ String WantedType=Type.first;
                             width: width / 6.83,
                             child: Text(
                               "",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white),
                             )),
                         SizedBox(
@@ -1263,7 +1263,7 @@ String WantedType=Type.first;
                             child: Text(
                               "Save",
                               style:
-                              GoogleFonts.poppins(color: Colors.white),
+                              GoogleFonts.openSans(color: Colors.white),
                             )),
                       ),
                     ),

@@ -79,7 +79,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
 
                               },
                               controller: searchfield,
-                              style: GoogleFonts.poppins(fontSize: width/99.6,fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontSize: width/99.6,fontWeight: FontWeight.w700),
                               decoration: InputDecoration(
                                 hintText: "Search by Customer Name/Phone Bill No",
                                 suffixIcon: Icon(Icons.search),
@@ -128,7 +128,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Date\nTime",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Date\nTime",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/30.66,
@@ -138,7 +138,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Bill No",
                               textAlign:  TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/15.66,
@@ -148,7 +148,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Customer\nMobile",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/15.66,
@@ -158,7 +158,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Alternative\nMobile",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/15.66,
@@ -168,7 +168,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Customer\nName",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/15.66,
                             height:height/13.14,
@@ -177,7 +177,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Brand",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/15.66,
                             height:height/13.14,
@@ -186,7 +186,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Model",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/15.66,
                             height:height/13.14,
@@ -195,7 +195,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Color",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/15.66,
                             height:height/13.14,
@@ -204,7 +204,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("IMEI",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/30.66,
@@ -212,28 +212,28 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Batt",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Batt",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/30.66,
                             height:height/13.14,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Sim",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Sim",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/30.66,
                             height:height/13.14,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("MCC",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("MCC",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/30.66,
                             height:height/13.14,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("CH",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("CH",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                         Container(
@@ -244,21 +244,21 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Phone Lock",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/25.66,
                             height:height/13.14,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("PIN",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("PIN",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/25.66,
                             height:height/13.14,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Cost",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Cost",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/25.66,
@@ -268,7 +268,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Adv",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/25.66,
@@ -276,7 +276,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Bal",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Bal",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                         Container(
@@ -287,7 +287,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             ),
                             child: Center(child: Text("Delivery Date\nTime",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                         Container(
@@ -296,7 +296,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Status",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Status",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       /*  Container(
                             width:width/10.66,
@@ -304,7 +304,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Actions",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),*/
+                            child: Center(child: Text("Actions",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),*/
 
                         //SizedBox(width:width/27.32,),
 
@@ -350,7 +350,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                           "${buillin1["date"]}\n${buillin1["time"]}",
                                           textAlign: TextAlign.center,
 
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
 
@@ -363,7 +363,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         ),
                                         child: Center(child: Text(
                                           buillin1["billno"],
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
 
@@ -377,7 +377,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(
                                             child: Text(buillin1["cusmob"],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize:12,
                                                   color: Colors.black),))),
 
@@ -391,7 +391,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(
                                             child: Text(buillin1["cusalmob"],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize:12,
                                                   color: Colors.black),))),
 
@@ -405,7 +405,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(
                                             child: Text(buillin1["cusname"],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize:12,
                                                   color: Colors.black),))),
                                     Container(
@@ -418,7 +418,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(
                                             child: Text(buillin1["brand"],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize:12,
                                                   color: Colors.black),))),
                                     Container(
@@ -431,7 +431,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(
                                             child: Text(buillin1["model"],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize:12,
                                                   color: Colors.black),))),
                                     Container(
@@ -444,7 +444,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(
                                             child: Text(buillin1["color"],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize:12,
                                                   color: Colors.black),))),
                                     Container(
@@ -457,7 +457,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(
                                             child: Text(buillin1["imei"],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize:12,
                                                   color: Colors.black),))),
 
@@ -472,7 +472,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                           buillin1["battery"] == true
                                               ? " Yes"
                                               : "No",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
                                     Container(
@@ -484,7 +484,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         ),
                                         child: Center(child: Text(
                                           buillin1["sim"] == true ? " Yes" : "No",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
                                     Container(
@@ -496,7 +496,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         ),
                                         child: Center(child: Text(
                                           buillin1["mmc"] == true ? " Yes" : "No",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
                                     Container(
@@ -510,7 +510,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                           buillin1["charger"] == true
                                               ? " Yes"
                                               : "No",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
 
@@ -524,7 +524,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         ),
                                         child: Center(child: Text(
                                           buillin1["phonelocktype"],
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
                                     Container(
@@ -536,7 +536,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         ),
                                         child: Center(child: Text(
                                           buillin1["password"],
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
                                     Container(
@@ -548,7 +548,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         ),
                                         child: Center(child: Text(
                                           buillin1["totalcost"].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
 
@@ -562,7 +562,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(
                                             child: Text(buillin1["advance"],
                                               textAlign: TextAlign.center,
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w700,fontSize:12,
                                                   color: Colors.black),))),
 
@@ -575,7 +575,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         ),
                                         child: Center(child: Text(
                                           buillin1["balance"].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
 
@@ -589,7 +589,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         child: Center(child: Text(
                                           "${buillin1["deliverydate"]}\n${buillin1["deliverytime"]}",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
                                     /*  Container(
@@ -600,7 +600,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                     ),
                                     child: Center(child: Text(buillin1["balance"]!=0 ? "UnPaid":"Paid",
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),*/
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),*/
 
                                     Container(
                                         width: width / 20.66,
@@ -611,7 +611,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         ),
                                         child: Center(child: Text(
                                           "${buillin1["status"]}",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,fontSize:12,
                                               color: Colors.black),))),
 
@@ -627,7 +627,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black)
                                       ),
-                                      child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,fontSize:12,color: const Color(0xff5801e8)),))),
+                                      child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize:12,color: const Color(0xff5801e8)),))),
                                 ),
                                 GestureDetector(
                                   onTap:(){
@@ -641,7 +641,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black)
                                       ),
-                                      child: Center(child: Text("Edit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,fontSize:12,color: const Color(0xff5801e8)),))),
+                                      child: Center(child: Text("Edit",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize:12,color: const Color(0xff5801e8)),))),
                                 ),
                                 */
                                     //SizedBox(width:width/27.32,),
@@ -669,7 +669,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         "${buillin1["date"]}\n${buillin1["time"]}",
                                         textAlign: TextAlign.center,
 
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
 
@@ -682,7 +682,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["billno"],
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
 
@@ -696,7 +696,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(
                                           child: Text(buillin1["cusmob"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w700,fontSize:12,
                                                 color: Colors.black),))),
 
@@ -710,7 +710,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(
                                           child: Text(buillin1["cusalmob"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w700,fontSize:12,
                                                 color: Colors.black),))),
 
@@ -724,7 +724,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(
                                           child: Text(buillin1["cusname"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w700,fontSize:12,
                                                 color: Colors.black),))),
                                   Container(
@@ -737,7 +737,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(
                                           child: Text(buillin1["brand"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w700,fontSize:12,
                                                 color: Colors.black),))),
                                   Container(
@@ -750,7 +750,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(
                                           child: Text(buillin1["model"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w700,fontSize:12,
                                                 color: Colors.black),))),
                                   Container(
@@ -763,7 +763,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(
                                           child: Text(buillin1["color"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w700,fontSize:12,
                                                 color: Colors.black),))),
                                   Container(
@@ -776,7 +776,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(
                                           child: Text(buillin1["imei"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w700,fontSize:12,
                                                 color: Colors.black),))),
 
@@ -791,7 +791,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         buillin1["battery"] == true
                                             ? " Yes"
                                             : "No",
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
                                   Container(
@@ -803,7 +803,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["sim"] == true ? " Yes" : "No",
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
                                   Container(
@@ -815,7 +815,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["mmc"] == true ? " Yes" : "No",
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
                                   Container(
@@ -829,7 +829,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                         buillin1["charger"] == true
                                             ? " Yes"
                                             : "No",
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
 
@@ -843,7 +843,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["phonelocktype"],
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
                                   Container(
@@ -855,7 +855,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["password"],
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
                                   Container(
@@ -867,7 +867,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["totalcost"].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
 
@@ -881,7 +881,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(
                                           child: Text(buillin1["advance"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w700,fontSize:12,
                                                 color: Colors.black),))),
 
@@ -894,7 +894,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["balance"].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
 
@@ -908,7 +908,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       child: Center(child: Text(
                                         "${buillin1["deliverydate"]}\n${buillin1["deliverytime"]}",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             color: Colors.black),))),
                                   /*  Container(
@@ -919,7 +919,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                     ),
                                     child: Center(child: Text(buillin1["balance"]!=0 ? "UnPaid":"Paid",
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),*/
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),*/
 
                                   Container(
                                       width: width / 20.66,
@@ -930,7 +930,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       ),
                                       child: Center(child: Text(
                                         "${buillin1["status"]}",
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w700,fontSize:12,
                                             ),))),
 
@@ -946,7 +946,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black)
                                       ),
-                                      child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: const Color(0xff5801e8)),))),
+                                      child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: const Color(0xff5801e8)),))),
                                 ),
                                 GestureDetector(
                                   onTap:(){
@@ -960,7 +960,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                       decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black)
                                       ),
-                                      child: Center(child: Text("Edit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: const Color(0xff5801e8)),))),
+                                      child: Center(child: Text("Edit",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: const Color(0xff5801e8)),))),
                                 ),
                                 */
                                   //SizedBox(width:width/27.32,),
@@ -1006,12 +1006,12 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(height: height/22.53,),
-                          Text("Status Update",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                          Text("Status Update",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                           SizedBox(height:height/6.56),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Status : ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                              Text("Status : ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                               SizedBox(width: width/136.6,),
                               Container(
                                 width: width / 7.415,
@@ -1024,7 +1024,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                 child:
                                 DropdownButton2<String>(
                                   value: WantedType,
-                                  style:GoogleFonts.montserrat(
+                                  style:GoogleFonts.openSans(
                                       fontSize: width/113.833,
                                       color:Colors.black,
                                       fontWeight: FontWeight.bold),
@@ -1046,7 +1046,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                                           (String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
-                                          child: Text(value,style:GoogleFonts.montserrat(
+                                          child: Text(value,style:GoogleFonts.openSans(
                                               fontSize: width/113.833,
                                               color:Colors.black,
                                               fontWeight: FontWeight.bold),),
@@ -1086,7 +1086,7 @@ class _ServiceFullviewState extends State<ServiceFullview> {
                               child: Center(
                                   child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(color: Colors.white),
+                                    style: GoogleFonts.openSans(color: Colors.white),
                                   )),
                             ),
                           ),

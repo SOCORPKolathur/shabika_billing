@@ -346,7 +346,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       ),
                       Text(
                         " Edit Item Successfully",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -384,7 +384,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -411,7 +411,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -495,7 +495,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     left: width / 35.947, top: height / 32.85),
                 child: Text(
                   "Edit Item ",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontWeight: FontWeight.bold,
                       fontSize: width / 59.39,
                       color: const Color(0xffFFFFFF)),
@@ -529,7 +529,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "Select Category Name *",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -544,7 +544,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                           padding: EdgeInsets.only(
                               left: width / 455.33, right: width / 455.33),
                           child:TextField(
-                            style: GoogleFonts.poppins(fontSize: 15),
+                            style: GoogleFonts.openSans(fontSize: 15),
                             controller: Categorycont,
                             keyboardType: TextInputType.multiline,
                             maxLines: null,
@@ -565,7 +565,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                                           bottomRight: Radius.circular(5),
                                         )),
                                 textFieldConfiguration: TextFieldConfiguration(
-                                  style: GoogleFonts.poppins(fontSize: 15),
+                                  style: GoogleFonts.openSans(fontSize: 15),
                                   decoration: InputDecoration(
                                     contentPadding:
                                         EdgeInsets.only(left: width/136.6, bottom: height/82.125),
@@ -688,7 +688,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     children: [
                       Text(
                         "Brand Name ",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
                       SizedBox(height:height/37.6),
@@ -701,7 +701,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                             borderRadius: BorderRadius.circular(4)),
                         child:
                         TextField(
-                          style: GoogleFonts.poppins(fontSize: 15),
+                          style: GoogleFonts.openSans(fontSize: 15),
                           controller: Barndcont,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
@@ -726,7 +726,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "New Item Code * ",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -738,7 +738,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                           borderRadius: BorderRadius.circular(4)),
                       child:
                       TextField(
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         controller: itemcode,
                         readOnly: true,
                         keyboardType: TextInputType.multiline,
@@ -762,7 +762,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "HSN Code *",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -778,7 +778,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         controller: HSNcode,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
                               left: width / 68.3, bottom: height / 82.125),
@@ -808,7 +808,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "Purchase Price *",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -825,7 +825,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                             ? "Field Can't Empty"
                             : null,
                         controller: Purchaseprice,
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
                               left: width / 68.3, bottom: height / 82.125),
@@ -847,7 +847,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "Landing Cost",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -865,7 +865,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         controller: Landingcost,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
                               left: width / 68.3, bottom: height / 82.125),
@@ -885,7 +885,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "Sale Price *",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -903,7 +903,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         controller: Saleprice,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
                               left: width / 68.3, bottom: height / 82.125),
@@ -923,7 +923,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "MRP Price/Unit",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -941,7 +941,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         controller: MRPPrice,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
                               left: width / 68.3, bottom: height / 82.125),
@@ -962,7 +962,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
             EdgeInsets.only(left: width / 24.836, top: height / 32.85),
             child: Text(
               "Item Details",
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.openSans(
                   fontSize: width / 71.894, fontWeight: FontWeight.bold),
             ),
           ),
@@ -981,7 +981,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "Select Item Unit",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -999,7 +999,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                           isExpanded: true,
                           value: dropdownValue1,
                           icon: const Icon(Icons.arrow_drop_down_outlined),
-                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                           underline: Container(
                             color: Colors.deepPurpleAccent,
                           ),
@@ -1033,7 +1033,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "Low Order Quantity",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -1049,7 +1049,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         controller: Loworder,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
                               left: width / 68.3, bottom: height / 82.125),
@@ -1070,7 +1070,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "Box No",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -1085,7 +1085,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         controller: BoxNo,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
                               left: width / 68.3, bottom: height / 164.25),
@@ -1106,7 +1106,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   children: [
                     Text(
                       "Profit",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
                     SizedBox(height:height/37.6),
@@ -1121,7 +1121,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         controller: margin,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
-                        style: GoogleFonts.poppins(fontSize: 15),
+                        style: GoogleFonts.openSans(fontSize: 15),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
                               left: width / 68.3, bottom: height / 164.25),
@@ -1152,7 +1152,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     bottom: height / 54.75),
                 child: Text(
                   "Add New Item Name *",
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.openSans(
                       fontSize: width / 97.571, color: const Color(0xff000000)),
                 ),
               ),
@@ -1175,7 +1175,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     controller: Newitemname,
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
-                    style: GoogleFonts.poppins(fontSize: 15),
+                    style: GoogleFonts.openSans(fontSize: 15),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(
                           left: width / 68.3, bottom: height / 82.125),
@@ -1208,7 +1208,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         ),
                         Text(
                           "IMEI Number",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               fontSize: width / 97.571,
                               color: const Color(0xff000000)),
                         ),
@@ -1236,7 +1236,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         ),
                         Text(
                           "Serial Number",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               fontSize: width / 97.571,
                               color: const Color(0xff000000)),
                         ),
@@ -1265,7 +1265,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         ),
                         Text(
                           "Color",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               fontSize: width / 97.571,
                               color: const Color(0xff000000)),
                         ),
@@ -1294,7 +1294,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         ),
                         Text(
                           "Image",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               fontSize: width / 97.571,
                               color: const Color(0xff000000)),
                         ),
@@ -1328,7 +1328,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     child: Center(
                         child: Text(
                           "Save",
-                          style: GoogleFonts.poppins(color: Colors.white),
+                          style: GoogleFonts.openSans(color: Colors.white),
                         )),
                   ),
                 ),
@@ -1349,7 +1349,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       child: Center(
                           child: Text(
                             "Reset",
-                            style: GoogleFonts.poppins(color: Colors.white),
+                            style: GoogleFonts.openSans(color: Colors.white),
                           )),
                     ),
                   ),

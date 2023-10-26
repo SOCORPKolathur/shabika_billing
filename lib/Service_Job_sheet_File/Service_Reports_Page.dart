@@ -212,7 +212,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                           Text(
                             "Date",
                             textAlign: TextAlign.start,
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 78.3,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -378,7 +378,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                         children: [
 
                           SizedBox(height:5),
-                          Text("Search by Customer Name/Phone Bill No :",style: GoogleFonts.cairo(
+                          Text("Search by Customer Name/Phone Bill No :",style: GoogleFonts.openSans(
                               fontSize: width / 78.3,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),),
@@ -398,7 +398,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
 
                               },
                               controller: searchfield,
-                              style: GoogleFonts.poppins(fontSize: width/99.6,fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontSize: width/99.6,fontWeight: FontWeight.w700),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(left: width/68.3, bottom:height/ 82.125,),
                                 border: InputBorder.none,
@@ -418,7 +418,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                         children: [
 
                           SizedBox(height:5),
-                          Text("Search by Status :",style: GoogleFonts.cairo(
+                          Text("Search by Status :",style: GoogleFonts.openSans(
                               fontSize: width / 78.3,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),),
@@ -469,7 +469,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                           Text(
                             "Profit",
                             textAlign: TextAlign.start,
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 78.3,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -487,7 +487,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                               child: Text(
                                 totalprofit.toString(),
                                 textAlign: TextAlign.start,
-                                style: GoogleFonts.cairo(
+                                style: GoogleFonts.openSans(
                                     fontSize: width / 78.3,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
@@ -522,7 +522,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             borderRadius: BorderRadius.circular(7),
                           ),
                           child:  Center(child: Text("Clear",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 78.3,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
@@ -566,7 +566,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Date\nTime",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Date\nTime",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/20.66,
@@ -574,7 +574,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Bill No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Bill No",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/9.66,
@@ -584,7 +584,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             ),
                             child: Center(child: Text("Customer\nMobile",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/9.66,
@@ -594,7 +594,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             ),
                             child: Center(child: Text("Alternative\nMobile",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/9.66,
@@ -604,7 +604,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             ),
                             child: Center(child: Text("Customer\nName",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/13.66,
@@ -612,14 +612,14 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Cost",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Cost",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/13.66,
                             height:height/13.14,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Profit",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Profit",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/13.66,
                             height:height/13.14,
@@ -628,7 +628,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             ),
                             child: Center(child: Text("Delivery Date\nTime",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                         Container(
                             width:width/15.66,
                             height:height/13.14,
@@ -637,7 +637,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             ),
                             child: Center(child: Text("Payment",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/10.66,
@@ -645,7 +645,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Status",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Status",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         Container(
                             width:width/5.76,
@@ -653,7 +653,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text("Actions",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                            child: Center(child: Text("Actions",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                         //SizedBox(width:width/27.32,),
 
@@ -700,7 +700,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               child: Center(child: Text("${buillin1["date"]}\n${buillin1["time"]}",
                                                 textAlign: TextAlign.center,
 
-                                                style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                                style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                           Container(
                                               width:width/20.66,
@@ -708,7 +708,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               decoration: BoxDecoration(
                                                   border: Border.all(color: Colors.black)
                                               ),
-                                              child: Center(child: Text(buillin1["billno"],style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                              child: Center(child: Text(buillin1["billno"],style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                           Container(
                                               width:width/9.66,
@@ -718,7 +718,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               ),
                                               child: Center(child: Text(buillin1["cusmob"],
                                                 textAlign: TextAlign.center,
-                                                style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                                style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                           Container(
                                               width:width/9.66,
@@ -728,7 +728,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               ),
                                               child: Center(child: Text(buillin1["cusalmob"],
                                                 textAlign: TextAlign.center,
-                                                style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                                style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                           Container(
                                               width:width/9.66,
@@ -738,7 +738,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               ),
                                               child: Center(child: Text(buillin1["cusname"],
                                                 textAlign: TextAlign.center,
-                                                style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                                style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                           Container(
                                               width:width/13.66,
@@ -746,14 +746,14 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               decoration: BoxDecoration(
                                                   border: Border.all(color: Colors.black)
                                               ),
-                                              child: Center(child: Text(buillin1["totalcost"].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                              child: Center(child: Text(buillin1["totalcost"].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
                                           Container(
                                               width:width/13.66,
                                               height:height/13.14,
                                               decoration: BoxDecoration(
                                                   border: Border.all(color: Colors.black)
                                               ),
-                                              child: Center(child: Text((double.parse(buillin1["totalcost"].toString())-double.parse(buillin1["itemtotal"].toString())).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                              child: Center(child: Text((double.parse(buillin1["totalcost"].toString())-double.parse(buillin1["itemtotal"].toString())).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
 
                                           Container(
@@ -764,7 +764,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               ),
                                               child: Center(child: Text("${buillin1["deliverydate"]}\n${buillin1["deliverytime"]}",
                                                 textAlign: TextAlign.center,
-                                                style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                                style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
                                           Container(
                                               width:width/15.66,
                                               height:height/13.14,
@@ -773,7 +773,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               ),
                                               child: Center(child: Text(buillin1["balance"]!=0 ? "UnPaid":"Paid",
                                                 textAlign: TextAlign.center,
-                                                style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),
+                                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),
 
                                           Container(
                                               width:width/10.66,
@@ -781,7 +781,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               decoration: BoxDecoration(
                                                   border: Border.all(color: Colors.black)
                                               ),
-                                              child: Center(child: Text("${buillin1["status"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                              child: Center(child: Text("${buillin1["status"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                           GestureDetector(
                                             onTap:(){
@@ -793,7 +793,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black)
                                                 ),
-                                                child: Center(child: Text("View\nPayment",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                                child: Center(child: Text("View\nPayment",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                           ),
                                           GestureDetector(
                                             onTap:(){
@@ -805,7 +805,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black)
                                                 ),
-                                                child: Center(child: Text("View\nProfit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                                child: Center(child: Text("View\nProfit",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                           ),
                                           GestureDetector(
                                             onTap:(){
@@ -819,7 +819,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black)
                                                 ),
-                                                child: Center(child: Text("Edit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                                child: Center(child: Text("Edit",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                           ),
 
                                           //SizedBox(width:width/27.32,),
@@ -850,7 +850,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           child: Center(child: Text("${buillin1["date"]}\n${buillin1["time"]}",
                                             textAlign: TextAlign.center,
 
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                       Container(
                                           width:width/20.66,
@@ -858,7 +858,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text(buillin1["billno"],style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["billno"],style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                       Container(
                                           width:width/9.66,
@@ -868,7 +868,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           ),
                                           child: Center(child: Text(buillin1["cusmob"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                       Container(
                                           width:width/9.66,
@@ -878,7 +878,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           ),
                                           child: Center(child: Text(buillin1["cusalmob"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                       Container(
                                           width:width/9.66,
@@ -888,7 +888,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           ),
                                           child: Center(child: Text(buillin1["cusname"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                       Container(
                                           width:width/13.66,
@@ -896,14 +896,14 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text(buillin1["totalcost"].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["totalcost"].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
                                       Container(
                                           width:width/13.66,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text((double.parse(buillin1["totalcost"].toString())-double.parse(buillin1["itemtotal"].toString())).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          child: Center(child: Text((double.parse(buillin1["totalcost"].toString())-double.parse(buillin1["itemtotal"].toString())).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
 
                                       Container(
@@ -914,7 +914,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           ),
                                           child: Center(child: Text("${buillin1["deliverydate"]}\n${buillin1["deliverytime"]}",
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
                                       Container(
                                           width:width/15.66,
                                           height:height/13.14,
@@ -923,7 +923,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           ),
                                           child: Center(child: Text(buillin1["balance"]!=0 ? "UnPaid":"Paid",
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),
 
                                       Container(
                                           width:width/10.66,
@@ -931,7 +931,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text("${buillin1["status"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          child: Center(child: Text("${buillin1["status"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                       GestureDetector(
                                         onTap:(){
@@ -943,7 +943,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             decoration: BoxDecoration(
                                                 border: Border.all(color: Colors.black)
                                             ),
-                                            child: Center(child: Text("View\nPayment",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                            child: Center(child: Text("View\nPayment",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                       ),
                                       GestureDetector(
                                         onTap:(){
@@ -955,7 +955,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             decoration: BoxDecoration(
                                                 border: Border.all(color: Colors.black)
                                             ),
-                                            child: Center(child: Text("View\nProfit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                            child: Center(child: Text("View\nProfit",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                       ),
                                       GestureDetector(
                                         onTap:(){
@@ -969,7 +969,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             decoration: BoxDecoration(
                                                 border: Border.all(color: Colors.black)
                                             ),
-                                            child: Center(child: Text("Edit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                            child: Center(child: Text("Edit",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                       ),
 
                                       //SizedBox(width:width/27.32,),
@@ -1000,7 +1000,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         child: Center(child: Text("${buillin1["date"]}\n${buillin1["time"]}",
                                           textAlign: TextAlign.center,
 
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/20.66,
@@ -1008,7 +1008,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black)
                                         ),
-                                        child: Center(child: Text(buillin1["billno"],style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                        child: Center(child: Text(buillin1["billno"],style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/9.66,
@@ -1018,7 +1018,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(buillin1["cusmob"],
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/9.66,
@@ -1028,7 +1028,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(buillin1["cusalmob"],
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/9.66,
@@ -1038,7 +1038,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(buillin1["cusname"],
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/13.66,
@@ -1046,14 +1046,14 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black)
                                         ),
-                                        child: Center(child: Text(buillin1["totalcost"].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                        child: Center(child: Text(buillin1["totalcost"].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
                                     Container(
                                         width:width/13.66,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black)
                                         ),
-                                        child: Center(child: Text((double.parse(buillin1["totalcost"].toString())-double.parse(buillin1["itemtotal"].toString())).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                        child: Center(child: Text((double.parse(buillin1["totalcost"].toString())-double.parse(buillin1["itemtotal"].toString())).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
 
                                     Container(
@@ -1064,7 +1064,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text("${buillin1["deliverydate"]}\n${buillin1["deliverytime"]}",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
                                     Container(
                                         width:width/15.66,
                                         height:height/13.14,
@@ -1073,7 +1073,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(buillin1["balance"]!=0 ? "UnPaid":"Paid",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),
 
                                     Container(
                                         width:width/10.66,
@@ -1081,7 +1081,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black)
                                         ),
-                                        child: Center(child: Text("${buillin1["status"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                        child: Center(child: Text("${buillin1["status"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     GestureDetector(
                                       onTap:(){
@@ -1093,7 +1093,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text("View\nPayment",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                          child: Center(child: Text("View\nPayment",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                     ),
                                     GestureDetector(
                                       onTap:(){
@@ -1105,7 +1105,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text("View\nProfit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                          child: Center(child: Text("View\nProfit",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                     ),
                                     GestureDetector(
                                       onTap:(){
@@ -1119,7 +1119,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text("Edit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                          child: Center(child: Text("Edit",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                     ),
 
                                     //SizedBox(width:width/27.32,),
@@ -1147,7 +1147,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         child: Center(child: Text("${buillin1["date"]}\n${buillin1["time"]}",
                                           textAlign: TextAlign.center,
 
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/20.66,
@@ -1155,7 +1155,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black)
                                         ),
-                                        child: Center(child: Text(buillin1["billno"],style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                        child: Center(child: Text(buillin1["billno"],style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/9.66,
@@ -1165,7 +1165,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(buillin1["cusmob"],
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/9.66,
@@ -1175,7 +1175,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(buillin1["cusalmob"],
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/9.66,
@@ -1185,7 +1185,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(buillin1["cusname"],
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     Container(
                                         width:width/13.66,
@@ -1193,14 +1193,14 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black)
                                         ),
-                                        child: Center(child: Text(buillin1["totalcost"].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                        child: Center(child: Text(buillin1["totalcost"].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
                                     Container(
                                         width:width/13.66,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black)
                                         ),
-                                        child: Center(child: Text((double.parse(buillin1["totalcost"].toString())-double.parse(buillin1["itemtotal"].toString())).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                        child: Center(child: Text((double.parse(buillin1["totalcost"].toString())-double.parse(buillin1["itemtotal"].toString())).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
 
                                     Container(
@@ -1211,7 +1211,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text("${buillin1["deliverydate"]}\n${buillin1["deliverytime"]}",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
                                     Container(
                                         width:width/15.66,
                                         height:height/13.14,
@@ -1220,7 +1220,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(buillin1["balance"]!=0 ? "UnPaid":"Paid",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["balance"]!=0 ? Colors.red: Colors.green),))),
 
                                     Container(
                                         width:width/10.66,
@@ -1228,7 +1228,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black)
                                         ),
-                                        child: Center(child: Text("${buillin1["status"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color:  Colors.black),))),
+                                        child: Center(child: Text("${buillin1["status"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color:  Colors.black),))),
 
                                     GestureDetector(
                                       onTap:(){
@@ -1240,7 +1240,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text("View\nPayment",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                          child: Center(child: Text("View\nPayment",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                     ),
                                     GestureDetector(
                                       onTap:(){
@@ -1252,7 +1252,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text("View\nProfit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                          child: Center(child: Text("View\nProfit",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                     ),
                                     GestureDetector(
                                       onTap:(){
@@ -1266,7 +1266,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black)
                                           ),
-                                          child: Center(child: Text("Edit",style: GoogleFonts.montserrat(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
+                                          child: Center(child: Text("Edit",style: GoogleFonts.openSans(fontWeight: FontWeight.w500,color: const Color(0xff5801e8)),))),
                                     ),
 
                                     //SizedBox(width:width/27.32,),
@@ -1295,7 +1295,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         "${buillin1["date"]}\n${buillin1["time"]}",
                                         textAlign: TextAlign.center,
 
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),))),
 
@@ -1308,7 +1308,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["billno"],
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),))),
 
@@ -1322,7 +1322,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Center(
                                           child: Text(buillin1["cusmob"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black),))),
 
@@ -1336,7 +1336,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Center(
                                           child: Text(buillin1["cusalmob"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black),))),
 
@@ -1350,7 +1350,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Center(
                                           child: Text(buillin1["cusname"],
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black),))),
 
@@ -1363,7 +1363,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       ),
                                       child: Center(child: Text(
                                         buillin1["totalcost"].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),))),
                                   Container(
@@ -1378,7 +1378,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                           double.parse(
                                               buillin1["itemtotal"].toString()))
                                           .toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),))),
 
@@ -1393,7 +1393,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Center(child: Text(
                                         "${buillin1["deliverydate"]}\n${buillin1["deliverytime"]}",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),))),
                                   Container(
@@ -1408,7 +1408,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             ? "UnPaid"
                                             : "Paid",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: buillin1["balance"] != 0
                                                 ? Colors.red
@@ -1423,7 +1423,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       ),
                                       child: Center(child: Text(
                                         "${buillin1["status"]}",
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),))),
 
@@ -1444,7 +1444,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(
                                           "View\nPayment",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,
                                               color:  Colors.green),))),
                                   ),
@@ -1467,7 +1467,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         ),
                                         child: Center(child: Text(
                                           "View\nProfit",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,
                                               color: const Color(
                                                   0xff5801e8)),))),
@@ -1488,7 +1488,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 color: Colors.black)
                                         ),
                                         child: Center(child: Text("Edit",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w700,
                                               color:  Colors.red),))),
                                   ),
@@ -1553,7 +1553,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                 ),
                                 Text(
                                   "Payment History Details",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w700),
                                 ),
@@ -1704,7 +1704,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                   child: Center(
                                       child: Text(
                                         "Si.No",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -1720,7 +1720,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         "Date",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -1736,7 +1736,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Time',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -1752,7 +1752,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Type',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -1768,7 +1768,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Payment Mode',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -1784,7 +1784,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Amount Paid',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -1800,7 +1800,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Balance Total',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -1850,7 +1850,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             child: Center(
                                                 child: Text(
                                                   "${index + 1}",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 )),
@@ -1866,7 +1866,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 child: Text(
                                                   "${purchase['date']}"
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 )),
@@ -1883,7 +1883,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             Center(
                                               child: Text(
                                                 "${purchase['time']}",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
@@ -1905,7 +1905,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 child: Text(
                                                   purchase['type']
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold,
                                                       textStyle: const TextStyle(
                                                           overflow: TextOverflow
@@ -1923,7 +1923,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 child: Text(
                                                   purchase['payment mode']
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 )),
@@ -1938,7 +1938,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             child: Center(
                                                 child: Text(
                                                   purchase['Amount'].toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 )),
@@ -1952,7 +1952,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                     width: 1.2)),
                                             child: Center(
                                                 child: Text(purchase['balance'].toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 )),
@@ -1981,7 +1981,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       CrossAxisAlignment.center,
                                       children: [
                                         Text("Pending Total : ${pendingtotal.toStringAsFixed(2)}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
                                                 fontSize: width / 85.375,
@@ -2046,7 +2046,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                 ),
                                 Text(
                                   "Profit of bill",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w700),
                                 ),
@@ -2198,7 +2198,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                   child: Center(
                                       child: Text(
                                         "Si.No",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2214,7 +2214,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         "Date\nTime",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2230,7 +2230,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         "Item Code",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2246,7 +2246,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Description',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2262,7 +2262,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Hsn\nCode',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2279,7 +2279,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         "Qty",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2295,7 +2295,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Without Tax',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2311,7 +2311,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Sales Price',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2327,7 +2327,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Landing Cost',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2344,7 +2344,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         'Tax',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2360,7 +2360,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       child: Text(
                                         "Total",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2409,7 +2409,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             child: Center(
                                                 child: Text(
                                                   "${index + 1}",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2424,7 +2424,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 child: Text(
                                                   "${purchase['date']}\n${purchase['time']}"
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2443,7 +2443,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                               children: [
                                                 Text(
                                                   "${purchase['itemcode']}",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight:
                                                       FontWeight.bold),
                                                 ),
@@ -2468,7 +2468,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 Text(
                                                   purchase['Description']
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight:
                                                       FontWeight.bold,
                                                       textStyle: const TextStyle(
@@ -2513,7 +2513,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             child: Center(
                                                 child: Text(
                                                   purchase['Hsncode'].toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2528,7 +2528,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             child: Center(
                                                 child: Text(
                                                   purchase["Qty"].toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2543,7 +2543,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 child: Text(
                                                   purchase['withouttaxprice']
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2558,7 +2558,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 child: Text(
                                                   purchase['Sales price']
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2573,7 +2573,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                                 child: Text(
                                                   purchase['Landing Cost']
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2588,7 +2588,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             child: Center(
                                                 child: Text(
                                                   purchase['tax'].toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2602,7 +2602,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             child: Center(
                                                 child: Text(
                                             (int.parse(purchase['Qty'].toString()) * double.parse(purchase['Sales price'])).toStringAsFixed(2),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold),
                                                 )),
                                           ),
@@ -2631,7 +2631,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                       CrossAxisAlignment.center,
                                       children: [
                                         Text("Pending Total : ${pendingtotal.toStringAsFixed(2)}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
                                                 fontSize: width / 85.375,
@@ -2679,12 +2679,12 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: height/22.53,),
-                        Text("Status Update",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                        Text("Status Update",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                         SizedBox(height:height/6.56),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Status : ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),),
+                            Text("Status : ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),),
                             SizedBox(width: width/136.6,),
                             Container(
                               width: width / 7.415,
@@ -2697,7 +2697,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                               child:
                               DropdownButton2<String>(
                                 value: WantedType,
-                                style:GoogleFonts.montserrat(
+                                style:GoogleFonts.openSans(
                                     fontSize: width/113.833,
                                     color:Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -2719,7 +2719,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                         (String value) {
                                       return DropdownMenuItem<String>(
                                         value: value,
-                                        child: Text(value,style:GoogleFonts.montserrat(
+                                        child: Text(value,style:GoogleFonts.openSans(
                                             fontSize: width/113.833,
                                             color:Colors.black,
                                             fontWeight: FontWeight.bold),),
@@ -2759,7 +2759,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             child: Center(
                                 child: Text(
                                   "Okay",
-                                  style: GoogleFonts.poppins(color: Colors.white),
+                                  style: GoogleFonts.openSans(color: Colors.white),
                                 )),
                           ),
                         ),

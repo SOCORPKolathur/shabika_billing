@@ -282,7 +282,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Padding(
               padding:  EdgeInsets.only(left: width/91.06),
               child: Text(" Sales Reports",
-                style: GoogleFonts.montserrat(color: Colors.white,
+                style: GoogleFonts.openSans(color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: width/54.64),),
             ),
@@ -322,7 +322,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
             Text(
               "Shabika G",
-              style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
             ),
 
             Padding(
@@ -360,7 +360,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
             Text(
               "Shabika N",
-              style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
             ),
           ],
         ),
@@ -375,7 +375,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Text(
               "Date",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -457,7 +457,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Text(
               "To",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -542,7 +542,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Text(
               "Item Name",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -563,7 +563,7 @@ class _Reports_PageState extends State<Reports_Page> {
                   });
                   print(Suppilercontroller.text);
                   },
-                style: GoogleFonts.montserrat(
+                style: GoogleFonts.openSans(
                     fontSize: width / 91.06, fontWeight: FontWeight.w500),
                 decoration: InputDecoration(
                     border: InputBorder.none,
@@ -578,7 +578,7 @@ class _Reports_PageState extends State<Reports_Page> {
             //Status-1
             Text(
               "HSN Code",
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -599,7 +599,7 @@ class _Reports_PageState extends State<Reports_Page> {
                     });
                     print(Invoicecontroller.text);
                   },
-                  style: GoogleFonts.montserrat(
+                  style: GoogleFonts.openSans(
                       fontSize: width / 91.06, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
                       border: InputBorder.none,
@@ -620,7 +620,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Text(
               "Category",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -640,7 +640,7 @@ class _Reports_PageState extends State<Reports_Page> {
                  });
                  print(_typeAheadControllergender.text);
                },
-               style: GoogleFonts.montserrat(
+               style: GoogleFonts.openSans(
                    fontSize: width / 91.06, fontWeight: FontWeight.w500),
                decoration: InputDecoration(
                    border: InputBorder.none,
@@ -762,7 +762,7 @@ class _Reports_PageState extends State<Reports_Page> {
                 child: Center(
                   child: Text(
                     "Clear",
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
                         fontSize: width / 84.64),
@@ -785,7 +785,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Text(
               "Brand",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -805,7 +805,7 @@ class _Reports_PageState extends State<Reports_Page> {
                   });
                   print(_typeAheadControllergender2.text);
                 },
-                style: GoogleFonts.montserrat(
+                style: GoogleFonts.openSans(
                     fontSize: width / 91.06, fontWeight: FontWeight.w500),
                 decoration: InputDecoration(
                     border: InputBorder.none,
@@ -895,7 +895,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Text(
               "Shabika G",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -913,7 +913,7 @@ class _Reports_PageState extends State<Reports_Page> {
                 child: Center(
                     child: Text(
                       salesamountG.toStringAsFixed(2),
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
                           fontSize: width / 88.64),
@@ -924,7 +924,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Text(
               "Shabika N",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -942,7 +942,7 @@ class _Reports_PageState extends State<Reports_Page> {
                 child: Center(
                     child: Text(
                       salesamountN.toStringAsFixed(2),
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
                           fontSize: width / 88.64),
@@ -953,7 +953,7 @@ class _Reports_PageState extends State<Reports_Page> {
             Text(
               "Total Amount",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -971,7 +971,7 @@ class _Reports_PageState extends State<Reports_Page> {
                 child: Center(
                     child: Text(
                       salesamount.toStringAsFixed(2),
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
                           fontSize: width / 88.64),
@@ -1008,14 +1008,14 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Si.no',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Si.no',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                       Container(
                           width:width/16.383,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Date\nTime',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Date\nTime',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/18.588,
@@ -1024,7 +1024,7 @@ class _Reports_PageState extends State<Reports_Page> {
                             border: Border.all(color: Colors.black,width: 1.2),
 
                           ),
-                          child: Center(child: Text('Category',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Category',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                       Container(
                           width:width/18.588,
                           height:height/13.14,
@@ -1032,7 +1032,7 @@ class _Reports_PageState extends State<Reports_Page> {
                             border: Border.all(color: Colors.black,width: 1.2),
 
                           ),
-                          child: Center(child: Text('Brand',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Brand',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/18.588,
@@ -1040,7 +1040,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Item ID',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Item ID',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/3.5,
@@ -1048,7 +1048,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Item Name',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Item Name',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/12.0,
@@ -1056,7 +1056,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('HSN Code',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('HSN Code',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/20.0,
@@ -1064,7 +1064,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Quantity',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Quantity',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/12.0,
@@ -1072,7 +1072,7 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Without Tax',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Without Tax',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                       Container(
                           width:width/12.0,
@@ -1080,14 +1080,14 @@ class _Reports_PageState extends State<Reports_Page> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Sales Price',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Sales Price',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
                       Container(
                           width:width/12.0,
                           height:height/13.14,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 1.2),
                           ),
-                          child: Center(child: Text('Total',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          child: Center(child: Text('Total',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                     ],
@@ -1127,14 +1127,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/16.383,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/18.588,
@@ -1143,7 +1143,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           border: Border.all(color: Colors.black,width: 1.2),
 
                                         ),
-                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/18.588,
                                         height:height/13.14,
@@ -1151,7 +1151,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           border: Border.all(color: Colors.black,width: 1.2),
 
                                         ),
-                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                     Container(
                                         width:width/18.588,
@@ -1159,7 +1159,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/3.5,
@@ -1167,7 +1167,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -1175,7 +1175,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/20.0,
@@ -1183,7 +1183,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -1191,7 +1191,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -1199,14 +1199,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/12.0,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                   ],
@@ -1231,14 +1231,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -1247,7 +1247,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -1255,7 +1255,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -1263,7 +1263,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -1271,7 +1271,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1279,7 +1279,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -1287,7 +1287,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1295,7 +1295,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1303,14 +1303,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -1336,14 +1336,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                        Container(
                                            width:width/16.383,
                                            height:height/13.14,
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                        Container(
                                            width:width/18.588,
@@ -1352,7 +1352,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                              border: Border.all(color: Colors.black,width: 1.2),
 
                                            ),
-                                           child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                        Container(
                                            width:width/18.588,
                                            height:height/13.14,
@@ -1360,7 +1360,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                              border: Border.all(color: Colors.black,width: 1.2),
 
                                            ),
-                                           child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                           child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                        Container(
                                            width:width/18.588,
@@ -1368,7 +1368,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                        Container(
                                            width:width/3.5,
@@ -1376,7 +1376,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                        Container(
                                            width:width/12.0,
@@ -1384,7 +1384,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                        Container(
                                            width:width/20.0,
@@ -1392,7 +1392,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                           child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                        Container(
                                            width:width/12.0,
@@ -1400,7 +1400,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                           child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                        Container(
                                            width:width/12.0,
@@ -1408,14 +1408,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                        Container(
                                            width:width/12.0,
                                            height:height/13.14,
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                           child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                      ],
@@ -1443,14 +1443,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -1459,7 +1459,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -1467,7 +1467,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -1475,7 +1475,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -1483,7 +1483,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1491,7 +1491,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -1499,7 +1499,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1507,7 +1507,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1515,14 +1515,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -1548,14 +1548,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                        Container(
                                            width:width/16.383,
                                            height:height/13.14,
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                        Container(
                                            width:width/18.588,
@@ -1564,7 +1564,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                              border: Border.all(color: Colors.black,width: 1.2),
 
                                            ),
-                                           child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                        Container(
                                            width:width/18.588,
                                            height:height/13.14,
@@ -1572,7 +1572,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                              border: Border.all(color: Colors.black,width: 1.2),
 
                                            ),
-                                           child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                           child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                        Container(
                                            width:width/18.588,
@@ -1580,7 +1580,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                        Container(
                                            width:width/3.5,
@@ -1588,7 +1588,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                        Container(
                                            width:width/12.0,
@@ -1596,7 +1596,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                        Container(
                                            width:width/20.0,
@@ -1604,7 +1604,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                           child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                        Container(
                                            width:width/12.0,
@@ -1612,7 +1612,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                           child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                        Container(
                                            width:width/12.0,
@@ -1620,14 +1620,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                           child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                        Container(
                                            width:width/12.0,
                                            height:height/13.14,
                                            decoration: BoxDecoration(
                                              border: Border.all(color: Colors.black,width: 1.2),
                                            ),
-                                           child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                           child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                      ],
@@ -1648,14 +1648,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                   Container(
                                       width:width/16.383,
                                       height:height/13.14,
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                   Container(
                                       width:width/18.588,
@@ -1664,7 +1664,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         border: Border.all(color: Colors.black,width: 1.2),
 
                                       ),
-                                      child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                   Container(
                                       width:width/18.588,
                                       height:height/13.14,
@@ -1672,7 +1672,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         border: Border.all(color: Colors.black,width: 1.2),
 
                                       ),
-                                      child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                      child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                   Container(
                                       width:width/18.588,
@@ -1680,7 +1680,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                   Container(
                                       width:width/3.5,
@@ -1688,7 +1688,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                   Container(
                                       width:width/12.0,
@@ -1696,7 +1696,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                   Container(
                                       width:width/20.0,
@@ -1704,7 +1704,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                      child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                   Container(
                                       width:width/12.0,
@@ -1712,7 +1712,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                      child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                   Container(
                                       width:width/12.0,
@@ -1720,14 +1720,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                   Container(
                                       width:width/12.0,
                                       height:height/13.14,
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                      child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                 ],
@@ -1773,14 +1773,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/16.383,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/18.588,
@@ -1789,7 +1789,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           border: Border.all(color: Colors.black,width: 1.2),
 
                                         ),
-                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/18.588,
                                         height:height/13.14,
@@ -1797,7 +1797,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           border: Border.all(color: Colors.black,width: 1.2),
 
                                         ),
-                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                     Container(
                                         width:width/18.588,
@@ -1805,7 +1805,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/3.5,
@@ -1813,7 +1813,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -1821,7 +1821,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/20.0,
@@ -1829,7 +1829,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -1837,7 +1837,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -1845,14 +1845,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/12.0,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                   ],
@@ -1877,14 +1877,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -1893,7 +1893,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -1901,7 +1901,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -1909,7 +1909,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -1917,7 +1917,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1925,7 +1925,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -1933,7 +1933,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1941,7 +1941,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1949,14 +1949,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -1982,14 +1982,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -1998,7 +1998,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -2006,7 +2006,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2014,7 +2014,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -2022,7 +2022,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2030,7 +2030,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -2038,7 +2038,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2046,7 +2046,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2054,14 +2054,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -2089,14 +2089,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2105,7 +2105,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -2113,7 +2113,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2121,7 +2121,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -2129,7 +2129,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2137,7 +2137,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -2145,7 +2145,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2153,7 +2153,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2161,14 +2161,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -2194,14 +2194,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2210,7 +2210,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -2218,7 +2218,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2226,7 +2226,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -2234,7 +2234,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2242,7 +2242,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -2250,7 +2250,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2258,7 +2258,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2266,14 +2266,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -2294,14 +2294,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                 Container(
                                     width:width/16.383,
                                     height:height/13.14,
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/18.588,
@@ -2310,7 +2310,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
 
                                     ),
-                                    child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                 Container(
                                     width:width/18.588,
                                     height:height/13.14,
@@ -2318,7 +2318,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
 
                                     ),
-                                    child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                    child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                 Container(
                                     width:width/18.588,
@@ -2326,7 +2326,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/3.5,
@@ -2334,7 +2334,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/12.0,
@@ -2342,7 +2342,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/20.0,
@@ -2350,7 +2350,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                    child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                 Container(
                                     width:width/12.0,
@@ -2358,7 +2358,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                    child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                 Container(
                                     width:width/12.0,
@@ -2366,14 +2366,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                 Container(
                                     width:width/12.0,
                                     height:height/13.14,
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                    child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                               ],
@@ -2418,14 +2418,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/16.383,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/18.588,
@@ -2434,7 +2434,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           border: Border.all(color: Colors.black,width: 1.2),
 
                                         ),
-                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/18.588,
                                         height:height/13.14,
@@ -2442,7 +2442,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           border: Border.all(color: Colors.black,width: 1.2),
 
                                         ),
-                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                        child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                     Container(
                                         width:width/18.588,
@@ -2450,7 +2450,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/3.5,
@@ -2458,7 +2458,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -2466,7 +2466,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                     Container(
                                         width:width/20.0,
@@ -2474,7 +2474,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -2482,7 +2482,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -2490,14 +2490,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                     Container(
                                         width:width/12.0,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                   ],
@@ -2522,14 +2522,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2538,7 +2538,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -2546,7 +2546,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2554,7 +2554,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -2562,7 +2562,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2570,7 +2570,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -2578,7 +2578,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2586,7 +2586,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2594,14 +2594,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -2627,14 +2627,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2643,7 +2643,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -2651,7 +2651,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2659,7 +2659,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -2667,7 +2667,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2675,7 +2675,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -2683,7 +2683,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2691,7 +2691,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2699,14 +2699,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -2734,14 +2734,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2750,7 +2750,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -2758,7 +2758,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2766,7 +2766,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -2774,7 +2774,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2782,7 +2782,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -2790,7 +2790,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2798,7 +2798,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2806,14 +2806,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -2839,14 +2839,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/16.383,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2855,7 +2855,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/18.588,
                                           height:height/13.14,
@@ -2863,7 +2863,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2),
 
                                           ),
-                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                          child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                       Container(
                                           width:width/18.588,
@@ -2871,7 +2871,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/3.5,
@@ -2879,7 +2879,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2887,7 +2887,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                       Container(
                                           width:width/20.0,
@@ -2895,7 +2895,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2903,7 +2903,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2911,14 +2911,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                                     ],
@@ -2939,14 +2939,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text((index+1).toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text((index+1).toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                 Container(
                                     width:width/16.383,
                                     height:height/13.14,
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text("${buillin1["purchasedate"]}\n${buillin1["time"]}",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/18.588,
@@ -2955,7 +2955,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
 
                                     ),
-                                    child: Center(child: Text(buillin1["Category"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["Category"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                 Container(
                                     width:width/18.588,
                                     height:height/13.14,
@@ -2963,7 +2963,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       border: Border.all(color: Colors.black,width: 1.2),
 
                                     ),
-                                    child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:  Colors.black),))),
+                                    child: Center(child: Text(buillin1["Brand"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:  Colors.black),))),
 
                                 Container(
                                     width:width/18.588,
@@ -2971,7 +2971,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["itemcode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/3.5,
@@ -2979,7 +2979,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Description"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["Description"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/12.0,
@@ -2987,7 +2987,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["Hsncode"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
 
                                 Container(
                                     width:width/20.0,
@@ -2995,7 +2995,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                    child: Center(child: Text(buillin1["Qty"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                 Container(
                                     width:width/12.0,
@@ -3003,7 +3003,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                    child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
                                 Container(
                                     width:width/12.0,
@@ -3011,14 +3011,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                    child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
                                 Container(
                                     width:width/12.0,
                                     height:height/13.14,
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2),
                                     ),
-                                    child: Center(child: Text(buillin1["Total"],style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                    child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
 
 
                               ],
@@ -3105,7 +3105,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               ),
                               child: Center(child: Text("Item Code",
                                 textAlign:TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -3116,7 +3116,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text('Description',style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              child: Center(child: Text('Description',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -3127,7 +3127,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Hsncode",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              child: Center(child: Text("Hsncode",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -3138,7 +3138,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Payment",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              child: Center(child: Text("Payment",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -3151,7 +3151,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Qty",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              child: Center(child: Text("Qty",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -3161,7 +3161,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Sales Price",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              child: Center(child: Text("Sales Price",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -3171,7 +3171,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black,width: 1.2),
                               ),
-                              child: Center(child: Text("Without Tax",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              child: Center(child: Text("Without Tax",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -3181,7 +3181,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                 border: Border.all(color: Colors.black,width: 1.2),
 
                               ),
-                              child: Center(child: Text("Tax",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              child: Center(child: Text("Tax",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -3193,7 +3193,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               ),
                               child: Center(child: Text("Dis %",
                                 textAlign:TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
                             Container(
@@ -3206,7 +3206,7 @@ class _Reports_PageState extends State<Reports_Page> {
                               child: Center(child: Text("Date\nTime",
                                 textAlign:TextAlign.center,
 
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                             ),
 
 
@@ -3250,7 +3250,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
                                           child: Center(child: Text(customer["itemcode"].toString(),
                                             textAlign:TextAlign.center,
-                                            style: GoogleFonts.poppins(),)),
+                                            style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -3259,7 +3259,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           height:height/13.13,
                                           padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(customer["Description"].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer["Description"].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -3268,7 +3268,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           width: width/10.17,
 
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(customer['Hsncode'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer['Hsncode'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -3276,7 +3276,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           height:height/13.13,
                                           width: width/10.691,
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(payment.toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(payment.toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -3284,14 +3284,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           height:height/13.13,
                                           width: width/20.075,
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(customer['Qty'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer['Qty'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
                                           width: width/10.17,
                                           height:height/13.13,
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(customer['Sales price'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer['Sales price'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -3299,7 +3299,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           width: width/10.17,
                                           height:height/13.13,
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                          child: Center(child: Text(customer['withouttaxprice'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer['withouttaxprice'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -3307,7 +3307,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
                                           width: width/20.17,
 
-                                          child: Center(child: Text(customer['tax'].toString(),style: GoogleFonts.poppins(),)),
+                                          child: Center(child: Text(customer['tax'].toString(),style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -3317,7 +3317,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
                                           child: Center(child: Text("$disamount\n$disperamount".toString(),
                                             textAlign:TextAlign.center,
-                                            style: GoogleFonts.poppins(),)),
+                                            style: GoogleFonts.openSans(),)),
                                         ),
 
                                         Container(
@@ -3328,7 +3328,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           child: Center(child: Text("${customer['date']}\n${customer['time']}".toString(),
                                             textAlign:TextAlign.center,
 
-                                            style: GoogleFonts.poppins(),)),
+                                            style: GoogleFonts.openSans(),)),
                                         ),
 
 
@@ -3429,7 +3429,7 @@ class _Reports_PageState extends State<Reports_Page> {
 
     return
       TextFormField(
-        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
         decoration: InputDecoration(
             border: InputBorder.none,
             contentPadding:

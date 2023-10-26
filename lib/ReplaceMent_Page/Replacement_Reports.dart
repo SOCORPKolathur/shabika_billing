@@ -85,7 +85,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
             Text(
               "Date",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -216,7 +216,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
             Text(
               "Supplier Name",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -240,7 +240,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                           Suppilercontroller = textEditingController;
                         });
                       },
-                      style: GoogleFonts.montserrat(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 91.06, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -317,7 +317,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
             Text(
               "Status",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -334,7 +334,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
               child:  DropdownButton2<String>(
                 value: status,
                 isExpanded: true,
-                style: GoogleFonts.montserrat(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.w700,
                     fontSize: width / 105.07),
                 underline: Container(
@@ -391,7 +391,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                 child: Center(
                   child: Text(
                     "Clear",
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
                         fontSize: width / 84.64),
@@ -440,7 +440,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Center(
                                 child: Text(
                                   "Si No",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -453,7 +453,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Center(
                                 child: Text(
                                   "Date",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -466,7 +466,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Center(
                                 child: Text(
                                   "Time",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -479,7 +479,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Center(
                                 child: Text(
                                   "Bill No",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -492,7 +492,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Center(
                                 child: Text(
                                   "Supplier ID",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -506,7 +506,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                 child: Text(
                                   "Supplier Name",
                                   textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -519,7 +519,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Center(
                                 child: Text(
                                   "Sales Man",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -534,7 +534,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Center(
                                 child: Text(
                                   "Status",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -546,7 +546,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Center(
                                 child: Text(
                                   "Actions",
-                                  style: GoogleFonts.montserrat(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.bold,
                                       color: const Color(0xff5801e8)),
                                 ))),
@@ -596,7 +596,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   "${index+1}",
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                   textAlign: TextAlign.center,
                                                 ))),
@@ -610,7 +610,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                               child: Text(
                                                 buillin1['date'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -624,7 +624,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   buillin1['time'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -637,7 +637,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   buillin1['billno'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -654,7 +654,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                                 child: Text(
                                                   buillin1['supplierId'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -668,7 +668,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                                 child: Text(
                                                   buillin1['suppliername'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))
 
@@ -685,7 +685,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                               child: Text(
                                                 buillin1['salesman'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -700,7 +700,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                               child: Text(
                                                 buillin1['status'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -744,7 +744,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                         child:
                                                         Text(
                                                           "View",
-                                                          style: GoogleFonts.montserrat(
+                                                          style: GoogleFonts.openSans(
                                                               fontWeight: FontWeight.w600,
                                                               color:  Colors.white),
                                                         ),
@@ -783,7 +783,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   "${index+1}",
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                   textAlign: TextAlign.center,
                                                 ))),
@@ -797,7 +797,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                               child: Text(
                                                 buillin1['date'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -811,7 +811,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   buillin1['time'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -824,7 +824,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   buillin1['billno'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -841,7 +841,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                                 child: Text(
                                                   buillin1['supplierId'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -855,7 +855,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                                 child: Text(
                                                   buillin1['suppliername'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))
 
@@ -872,7 +872,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                               child: Text(
                                                 buillin1['salesman'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -887,7 +887,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                               child: Text(
                                                 buillin1['status'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -931,7 +931,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                         child:
                                                         Text(
                                                           "View",
-                                                          style: GoogleFonts.montserrat(
+                                                          style: GoogleFonts.openSans(
                                                               fontWeight: FontWeight.w600,
                                                               color:  Colors.white),
                                                         ),
@@ -968,7 +968,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   "${index+1}",
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                   textAlign: TextAlign.center,
                                                 ))),
@@ -982,7 +982,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                               child: Text(
                                                 buillin1['date'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -996,7 +996,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   buillin1['time'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -1009,7 +1009,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   buillin1['billno'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -1026,7 +1026,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                                 child: Text(
                                                   buillin1['supplierId'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))),
 
@@ -1040,7 +1040,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                                 child: Text(
                                                   buillin1['suppliername'].toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.w600),
                                                 ))
 
@@ -1057,7 +1057,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                               child: Text(
                                                 buillin1['salesman'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -1072,7 +1072,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             Center(
                                               child: Text(
                                                 buillin1['status'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )),
@@ -1116,7 +1116,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                         child:
                                                         Text(
                                                           "View",
-                                                          style: GoogleFonts.montserrat(
+                                                          style: GoogleFonts.openSans(
                                                               fontWeight: FontWeight.w600,
                                                               color:  Colors.white),
                                                         ),
@@ -1155,7 +1155,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                           child: Center(
                                               child: Text(
                                                 "${index+1}",
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                                 textAlign: TextAlign.center,
                                               ))),
@@ -1169,7 +1169,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                           child: Center(
                                             child: Text(
                                               buillin1['date'].toString(),
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           )),
@@ -1183,7 +1183,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                           child: Center(
                                               child: Text(
                                                 buillin1['time'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ))),
 
@@ -1196,7 +1196,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                           child: Center(
                                               child: Text(
                                                 buillin1['billno'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ))),
 
@@ -1213,7 +1213,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                           Center(
                                               child: Text(
                                                 buillin1['supplierId'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ))),
 
@@ -1227,7 +1227,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                           Center(
                                               child: Text(
                                                 buillin1['suppliername'].toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600),
                                               ))
 
@@ -1244,7 +1244,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                           Center(
                                             child: Text(
                                               buillin1['salesman'].toString(),
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           )),
@@ -1259,7 +1259,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                           Center(
                                             child: Text(
                                               buillin1['status'].toString(),
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           )),
@@ -1303,7 +1303,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                       child:
                                                       Text(
                                                         "View",
-                                                        style: GoogleFonts.montserrat(
+                                                        style: GoogleFonts.openSans(
                                                             fontWeight: FontWeight.w600,
                                                             color:  Colors.white),
                                                       ),
@@ -1361,7 +1361,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                         child: Center(
                             child: Text(
                               "Si No",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xff5801e8)),
                             ))),
@@ -1374,7 +1374,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                         child: Center(
                             child: Text(
                               "Date",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xff5801e8)),
                             ))),
@@ -1387,7 +1387,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                         child: Center(
                             child: Text(
                               "Bill No",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xff5801e8)),
                             ))),
@@ -1400,7 +1400,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                         child: Center(
                             child: Text(
                               "Customer Name",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xff5801e8)),
                             ))),
@@ -1413,7 +1413,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                         child: Center(
                             child: Text(
                               "Customer Phone",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xff5801e8)),
                             ))),
@@ -1427,7 +1427,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                             child: Text(
                               "Supplier Name",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xff5801e8)),
                             ))),
@@ -1440,7 +1440,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                         child: Center(
                             child: Text(
                               "Item Name",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xff5801e8)),
                             ))),
@@ -1453,7 +1453,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                         child: Center(
                             child: Text(
                               "Item Hsn Code",
-                              style: GoogleFonts.montserrat(
+                              style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xff5801e8)),
                             ))),
@@ -1502,7 +1502,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           "${index+1}",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
                                         ))),
@@ -1516,7 +1516,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                       child: Text(
                                         buillin1['Date'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -1530,7 +1530,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           buillin1['Bill No'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1543,7 +1543,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           buillin1['Customername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1560,7 +1560,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                         child: Text(
                                           buillin1['Customerphone'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1574,7 +1574,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                         child: Text(
                                           buillin1['Suppliername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))
 
@@ -1591,7 +1591,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                       child: Text(
                                         buillin1['Itemname'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -1606,7 +1606,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                       child: Text(
                                         buillin1['itemhsncode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -1640,7 +1640,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                 child: Center(
                                                     child: Text(
                                                       "View",
-                                                      style: GoogleFonts.montserrat(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight: FontWeight.w600,
                                                           color: Colors.white),
                                                     ))),
@@ -1698,7 +1698,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           "${index+1}",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
                                         ))),
@@ -1712,7 +1712,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                       child: Text(
                                         buillin1['Date'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -1726,7 +1726,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           buillin1['Bill No'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1739,7 +1739,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           buillin1['Customername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1756,7 +1756,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                         child: Text(
                                           buillin1['Customerphone'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1770,7 +1770,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                         child: Text(
                                           buillin1['Suppliername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))
 
@@ -1787,7 +1787,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                       child: Text(
                                         buillin1['Itemname'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -1802,7 +1802,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                       child: Text(
                                         buillin1['itemhsncode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -1836,7 +1836,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                 child: Center(
                                                     child: Text(
                                                       "View",
-                                                      style: GoogleFonts.montserrat(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight: FontWeight.w600,
                                                           color: Colors.white),
                                                     ))),
@@ -1892,7 +1892,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           "${index+1}",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
                                         ))),
@@ -1906,7 +1906,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                       child: Text(
                                         buillin1['Date'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -1920,7 +1920,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           buillin1['Bill No'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1933,7 +1933,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           buillin1['Customername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1950,7 +1950,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                         child: Text(
                                           buillin1['Customerphone'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -1964,7 +1964,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                         child: Text(
                                           buillin1['Suppliername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))
 
@@ -1981,7 +1981,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                       child: Text(
                                         buillin1['Itemname'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -1996,7 +1996,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                       child: Text(
                                         buillin1['itemhsncode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -2030,7 +2030,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                 child: Center(
                                                     child: Text(
                                                       "View",
-                                                      style: GoogleFonts.montserrat(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight: FontWeight.w600,
                                                           color: Colors.white),
                                                     ))),
@@ -2088,7 +2088,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           "${index+1}",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
                                         ))),
@@ -2102,7 +2102,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                       child: Text(
                                         buillin1['Date'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -2116,7 +2116,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           buillin1['Bill No'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -2129,7 +2129,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     child: Center(
                                         child: Text(
                                           buillin1['Customername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -2146,7 +2146,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                         child: Text(
                                           buillin1['Customerphone'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
 
@@ -2160,7 +2160,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                         child: Text(
                                           buillin1['Suppliername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))
 
@@ -2177,7 +2177,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                       child: Text(
                                         buillin1['Itemname'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -2192,7 +2192,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                     Center(
                                       child: Text(
                                         buillin1['itemhsncode'].toString(),
-                                        style: GoogleFonts.montserrat(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600),
                                       ),
                                     )),
@@ -2226,7 +2226,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                 child: Center(
                                                     child: Text(
                                                       "View",
-                                                      style: GoogleFonts.montserrat(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight: FontWeight.w600,
                                                           color: Colors.white),
                                                     ))),
@@ -2547,7 +2547,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                 ),
                                 Text(
                                   "Item Details",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w700),
                                 ),
@@ -2593,7 +2593,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                   child: Center(
                                       child: Text(
                                         "Si.No",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2610,7 +2610,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                       child: Text(
                                         "Item Code",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2626,7 +2626,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                       child: Text(
                                         'Item Name',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2643,7 +2643,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                       child: Text(
                                         'Problem',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2659,7 +2659,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                       child: Text(
                                         "Qty",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2675,7 +2675,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                       child: Text(
                                         "Status",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2691,7 +2691,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                       child: Text(
                                         "Remarks",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -2739,7 +2739,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Center(
                                                 child: Text(
                                                   (index+1).toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
 
                                                       color: Colors.black),
                                                 )),
@@ -2756,7 +2756,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                 child: Text(
                                                   purchase["itemid"],
                                                   textAlign: TextAlign.center,
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
 
                                                       color: Colors.black),
                                                 )),
@@ -2772,7 +2772,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                 child: Text(
                                                   purchase["itemname"],
                                                   textAlign: TextAlign.center,
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
 
                                                       color: Colors.black),
                                                 )),
@@ -2789,7 +2789,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                 child: Text(
                                                   purchase["problem"],
                                                   textAlign: TextAlign.center,
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
 
                                                       color: Colors.black),
                                                 )),
@@ -2805,7 +2805,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                                 child: Text(
                                                   purchase["Qty"],
                                                   textAlign: TextAlign.center,
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       color: Colors.black),
                                                 )),
                                           ),
@@ -2916,7 +2916,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             color: Color(0xff128c7e)),
                                         child: Center(
                                             child: Text("Update Bill",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.white,
                                                     fontSize: width / 91.06))),

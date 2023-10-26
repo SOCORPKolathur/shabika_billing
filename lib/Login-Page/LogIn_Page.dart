@@ -40,9 +40,9 @@ class _Login_PageState extends State<Login_Page> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: height/21.9,),
-                Text("Welcome Admin",style: GoogleFonts.poppins(fontSize: width/39.02,
+                Text("Welcome Admin",style: GoogleFonts.openSans(fontSize: width/39.02,
                     fontWeight: FontWeight.w700,color: Colors.white),),
-                Text("Shabika Billing",style: GoogleFonts.poppins(fontSize: width/54.64,
+                Text("Shabika Billing",style: GoogleFonts.openSans(fontSize: width/54.64,
                     fontWeight: FontWeight.w500,color: Colors.white)),
                 Container(
                   height: height/1.342,
@@ -61,7 +61,7 @@ class _Login_PageState extends State<Login_Page> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Developed by SO CORP",style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w500,color: Colors.white)),
+                    Text("Developed by SO CORP",style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500,color: Colors.white)),
                   ],
                 ),
               ],
@@ -84,7 +84,7 @@ class _Login_PageState extends State<Login_Page> {
                 Row(
                   children: [
                     SizedBox(width: width/30.35,),
-                    Text("Sign in",style: GoogleFonts.poppins(fontSize:
+                    Text("Sign in",style: GoogleFonts.openSans(fontSize:
                     width/39.02,fontWeight: FontWeight.w900,color: Colors.black),),
                   ],
                 ),
@@ -95,7 +95,7 @@ class _Login_PageState extends State<Login_Page> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Enter Your Username and or email  address",style: GoogleFonts.poppins(fontSize: width/113.83,color: Colors.black),),
+                    Text("Enter Your Username and or email  address",style: GoogleFonts.openSans(fontSize: width/113.83,color: Colors.black),),
                    SizedBox(height: height/65.7,),
                     Container(
                       height: height/13.14,
@@ -114,12 +114,12 @@ class _Login_PageState extends State<Login_Page> {
                           });
                         },
                         controller: _NameController,
-                        style: GoogleFonts.poppins(fontSize: width/113.83,color: const Color(0xff808080)),
+                        style: GoogleFonts.openSans(fontSize: width/113.83,color: const Color(0xff808080)),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: width/68.3),
                           border: InputBorder.none,
                           hintText:"User name or email address",labelStyle: GoogleFonts.openSans( color:Color(0xff808080)),
-                          hintStyle: GoogleFonts.poppins(fontSize: width/113.83,color: const Color(0xff808080)),
+                          hintStyle: GoogleFonts.openSans(fontSize: width/113.83,color: const Color(0xff808080)),
 
                         ),
                       ),
@@ -133,7 +133,7 @@ class _Login_PageState extends State<Login_Page> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Enter Your Password ",style: GoogleFonts.poppins(fontSize: width/113.83,color: Colors.black),),
+                    Text("Enter Your Password ",style: GoogleFonts.openSans(fontSize: width/113.83,color: Colors.black),),
                     SizedBox(height: height/65.7,),
                     Container(
                       height: height/13.14,
@@ -151,12 +151,12 @@ class _Login_PageState extends State<Login_Page> {
                           });
                         },
                         controller: _PasswordController,
-                        style: GoogleFonts.poppins(fontSize: width/113.83,color: const Color(0xff808080)),
+                        style: GoogleFonts.openSans(fontSize: width/113.83,color: const Color(0xff808080)),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: width/68.3),
                           border: InputBorder.none,
                           hintText:"Password",labelStyle: GoogleFonts.openSans( color:Color(0xff808080)),
-                          hintStyle: GoogleFonts.poppins(fontSize: width/113.83,color: const Color(0xff808080)),
+                          hintStyle: GoogleFonts.openSans(fontSize: width/113.83,color: const Color(0xff808080)),
 
                         ),
                         onSubmitted: (value){
@@ -183,7 +183,7 @@ class _Login_PageState extends State<Login_Page> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("Forget Password ",style: GoogleFonts.poppins(fontSize: width/113.83,color:
+                    Text("Forget Password ",style: GoogleFonts.openSans(fontSize: width/113.83,color:
                     const Color(0xff4285F4)),),
                     SizedBox(width: width/27.32,),
                   ],
@@ -223,7 +223,7 @@ class _Login_PageState extends State<Login_Page> {
 
                           ),
                           child: Center(
-                            child: Text("Sign in",style: GoogleFonts.poppins(
+                            child: Text("Sign in",style: GoogleFonts.openSans(
                                 fontSize: width/91.06,
                                 fontWeight: FontWeight.w300,
                                 color: const Color(0xffFFFFFF)),),
@@ -261,7 +261,7 @@ class _Login_PageState extends State<Login_Page> {
             ),
             child: Text("Oops Please Enter the valid  Name and Password !.. ",
               textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(),),
+              style: GoogleFonts.openSans(),),
           ),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -291,7 +291,7 @@ class _Login_PageState extends State<Login_Page> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Center(
-                      child: Text("Okay",style: GoogleFonts.poppins(color: Colors.white),),
+                      child: Text("Okay",style: GoogleFonts.openSans(color: Colors.white),),
                     ),
                   ),
                 ),

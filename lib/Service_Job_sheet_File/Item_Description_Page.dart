@@ -61,7 +61,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
               padding:  EdgeInsets.only(left:width/48.785, top: height/32.85),
               child: Text(
                 "Items",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold,
                     fontSize:width/59.391,
                     color: Colors.white),
@@ -100,7 +100,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                         padding:  EdgeInsets.only(bottom:height/136.6),
                         child: Text(
                           "Home",
-                          style: GoogleFonts.cairo(
+                          style: GoogleFonts.openSans(
                               color: const Color(0xffFFFFFF), fontSize:width/59.391),
                         ),
                       )
@@ -120,7 +120,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
           child: Row(
             children: [
               Text("Search",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontSize: width/68.3, fontWeight: FontWeight.bold)),
             ],
           ),
@@ -141,7 +141,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                 child:
                 TextField(
                   controller: Serachcontroller,
-                  style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
+                  style: GoogleFonts.openSans(fontSize: width/68.3,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(
                       contentPadding:
                       EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/102.125),
@@ -208,7 +208,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           ),
                           Text(
                             "Add Category",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontSize: width/68.3, color: Colors.white),
                           ),
                         ],
@@ -256,7 +256,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           padding:
                           EdgeInsets.only(left: width/42.68, right: width/34.15),
                           child: Text("Sl.no",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xff00A99D),
                                   fontSize: width/68.3,
                                   fontWeight: FontWeight.w600)),
@@ -265,7 +265,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           height: height / 13.14,
                           width: width / 5.10,
                           child: Text("Category",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xff00A99D),
                                   fontSize: width/68.3,
                                   fontWeight: FontWeight.w600)),
@@ -274,7 +274,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           height: height / 13.14,
                           width: width / 5.10,
                           child: Text("Item Name",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xff00A99D),
                                   fontSize: width/68.3,
                                   fontWeight: FontWeight.w600)),
@@ -283,7 +283,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           height: height / 13.14,
                           width: width / 5.10,
                           child: Text("Description",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xff00A99D),
                                   fontSize: width/68.3,
                                   fontWeight: FontWeight.w600)),
@@ -292,20 +292,20 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           padding:
                           EdgeInsets.only(left: width/55.985, right: width/19.514),
                           child: Text("Edit",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xff00A99D),
                                   fontSize: width/68.3,
                                   fontWeight: FontWeight.w600)),
                         ),
                         Text("Delete",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 color: const Color(0xff00A99D),
                                 fontSize: width/68.3,
                                 fontWeight: FontWeight.w600)),
                         Padding(
                           padding:  EdgeInsets.only(left: width/15.523),
                           child: Text("Status",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xff00A99D),
                                   fontSize: width/68.3,
                                   fontWeight: FontWeight.w600)),
@@ -365,7 +365,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                   child: Center(
                                       child: Text(
                                         (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             fontSize: width/75.888,
                                             color: const Color(0xffFDFDFD)),
@@ -392,7 +392,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                     child: Text(
                                       snapshot.data!.docs[index]
                                       ["Category"],
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width/75.888,
                                           color: const Color(0xffFDFDFD)),
@@ -419,7 +419,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                     child: Text(
                                       snapshot.data!.docs[index]
                                       ["Itemname"],
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width/75.888,
                                           color: const Color(0xffFDFDFD)),
@@ -446,7 +446,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                     child: Text(
                                       snapshot.data!.docs[index]
                                       ["description"],
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width/75.888,
                                           color: const Color(0xffFDFDFD)),
@@ -514,7 +514,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                     child: Center(
                                         child: Text(
                                           "Active",
-                                          style: GoogleFonts.cairo(
+                                          style: GoogleFonts.openSans(
                                               fontSize: width/75.888,
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xffFDFDFD)),
@@ -545,7 +545,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                   child: Center(
                                       child: Text(
                                         (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             fontSize: width/75.888,
                                             color: const Color(0xffFDFDFD)),
@@ -572,7 +572,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                     child: Text(
                                       snapshot.data!.docs[index]
                                       ["Category"],
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width/75.888,
                                           color: const Color(0xffFDFDFD)),
@@ -599,7 +599,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                     child: Text(
                                       snapshot.data!.docs[index]
                                       ["Itemname"],
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width/75.888,
                                           color: const Color(0xffFDFDFD)),
@@ -626,7 +626,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                     child: Text(
                                       snapshot.data!.docs[index]
                                       ["description"],
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width/75.888,
                                           color: const Color(0xffFDFDFD)),
@@ -694,7 +694,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                                     child: Center(
                                         child: Text(
                                           "Active",
-                                          style: GoogleFonts.cairo(
+                                          style: GoogleFonts.openSans(
                                               fontSize: width/75.888,
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xffFDFDFD)),
@@ -767,7 +767,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
               padding:  EdgeInsets.only(left: width/35.947, top: height/32.85),
               child: Text(
                 "Add Item Details ",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold,
                     fontSize:width/59.391,
                     color: const Color(0xffFFFFFF)),
@@ -786,7 +786,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                 EdgeInsets.only(left: width/35.94, top: height/32.85),
                 child: Text(
                   "Add Operators ",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontWeight: FontWeight.bold,
                       fontSize:width/59.391,
                       color: const Color(0xffFFFFFF)),
@@ -818,7 +818,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                   padding:  EdgeInsets.only(left:width/23.55,),
                   child: Text(
                     "Category",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width/97.57, color: const Color(0xff000000)),
                   ),
                 ),
@@ -838,7 +838,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                             fieldViewBuilder: (context, textEditingController2,
                                 focusNode, onFieldSubmitted) {
                               return  TextFormField(
-                                style: GoogleFonts.poppins(fontSize: width/99.6,fontWeight: FontWeight.w700),
+                                style: GoogleFonts.openSans(fontSize: width/99.6,fontWeight: FontWeight.w700),
                                 onChanged: (_){
                                   setState((){
                                     Operator1=textEditingController2;
@@ -930,7 +930,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                   padding:  EdgeInsets.only(left:width/23.55,),
                   child: Text(
                     "Item Name",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width/97.57, color: const Color(0xff000000)),
                   ),
                 ),
@@ -947,7 +947,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                       controller: Operator2,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize: width/106.6,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/106.6,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding:
                         EdgeInsets.only(left: width/68.3, bottom: height/82.125),
@@ -968,7 +968,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                   EdgeInsets.only(left:width/23.55,),
                   child: Text(
                     "Description",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width/97.57, color: const Color(0xff000000)),
                   ),
                 ),
@@ -985,7 +985,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                       controller: Operator3,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: GoogleFonts.poppins(fontSize: width/106.6,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/106.6,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding:
                         EdgeInsets.only(left: width/68.3, bottom: height/82.125),
@@ -1020,7 +1020,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                       child: Text(
                         "Save",
                         style:
-                        GoogleFonts.poppins(color: Colors.white),
+                        GoogleFonts.openSans(color: Colors.white),
                       )),
                 ),
               ),
@@ -1041,7 +1041,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                     child: Center(
                         child: Text(
                           "Reset",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white),
                         )),
                   ),
@@ -1094,7 +1094,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                 child: Column(
                   children: [
                     SizedBox(height: height/32.85,),
-                    Text("Add a  Item Successfully",style: GoogleFonts.poppins(
+                    Text("Add a  Item Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -1127,7 +1127,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                               child: Center(
                                 child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -1154,7 +1154,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                               ),
                               child: Center(
                                 child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,
@@ -1204,7 +1204,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height:height/21.9),
-                Text("Are You Sure Want to Delete",style: GoogleFonts.poppins(
+                Text("Are You Sure Want to Delete",style: GoogleFonts.openSans(
                     fontWeight: FontWeight.w700,
                     fontSize:width/75.88
                 ),),
@@ -1233,7 +1233,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                             color: const Color(0xff263646)
                         ),
                         child: Center(
-                          child: Text("Okay",style: GoogleFonts.poppins(color: Colors.white,
+                          child: Text("Okay",style: GoogleFonts.openSans(color: Colors.white,
                               fontWeight: FontWeight.w600),),
                         ),
                       ),
@@ -1256,7 +1256,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           ),
                           child: Center(
                             child: Text("Cancel",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 85.375,
@@ -1325,7 +1325,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Are You Sure Want To Edit this Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -1334,7 +1334,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Category",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -1347,7 +1347,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           color: Colors.cyan),
                       child:
                       TextField(
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: edititem1,
                         decoration: InputDecoration(
                             border: InputBorder.none,
@@ -1360,7 +1360,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Item Name",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -1372,7 +1372,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           borderRadius: BorderRadius.circular(4),
                           color: Colors.cyan),
                       child: TextField(
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: edititem2,
                         decoration: InputDecoration(
                             border: InputBorder.none,
@@ -1385,7 +1385,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Description",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -1397,7 +1397,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                           borderRadius: BorderRadius.circular(4),
                           color: Colors.cyan),
                       child: TextField(
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: edititem3,
                         decoration: InputDecoration(
                             border: InputBorder.none,
@@ -1420,7 +1420,7 @@ class _Item_Description_PageState extends State<Item_Description_Page> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),

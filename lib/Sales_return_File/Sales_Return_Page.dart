@@ -95,7 +95,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
               EdgeInsets.only(left: width / 35.947, top: height / 32.85),
               child: Text(
                 "Sales Returns",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                   fontWeight: FontWeight.bold,
                   fontSize: width / 59.39,
                   color: Colors.black,
@@ -137,7 +137,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
 
             Text(
               "Shabika G",
-              style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
             ),
 
 
@@ -176,7 +176,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
 
             Text(
               "Shabika N",
-              style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
             ),
           ],
         ),
@@ -209,7 +209,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Date",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Date",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/10.507,
@@ -217,7 +217,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Bill No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Bill No",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/10.66,
@@ -225,7 +225,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Customer Gst No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Customer Gst No",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/4.66,
@@ -233,7 +233,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Customer Name",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Customer Name",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/10.66,
@@ -243,7 +243,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                         ),
                         child: Center(child: Text("Payment Type",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/10.507,
@@ -251,7 +251,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Total",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Total",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/6.507,
@@ -259,7 +259,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Actions",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Actions",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     //SizedBox(width:width/27.32,),
 
@@ -299,7 +299,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   child:
                                   Center(
                                     child: Text(buillin1['purchasedate'].toString(),
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                                       textAlign: TextAlign.center,
                                     ),
                                   )
@@ -315,11 +315,11 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(buillin1['purchaseno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),),
+                                      Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
                                       buillin1['return']==true?
                                       Text("(Return)",
                                         style:
-                                        GoogleFonts.poppins(fontSize: width/97.571, color:  Colors.red),
+                                        GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
                                       ):const SizedBox(),
                                     ],
                                   )
@@ -333,7 +333,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Customer GstNo'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Customer GstNo'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/4.66,
@@ -342,7 +342,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/10.66,
@@ -350,7 +350,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/10.507,
@@ -358,7 +358,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/6.507,
@@ -390,7 +390,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                                   borderRadius: BorderRadius.circular(100),
                                                   color: Colors.green
                                               ),
-                                              child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                              child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                         ),
                                       ),
 
@@ -458,7 +458,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   child:
                                   Center(
                                     child: Text(buillin1['purchasedate'].toString(),
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                                       textAlign: TextAlign.center,
                                     ),
                                   )
@@ -474,11 +474,11 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(buillin1['purchaseno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),),
+                                      Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
                                       buillin1['return']==true?
                                       Text("(Return)",
                                         style:
-                                        GoogleFonts.poppins(fontSize: width/97.571, color:  Colors.red),
+                                        GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
                                       ):const SizedBox(),
                                     ],
                                   )
@@ -492,7 +492,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Customer GstNo'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Customer GstNo'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/4.66,
@@ -501,7 +501,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/10.66,
@@ -509,7 +509,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/10.507,
@@ -517,7 +517,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/6.507,
@@ -549,7 +549,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                                   borderRadius: BorderRadius.circular(100),
                                                   color: Colors.green
                                               ),
-                                              child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                              child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                         ),
                                       ),
 
@@ -617,7 +617,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   child:
                                   Center(
                                     child: Text(buillin1['purchasedate'].toString(),
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                                       textAlign: TextAlign.center,
                                     ),
                                   )
@@ -633,11 +633,11 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(buillin1['purchaseno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),),
+                                      Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
                                       buillin1['return']==true?
                                       Text("(Return)",
                                         style:
-                                        GoogleFonts.poppins(fontSize: width/97.571, color:  Colors.red),
+                                        GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
                                       ):const SizedBox(),
                                     ],
                                   )
@@ -651,7 +651,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Customer GstNo'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Customer GstNo'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/4.66,
@@ -660,7 +660,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['customername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/10.66,
@@ -668,7 +668,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/10.507,
@@ -676,7 +676,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.black,width: 1.2)
                                   ),
-                                  child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                  child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                               Container(
                                   width:width/6.507,
@@ -708,7 +708,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                                   borderRadius: BorderRadius.circular(100),
                                                   color: Colors.green
                                               ),
-                                              child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                              child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                         ),
                                       ),
 
@@ -919,7 +919,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                 ),
                                 child: Center(child: Text("Item Code",
                                   textAlign:TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
                               Container(
@@ -930,7 +930,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   border: Border.all(color: Colors.black,width: 1.2),
 
                                 ),
-                                child: Center(child: Text('Description',style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                child: Center(child: Text('Description',style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
 
@@ -941,7 +941,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   border: Border.all(color: Colors.black,width: 1.2),
 
                                 ),
-                                child: Center(child: Text("Hsncode",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                child: Center(child: Text("Hsncode",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
 
@@ -952,7 +952,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   border: Border.all(color: Colors.black,width: 1.2),
 
                                 ),
-                                child: Center(child: Text("Payment",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                child: Center(child: Text("Payment",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
 
@@ -965,7 +965,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   border: Border.all(color: Colors.black,width: 1.2),
 
                                 ),
-                                child: Center(child: Text("Qty",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                child: Center(child: Text("Qty",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
                               Container(
@@ -975,7 +975,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   border: Border.all(color: Colors.black,width: 1.2),
 
                                 ),
-                                child: Center(child: Text("Sales Price",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                child: Center(child: Text("Sales Price",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
                               Container(
@@ -985,7 +985,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.black,width: 1.2),
                                 ),
-                                child: Center(child: Text("Without Tax",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                child: Center(child: Text("Without Tax",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
                               Container(
@@ -995,7 +995,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   border: Border.all(color: Colors.black,width: 1.2),
 
                                 ),
-                                child: Center(child: Text("Tax",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                child: Center(child: Text("Tax",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
                               Container(
@@ -1007,7 +1007,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                 ),
                                 child: Center(child: Text("Dis %",
                                   textAlign:TextAlign.center,
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
                               Container(
@@ -1020,7 +1020,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                 child: Center(child: Text("Date\nTime",
                                   textAlign:TextAlign.center,
 
-                                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                               ),
 
 
@@ -1064,7 +1064,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                             decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
                                             child: Center(child: Text(customer["itemcode"].toString(),
                                               textAlign:TextAlign.center,
-                                              style: GoogleFonts.poppins(),)),
+                                              style: GoogleFonts.openSans(),)),
                                           ),
 
                                           Container(
@@ -1073,7 +1073,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                             height:height/13.13,
                                             padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
                                             decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                            child: Center(child: Text(customer["Description"].toString(),style: GoogleFonts.poppins(),)),
+                                            child: Center(child: Text(customer["Description"].toString(),style: GoogleFonts.openSans(),)),
                                           ),
 
 
@@ -1082,7 +1082,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                             width: width/10.17,
 
                                             decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                            child: Center(child: Text(customer['Hsncode'].toString(),style: GoogleFonts.poppins(),)),
+                                            child: Center(child: Text(customer['Hsncode'].toString(),style: GoogleFonts.openSans(),)),
                                           ),
 
 
@@ -1090,7 +1090,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                             height:height/13.13,
                                             width: width/10.691,
                                             decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                            child: Center(child: Text(Payment.toString(),style: GoogleFonts.poppins(),)),
+                                            child: Center(child: Text(Payment.toString(),style: GoogleFonts.openSans(),)),
                                           ),
 
 
@@ -1098,14 +1098,14 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                             height:height/13.13,
                                             width: width/20.075,
                                             decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                            child: Center(child: Text(customer['Qty'].toString(),style: GoogleFonts.poppins(),)),
+                                            child: Center(child: Text(customer['Qty'].toString(),style: GoogleFonts.openSans(),)),
                                           ),
 
                                           Container(
                                             width: width/10.17,
                                             height:height/13.13,
                                             decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                            child: Center(child: Text(customer['Sales price'].toString(),style: GoogleFonts.poppins(),)),
+                                            child: Center(child: Text(customer['Sales price'].toString(),style: GoogleFonts.openSans(),)),
                                           ),
 
                                           Container(
@@ -1113,7 +1113,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                             width: width/10.17,
                                             height:height/13.13,
                                             decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
-                                            child: Center(child: Text(customer['withouttaxprice'].toString(),style: GoogleFonts.poppins(),)),
+                                            child: Center(child: Text(customer['withouttaxprice'].toString(),style: GoogleFonts.openSans(),)),
                                           ),
 
                                           Container(
@@ -1121,7 +1121,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                             decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 1.2)),
                                             width: width/20.17,
 
-                                            child: Center(child: Text(customer['tax'].toString(),style: GoogleFonts.poppins(),)),
+                                            child: Center(child: Text(customer['tax'].toString(),style: GoogleFonts.openSans(),)),
                                           ),
 
                                           Container(
@@ -1131,7 +1131,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
 
                                             child: Center(child: Text("$Discountamount\n$Discountamountpercentage".toString(),
                                               textAlign:TextAlign.center,
-                                              style: GoogleFonts.poppins(),)),
+                                              style: GoogleFonts.openSans(),)),
                                           ),
 
                                           Container(
@@ -1142,7 +1142,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                             child: Center(child: Text("${customer['date']}\n${customer['time']}".toString(),
                                               textAlign:TextAlign.center,
 
-                                              style: GoogleFonts.poppins(),)),
+                                              style: GoogleFonts.openSans(),)),
                                           ),
 
 

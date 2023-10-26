@@ -124,7 +124,7 @@ class _SupplierState extends State<Supplier> {
                 ),
                 child: TextField(
                   controller: Serachcontroller,
-                  style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
+                  style: GoogleFonts.openSans(fontSize: width/68.3,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/70.125),
                     border: InputBorder.none,
@@ -191,7 +191,7 @@ class _SupplierState extends State<Supplier> {
                         ),
                         Text(
                           "Add Supplier",
-                          style: GoogleFonts.cairo(
+                          style: GoogleFonts.openSans(
                               fontSize: width/68.3, color: Colors.white),
                         ),
                       ],
@@ -242,13 +242,13 @@ class _SupplierState extends State<Supplier> {
                           padding:
                           EdgeInsets.only(left: width/42.68, right: width/26.15),
                           child: Text("Sl.no",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color:  Colors.white,
                                   fontSize: width / 88.3,
                                   fontWeight: FontWeight.w600)),
                         ),
                         Text("Supplier Name",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 color:Colors.white,
                                 fontSize: width / 88.3,
                                 fontWeight: FontWeight.w600)),
@@ -256,20 +256,20 @@ class _SupplierState extends State<Supplier> {
                           padding:
                           EdgeInsets.only(left: width/1.88, right: width/18.514),
                           child: Text("Edit",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white,
                                   fontSize: width / 88.3,
                                   fontWeight: FontWeight.w600)),
                         ),
                         Text("Delete",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 color: Colors.white,
                                 fontSize: width / 88.3,
                                 fontWeight: FontWeight.w600)),
                         Padding(
                           padding:  EdgeInsets.only(left: width/12.523),
                           child: Text("Status",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white,
                                   fontSize: width / 88.3,
                                   fontWeight: FontWeight.w600)),
@@ -323,7 +323,7 @@ class _SupplierState extends State<Supplier> {
                                     child: Center(
                                         child: Text(
                                           (index + 1).toString(),
-                                          style: GoogleFonts.cairo(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               fontSize: width / 95.888,
                                               color: Colors.black),
@@ -350,7 +350,7 @@ class _SupplierState extends State<Supplier> {
                                       child: Text(
                                         snapshot.data!.docs[index]
                                         ["Suppliername"],
-                                        style: GoogleFonts.cairo(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             fontSize: width / 95.888,
                                             color: Colors.black),
@@ -422,7 +422,7 @@ class _SupplierState extends State<Supplier> {
                                         child: Center(
                                             child: Text(
                                               "View",
-                                              style: GoogleFonts.cairo(
+                                              style: GoogleFonts.openSans(
                                                   fontSize: width / 95.888,
                                                   fontWeight: FontWeight.bold,
                                                   color:  Colors.black),
@@ -454,7 +454,7 @@ class _SupplierState extends State<Supplier> {
                                   child: Center(
                                       child: Text(
                                         (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             fontSize: width / 95.888,
                                             color: Colors.black),
@@ -481,7 +481,7 @@ class _SupplierState extends State<Supplier> {
                                     child: Text(
                                       snapshot.data!.docs[index]
                                       ["Suppliername"],
-                                      style: GoogleFonts.cairo(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize: width / 95.888,
                                           color: Colors.black),
@@ -553,7 +553,7 @@ class _SupplierState extends State<Supplier> {
                                       child: Center(
                                           child: Text(
                                             "View",
-                                            style: GoogleFonts.cairo(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width / 95.888,
                                                 fontWeight: FontWeight.bold,
                                                 color:  Colors.black),
@@ -624,7 +624,7 @@ class _SupplierState extends State<Supplier> {
               padding:  EdgeInsets.only(right: width/1.232,top: height/65.7,bottom: height/65.7),
               child: Text(
                 "Add New Supplier",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold, fontSize:width/59.39,color: const Color(0xffFFFFFF)),
               ),
             ),
@@ -637,15 +637,15 @@ class _SupplierState extends State<Supplier> {
           children: [
             Padding(
               padding:  EdgeInsets.only(left: width/21.01,top: height/82.125),
-              child: Text("Supplier Name *",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("Supplier Name *",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
             Padding(
               padding:  EdgeInsets.only(left: width/9.486,top: height/82.125),
-              child: Text("Supplier Code*",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("Supplier Code*",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
             Padding(
               padding:  EdgeInsets.only(left:width/9.757,top: height/82.125),
-              child: Text("Supplier Address *",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("Supplier Address *",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
           ],
         ),
@@ -664,7 +664,7 @@ class _SupplierState extends State<Supplier> {
                   controller: Suppliername,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                  style: GoogleFonts.openSans(fontSize:width/91.06,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(contentPadding:
                   EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                     border: InputBorder.none,
@@ -683,7 +683,7 @@ class _SupplierState extends State<Supplier> {
                 controller: Suppliercode,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize: width/136.6,fontWeight: FontWeight.w700),
+                style: GoogleFonts.openSans(fontSize: width/136.6,fontWeight: FontWeight.w700),
                 decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                   border: InputBorder.none,
                 ),
@@ -700,7 +700,7 @@ class _SupplierState extends State<Supplier> {
                 controller: SupplierAddress,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                style: GoogleFonts.openSans(fontSize:width/91.06,fontWeight: FontWeight.w700),
                 decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,
                     bottom:height/82.125),
                   border: InputBorder.none,
@@ -717,27 +717,27 @@ class _SupplierState extends State<Supplier> {
 
             Padding(
               padding:  EdgeInsets.only(left: width/23.55,top:height/32.85),
-              child: Text("State",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("State",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
 
             Padding(
               padding:  EdgeInsets.only(left: width/6.266,top:height/32.85),
-              child: Text("City",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("City",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
 
             Padding(
               padding:  EdgeInsets.only(left: width/5.991,top:height/32.85),
-              child: Text("Pincode",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("Pincode",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
 
             Padding(
               padding:  EdgeInsets.only(left: width/8.130,top:height/32.85),
-              child: Text("Mobile Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("Mobile Number",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
 
             Padding(
               padding:  EdgeInsets.only(left:width/12.418,top:height/32.85),
-              child: Text("Mobile Number-2",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("Mobile Number-2",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
 
           ],
@@ -891,7 +891,7 @@ class _SupplierState extends State<Supplier> {
                 controller: Pincode,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                style: GoogleFonts.openSans(fontSize:width/91.06,fontWeight: FontWeight.w700),
                 decoration: InputDecoration(contentPadding:
                 EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                   border: InputBorder.none,
@@ -909,7 +909,7 @@ class _SupplierState extends State<Supplier> {
                 controller: Mobileno,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                style: GoogleFonts.openSans(fontSize:width/91.06,fontWeight: FontWeight.w700),
                 decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                   border: InputBorder.none,
                 ),
@@ -926,7 +926,7 @@ class _SupplierState extends State<Supplier> {
                 controller: Mobileno2,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                style: GoogleFonts.openSans(fontSize:width/91.06,fontWeight: FontWeight.w700),
                 decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                   border: InputBorder.none,
                 ),
@@ -942,11 +942,11 @@ class _SupplierState extends State<Supplier> {
             Padding(
               padding:  EdgeInsets.only(left: width/24.39,top:height/32.85),
 
-              child: Text("EMail Id",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("EMail Id",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
             Padding(
               padding:  EdgeInsets.only(left: width/6.89,top:height/32.85),
-              child: Text("GST Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+              child: Text("GST Number",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
             ),
 
           ],
@@ -967,7 +967,7 @@ class _SupplierState extends State<Supplier> {
                   controller: Supplieremail,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                  style: GoogleFonts.openSans(fontSize:width/91.06,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
                     border: InputBorder.none,
 
@@ -985,7 +985,7 @@ class _SupplierState extends State<Supplier> {
                 controller: Panno,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+                style: GoogleFonts.openSans(fontSize:width/91.06,fontWeight: FontWeight.w700),
                 decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom:height/82.125),
 
                   border: InputBorder.none,
@@ -999,7 +999,7 @@ class _SupplierState extends State<Supplier> {
 
         Padding(
           padding:  EdgeInsets.only(top:height/32.85,right: width/1.1383),
-          child: Text("Remarks",style: GoogleFonts.poppins(fontSize:width/97.57,color: const Color(0xff000000)),),
+          child: Text("Remarks",style: GoogleFonts.openSans(fontSize:width/97.57,color: const Color(0xff000000)),),
         ),
 
         Padding(
@@ -1011,9 +1011,9 @@ class _SupplierState extends State<Supplier> {
             controller: Remarks,
             keyboardType: TextInputType.multiline,
             maxLines: null,
-            style: GoogleFonts.poppins(fontSize:width/91.06,fontWeight: FontWeight.w700),
+            style: GoogleFonts.openSans(fontSize:width/91.06,fontWeight: FontWeight.w700),
             decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3),
-              hintStyle: GoogleFonts.poppins(color: Colors.black),
+              hintStyle: GoogleFonts.openSans(color: Colors.black),
               border: InputBorder.none,
             ),
           ),
@@ -1042,7 +1042,7 @@ class _SupplierState extends State<Supplier> {
                   decoration: BoxDecoration(
                     color: const Color(0xff25D366),
                     borderRadius:
-                  BorderRadius.circular(5),),child: Center(child: Text("Save Supplier",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/91.06),)),
+                  BorderRadius.circular(5),),child: Center(child: Text("Save Supplier",style: GoogleFonts.openSans(color: Colors.white,fontSize:width/91.06),)),
                 ),
               ),
             ),
@@ -1055,7 +1055,7 @@ class _SupplierState extends State<Supplier> {
                 child: Container(width: width/13.6,
                   height:  height/16.42,
                   //color: Color(0xffD60A0B),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.poppins(color: Colors.white),)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),  color: Colors.red,),child: Center(child: Text("Reset",style: GoogleFonts.openSans(color: Colors.white),)),
                 ),
               ),
             ),
@@ -1126,7 +1126,7 @@ class _SupplierState extends State<Supplier> {
                 child: Column(
                   children: [
                     SizedBox(height: height/32.85,),
-                    Text("Add a Supplier Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Supplier Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -1158,7 +1158,7 @@ class _SupplierState extends State<Supplier> {
                     //           child: Center(
                     //             child: Text(
                     //                 "Okay",
-                    //                 style: GoogleFonts.poppins(
+                    //                 style: GoogleFonts.openSans(
                     //                     letterSpacing: 1.5,
                     //                     fontWeight: FontWeight.w500,
                     //                     fontSize: width/85.375, color: Colors.white)
@@ -1185,7 +1185,7 @@ class _SupplierState extends State<Supplier> {
                     //           ),
                     //           child: Center(
                     //             child: Text("Cancel",
-                    //                 style: GoogleFonts.poppins(
+                    //                 style: GoogleFonts.openSans(
                     //                     letterSpacing: 1.5,
                     //                     fontWeight: FontWeight.w500,
                     //                     fontSize: width / 85.375,
@@ -1231,7 +1231,7 @@ class _SupplierState extends State<Supplier> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height:height/21.9),
-                Text("Are You Sure Want to Delete",style: GoogleFonts.poppins(
+                Text("Are You Sure Want to Delete",style: GoogleFonts.openSans(
                     fontWeight: FontWeight.w700,
                     fontSize:width/75.88
                 ),),
@@ -1260,7 +1260,7 @@ class _SupplierState extends State<Supplier> {
                             color: const Color(0xff25D366)
                         ),
                         child: Center(
-                          child: Text("Okay",style: GoogleFonts.poppins(color:
+                          child: Text("Okay",style: GoogleFonts.openSans(color:
                           Colors.white,fontWeight: FontWeight.w600),),
                         ),
                       ),
@@ -1283,7 +1283,7 @@ class _SupplierState extends State<Supplier> {
                           ),
                           child: Center(
                             child: Text("Cancel",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 85.375,
@@ -1339,7 +1339,7 @@ class _SupplierState extends State<Supplier> {
                           child: Column(
                             children: [
                               SizedBox(height:height/65.7,),
-                              Text("Supplier Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
+                              Text("Supplier Details",style: GoogleFonts.openSans(decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w700),),
                               SizedBox(height:height/65.7,),
 
@@ -1364,12 +1364,12 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier Name :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier Name :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               //height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['Suppliername'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['Suppliername'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1381,12 +1381,12 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier Code :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier Code :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['Suppliercode'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['Suppliercode'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1398,12 +1398,12 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier Address :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier Address :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               //height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['SupplierAddress'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['SupplierAddress'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1415,12 +1415,12 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier Mobile :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier Mobile :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['Mobileno'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['Mobileno'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1432,12 +1432,12 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier Mobile-2 :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier Mobile-2 :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['Mobileno2'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['Mobileno2'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1451,13 +1451,13 @@ class _SupplierState extends State<Supplier> {
                                               child: SizedBox(
                                                 height:height/21.9,
                                                 width:width/10.507,
-                                                child: Text("Supplier Email :",style: GoogleFonts.poppins(),),
+                                                child: Text("Supplier Email :",style: GoogleFonts.openSans(),),
                                               ),
                                             ),
                                             SizedBox(
                                               height:height/21.9,
                                               width: width/7.588,
-                                              child: Text(purchase['Email'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['Email'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1470,29 +1470,12 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier City :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier City :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['City'].toString(),style: GoogleFonts.poppins(),),
-                                            ),
-                                          ],
-                                        ),
-
-                                        SizedBox(width:width/136.6,),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            SizedBox(
-                                              height:height/21.9,
-                                              width:width/10.507,
-                                              child: Text("Supplier Pincode :",style: GoogleFonts.poppins(),),
-                                            ),
-                                            SizedBox(
-                                              height:height/21.9,
-                                              width:width/10.507,
-                                              child: Text(purchase['Pincode'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['City'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1504,12 +1487,29 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier Pan no :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier Pincode :",style: GoogleFonts.openSans(),),
+                                            ),
+                                            SizedBox(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text(purchase['Pincode'].toString(),style: GoogleFonts.openSans(),),
+                                            ),
+                                          ],
+                                        ),
+
+                                        SizedBox(width:width/136.6,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height:height/21.9,
+                                              width:width/10.507,
+                                              child: Text("Supplier Pan no :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               // height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['Panno'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['Panno'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1521,12 +1521,12 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier State :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier State :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['State'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['State'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1538,12 +1538,12 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier Balance :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier Balance :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text(purchase['Openingbalance'].toString(),style: GoogleFonts.poppins(),),
+                                              child: Text(purchase['Openingbalance'].toString(),style: GoogleFonts.openSans(),),
                                             ),
                                           ],
                                         ),
@@ -1556,14 +1556,14 @@ class _SupplierState extends State<Supplier> {
                                             SizedBox(
                                               height:height/21.9,
                                               width:width/10.507,
-                                              child: Text("Supplier Remarks :",style: GoogleFonts.poppins(),),
+                                              child: Text("Supplier Remarks :",style: GoogleFonts.openSans(),),
                                             ),
                                             SizedBox(
                                               //height: height/10.95,
                                               width:width/10.507,
                                               child: Text(purchase['Remarks'].toString(),
 
-                                                style: GoogleFonts.poppins(),
+                                                style: GoogleFonts.openSans(),
                                                 textAlign: TextAlign.center,
                                               ),
                                             ),
@@ -1594,7 +1594,7 @@ class _SupplierState extends State<Supplier> {
                                     ),
                                     child: Center(
                                       child: Text("Okay",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: 16,

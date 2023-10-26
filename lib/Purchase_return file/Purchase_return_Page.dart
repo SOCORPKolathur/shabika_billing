@@ -165,7 +165,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
               EdgeInsets.only(left: width / 35.947, top: height / 32.85),
               child: Text(
                 "Purchase Returns",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                   fontWeight: FontWeight.bold,
                   fontSize: width / 59.39,
                   color: Colors.black,
@@ -207,7 +207,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
             Text(
               "Shabika G",
-              style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
             ),
 
 
@@ -246,7 +246,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
             Text(
               "Shabika N",
-              style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
             ),
           ],
         ),
@@ -262,7 +262,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
             Text("Sort by Date  ",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(color: Colors.white,
+              style: GoogleFonts.openSans(color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width/95.64),),
             SizedBox(width:width/273.5),
@@ -386,7 +386,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
             Text("Supplier Name  ",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(color: Colors.white,
+              style: GoogleFonts.openSans(color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width/95.64),),
             SizedBox(width: width/136.6,),
@@ -412,7 +412,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                 Suppilercontroller=textEditingController;
                               });
                             },
-                            style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                            style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding:
@@ -497,7 +497,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
             SizedBox(width: width/136.6,),
 
             //Status-1
-            Text("Invoice  ",style: GoogleFonts.montserrat(color: Colors.white,
+            Text("Invoice  ",style: GoogleFonts.openSans(color: Colors.white,
                 fontWeight: FontWeight.w800,
                 fontSize: width/95.64),),
             Container(
@@ -527,7 +527,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                 Invoicecontroller=textEditingController;
                               });
                             },
-                            style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                            style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding:
@@ -626,7 +626,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                     borderRadius: BorderRadius.circular(5),color:Colors.red
                 ),
                 child:  Center(
-                  child: Text("Clear",style: GoogleFonts.montserrat(color: Colors.white,
+                  child: Text("Clear",style: GoogleFonts.openSans(color: Colors.white,
                       fontWeight: FontWeight.w800,
                       fontSize: width/84.64),),
                 ),
@@ -644,7 +644,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
               width: width/43.8,
             ),
             //Status-2
-            Text("Payment\nType  ",style: GoogleFonts.montserrat(
+            Text("Payment\nType  ",style: GoogleFonts.openSans(
                 color: Colors.white,
                 fontWeight: FontWeight.w800,
                 fontSize: width/95.64),),
@@ -676,7 +676,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                   Paymenttype=Controller2;
                                 });
                               },
-                              style: GoogleFonts.montserrat(fontSize: width/91.06,fontWeight: FontWeight.w500),
+                              style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding:
@@ -777,7 +777,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Date",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Date",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/18.507,
@@ -785,7 +785,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Bill No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Bill No",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/15.66,
@@ -793,7 +793,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Invoice No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Invoice No",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/15.66,
@@ -801,7 +801,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Supplier ID",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Supplier ID",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/4.66,
@@ -809,7 +809,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Suppiler Name",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Suppiler Name",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/4.66,
@@ -817,7 +817,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Reason",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Reason",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/10.66,
@@ -827,7 +827,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         ),
                         child: Center(child: Text("Payment Type",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                          style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/13.507,
@@ -835,7 +835,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Total",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Total",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     Container(
                         width:width/8.507,
@@ -843,7 +843,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black)
                         ),
-                        child: Center(child: Text("Actions",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        child: Center(child: Text("Actions",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
                     //SizedBox(width:width/27.32,),
 
@@ -891,7 +891,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           child:
                                           Center(child:
                                           Text(buillin1['purchasedate'].toString(),
-                                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                            style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                                             textAlign: TextAlign.center,
                                           ))),
 
@@ -905,11 +905,11 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              Text(buillin1['purchaseno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),),
+                                              Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
                                               buillin1['return']==true?
                                               Text("(Return)",
                                                 style:
-                                                GoogleFonts.poppins(fontSize: width/97.571, color:  Colors.red),
+                                                GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
                                               ):const SizedBox(),
                                             ],
                                           )
@@ -922,7 +922,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
 
-                                          child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                          child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                       Container(
                                           width:width/15.66,
@@ -930,7 +930,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                          child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                       Container(
                                           width:width/4.66,
@@ -939,7 +939,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                          child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                       Container(
                                           width:width/4.66,
@@ -948,7 +948,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                          child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                       Container(
                                           width:width/10.66,
@@ -956,7 +956,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                          child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                       Container(
                                           width:width/13.507,
@@ -964,7 +964,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2)
                                           ),
-                                          child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                          child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                       Container(
                                           width:width/8.507,
@@ -992,7 +992,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                           borderRadius: BorderRadius.circular(100),
                                                           color: Colors.green
                                                       ),
-                                                      child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                                      child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                                 ),
                                               ),
 
@@ -1047,7 +1047,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child:
                                         Center(child:
                                         Text(buillin1['purchasedate'].toString(),
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
                                         ))),
 
@@ -1061,11 +1061,11 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),),
+                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
                                             buillin1['return']==true?
                                             Text("(Return)",
                                               style:
-                                              GoogleFonts.poppins(fontSize: width/97.571, color:  Colors.red),
+                                              GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
                                             ):const SizedBox(),
                                           ],
                                         )
@@ -1078,7 +1078,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
 
-                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/15.66,
@@ -1086,7 +1086,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/4.66,
@@ -1095,7 +1095,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/4.66,
@@ -1104,7 +1104,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/10.66,
@@ -1112,7 +1112,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/13.507,
@@ -1120,7 +1120,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/8.507,
@@ -1149,7 +1149,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                         borderRadius: BorderRadius.circular(100),
                                                         color: Colors.green
                                                     ),
-                                                    child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                                    child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                               ),
                                             ),
 
@@ -1201,7 +1201,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child:
                                         Center(child:
                                         Text(buillin1['purchasedate'].toString(),
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
                                         ))),
 
@@ -1215,11 +1215,11 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),),
+                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
                                             buillin1['return']==true?
                                             Text("(Return)",
                                               style:
-                                              GoogleFonts.poppins(fontSize: width/97.571, color:  Colors.red),
+                                              GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
                                             ):const SizedBox(),
                                           ],
                                         )
@@ -1232,7 +1232,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
 
-                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/15.66,
@@ -1240,7 +1240,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/4.66,
@@ -1249,7 +1249,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/4.66,
@@ -1258,7 +1258,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/10.66,
@@ -1266,7 +1266,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/13.507,
@@ -1274,7 +1274,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/8.507,
@@ -1303,7 +1303,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                         borderRadius: BorderRadius.circular(100),
                                                         color: Colors.green
                                                     ),
-                                                    child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                                    child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                               ),
                                             ),
 
@@ -1354,7 +1354,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child:
                                         Center(child:
                                         Text(buillin1['purchasedate'].toString(),
-                                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
                                         ))),
 
@@ -1368,11 +1368,11 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),),
+                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
                                             buillin1['return']==true?
                                             Text("(Return)",
                                               style:
-                                              GoogleFonts.poppins(fontSize: width/97.571, color:  Colors.red),
+                                              GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
                                             ):const SizedBox(),
                                           ],
                                         )
@@ -1385,7 +1385,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
 
-                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/15.66,
@@ -1393,7 +1393,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/4.66,
@@ -1402,7 +1402,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/4.66,
@@ -1411,7 +1411,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/10.66,
@@ -1419,7 +1419,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/13.507,
@@ -1427,7 +1427,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2)
                                         ),
-                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                                     Container(
                                         width:width/8.507,
@@ -1456,7 +1456,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                         borderRadius: BorderRadius.circular(100),
                                                         color: Colors.green
                                                     ),
-                                                    child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                                    child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                               ),
                                             ),
 
@@ -1507,7 +1507,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                  child:
                                  Center(child:
                                  Text(buillin1['purchasedate'].toString(),
-                                   style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                   style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                                    textAlign: TextAlign.center,
                                  ))),
 
@@ -1521,11 +1521,11 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                    crossAxisAlignment: CrossAxisAlignment.center,
                                    mainAxisAlignment: MainAxisAlignment.center,
                                    children: [
-                                     Text(buillin1['purchaseno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),),
+                                     Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
                                      buillin1['return']==true?
                                      Text("(Return)",
                                        style:
-                                       GoogleFonts.poppins(fontSize: width/97.571, color:  Colors.red),
+                                       GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
                                      ):const SizedBox(),
                                    ],
                                  )
@@ -1538,7 +1538,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                      border: Border.all(color: Colors.black,width: 1.2)
                                  ),
 
-                                 child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                 child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                              Container(
                                  width:width/15.66,
@@ -1546,7 +1546,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                  decoration: BoxDecoration(
                                      border: Border.all(color: Colors.black,width: 1.2)
                                  ),
-                                 child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                 child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                              Container(
                                  width:width/4.66,
@@ -1555,7 +1555,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                  decoration: BoxDecoration(
                                      border: Border.all(color: Colors.black,width: 1.2)
                                  ),
-                                 child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                 child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                              Container(
                                  width:width/4.66,
@@ -1564,7 +1564,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                  decoration: BoxDecoration(
                                      border: Border.all(color: Colors.black,width: 1.2)
                                  ),
-                                 child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                 child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                              Container(
                                  width:width/10.66,
@@ -1572,7 +1572,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                  decoration: BoxDecoration(
                                      border: Border.all(color: Colors.black,width: 1.2)
                                  ),
-                                 child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                 child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                              Container(
                                  width:width/13.507,
@@ -1580,7 +1580,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                  decoration: BoxDecoration(
                                      border: Border.all(color: Colors.black,width: 1.2)
                                  ),
-                                 child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                 child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
                              Container(
                                  width:width/8.507,
@@ -1609,7 +1609,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                  borderRadius: BorderRadius.circular(100),
                                                  color: Colors.green
                                              ),
-                                             child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                             child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                        ),
                                      ),
 
@@ -1810,7 +1810,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(width: width/2.4,),
-                              Text("Purchase Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
+                              Text("Purchase Details",style: GoogleFonts.openSans(decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w700),),
                               SizedBox(width: width/2.4,),
                               InkWell(
@@ -1847,7 +1847,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                     children: [
                                       SizedBox(width:100,
                                       height:30,
-                                      child: Center(child: Text("Total Amount",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),)),
+                                      child: Center(child: Text("Total Amount",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),)),
                                       ),
                                       Container(width:100,
 
@@ -1856,7 +1856,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             color: Colors.grey,
                                             borderRadius: BorderRadius.circular(5)
                                         ),
-                                        child: Center(child: Text("${TotalAmount.toString()}",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),)),
+                                        child: Center(child: Text("${TotalAmount.toString()}",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),)),
                                       )
 
                                     ],
@@ -1876,7 +1876,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                     children: [
                                       SizedBox(width:100,
                                       height:30,
-                                      child: Center(child: Text("Balance Amount",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),)),
+                                      child: Center(child: Text("Balance Amount",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),)),
                                       ),
                                       Container(width:100,
 
@@ -1885,7 +1885,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                             color: Colors.grey,
                                             borderRadius: BorderRadius.circular(5)
                                         ),
-                                        child: Center(child: Text("${Totalamountitem.toString()}",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.white),)),
+                                        child: Center(child: Text("${Totalamountitem.toString()}",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),)),
                                       )
 
                                     ],
@@ -1920,7 +1920,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           SizedBox(height:10),
                                           Text("Paid to the\nSupplier Amount",
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18
@@ -1937,7 +1937,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 color: Colors.white,
                                               ),
                                               child: Center(
-                                                child: Text(purchasenbalanceAmount.toString(),style: GoogleFonts.montserrat(
+                                                child: Text(purchasenbalanceAmount.toString(),style: GoogleFonts.openSans(
                                                     color: Colors.black,
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.w700
@@ -1967,7 +1967,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text("Date",
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -1985,7 +1985,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text(Date.toString(),
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2006,7 +2006,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text("Time",
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2024,7 +2024,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text(Time.toString(),
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2044,7 +2044,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text("Payment",
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2062,7 +2062,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text(payemntype.toString(),
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2093,7 +2093,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                               child: Center(
                                                 child: Text("View Product\nSold items",
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontSize: 16,
                                                         fontWeight: FontWeight.w700
@@ -2129,7 +2129,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           SizedBox(height:10),
                                           Text("Total Amount 0f\nItems Returns",
                                             textAlign: TextAlign.center,
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18
@@ -2146,7 +2146,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 color: Colors.white,
                                               ),
                                               child: Center(
-                                                child: Text(Total.toString(),style: GoogleFonts.montserrat(
+                                                child: Text(Total.toString(),style: GoogleFonts.openSans(
                                                     color: Colors.black,
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.w700
@@ -2175,7 +2175,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text("Date",
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2194,7 +2194,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text(Date.toString(),
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2214,7 +2214,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text("Time",
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2232,7 +2232,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 child: Center(
                                                   child: Text( Time.toString(),
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 18
@@ -2265,7 +2265,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                               child: Center(
                                                 child: Text("View Return\nProduct",
                                                     textAlign: TextAlign.center,
-                                                    style: GoogleFonts.montserrat(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.black,
                                                         fontSize: 16,
                                                         fontWeight: FontWeight.w700
@@ -2311,7 +2311,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                   child: Center(
                                     child:  Text("View Balance Items",
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18
@@ -2339,7 +2339,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                   child: Center(
                                     child:  Text("View All Items",
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.montserrat(
+                                      style: GoogleFonts.openSans(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18
@@ -2409,7 +2409,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(width: width/2.4,),
-                            Text("Return Details",style: GoogleFonts.poppins(decoration: TextDecoration.underline,
+                            Text("Return Details",style: GoogleFonts.openSans(decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w700),),
                             SizedBox(width: width/2.4,),
                             InkWell(
@@ -2452,7 +2452,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                     child: Center(
                                         child: Text(
                                           "Si.No",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2468,7 +2468,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           "Date\nTime",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2484,7 +2484,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           "Item Code",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2500,7 +2500,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           'Description',
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2516,7 +2516,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           'Hsn\nCode',
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2532,7 +2532,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           'Payment',
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2548,7 +2548,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           "Qty",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2564,7 +2564,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           "Returned",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )
@@ -2582,7 +2582,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           'Purchase\nPrice',
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2598,7 +2598,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           'Landing\nCost',
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2614,7 +2614,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           'Sales\nPrice',
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2630,7 +2630,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           'Tax',
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2646,7 +2646,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                         child: Text(
                                           "Total",
                                           textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: const Color(0xff5801e8)),
                                         )),
@@ -2691,7 +2691,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text("${index+1}",style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text("${index+1}",style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2701,7 +2701,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text("${purchase['date']}\n${purchase['time']}".toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text("${purchase['date']}\n${purchase['time']}".toString(),style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2710,7 +2710,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text("${purchase['itemcode']}",style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text("${purchase['itemcode']}",style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2724,14 +2724,14 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                   child: Column(
                                                     children: [
                                                       Text(purchase['Description'].toString(),
-                                                        style: GoogleFonts.poppins(
+                                                        style: GoogleFonts.openSans(
                                                             textStyle: TextStyle(
                                                                 overflow:TextOverflow.ellipsis
                                                             )
 
                                                         ),),
                                                       Text(purchase['Imei no'].length>0?purchase['Imei no'].toString():purchase['Serial no'].length>0?purchase['Serial no'].toString():purchase['color'].length>0?purchase['color'].toString():"",
-                                                        style: GoogleFonts.poppins(
+                                                        style: GoogleFonts.openSans(
                                                             textStyle:  TextStyle(
                                                               color:Colors.indigo,
                                                                 overflow:TextOverflow.ellipsis
@@ -2749,7 +2749,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text(purchase['Hsncode'].toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text(purchase['Hsncode'].toString(),style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2758,7 +2758,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text("Return",style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text("Return",style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2769,7 +2769,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
 
-                                                child: Center(child: Text(purchase['Qty'].toString(),style: GoogleFonts.poppins(fontWeight: FontWeight.bold),)),
+                                                child: Center(child: Text(purchase['Qty'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.bold),)),
                                               ),
 
                                               //sold Items
@@ -2781,7 +2781,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
 
-                                                child: Center(child: Text(purchase['stocks'].toString(),style: GoogleFonts.poppins(color: Colors.red,fontWeight: FontWeight.bold),)),
+                                                child: Center(child: Text(purchase['stocks'].toString(),style: GoogleFonts.openSans(color: Colors.red,fontWeight: FontWeight.bold),)),
                                               ),
 
                                               //balnce items
@@ -2793,7 +2793,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text(purchase['Purchase price'].toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text(purchase['Purchase price'].toString(),style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2802,7 +2802,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text(purchase['Landing cost'].toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text(purchase['Landing cost'].toString(),style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2812,7 +2812,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text(purchase['Sales price'].toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text(purchase['Sales price'].toString(),style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2822,7 +2822,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text("18%",style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text("18%",style: GoogleFonts.openSans(),)),
                                               ),
 
                                               Container(
@@ -2832,7 +2832,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(color: Colors.black,width: 1.2)
                                                 ),
-                                                child: Center(child: Text(purchase['Total'].toString(),style: GoogleFonts.poppins(),)),
+                                                child: Center(child: Text(purchase['Total'].toString(),style: GoogleFonts.openSans(),)),
                                               ),
 
 

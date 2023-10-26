@@ -28,7 +28,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
             Padding(
               padding:  EdgeInsets.only(left: width/91.06),
               child: Text(" Supplier Reports",
-                style: GoogleFonts.montserrat(color: Colors.white,
+                style: GoogleFonts.openSans(color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: width/54.64),),
             )
@@ -62,7 +62,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
                       child: Center(child: Text("Supplier Name",
-                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))
                   ),
 
 
@@ -76,7 +76,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       ),
                       child: Center(child: Text("Supplier\nCode",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -87,7 +87,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Supplier Address",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      child: Center(child: Text("Supplier Address",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -98,7 +98,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Mobile",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      child: Center(child: Text("Mobile",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -109,7 +109,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Email",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      child: Center(child: Text("Email",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -120,7 +120,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("City",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      child: Center(child: Text("City",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -132,7 +132,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       ),
                       child: Center(child: Text("Pin\ncode",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -142,7 +142,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("GST No",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      child: Center(child: Text("GST No",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -152,7 +152,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("State",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      child: Center(child: Text("State",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
                   Container(
@@ -161,7 +161,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Bala\nnce",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
+                      child: Center(child: Text("Bala\nnce",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8),textStyle: const TextStyle(
                           overflow: TextOverflow.ellipsis
                       )),))),
 
@@ -171,7 +171,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                       decoration:BoxDecoration(
                           border: Border.all(color: Colors.black,width: 1.2)
                       ),
-                      child: Center(child: Text("Actions",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+                      child: Center(child: Text("Actions",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
 
 
@@ -207,7 +207,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                               border: Border.all(color: Colors.black,width: 1.2)
                             ),
                                 child: Center(child: Text(buillin1['Suppliername'].toString(),
-                                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))
                             ),
 
 
@@ -220,7 +220,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
 
-                                child: Center(child: Text(buillin1['Suppliercode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                child: Center(child: Text(buillin1['Suppliercode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
 
 
@@ -232,7 +232,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['SupplierAddress'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                child: Center(child: Text(buillin1['SupplierAddress'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
 
 
@@ -243,7 +243,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['Mobileno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                child: Center(child: Text(buillin1['Mobileno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
 
 
@@ -254,7 +254,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['Email'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                child: Center(child: Text(buillin1['Email'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
 
 
@@ -265,7 +265,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['City'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                child: Center(child: Text(buillin1['City'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
 
 
@@ -275,7 +275,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['Pincode'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                child: Center(child: Text(buillin1['Pincode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
 
 
@@ -285,7 +285,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['Panno'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                child: Center(child: Text(buillin1['Panno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
 
 
@@ -295,7 +295,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['State'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600),))),
+                                child: Center(child: Text(buillin1['State'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
 
                             Container(
@@ -304,7 +304,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                 decoration:BoxDecoration(
                                     border: Border.all(color: Colors.black,width: 1.2)
                                 ),
-                                child: Center(child: Text(buillin1['Openingbalance'].toString(),style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,textStyle: const TextStyle(
+                                child: Center(child: Text(buillin1['Openingbalance'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600,textStyle: const TextStyle(
                                   overflow: TextOverflow.ellipsis
                                 )),))),
 
@@ -332,7 +332,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                           borderRadius: BorderRadius.circular(100),
                                           color: Colors.green
                                       ),
-                                      child: Center(child: Text("View",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                      child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
                                 ),
                               ),
                             ),
@@ -426,7 +426,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                             child: Center(
                               child: Text("Item\nPurch NO".toString(),
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),),
                             ),
                           ),
 
@@ -439,7 +439,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Description", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              "Description", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -451,7 +451,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Hsncode", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              "Hsncode", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -463,7 +463,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Qty", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              "Qty", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -475,7 +475,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Payment", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              "Payment", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -487,7 +487,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Time", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              "Time", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -499,7 +499,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Date", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              "Date", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -511,7 +511,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Sales Price", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              "Sales Price", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -524,7 +524,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                             ),
                             child: Center(child: Text("Tax %",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -536,7 +536,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                   color: Colors.black, width: 1.2),
                             ),
                             child: Center(child: Text(
-                              "Total", style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                              "Total", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
 
 
@@ -559,7 +559,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                             }
                             if (snapshot1.data!.docs.length == 0) {
                               return Center(child: Text("Field is empty",
-                                style: GoogleFonts.poppins(),),);
+                                style: GoogleFonts.openSans(),),);
                             }
                             return
                              ListView.builder(
@@ -582,7 +582,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                    }
                                    if (snapshot.data!.docs.length == 0) {
                                      return Center(child: Text("Field is empty",
-                                       style: GoogleFonts.poppins(),),);
+                                       style: GoogleFonts.openSans(),),);
                                    }
                                    return  ListView.builder(
                                      shrinkWrap: true,
@@ -605,7 +605,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                child: Center(child: Text(
                                                  "${customer['itemcode']}${customer['purchaseno']}"
                                                      .toString(),
-                                                 style: GoogleFonts.poppins(),),
+                                                 style: GoogleFonts.openSans(),),
                                                ),
                                              ),
 
@@ -622,7 +622,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                        width: 1.2)),
                                                child: Text(
                                                  customer['Description'].toString(),
-                                                 style: GoogleFonts.poppins(),),
+                                                 style: GoogleFonts.openSans(),),
                                              ),
 
 
@@ -635,7 +635,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                        width: 1.2)),
                                                child: Center(child: Text(
                                                  customer['Hsncode'].toString(),
-                                                 style: GoogleFonts.poppins(),)),
+                                                 style: GoogleFonts.openSans(),)),
                                              ),
 
 
@@ -648,7 +648,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                        width: 1.2)),
                                                child: Center(child: Text(
                                                  customer['Qty'].toString(),
-                                                 style: GoogleFonts.poppins(),)),
+                                                 style: GoogleFonts.openSans(),)),
                                              ),
 
 
@@ -661,7 +661,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                        width: 1.2)),
                                                child: Center(child: Text(
                                                  customer['Payment mode'].toString(),
-                                                 style: GoogleFonts.poppins(),)),
+                                                 style: GoogleFonts.openSans(),)),
                                              ),
 
 
@@ -674,7 +674,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                        width: 1.2)),
                                                child: Center(child: Text(
                                                  customer['time'].toString(),
-                                                 style: GoogleFonts.poppins(),)),
+                                                 style: GoogleFonts.openSans(),)),
                                              ),
 
 
@@ -687,7 +687,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                        width: 1.2)),
                                                child: Center(child: Text(
                                                  customer['date'].toString(),
-                                                 style: GoogleFonts.poppins(),)),
+                                                 style: GoogleFonts.openSans(),)),
                                              ),
 
 
@@ -700,7 +700,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                        width: 1.2)),
                                                child: Center(child: Text(
                                                  customer['Sales price'].toString(),
-                                                 style: GoogleFonts.poppins(),)),
+                                                 style: GoogleFonts.openSans(),)),
                                              ),
 
 
@@ -714,7 +714,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                child: Center(child: Text(
                                                  "${customer['tax']}"
                                                      .toString(),
-                                                 style: GoogleFonts.poppins(),)),
+                                                 style: GoogleFonts.openSans(),)),
                                              ),
 
 
@@ -727,7 +727,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                                                        width: 1.2)),
                                                child: Center(child: Text(
                                                  customer['Total'].toString(),
-                                                 style: GoogleFonts.poppins(),)),
+                                                 style: GoogleFonts.openSans(),)),
                                              ),
 
 
@@ -759,7 +759,7 @@ class _Supplier_ReportsState extends State<Supplier_Reports> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.37,

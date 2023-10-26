@@ -43,7 +43,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                 padding:  EdgeInsets.only(left:width/48.785, top: height/32.85),
                 child: Text(
                   "Brand",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontWeight: FontWeight.bold,
                       fontSize:width/59.391,
                       color: Colors.white),
@@ -82,7 +82,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                           padding:  EdgeInsets.only(bottom:height/136.6),
                           child: Text(
                             "Home",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 color: const Color(0xffFFFFFF), fontSize:width/59.391),
                           ),
                         )
@@ -102,7 +102,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
             child: Row(
               children: [
                 Text("Search",
-                    style: GoogleFonts.cairo(
+                    style: GoogleFonts.openSans(
                         fontSize: width/68.3, fontWeight: FontWeight.bold)),
               ],
             ),
@@ -123,7 +123,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                   child:
                   TextField(
                     controller: Serachcontroller,
-                    style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
+                    style: GoogleFonts.openSans(fontSize: width/68.3,fontWeight: FontWeight.w700),
                     decoration: InputDecoration(
                         contentPadding:
                         EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/102.125),
@@ -190,7 +190,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                             ),
                             Text(
                               "Add Category",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   fontSize: width/68.3, color: Colors.white),
                             ),
                           ],
@@ -238,13 +238,13 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                             padding:
                             EdgeInsets.only(left: width/42.68, right: width/34.15),
                             child: Text("Sl.no",
-                                style: GoogleFonts.cairo(
+                                style: GoogleFonts.openSans(
                                     color: const Color(0xff00A99D),
                                     fontSize: width/68.3,
                                     fontWeight: FontWeight.w600)),
                           ),
                           Text("Brand",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xff00A99D),
                                   fontSize: width/68.3,
                                   fontWeight: FontWeight.w600)),
@@ -252,20 +252,20 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                             padding:
                             EdgeInsets.only(left: width/1.985, right: width/19.514),
                             child: Text("Edit",
-                                style: GoogleFonts.cairo(
+                                style: GoogleFonts.openSans(
                                     color: const Color(0xff00A99D),
                                     fontSize: width/68.3,
                                     fontWeight: FontWeight.w600)),
                           ),
                           Text("Delete",
-                              style: GoogleFonts.cairo(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xff00A99D),
                                   fontSize: width/68.3,
                                   fontWeight: FontWeight.w600)),
                           Padding(
                             padding:  EdgeInsets.only(left: width/15.523),
                             child: Text("Status",
-                                style: GoogleFonts.cairo(
+                                style: GoogleFonts.openSans(
                                     color: const Color(0xff00A99D),
                                     fontSize: width/68.3,
                                     fontWeight: FontWeight.w600)),
@@ -319,7 +319,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                                     child: Center(
                                         child: Text(
                                           (index + 1).toString(),
-                                          style: GoogleFonts.cairo(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               fontSize: width/75.888,
                                               color: const Color(0xffFDFDFD)),
@@ -346,7 +346,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                                       child: Text(
                                         snapshot.data!.docs[index]
                                         ["service brand"],
-                                        style: GoogleFonts.cairo(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             fontSize: width/75.888,
                                             color: const Color(0xffFDFDFD)),
@@ -414,7 +414,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                                       child: Center(
                                           child: Text(
                                             "Active",
-                                            style: GoogleFonts.cairo(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width/75.888,
                                                 fontWeight: FontWeight.bold,
                                                 color: const Color(0xffFDFDFD)),
@@ -445,7 +445,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                                     child: Center(
                                         child: Text(
                                           (index + 1).toString(),
-                                          style: GoogleFonts.cairo(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               fontSize: width/75.888,
                                               color: const Color(0xffFDFDFD)),
@@ -472,7 +472,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                                       child: Text(
                                         snapshot.data!.docs[index]
                                         ["service brand"],
-                                        style: GoogleFonts.cairo(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             fontSize: width/75.888,
                                             color: const Color(0xffFDFDFD)),
@@ -540,7 +540,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                                       child: Center(
                                           child: Text(
                                             "Active",
-                                            style: GoogleFonts.cairo(
+                                            style: GoogleFonts.openSans(
                                                 fontSize: width/75.888,
                                                 fontWeight: FontWeight.bold,
                                                 color: const Color(0xffFDFDFD)),
@@ -612,7 +612,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
               padding:  EdgeInsets.only(left: width/35.947, top: height/32.85),
               child: Text(
                 "Service Brand ",
-                style: GoogleFonts.cairo(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold,
                     fontSize: width/59.39,
                     color: const Color(0xffFFFFFF)),
@@ -639,7 +639,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
               ),
               child: Text(
                 "Service Brand *",
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.openSans(
                     fontSize: width/97.57, color: const Color(0xff000000)),
               ),
             ),
@@ -661,7 +661,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                   controller: service_Brand,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: GoogleFonts.poppins(fontSize: width/86.6,fontWeight: FontWeight.w700),
+                  style: GoogleFonts.openSans(fontSize: width/86.6,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(left: width/68.3, bottom:height/ 82.125,top: height/ 82.125),
                     border: InputBorder.none,
@@ -691,7 +691,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                   child: Center(
                       child: Text(
                         "Save",
-                        style: GoogleFonts.poppins(color: Colors.white),
+                        style: GoogleFonts.openSans(color: Colors.white),
                       )),
                 ),
               ),
@@ -712,7 +712,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                     child: Center(
                         child: Text(
                           "Reset",
-                          style: GoogleFonts.poppins(color: Colors.white),
+                          style: GoogleFonts.openSans(color: Colors.white),
                         )),
                   ),
                 ),
@@ -760,7 +760,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                 child: Column(
                   children: [
                     SizedBox(height: height/32.85,),
-                    Text("Add a Brand Item Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Brand Item Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -795,7 +795,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                               child: Center(
                                 child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -822,7 +822,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                               ),
                               child: Center(
                                 child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,
@@ -872,7 +872,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height:height/21.9),
-                Text("Are You Sure Want to Delete",style: GoogleFonts.poppins(
+                Text("Are You Sure Want to Delete",style: GoogleFonts.openSans(
                     fontWeight: FontWeight.w700,
                     fontSize:width/75.88
                 ),),
@@ -901,7 +901,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                             color: const Color(0xff263646)
                         ),
                         child: Center(
-                          child: Text("Okay",style: GoogleFonts.poppins(color: Colors.white,
+                          child: Text("Okay",style: GoogleFonts.openSans(color: Colors.white,
                               fontWeight: FontWeight.w600),),
                         ),
                       ),
@@ -924,7 +924,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                           ),
                           child: Center(
                             child: Text("Cancel",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 85.375,
@@ -986,7 +986,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Are You Sure Want To Edit this Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -995,7 +995,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Edit Brand",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -1007,7 +1007,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                           borderRadius: BorderRadius.circular(4),
                           color: Colors.cyan),
                       child: TextField(
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                         controller: edititem,
                         decoration: InputDecoration(
                             border: InputBorder.none,
@@ -1030,7 +1030,7 @@ class _Service_Brand_PageState extends State<Service_Brand_Page> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),

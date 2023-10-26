@@ -88,7 +88,7 @@ int Service_entry_count=0;
                 padding:  EdgeInsets.only(left: width/23.551, right: width/34.15),
                 child: Text(
                   "From Date",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontSize:width/68.3, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -100,7 +100,7 @@ int Service_entry_count=0;
                 ),
                 child: Text(
                   "To Date",
-                  style: GoogleFonts.cairo(
+                  style: GoogleFonts.openSans(
                       fontSize:width/68.3, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -254,7 +254,7 @@ int Service_entry_count=0;
               ),
               Text(
                 "Shabika G",
-                style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
               ),
 
               //toggle switch-2
@@ -289,7 +289,7 @@ int Service_entry_count=0;
                 child: Text(
                   "Shabika N",
                   style:
-                  GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                  GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
                 ),
               ),
 
@@ -324,7 +324,7 @@ int Service_entry_count=0;
                 child: Text(
                   "All Reports",
                   style:
-                  GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                  GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
                 ),
               ),
 
@@ -385,7 +385,7 @@ int Service_entry_count=0;
                                 top: height/32.85, left:width/85.375, right: width/136.6),
                             child: Text(
                               "Total sales",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
@@ -393,7 +393,7 @@ int Service_entry_count=0;
                             padding:  EdgeInsets.only(right:width/75.88),
                             child: Text(
                            totalsales.toString(),
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize:width/85.375, fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -429,7 +429,7 @@ int Service_entry_count=0;
                             padding:  EdgeInsets.only(top:height/23.464),
                             child: Text(
                               "Total Purchase",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
@@ -437,7 +437,7 @@ int Service_entry_count=0;
                             padding:  EdgeInsets.only(right:width/20.088),
                             child: Text(
                           totalpurchase.toString(),
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize:width/85.375, fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -479,7 +479,7 @@ int Service_entry_count=0;
                                   padding:  EdgeInsets.only(top:height/23.464),
                                   child: Text(
                                     "Total Profit",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: const Color(0xffA3A3A3), fontSize:width/105.076),
                                   ),
                                 ),
@@ -488,7 +488,7 @@ int Service_entry_count=0;
                                       bottom: height/82.125, right:width/75.888),
                                   child: Text(
                                     profitss.toString(),
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontSize:width/85.375,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -525,14 +525,14 @@ int Service_entry_count=0;
                               children: [
                                 Text(
                                   "Total Customer",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       color: const Color(0xffA3A3A3), fontSize:width/105.076),
                                 ),
                                 Padding(
                                   padding:  EdgeInsets.only(right: width/48.785),
                                   child: Text(
                                     totalcustomer.toString(),
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontSize:width/85.375,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -586,7 +586,7 @@ int Service_entry_count=0;
                           children: [
                             /*Text(
                               "Students",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
 
@@ -595,7 +595,7 @@ int Service_entry_count=0;
                               padding:  EdgeInsets.only(right: width/113.83),
                               child: Text(
                                 totalprofits.toString(),
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontSize:width/85.375,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -631,7 +631,7 @@ int Service_entry_count=0;
                             padding: const EdgeInsets.only(top: 28),
                             child: Text(
                               "Teachers",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
@@ -640,7 +640,7 @@ int Service_entry_count=0;
                             padding:  EdgeInsets.only(top:height/23.464, right: width/68.3, bottom: height/82.125),
                             child: Text(
                               "1500",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize:width/85.375,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -676,7 +676,7 @@ int Service_entry_count=0;
                             ),
                             child: Text(
                               "Total Expense",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
@@ -684,7 +684,7 @@ int Service_entry_count=0;
                             padding:  EdgeInsets.only(right:width/35.947),
                             child: Text(
                               "60000",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize:width/85.375,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -717,7 +717,7 @@ int Service_entry_count=0;
                             padding:  EdgeInsets.only(top:height/82.125),
                             child: Text(
                               "Supplier Outstanding",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xffA3A3A3), fontSize:width/105.076),
                             ),
                           ),
@@ -725,7 +725,7 @@ int Service_entry_count=0;
                             padding:  EdgeInsets.only(right:width/20.088),
                             child: Text(
                               suppilieroutstandingtotal.toStringAsFixed(2),
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   fontSize:width/85.375,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -778,7 +778,7 @@ int Service_entry_count=0;
                                 top:height/82.125, left:width/91.06),
                             child: Text(
                               "Total Services",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xffA3A3A3),
                                   fontSize:width/91.066),
                             ),
@@ -788,7 +788,7 @@ int Service_entry_count=0;
                                 right: width/35.947, left:width/136.6),
                             child: Text(
                               Service_entry_count.toString(),
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontSize:width/85.375),
@@ -821,7 +821,7 @@ int Service_entry_count=0;
                                 top:height/82.125,left:width/68.3),
                             child: Text(
                               "Total Profit",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: const Color(0xffA3A3A3),
                                   fontSize:width/91.066),
                             ),
@@ -830,7 +830,7 @@ int Service_entry_count=0;
                             padding:  EdgeInsets.only(right: width/151.77),
                             child: Text(
                               "50000",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontSize:width/85.375),
@@ -887,7 +887,7 @@ int Service_entry_count=0;
                                         left: width/34.15, top: height/82.125),
                                     child: Text(
                                       "Today Over All Sales Value",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           color: const Color(0xffFFFFFF)),
                                     ),
                                   ),
@@ -907,7 +907,7 @@ int Service_entry_count=0;
                             children: [
                               Text(
                                 "Shabika G",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/75.888),
                               ),
@@ -919,7 +919,7 @@ int Service_entry_count=0;
                                   child: Center(
                                     child: Text(
                                       "1000",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize:width/75.888),
                                     ),
@@ -937,7 +937,7 @@ int Service_entry_count=0;
                             children: [
                               Text(
                                 "Shabika N",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/75.888),
                               ),
@@ -949,7 +949,7 @@ int Service_entry_count=0;
                                   child: Center(
                                     child: Text(
                                       "15000",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize:width/75.888),
                                     ),
@@ -969,7 +969,7 @@ int Service_entry_count=0;
                             children: [
                               Text(
                                 "Total",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/75.888),
                               ),
@@ -981,7 +981,7 @@ int Service_entry_count=0;
                                   child: Center(
                                     child: Text(
                                       "16000",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize:width/75.888),
                                     ),
@@ -1031,7 +1031,7 @@ int Service_entry_count=0;
                                             left: width/34.15, top: height/82.125),
                                         child: Text(
                                           "Today Over All Sales Value",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               color: const Color(0xffFFFFFF)),
                                         ),
                                       ),
@@ -1051,7 +1051,7 @@ int Service_entry_count=0;
                             children: [
                               Text(
                                 "Sales",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/75.888),
                               ),
@@ -1063,7 +1063,7 @@ int Service_entry_count=0;
                                   child: Center(
                                     child: Text(
                                       "1000",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize:width/75.888),
                                     ),
@@ -1080,7 +1080,7 @@ int Service_entry_count=0;
                             children: [
                               Text(
                                 "Service",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/75.888),
                               ),
@@ -1092,7 +1092,7 @@ int Service_entry_count=0;
                                   child: Center(
                                     child: Text(
                                       "15000",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize:width/75.888),
                                     ),
@@ -1110,7 +1110,7 @@ int Service_entry_count=0;
                             children: [
                               Text(
                                 "Total",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize:width/75.888),
                               ),
@@ -1122,7 +1122,7 @@ int Service_entry_count=0;
                                   child: Center(
                                     child: Text(
                                       "16000",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.bold,
                                           fontSize:width/75.888),
                                     ),

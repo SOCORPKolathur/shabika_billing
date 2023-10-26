@@ -284,7 +284,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       left: width / 35.947, top: height / 66.85),
                   child: Text(
                     "Add Item ",
-                    style: GoogleFonts.cairo(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.bold,
                         fontSize: width / 59.39,
                         color: const Color(0xffFFFFFF)),
@@ -303,7 +303,7 @@ class _ItemAddPState extends State<ItemAddP> {
                         left: width / 35.947, top: height / 66.85),
                     child: Text(
                       "Add Category ",
-                      style: GoogleFonts.cairo(
+                      style: GoogleFonts.openSans(
                           fontWeight: FontWeight.bold,
                           fontSize: width / 59.39,
                           color: const Color(0xffFFFFFF)),
@@ -328,7 +328,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   ),
                   child: Text(
                     "Select Category Name *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -337,7 +337,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       left: width / 11.383, top: height / 82.125),
                   child: Text(
                     "Brand Name",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -345,7 +345,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   padding: EdgeInsets.only(left: width / 7.0),
                   child: Text(
                     "New Item Code *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -354,7 +354,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       left: width / 10.3, right: width / 9.106),
                   child: Text(
                     "HSN Code ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -625,7 +625,7 @@ class _ItemAddPState extends State<ItemAddP> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(4)),
                     child: TextField(
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       controller: itemcode,
                       readOnly: true,
                       keyboardType: TextInputType.multiline,
@@ -661,7 +661,7 @@ class _ItemAddPState extends State<ItemAddP> {
                                     HSNcode= _Controller;
                                   });
                                 },
-                                style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding:
@@ -756,7 +756,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       right: width / 10.0),
                   child: Text(
                     "Purchase Price *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -766,7 +766,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   padding: EdgeInsets.only(top: height / 32.85),
                   child: Text(
                     "Landing Cost",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -776,7 +776,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       top: height / 32.85, left: width / 8.1),
                   child: Text(
                     "Sale Price *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -786,7 +786,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   EdgeInsets.only(top: height / 32.85, left: width / 7.7),
                   child: Text(
                     "MRP Price/Unit",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -813,7 +813,7 @@ class _ItemAddPState extends State<ItemAddP> {
                           ? "Field Can't Empty"
                           : null,
                       controller: Purchaseprice,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -848,7 +848,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       controller: Landingcost,
                       keyboardType: TextInputType.multiline,
                       maxLines: 1,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -876,7 +876,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       controller: Saleprice,
                       keyboardType: TextInputType.multiline,
                       maxLines: 1,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -908,7 +908,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       controller: MRPPrice,
                       keyboardType: TextInputType.multiline,
                       maxLines: 1,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -932,7 +932,7 @@ class _ItemAddPState extends State<ItemAddP> {
               EdgeInsets.only(left: width / 24.836, top: height / 32.85),
               child: Text(
                 "Item Details",
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.openSans(
                     fontSize: width / 71.894, fontWeight: FontWeight.bold),
               ),
             ),
@@ -944,7 +944,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   padding: EdgeInsets.only(
                       left: width / 25.773, top: height / 82.125),
                   child: Text("Select Item Unit",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 97.571,
                           color: const Color(0xff000000))),
                 ),
@@ -954,7 +954,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       left: width / 10.118, top: height / 82.125),
                   child: Text(
                     "Low Order Qunaity",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -964,7 +964,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       left: width / 9.757, top: height / 82.125),
                   child: Text(
                     "Box No",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -994,7 +994,7 @@ class _ItemAddPState extends State<ItemAddP> {
                         isExpanded: true,
                         value: dropdownValue1,
                         icon: const Icon(Icons.arrow_drop_down_outlined),
-                        style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                        style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                         underline: Container(
                           color: Colors.deepPurpleAccent,
                         ),
@@ -1030,7 +1030,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       controller: Loworder,
                       focusNode: Loworderfocus,
                       keyboardType: TextInputType.multiline,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -1060,7 +1060,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       controller: BoxNo,
                       focusNode: Boxnofocus,
                       keyboardType: TextInputType.multiline,
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 164.25),
@@ -1090,7 +1090,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       bottom: height / 54.75),
                   child: Text(
                     "Add New Item Name *",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: width / 97.571, color: const Color(0xff000000)),
                   ),
                 ),
@@ -1117,7 +1117,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       maxLines: null,
 
 
-                      style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                      style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w700),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             left: width / 68.3, bottom: height / 82.125),
@@ -1151,7 +1151,7 @@ class _ItemAddPState extends State<ItemAddP> {
                           ),
                           Text(
                             "IMEI Number",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1179,7 +1179,7 @@ class _ItemAddPState extends State<ItemAddP> {
                           ),
                           Text(
                             "Serial Number",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1208,7 +1208,7 @@ class _ItemAddPState extends State<ItemAddP> {
                           ),
                           Text(
                             "Color",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1237,7 +1237,7 @@ class _ItemAddPState extends State<ItemAddP> {
                           ),
                           Text(
                             "Image",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontSize: width / 97.571,
                                 color: const Color(0xff000000)),
                           ),
@@ -1275,7 +1275,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       child: Center(
                           child: Text(
                             "Save",
-                            style: GoogleFonts.poppins(color: Colors.white),
+                            style: GoogleFonts.openSans(color: Colors.white),
                           )),
                     ),
                   ),
@@ -1296,7 +1296,7 @@ class _ItemAddPState extends State<ItemAddP> {
                         child: Center(
                             child: Text(
                               "Reset",
-                              style: GoogleFonts.poppins(color: Colors.white),
+                              style: GoogleFonts.openSans(color: Colors.white),
                             )),
                       ),
                     ),
@@ -1505,7 +1505,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       ),
                       Text(
                         "Already Item Exits",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -1539,7 +1539,7 @@ class _ItemAddPState extends State<ItemAddP> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -1580,7 +1580,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       ),
                       Text(
                         "Already Item Exits-ShabikaG",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -1614,7 +1614,7 @@ class _ItemAddPState extends State<ItemAddP> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -1655,7 +1655,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       ),
                       Text(
                         "Already Item Exits-ShabikaN",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -1689,7 +1689,7 @@ class _ItemAddPState extends State<ItemAddP> {
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -1731,7 +1731,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       ),
                       Text(
                         "Add a Category Item Successfully",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -1769,7 +1769,7 @@ class _ItemAddPState extends State<ItemAddP> {
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -1796,7 +1796,7 @@ class _ItemAddPState extends State<ItemAddP> {
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -1850,7 +1850,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Are You Sure Want to Delete",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: 18),
                   ),
                   SizedBox(height: height / 32.85),
@@ -1877,7 +1877,7 @@ class _ItemAddPState extends State<ItemAddP> {
                           child: Center(
                             child: Text(
                               "Okay",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   color: Colors.white, fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -1901,7 +1901,7 @@ class _ItemAddPState extends State<ItemAddP> {
                             ),
                             child: Center(
                               child: Text("Cancel",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -1959,7 +1959,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Add Category Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -1968,7 +1968,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Add Category",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -2003,7 +2003,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -2056,7 +2056,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Add Brand Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -2065,7 +2065,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Add Brand",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -2100,7 +2100,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -2157,7 +2157,7 @@ class _ItemAddPState extends State<ItemAddP> {
                   SizedBox(height: height / 21.9),
                   Text(
                     "Are You Sure Want To Edit this Item ",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w700, fontSize: width / 68.3),
                   ),
                   SizedBox(height: height / 32.85),
@@ -2166,7 +2166,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       SizedBox(width: width / 7.805),
                       Text(
                         "Edit Item",
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -2200,7 +2200,7 @@ class _ItemAddPState extends State<ItemAddP> {
                       child: Center(
                         child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -2224,7 +2224,7 @@ class _ItemAddPState extends State<ItemAddP> {
 
     return
       TextFormField(
-        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
         decoration: InputDecoration(
             border: InputBorder.none,
             contentPadding:

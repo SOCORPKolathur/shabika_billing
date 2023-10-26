@@ -701,7 +701,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                   ),
                   Text(
                     "Shabika G",
-                    style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                    style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
                   ),
 
                   SizedBox(width:width/5.0),
@@ -743,7 +743,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                   ),
                   Text(
                     "Shabika N",
-                    style: GoogleFonts.solway(color: Colors.white, fontSize:width/80.353),
+                    style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
                   ),
                 ],
               ),
@@ -770,7 +770,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                 ),
                                 Text(
                                   "Supplier ID",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w700,
                                       fontSize: width/97.57, color: const Color(0xff000000),
 
@@ -787,7 +787,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                     color: Colors.white,
                                   ),
                                   child: TextField(
-                                    style: GoogleFonts.montserrat(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.w700),
                                     controller: suppierid,
                                     focusNode: suppier_id,
@@ -863,7 +863,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                 ),
                                 Text(
                                   "Supplier Name",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.w700,
                                       fontSize: width/97.57, color: const Color(0xff000000)),
                                 ),
@@ -877,7 +877,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                   decoration: const BoxDecoration(
                                     color: Colors.white,),
                                   child:      TextField(
-                                    style: GoogleFonts.montserrat(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.w700),
                                     controller: Suppliername,
                                     focusNode: suppiername,
@@ -912,7 +912,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                 ),
                                 Text(
                                   "Tax Type",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.w700,
                                       fontSize: width/97.57, color: const Color(0xff000000)),
                                 ),
@@ -934,7 +934,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                         isExpanded: true,
                                         isDense: true,
                                         alignment: Alignment.topCenter,
-                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,fontSize: width/105.07),
+                                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/105.07),
                                         underline: Container(
                                           color: Colors.deepPurpleAccent,
                                         ),
@@ -973,7 +973,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                 ),
                                 Text(
                                   "Supplier Invoice No",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.w700,
                                       fontSize: width/97.57, color: const Color(0xff000000)),
                                 ),
@@ -997,7 +997,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                         )),
                                     textFieldConfiguration: TextFieldConfiguration(
                                       maxLength: 10,
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,fontSize: width/91.07),
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/91.07),
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.only(
                                             left: width /90.78,
@@ -1011,7 +1011,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                     },
                                     itemBuilder: (context, String suggestion) {
                                       return ListTile(
-                                        title: Text(suggestion,style:GoogleFonts.montserrat(fontWeight: FontWeight.w700,),)
+                                        title: Text(suggestion,style:GoogleFonts.openSans(fontWeight: FontWeight.w700,),)
                                       );
                                     },
                                     transitionBuilder:
@@ -1046,7 +1046,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                 ),
                                 Text(
                                   "Supplier Gst No",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       fontWeight: FontWeight.w700,
                                       fontSize: width/97.57, color: const Color(0xff000000)),
                                 ),
@@ -1061,7 +1061,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                     color: Colors.white,
                                   ),
                                   child: TextField(
-                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,),
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                                     controller: suppiler_gstno,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
@@ -1100,7 +1100,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               ),
                               Text(
                                 "Purchase  Date",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w700,
                                     fontSize: width/97.57, color: const Color(0xff000000)),
                               ),
@@ -1116,7 +1116,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                 ),
                                 child:
                                 TextField(
-                                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,),
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
                                   controller: purchase_Date,
                                   focusNode: purchase_date,
                                   decoration: InputDecoration(
@@ -1165,7 +1165,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               ),
                               Text(
                                 "Payment Mode",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w700,
                                     fontSize: width/97.57, color: const Color(0xff000000)),
                               ),
@@ -1182,7 +1182,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                   value: Payments,
                                   focusNode: purchase_payment,
                                   isExpanded: true,
-                                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w700, fontSize: width/105.07),
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700, fontSize: width/105.07),
                                   underline: Container(
                                     color: Colors.deepPurpleAccent,
                                   ),
@@ -1221,7 +1221,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               ),
                               Text(
                                 "Purchase Notes",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w700,
                                     fontSize: width/97.57, color: const Color(0xff000000)),
                               ),
@@ -1235,7 +1235,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                 decoration: const BoxDecoration(
                                   color: Colors.white,),
                                 child: TextField(
-                                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                   controller: purchase_notes,
                                   focusNode: purchase_note,
                                   decoration: InputDecoration(
@@ -1267,7 +1267,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                               Text(
                                 "Credit Days",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w700,
                                     fontSize: width/97.57, color: const Color(0xff000000)),
                               ),
@@ -1283,7 +1283,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                 decoration: const BoxDecoration(
                                   color: Colors.white,),
                                 child: TextField(
-                                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                   controller: Creadit_days,
                                   focusNode: Creditnoptes,
                                   decoration: InputDecoration(
@@ -1313,7 +1313,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               ),
                               Text(
                                 "Reason",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w700,
                                     fontSize: width/97.57, color: const Color(0xff000000)),
                               ),
@@ -1328,7 +1328,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                   color: Colors.white,),
                                 child:
                                 TextField(
-                                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                   controller: Reasoncontroller,
                                   decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(
@@ -1372,7 +1372,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           SizedBox(
                             width: width/45.533,
                             child:
-                            Center(child: Text("",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                           //itemid
@@ -1380,14 +1380,14 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             width: width/14.2,
 
                             child:
-                            Center(child: Text("Item ID",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Item ID",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                           //itemname
                           SizedBox(
                             width: width/3.7,
 
-                            child:Center(child: Text("Item Name",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            child:Center(child: Text("Item Name",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
 
 
                           ),
@@ -1396,7 +1396,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           SizedBox(
                             width: width/16.8,
                             child:
-                            Center(child: Text("Box No",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Box No",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                           //Hsn Code
@@ -1404,7 +1404,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             width: width/17.8,
 
                             child:
-                            Center(child: Text("HSN Code",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("HSN Code",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                           //tax
@@ -1412,14 +1412,14 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             width: width/17.18,
 
                             child:
-                            Center(child: Text("Tax %",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Tax %",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                           //quvantity
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Qnty",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Qnty",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
 
@@ -1427,7 +1427,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Price",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Price",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                           //landing cost
@@ -1435,21 +1435,21 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             width: width/15.18,
 
                             child:
-                            Center(child: Text("Landing Cost",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),textAlign: TextAlign.center,)),
+                            Center(child: Text("Landing Cost",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),textAlign: TextAlign.center,)),
                           ),
 
                           //Sales Price
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Sales Price",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Sales Price",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                           //value
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Value",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color: Colors.redAccent),)),
+                            Center(child: Text("Value",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.redAccent),)),
                           ),
 
                           //Low order quvantity
@@ -1459,14 +1459,14 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             child:
                             Center(child: Text("A\nQnty",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                           SizedBox(
                             width: width/25.18,
 
                             child:
-                            Center(child: Text("Stk",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Stk",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
 
@@ -1474,7 +1474,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Clear ",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Clear ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                           ),
 
                         ],
@@ -1547,7 +1547,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                            style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: itemid,
                             focusNode: items_id,
                             decoration: InputDecoration(
@@ -1602,7 +1602,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                   onTap: () => onSelected(option),
                                                   child: Padding(
                                                     padding: const EdgeInsets.all(16.0),
-                                                    child: Text(option,style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),),
+                                                    child: Text(option,style: GoogleFonts.openSans(fontWeight: FontWeight.w700),),
                                                   ),
                                                 );
                                               },
@@ -1655,7 +1655,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: Box_NO,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -1677,7 +1677,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: HSN_Code,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -1698,7 +1698,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: taxitem,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -1717,7 +1717,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: Qty,
                             focusNode: Quvantitylist,
                             decoration: InputDecoration(
@@ -1752,7 +1752,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: Purchase_price,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -1775,7 +1775,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: Landing_cost,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -1795,7 +1795,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: Sales,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -1815,7 +1815,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700,color:Colors.red),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.red),
                             controller: valueitem,
                             focusNode: items_value,
                             decoration: InputDecoration(
@@ -1852,7 +1852,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: Loworder,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -1871,7 +1871,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               )
                           ),
                           child: TextField(
-                              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                             controller: Stocks,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -2031,7 +2031,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                   Text(
                                                     "IMEI No: ${stocksitem['Imei no']
                                                         .toString()}",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                       color: Colors.green,
                                                         textStyle:  TextStyle(
                                                             overflow: TextOverflow
@@ -2041,7 +2041,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                   Text(
                                                     "Serial No: ${stocksitem['Serial no']
                                                         .toString()}",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.green,
                                                         textStyle: const TextStyle(
                                                             overflow: TextOverflow
@@ -2051,7 +2051,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                   Text(
                                                     "Color: ${stocksitem['color']
                                                         .toString()}",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         color: Colors.green,
                                                         textStyle:  TextStyle(
                                                             overflow: TextOverflow
@@ -2377,7 +2377,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                 Text(
                                                   "IMEI No: ${stocksitem['returnimei']
                                                       .toString()}",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       textStyle: const TextStyle(
                                                           overflow: TextOverflow
                                                               .ellipsis)),
@@ -2386,7 +2386,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                 Text(
                                                   "Serial No: ${stocksitem['returnserial']
                                                       .toString()}",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       textStyle: const TextStyle(
                                                           overflow: TextOverflow
                                                               .ellipsis)),
@@ -2395,7 +2395,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                 Text(
                                                   "Color: ${stocksitem['returncolor']
                                                       .toString()}",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       textStyle: const TextStyle(
                                                           overflow: TextOverflow
                                                               .ellipsis)),
@@ -2739,7 +2739,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                       child: Text(
                                         "Update Invoice",
                                         style:
-                                        GoogleFonts.poppins(color: Colors.white),
+                                        GoogleFonts.openSans(color: Colors.white),
                                       )),
                                 ),
                               ),
@@ -2770,7 +2770,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                       child: Text(
                                         "Update And Print Invoice",
                                         style:
-                                        GoogleFonts.poppins(color: Colors.white),
+                                        GoogleFonts.openSans(color: Colors.white),
                                       )),
                                 ),
                               ),
@@ -2803,7 +2803,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             //             children: [
                             //               Text(
                             //                 "Payment",
-                            //                 style: GoogleFonts.poppins(
+                            //                 style: GoogleFonts.openSans(
                             //                     fontWeight: FontWeight.w600,
                             //                     color: Colors.white,
                             //                     fontSize: width / 85.375),
@@ -2817,7 +2817,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             //                 dropdownStyleData: DropdownStyleData(
                             //                   decoration: BoxDecoration(color: Color(0xff00A99D))
                             //                 ),
-                            //                 style: GoogleFonts.montserrat(
+                            //                 style: GoogleFonts.openSans(
                             //                     fontWeight: FontWeight.w700,
                             //                     color: Colors.white,
                             //                     fontSize: width / 105.07),
@@ -2871,7 +2871,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                           child: Center(
                                             child: Text(
                                               "Date",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.white,
                                                   fontSize: width / 85.375),
@@ -2892,7 +2892,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                           controller: Currentdatecontroller,
                                           keyboardType:
                                           TextInputType.multiline,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               color: Colors.black,
                                               fontWeight: FontWeight.w700,
                                               fontSize: width / 91.06),
@@ -2931,7 +2931,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                           child: Center(
                                             child: Text(
                                               "Time",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.white,
                                                   fontSize: width / 85.375),
@@ -2952,7 +2952,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                           controller: Currenttimecontroller,
                                           keyboardType:
                                           TextInputType.multiline,
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               color: Colors.black,
                                               fontWeight: FontWeight.w700,
                                               fontSize: width / 91.06),
@@ -3021,7 +3021,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                     width: width / 14.0,
                                                     child: Text(
                                                       "IGST(18%):",
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight:
                                                           FontWeight.w600,
                                                           color: Colors.white,
@@ -3033,7 +3033,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                     height: height / 21.9,
                                                     child: Text(
                                                       "C GST(9%):",
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight:
                                                           FontWeight.w600,
                                                           color: Colors.white,
@@ -3051,7 +3051,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                     child: Center(
                                                       child: Text(
                                                         "",
-                                                        style: GoogleFonts.poppins(
+                                                        style: GoogleFonts.openSans(
                                                             fontWeight:
                                                             FontWeight.w600,
                                                             color: Colors.black,
@@ -3069,7 +3069,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                     child: Center(
                                                       child: Text(
                                                         gettotal==true?"0":   Cgst.toStringAsFixed(2),
-                                                        style: GoogleFonts.poppins(
+                                                        style: GoogleFonts.openSans(
                                                             fontWeight:
                                                             FontWeight.w600,
                                                             color: Colors.black,
@@ -3110,7 +3110,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                     height: height / 21.9,
                                                     child: Text(
                                                       "S GST(9%):",
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight:
                                                           FontWeight.w600,
                                                           color: Colors.white,
@@ -3129,7 +3129,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                     child: Center(
                                                       child: Text(
                                                         gettotal==true?"0":  sgst.toStringAsFixed(2),
-                                                        style: GoogleFonts.poppins(
+                                                        style: GoogleFonts.openSans(
                                                             fontWeight:
                                                             FontWeight.w600,
                                                             color: Colors.black,
@@ -3169,7 +3169,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                   height: height / 19.42,
                                                   child: Text(
                                                     "Round Value",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         fontWeight: FontWeight.w600,
                                                         color: Colors.white,
                                                         fontSize: width / 85.375),
@@ -3188,7 +3188,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                   controller: rounof,
                                                   keyboardType:
                                                   TextInputType.multiline,
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       color: Colors.black,
                                                       fontWeight: FontWeight.w700,
                                                       fontSize: width / 91.06),
@@ -3224,7 +3224,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                   child: Center(
                                                     child: Text(
                                                       "To Pay :",
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight: FontWeight.bold,
                                                           color:  Colors.white,
                                                           fontSize: width / 80.88),
@@ -3242,7 +3242,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                                                     Text(
                                                       Totalamountoftopay.toStringAsFixed(2),
-                                                      style: GoogleFonts.poppins(
+                                                      style: GoogleFonts.openSans(
                                                           fontWeight: FontWeight.bold,
                                                           textStyle: const TextStyle(
                                                               overflow:
@@ -3286,7 +3286,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                               width: width / 17.075,
                                               child: Text(
                                                 "Sub Total",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.w600,
                                                     color: Colors.white,
                                                     fontSize: width / 85.375),
@@ -3298,7 +3298,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                             child: Text(
                                               gettotal==true?"0":": ${totalamount.toStringAsFixed(2)}"
                                               ,
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.white,
                                                   fontSize: width / 85.375),
@@ -3326,7 +3326,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                               child: Center(
                                                 child: Text(
                                                   "Total :",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold,
                                                       color:  Colors.white,
                                                       fontSize: width / 55.88),
@@ -3343,7 +3343,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                               children: [
                                                 Text(
                                               gettotal==true?"0":  TotalAmount2.toStringAsFixed(2),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight: FontWeight.bold,
                                                       textStyle: const TextStyle(
                                                           overflow:
@@ -3384,7 +3384,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                   width: width / 6.106,
                 ),
                 Text("Please Wait",
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600, color: Colors.black))
               ],
             ),
@@ -3447,7 +3447,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               top: height/65.7,bottom: height/65.7),
                           child: Text(
                             "Add New Supplier",
-                            style: GoogleFonts.cairo(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.bold, fontSize: width/59.39,color: const Color(0xffFFFFFF)),
                           ),
                         ),
@@ -3458,15 +3458,15 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                       children: [
                         Padding(
                           padding:  EdgeInsets.only(left:width/21.015,top: height/82.125),
-                          child: Text("Supplier Name *",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("Supplier Name *",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
                         Padding(
                           padding:  EdgeInsets.only(left: width/9.486,top: height/82.125),
-                          child: Text("Supplier Code*",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white)),),
+                          child: Text("Supplier Code*",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white)),),
 
                         Padding(
                           padding:  EdgeInsets.only(left: width/9.757,top: height/82.125),
-                          child: Text("Supplier Address *",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("Supplier Address *",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
                       ],
                     ),
@@ -3486,7 +3486,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               controller: Suppliername,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              style: GoogleFonts.poppins(fontSize:width/91.06),
+                              style: GoogleFonts.openSans(fontSize:width/91.06),
                               decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom: 8),
                                 border: InputBorder.none,
                               ),
@@ -3504,7 +3504,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             controller: Suppliercode,
                             keyboardType: TextInputType.multiline,
                             maxLines: null,
-                            style: GoogleFonts.poppins(fontSize: width/136.6),
+                            style: GoogleFonts.openSans(fontSize: width/136.6),
                             decoration: InputDecoration(contentPadding:
                             EdgeInsets.only(left: width/68.3,bottom: width/82.125),
                               border: InputBorder.none,
@@ -3522,7 +3522,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             controller: SupplierAddress,
                             keyboardType: TextInputType.multiline,
                             maxLines: null,
-                            style: GoogleFonts.poppins(fontSize:width/91.06),
+                            style: GoogleFonts.openSans(fontSize:width/91.06),
                             decoration: InputDecoration(contentPadding:
                             EdgeInsets.only(left:width/68.3,bottom: 8),
                               hintText: "Suppiler Address",
@@ -3540,27 +3540,27 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                         Padding(
                           padding:  EdgeInsets.only(left: width/23.55,top: height/32.85),
-                          child: Text("State",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("State",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
 
                         Padding(
                           padding:  EdgeInsets.only(left: width/6.266,top: height/32.85),
-                          child: Text("City",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("City",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
 
                         Padding(
                           padding:  EdgeInsets.only(left:width/5.991,top: height/32.85),
-                          child: Text("Pincode",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("Pincode",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
 
                         Padding(
                           padding:  EdgeInsets.only(left: width/8.130,top: height/32.85),
-                          child: Text("Mobile Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("Mobile Number",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
 
                         Padding(
                           padding:  EdgeInsets.only(left: width/12.418,top: height/32.85),
-                          child: Text("Mobile Number-2",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("Mobile Number-2",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
 
                       ],
@@ -3644,7 +3644,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               controller: City,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              style: GoogleFonts.poppins(fontSize:width/91.06),
+                              style: GoogleFonts.openSans(fontSize:width/91.06),
                               decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom: 8),
                                 hintText: "",
                                 border: InputBorder.none,
@@ -3661,7 +3661,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               controller: Pincode,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              style: GoogleFonts.poppins(fontSize:width/91.06),
+                              style: GoogleFonts.openSans(fontSize:width/91.06),
                               decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom: 8),
                                 hintText: "",
                                 border: InputBorder.none,
@@ -3679,7 +3679,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               controller: Mobileno,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              style: GoogleFonts.poppins(fontSize:width/91.06),
+                              style: GoogleFonts.openSans(fontSize:width/91.06),
                               decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom: 8),
                                 hintText: "Mobile No 1",
                                 border: InputBorder.none,
@@ -3697,7 +3697,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               controller: Mobileno2,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              style: GoogleFonts.poppins(fontSize:width/91.06),
+                              style: GoogleFonts.openSans(fontSize:width/91.06),
                               decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom: 8),
                                 hintText: "Mobile No 2",
                                 border: InputBorder.none,
@@ -3714,11 +3714,11 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                         Padding(
                           padding:  EdgeInsets.only(left: width/24.39,top: height/32.85),
 
-                          child: Text("EMail Id",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("EMail Id",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
                         Padding(
                           padding:  EdgeInsets.only(left: width/6.898,top: height/32.85),
-                          child: Text("GST Number",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                          child: Text("GST Number",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                         ),
 
                       ],
@@ -3739,7 +3739,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               controller: Supplieremail,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              style: GoogleFonts.poppins(fontSize:width/91.06),
+                              style: GoogleFonts.openSans(fontSize:width/91.06),
                               decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom: 8),
                                 border: InputBorder.none,  hintText: "Email",
 
@@ -3757,7 +3757,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               controller: Panno,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              style: GoogleFonts.poppins(fontSize:width/91.06),
+                              style: GoogleFonts.openSans(fontSize:width/91.06),
                               decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3,bottom: 8),
                                 hintText: "GSt No",
                                 border: InputBorder.none,
@@ -3771,7 +3771,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                     Padding(
                       padding:  EdgeInsets.only(top: height/32.85,right:width/ 1.258),
-                      child: Text("Remarks",style: GoogleFonts.poppins(fontSize:width/97.57,color: Colors.white),),
+                      child: Text("Remarks",style: GoogleFonts.openSans(fontSize:width/97.57,color: Colors.white),),
                     ),
 
                     Padding(
@@ -3783,9 +3783,9 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           controller: Remarks,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
-                          style: GoogleFonts.poppins(fontSize:width/91.06),
+                          style: GoogleFonts.openSans(fontSize:width/91.06),
                           decoration: InputDecoration(contentPadding: EdgeInsets.only(left:width/68.3),
-                            hintStyle: GoogleFonts.poppins(color: Colors.black),
+                            hintStyle: GoogleFonts.openSans(color: Colors.black),
                             border: InputBorder.none,
                           ),
                         ),
@@ -3806,7 +3806,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               //color: Color(0xffD60A0B),
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
                                 color: const Color(0xffD60A0B),),child: Center(child: Text("Save Supplier",style:
-                              GoogleFonts.poppins(color: Colors.white,fontSize:width/91.06),)),
+                              GoogleFonts.openSans(color: Colors.white,fontSize:width/91.06),)),
                             ),
                           ),
                         ),
@@ -3820,7 +3820,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               height:  height/16.42,
                               //color: Color(0xffD60A0B),
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                                color: const Color(0xff00A0E3),),child: Center(child: Text("Reset",style: GoogleFonts.poppins(color: Colors.white),)),
+                                color: const Color(0xff00A0E3),),child: Center(child: Text("Reset",style: GoogleFonts.openSans(color: Colors.white),)),
                             ),
                           ),
                         ),
@@ -3857,7 +3857,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                 child: Column(
                   children: [
                     SizedBox(height: height/32.85,),
-                    Text("Add a Supplier Item Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Supplier Item Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -3893,7 +3893,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               child: Center(
                                 child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -3920,7 +3920,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               ),
                               child: Center(
                                 child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,
@@ -4867,7 +4867,7 @@ String  creaditedatevalue="";
                 child: Column(
                   children: [
                     SizedBox(height: height/32.85,),
-                    Text("This Customer Already Exist in List.....",style: GoogleFonts.poppins(
+                    Text("This Customer Already Exist in List.....",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -4900,7 +4900,7 @@ String  creaditedatevalue="";
                           child: Center(
                             child: Text(
                                 "Okay",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.openSans(
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w500,
                                     fontSize: width/85.375, color: Colors.white)
@@ -4993,7 +4993,7 @@ String  creaditedatevalue="";
                                             children: [
                                               SizedBox(
                                                   width:width/11.38,
-                                                  child: Text("IMEi No",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                                                  child: Text("IMEi No",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
                                               SizedBox(width:width/136.6),
                                               Material(
                                                   color: Colors.white,
@@ -5007,13 +5007,13 @@ String  creaditedatevalue="";
                                                         color: Colors.grey.shade200
                                                     ),
                                                     child: TextField(
-                                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                       controller: _controller[index],
                                                       decoration: InputDecoration(
                                                         hintText: "Enter the IMEI NO",
                                                         border: InputBorder.none,
                                                         contentPadding: EdgeInsets.only(left:width/136.6),
-                                                        hintStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                        hintStyle: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                       ),
                                                       onSubmitted: (_){
 
@@ -5035,7 +5035,7 @@ String  creaditedatevalue="";
 
                                               SizedBox(
                                                   width:width/11.38,
-                                                  child: Text("Serial No",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                                                  child: Text("Serial No",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
 
                                               SizedBox(width:width/136.6),
 
@@ -5051,13 +5051,13 @@ String  creaditedatevalue="";
                                                           color: Colors.grey.shade200
                                                       ),
                                                       child:TextField(
-                                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                         controller: _controller2[index],
                                                         decoration: InputDecoration(
                                                           hintText: "Enter the Serial NO",
                                                           border: InputBorder.none,
                                                           contentPadding: EdgeInsets.only(left:width/136.6),
-                                                          hintStyle:  GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                          hintStyle:  GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                         ),
                                                         onSubmitted: (_){
 
@@ -5079,7 +5079,7 @@ String  creaditedatevalue="";
 
                                               SizedBox(
                                                   width:width/11.38,
-                                                  child: Text("Color",style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),)),
+                                                  child: Text("Color",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
 
                                               SizedBox(width:width/136.6),
 
@@ -5095,13 +5095,13 @@ String  creaditedatevalue="";
                                                           color: Colors.grey.shade200
                                                       ),
                                                       child:TextField(
-                                                        style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                         controller: _controller3[index],
                                                         decoration: InputDecoration(
                                                           hintText: "Color",
                                                           border: InputBorder.none,
                                                           contentPadding: EdgeInsets.only(left:width/136.6),
-                                                          hintStyle:   GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                          hintStyle:   GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                         ),
                                                         onSubmitted: (_){
 
@@ -5165,7 +5165,7 @@ String  creaditedatevalue="";
                                     child: Center(
                                       child: Text(
                                           "Okay",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width/85.375, color: Colors.white)
@@ -5194,7 +5194,7 @@ String  creaditedatevalue="";
                                     child: Center(
                                       child: Text(
                                           "Cancel",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width/85.375, color: Colors.white)
@@ -5325,7 +5325,7 @@ String  creaditedatevalue="";
                                                     width: width / 11.38,
                                                     child: Text(
                                                       "IMEi No",
-                                                      style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                     )),
                                                 SizedBox(
                                                     width: width / 136.6),
@@ -5365,7 +5365,7 @@ String  creaditedatevalue="";
                                                         textFieldConfiguration:
                                                         TextFieldConfiguration(
                                                           maxLines: null,
-                                                          style: GoogleFonts.poppins(fontWeight: FontWeight.w700,fontSize: width / 91.06),
+                                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width / 91.06),
                                                           decoration:
                                                           InputDecoration(
                                                             contentPadding: EdgeInsets.only(left: width / 136.6, bottom: 8),
@@ -5384,7 +5384,7 @@ String  creaditedatevalue="";
                                                             suggestion) {
                                                           return ListTile(
                                                             title: Text(
-                                                                suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                 maxLines:
                                                                 null),
                                                           );
@@ -5508,7 +5508,7 @@ String  creaditedatevalue="";
                                                             suggestion) {
                                                           return ListTile(
                                                             title: Text(
-                                                                suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                 maxLines:
                                                                 null),
                                                           );
@@ -5633,7 +5633,7 @@ String  creaditedatevalue="";
                                                             suggestion) {
                                                           return ListTile(
                                                             title: Text(
-                                                                suggestion, style: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
+                                                                suggestion, style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
                                                                 maxLines:
                                                                 null),
                                                           );
@@ -5746,7 +5746,7 @@ String  creaditedatevalue="";
                                     child: Center(
                                       child: Text(
                                           "Okay",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width/85.375, color: Colors.white)
@@ -5775,7 +5775,7 @@ String  creaditedatevalue="";
                                     child: Center(
                                       child: Text(
                                           "Cancel",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width/85.375, color: Colors.white)

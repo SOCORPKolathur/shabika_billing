@@ -524,7 +524,7 @@ datefun(){
 
             Text(
               "Shabika G",
-              style: GoogleFonts.solway(
+              style: GoogleFonts.openSans(
                   color: Colors.white, fontSize: width / 80.353),
             ),
 
@@ -564,7 +564,7 @@ datefun(){
 
             Text(
               "Shabika N",
-              style: GoogleFonts.solway(
+              style: GoogleFonts.openSans(
                   color: Colors.white, fontSize: width / 80.353),
             ),
           ],
@@ -580,7 +580,7 @@ datefun(){
             Text(
               "Date",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -737,7 +737,7 @@ datefun(){
             Text(
               "Supplier Name",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -761,7 +761,7 @@ datefun(){
                           Suppilercontroller = textEditingController;
                         });
                       },
-                      style: GoogleFonts.montserrat(
+                      style: GoogleFonts.openSans(
                           fontSize: width / 91.06, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -838,7 +838,7 @@ datefun(){
             //Status-1
             Text(
               "Invoice",
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -870,7 +870,7 @@ datefun(){
                             Invoicecontroller = textEditingController;
                           });
                         },
-                        style: GoogleFonts.montserrat(
+                        style: GoogleFonts.openSans(
                             fontSize: width / 91.06,
                             fontWeight: FontWeight.w500),
                         decoration: InputDecoration(
@@ -947,7 +947,7 @@ datefun(){
             Text(
               "Payment\nType",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -965,7 +965,7 @@ datefun(){
                 isExpanded: true,
                 isDense: true,
                 alignment: Alignment.topCenter,
-                style: GoogleFonts.montserrat(
+                style: GoogleFonts.openSans(
                     fontWeight: FontWeight.w700, fontSize: width / 105.07),
                 underline: Container(
                   color: Colors.deepPurpleAccent,
@@ -1039,7 +1039,7 @@ datefun(){
                 child: Center(
                   child: Text(
                     "Clear",
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.openSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
                         fontSize: width / 84.64),
@@ -1062,7 +1062,7 @@ datefun(){
             Text(
               "Total Amount",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -1080,7 +1080,7 @@ datefun(){
                 child: Center(
                     child: Text(
                   salesamount.toStringAsFixed(2),
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.openSans(
                       color: Colors.black,
                       fontWeight: FontWeight.w800,
                       fontSize: width / 88.64),
@@ -1091,7 +1091,7 @@ datefun(){
             Text(
               "Returned Amount",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -1109,7 +1109,7 @@ datefun(){
                 child: Center(
                     child: Text(
                       returnalltotal.toStringAsFixed(2),
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
                           fontSize: width / 88.64),
@@ -1120,7 +1120,7 @@ datefun(){
             Text(
               "Current Balance",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -1138,7 +1138,7 @@ datefun(){
                 child: Center(
                     child: Text(
                       balancealltotal.toStringAsFixed(2),
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.openSans(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
                           fontSize: width / 88.64),
@@ -1149,7 +1149,7 @@ datefun(){
             Text(
               "UnPaid Amount",
               textAlign: TextAlign.start,
-              style: GoogleFonts.montserrat(
+              style: GoogleFonts.openSans(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                   fontSize: width / 98.64),
@@ -1167,7 +1167,7 @@ datefun(){
                 child: Center(
                     child: Text(
                   balanceamountpurchase.toStringAsFixed(2),
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.openSans(
                       color: Colors.black,
                       fontWeight: FontWeight.w800,
                       fontSize: width / 88.64),
@@ -1206,7 +1206,7 @@ datefun(){
                         child: Center(
                             child: Text(
                           "Date",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
                         ))),
@@ -1219,7 +1219,7 @@ datefun(){
                         child: Center(
                             child: Text(
                           "Bill No",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
                         ))),
@@ -1232,7 +1232,7 @@ datefun(){
                         child: Center(
                             child: Text(
                           "Invoice No",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
                         ))),
@@ -1245,7 +1245,7 @@ datefun(){
                         child: Center(
                             child: Text(
                           "Supplier ID",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
                         ))),
@@ -1258,7 +1258,7 @@ datefun(){
                         child: Center(
                             child: Text(
                           "Suppiler Name",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
                         ))),
@@ -1272,7 +1272,7 @@ datefun(){
                             child: Text(
                           "Payment Type",
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
                         )
@@ -1287,7 +1287,7 @@ datefun(){
                         child: Center(
                             child: Text(
                           "Total",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
                         ))),
@@ -1300,7 +1300,7 @@ datefun(){
                         child: Center(
                             child: Text(
                           "Actions",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
                               color: const Color(0xff5801e8)),
                         ))),
@@ -1363,7 +1363,7 @@ datefun(){
                                             child: Center(
                                                 child: Text(
                                               "${buillin1['purchasedate'].toString()}",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                               textAlign: TextAlign.center,
                                             ))),
@@ -1383,7 +1383,7 @@ datefun(){
                                                 Text(
                                                   buillin1['purchaseno']
                                                       .toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight:
                                                           FontWeight.w600),
                                                 ),
@@ -1401,7 +1401,7 @@ datefun(){
                                                 child: Text(
                                               buillin1['suppilierinvoiceno']
                                                   .toString(),
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             ))),
                                         Container(
@@ -1414,7 +1414,7 @@ datefun(){
                                             child: Center(
                                                 child: Text(
                                               buillin1['suppilerid'].toString(),
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             ))),
                                         Container(
@@ -1431,7 +1431,7 @@ datefun(){
                                                 child: Text(
                                               buillin1['suppilername']
                                                   .toString(),
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             ))),
                                         Container(
@@ -1788,7 +1788,7 @@ datefun(){
                                                     buillin1['Totalamount']
                                                         .toString(),
                                                     style:
-                                                    GoogleFonts.montserrat(
+                                                    GoogleFonts.openSans(
                                                         fontWeight:
                                                         FontWeight
                                                             .w600),
@@ -2065,7 +2065,7 @@ datefun(){
                                                     buillin1['Totalamount']
                                                         .toString(),
                                                     style:
-                                                    GoogleFonts.montserrat(
+                                                    GoogleFonts.openSans(
                                                         fontWeight:
                                                         FontWeight
                                                             .w600),
@@ -2195,7 +2195,7 @@ datefun(){
                                           child: Center(
                                               child: Text(
                                             "${buillin1['purchasedate'].toString()}",
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                             textAlign: TextAlign.center,
                                           ))),
@@ -2215,7 +2215,7 @@ datefun(){
                                               Text(
                                                 buillin1['purchaseno']
                                                     .toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
@@ -2233,7 +2233,7 @@ datefun(){
                                               child: Text(
                                             buillin1['suppilierinvoiceno']
                                                 .toString(),
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           ))),
                                       Container(
@@ -2246,7 +2246,7 @@ datefun(){
                                           child: Center(
                                               child: Text(
                                             buillin1['suppilerid'].toString(),
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           ))),
                                       Container(
@@ -2262,7 +2262,7 @@ datefun(){
                                           child: Center(
                                               child: Text(
                                             buillin1['suppilername'].toString(),
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           ))),
                                       Container(
@@ -2340,7 +2340,7 @@ datefun(){
                                                     buillin1['Totalamount']
                                                         .toString(),
                                                     style:
-                                                        GoogleFonts.montserrat(
+                                                        GoogleFonts.openSans(
                                                             fontWeight:
                                                                 FontWeight
                                                                     .w600),
@@ -2615,7 +2615,7 @@ datefun(){
                                                   buillin1['Totalamount']
                                                       .toString(),
                                                   style:
-                                                  GoogleFonts.montserrat(
+                                                  GoogleFonts.openSans(
                                                       fontWeight:
                                                       FontWeight
                                                           .w600),
@@ -2884,7 +2884,7 @@ datefun(){
                                                   buillin1['Totalamount']
                                                       .toString(),
                                                   style:
-                                                  GoogleFonts.montserrat(
+                                                  GoogleFonts.openSans(
                                                       fontWeight:
                                                       FontWeight
                                                           .w600),
@@ -3001,7 +3001,7 @@ datefun(){
                                           child: Center(
                                               child: Text(
                                             "${buillin1['purchasedate'].toString()}",
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                             textAlign: TextAlign.center,
                                           ))),
@@ -3021,7 +3021,7 @@ datefun(){
                                               Text(
                                                 buillin1['purchaseno']
                                                     .toString(),
-                                                style: GoogleFonts.montserrat(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
@@ -3039,7 +3039,7 @@ datefun(){
                                               child: Text(
                                             buillin1['suppilierinvoiceno']
                                                 .toString(),
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           ))),
                                       Container(
@@ -3052,7 +3052,7 @@ datefun(){
                                           child: Center(
                                               child: Text(
                                             buillin1['suppilerid'].toString(),
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           ))),
                                       Container(
@@ -3068,7 +3068,7 @@ datefun(){
                                           child: Center(
                                               child: Text(
                                             buillin1['suppilername'].toString(),
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           ))),
                                       Container(
@@ -3146,7 +3146,7 @@ datefun(){
                                                     buillin1['Totalamount']
                                                         .toString(),
                                                     style:
-                                                        GoogleFonts.montserrat(
+                                                        GoogleFonts.openSans(
                                                             fontWeight:
                                                                 FontWeight
                                                                     .w600),
@@ -3258,7 +3258,7 @@ datefun(){
                                         child: Center(
                                             child: Text(
                                           "${buillin1['purchasedate'].toString()}",
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                           textAlign: TextAlign.center,
                                         ))),
@@ -3277,7 +3277,7 @@ datefun(){
                                           children: [
                                             Text(
                                               buillin1['purchaseno'].toString(),
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             ),
 
@@ -3294,7 +3294,7 @@ datefun(){
                                             child: Text(
                                           buillin1['suppilierinvoiceno']
                                               .toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
                                     Container(
@@ -3307,7 +3307,7 @@ datefun(){
                                         child: Center(
                                             child: Text(
                                           buillin1['suppilerid'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
                                     Container(
@@ -3323,7 +3323,7 @@ datefun(){
                                         child: Center(
                                             child: Text(
                                           buillin1['suppilername'].toString(),
-                                          style: GoogleFonts.montserrat(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.w600),
                                         ))),
                                     Container(
@@ -3398,7 +3398,7 @@ datefun(){
                                                 child: Text(
                                                   buillin1['Totalamount']
                                                       .toString(),
-                                                  style: GoogleFonts.montserrat(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight:
                                                           FontWeight.w600),
                                                 ),
@@ -3697,7 +3697,7 @@ datefun(){
                         SizedBox(height: height / 45.53),
                         Text(
                           "Edit the Purchase Reports",
-                          style: GoogleFonts.montserrat(
+                          style: GoogleFonts.openSans(
                               fontWeight: FontWeight.w600),
                         ),
                         SizedBox(height: height / 45.53),
@@ -3718,7 +3718,7 @@ datefun(){
                                             width: width / 11.38,
                                             child: Text(
                                               "Invoice No",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             )),
                                         SizedBox(width: width / 136.6),
@@ -3734,7 +3734,7 @@ datefun(){
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: Purchasename,
                                                 decoration: InputDecoration(
                                                   hintText: "Enter the IMEI NO",
@@ -3743,7 +3743,7 @@ datefun(){
                                                       EdgeInsets.only(
                                                           left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {},
                                               ),
@@ -3763,7 +3763,7 @@ datefun(){
                                             width: width / 11.38,
                                             child: Text(
                                               "Purchase Date",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             )),
                                         SizedBox(width: width / 136.6),
@@ -3779,7 +3779,7 @@ datefun(){
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: Purchasedate,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
@@ -3787,7 +3787,7 @@ datefun(){
                                                       EdgeInsets.only(
                                                           left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {},
                                               ),
@@ -3807,7 +3807,7 @@ datefun(){
                                             width: width / 11.38,
                                             child: Text(
                                               "Suppiler ID",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             )),
                                         SizedBox(width: width / 136.6),
@@ -3823,7 +3823,7 @@ datefun(){
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: Suppilerid,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
@@ -3831,7 +3831,7 @@ datefun(){
                                                       EdgeInsets.only(
                                                           left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {},
                                               ),
@@ -3851,7 +3851,7 @@ datefun(){
                                             width: width / 11.38,
                                             child: Text(
                                               "Suppiler Name",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             )),
                                         SizedBox(width: width / 136.6),
@@ -3867,7 +3867,7 @@ datefun(){
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: Suppilername,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
@@ -3875,7 +3875,7 @@ datefun(){
                                                       EdgeInsets.only(
                                                           left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {},
                                               ),
@@ -3895,7 +3895,7 @@ datefun(){
                                             width: width / 11.38,
                                             child: Text(
                                               "Hsn No",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             )),
                                         SizedBox(width: width / 136.6),
@@ -3911,7 +3911,7 @@ datefun(){
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: Hsncode,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
@@ -3919,7 +3919,7 @@ datefun(){
                                                       EdgeInsets.only(
                                                           left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {},
                                               ),
@@ -3939,7 +3939,7 @@ datefun(){
                                             width: width / 11.38,
                                             child: Text(
                                               "Payment",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             )),
                                         SizedBox(width: width / 136.6),
@@ -3955,7 +3955,7 @@ datefun(){
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: Payment,
                                                 decoration: InputDecoration(
                                                   border: InputBorder.none,
@@ -3963,7 +3963,7 @@ datefun(){
                                                       EdgeInsets.only(
                                                           left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {},
                                               ),
@@ -3983,7 +3983,7 @@ datefun(){
                                             width: width / 11.38,
                                             child: Text(
                                               "Total",
-                                              style: GoogleFonts.montserrat(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.w600),
                                             )),
                                         SizedBox(width: width / 136.6),
@@ -3999,7 +3999,7 @@ datefun(){
                                                       BorderRadius.circular(5),
                                                   color: Colors.grey.shade200),
                                               child: TextField(
-                                                style: GoogleFonts.montserrat(),
+                                                style: GoogleFonts.openSans(),
                                                 controller: Totalamount,
                                                 readOnly: true,
                                                 decoration: InputDecoration(
@@ -4008,7 +4008,7 @@ datefun(){
                                                       EdgeInsets.only(
                                                           left: width / 136.6),
                                                   hintStyle:
-                                                      GoogleFonts.montserrat(),
+                                                      GoogleFonts.openSans(),
                                                 ),
                                                 onSubmitted: (_) {},
                                               ),
@@ -4038,7 +4038,7 @@ datefun(){
                               ),
                               child: Center(
                                 child: Text("Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,
@@ -4132,7 +4132,7 @@ datefun(){
                       Text(
                         "Edit the Purchase Reports",
                         style:
-                            GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                            GoogleFonts.openSans(fontWeight: FontWeight.w600),
                       ),
                       SizedBox(
                         height: height / 131.4,
@@ -4153,7 +4153,7 @@ datefun(){
                                           width: width / 11.38,
                                           child: Text(
                                             "Description",
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           )),
                                       SizedBox(width: width / 136.6),
@@ -4169,14 +4169,14 @@ datefun(){
                                                     BorderRadius.circular(5),
                                                 color: Colors.grey.shade200),
                                             child: TextField(
-                                              style: GoogleFonts.montserrat(),
+                                              style: GoogleFonts.openSans(),
                                               controller: Decription,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: width / 136.6),
                                                 hintStyle:
-                                                    GoogleFonts.montserrat(),
+                                                    GoogleFonts.openSans(),
                                               ),
                                               onSubmitted: (_) {},
                                             ),
@@ -4195,7 +4195,7 @@ datefun(){
                                           width: width / 11.38,
                                           child: Text(
                                             "HSN code",
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           )),
                                       SizedBox(width: width / 136.6),
@@ -4211,14 +4211,14 @@ datefun(){
                                                     BorderRadius.circular(5),
                                                 color: Colors.grey.shade200),
                                             child: TextField(
-                                              style: GoogleFonts.montserrat(),
+                                              style: GoogleFonts.openSans(),
                                               controller: Hsncode2,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: width / 136.6),
                                                 hintStyle:
-                                                    GoogleFonts.montserrat(),
+                                                    GoogleFonts.openSans(),
                                               ),
                                               onSubmitted: (_) {},
                                             ),
@@ -4237,7 +4237,7 @@ datefun(){
                                           width: width / 11.38,
                                           child: Text(
                                             "Quantity",
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           )),
                                       SizedBox(width: width / 136.6),
@@ -4253,14 +4253,14 @@ datefun(){
                                                     BorderRadius.circular(5),
                                                 color: Colors.grey.shade200),
                                             child: TextField(
-                                              style: GoogleFonts.montserrat(),
+                                              style: GoogleFonts.openSans(),
                                               controller: Quvantity,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: width / 136.6),
                                                 hintStyle:
-                                                    GoogleFonts.montserrat(),
+                                                    GoogleFonts.openSans(),
                                               ),
                                               onSubmitted: (_) {},
                                             ),
@@ -4279,7 +4279,7 @@ datefun(){
                                           width: width / 11.38,
                                           child: Text(
                                             "Rate",
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           )),
                                       SizedBox(width: width / 136.6),
@@ -4295,14 +4295,14 @@ datefun(){
                                                     BorderRadius.circular(5),
                                                 color: Colors.grey.shade200),
                                             child: TextField(
-                                              style: GoogleFonts.montserrat(),
+                                              style: GoogleFonts.openSans(),
                                               controller: Rate,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: width / 136.6),
                                                 hintStyle:
-                                                    GoogleFonts.montserrat(),
+                                                    GoogleFonts.openSans(),
                                               ),
                                               onSubmitted: (_) {},
                                             ),
@@ -4321,7 +4321,7 @@ datefun(){
                                           width: width / 11.38,
                                           child: Text(
                                             "Tax",
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           )),
                                       SizedBox(width: width / 136.6),
@@ -4337,14 +4337,14 @@ datefun(){
                                                     BorderRadius.circular(5),
                                                 color: Colors.grey.shade200),
                                             child: TextField(
-                                              style: GoogleFonts.montserrat(),
+                                              style: GoogleFonts.openSans(),
                                               controller: Tax,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
                                                     left: width / 136.6),
                                                 hintStyle:
-                                                    GoogleFonts.montserrat(),
+                                                    GoogleFonts.openSans(),
                                               ),
                                               onSubmitted: (_) {},
                                             ),
@@ -4364,7 +4364,7 @@ datefun(){
                                           width: width / 11.38,
                                           child: Text(
                                             "Total",
-                                            style: GoogleFonts.montserrat(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600),
                                           )),
                                       SizedBox(width: width / 136.6),
@@ -4380,7 +4380,7 @@ datefun(){
                                                     BorderRadius.circular(5),
                                                 color: Colors.grey.shade200),
                                             child: TextField(
-                                              style: GoogleFonts.montserrat(),
+                                              style: GoogleFonts.openSans(),
                                               controller: Amount,
                                               readOnly: true,
                                               decoration: InputDecoration(
@@ -4388,7 +4388,7 @@ datefun(){
                                                 contentPadding: EdgeInsets.only(
                                                     left: width / 136.6),
                                                 hintStyle:
-                                                    GoogleFonts.montserrat(),
+                                                    GoogleFonts.openSans(),
                                               ),
                                               onSubmitted: (_) {},
                                             ),
@@ -4418,7 +4418,7 @@ datefun(){
                             ),
                             child: Center(
                               child: Text("Okay",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
@@ -4496,7 +4496,7 @@ double viewalltotal=0;
                                 ),
                                 Text(
                                   "Purchase Details",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w700),
                                 ),
@@ -4537,7 +4537,7 @@ double viewalltotal=0;
                                   child: Center(
                                       child: Text(
                                     "Invoice: ${invoice.toString()}",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold),
                                   )),
                                 ),
@@ -4547,7 +4547,7 @@ double viewalltotal=0;
                                   child: Center(
                                       child: Text(
                                     "Date: ${invoice_date.toString()}",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold),
                                   )),
                                 ),
@@ -4557,7 +4557,7 @@ double viewalltotal=0;
                                   child: Center(
                                       child: Text(
                                     "Supplier Name: ${Suppiler.toString()}",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold),
                                   )),
                                 ),
@@ -4574,7 +4574,7 @@ double viewalltotal=0;
                                         child: Center(
                                             child: Text(
                                           "Date To Be Paid :  ${creaditupdatedate.toString()}",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white),
                                         )),
@@ -4600,7 +4600,7 @@ double viewalltotal=0;
                                   child: Center(
                                       child: Text(
                                     "Si.No",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4616,7 +4616,7 @@ double viewalltotal=0;
                                       child: Text(
                                     "Date\nTime",
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4632,7 +4632,7 @@ double viewalltotal=0;
                                       child: Text(
                                     "Item Code",
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4648,7 +4648,7 @@ double viewalltotal=0;
                                       child: Text(
                                     'Description',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4664,7 +4664,7 @@ double viewalltotal=0;
                                       child: Text(
                                     'Hsn\nCode',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4680,7 +4680,7 @@ double viewalltotal=0;
                                       child: Text(
                                     'Payment',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4696,7 +4696,7 @@ double viewalltotal=0;
                                       child: Text(
                                     "Qty",
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4712,7 +4712,7 @@ double viewalltotal=0;
                                       child: Text(
                                     'Purchase\nPrice',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4728,7 +4728,7 @@ double viewalltotal=0;
                                       child: Text(
                                     'Landing\nCost',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4744,7 +4744,7 @@ double viewalltotal=0;
                                       child: Text(
                                     'Sales\nPrice',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4760,7 +4760,7 @@ double viewalltotal=0;
                                       child: Text(
                                     'Tax',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4776,7 +4776,7 @@ double viewalltotal=0;
                                       child: Text(
                                     "Total",
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -4828,7 +4828,7 @@ double viewalltotal=0;
                                             child: Center(
                                                 child: Text(
                                               "${index + 1}",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -4843,7 +4843,7 @@ double viewalltotal=0;
                                                 child: Text(
                                               "${purchase['date']}\n${purchase['time']}"
                                                   .toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -4862,7 +4862,7 @@ double viewalltotal=0;
                                               children: [
                                                 Text(
                                                   "${purchase['itemcode']}",
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -4887,7 +4887,7 @@ double viewalltotal=0;
                                                 Text(
                                                   purchase['Description']
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       textStyle: const TextStyle(
@@ -4932,7 +4932,7 @@ double viewalltotal=0;
                                             child: Center(
                                                 child: Text(
                                               purchase['Hsncode'].toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -4947,7 +4947,7 @@ double viewalltotal=0;
                                                 child: Text(
                                               purchase['Payment mode']
                                                   .toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -4961,7 +4961,7 @@ double viewalltotal=0;
                                             child: Center(
                                                 child: Text(
                                               purchase["Qty"].toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -4976,7 +4976,7 @@ double viewalltotal=0;
                                                 child: Text(
                                               purchase['Purchase price']
                                                   .toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -4991,7 +4991,7 @@ double viewalltotal=0;
                                                 child: Text(
                                               purchase['Landing cost']
                                                   .toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -5006,7 +5006,7 @@ double viewalltotal=0;
                                                 child: Text(
                                               purchase['Sales price']
                                                   .toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -5020,7 +5020,7 @@ double viewalltotal=0;
                                             child: Center(
                                                 child: Text(
                                               purchase['tax'].toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -5034,7 +5034,7 @@ double viewalltotal=0;
                                             child: Center(
                                                 child: Text(
                                               "${purchase['Total']}".toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold),
                                             )),
                                           ),
@@ -5068,7 +5068,7 @@ double viewalltotal=0;
                                             color: Colors.green),
                                         child: Center(
                                             child: Text("View All",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.white,
                                                     fontSize: width / 91.06))),
@@ -5087,13 +5087,13 @@ double viewalltotal=0;
                                         child: status2 == true
                                             ? Text(
                                                 "Sub Total: ${purchasenTotalAmount.toString()}",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.indigoAccent,
                                                     fontSize: width / 91.06))
                                             : Text(
                                                 "Sub Total: ${Total.toStringAsFixed(2)}",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.indigoAccent,
                                                     fontSize: width / 91.06)),
@@ -5115,7 +5115,7 @@ double viewalltotal=0;
                                           color: Color(0xff128c7e)),
                                       child: Center(
                                         child: Text("Sold Cost: ${soldtotal.toStringAsFixed(2)}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                               color: Colors.white,
                                                 fontWeight: FontWeight.w600)),
                                       ),
@@ -5129,7 +5129,7 @@ double viewalltotal=0;
                                           color: Colors.grey.shade200),
                                       child: Center(
                                         child: Text("SGST(9%): ${SGST.toString()}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600)),
                                       ),
                                     ),
@@ -5149,7 +5149,7 @@ double viewalltotal=0;
                                           color: Color(0xff128c7e)),
                                       child: Center(
                                         child: Text("Return Cost: ${returnedtotal.toStringAsFixed(2)}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w600)),
                                       ),
@@ -5163,7 +5163,7 @@ double viewalltotal=0;
                                           color: Colors.grey.shade200),
                                       child: Center(
                                         child: Text("CGST(9%): ${CGST.toString()}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.w600)),
                                       ),
                                     ),
@@ -5181,7 +5181,7 @@ double viewalltotal=0;
                                           color: Color(0xff128c7e)),
                                       child: Center(
                                         child: Text("Balance Cost: ${balancetotal.toStringAsFixed(2)}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w600)),
                                       ),
@@ -5196,7 +5196,7 @@ double viewalltotal=0;
                                       child: Center(
                                         child: Text(
                                             "Total: ${TotalAmount.toString()}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.red,
                                                 fontSize: width / 75.88)),
@@ -5222,7 +5222,7 @@ double viewalltotal=0;
                                               CrossAxisAlignment.center,
                                           children: [
                                              Text("Payed : ${(double.parse(TotalAmount.toString())-double.parse(balanceamount.toString())).toString()}",
-                                                    style: GoogleFonts.poppins(
+                                                    style: GoogleFonts.openSans(
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         color: Colors.white,
@@ -5253,7 +5253,7 @@ double viewalltotal=0;
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text("Balance : ${balanceamount.toStringAsFixed(2)}",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.white,
                                                     fontSize: width / 85.375,
@@ -5280,7 +5280,7 @@ double viewalltotal=0;
                                               color: const Color(0xff34b7f1)),
                                           child: Center(
                                             child: Text("Pay Now",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.white,
                                                   fontSize: width / 85.375,
@@ -5305,7 +5305,7 @@ double viewalltotal=0;
                                               color: const Color(0xff322653)),
                                           child: Center(
                                             child: Text("Histroy",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.white,
                                                   fontSize: width / 85.375,
@@ -5395,7 +5395,7 @@ print("sddfd---------------------------------------------");
                                 ),
                                 Text(
                                   "Purchase History Payment Details",
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.openSans(
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w700),
                                 ),
@@ -5440,7 +5440,7 @@ print("sddfd---------------------------------------------");
                                   child: Center(
                                       child: Text(
                                     "Si.No",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -5456,7 +5456,7 @@ print("sddfd---------------------------------------------");
                                       child: Text(
                                     "Date\nTime",
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -5472,7 +5472,7 @@ print("sddfd---------------------------------------------");
                                       child: Text(
                                     'Credit\nDate',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -5488,7 +5488,7 @@ print("sddfd---------------------------------------------");
                                       child: Text(
                                     'Extra Credit\nDays',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -5504,7 +5504,7 @@ print("sddfd---------------------------------------------");
                                       child: Text(
                                     'Payment Mode',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -5520,7 +5520,7 @@ print("sddfd---------------------------------------------");
                                       child: Text(
                                     'Amount Paid',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -5536,7 +5536,7 @@ print("sddfd---------------------------------------------");
                                       child: Text(
                                     'Discount',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -5552,7 +5552,7 @@ print("sddfd---------------------------------------------");
                                       child: Text(
                                     'Total',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xff5801e8)),
                                   )),
@@ -5602,7 +5602,7 @@ print("sddfd---------------------------------------------");
                                             child: Center(
                                                 child: Text(
                                               "${index + 1}",
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             )),
@@ -5618,7 +5618,7 @@ print("sddfd---------------------------------------------");
                                                 child: Text(
                                               "${purchase['Date']}\n${purchase['time']}"
                                                   .toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             )),
@@ -5635,7 +5635,7 @@ print("sddfd---------------------------------------------");
                                                 Center(
                                               child: Text(
                                                 purchase['credit date'],
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
@@ -5657,7 +5657,7 @@ print("sddfd---------------------------------------------");
                                                 child: Text(
                                               purchase['credit days']
                                                   .toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                   fontWeight: FontWeight.bold,
                                                   textStyle: const TextStyle(
                                                       overflow: TextOverflow
@@ -5675,7 +5675,7 @@ print("sddfd---------------------------------------------");
                                                 child: Text(
                                               purchase['payment mode']
                                                   .toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             )),
@@ -5690,7 +5690,7 @@ print("sddfd---------------------------------------------");
                                             child: Center(
                                                 child: Text(
                                               purchase['Amount'].toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             )),
@@ -5705,7 +5705,7 @@ print("sddfd---------------------------------------------");
                                             child: Center(
                                                 child: Text(
                                               purchase['discount'].toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             )),
@@ -5721,7 +5721,7 @@ print("sddfd---------------------------------------------");
                                                 child: Text(
                                                   purchase['discount'].toString()!=""&&purchase['discount'].toString()!=" "?
                                       (double.parse(purchase['discount'].toString()) + double.parse(purchase['Amount'].toString())).toString(): purchase['Amount'].toString(),
-                                              style: GoogleFonts.poppins(
+                                              style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             )),
@@ -5750,7 +5750,7 @@ print("sddfd---------------------------------------------");
                                       CrossAxisAlignment.center,
                                       children: [
                                         Text("Total : ${hisbalanceamount.toStringAsFixed(2)}",
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
                                                 fontSize: width / 85.375,
@@ -5812,7 +5812,7 @@ print("sddfd---------------------------------------------");
                           Text(
                             "Payment Details..",
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.w600,
                                 fontSize: width / 68.30,
                                 color: Colors.white),
@@ -5827,7 +5827,7 @@ print("sddfd---------------------------------------------");
                                   width: width / 8.83,
                                   child: Text(
                                     "Total Amount:",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -5866,7 +5866,7 @@ print("sddfd---------------------------------------------");
                                   width: width / 8.83,
                                   child: Text(
                                     "Amount",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -5917,7 +5917,7 @@ print("sddfd---------------------------------------------");
                                   width: width / 8.83,
                                   child: Text(
                                     "Discount",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -5967,7 +5967,7 @@ print("sddfd---------------------------------------------");
                                   width: width / 8.83,
                                   child: Text(
                                     "Balance",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -6006,7 +6006,7 @@ print("sddfd---------------------------------------------");
                                   width: width / 8.83,
                                   child: Text(
                                     "Extra Credit days",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -6045,7 +6045,7 @@ print("sddfd---------------------------------------------");
                                   width: width / 8.83,
                                   child: Text(
                                     "Payment Mode",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -6065,7 +6065,7 @@ print("sddfd---------------------------------------------");
                                   child: DropdownButton2<String>(
                                     value: Payments2,
                                     isExpanded: true,
-                                    style: GoogleFonts.montserrat(
+                                    style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.w700,
                                         fontSize: width / 105.07),
                                     underline: Container(
@@ -6102,7 +6102,7 @@ print("sddfd---------------------------------------------");
                                   width: width / 8.83,
                                   child: Text(
                                     "Date ",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -6141,7 +6141,7 @@ print("sddfd---------------------------------------------");
                                   width: width / 8.83,
                                   child: Text(
                                     "Time ",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         color: Colors.white),
                                   )),
                               SizedBox(
@@ -6195,7 +6195,7 @@ print("sddfd---------------------------------------------");
                                     ),
                                     child: Center(
                                       child: Text("Okay",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width / 85.375,
@@ -6233,7 +6233,7 @@ print("sddfd---------------------------------------------");
                                     ),
                                     child: Center(
                                       child: Text("Cancel",
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.openSans(
                                               letterSpacing: 1.5,
                                               fontWeight: FontWeight.w500,
                                               fontSize: width / 85.375,
@@ -6412,7 +6412,7 @@ print("sddfd---------------------------------------------");
                       ),
                       Text(
                         "Please Fill the Payment Mode",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
                             color: Colors.white),
@@ -6449,7 +6449,7 @@ print("sddfd---------------------------------------------");
                                 ),
                                 child: Center(
                                   child: Text("Okay",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6476,7 +6476,7 @@ print("sddfd---------------------------------------------");
                                 ),
                                 child: Center(
                                   child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.openSans(
                                           letterSpacing: 1.5,
                                           fontWeight: FontWeight.w500,
                                           fontSize: width / 85.375,
@@ -6535,7 +6535,7 @@ print("sddfd---------------------------------------------");
                             ),
                             Text(
                               "Purchase Details",
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.openSans(
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w700),
                             ),
@@ -6641,7 +6641,7 @@ print("sddfd---------------------------------------------");
                                       child: Center(
                                           child: Text(
                                         "Si.No",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6657,7 +6657,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         "Date\nTime",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6673,7 +6673,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         "Item Code",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6689,7 +6689,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         'Description',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6705,7 +6705,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         'Hsn\nCode',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6721,7 +6721,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         'Payment',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6737,7 +6737,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         "Qty",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6753,7 +6753,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         "Sold",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )
@@ -6770,7 +6770,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         "Balance",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6786,7 +6786,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         "Return",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6802,7 +6802,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         'Purchase\nPrice',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6818,7 +6818,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         'Landing\nCost',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6834,7 +6834,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         'Sales\nPrice',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6850,7 +6850,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         'Tax',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6866,7 +6866,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         "Total",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6882,7 +6882,7 @@ print("sddfd---------------------------------------------");
                                           child: Text(
                                         "Balance\nAmount",
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
@@ -6937,7 +6937,7 @@ print("sddfd---------------------------------------------");
                                               child: Center(
                                                   child: Text(
                                                 "${index + 1}",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -6954,7 +6954,7 @@ print("sddfd---------------------------------------------");
                                                   child: Text(
                                                 "${purchase['date']}\n${purchase['time']}"
                                                     .toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -6970,7 +6970,7 @@ print("sddfd---------------------------------------------");
                                               child: Center(
                                                   child: Text(
                                                 "${purchase['itemcode']}",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -6990,7 +6990,7 @@ print("sddfd---------------------------------------------");
                                                 child: Text(
                                                   purchase['Description']
                                                       .toString(),
-                                                  style: GoogleFonts.poppins(
+                                                  style: GoogleFonts.openSans(
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       textStyle: const TextStyle(
@@ -7010,7 +7010,7 @@ print("sddfd---------------------------------------------");
                                               child: Center(
                                                   child: Text(
                                                 purchase['Hsncode'].toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7027,7 +7027,7 @@ print("sddfd---------------------------------------------");
                                                   child: Text(
                                                 purchase['Payment mode']
                                                     .toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7043,7 +7043,7 @@ print("sddfd---------------------------------------------");
                                               child: Center(
                                                   child: Text(
                                                 purchase['Qty'].toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7067,7 +7067,7 @@ print("sddfd---------------------------------------------");
                                                         purchase[
                                                             'return Quvantity'])
                                                     .toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     color: Colors.red,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -7085,7 +7085,7 @@ print("sddfd---------------------------------------------");
                                               child: Center(
                                                   child: Text(
                                                 purchase['stocks'].toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     color: Colors.green,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -7104,7 +7104,7 @@ print("sddfd---------------------------------------------");
                                                   child: Text(
                                                 purchase['return Quvantity']
                                                     .toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     color: Colors.pink,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -7122,7 +7122,7 @@ print("sddfd---------------------------------------------");
                                                   child: Text(
                                                 purchase['Purchase price']
                                                     .toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7139,7 +7139,7 @@ print("sddfd---------------------------------------------");
                                                   child: Text(
                                                 purchase['Landing cost']
                                                     .toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7156,7 +7156,7 @@ print("sddfd---------------------------------------------");
                                                   child: Text(
                                                 purchase['Sales price']
                                                     .toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7172,7 +7172,7 @@ print("sddfd---------------------------------------------");
                                               child: Center(
                                                   child: Text(
                                                 purchase['tax'].toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7189,7 +7189,7 @@ print("sddfd---------------------------------------------");
                                                   child: Text(
                                                 "${(double.parse(purchase['Landing cost']
                                                     .toString())*double.parse(purchase['Qty'].toString())).toString()}",
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7210,7 +7210,7 @@ print("sddfd---------------------------------------------");
                                                                 'Landing cost']
                                                             .toString()))
                                                     .toString(),
-                                                style: GoogleFonts.poppins(
+                                                style: GoogleFonts.openSans(
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
@@ -7241,7 +7241,7 @@ print("sddfd---------------------------------------------");
                                   CrossAxisAlignment.center,
                                   children: [
                                     Text("Total : ${viewalltotal.toStringAsFixed(2)}",
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
                                             fontSize: width / 85.375,

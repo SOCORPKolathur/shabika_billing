@@ -100,7 +100,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                 ),
               ),
               SizedBox(width: width / 91.06),
-              Text("Edit the Purchase Reports",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,
+              Text("Edit the Purchase Reports",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,
                   color: Colors.white,fontSize: 18),),
             ],
           ),
@@ -123,7 +123,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                          children: [
                            SizedBox(
                                width:width/11.38,
-                               child: Text("Description",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
+                               child: Text("Description",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),)),
                            SizedBox(width:width/136.6),
                            Material(
                                color: Colors.white,
@@ -137,12 +137,12 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                                      color: Colors.grey.shade200
                                  ),
                                  child: TextField(
-                                   style: GoogleFonts.montserrat(),
+                                   style: GoogleFonts.openSans(),
                                    controller:Decription,
                                    decoration: InputDecoration(
                                      border: InputBorder.none,
                                      contentPadding: EdgeInsets.only(left:width/136.6),
-                                     hintStyle: GoogleFonts.montserrat(),
+                                     hintStyle: GoogleFonts.openSans(),
                                    ),
                                    onSubmitted: (_){
 
@@ -163,7 +163,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                          children: [
                            SizedBox(
                                width:width/11.38,
-                               child: Text("HSN code",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
+                               child: Text("HSN code",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),)),
                            SizedBox(width:width/136.6),
                            Material(
                                color: Colors.white,
@@ -177,12 +177,12 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                                      color: Colors.grey.shade200
                                  ),
                                  child: TextField(
-                                   style: GoogleFonts.montserrat(),
+                                   style: GoogleFonts.openSans(),
                                    controller:Hsncode2,
                                    decoration: InputDecoration(
                                      border: InputBorder.none,
                                      contentPadding: EdgeInsets.only(left:width/136.6),
-                                     hintStyle: GoogleFonts.montserrat(),
+                                     hintStyle: GoogleFonts.openSans(),
                                    ),
                                    onSubmitted: (_){
 
@@ -208,7 +208,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                         children: [
                           SizedBox(
                               width:width/11.38,
-                              child: Text("Quantity",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
+                              child: Text("Quantity",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),)),
                           SizedBox(width:width/136.6),
                           Material(
                               color: Colors.white,
@@ -222,12 +222,12 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                                     color: Colors.grey.shade200
                                 ),
                                 child: TextField(
-                                  style: GoogleFonts.montserrat(),
+                                  style: GoogleFonts.openSans(),
                                   controller:Quvantity,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding: EdgeInsets.only(left:width/136.6),
-                                    hintStyle: GoogleFonts.montserrat(),
+                                    hintStyle: GoogleFonts.openSans(),
                                   ),
                                   onSubmitted: (_){
 
@@ -249,7 +249,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                         children: [
                           SizedBox(
                               width:width/11.38,
-                              child: Text("Rate",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
+                              child: Text("Rate",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),)),
                           SizedBox(width:width/136.6),
                           Material(
                               color: Colors.white,
@@ -263,12 +263,12 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                                     color: Colors.grey.shade200
                                 ),
                                 child: TextField(
-                                  style: GoogleFonts.montserrat(),
+                                  style: GoogleFonts.openSans(),
                                   controller:Rate,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding: EdgeInsets.only(left:width/136.6),
-                                    hintStyle: GoogleFonts.montserrat(),
+                                    hintStyle: GoogleFonts.openSans(),
                                   ),
                                   onSubmitted: (_){
 
@@ -293,7 +293,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                         children: [
                           SizedBox(
                               width:width/11.38,
-                              child: Text("Tax",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
+                              child: Text("Tax",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),)),
                           SizedBox(width:width/136.6),
                           Material(
                               color: Colors.white,
@@ -307,12 +307,12 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                                     color: Colors.grey.shade200
                                 ),
                                 child: TextField(
-                                  style: GoogleFonts.montserrat(),
+                                  style: GoogleFonts.openSans(),
                                   controller:Tax,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding: EdgeInsets.only(left:width/136.6),
-                                    hintStyle: GoogleFonts.montserrat(),
+                                    hintStyle: GoogleFonts.openSans(),
                                   ),
                                   onSubmitted: (_){
 
@@ -334,7 +334,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                         children: [
                           SizedBox(
                               width:width/11.38,
-                              child: Text("Total",style: GoogleFonts.montserrat(fontWeight: FontWeight.w600,color: Colors.white),)),
+                              child: Text("Total",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),)),
                           SizedBox(width:width/136.6),
                           Material(
                               color: Colors.white,
@@ -348,13 +348,13 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                                     color: Colors.grey.shade200
                                 ),
                                 child: TextField(
-                                  style: GoogleFonts.montserrat(),
+                                  style: GoogleFonts.openSans(),
                                   controller:Amount,
                                   readOnly: true,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
                                     contentPadding: EdgeInsets.only(left:width/136.6),
-                                    hintStyle: GoogleFonts.montserrat(),
+                                    hintStyle: GoogleFonts.openSans(),
                                   ),
                                   onSubmitted: (_){
 
@@ -395,7 +395,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                     child: Center(
                       child: Text(
                           "Okay",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               letterSpacing: 1.5,
                               fontWeight: FontWeight.w500,
                               fontSize: width/85.375, color: Colors.white)
@@ -424,7 +424,7 @@ class _EditPurchase_page2State extends State<EditPurchase_page2> {
                     child: Center(
                       child: Text(
                           "Cancel",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.openSans(
                               letterSpacing: 1.5,
                               fontWeight: FontWeight.w500,
                               fontSize: width/85.375, color: Colors.white)
