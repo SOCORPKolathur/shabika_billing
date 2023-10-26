@@ -2685,7 +2685,7 @@ child:TextField(
                         child: DropdownButton2<String>(
                           value: locktype,
                           isExpanded: true,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                               color: Colors.black,
                               fontSize: width / 105.07),
                           underline: Container(
@@ -2865,7 +2865,7 @@ child:TextField(
                         child: DropdownButton2<String>(
                           value: statustype,
                           isExpanded: true,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                               color: Colors.black,
                               fontSize: width / 105.07),
                           underline: Container(
@@ -3748,7 +3748,7 @@ child:TextField(
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: " ${index + 1}",
-                                            hintStyle: const TextStyle(color: Colors.black)
+                                            hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                         ),
                                       )
                                   ),
@@ -3769,7 +3769,7 @@ child:TextField(
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: "${billing['itemcode']}",
-                                            hintStyle: const TextStyle(color: Colors.black)
+                                            hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                         ),
                                         onSubmitted: (_){
                                           FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
@@ -3799,7 +3799,7 @@ child:TextField(
 
                                             border: InputBorder.none,
                                             hintText: "${billing['Description']}",
-                                            hintStyle: const TextStyle(color: Colors.black)
+                                            hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                         ),
                                         onSubmitted: (_){
                                           FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
@@ -3831,7 +3831,7 @@ child:TextField(
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "${billing['Hsncode']}",
-                                              hintStyle: const TextStyle(color: Colors.black)
+                                              hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                           ),
                                           onSubmitted: (_){
                                             FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
@@ -3858,7 +3858,7 @@ child:TextField(
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "${billing['Qty']}",
-                                              hintStyle: const TextStyle(color: Colors.black)
+                                              hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                           ),
                                           onSubmitted: (_) async {
                                             //create a document (Firebase)
@@ -3902,7 +3902,7 @@ child:TextField(
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "${billing['withouttaxprice']}",
-                                              hintStyle: const TextStyle(color: Colors.black)
+                                              hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -3934,7 +3934,7 @@ child:TextField(
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: billing['Sales price'].toString(),
-                                              hintStyle: const TextStyle(color: Colors.black)
+                                              hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                           ),
                                           onSubmitted: (_){
                                             FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({

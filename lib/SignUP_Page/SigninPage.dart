@@ -72,10 +72,10 @@ class _SigninpageState extends State<Signinpage> {
                     SizedBox(
                       height: height/16,
                       width:width/3.9,
-                      child: const TextField(
+                      child:  TextField(
                           decoration: InputDecoration(contentPadding: EdgeInsets.only(top: 10,left: 10),
                               hintText: "Username or email address",
-                              hintStyle: TextStyle(fontSize: 15),
+                              hintStyle: GoogleFonts.openSans(fontSize: 15),
                               enabledBorder: OutlineInputBorder(borderSide: BorderSide(
                                   color: Colors.blue), ),
                               border: OutlineInputBorder(
@@ -94,10 +94,10 @@ class _SigninpageState extends State<Signinpage> {
                     SizedBox(
                       height: height/16.4,
                       width: width/3.9,
-                      child: const TextField(
+                      child:  TextField(
                           decoration: InputDecoration(contentPadding: EdgeInsets.only(top: 10,left: 10),
                               hintText: "Password",
-                              hintStyle: TextStyle(fontSize: 15),
+                              hintStyle: GoogleFonts.openSans(fontSize: 15),
                               enabledBorder: OutlineInputBorder(borderSide: BorderSide(
                                   color: Colors.grey), ),
                               border: OutlineInputBorder(

@@ -207,7 +207,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff263646),
-        title: Text("Bill Details",style: GoogleFonts.cairo(
+        title: Text("Bill Details",style: GoogleFonts.openSans(
           fontWeight: FontWeight.bold,
           fontSize: width/70.39,
           color:Colors.white,
@@ -251,7 +251,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                              SizedBox(
                                height:height/20.425,
                                width:width/9.106,
-                               child: Text("Bill NO",style: GoogleFonts.cairo(
+                               child: Text("Bill NO",style: GoogleFonts.openSans(
                                  fontWeight: FontWeight.bold,
                                  fontSize: width/79.39,
                                  color:Colors.black,
@@ -261,7 +261,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
 
                                height:height/20.425,
                                width:width/6.276,
-                               child: Text(": $billno",style: GoogleFonts.cairo(
+                               child: Text(": $billno",style: GoogleFonts.openSans(
                                  fontWeight: FontWeight.bold,
                                  fontSize: width/79.39,
                                  color:Colors.black,
@@ -272,7 +272,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                height:height/20.425,
                                width:width/9.106,
 
-                               child: Text("Received Date",style: GoogleFonts.cairo(
+                               child: Text("Received Date",style: GoogleFonts.openSans(
                                  fontWeight: FontWeight.bold,
                                  fontSize: width/79.39,
                                  color:Colors.black,
@@ -281,7 +281,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                              SizedBox(
                                height:height/20.425,
                                width:width/6.276,
-                               child: Text(": $Date",style: GoogleFonts.cairo(
+                               child: Text(": $Date",style: GoogleFonts.openSans(
                                  fontWeight: FontWeight.bold,
                                  fontSize: width/79.39,
                                  color:Colors.black,
@@ -298,7 +298,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                                 width:width/9.106,
 
-                                child: Text("Customer Name",style: GoogleFonts.cairo(
+                                child: Text("Customer Name",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -307,7 +307,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                               width:width/6.276,
-                                child: Text(": $Customername",style: GoogleFonts.cairo(
+                                child: Text(": $Customername",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -319,7 +319,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                                 width:width/9.106,
 
-                                child: Text("Customer Phone",style: GoogleFonts.cairo(
+                                child: Text("Customer Phone",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -328,7 +328,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/6.276,
-                                child: Text(": $Customerphone",style: GoogleFonts.cairo(
+                                child: Text(": $Customerphone",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -346,7 +346,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Alternative Phone",style: GoogleFonts.cairo(
+                                child: Text("Alternative Phone",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -355,7 +355,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                               width:width/6.276,
-                                child: Text(": $CustomerAlphone",style: GoogleFonts.cairo(
+                                child: Text(": $CustomerAlphone",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -367,7 +367,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                                 width:width/9.106,
 
-                                child: Text("Delivery Date",style: GoogleFonts.cairo(
+                                child: Text("Delivery Date",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -376,7 +376,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/6.276,
-                                child: Text(": $deviverlydate",style: GoogleFonts.cairo(
+                                child: Text(": $deviverlydate",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -393,7 +393,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Payment Mode",style: GoogleFonts.cairo(
+                                child: Text("Payment Mode",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -402,7 +402,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                               width:width/6.276,
-                                child: Text(": $Paymentmode",style: GoogleFonts.cairo(
+                                child: Text(": $Paymentmode",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -413,7 +413,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Delivery Time",style: GoogleFonts.cairo(
+                                child: Text("Delivery Time",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -422,7 +422,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/6.276,
-                                child: Text(": $deviverlytime",style: GoogleFonts.cairo(
+                                child: Text(": $deviverlytime",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -437,7 +437,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("MMC-Card",style: GoogleFonts.cairo(
+                                child: Text("MMC-Card",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -448,12 +448,12 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               width:width/6.276,
                                 child:
                                 mmccard==false?
-                                Text(": No",style: GoogleFonts.cairo(
+                                Text(": No",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
                                 )):
-                                Text(": Yes",style: GoogleFonts.cairo(
+                                Text(": Yes",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -465,7 +465,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                                 width:width/9.106,
 
-                                child: Text("Battery",style: GoogleFonts.cairo(
+                                child: Text("Battery",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -476,12 +476,12 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 width:width/6.276,
                                 child:
                                 battery==false?
-                                Text(": No",style: GoogleFonts.cairo(
+                                Text(": No",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
                                 )):
-                                Text(": Yes",style: GoogleFonts.cairo(
+                                Text(": Yes",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -497,7 +497,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                             SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Charger",style: GoogleFonts.cairo(
+                                child: Text("Charger",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -512,7 +512,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                   fontSize: width/79.39,
                                   color:Colors.black,
                                 )):
-                                  Text(": Yes",style: GoogleFonts.cairo(
+                                  Text(": Yes",style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.bold,
                                 fontSize: width/79.39,
                                 color:Colors.black,
@@ -523,7 +523,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Sim Card",style: GoogleFonts.cairo(
+                                child: Text("Sim Card",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -534,12 +534,12 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                                 width:width/6.276,
                                 child: simcard==false?
-                                Text(": No",style: GoogleFonts.cairo(
+                                Text(": No",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
                                 )):
-                                Text(": Yes",style: GoogleFonts.cairo(
+                                Text(": Yes",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -555,7 +555,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Brand",style: GoogleFonts.cairo(
+                                child: Text("Brand",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -564,7 +564,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                               width:width/6.276,
-                                child: Text(": $Brand",style: GoogleFonts.cairo(
+                                child: Text(": $Brand",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -574,7 +574,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Imei No",style: GoogleFonts.cairo(
+                                child: Text("Imei No",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -583,7 +583,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/6.276,
-                                child: Text(": $imeino",style: GoogleFonts.cairo(
+                                child: Text(": $imeino",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -597,7 +597,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Model No",style: GoogleFonts.cairo(
+                                child: Text("Model No",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -606,7 +606,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                               width:width/6.276,
-                                child: Text(": $model",style: GoogleFonts.cairo(
+                                child: Text(": $model",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -615,7 +615,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Remarks",style: GoogleFonts.cairo(
+                                child: Text("Remarks",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -624,7 +624,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/6.276,
-                                child: Text(": $remarks",style: GoogleFonts.cairo(
+                                child: Text(": $remarks",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -638,7 +638,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/9.106,
-                                child: Text("Color",style: GoogleFonts.cairo(
+                                child: Text("Color",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -647,7 +647,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                               width:width/6.276,
-                                child: Text(": $color",style: GoogleFonts.cairo(
+                                child: Text(": $color",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -673,7 +673,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                                 width:width/9.106,
 
-                                child: Text("Password Type",style: GoogleFonts.cairo(
+                                child: Text("Password Type",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -683,7 +683,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/6.276,
-                                child: Text(": $passwordtype",style: GoogleFonts.cairo(
+                                child: Text(": $passwordtype",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -694,7 +694,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                                 width:width/9.106,
 
-                                child: Text("Password",style: GoogleFonts.cairo(
+                                child: Text("Password",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -704,7 +704,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               SizedBox(
                                 height:height/20.425,
                                 width:width/6.276,
-                                child: Text(": $password",style: GoogleFonts.cairo(
+                                child: Text(": $password",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -723,7 +723,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 height:height/20.425,
                                 width:width/9.106,
 
-                                child: Text("Service Problems",style: GoogleFonts.cairo(
+                                child: Text("Service Problems",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -750,7 +750,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                       Padding(
                                         padding: const EdgeInsets.only(right: 8.0),
                                         child: Container(
-                                          child: Text("${(index+1).toString()}.",style: GoogleFonts.cairo(
+                                          child: Text("${(index+1).toString()}.",style: GoogleFonts.openSans(
                                             fontWeight: FontWeight.w600,
                                             fontSize: width/79.39,
                                             color:Colors.black,
@@ -761,7 +761,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
 
                                         width:width/3.106,
 
-                                        child: Text(Serviceproblems[index],style: GoogleFonts.cairo(
+                                        child: Text(Serviceproblems[index],style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600,
                                           fontSize: width/79.39,
                                           color:Colors.black,
@@ -771,7 +771,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                         height:height/20.425,
                                         width:width/9.106,
 
-                                        child: Text(Serviceproblemscost[index],style: GoogleFonts.cairo(
+                                        child: Text(Serviceproblemscost[index],style: GoogleFonts.openSans(
                                           fontWeight: FontWeight.w600,
                                           fontSize: width/79.39,
                                           color:Colors.black,
@@ -841,7 +841,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Status",style: GoogleFonts.cairo(
+                                Text("Status",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -855,7 +855,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                     child: DropdownButton2<String>(
                                       value: status,
                                       isExpanded: true,
-                                      style: TextStyle(
+                                      style: GoogleFonts.openSans(
                                           color: Colors.black,
                                           fontSize: width / 105.07),
                                       underline: Container(
@@ -885,7 +885,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Payment Mode",style: GoogleFonts.cairo(
+                                  Text("Payment Mode",style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize: width/79.39,
                                     color:Colors.black,
@@ -899,7 +899,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                       child: DropdownButton2<String>(
                                         value: Payments,
                                         isExpanded: true,
-                                        style: TextStyle(
+                                        style: GoogleFonts.openSans(
                                             color: Colors.black,
                                             fontSize: width / 105.07),
                                         underline: Container(
@@ -940,7 +940,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Total Cost",style: GoogleFonts.cairo(
+                                Text("Total Cost",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -953,7 +953,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                         borderRadius: BorderRadius.circular(4)),
                                     child: TextField(
                                       controller: totalcost,
-                                      style: GoogleFonts.poppins(fontSize: width/86.6,fontWeight: FontWeight.w700),
+                                      style: GoogleFonts.openSans(fontSize: width/86.6,fontWeight: FontWeight.w700),
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.only(left: width/68.3, bottom:height/ 82.125,top: height/ 82.125),
                                         border: InputBorder.none,
@@ -967,7 +967,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Advance",style: GoogleFonts.cairo(
+                                  Text("Advance",style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize: width/79.39,
                                     color:Colors.black,
@@ -981,7 +981,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                       child:
                                       TextField(
                                         controller: advance,
-                                        style: GoogleFonts.poppins(fontSize: width/86.6,fontWeight: FontWeight.w700),
+                                        style: GoogleFonts.openSans(fontSize: width/86.6,fontWeight: FontWeight.w700),
                                         decoration: InputDecoration(
                                           contentPadding: EdgeInsets.only(left: width/68.3, bottom:height/ 82.125,top: height/ 82.125),
                                           border: InputBorder.none,
@@ -1004,7 +1004,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Balance",style: GoogleFonts.cairo(
+                                Text("Balance",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -1017,7 +1017,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                       borderRadius: BorderRadius.circular(4)),
                                   child: TextField(
                                     controller: balance,
-                                    style: GoogleFonts.poppins(fontSize: width/86.6,fontWeight: FontWeight.w700),
+                                    style: GoogleFonts.openSans(fontSize: width/86.6,fontWeight: FontWeight.w700),
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(left: width/68.3, bottom:height/ 82.125,top: height/ 82.125),
                                       border: InputBorder.none,
@@ -1034,7 +1034,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Amount",style: GoogleFonts.cairo(
+                                Text("Amount",style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width/79.39,
                                   color:Colors.black,
@@ -1050,7 +1050,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                         child:
                                         TextField(
                                           controller: amount,
-                                          style: GoogleFonts.poppins(fontSize: width/86.6,fontWeight: FontWeight.w700),
+                                          style: GoogleFonts.openSans(fontSize: width/86.6,fontWeight: FontWeight.w700),
                                           decoration: InputDecoration(
                                             contentPadding: EdgeInsets.only(left: width/68.3, bottom:height/ 82.125,top: height/ 82.125),
                                             border: InputBorder.none,
@@ -1092,7 +1092,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                                 Center(
                                   child: Text(
                                     "Update Bill",
-                                    style: GoogleFonts.cairo(
+                                    style: GoogleFonts.openSans(
                                         fontSize:width/68.3, fontWeight: FontWeight.bold,color: Colors.white),
                                   ),
                                 ),
@@ -1142,7 +1142,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                 child: Column(
                   children: [
                     SizedBox(height:height/ 32.85,),
-                    Text("Add Data Successfully",style: GoogleFonts.poppins(
+                    Text("Add Data Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -1175,7 +1175,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               child: Center(
                                 child: Text(
                                     "Okay",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width/85.375, color: Colors.white)
@@ -1202,7 +1202,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                               ),
                               child: Center(
                                 child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.openSans(
                                         letterSpacing: 1.5,
                                         fontWeight: FontWeight.w500,
                                         fontSize: width / 85.375,
@@ -1259,7 +1259,7 @@ class _Service_Update_Status_PageState extends State<Service_Update_Status_Page>
                 child: Column(
                   children: [
                     SizedBox(height:height/ 32.85,),
-                    Text("Updated Successfully",style: GoogleFonts.poppins(
+                    Text("Updated Successfully",style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),

@@ -1930,8 +1930,8 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                                Text("Balance  Items",style:TextStyle(fontWeight: FontWeight.w700)),
+                            children:  [
+                                Text("Balance  Items",style:GoogleFonts.openSans(fontWeight: FontWeight.w700)),
                             ],
                           ),
 
@@ -2033,7 +2033,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                         .toString()}",
                                                     style: GoogleFonts.poppins(
                                                       color: Colors.green,
-                                                        textStyle: const TextStyle(
+                                                        textStyle:  TextStyle(
                                                             overflow: TextOverflow
                                                                 .ellipsis)),
                                                   ):
@@ -2053,7 +2053,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                                         .toString()}",
                                                     style: GoogleFonts.poppins(
                                                         color: Colors.green,
-                                                        textStyle: const TextStyle(
+                                                        textStyle:  TextStyle(
                                                             overflow: TextOverflow
                                                                 .ellipsis)),
                                                   ):const SizedBox()
@@ -2252,7 +2252,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                               totalamountmultiplefunction(stocksitem['stocks'],double.parse(stocksitem['Purchase price'].toString())):
                                                 totalamountmultiplefunction(int.parse( _Streamcontroller1[index].text),double.parse(stocksitem['Purchase price'].toString()))
 
-                                              ,style: const TextStyle(color: Colors.red),))
+                                              ,style:  GoogleFonts.openSans(color: Colors.red),))
                                         ),
 
                                         //A Quvantity

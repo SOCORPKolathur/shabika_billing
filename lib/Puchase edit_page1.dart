@@ -2636,6 +2636,9 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
                                      //status update function
                                      Savebillpopup();
                                    });
+                                   Future.delayed(const Duration(seconds: 6), () {
+                                    Navigator.pop(context);
+                                   });
                                  },
                                  child:
                                  Container(
@@ -4746,64 +4749,64 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
                       SizedBox(
                         height: height / 53.85,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Material(
-                              elevation: 15,
-                              color: const Color(0xff25D366),
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                height: height / 16.425,
-                                width: width / 9.588,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: const Color(0xff25D366),
-                                ),
-                                child: Center(
-                                  child: Text("Okay",
-                                      style: GoogleFonts.poppins(
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 85.375,
-                                          color: Colors.white)),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: width / 68.3),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Material(
-                              elevation: 15,
-                              color: const Color(0xff263646),
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                height: height / 16.425,
-                                width: width / 9.588,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.white,
-                                ),
-                                child: Center(
-                                  child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 85.375,
-                                          color: Colors.black)),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     InkWell(
+                      //       onTap: () {
+                      //         Navigator.pop(context);
+                      //       },
+                      //       child: Material(
+                      //         elevation: 15,
+                      //         color: const Color(0xff25D366),
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         child: Container(
+                      //           height: height / 16.425,
+                      //           width: width / 9.588,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(5),
+                      //             color: const Color(0xff25D366),
+                      //           ),
+                      //           child: Center(
+                      //             child: Text("Okay",
+                      //                 style: GoogleFonts.poppins(
+                      //                     letterSpacing: 1.5,
+                      //                     fontWeight: FontWeight.w500,
+                      //                     fontSize: width / 85.375,
+                      //                     color: Colors.white)),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     SizedBox(width: width / 68.3),
+                      //     InkWell(
+                      //       onTap: () {
+                      //         Navigator.pop(context);
+                      //       },
+                      //       child: Material(
+                      //         elevation: 15,
+                      //         color: const Color(0xff263646),
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         child: Container(
+                      //           height: height / 16.425,
+                      //           width: width / 9.588,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(5),
+                      //             color: Colors.white,
+                      //           ),
+                      //           child: Center(
+                      //             child: Text("Cancel",
+                      //                 style: GoogleFonts.poppins(
+                      //                     letterSpacing: 1.5,
+                      //                     fontWeight: FontWeight.w500,
+                      //                     fontSize: width / 85.375,
+                      //                     color: Colors.black)),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // )
                     ],
                   ),
                 )),

@@ -433,7 +433,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                             child: DropdownButton2<String>(
                               value: statustype,
                               isExpanded: true,
-                              style: TextStyle(
+                              style: GoogleFonts.openSans(
                                   color: Colors.black,
                                   fontSize: width / 105.07),
                               underline: Container(

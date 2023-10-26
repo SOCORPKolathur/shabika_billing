@@ -118,7 +118,7 @@ class _Login_PageState extends State<Login_Page> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: width/68.3),
                           border: InputBorder.none,
-                          hintText:"User name or email address",labelStyle:const TextStyle( color:Color(0xff808080)),
+                          hintText:"User name or email address",labelStyle: GoogleFonts.openSans( color:Color(0xff808080)),
                           hintStyle: GoogleFonts.poppins(fontSize: width/113.83,color: const Color(0xff808080)),
 
                         ),
@@ -155,7 +155,7 @@ class _Login_PageState extends State<Login_Page> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: width/68.3),
                           border: InputBorder.none,
-                          hintText:"Password",labelStyle:const TextStyle( color:Color(0xff808080)),
+                          hintText:"Password",labelStyle: GoogleFonts.openSans( color:Color(0xff808080)),
                           hintStyle: GoogleFonts.poppins(fontSize: width/113.83,color: const Color(0xff808080)),
 
                         ),

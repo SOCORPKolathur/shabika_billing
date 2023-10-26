@@ -27,85 +27,11 @@ class _Payment_PageState extends State<Payment_Page> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Paymnet == false
-        ? Column(
+        ?
+    Column(
       children: [
-        //brand text and container....
-        Row(
-          children: [
-            //brand text....
-            Padding(
-              padding:  EdgeInsets.only(left: width/48.78, top: height/32.85),
-              child: Text(
-                "Paymnet",
-                style: GoogleFonts.cairo(
-                    fontWeight: FontWeight.bold,
-                    fontSize: width/59.39,
-                    color: Colors.white),
-              ),
-            ),
 
-            SizedBox(
-              width:width/ 13.66,
-            ),
-
-            //home icon and text container....
-            Padding(
-              padding:  EdgeInsets.only(left: width/1.355, top: height/21.9),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  drawer(" "),
-                  ));
-                },
-                child: Container(
-                  width: width / 11.38,
-                  height: height / 16.42,
-                  // color: Color(0xff00A99D),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: const Color(0xff00A99D),
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding:
-                        EdgeInsets.only(left: width/170.75, right: width/170.75),
-                        child: const Icon(
-                          Icons.home,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Padding(
-                        padding:  EdgeInsets.only(bottom: width/136.6),
-                        child: Text(
-                          "Home",
-                          style: GoogleFonts.cairo(
-                              color: const Color(0xffFFFFFF),fontSize: width/59.39),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-
-        Padding(
-          padding:  EdgeInsets.symmetric(
-              horizontal: width/75.88,
-              vertical: height/36.5
-          ),
-          child: Image.asset("assets/Line13.png"),
-        ),
-
-        //search text
-        Padding(
-          padding:  EdgeInsets.only(right: width/1.159),
-          child: Text("Search",
-              style: GoogleFonts.cairo(
-                  fontSize: width/68.3, fontWeight: FontWeight.bold)),
-        ),
+        SizedBox(height:height/40),
 
         //search bar and add brand button(text)....
         Row(
@@ -125,12 +51,12 @@ class _Payment_PageState extends State<Payment_Page> {
                   controller: Serachcontroller,
                   style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(left: width/68.3, bottom: 8),
+                    contentPadding: EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/70.125),
                     border: InputBorder.none,
-                    suffix: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset("assets/search.png"),
-                    ),
+                      suffixIcon: const Icon(
+                        Icons.search_outlined,
+                        color: Colors.grey,
+                      )
                   ),
                   onTap: (){
                     setState(() {
@@ -190,7 +116,7 @@ class _Payment_PageState extends State<Payment_Page> {
                           ),
                         ),
                         Text(
-                          "Add Brand",
+                          "Add Payment",
                           style: GoogleFonts.cairo(
                               fontSize: width/68.3, color: Colors.white),
                         ),
@@ -212,24 +138,27 @@ class _Payment_PageState extends State<Payment_Page> {
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(8),
-                  topLeft: Radius.circular(8),
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                  bottomRight: Radius.circular(3),
+                  bottomLeft: Radius.circular(3),
                 ),
-                color: const Color(0xff00A99D),
-                border: Border.all(color: Colors.red)),
+                color: const Color(0xffD4D4D4),
+                border: Border.all(color: Colors.black)),
 
             width: width / 1.03,
 
-            height: height / 1.87,
+            height: height / 1.25,
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  //titilesssss....
                   Container(
                     width: width / 1.03,
                     height: height / 16.42,
                     // color: Color(0xff00A99D),
                     decoration: const BoxDecoration(
-                        color: Color(0xffFFFFFF),
+                        color: Color(0xff1D5B79),
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(12),
                             topLeft: Radius.circular(12))),
@@ -237,29 +166,39 @@ class _Payment_PageState extends State<Payment_Page> {
                       children: [
                         Padding(
                           padding:
-                          EdgeInsets.only(left: width/42.687, right: width/34.15),
+                          EdgeInsets.only(left: width/42.68, right: width/26.15),
                           child: Text("Sl.no",
                               style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                  color:  Colors.white,
+                                  fontSize: width / 88.3,
+                                  fontWeight: FontWeight.w600)),
                         ),
                         Text("Payment Name",
                             style: GoogleFonts.cairo(
-                                color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                color:Colors.white,
+                                fontSize: width / 88.3,
+                                fontWeight: FontWeight.w600)),
                         Padding(
                           padding:
-                          EdgeInsets.only(left:width/1.902, right: width/19.514),
+                          EdgeInsets.only(left: width/1.88, right: width/18.514),
                           child: Text("Edit",
                               style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                  color: Colors.white,
+                                  fontSize: width / 88.3,
+                                  fontWeight: FontWeight.w600)),
                         ),
                         Text("Delete",
                             style: GoogleFonts.cairo(
-                                color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                color: Colors.white,
+                                fontSize: width / 88.3,
+                                fontWeight: FontWeight.w600)),
                         Padding(
-                          padding:  EdgeInsets.only(left: width/15.523),
+                          padding:  EdgeInsets.only(left: width/12.523),
                           child: Text("Status",
                               style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                  color: Colors.white,
+                                  fontSize: width / 88.3,
+                                  fontWeight: FontWeight.w600)),
                         ),
                       ],
                     ),
@@ -288,144 +227,146 @@ class _Payment_PageState extends State<Payment_Page> {
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
 
-                          if(isserach==true&&snapshot.data!.docs[index]["Paymentname"].toString().toLowerCase().startsWith(Username.toLowerCase())){
-                            return   Row(
-                              children: [
-                                //index (Serial number)
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 13.66,
-                                  // color: Colors.grey,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Center(
-                                      child: Text(
-                                        (index + 1).toString(),
-                                        style: GoogleFonts.cairo(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: const Color(0xffFDFDFD)),
-                                      )),
-                                ),
-
-                                //name text
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 1.70,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: width/75.888, top: height/131.4),
-                                    child: Text(
-                                      snapshot.data!.docs[index]["Paymentname"],
-                                      style: GoogleFonts.cairo(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
-                                    ),
-                                  ),
-                                ),
-
-                                //edit icon(img)
-                                GestureDetector(
-                                  onTap:(){
-                                    editditem(snapshot.data!.docs[index].id);
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 12.64,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Image.asset("assets/edit.png")),
-                                ), //
-
-                                //delete icon (img)
-                                InkWell(
-                                  onTap: () {
-                                    _Barnd(snapshot.data!.docs[index].id);
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 12.41,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Image.asset("assets/delete.png")),
-                                ),
-
-                                //active text
-                                Container(
-                                    height: height / 13.14,
-                                    width: width / 6.83,
+                          if(isserach==true&&snapshot.data!.docs[index]["Paymentname"].toString().toLowerCase().contains(Username.toLowerCase())){
+                            return
+                              Row(
+                                children: [
+                                  //index (Serial number)
+                                  Container(
+                                    height: height / 20.14,
+                                    width: width / 13.66,
                                     // color: Colors.grey,
                                     decoration: const BoxDecoration(
-                                        color: Color(0xff00A99D),
+                                        color: Color(0xffD4D4D4),
                                         border: Border(
+                                          right: BorderSide(
+                                            color: Colors.black,
+                                          ),
                                           bottom: BorderSide(
-                                            color: Colors.red,
+                                            color: Colors.black,
                                           ),
                                         )),
                                     child: Center(
                                         child: Text(
-                                          "Active",
+                                          (index + 1).toString(),
                                           style: GoogleFonts.cairo(
-                                              fontSize: width/75.888,
                                               fontWeight: FontWeight.bold,
-                                              color: const Color(0xffFDFDFD)),
-                                        ))),
-                              ],
-                            );
+                                              fontSize: width / 95.888,
+                                              color: Colors.black),
+                                        )),
+                                  ),
+
+                                  //name text
+                                  Container(
+                                    height: height / 20.14,
+                                    width: width / 1.70,
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xffD4D4D4),
+                                        border: Border(
+                                          right: BorderSide(
+                                            color: Colors.black,
+                                          ),
+                                          bottom: BorderSide(
+                                            color: Colors.black,
+                                          ),
+                                        )),
+                                    child: Padding(
+                                      padding:  EdgeInsets.only(
+                                          left: width/75.888, top: height/131.4),
+                                      child: Text(
+                                        snapshot.data!.docs[index]["Paymentname"],
+                                        style: GoogleFonts.cairo(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: width / 95.888,
+                                            color:Colors.black),
+                                      ),
+                                    ),
+                                  ),
+
+                                  //edit icon(img)
+                                  GestureDetector(
+                                    onTap:(){
+                                      editditem(snapshot.data!.docs[index].id);
+                                    },
+                                    child: Container(
+                                        height: height / 20.14,
+                                        width: width / 12.64,
+                                        // color: Colors.grey,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xffD4D4D4),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.black,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.black,
+                                              ),
+                                            )),
+                                        child: Image.asset("assets/edit.png")),
+                                  ), //
+
+                                  //delete icon (img)
+                                  InkWell(
+                                    onTap: () {
+                                      _Barnd(snapshot.data!.docs[index].id);
+                                    },
+                                    child: Container(
+                                        height: height / 20.14,
+                                        width: width / 12.41,
+                                        // color: Colors.grey,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xffD4D4D4),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.black,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.black,
+                                              ),
+                                            )),
+                                        child: Image.asset("assets/delete.png")),
+                                  ),
+
+                                  //active text
+                                  Container(
+                                      height: height / 20.14,
+                                      width: width / 6.83,
+                                      // color: Colors.grey,
+                                      decoration: const BoxDecoration(
+                                          color: Color(0xffD4D4D4),
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color: Colors.black,
+                                            ),
+                                          )),
+                                      child: Center(
+                                          child: Text(
+                                            "Active",
+                                            style: GoogleFonts.cairo(
+                                                fontSize: width / 95.888,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          ))),
+                                ],
+                              );
                           }
-                          else if(isserach==false&&snapshot.data!.docs[index]["Paymentname"].toString().toLowerCase().startsWith(Username.toLowerCase())){
-                            return Row(
+                          else if(isserach==false&&snapshot.data!.docs[index]["Paymentname"].toString().toLowerCase().contains(Username.toLowerCase())){
+                            return
+                              Row(
                               children: [
                                 //index (Serial number)
                                 Container(
-                                  height: height / 13.14,
+                                  height: height / 20.14,
                                   width: width / 13.66,
                                   // color: Colors.grey,
                                   decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
+                                      color: Color(0xffD4D4D4),
                                       border: Border(
                                         right: BorderSide(
-                                          color: Colors.red,
+                                          color: Colors.black,
                                         ),
                                         bottom: BorderSide(
-                                          color: Colors.red,
+                                          color: Colors.black,
                                         ),
                                       )),
                                   child: Center(
@@ -433,23 +374,23 @@ class _Payment_PageState extends State<Payment_Page> {
                                         (index + 1).toString(),
                                         style: GoogleFonts.cairo(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: const Color(0xffFDFDFD)),
+                                            fontSize: width / 95.888,
+                                            color: Colors.black),
                                       )),
                                 ),
 
                                 //name text
                                 Container(
-                                  height: height / 13.14,
+                                  height: height / 20.14,
                                   width: width / 1.70,
                                   decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
+                                      color: Color(0xffD4D4D4),
                                       border: Border(
                                         right: BorderSide(
-                                          color: Colors.red,
+                                          color: Colors.black,
                                         ),
                                         bottom: BorderSide(
-                                          color: Colors.red,
+                                          color: Colors.black,
                                         ),
                                       )),
                                   child: Padding(
@@ -459,8 +400,8 @@ class _Payment_PageState extends State<Payment_Page> {
                                       snapshot.data!.docs[index]["Paymentname"],
                                       style: GoogleFonts.cairo(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
+                                          fontSize: width / 95.888,
+                                          color:Colors.black),
                                     ),
                                   ),
                                 ),
@@ -471,17 +412,17 @@ class _Payment_PageState extends State<Payment_Page> {
                                     editditem(snapshot.data!.docs[index].id);
                                   },
                                   child: Container(
-                                      height: height / 13.14,
+                                      height: height / 20.14,
                                       width: width / 12.64,
                                       // color: Colors.grey,
                                       decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
+                                          color: Color(0xffD4D4D4),
                                           border: Border(
                                             right: BorderSide(
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                             bottom: BorderSide(
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                           )),
                                       child: Image.asset("assets/edit.png")),
@@ -493,17 +434,17 @@ class _Payment_PageState extends State<Payment_Page> {
                                     _Barnd(snapshot.data!.docs[index].id);
                                   },
                                   child: Container(
-                                      height: height / 13.14,
+                                      height: height / 20.14,
                                       width: width / 12.41,
                                       // color: Colors.grey,
                                       decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
+                                          color: Color(0xffD4D4D4),
                                           border: Border(
                                             right: BorderSide(
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                             bottom: BorderSide(
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                           )),
                                       child: Image.asset("assets/delete.png")),
@@ -511,23 +452,23 @@ class _Payment_PageState extends State<Payment_Page> {
 
                                 //active text
                                 Container(
-                                    height: height / 13.14,
+                                    height: height / 20.14,
                                     width: width / 6.83,
                                     // color: Colors.grey,
                                     decoration: const BoxDecoration(
-                                        color: Color(0xff00A99D),
+                                        color: Color(0xffD4D4D4),
                                         border: Border(
                                           bottom: BorderSide(
-                                            color: Colors.red,
+                                            color: Colors.black,
                                           ),
                                         )),
                                     child: Center(
                                         child: Text(
                                           "Active",
                                           style: GoogleFonts.cairo(
-                                              fontSize: width/75.888,
+                                              fontSize: width / 95.888,
                                               fontWeight: FontWeight.bold,
-                                              color: const Color(0xffFDFDFD)),
+                                              color: Colors.black),
                                         ))),
                               ],
                             );
@@ -675,7 +616,14 @@ class _Payment_PageState extends State<Payment_Page> {
             children: [
               InkWell(
                 onTap: () {
+                  Brand();
                   showdialpogbox();
+                  Future.delayed(Duration(seconds: 3),(){
+                    setState(() {
+                      Paymnet = false;
+                    });
+                    Navigator.pop(context);
+                  });
                 },
                 child: Container(
                   width: width / 13.6,
@@ -745,7 +693,7 @@ class _Payment_PageState extends State<Payment_Page> {
                 child: Column(
                   children: [
                     SizedBox(height:height/ 32.85,),
-                    Text("Add a Payment Item Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Payment Successfully",style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -757,66 +705,66 @@ class _Payment_PageState extends State<Payment_Page> {
                     ),
                     SizedBox(height: height/ 32.85,),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: (){
-                            Brand();
-                            Navigator.pop(context);
-                          },
-                          child: Material(
-                            elevation: 15,
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(5),
-                            child: Container(
-                              height: height/16.425,
-                              width: width/9.588,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.red,
-                              ),
-                              child: Center(
-                                child: Text(
-                                    "Okay",
-                                    style: GoogleFonts.poppins(
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: width/85.375, color: Colors.white)
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width:width/68.3),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Material(
-                            elevation: 15,
-                            color: const Color(0xff263646),
-                            borderRadius: BorderRadius.circular(5),
-                            child: Container(
-                              height: height / 16.425,
-                              width: width / 9.588,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.white,
-                              ),
-                              child: Center(
-                                child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: width / 85.375,
-                                        color: Colors.black)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     InkWell(
+                    //       onTap: (){
+                    //
+                    //         Navigator.pop(context);
+                    //       },
+                    //       child: Material(
+                    //         elevation: 15,
+                    //         color: Colors.red,
+                    //         borderRadius: BorderRadius.circular(5),
+                    //         child: Container(
+                    //           height: height/16.425,
+                    //           width: width/9.588,
+                    //           decoration: BoxDecoration(
+                    //             borderRadius: BorderRadius.circular(5),
+                    //             color: Colors.red,
+                    //           ),
+                    //           child: Center(
+                    //             child: Text(
+                    //                 "Okay",
+                    //                 style: GoogleFonts.poppins(
+                    //                     letterSpacing: 1.5,
+                    //                     fontWeight: FontWeight.w500,
+                    //                     fontSize: width/85.375, color: Colors.white)
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     SizedBox(width:width/68.3),
+                    //     InkWell(
+                    //       onTap: () {
+                    //         Navigator.pop(context);
+                    //       },
+                    //       child: Material(
+                    //         elevation: 15,
+                    //         color: const Color(0xff263646),
+                    //         borderRadius: BorderRadius.circular(5),
+                    //         child: Container(
+                    //           height: height / 16.425,
+                    //           width: width / 9.588,
+                    //           decoration: BoxDecoration(
+                    //             borderRadius: BorderRadius.circular(5),
+                    //             color: Colors.white,
+                    //           ),
+                    //           child: Center(
+                    //             child: Text("Cancel",
+                    //                 style: GoogleFonts.poppins(
+                    //                     letterSpacing: 1.5,
+                    //                     fontWeight: FontWeight.w500,
+                    //                     fontSize: width / 85.375,
+                    //                     color: Colors.black)),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // )
 
 
                   ],
@@ -891,7 +839,7 @@ class _Payment_PageState extends State<Payment_Page> {
                           width:width/ 9.588,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
-                              color: const Color(0xff263646)),
+                              color: const Color(0xff25D366),),
                           child: Center(
                             child: Text(
                               "Okay",
@@ -915,7 +863,7 @@ class _Payment_PageState extends State<Payment_Page> {
                             width: width / 9.588,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.white,
+                              color: Colors.red,
                             ),
                             child: Center(
                               child: Text("Cancel",
@@ -923,7 +871,7 @@ class _Payment_PageState extends State<Payment_Page> {
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
-                                      color: Colors.black)),
+                                      color: Colors.white)),
                             ),
                           ),
                         ),

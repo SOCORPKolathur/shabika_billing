@@ -117,6 +117,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
   TextEditingController BoxNo = TextEditingController();
   TextEditingController Categorycont = TextEditingController();
   TextEditingController Barndcont = TextEditingController();
+  TextEditingController margin = TextEditingController();
   
   
   getdateiten()async{
@@ -136,6 +137,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         BoxNo.text=value["BoxNo"];
         Categorycont.text=value["Category"];
         Barndcont.text=value["Brand"];
+        margin.text=value["margin"];
         if(value["IMEI NO"]==true){
           setState(() {
             isChecked=true;
@@ -177,6 +179,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         BoxNo.text=value["BoxNo"];
         Categorycont.text=value["Category"];
         Barndcont.text=value["Brand"];
+        margin.text=value["margin"];
         if(value["IMEI NO"]==true){
           setState(() {
             isChecked=true;
@@ -217,6 +220,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         BoxNo.text=value["BoxNo"];
         Categorycont.text=value["Category"];
         Barndcont.text=value["Brand"];
+        margin.text=value["margin"];
         if(value["IMEI NO"]==true){
           setState(() {
             isChecked=true;
@@ -257,6 +261,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
       "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
       "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
       "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+      "margin": double.parse(margin.text).toStringAsFixed(2),
       "Loworder": Loworder.text,
       "BoxNo": BoxNo.text,
       "IMEI NO": isChecked,
@@ -277,6 +282,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
       "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
       "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
       "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+      "margin": double.parse(margin.text).toStringAsFixed(2),
       "Loworder": Loworder.text,
       "BoxNo": BoxNo.text,
       "IMEI NO": isChecked,
@@ -297,6 +303,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
         "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
         "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+        "margin": double.parse(margin.text).toStringAsFixed(2),
         "Loworder": Loworder.text,
         "BoxNo": BoxNo.text,
         "IMEI NO": isChecked,
@@ -435,7 +442,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
       if (states.any(interactiveStates.contains)) {
         return Colors.blue;
       }
-      return Colors.red;
+      return Colors.black;
     }
 
     double width = MediaQuery.of(context).size.width;
@@ -506,48 +513,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
             child: Image.asset("assets/Line13.png"),
           ),
 
-          //First row container and text
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  left: width / 23.551,
-                ),
-                child: Text(
-                  "Category Name *",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: width / 11.383, top: height / 82.125),
-                child: Text(
-                  "Brand Name",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: width / 6.83),
-                child: Text(
-                  "New Item Code *",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: width / 11.878, right: width / 9.106),
-                child: Text(
-                  "HSN Code *",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
 
-            ],
-          ),
 
           Row(
             children: [
@@ -557,144 +523,155 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     left: width / 25.773,
                     top: height / 65.7,
                     right: width / 68.3),
-                child: Container(
-                  width: width / 5.8,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: Padding(
-                      padding: EdgeInsets.only(
-                          left: width / 455.33, right: width / 455.33),
-                      child:TextField(
-                        style: GoogleFonts.poppins(fontSize: 15),
-                        controller: Categorycont,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Select Category Name *",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
+                    ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: Padding(
+                          padding: EdgeInsets.only(
+                              left: width / 455.33, right: width / 455.33),
+                          child:TextField(
+                            style: GoogleFonts.poppins(fontSize: 15),
+                            controller: Categorycont,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  left: width / 68.3, bottom: height / 82.125),
 
-                          border: InputBorder.none,
-                        ),
+                              border: InputBorder.none,
+                            ),
+                          ),
+                          /*
+                              TypeAheadFormField(
+                                suggestionsBoxDecoration:
+                                    SuggestionsBoxDecoration(
+                                        color: Color(0xffDDDEEE),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(5),
+                                          bottomRight: Radius.circular(5),
+                                        )),
+                                textFieldConfiguration: TextFieldConfiguration(
+                                  style: GoogleFonts.poppins(fontSize: 15),
+                                  decoration: InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.only(left: width/136.6, bottom: height/82.125),
+                                    border: InputBorder.none,
+                                  ),
+                                  controller: this._typeAheadControllergender,
+                                ),
+                                suggestionsCallback: (pattern) {
+                                  return getSuggestionsgender(pattern);
+                                },
+                                itemBuilder: (context, String suggestion) {
+                                  return ListTile(
+                                    title: Text(suggestion),
+                                  );
+                                },
+                                transitionBuilder:
+                                    (context, suggestionsBox, controller) {
+                                  return suggestionsBox;
+                                },
+                                onSuggestionSelected: (String suggestion) {
+                                  this._typeAheadControllergender.text = suggestion;
+                                  categoryitemcode(_typeAheadControllergender.text);
+                                },
+                                suggestionsBoxController: suggestionBoxController,
+                                validator: (value) => value!.isEmpty
+                                    ? 'Please select a academic year'
+                                    : null,
+                              )
+
+                                   */
+                       /*   LayoutBuilder(
+                            builder: (BuildContext, BoxConstraints) =>
+                                Autocomplete<String>(
+                                  initialValue: TextEditingValue(
+
+                                      selection: TextSelection(
+                                        isDirectional: true,
+                                        baseOffset: 5,
+                                        extentOffset: 1,
+                                      )),
+                                  optionsViewBuilder:
+                                      (context, onSelected, options) => Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Material(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.vertical(
+                                              bottom:
+                                              Radius.circular(4.0)),
+                                        ),
+                                        child: Container(
+                                          height: 52.0 * options.length,
+                                          width:
+                                          BoxConstraints.biggest.width,
+                                          child: ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            itemCount: options.length,
+                                            shrinkWrap: false,
+                                            itemBuilder:
+                                                (BuildContext, index) {
+                                              final String option =
+                                              options.elementAt(index);
+                                              return InkWell(
+                                                onTap: () =>
+                                                    onSelected(option),
+                                                child: Padding(
+                                                  padding:
+                                                  EdgeInsets.all(16.0),
+                                                  child: Text(option),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      )),
+                                  optionsBuilder:
+                                      (TextEditingValue textEditingValue) {
+                                    if (textEditingValue.text == '') {
+                                      return const Iterable<String>.empty();
+                                    }
+
+                                    if (textEditingValue.text != "") {
+                                      categoryitemcode(textEditingValue.text);
+
+                                    }
+
+                                    return categorylist.where((String option) {
+                                      return option.toLowerCase().contains(
+                                          textEditingValue.text.toLowerCase());
+                                    });
+                                  },
+                                  onSelected: (String selection) {
+                                    categoryitemcode(selection);
+                                    setState(() {
+                                      _typeAheadControllergender.text=selection;
+                                    });
+                                    debugPrint('You just selected $selection');
+                                  },
+                                  displayStringForOption: (Value) {
+                                    return Value;
+                                  },
+                                ),
+                          )*/
+
                       ),
-                      /*
-                          TypeAheadFormField(
-                            suggestionsBoxDecoration:
-                                SuggestionsBoxDecoration(
-                                    color: Color(0xffDDDEEE),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(5),
-                                      bottomRight: Radius.circular(5),
-                                    )),
-                            textFieldConfiguration: TextFieldConfiguration(
-                              style: GoogleFonts.poppins(fontSize: 15),
-                              decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.only(left: width/136.6, bottom: height/82.125),
-                                border: InputBorder.none,
-                              ),
-                              controller: this._typeAheadControllergender,
-                            ),
-                            suggestionsCallback: (pattern) {
-                              return getSuggestionsgender(pattern);
-                            },
-                            itemBuilder: (context, String suggestion) {
-                              return ListTile(
-                                title: Text(suggestion),
-                              );
-                            },
-                            transitionBuilder:
-                                (context, suggestionsBox, controller) {
-                              return suggestionsBox;
-                            },
-                            onSuggestionSelected: (String suggestion) {
-                              this._typeAheadControllergender.text = suggestion;
-                              categoryitemcode(_typeAheadControllergender.text);
-                            },
-                            suggestionsBoxController: suggestionBoxController,
-                            validator: (value) => value!.isEmpty
-                                ? 'Please select a academic year'
-                                : null,
-                          )
-
-                               */
-                   /*   LayoutBuilder(
-                        builder: (BuildContext, BoxConstraints) =>
-                            Autocomplete<String>(
-                              initialValue: TextEditingValue(
-
-                                  selection: TextSelection(
-                                    isDirectional: true,
-                                    baseOffset: 5,
-                                    extentOffset: 1,
-                                  )),
-                              optionsViewBuilder:
-                                  (context, onSelected, options) => Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Material(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.vertical(
-                                          bottom:
-                                          Radius.circular(4.0)),
-                                    ),
-                                    child: Container(
-                                      height: 52.0 * options.length,
-                                      width:
-                                      BoxConstraints.biggest.width,
-                                      child: ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        itemCount: options.length,
-                                        shrinkWrap: false,
-                                        itemBuilder:
-                                            (BuildContext, index) {
-                                          final String option =
-                                          options.elementAt(index);
-                                          return InkWell(
-                                            onTap: () =>
-                                                onSelected(option),
-                                            child: Padding(
-                                              padding:
-                                              EdgeInsets.all(16.0),
-                                              child: Text(option),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  )),
-                              optionsBuilder:
-                                  (TextEditingValue textEditingValue) {
-                                if (textEditingValue.text == '') {
-                                  return const Iterable<String>.empty();
-                                }
-
-                                if (textEditingValue.text != "") {
-                                  categoryitemcode(textEditingValue.text);
-
-                                }
-
-                                return categorylist.where((String option) {
-                                  return option.toLowerCase().contains(
-                                      textEditingValue.text.toLowerCase());
-                                });
-                              },
-                              onSelected: (String selection) {
-                                categoryitemcode(selection);
-                                setState(() {
-                                  _typeAheadControllergender.text=selection;
-                                });
-                                debugPrint('You just selected $selection');
-                              },
-                              displayStringForOption: (Value) {
-                                return Value;
-                              },
-                            ),
-                      )*/
-
-                  ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -705,26 +682,37 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 child: Padding(
                   padding: EdgeInsets.only(
                       left: width / 455.33, right: width / 455.33),
-                  child: Container(
-                    width: width / 5.8,
-                    height: height / 16.42,
-                    //color: Color(0xffDDDEEE),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(4)),
-                    child:
-                    TextField(
-                      style: GoogleFonts.poppins(fontSize: 15),
-                      controller: Barndcont,
-                      keyboardType: TextInputType.multiline,
-                      maxLines: null,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(
-                            left: width / 68.3, bottom: height / 82.125),
-
-                        border: InputBorder.none,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Brand Name ",
+                        style: GoogleFonts.poppins(
+                            fontSize: width / 97.571, color: const Color(0xff000000)),
                       ),
-                    ),
+                      SizedBox(height:height/37.6),
+                      Container(
+                        width: width / 5.8,
+                        height: height / 16.42,
+                        //color: Color(0xffDDDEEE),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4)),
+                        child:
+                        TextField(
+                          style: GoogleFonts.poppins(fontSize: 15),
+                          controller: Barndcont,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(
+                                left: width / 68.3, bottom: height / 82.125),
+
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -732,50 +720,73 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
               Padding(
                 padding: EdgeInsets.only(
                     top: height / 65.7, right: width / 68.3),
-                child: Container(
-                  width: width / 6.504,
-                  height: height / 16.42,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child:
-                  TextField(
-                    style: GoogleFonts.poppins(fontSize: 15),
-                    controller: itemcode,
-                    readOnly: true,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          left: width / 68.3, bottom: height / 82.125),
-
-                      border: InputBorder.none,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "New Item Code * ",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
-                  ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child:
+                      TextField(
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        controller: itemcode,
+                        readOnly: true,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 82.125),
+
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
               Padding(
                 padding: EdgeInsets.only(top: height / 65.7),
-                child: Container(
-                  width: width / 6.504,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: TextField(
-                    controller: HSNcode,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    style: GoogleFonts.poppins(fontSize: 15),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          left: width / 68.3, bottom: height / 82.125),
-
-                      border: InputBorder.none,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "HSN Code *",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
-                  ),
+                    SizedBox(height:height/37.6),
+
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: TextField(
+                        controller: HSNcode,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 82.125),
+
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -783,48 +794,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
             ],
           ),
 
-          //second row container and text
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    left: width / 23.551,
-                    top: height / 32.85,
-                    right: width / 11.878),
-                child: Text(
-                  "Purchase Price *",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: height / 32.85),
-                child: Text(
-                  "Landing Cost",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    top: height / 32.85, left: width / 10.1),
-                child: Text(
-                  "Sale Price *",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-              Padding(
-                padding:
-                EdgeInsets.only(top: height / 32.85, left: width / 8.7),
-                child: Text(
-                  "MRP Price/Unit",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-            ],
-          ),
 
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -833,27 +802,38 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
               Padding(
                 padding: EdgeInsets.only(
                     top: height / 65.7, left: width / 25.773),
-                child: Container(
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: TextFormField(
-
-                    validator: (value) => value!.isEmpty
-                        ? "Field Can't Empty"
-                        : null,
-                    controller: Purchaseprice,
-                    style: GoogleFonts.poppins(fontSize: 15),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          left: width / 68.3, bottom: height / 82.125),
-
-                      border: InputBorder.none,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Purchase Price *",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
-                  ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: TextFormField(
+
+                        validator: (value) => value!.isEmpty
+                            ? "Field Can't Empty"
+                            : null,
+                        controller: Purchaseprice,
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 82.125),
+
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -861,81 +841,114 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
 
                 padding:
                 EdgeInsets.only(top: height / 65.7, left: width / 65.7),
-                child: Container(
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: TextFormField(
-                    validator: (value) => value!.isEmpty
-                        ? "Field Can't Empty"
-                        : null,
-                    controller: Landingcost,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    style: GoogleFonts.poppins(fontSize: 15),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          left: width / 68.3, bottom: height / 82.125),
-                      border: InputBorder.none,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Landing Cost",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
-                  ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: TextFormField(
+                        validator: (value) => value!.isEmpty
+                            ? "Field Can't Empty"
+                            : null,
+                        controller: Landingcost,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 82.125),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
               Padding(
                 padding:
                 EdgeInsets.only(top: height / 65.7, left: width / 65.7),
-                child: Container(
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: TextFormField(
-                    validator: (value) => value!.isEmpty
-                        ? "Field Can't Empty"
-                        : null,
-                    controller: Saleprice,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    style: GoogleFonts.poppins(fontSize: 15),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          left: width / 68.3, bottom: height / 82.125),
-                      border: InputBorder.none,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Sale Price *",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
-                  ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: TextFormField(
+                        validator: (value) => value!.isEmpty
+                            ? "Field Can't Empty"
+                            : null,
+                        controller: Saleprice,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 82.125),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
               Padding(
                 padding:
                 EdgeInsets.only(top: height / 65.7, left: width / 65.7),
-                child: Container(
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: TextFormField(
-                    validator: (value) => value!.isEmpty
-                        ? "Field Can't Empty"
-                        : null,
-                    controller: MRPPrice,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    style: GoogleFonts.poppins(fontSize: 15),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          left: width / 68.3, bottom: height / 82.125),
-                      border: InputBorder.none,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "MRP Price/Unit",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
-                  ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: TextFormField(
+                        validator: (value) => value!.isEmpty
+                            ? "Field Can't Empty"
+                            : null,
+                        controller: MRPPrice,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 82.125),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -953,41 +966,6 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
             ),
           ),
 
-          //third row container and text
-          Row(
-            children: [
-
-              /*Padding(
-                padding: EdgeInsets.only(
-                    left: width / 25.773, top: height / 82.125),
-                child: Text("Select Item Unit",
-                    style: GoogleFonts.poppins(
-                        fontSize: width / 97.571,
-                        color: Color(0xff000000))),
-              ),*/
-
-              Padding(
-                padding: EdgeInsets.only(
-                    left: width / 25.773, top: height / 82.125),
-                child: Text(
-                  "Low Order Qunaity",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(
-                    left: width / 8.2, top: height / 82.125),
-                child: Text(
-                  "Box No",
-                  style: GoogleFonts.poppins(
-                      fontSize: width / 97.571, color: const Color(0xff000000)),
-                ),
-              ),
-
-            ],
-          ),
 
           Row(
             children: [
@@ -1016,51 +994,110 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                 padding: EdgeInsets.only(
                     left: width / 25.773,
                     top: height / 82.125,
-                    right: width / 45.53),
-                child: Container(
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: TextField(
-                    controller: Loworder,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    style: GoogleFonts.poppins(fontSize: 15),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          left: width / 68.3, bottom: height / 82.125),
-
-                      border: InputBorder.none,
+                   ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Low Order Quantity",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
-                  ),
+                    SizedBox(height:height/37.6),
+
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: TextField(
+                        controller: Loworder,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 82.125),
+
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
               Padding(
                 padding: EdgeInsets.only(
-                    top: height / 82.125, left: width / 27.32),
-                child: Container(
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: TextField(
-                    controller: BoxNo,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    style: GoogleFonts.poppins(fontSize: 15),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          left: width / 68.3, bottom: height / 164.25),
-
-                      border: InputBorder.none,
+                    top: height / 82.125, left: width / 65.32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Box No",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
                     ),
-                  ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: TextField(
+                        controller: BoxNo,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 164.25),
+
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(
+                    top: height / 82.125, left: width / 65.32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Profit",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
+                    ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: TextField(
+                        controller: margin,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        style: GoogleFonts.poppins(fontSize: 15),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              left: width / 68.3, bottom: height / 164.25),
+
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -1253,7 +1290,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                     //color: Color(0xffD60A0B),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: const Color(0xffD60A0B),
+                      color: const Color(0xff25D366),
                     ),
                     child: Center(
                         child: Text(
@@ -1274,7 +1311,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       //color: Color(0xffD60A0B),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: const Color(0xff00A0E3),
+                        color:  Colors.red,
                       ),
                       child: Center(
                           child: Text(

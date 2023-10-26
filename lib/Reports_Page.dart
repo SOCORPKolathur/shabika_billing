@@ -397,7 +397,7 @@ class _Reports_PageState extends State<Reports_Page> {
                   contentPadding: EdgeInsets.only(
                       bottom: width / 90.6, left: width / 91.06),
                   hintText: "dd/mm/yyyy",
-                  hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                  hintStyle: GoogleFonts.openSans(color: Color(0xff00A99D)),
                   border: InputBorder.none,
                 ),
                 onTap: () async {
@@ -480,7 +480,7 @@ class _Reports_PageState extends State<Reports_Page> {
                   contentPadding: EdgeInsets.only(
                       bottom: width / 90.6, left: width / 91.06),
                   hintText: "dd/mm/yyyy",
-                  hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                  hintStyle:  GoogleFonts.openSans(color: Color(0xff00A99D)),
                   border: InputBorder.none,
                 ),
                 onTap: () async {

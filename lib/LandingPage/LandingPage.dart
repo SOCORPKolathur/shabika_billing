@@ -666,7 +666,7 @@ class _drawerState extends State<drawer> {
                            children: [
                              Image.asset("assets/Vector7.png",color:dawer==5?Colors.transparent:Colors.white),
                              SizedBox(width: width/273.2,),
-                             Text("Banking",style: TextStyle(color: dawer==5?Colors.black:Colors.white,
+                             Text("Banking",style: GoogleFonts.openSans(color: dawer==5?Colors.black:Colors.white,
                                  fontWeight: FontWeight.w700),)
 
 
@@ -722,7 +722,7 @@ class _drawerState extends State<drawer> {
                            children: [
                              Image.asset("assets/Vector8.png",color:dawer==6?Colors.transparent:Colors.white),
                              SizedBox(width: width/273.2,),
-                             Text("Stocks",style: TextStyle(color: dawer==6?Colors.black:Colors.white,
+                             Text("Stocks",style: GoogleFonts.openSans(color: dawer==6?Colors.black:Colors.white,
                                  fontWeight: FontWeight.w700),)
 
 

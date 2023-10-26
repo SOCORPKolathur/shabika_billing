@@ -2551,7 +2551,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                         child: DropdownButton2<String>(
                           value: locktype,
                           isExpanded: true,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                               color: Colors.black,
                               fontSize: width / 105.07),
                           underline: Container(
@@ -2758,7 +2758,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                         child: DropdownButton2<String>(
                           value: statustype,
                           isExpanded: true,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                               color: Colors.black,
                               fontSize: width / 105.07),
                           underline: Container(
@@ -3091,7 +3091,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                           ],
                         ),
 
-                        servicepro == true ?Text("Service Problem Cannot be empty",style: TextStyle(color:Colors.red),) : SizedBox()
+                        servicepro == true ?Text("Service Problem Cannot be empty",style: GoogleFonts.openSans(color:Colors.red),) : SizedBox()
                       ],
                     )
                   ),
@@ -3407,7 +3407,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
                                     child: DropdownButton2<String>(
                                       value: Payments,
                                       isExpanded: true,
-                                      style: TextStyle(
+                                      style: GoogleFonts.openSans(
                                           color: Colors.black,
                                           fontSize: width / 105.07),
                                       underline: Container(

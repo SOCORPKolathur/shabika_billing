@@ -255,7 +255,9 @@ class _ItemState extends State<Item> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return widget.pages=="Purchase"? Scaffold(
+    return
+      widget.pages== "Purchase"?
+    Scaffold(
       backgroundColor: Color(0xff00A99D),
       body: Form(
         key: Formkey,
@@ -1311,6 +1313,13 @@ class _ItemState extends State<Item> {
 
                       if (Formkey.currentState!.validate()) {
                         checkitemname();
+                        Future.delayed(Duration(seconds: 3),(){
+                          setState(() {
+                            itemselect = false;
+                          });
+                          clearallcontroller();
+                          Navigator.pop(context);
+                        });
 
                       }
 
@@ -1342,7 +1351,7 @@ class _ItemState extends State<Item> {
                         //color: Color(0xffD60A0B),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.black,
+                          color: Colors.red,
                         ),
                         child: Center(
                             child: Text(
@@ -1358,17 +1367,13 @@ class _ItemState extends State<Item> {
           ],
         ),
       ),
-    ):itemselect == false
+    ):
+    itemselect == false
         ? Column(
             children: [
+              SizedBox(height:height/40),
 
 
-              Padding(
-                padding: EdgeInsets.only(right: width / 1.1478),
-                child: Text("Search",
-                    style: GoogleFonts.cairo(
-                        fontSize: width / 68.3, fontWeight: FontWeight.bold)),
-              ),
 
               Row(
                 children: [
@@ -1389,15 +1394,13 @@ class _ItemState extends State<Item> {
                         controller: Serachcontroller,
                         style: GoogleFonts.poppins(fontSize: width / 68.3,fontWeight: FontWeight.w700),
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              left: width / 68.3, bottom: height / 82.125),
+                          contentPadding:
+                          EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/70.125),
                           border: InputBorder.none,
-                          suffix: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: height / 82.125,
-                                horizontal: width / 170.75),
-                            child: Image.asset("assets/search.png"),
-                          ),
+                            suffixIcon: const Icon(
+                              Icons.search_outlined,
+                              color: Colors.grey,
+                            )
                         ),
                         onTap: (){
                           setState(() {
@@ -1543,6 +1546,7 @@ class _ItemState extends State<Item> {
 
                 ],
               ),
+
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: width / 130.66, vertical: height / 36.5),
@@ -1559,7 +1563,7 @@ class _ItemState extends State<Item> {
 
                   width: width / 1.03,
 
-                  height: height / 1.37,
+                  height: height / 1.25,
                   child: SingleChildScrollView(
                     physics: const ScrollPhysics(),
                     child: Column(
@@ -1652,7 +1656,7 @@ class _ItemState extends State<Item> {
                               itemBuilder: (context, index) {
                                 var item = snapshot2.data!.docs[index];
 
-                                if(isserach==true&&item['Newitemname'].toString().toLowerCase().startsWith(Username.toLowerCase())){
+                                if(isserach==true&&item['Newitemname'].toString().toLowerCase().contains(Username.toLowerCase())){
                                   return IntrinsicHeight(
                                     child: Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1808,7 +1812,7 @@ class _ItemState extends State<Item> {
                                     ),
                                   );
                                 }
-                                else if(isserach==false&&item['Newitemname'].toString().toLowerCase().startsWith(Username.toLowerCase())){
+                                else if(isserach==false&&item['Newitemname'].toString().toLowerCase().contains(Username.toLowerCase())){
                                   return IntrinsicHeight(
                                     child: Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -3035,6 +3039,13 @@ class _ItemState extends State<Item> {
 
                           if (Formkey.currentState!.validate()) {
                             checkitemname();
+                            Future.delayed(Duration(seconds: 3),(){
+                              setState(() {
+                                itemselect = false;
+                              });
+                              clearallcontroller();
+                              Navigator.pop(context);
+                            });
 
                           }
 
@@ -3066,7 +3077,7 @@ class _ItemState extends State<Item> {
                             //color: Color(0xffD60A0B),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.black,
+                              color: Colors.red,
                             ),
                             child: Center(
                                 child: Text(
@@ -3079,6 +3090,7 @@ class _ItemState extends State<Item> {
                     ],
                   ),
                 )
+
               ],
             ),
         );
@@ -3307,32 +3319,32 @@ class _ItemState extends State<Item> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Material(
-                          elevation: 15,
-                            color: const Color(0xff25D366),
-                          borderRadius: BorderRadius.circular(5),
-                          child: Container(
-                            height: height / 16.425,
-                            width: width / 7.588,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: const Color(0xff25D366)
-                            ),
-                            child: Center(
-                              child: Text("Okay",
-                                  style: GoogleFonts.poppins(
-                                      letterSpacing: 1.5,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: width / 85.375,
-                                      color: Colors.white)),
-                            ),
-                          ),
-                        ),
-                      )
+                      // InkWell(
+                      //   onTap: () {
+                      //     Navigator.pop(context);
+                      //   },
+                      //   child: Material(
+                      //     elevation: 15,
+                      //       color: const Color(0xff25D366),
+                      //     borderRadius: BorderRadius.circular(5),
+                      //     child: Container(
+                      //       height: height / 16.425,
+                      //       width: width / 7.588,
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         color: const Color(0xff25D366)
+                      //       ),
+                      //       child: Center(
+                      //         child: Text("Okay",
+                      //             style: GoogleFonts.poppins(
+                      //                 letterSpacing: 1.5,
+                      //                 fontWeight: FontWeight.w500,
+                      //                 fontSize: width / 85.375,
+                      //                 color: Colors.white)),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                 )),
@@ -3515,7 +3527,7 @@ class _ItemState extends State<Item> {
                         height: height / 32.85,
                       ),
                       Text(
-                        "Add a Category Item Successfully",
+                        "Add a Item Successfully",
                         style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
@@ -3533,65 +3545,65 @@ class _ItemState extends State<Item> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              clearallcontroller();
-                              Navigator.pop(context);
-                            },
-                            child: Material(
-                              elevation: 15,
-                                color: const Color(0xff25D366),
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                height: height / 16.425,
-                                width: width / 9.588,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                    color: const Color(0xff25D366)
-                                ),
-                                child: Center(
-                                  child: Text("Okay",
-                                      style: GoogleFonts.poppins(
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 85.375,
-                                          color: Colors.white)),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width:width/68.3),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Material(
-                              elevation: 15,
-                              color: const Color(0xff263646),
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                height: height / 16.425,
-                                width: width / 9.588,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.white,
-                                ),
-                                child: Center(
-                                  child: Text("Cancel",
-                                      style: GoogleFonts.poppins(
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 85.375,
-                                          color: Colors.black)),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     InkWell(
+                      //       onTap: () {
+                      //
+                      //         Navigator.pop(context);
+                      //       },
+                      //       child: Material(
+                      //         elevation: 15,
+                      //           color: const Color(0xff25D366),
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         child: Container(
+                      //           height: height / 16.425,
+                      //           width: width / 9.588,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(5),
+                      //               color: const Color(0xff25D366)
+                      //           ),
+                      //           child: Center(
+                      //             child: Text("Okay",
+                      //                 style: GoogleFonts.poppins(
+                      //                     letterSpacing: 1.5,
+                      //                     fontWeight: FontWeight.w500,
+                      //                     fontSize: width / 85.375,
+                      //                     color: Colors.white)),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     SizedBox(width:width/68.3),
+                      //     InkWell(
+                      //       onTap: () {
+                      //         Navigator.pop(context);
+                      //       },
+                      //       child: Material(
+                      //         elevation: 15,
+                      //         color: const Color(0xff263646),
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         child: Container(
+                      //           height: height / 16.425,
+                      //           width: width / 9.588,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(5),
+                      //             color: Colors.white,
+                      //           ),
+                      //           child: Center(
+                      //             child: Text("Cancel",
+                      //                 style: GoogleFonts.poppins(
+                      //                     letterSpacing: 1.5,
+                      //                     fontWeight: FontWeight.w500,
+                      //                     fontSize: width / 85.375,
+                      //                     color: Colors.black)),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // )
                     ],
                   ),
                 )),
@@ -3658,7 +3670,7 @@ class _ItemState extends State<Item> {
                           width: width / 9.588,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
-                              color: const Color(0xff263646)),
+                              color: const Color(0xff25D366)),
                           child: Center(
                             child: Text(
                               "Okay",
@@ -3682,7 +3694,7 @@ class _ItemState extends State<Item> {
                             width: width / 9.588,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.white,
+                              color: Colors.red,
                             ),
                             child: Center(
                               child: Text("Cancel",
@@ -3690,7 +3702,7 @@ class _ItemState extends State<Item> {
                                       letterSpacing: 1.5,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width / 85.375,
-                                      color: Colors.black)),
+                                      color: Colors.white)),
                             ),
                           ),
                         ),

@@ -2509,7 +2509,7 @@ class _ServiceeditpageState extends State<Serviceeditpage> {
                         child: DropdownButton2<String>(
                           value: locktype,
                           isExpanded: true,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                               color: Colors.black,
                               fontSize: width / 105.07),
                           underline: Container(
@@ -2716,7 +2716,7 @@ class _ServiceeditpageState extends State<Serviceeditpage> {
                         child: DropdownButton2<String>(
                           value: statustype,
                           isExpanded: true,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                               color: Colors.black,
                               fontSize: width / 105.07),
                           underline: Container(
@@ -3016,7 +3016,7 @@ class _ServiceeditpageState extends State<Serviceeditpage> {
                               ],
                             ),
 
-                            servicepro == true ?Text("Service Problem Cannot be empty",style: TextStyle(color:Colors.red),) : SizedBox()
+                            servicepro == true ?Text("Service Problem Cannot be empty",style: GoogleFonts.openSans(color:Colors.red),) : SizedBox()
                           ],
                         )
                     ),
@@ -3327,7 +3327,7 @@ class _ServiceeditpageState extends State<Serviceeditpage> {
                                     child: DropdownButton2<String>(
                                       value: Payments,
                                       isExpanded: true,
-                                      style: TextStyle(
+                                      style: GoogleFonts.openSans(
                                           color: Colors.black,
                                           fontSize: width / 105.07),
                                       underline: Container(
@@ -3609,7 +3609,7 @@ class _ServiceeditpageState extends State<Serviceeditpage> {
                                         Text(
                                           "${balanceamount.toStringAsFixed(2)}",
                                           style: GoogleFonts.openSans(fontWeight: FontWeight.bold,
-                                              textStyle: const TextStyle(overflow: TextOverflow.ellipsis),
+                                              textStyle:  TextStyle(overflow: TextOverflow.ellipsis),
                                               color:  Colors.white, fontSize: width / 58.88),
                                         ),
                                       ],

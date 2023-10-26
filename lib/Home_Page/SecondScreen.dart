@@ -128,7 +128,7 @@ int Service_entry_count=0;
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(bottom: width/136.6, left: width/91.06),
                       hintText: "mm/dd/yyyy",
-                      hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                      hintStyle:  GoogleFonts.openSans(color: Color(0xff00A99D)),
                       border: InputBorder.none,
                     ),
                     onTap: () async {
@@ -174,7 +174,7 @@ int Service_entry_count=0;
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(bottom: width/136.6, left: width/91.06),
                     hintText: "mm/dd/yyyy",
-                    hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                    hintStyle:  GoogleFonts.openSans(color: Color(0xff00A99D)),
                     border: InputBorder.none,
                   ),
                   onTap: () async {

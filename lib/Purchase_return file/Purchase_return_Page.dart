@@ -280,7 +280,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                   contentPadding: EdgeInsets.only(
                       bottom: width / 90.6, left: width / 91.06),
                   hintText: "mm/dd/yyyy",
-                  hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                  hintStyle:  GoogleFonts.openSans(color: Color(0xff00A99D)),
                   border: InputBorder.none,
                 ),
                 onTap: () async {
@@ -327,7 +327,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                   contentPadding: EdgeInsets.only(
                       bottom: width / 90.6, left: width / 91.06),
                   hintText: "mm/dd/yyyy",
-                  hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                  hintStyle:  GoogleFonts.openSans(color: Color(0xff00A99D)),
                   border: InputBorder.none,
                 ),
                 onTap: () async {
@@ -2725,14 +2725,14 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                                     children: [
                                                       Text(purchase['Description'].toString(),
                                                         style: GoogleFonts.poppins(
-                                                            textStyle: const TextStyle(
+                                                            textStyle: TextStyle(
                                                                 overflow:TextOverflow.ellipsis
                                                             )
 
                                                         ),),
                                                       Text(purchase['Imei no'].length>0?purchase['Imei no'].toString():purchase['Serial no'].length>0?purchase['Serial no'].toString():purchase['color'].length>0?purchase['color'].toString():"",
                                                         style: GoogleFonts.poppins(
-                                                            textStyle: const TextStyle(
+                                                            textStyle:  TextStyle(
                                                               color:Colors.indigo,
                                                                 overflow:TextOverflow.ellipsis
                                                             )

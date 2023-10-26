@@ -1545,7 +1545,7 @@ final Formkey=GlobalKey<FormState>();
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black, width: 0.6)),
                             child: Center(
-                              child: Text("${(index+1).toString()}",style: TextStyle(
+                              child: Text("${(index+1).toString()}",style: GoogleFonts.openSans(
                                   fontSize: 15
                               ),),
                             ),
@@ -1559,7 +1559,7 @@ final Formkey=GlobalKey<FormState>();
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black, width: 0.6)),
                             child:
-                            Center(child: Text("${billing['itemid']}",style: TextStyle(
+                            Center(child: Text("${billing['itemid']}",style: GoogleFonts.openSans(
                               fontSize: 15
                             ),)),
                           ),
@@ -1571,7 +1571,7 @@ final Formkey=GlobalKey<FormState>();
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black, width: 0.6)),
                             child: Center(
-                              child: Text("${billing['itemname']}",style: TextStyle(
+                              child: Text("${billing['itemname']}",style: GoogleFonts.openSans(
                                   fontSize: 15
                               ),),
                             )
@@ -1585,7 +1585,7 @@ final Formkey=GlobalKey<FormState>();
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black, width: 0.6)),
                             child:Center(
-                              child: Text("${billing['problem']}",style: TextStyle(
+                              child: Text("${billing['problem']}",style: GoogleFonts.openSans(
                                   fontSize: 15
                               ),),
                             )
@@ -1601,7 +1601,7 @@ final Formkey=GlobalKey<FormState>();
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black, width: 0.6)),
                             child: Center(
-                              child: Text("${billing['Qty']}",style: TextStyle(
+                              child: Text("${billing['Qty']}",style: GoogleFonts.openSans(
                                   fontSize: 15
                               ),),
                             )

@@ -109,72 +109,7 @@ class _SupplierState extends State<Supplier> {
     suplierclick==false?
       Column(
       children: [
-        Row(
-          children: [
-            Padding(
-              padding:  EdgeInsets.only(left:width/48.785, top: height/32.85),
-              child: Text(
-                "Supplier",
-                style: GoogleFonts.cairo(
-                    fontWeight: FontWeight.bold,
-                    fontSize:width/59.39,
-                    color: Colors.white),
-              ),
-            ),
-            SizedBox(width: width/13.66,),
-            Padding(
-              padding:  EdgeInsets.only(left: width/1.355, top: height/21.9),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => drawer(" "),
-                  ));
-                },
-                child: Container(
-                  width: width / 11.38,
-                  height: height / 16.425,
-                  // color: Color(0xff00A99D),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: const Color(0xff00A99D),
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding:  EdgeInsets.only(left:width/170.75, right: width/170.75),
-                        child: const Icon(
-                          Icons.home,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Padding(
-                        padding:  EdgeInsets.only(bottom:height/65.7),
-                        child: Text(
-                          "Home",
-                          style: GoogleFonts.cairo(
-                              color: const Color(0xffFFFFFF), fontSize:width/59.39),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-        Padding(
-          padding:  EdgeInsets.symmetric(
-            horizontal: width/75.88,
-            vertical: height/36.5
-          ),
-          child: Image.asset("assets/Line13.png"),
-        ),
-        Padding(
-          padding:  EdgeInsets.only(right: width/1.130),
-          child: Text("Search",
-              style:
-                  GoogleFonts.cairo(fontSize: width/68.3, fontWeight: FontWeight.bold)),
-        ),
+        SizedBox(height:height/40),
         Row(
           children: [
             Padding(
@@ -184,22 +119,19 @@ class _SupplierState extends State<Supplier> {
                 height: height / 16.425,
                 //color: Color(0xff00A99D),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(8),
                   color: const Color(0xffFFFFFF),
                 ),
                 child: TextField(
                   controller: Serachcontroller,
                   style: GoogleFonts.poppins(fontSize: width/68.3,fontWeight: FontWeight.w700),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(left: width/68.3, bottom: height/82.125),
+                    contentPadding: EdgeInsets.only(left: width/68.3, top:width/102.125,bottom:width/70.125),
                     border: InputBorder.none,
-                    suffix: Padding(
-                      padding:  EdgeInsets.symmetric(
-                        vertical: height/82.125,
-                        horizontal: width/17.75
-                      ),
-                      child: Image.asset("assets/search.png"),
-                    ),
+                      suffixIcon: const Icon(
+                        Icons.search_outlined,
+                        color: Colors.grey,
+                      )
                   ),
                   onTap: (){
                     setState(() {
@@ -278,51 +210,69 @@ class _SupplierState extends State<Supplier> {
           ),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: const Color(0xff00A99D),
-                border: Border.all(color: Colors.red)),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                  bottomRight: Radius.circular(3),
+                  bottomLeft: Radius.circular(3),
+                ),
+                color: const Color(0xffD4D4D4),
+                border: Border.all(color: Colors.black)),
 
             width: width / 1.03,
 
-            height: height / 1.87,
+            height: height / 1.25,
             child: SingleChildScrollView(
               child: Column(
                 children: [
 
+                  //titilesssss....
                   Container(
                     width: width / 1.03,
                     height: height / 16.42,
                     // color: Color(0xff00A99D),
                     decoration: const BoxDecoration(
-                        color: Color(0xffFFFFFF),
+                        color: Color(0xff1D5B79),
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(12),
                             topLeft: Radius.circular(12))),
                     child: Row(
                       children: [
                         Padding(
-                          padding:  EdgeInsets.only(left:width/42.687, right: width/34.15),
+                          padding:
+                          EdgeInsets.only(left: width/42.68, right: width/26.15),
                           child: Text("Sl.no",
                               style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                  color:  Colors.white,
+                                  fontSize: width / 88.3,
+                                  fontWeight: FontWeight.w600)),
                         ),
                         Text("Supplier Name",
                             style: GoogleFonts.cairo(
-                                color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                color:Colors.white,
+                                fontSize: width / 88.3,
+                                fontWeight: FontWeight.w600)),
                         Padding(
-                          padding:  EdgeInsets.only(left: width/1.985, right: width/19.514),
+                          padding:
+                          EdgeInsets.only(left: width/1.88, right: width/18.514),
                           child: Text("Edit",
                               style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                  color: Colors.white,
+                                  fontSize: width / 88.3,
+                                  fontWeight: FontWeight.w600)),
                         ),
                         Text("Delete",
                             style: GoogleFonts.cairo(
-                                color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                color: Colors.white,
+                                fontSize: width / 88.3,
+                                fontWeight: FontWeight.w600)),
                         Padding(
-                          padding:  EdgeInsets.only(left: width/15.523),
+                          padding:  EdgeInsets.only(left: width/12.523),
                           child: Text("Status",
                               style: GoogleFonts.cairo(
-                                  color: const Color(0xff00A99D), fontSize: width/68.3)),
+                                  color: Colors.white,
+                                  fontSize: width / 88.3,
+                                  fontWeight: FontWeight.w600)),
                         ),
                       ],
                     ),
@@ -350,153 +300,155 @@ class _SupplierState extends State<Supplier> {
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
 
-                          if(isserach==true&&snapshot.data!.docs[index]["Suppliername"].toString().toLowerCase().startsWith(Username.toLowerCase())){
-                            return Row(
-                              children: [
+                          if(isserach==true&&snapshot.data!.docs[index]["Suppliername"].toString().toLowerCase().contains(Username.toLowerCase())){
+                            return
+                              Row(
+                                children: [
 
-                                //index (Serial number)
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 13.66,
-                                  // color: Colors.grey,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Center(
+                                  //index (Serial number)
+                                  Container(
+                                    height: height / 20.14,
+                                    width: width / 13.66,
+                                    // color: Colors.grey,
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xffD4D4D4),
+                                        border: Border(
+                                          right: BorderSide(
+                                            color: Colors.black,
+                                          ),
+                                          bottom: BorderSide(
+                                            color: Colors.black,
+                                          ),
+                                        )),
+                                    child: Center(
+                                        child: Text(
+                                          (index + 1).toString(),
+                                          style: GoogleFonts.cairo(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: width / 95.888,
+                                              color: Colors.black),
+                                        )),
+                                  ),
+
+                                  //name text
+                                  Container(
+                                    height: height / 20.14,
+                                    width: width / 1.70,
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xffD4D4D4),
+                                        border: Border(
+                                          right: BorderSide(
+                                            color: Colors.black,
+                                          ),
+                                          bottom: BorderSide(
+                                            color: Colors.black,
+                                          ),
+                                        )),
+                                    child: Padding(
+                                      padding:  EdgeInsets.only(
+                                          left: width/75.888, top: height/131.4),
                                       child: Text(
-                                        (index + 1).toString(),
+                                        snapshot.data!.docs[index]
+                                        ["Suppliername"],
                                         style: GoogleFonts.cairo(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: const Color(0xffFDFDFD)),
-                                      )),
-                                ),
-
-                                //name text
-                                Container(
-                                  height: height / 13.14,
-                                  width: width / 1.70,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                        bottom: BorderSide(
-                                          color: Colors.red,
-                                        ),
-                                      )),
-                                  child: Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: width/75.888, top: height/131.4),
-                                    child: Text(
-                                      snapshot.data!.docs[index]
-                                      ["Suppliername"],
-                                      style: GoogleFonts.cairo(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
+                                            fontSize: width / 95.888,
+                                            color: Colors.black),
+                                      ),
                                     ),
                                   ),
-                                ),
 
-                                //edit icon(img)
-                                GestureDetector(
-                                  onTap:(){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_suppiler_Paghe(snapshot.data!.docs[index].id),));
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 12.64,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Image.asset("assets/edit.png")),
-                                ),//
+                                  //edit icon(img)
+                                  GestureDetector(
+                                    onTap:(){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_suppiler_Paghe(snapshot.data!.docs[index].id),));
+                                    },
+                                    child: Container(
+                                        height: height / 20.14,
+                                        width: width / 12.64,
+                                        // color: Colors.grey,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xffD4D4D4),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.black,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.black,
+                                              ),
+                                            )),
+                                        child: Image.asset("assets/edit.png")),
+                                  ),//
 
 
-                                //delete icon (img)
-                                InkWell(
-                                  onTap:(){
-                                    _suppilier(snapshot.data!.docs[index].id);
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 12.41,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Image.asset("assets/delete.png")),
-                                ),
+                                  //delete icon (img)
+                                  InkWell(
+                                    onTap:(){
+                                      _suppilier(snapshot.data!.docs[index].id);
+                                    },
+                                    child: Container(
+                                        height: height / 20.14,
+                                        width: width / 12.41,
+                                        // color: Colors.grey,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xffD4D4D4),
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: Colors.black,
+                                              ),
+                                              bottom: BorderSide(
+                                                color: Colors.black,
+                                              ),
+                                            )),
+                                        child: Image.asset("assets/delete.png")),
+                                  ),
 
-                                //active text
-                                GestureDetector(
-                                  onTap:(){
-                                    showdialpogboxss(snapshot.data!.docs[index].id);
-                                  },
-                                  child: Container(
-                                      height: height / 13.14,
-                                      width: width / 6.83,
-                                      // color: Colors.grey,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
-                                          border: Border(
-                                            bottom: BorderSide(
-                                              color: Colors.red,
-                                            ),
-                                          )),
-                                      child: Center(
-                                          child: Text(
-                                            "View",
-                                            style: GoogleFonts.cairo(
-                                                fontSize: width/75.888,
-                                                fontWeight: FontWeight.bold,
-                                                color: const Color(0xffFDFDFD)),
-                                          ))),
-                                ),
-                              ],
-                            );
+                                  //active text
+                                  GestureDetector(
+                                    onTap:(){
+                                      showdialpogboxss(snapshot.data!.docs[index].id);
+                                    },
+                                    child: Container(
+                                        height: height / 20.14,
+                                        width: width / 6.83,
+                                        // color: Colors.grey,
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xffD4D4D4),
+                                            border: Border(
+                                              bottom: BorderSide(
+                                                color:Colors.black,
+                                              ),
+                                            )),
+                                        child: Center(
+                                            child: Text(
+                                              "View",
+                                              style: GoogleFonts.cairo(
+                                                  fontSize: width / 95.888,
+                                                  fontWeight: FontWeight.bold,
+                                                  color:  Colors.black),
+                                            ))),
+                                  ),
+                                ],
+                              );
                           }
-                          else if(isserach==false&&snapshot.data!.docs[index]["Suppliername"].toString().toLowerCase().startsWith(Username.toLowerCase())){
-                            return Row(
+                          else if(isserach==false&&snapshot.data!.docs[index]["Suppliername"].toString().toLowerCase().contains(Username.toLowerCase())){
+                            return
+                              Row(
                               children: [
 
                                 //index (Serial number)
                                 Container(
-                                  height: height / 13.14,
+                                  height: height / 20.14,
                                   width: width / 13.66,
                                   // color: Colors.grey,
                                   decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
+                                      color: Color(0xffD4D4D4),
                                       border: Border(
                                         right: BorderSide(
-                                          color: Colors.red,
+                                          color: Colors.black,
                                         ),
                                         bottom: BorderSide(
-                                          color: Colors.red,
+                                          color: Colors.black,
                                         ),
                                       )),
                                   child: Center(
@@ -504,23 +456,23 @@ class _SupplierState extends State<Supplier> {
                                         (index + 1).toString(),
                                         style: GoogleFonts.cairo(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: width/75.888,
-                                            color: const Color(0xffFDFDFD)),
+                                            fontSize: width / 95.888,
+                                            color: Colors.black),
                                       )),
                                 ),
 
                                 //name text
                                 Container(
-                                  height: height / 13.14,
+                                  height: height / 20.14,
                                   width: width / 1.70,
                                   decoration: const BoxDecoration(
-                                      color: Color(0xff00A99D),
+                                      color: Color(0xffD4D4D4),
                                       border: Border(
                                         right: BorderSide(
-                                          color: Colors.red,
+                                          color: Colors.black,
                                         ),
                                         bottom: BorderSide(
-                                          color: Colors.red,
+                                          color: Colors.black,
                                         ),
                                       )),
                                   child: Padding(
@@ -531,8 +483,8 @@ class _SupplierState extends State<Supplier> {
                                       ["Suppliername"],
                                       style: GoogleFonts.cairo(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: width/75.888,
-                                          color: const Color(0xffFDFDFD)),
+                                          fontSize: width / 95.888,
+                                          color: Colors.black),
                                     ),
                                   ),
                                 ),
@@ -543,17 +495,17 @@ class _SupplierState extends State<Supplier> {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => Edit_suppiler_Paghe(snapshot.data!.docs[index].id),));
                                   },
                                   child: Container(
-                                      height: height / 13.14,
+                                      height: height / 20.14,
                                       width: width / 12.64,
                                       // color: Colors.grey,
                                       decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
+                                          color: Color(0xffD4D4D4),
                                           border: Border(
                                             right: BorderSide(
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                             bottom: BorderSide(
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                           )),
                                       child: Image.asset("assets/edit.png")),
@@ -566,17 +518,17 @@ class _SupplierState extends State<Supplier> {
                                     _suppilier(snapshot.data!.docs[index].id);
                                   },
                                   child: Container(
-                                      height: height / 13.14,
+                                      height: height / 20.14,
                                       width: width / 12.41,
                                       // color: Colors.grey,
                                       decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
+                                          color: Color(0xffD4D4D4),
                                           border: Border(
                                             right: BorderSide(
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                             bottom: BorderSide(
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                           )),
                                       child: Image.asset("assets/delete.png")),
@@ -588,23 +540,23 @@ class _SupplierState extends State<Supplier> {
                                     showdialpogboxss(snapshot.data!.docs[index].id);
                                   },
                                   child: Container(
-                                      height: height / 13.14,
+                                      height: height / 20.14,
                                       width: width / 6.83,
                                       // color: Colors.grey,
                                       decoration: const BoxDecoration(
-                                          color: Color(0xff00A99D),
+                                          color: Color(0xffD4D4D4),
                                           border: Border(
                                             bottom: BorderSide(
-                                              color: Colors.red,
+                                              color:Colors.black,
                                             ),
                                           )),
                                       child: Center(
                                           child: Text(
                                             "View",
                                             style: GoogleFonts.cairo(
-                                                fontSize: width/75.888,
+                                                fontSize: width / 95.888,
                                                 fontWeight: FontWeight.bold,
-                                                color: const Color(0xffFDFDFD)),
+                                                color:  Colors.black),
                                           ))),
                                 ),
                               ],
@@ -1074,14 +1026,23 @@ class _SupplierState extends State<Supplier> {
               padding:  EdgeInsets.only(left: width/20.088,top:height/32.85),
               child: GestureDetector(
                 onTap: () {
-
+                  Supplier();
                   showdialpogbox();
+                  Future.delayed(Duration(seconds: 3),(){
+                    setState(() {
+                      suplierclick=false;
+                    });
+                    clearallcontroller();
+                    Navigator.pop(context);
+                  });
                 },
                 child: Container(width:width/8.6,
                   height: height/16.42,
-                  //color: Color(0xffD60A0B),
-                  decoration: BoxDecoration(borderRadius:
-                  BorderRadius.circular(5),  color: const Color(0xff25D366),),child: Center(child: Text("Save Supplier",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/91.06),)),
+
+                  decoration: BoxDecoration(
+                    color: const Color(0xff25D366),
+                    borderRadius:
+                  BorderRadius.circular(5),),child: Center(child: Text("Save Supplier",style: GoogleFonts.poppins(color: Colors.white,fontSize:width/91.06),)),
                 ),
               ),
             ),
@@ -1165,7 +1126,7 @@ class _SupplierState extends State<Supplier> {
                 child: Column(
                   children: [
                     SizedBox(height: height/32.85,),
-                    Text("Add a Supplier Item Successfully",style: GoogleFonts.poppins(
+                    Text("Add a Supplier Successfully",style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w600,
                         fontSize: width/68.3,
                         color: Colors.white),),
@@ -1177,69 +1138,64 @@ class _SupplierState extends State<Supplier> {
                     ),
                     SizedBox(height:  height/32.85,),
 
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: (){
-                            Supplier();
-                            clearallcontroller();
-                            Navigator.pop(context);
-                            setState(() {
-                              suplierclick=false;
-                            });
-                          },
-                          child: Material(
-                            elevation: 15,
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(5),
-                            child: Container(
-                              height: height/16.425,
-                              width: width/9.588,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.red,
-                              ),
-                              child: Center(
-                                child: Text(
-                                    "Okay",
-                                    style: GoogleFonts.poppins(
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: width/85.375, color: Colors.white)
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width:width/68.3),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Material(
-                            elevation: 15,
-                            color: const Color(0xff263646),
-                            borderRadius: BorderRadius.circular(5),
-                            child: Container(
-                              height: height / 16.425,
-                              width: width / 9.588,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.white,
-                              ),
-                              child: Center(
-                                child: Text("Cancel",
-                                    style: GoogleFonts.poppins(
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: width / 85.375,
-                                        color: Colors.black)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
+                    // Row(
+                    //   children: [
+                    //     InkWell(
+                    //       onTap: (){
+                    //
+                    //       },
+                    //       child: Material(
+                    //         elevation: 15,
+                    //         color: Colors.red,
+                    //         borderRadius: BorderRadius.circular(5),
+                    //         child: Container(
+                    //           height: height/16.425,
+                    //           width: width/9.588,
+                    //           decoration: BoxDecoration(
+                    //             borderRadius: BorderRadius.circular(5),
+                    //             color: Colors.red,
+                    //           ),
+                    //           child: Center(
+                    //             child: Text(
+                    //                 "Okay",
+                    //                 style: GoogleFonts.poppins(
+                    //                     letterSpacing: 1.5,
+                    //                     fontWeight: FontWeight.w500,
+                    //                     fontSize: width/85.375, color: Colors.white)
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     SizedBox(width:width/68.3),
+                    //     InkWell(
+                    //       onTap: () {
+                    //         Navigator.pop(context);
+                    //       },
+                    //       child: Material(
+                    //         elevation: 15,
+                    //         color: const Color(0xff263646),
+                    //         borderRadius: BorderRadius.circular(5),
+                    //         child: Container(
+                    //           height: height / 16.425,
+                    //           width: width / 9.588,
+                    //           decoration: BoxDecoration(
+                    //             borderRadius: BorderRadius.circular(5),
+                    //             color: Colors.white,
+                    //           ),
+                    //           child: Center(
+                    //             child: Text("Cancel",
+                    //                 style: GoogleFonts.poppins(
+                    //                     letterSpacing: 1.5,
+                    //                     fontWeight: FontWeight.w500,
+                    //                     fontSize: width / 85.375,
+                    //                     color: Colors.black)),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // )
 
 
                   ],
@@ -1301,7 +1257,7 @@ class _SupplierState extends State<Supplier> {
                         width:width/9.588,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            color: const Color(0xff263646)
+                            color: const Color(0xff25D366)
                         ),
                         child: Center(
                           child: Text("Okay",style: GoogleFonts.poppins(color:
@@ -1323,7 +1279,7 @@ class _SupplierState extends State<Supplier> {
                           width: width / 9.588,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.white,
+                            color: Colors.red,
                           ),
                           child: Center(
                             child: Text("Cancel",
@@ -1331,7 +1287,7 @@ class _SupplierState extends State<Supplier> {
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 85.375,
-                                    color: Colors.black)),
+                                    color: Colors.white)),
                           ),
                         ),
                       ),
@@ -1634,7 +1590,7 @@ class _SupplierState extends State<Supplier> {
                                     width: width/8.537,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.red,
+                                      color: Color(0xff25D366),
                                     ),
                                     child: Center(
                                       child: Text("Okay",

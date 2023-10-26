@@ -2317,7 +2317,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                 child: DropdownButton2<String>(
                                   value: Payments,
                                   isExpanded: true,
-                                  style: TextStyle(
+                                  style: GoogleFonts.openSans(
                                       color: Colors.black,
                                       fontSize: width / 105.07),
                                   underline: Container(
@@ -4336,7 +4336,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: " ${index + 1}",
-                                            hintStyle: const TextStyle(color: Colors.black)
+                                            hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                         ),
                                       )
                                   ),
@@ -4352,7 +4352,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: "${billing['itemcode']}",
-                                            hintStyle: const TextStyle(color: Colors.black)
+                                            hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                         ),
                                         onSubmitted: (_){
                                           FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
@@ -4373,7 +4373,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                       decoration: InputDecoration(
                                           border: InputBorder.none,
                                           hintText: "${billing['Description']}",
-                                          hintStyle: const TextStyle(color: Colors.black)
+                                          hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                       ),
                                       onSubmitted: (_){
                                         FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
@@ -4402,7 +4402,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "${billing['Hsncode']}",
-                                              hintStyle: const TextStyle(color: Colors.black)
+                                              hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                           ),
                                           onSubmitted: (_){
                                             FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
@@ -4425,7 +4425,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: "${billing['tax']}",
-                                            hintStyle: const TextStyle(color: Colors.black)
+                                            hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                         ),
                                         onSubmitted: (_){
                                           FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
@@ -4447,7 +4447,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "${billing['Qty']}",
-                                              hintStyle: const TextStyle(color: Colors.black)
+                                              hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                           ),
                                           onSubmitted: (_) async {
                                             //create a document (Firebase)
@@ -4494,7 +4494,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "${billing['withouttaxprice']}",
-                                              hintStyle: const TextStyle(color: Colors.black)
+                                              hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                           ),
                                           onSubmitted: (_){
                                             setState((){
@@ -4522,7 +4522,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: billing['Sales price'].toString(),
-                                              hintStyle: const TextStyle(color: Colors.black)
+                                              hintStyle:  GoogleFonts.openSans(color: Colors.black)
                                           ),
                                           onSubmitted: (_){
                                             FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
@@ -4995,7 +4995,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                                             borderRadius: BorderRadius.circular(5)),
                                                         child:
                                                         Center(child: Text(IStfuntion(),
-                                                          style: const TextStyle(
+                                                          style:  GoogleFonts.openSans(
                                                               fontWeight:FontWeight.w600
                                                           ),))
                                                     ):
@@ -5007,7 +5007,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                                             borderRadius: BorderRadius.circular(5)),
                                                         child:
                                                         Center(child: Text(Cgst.toStringAsFixed(2),
-                                                          style: const TextStyle(
+                                                          style:  GoogleFonts.openSans(
                                                               fontWeight:FontWeight.w600
                                                           ),))
                                                     )
@@ -5042,7 +5042,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                                                             borderRadius: BorderRadius.circular(5)),
                                                         child:
                                                         Center(child: Text(sgst.toStringAsFixed(2),
-                                                          style: const TextStyle(
+                                                          style:  GoogleFonts.openSans(
                                                               fontWeight:FontWeight.w600
                                                           ),))
                                                     ),
@@ -7928,6 +7928,8 @@ class _Billing_Page2State extends State<Billing_Page2> {
 
     List<p.Widget> widgets = [];
 
+    var font = await PdfGoogleFonts.openSansSemiBold();
+
     //container for profile image decoration
     final container = p.Center(
       child: p.Container(
@@ -7938,14 +7940,14 @@ class _Billing_Page2State extends State<Billing_Page2> {
                   width: 60,
                   child: p.Center(
                     child: p.Text("SNO".toString(),
-                        style: const p.TextStyle(color: PdfColors.black)),
+                        style:  p.TextStyle(color: PdfColors.black)),
                   )),
               p.SizedBox(width: width / 273.2),
               p.Container(
                   width: 80,
                   child: p.Center(
                     child: p.Text("Descriptions".toString(),
-                        style: const p.TextStyle(color: PdfColors.black)),
+                        style:  p.TextStyle(color: PdfColors.black)),
                   )),
               p.SizedBox(width: width / 273.2),
               p.Container(
@@ -8247,7 +8249,7 @@ class _Billing_Page2State extends State<Billing_Page2> {
                             width: width / 13.66, //--100
                             child: p.Text(totalamountvalue.toString(),
                                 style:
-                                const p.TextStyle(color: PdfColors.black)),
+                                const p.TextStyle(color: PdfColors.black,)),
                           )
                         ]))
               ]))),

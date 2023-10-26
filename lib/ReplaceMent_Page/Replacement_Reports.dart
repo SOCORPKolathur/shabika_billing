@@ -107,7 +107,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                   contentPadding: EdgeInsets.only(
                       bottom: width / 90.6, left: width / 91.06),
                   hintText: "mm/dd/yyyy",
-                  hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                  hintStyle:  GoogleFonts.openSans(color: Color(0xff00A99D)),
                   border: InputBorder.none,
                 ),
                 onTap: () async {
@@ -155,7 +155,7 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                   contentPadding: EdgeInsets.only(
                       bottom: width / 90.6, left: width / 91.06),
                   hintText: "mm/dd/yyyy",
-                  hintStyle: const TextStyle(color: Color(0xff00A99D)),
+                  hintStyle:  GoogleFonts.openSans(color: Color(0xff00A99D)),
                   border: InputBorder.none,
                 ),
                 onTap: () async {
