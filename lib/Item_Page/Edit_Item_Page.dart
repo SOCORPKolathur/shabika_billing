@@ -13,7 +13,7 @@ class Item_edit_Page extends StatefulWidget {
   @override
   State<Item_edit_Page> createState() => _Item_edit_PageState();
 }
-
+const List<String> list1 = <String>['Numbers(NOS)', 'Two', 'Three', 'Four'];
 class _Item_edit_PageState extends State<Item_edit_Page> {
 
   final Formkey=GlobalKey<FormState>();
@@ -21,6 +21,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
 
   String catitemcode = '';
   String branditemcode = '';
+  String dropdownValue1 = 'Numbers(NOS)';
 
   categoryitemcode(itemcode) async {
     var document =
@@ -970,29 +971,61 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
           Row(
             children: [
 
-              /*Padding(
-                padding: EdgeInsets.only(
-                    left: width / 25.773,
-                    top: height / 82.125,
-                    right: width / 45.53),
-                child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        right: width / 136.6, left: width / 136.6),
-
-                  ),
-                  width: width / 6.5,
-                  height: height / 16.42,
-                  //color: Color(0xffDDDEEE),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(4)),
-                ),
-              ),*/
-
               Padding(
                 padding: EdgeInsets.only(
                     left: width / 25.773,
+                    top: height / 82.125,
+                    ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Select Item Unit",
+                      style: GoogleFonts.poppins(
+                          fontSize: width / 97.571, color: const Color(0xff000000)),
+                    ),
+                    SizedBox(height:height/37.6),
+                    Container(
+                      width: width / 5.8,
+                      height: height / 16.42,
+                      //color: Color(0xffDDDEEE),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            right: width / 136.6, left: width / 136.6),
+                        child: DropdownButton<String>(
+                          isExpanded: true,
+                          value: dropdownValue1,
+                          icon: const Icon(Icons.arrow_drop_down_outlined),
+                          style: GoogleFonts.poppins(fontSize: width/91.06,fontWeight: FontWeight.w700),
+                          underline: Container(
+                            color: Colors.deepPurpleAccent,
+                          ),
+                          onChanged: (String? value) {
+                            // This is called when the user selects an item.
+                            setState(() {
+                              dropdownValue1 = value!;
+                            });
+                          },
+                          items: list1
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(
+                    left: width / 65.773,
                     top: height / 82.125,
                    ),
                 child: Column(
