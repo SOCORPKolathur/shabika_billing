@@ -224,6 +224,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   TextEditingController Remarks = TextEditingController();
   TextEditingController Loworder = TextEditingController();
   TextEditingController Stocks = TextEditingController();
+  TextEditingController newSuppliernamecontroller = TextEditingController();
 
   ///  Round of textediting controller
    TextEditingController rounof = TextEditingController();
@@ -375,6 +376,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
   final Formkey=GlobalKey<FormState>();
 
+  final layoutFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -382,8 +385,10 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     return
         //Purchase_Entry
         Stack(
-      alignment: Alignment.center,
-      children: [
+
+          alignment: Alignment.center,
+
+     children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -629,7 +634,10 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                   ),
-                                  child: LayoutBuilder(
+                                  child:
+
+
+                                      LayoutBuilder(
                                     builder: (BuildContext, BoxConstraints) =>
                                         Autocomplete<String>(
                                       fieldViewBuilder: (context,
@@ -639,8 +647,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         return TextFormField(
                                           onChanged: (_) {
                                             setState(() {
-                                              layourbuilderclear =
-                                                  yourbuilderclear;
+                                              layourbuilderclear.text= yourbuilderclear.text;
                                             });
                                           },
                                           style: GoogleFonts.openSans(
@@ -652,13 +659,26 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
                                             border: InputBorder.none,
                                             suffixIcon:
-                                            Icon(Icons.circle,color:Colors.white),),
-                                          controller: layourbuilderclear,
+                                            GestureDetector(
+                                                onTap:(){
+                                                  setState(() {
+                                                    suppierid.clear();
+                                                    yourbuilderclear.clear();
+                                                    layourbuilderclear.clear();
+                                                    suppiler_invoice.clear();
+                                                    suppiler_gstno.clear();
+                                                  });
+                                                },
+                                                child: Icon(Icons.clear,color:Colors.black,size: 20)),),
+                                          controller: yourbuilderclear,
                                           focusNode: focusNode,
                                           onFieldSubmitted: (String value) {
                                             onFieldSubmitted();
                                           },
                                         );
+
+
+
                                       },
                                       optionsViewBuilder: (context, onSelected,
                                               options) =>
@@ -728,7 +748,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       onSelected: (String selection) {
                                         check(selection);
                                         setState(() {
+                                          layourbuilderclear.text = selection;
                                           Suppliername.text = selection;
+                                          layourbuilderclear.text = selection;
                                           customervalid = false;
                                         });
                                         checkfunc();
@@ -746,23 +768,24 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 SizedBox(
                                   width: width / 273.2,
                                 ),
-                                GestureDetector(
-                                  onTap: (){
-                                   setState(() {
-                                     suppierid.clear();
-                                     layourbuilderclear.clear();
-                                     suppiler_invoice.clear();
-                                     suppiler_gstno.clear();
-                                   });
-                                  },
-                                  child: ClipOval(
-                                    
-                                      child: Container(
-                                          height: height / 21.9,
-                                          width: width / 45.53,
-                                          color: Colors.white,
-                                          child: IgnorePointer(child: const Icon(Icons.cancel_outlined,size: 20,)))),
-                                ),
+                                // GestureDetector(
+                                //   onTap: (){
+                                //     setState(() {
+                                //
+                                //     });
+                                //
+                                //
+                                //   },
+                                //   child: ClipOval(
+                                //       child: Container(
+                                //           height: height / 21.9,
+                                //           width: width / 45.53,
+                                //           color: Colors.white,
+                                //           child: IgnorePointer(child: const Icon(Icons.cancel_outlined,size: 20,)))),
+                                // ),
+
+
+
                               ],
                             ),
                           ),
@@ -1256,12 +1279,12 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                 Material(
                   elevation: 50,
                   shadowColor: Colors.black38,
-                  color: const Color(0xff7d99ab),
+                  color: const Color(0xff1D5B79),
                   child: Container(
                     width: width / 0.976,
                     height: height / 16.425,
                     decoration: const BoxDecoration(
-                      color: Color(0xff7d99ab),
+                      color: Color(0xff1D5B79),
                     ),
                     child: Row(
                       children: [
@@ -1272,7 +1295,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               child: Text(
                             "Si No",
                             style: GoogleFonts.openSans(
-                                fontWeight: FontWeight.w700),
+                                fontWeight: FontWeight.w700, color:Colors.white),
+
                           )),
                         ),
 
@@ -1283,7 +1307,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               child: Text(
                             "Item ID",
                             style: GoogleFonts.openSans(
-                                fontWeight: FontWeight.w700),
+                                fontWeight: FontWeight.w700, color:Colors.white),
                           )),
                         ),
 
@@ -1297,7 +1321,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               Text(
                                 "Item Name",
                                 style: GoogleFonts.openSans(
-                                fontWeight: FontWeight.w700),
+                                fontWeight: FontWeight.w700, color:Colors.white),
                               ),
                               SizedBox(width:width/170.75),
                               
@@ -1345,7 +1369,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Box No",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans( color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1356,7 +1380,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "HSN Code",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans( color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1370,7 +1394,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Qnty",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans( color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1381,7 +1405,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Price",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans( color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1392,7 +1416,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Landing Cost",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans( color:Colors.white,
                                 fontWeight: FontWeight.w700),
                             textAlign: TextAlign.center,
                           )),
@@ -1404,16 +1428,17 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Sales Price",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans( color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
+
                         SizedBox(
                           width: width / 15.18,
                           child: Center(
                               child: Text(
                             "Profit",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans( color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1424,7 +1449,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "MRP Price",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans(color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1435,9 +1460,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Value",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans(color:Colors.white,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.redAccent),
+                                ),
                           )),
                         ),
 
@@ -1448,7 +1473,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               child: Text(
                             "A\nQnty",
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans(color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1458,7 +1483,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Stk",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans(color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1468,7 +1493,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Center(
                               child: Text(
                             "Clear ",
-                            style: GoogleFonts.openSans(
+                            style: GoogleFonts.openSans(color:Colors.white,
                                 fontWeight: FontWeight.w700),
                           )),
                         ),
@@ -1481,7 +1506,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                   // color: Color(0xffFFFFFF),
                   width: width / 0.976,
                   decoration: const BoxDecoration(
-                    color: Color(0xffb7b0aa),
+                      color:Colors.white,
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -4606,7 +4631,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 color: const Color(0xffFFFFFF),
                                 borderRadius: BorderRadius.circular(6)),
                             child: TextField(
-                              controller: Suppliername,
+                              controller: newSuppliernamecontroller,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
@@ -4631,11 +4656,12 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                 color: const Color(0xffFFFFFF),
                                 borderRadius: BorderRadius.circular(6)),
                             child: TextField(
+                              readOnly: true,
                               controller: Suppliercode,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               style:
-                                  GoogleFonts.openSans(fontSize: width / 136.6),
+                                  GoogleFonts.openSans(fontSize: width / 91.06),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
                                     left: width / 68.3, bottom: width / 82.125),
@@ -5279,7 +5305,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     Panno.clear();
     Openingbalance.clear();
     Remarks.clear();
-    Suppliername.clear();
+    newSuppliernamecontroller.clear();
     Supplieremail.clear();
     setState(() {
       dropdownValue = 'Please Select Category';
@@ -5302,7 +5328,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       "Mobileno2": Mobileno2.text,
       "Panno": Panno.text,
       "Remarks": Remarks.text,
-      "Suppliername": Suppliername.text,
+      "Suppliername": newSuppliernamecontroller.text,
       "Email": Supplieremail.text,
       "timestamp": DateTime.now().microsecondsSinceEpoch,
       "Openingbalance": ""
@@ -5685,6 +5711,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       if (status == true) {
         var documents = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
         for (int i = 0; i < documents.docs.length; i++) {
+
           if (name == documents.docs[i]["Newitemname"]) {
             setState((){
               itemcode = documents.docs[i]["Itemcode"].toString();
@@ -6108,6 +6135,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "timestamp": DateTime.now().microsecondsSinceEpoch
       });
     }
+
     setState(() {
 
       itemserch = false;
@@ -6121,6 +6149,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       );
 
     });
+
     if (layourbuilderclear3.text != "" &&
         layourbuilderclear.text != "" &&
         Suppliername.text != "" &&
@@ -9285,12 +9314,56 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     );
   }
 
+  Widget textfield3(FocusNode focusNode, TextEditingController textEditingController, onFieldSubmitted) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    return Row(
+      children: [
+        TextFormField(
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding:
+                  EdgeInsets.only(left: width / 273.2, bottom: height / 43.8)),
+          controller: textEditingController,
+          focusNode: focusNode,
+          onFieldSubmitted: (String value) {
+            onFieldSubmitted();
+          },
+        ),
+        SizedBox(
+          width: width / 273.2,
+        ),
+        GestureDetector(
+          onTap: (){
+            setState(() {
+
+            });
+            setState(() {
+              suppierid.clear();
+              textEditingController.clear();
+              layourbuilderclear.clear();
+              suppiler_invoice.clear();
+              suppiler_gstno.clear();
+            });
+
+          },
+          child: ClipOval(
+              child: Container(
+                  height: height / 21.9,
+                  width: width / 45.53,
+                  color: Colors.white,
+                  child: IgnorePointer(child: const Icon(Icons.cancel_outlined,size: 20,)))),
+        ),
+      ],
+    );
+  }
+
 
   List<String> _cities = ["Choose City"];
 
   Future getResponse() async {
-    var res = await rootBundle.loadString(
-        'packages/country_state_city_picker/lib/assets/country.json');
+    var res = await rootBundle.loadString('packages/country_state_city_picker/lib/assets/country.json');
     return jsonDecode(res);
   }
 
@@ -9310,7 +9383,6 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         setState(() {
           var citiesname = ci.map((item) => item.name).toList();
           for (var citynames in citiesname) {
-
             _cities.add(citynames.toString());
           }
         });

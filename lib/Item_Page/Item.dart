@@ -3237,6 +3237,7 @@ class _ItemState extends State<Item> {
   clearallcontroller() {
     itemcode.clear();
     HSNcode.clear();
+    margin.clear();
     Newitemname.clear();
     Purchaseprice.clear();
     Landingcost.clear();
