@@ -252,47 +252,54 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
   }
 
   updatedocument(){
-    FirebaseFirestore.instance.collection("Item ShabikaG").doc(widget.docid).update({
-      "Category": Categorycont.text,
-      "Brand": Barndcont.text,
-      "Itemcode": itemcode.text,
-      "HSNCode": HSNcode.text,
-      "Newitemname": Newitemname.text,
-      "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
-      "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
-      "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
-      "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
-      "margin": double.parse(margin.text).toStringAsFixed(2),
-      "Loworder": Loworder.text,
-      "BoxNo": BoxNo.text,
-      "IMEI NO": isChecked,
-      "Serial NO": isChecked2,
-      "Color": isChecked3,
-      "Image": isChecked4,
-      "timestamp": DateTime.now().microsecondsSinceEpoch,
-      "gst": "18%"
-    });
-
-    FirebaseFirestore.instance.collection("Item ShabikaN").doc(widget.docid).update({
-      "Category": Categorycont.text,
-      "Brand": Barndcont.text,
-      "Itemcode": itemcode.text,
-      "HSNCode": HSNcode.text,
-      "Newitemname": Newitemname.text,
-      "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
-      "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
-      "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
-      "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
-      "margin": double.parse(margin.text).toStringAsFixed(2),
-      "Loworder": Loworder.text,
-      "BoxNo": BoxNo.text,
-      "IMEI NO": isChecked,
-      "Serial NO": isChecked2,
-      "Color": isChecked3,
-      "Image": isChecked4,
-      "timestamp": DateTime.now().microsecondsSinceEpoch,
-      "gst": "18%"
-    });
+    if(widget.type=='ShabikaG') {
+      FirebaseFirestore.instance.collection("Item ShabikaG")
+          .doc(widget.docid)
+          .update({
+        "Category": Categorycont.text,
+        "Brand": Barndcont.text,
+        "Itemcode": itemcode.text,
+        "HSNCode": HSNcode.text,
+        "Newitemname": Newitemname.text,
+        "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
+        "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
+        "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
+        "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+        "margin": double.parse(margin.text).toStringAsFixed(2),
+        "Loworder": Loworder.text,
+        "BoxNo": BoxNo.text,
+        "IMEI NO": isChecked,
+        "Serial NO": isChecked2,
+        "Color": isChecked3,
+        "Image": isChecked4,
+        // "timestamp": DateTime.now().microsecondsSinceEpoch,
+        "gst": "18%"
+      });
+    }
+    if(widget.type=='ShabikaN') {
+      FirebaseFirestore.instance.collection("Item ShabikaN")
+          .doc(widget.docid)
+          .update({
+        "Category": Categorycont.text,
+        "Brand": Barndcont.text,
+        "Itemcode": itemcode.text,
+        "HSNCode": HSNcode.text,
+        "Newitemname": Newitemname.text,
+        "Purchaseprice": double.parse(Purchaseprice.text).toStringAsFixed(2),
+        "Landingcost": double.parse(Landingcost.text).toStringAsFixed(2),
+        "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
+        "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
+        "margin": margin.text !=""?double.parse(margin.text).toStringAsFixed(2) : 0,
+        "Loworder": Loworder.text,
+        "BoxNo": BoxNo.text,
+        "IMEI NO": isChecked,
+        "Serial NO": isChecked2,
+        "Color": isChecked3,
+        "Image": isChecked4,
+        // "timestamp": DateTime.now().microsecondsSinceEpoch,
+        "gst": "18%"
+      });
+    }
     if(widget.type=='Item'){
       FirebaseFirestore.instance.collection("Item").doc(widget.docid).update({
         "Category": Categorycont.text,
@@ -311,7 +318,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         "Serial NO": isChecked2,
         "Color": isChecked3,
         "Image": isChecked4,
-        "timestamp": DateTime.now().microsecondsSinceEpoch,
+       // "timestamp": DateTime.now().microsecondsSinceEpoch,
         "gst": "18%"
       });
     }
@@ -345,7 +352,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                         height: height / 32.85,
                       ),
                       Text(
-                        " Edit Item Successfully",
+                        "Item Edited Successfully",
                         style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.30,
@@ -363,65 +370,65 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              clearallcontroller();
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                            child: Material(
-                              elevation: 15,
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                height: height / 16.425,
-                                width: width / 9.588,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.red,
-                                ),
-                                child: Center(
-                                  child: Text("Okay",
-                                      style: GoogleFonts.openSans(
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 85.375,
-                                          color: Colors.white)),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width:width/68.3),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Material(
-                              elevation: 15,
-                              color: const Color(0xff263646),
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                height: height / 16.425,
-                                width: width / 9.588,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.white,
-                                ),
-                                child: Center(
-                                  child: Text("Cancel",
-                                      style: GoogleFonts.openSans(
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 85.375,
-                                          color: Colors.black)),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     InkWell(
+                      //       onTap: () {
+                      //
+                      //         Navigator.pop(context);
+                      //       },
+                      //       child: Material(
+                      //         elevation: 15,
+                      //           color: const Color(0xff25D366),
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         child: Container(
+                      //           height: height / 16.425,
+                      //           width: width / 9.588,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(5),
+                      //               color: const Color(0xff25D366)
+                      //           ),
+                      //           child: Center(
+                      //             child: Text("Okay",
+                      //                 style: GoogleFonts.openSans(
+                      //                     letterSpacing: 1.5,
+                      //                     fontWeight: FontWeight.w500,
+                      //                     fontSize: width / 85.375,
+                      //                     color: Colors.white)),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     SizedBox(width:width/68.3),
+                      //     InkWell(
+                      //       onTap: () {
+                      //         Navigator.pop(context);
+                      //       },
+                      //       child: Material(
+                      //         elevation: 15,
+                      //         color: const Color(0xff263646),
+                      //         borderRadius: BorderRadius.circular(5),
+                      //         child: Container(
+                      //           height: height / 16.425,
+                      //           width: width / 9.588,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(5),
+                      //             color: Colors.white,
+                      //           ),
+                      //           child: Center(
+                      //             child: Text("Cancel",
+                      //                 style: GoogleFonts.openSans(
+                      //                     letterSpacing: 1.5,
+                      //                     fontWeight: FontWeight.w500,
+                      //                     fontSize: width / 85.375,
+                      //                     color: Colors.black)),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // )
                     ],
                   ),
                 )),
@@ -1316,6 +1323,11 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
                   onTap: () {
                     updatedocument();
                     showdialpogbox();
+                    Future.delayed(Duration(seconds: 3),(){
+                      clearallcontroller();
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    });
                   },
                   child: Container(
                     width: width / 13.6,
