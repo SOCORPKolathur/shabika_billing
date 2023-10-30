@@ -1943,7 +1943,7 @@ class _Billing_PageState extends State<Billing_Page> {
          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
        });
      }
-
+    print("identifi+++++++++++++++++++++++++++++4");
      FirebaseFirestore.instance.collection("billing").doc(random).update({
        "Total": totalamount,
        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ? TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
@@ -1959,6 +1959,7 @@ class _Billing_PageState extends State<Billing_Page> {
        "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
        "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
      });
+    print("identifi+++++++++++++++++++++++++++++5");
     if (status == true) {
       FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
         "Total": totalamount,
@@ -2104,7 +2105,7 @@ class _Billing_PageState extends State<Billing_Page> {
     }
 
 
-      FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing")
+    /*  FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing")
          .doc(random).update({
        "Total": totalamount,
        "Payment mode": Payments,
@@ -2119,7 +2120,7 @@ class _Billing_PageState extends State<Billing_Page> {
        "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
        "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
        "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-     });
+     });*/
 
      FirebaseFirestore.instance.collection("Accounts").doc("AxQxYGPKUB5qGzllyfpY").update({
        "Totalamount":Discountamount.text == "0"&&Discountamountpercentage.text == "0" ? FieldValue.increment(TotalAmount2):FieldValue.increment(disacountamountcalue),
@@ -2169,6 +2170,7 @@ class _Billing_PageState extends State<Billing_Page> {
     color = false;
     popupLoading = false;
   });
+
   }
 
   TextEditingController paymenttype1 = TextEditingController();
@@ -2608,7 +2610,9 @@ class _Billing_PageState extends State<Billing_Page> {
                                   setState((){
                                     Loading=true;
                                   });
-                                  Future.delayed(const Duration(seconds: 5),(){
+                                  print("Hello+++++++++++++++++++++++++++++2");
+                                  Future.delayed(const Duration(seconds: 4),(){
+                                    print("helllllll+++++++++++++++++++++++++++++3");
                                     setState((){
                                       Loading=false;
                                       Destription.clear();
@@ -2623,12 +2627,13 @@ class _Billing_PageState extends State<Billing_Page> {
                                       customername.text="Walking Customer";
                                       customerphone.text="Walking Customer";
                                     });
-
                                   ///customer name fetch document  fucntion
+                                    print("helllllll+++++++++++++++++++++++++++++4");
 
-                                    //check("Walking Customer");
-                                    checkbillno();
                                     Navigator.pop(context);
+                                    print("helllllll++++++++++++++++++++++++++++5");
+
+                                    checkbillno();
                                     Savebillpopup();
                                     clearallcontroller();
                                     clearcontroller();
@@ -3702,12 +3707,12 @@ class _Billing_PageState extends State<Billing_Page> {
               Material(
                 elevation: 50,
                 shadowColor: Colors.black38,
-                color: const Color(0xff7d99ab),
+                color: const Color(0xff1D5B79),
                 child: Container(
                   width: width / 0.976,
                   height: height / 16.425,
                   decoration: const BoxDecoration(
-                    color: Color(0xff7d99ab),
+                    color: Color(0xff1D5B79),
                   ),
                   child: Row(
                     children: [
@@ -3718,7 +3723,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Si No",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3729,7 +3734,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Item ID",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3740,7 +3745,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Item Name",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3753,7 +3758,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Box No",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3764,7 +3769,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "HSN Code",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3775,7 +3780,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Tax %",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3786,7 +3791,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Qnty",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3797,7 +3802,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Price",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3808,7 +3813,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Sales Price",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3819,7 +3824,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Stocks",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
 
@@ -3830,7 +3835,7 @@ class _Billing_PageState extends State<Billing_Page> {
                             child: Text(
                               "Clear ",
                               style:
-                              GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
                     ],
@@ -3841,7 +3846,7 @@ class _Billing_PageState extends State<Billing_Page> {
               Container(
                 width: width / 0.976,
                 decoration: const BoxDecoration(
-                  color: Color(0xffb7b0aa),
+                  color: Colors.white,
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -4594,8 +4599,8 @@ class _Billing_PageState extends State<Billing_Page> {
                                           //color: Color(0xffD60A0B),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(4),
-                                           // color:  const Color(0xff013220),
-                                            color: const Color(0xff25D366),
+                                            color:  const Color(0xff013220),
+                                          //  color: const Color(0xff25D366),
                                           ),
                                           child: Center(
                                               child: Text(
@@ -5204,6 +5209,8 @@ class _Billing_PageState extends State<Billing_Page> {
   String itemserial = '';
 
   checkbillno() {
+
+    print("save SuccessFully---------------------------------------------------------------");
     setState(() {
       random = randomAlphaNumeric(16);
       sgst = 0;

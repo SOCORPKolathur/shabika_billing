@@ -4717,15 +4717,18 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Customer Phone",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Customer Phone",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
                                ),
-                               SizedBox(
-                                 width: width / 43.0,
-                               ),
+
                                Container(
                                  width: width / 3.415,
                                  height: height / 21.9,
@@ -4734,25 +4737,25 @@ TextEditingController layourbuilderclear=TextEditingController();
                                    color: Colors.white,
                                  ),
                                  child: Focus(
-                                     focusNode: customerphone2,
-                                     child:   TextField(
-                                       style: GoogleFonts.openSans(
-                                         fontWeight:FontWeight.w700,
+                                   focusNode: customerphone2,
+                                   child:   TextField(
+                                     style: GoogleFonts.openSans(
+                                       fontWeight:FontWeight.w700,
 
-                                       ),
-                                       focusNode: customername2,
-                                       controller: _typeAheadControllergender9,
-                                       decoration: InputDecoration(
-                                         contentPadding: EdgeInsets.only(
-                                             left:width/130, bottom: height / 36.5),
-                                         border: InputBorder.none,
-                                       ),
-                                       onSubmitted: (_) {
-                                         customername2.unfocus();
-                                         FocusScope.of(context)
-                                             .requestFocus(customeraddress2);
-                                       },
                                      ),
+                                     focusNode: customername2,
+                                     controller: _typeAheadControllergender9,
+                                     decoration: InputDecoration(
+                                       contentPadding: EdgeInsets.only(
+                                           left:width/130, bottom: height / 36.5),
+                                       border: InputBorder.none,
+                                     ),
+                                     onSubmitted: (_) {
+                                       customername2.unfocus();
+                                       FocusScope.of(context)
+                                           .requestFocus(customeraddress2);
+                                     },
+                                   ),
 
 
                                  ),
@@ -4760,6 +4763,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
+
                                InkWell(
                                  onTap: () {
 
@@ -4814,14 +4818,16 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Customer Name",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
-                               ),
-                               SizedBox(
-                                 width: width / 41.39,
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Customer Name",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
                                ),
                                Container(
                                  width: width / 3.415,
@@ -4865,15 +4871,18 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Customer Address",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Customer Address",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
                                ),
-                               SizedBox(
-                                 width: width / 75.88,
-                               ),
+
                                Container(
                                  width: width / 3.415,
                                  height: height / 21.9,
@@ -4905,7 +4914,6 @@ TextEditingController layourbuilderclear=TextEditingController();
                            ),
                          ),
 
-
                          //tax type
                          Padding(
                            padding: EdgeInsets.only(
@@ -4917,15 +4925,18 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Tax Type",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Tax Type",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
                                ),
-                               SizedBox(
-                                 width: width / 15.701,
-                               ),
+
                                Container(
                                  width: width / 3.415,
                                  height: height / 21.9,
@@ -4950,7 +4961,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                          isDense: true,
                                          alignment: Alignment.topCenter,
                                          style: GoogleFonts.openSans(
-                                           fontWeight:FontWeight.w700,
+                                             fontWeight:FontWeight.w700,
                                              color: Colors.black,
                                              fontSize: width / 105.07
 
@@ -4984,6 +4995,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                          ),
 
                          //Customer  gstno
+
                          Padding(
                            padding: EdgeInsets.only(
                                top: height / 328.5, left: width / 273.2),
@@ -4994,15 +5006,18 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Customer GST NO",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Customer GST NO",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
                                ),
-                               SizedBox(
-                                 width: width / 55.701,
-                               ),
+
                                Container(
                                  width: width / 3.415,
                                  height: height / 21.9,
@@ -5019,7 +5034,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                    ),
                                    child: TextField(
                                      style: GoogleFonts.openSans(
-                                         fontWeight:FontWeight.w700,
+                                       fontWeight:FontWeight.w700,
                                      ),
                                      controller: AddnewcustomeGst,
                                      decoration: InputDecoration(
@@ -5038,7 +5053,6 @@ TextEditingController layourbuilderclear=TextEditingController();
                              ],
                            ),
                          ),
-
                        ],
                      ),
                    ),
@@ -5059,15 +5073,18 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Bill No",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Bill No",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
                                ),
-                               SizedBox(
-                                 width: width / 17.74,
-                               ),
+
                                Container(
                                  width: width / 3.415,
                                  height: height / 21.9,
@@ -5093,10 +5110,82 @@ TextEditingController layourbuilderclear=TextEditingController();
                                    },
                                  ),
                                ),
-
                              ],
                            ),
                          ),
+
+
+                         //Purchase  Date
+                         Padding(
+                           padding: EdgeInsets.only(
+                               top: height / 328.5, left: width / 273.2),
+                           child: Row(
+                             crossAxisAlignment: CrossAxisAlignment.center,
+                             children: [
+                               SizedBox(
+                                 width: width / 273.2,
+                               ),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Sales  Date",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
+                               ),
+
+                               Container(
+                                 width: width / 3.415,
+                                 height: height / 21.9,
+                                 //color:Colors.white,
+                                 decoration: const BoxDecoration(
+                                   color: Colors.white,
+                                 ),
+                                 child: TextField(
+                                   style: GoogleFonts.openSans(
+                                     fontWeight:FontWeight.w700,
+                                   ),
+                                   controller: purchase_Date,
+                                   focusNode: purchase_date,
+                                   decoration: InputDecoration(
+                                       contentPadding: EdgeInsets.only(
+                                           left:width/130, bottom: height / 36.5),
+                                       hintText: "Invoice Date",
+                                       border: InputBorder.none,
+                                       suffixIcon: const Icon(Icons.calendar_month)),
+                                   onSubmitted: (_) {
+                                     purchase_date.unfocus();
+                                     FocusScope.of(context)
+                                         .requestFocus(purchase_payment);
+                                   },
+                                   onTap: () async {
+                                     DateTime? pickedDate = await showDatePicker(
+                                         context: context,
+                                         initialDate: DateTime.now(),
+                                         firstDate: DateTime(1950),
+                                         //DateTime.now() - not to allow to choose before today.
+                                         lastDate: DateTime(2100));
+
+                                     if (pickedDate != null) {
+                                       //pickedDate output format => 2021-03-10 00:00:00.000
+                                       String formattedDate =
+                                       DateFormat('dd/MM/yyyy').format(pickedDate);
+                                       //formatted date output using intl package =>  2021-03-16
+                                       setState(() {
+                                         purchase_Date.text =
+                                             formattedDate; //set output date to TextField value.
+                                       });
+                                     } else {}
+                                   },
+                                 ),
+                               ),
+                             ],
+                           ),
+                         ),
+
 
                          Padding(
                            padding: EdgeInsets.only(
@@ -5106,17 +5195,19 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Category",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Category",
+                                   style: GoogleFonts.openSans(
+                                     fontWeight: FontWeight.w700,fontSize: width/85,),
+
+                                 ),
                                ),
-                               SizedBox(
-                                 width: width / 32.3,
-                               ),
+
                                Padding(
-                                 padding:  EdgeInsets.only(left:width/130,right: width/170),
+                                 padding: EdgeInsets.only(
+                                     right: width / 170),
                                  child: LayoutBuilder(
                                    builder: (BuildContext, BoxConstraints) =>
                                        Autocomplete<String>(
@@ -5196,8 +5287,8 @@ TextEditingController layourbuilderclear=TextEditingController();
                                          },
                                        ),
                                  ),
-                               ),
 
+                               ),
                              ],
                            ),
                          ),
@@ -5211,17 +5302,23 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Brand",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Brand",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
                                ),
-                               SizedBox(
-                                 width: width / 20.5,
-                               ),
+
                                Padding(
-                                 padding:  EdgeInsets.only(left:width/130,right: width/170,),
+                                 padding: EdgeInsets.only(
+
+                                   right: width / 170,
+                                 ),
                                  child: LayoutBuilder(
                                    builder: (BuildContext, BoxConstraints) =>
                                        Autocomplete<String>(
@@ -5303,141 +5400,9 @@ TextEditingController layourbuilderclear=TextEditingController();
                                        ),
                                  ),
                                ),
-
-
-
                              ],
                            ),
                          ),
-
-                         //Purchase  Date
-                         Padding(
-                           padding: EdgeInsets.only(
-                               top: height / 328.5, left: width / 273.2),
-                           child: Row(
-                             crossAxisAlignment: CrossAxisAlignment.center,
-                             children: [
-                               SizedBox(
-                                 width: width / 273.2,
-                               ),
-                               Text(
-                                 "Purchase  Date",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
-                               ),
-                               SizedBox(
-                                 width: width / 105.07,
-                               ),
-                               Container(
-                                 width: width / 3.415,
-                                 height: height / 21.9,
-                                 //color:Colors.white,
-                                 decoration: const BoxDecoration(
-                                   color: Colors.white,
-                                 ),
-                                 child: TextField(
-                                   style: GoogleFonts.openSans(
-                                     fontWeight:FontWeight.w700,
-                                   ),
-                                   controller: purchase_Date,
-                                   focusNode: purchase_date,
-                                   decoration: InputDecoration(
-                                       contentPadding: EdgeInsets.only(
-                                           left:width/130, bottom: height / 36.5),
-                                       hintText: "Invoice Date",
-                                       border: InputBorder.none,
-                                       suffixIcon: const Icon(Icons.calendar_month)),
-                                   onSubmitted: (_) {
-                                     purchase_date.unfocus();
-                                     FocusScope.of(context)
-                                         .requestFocus(purchase_payment);
-                                   },
-                                   onTap: () async {
-                                     DateTime? pickedDate = await showDatePicker(
-                                         context: context,
-                                         initialDate: DateTime.now(),
-                                         firstDate: DateTime(1950),
-                                         //DateTime.now() - not to allow to choose before today.
-                                         lastDate: DateTime(2100));
-
-                                     if (pickedDate != null) {
-                                       //pickedDate output format => 2021-03-10 00:00:00.000
-                                       String formattedDate =
-                                       DateFormat('dd/MM/yyyy').format(pickedDate);
-                                       //formatted date output using intl package =>  2021-03-16
-                                       setState(() {
-                                         purchase_Date.text =
-                                             formattedDate; //set output date to TextField value.
-                                       });
-                                     } else {}
-                                   },
-                                 ),
-                               ),
-                             ],
-                           ),
-                         ),
-
-                         //payment mode
-                         /* Padding(
-                        padding: EdgeInsets.only(
-                            top: height / 328.5, left: width / 273.2),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: width / 273.2,
-                            ),
-                            Text(
-                              "Payment Mode",
-                              style: GoogleFonts.openSans(
-                                  fontSize: width / 97.571,
-                                  color: const Color(0xff000000)),
-                            ),
-                            SizedBox(
-                              width: width / 105.07,
-                            ),
-                            Container(
-                              width: width / 3.415,
-                              height: height / 21.9,
-                              //color:Colors.white,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.only(bottom: height / 164.25),
-                                child: DropdownButton2<String>(
-                                  value: Payments,
-                                  focusNode: purchase_payment,
-                                  isExpanded: true,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: width / 105.07),
-                                  underline: Container(
-                                    color: Colors.deepPurpleAccent,
-                                  ),
-                                  onChanged: (String? value) {
-                                    // This is called when the user selects an item.
-                                    setState(() {
-                                      Payments = value!;
-                                    });
-                                    purchase_payment.unfocus();
-                                    FocusScope.of(context)
-                                        .requestFocus(purchase_note);
-                                  },
-                                  items: Payment.map<DropdownMenuItem<String>>(
-                                      (String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),*/
 
                          //Remarks
                          Padding(
@@ -5449,15 +5414,18 @@ TextEditingController layourbuilderclear=TextEditingController();
                                SizedBox(
                                  width: width / 273.2,
                                ),
-                               Text(
-                                 "Remarks",
-                                 style: GoogleFonts.openSans(
-                                     fontSize: width / 97.571,
-                                     color: const Color(0xff000000)),
+                               Container(
+                                 width: width / 9.0,
+                                 child: Text(
+                                   "Remarks",
+                                   style:GoogleFonts.openSans(
+                                       fontSize: width/85,
+                                       fontWeight: FontWeight.w700,
+                                       color: const Color(0xff000000)),
+
+                                 ),
                                ),
-                               SizedBox(
-                                 width: width / 23.5,
-                               ),
+
                                Container(
                                  width: width / 3.415,
                                  height: height / 21.9,
@@ -5492,6 +5460,800 @@ TextEditingController layourbuilderclear=TextEditingController();
                  ],
                ),
 
+               // Row(
+               //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+               //   children: [
+               //     //entry type container
+               //     SizedBox(
+               //       height: height / 4.0,
+               //       child: Column(
+               //         crossAxisAlignment: CrossAxisAlignment.start,
+               //         children: [
+               //           //Customer Phone
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.start,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Customer Phone",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 43.0,
+               //                 ),
+               //                 Container(
+               //                   width: width / 3.415,
+               //                   height: height / 21.9,
+               //                   //color:Colors.white,
+               //                   decoration: const BoxDecoration(
+               //                     color: Colors.white,
+               //                   ),
+               //                   child: Focus(
+               //                       focusNode: customerphone2,
+               //                       child:   TextField(
+               //                         style: GoogleFonts.openSans(
+               //                           fontWeight:FontWeight.w700,
+               //
+               //                         ),
+               //                         focusNode: customername2,
+               //                         controller: _typeAheadControllergender9,
+               //                         decoration: InputDecoration(
+               //                           contentPadding: EdgeInsets.only(
+               //                               left:width/130, bottom: height / 36.5),
+               //                           border: InputBorder.none,
+               //                         ),
+               //                         onSubmitted: (_) {
+               //                           customername2.unfocus();
+               //                           FocusScope.of(context)
+               //                               .requestFocus(customeraddress2);
+               //                         },
+               //                       ),
+               //
+               //
+               //                   ),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 InkWell(
+               //                   onTap: () {
+               //
+               //                     if(customervalid==true){
+               //                       checkagain();
+               //                     }
+               //                   },
+               //                   child:
+               //                   customervalid==true?
+               //                   Material(
+               //                     shadowColor: Colors.black12,
+               //                     elevation: 25,
+               //                     borderRadius: BorderRadius.circular(5),
+               //                     color: Colors.white,
+               //                     child: Container(
+               //                         height:height/21.9,
+               //                         width:width/10.53,
+               //                         decoration: BoxDecoration(
+               //                           borderRadius: BorderRadius.circular(5),
+               //                           color: Colors.white,
+               //                         ),
+               //                         child: Row(
+               //                           children: [
+               //                             SizedBox(width:width/400.33),
+               //                             const Text("New Customer"),
+               //                             SizedBox(width:width/455.33),
+               //                             const Icon(Icons.add),
+               //                           ],
+               //                         )),
+               //                   ):
+               //                   ClipOval(
+               //                       child:
+               //                       Container(
+               //                           height:height/21.9,
+               //                           width:width/45.53,
+               //                           color: Colors.white,
+               //                           child: const Icon(Icons.add))),
+               //
+               //                 )
+               //               ],
+               //             ),
+               //           ),
+               //
+               //           //Customer name
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.start,
+               //               mainAxisAlignment: MainAxisAlignment.start,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Customer Name",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 41.39,
+               //                 ),
+               //                 Container(
+               //                   width: width / 3.415,
+               //                   height: height / 21.9,
+               //                   //color:Colors.white,
+               //                   decoration: const BoxDecoration(
+               //                     color: Colors.white,
+               //                   ),
+               //                   child:
+               //                   TextField(
+               //                     style: GoogleFonts.openSans(
+               //                       fontWeight:FontWeight.w700,
+               //
+               //                     ),
+               //                     focusNode: customername2,
+               //                     controller: customername,
+               //                     decoration: InputDecoration(
+               //                       contentPadding: EdgeInsets.only(
+               //                           left:width/130, bottom: height / 36.5),
+               //                       border: InputBorder.none,
+               //                     ),
+               //                     onSubmitted: (_) {
+               //                       customername2.unfocus();
+               //                       FocusScope.of(context)
+               //                           .requestFocus(customeraddress2);
+               //                     },
+               //                   ),
+               //                 ),
+               //               ],
+               //             ),
+               //           ),
+               //
+               //           //Customer Address
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.center,
+               //               mainAxisAlignment: MainAxisAlignment.start,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Customer Address",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 75.88,
+               //                 ),
+               //                 Container(
+               //                   width: width / 3.415,
+               //                   height: height / 21.9,
+               //                   //color:Colors.white,
+               //                   decoration: const BoxDecoration(
+               //                     color: Colors.white,
+               //                   ),
+               //                   child:
+               //                   TextField(
+               //                     style: GoogleFonts.openSans(
+               //                       fontWeight:FontWeight.w700,
+               //
+               //                     ),
+               //                     focusNode: customeraddress2,
+               //                     controller: customeraddress,
+               //                     decoration: InputDecoration(
+               //                       contentPadding: EdgeInsets.only(
+               //                           left:width/130, bottom: height / 36.5),
+               //                       border: InputBorder.none,
+               //                     ),
+               //                     onSubmitted: (_) {
+               //                       customeraddress2.unfocus();
+               //                       FocusScope.of(context)
+               //                           .requestFocus(suppierincoice_no);
+               //                     },
+               //                   ),
+               //                 ),
+               //               ],
+               //             ),
+               //           ),
+               //
+               //
+               //           //tax type
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.center,
+               //               mainAxisAlignment: MainAxisAlignment.start,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Tax Type",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 15.701,
+               //                 ),
+               //                 Container(
+               //                   width: width / 3.415,
+               //                   height: height / 21.9,
+               //                   //color:Colors.white,
+               //                   decoration: const BoxDecoration(
+               //                     color: Colors.white,
+               //                   ),
+               //                   child: Container(
+               //                     width: width / 3.415,
+               //                     height: height / 21.9,
+               //                     //color:Colors.white,
+               //                     decoration: const BoxDecoration(
+               //                       color: Colors.white,
+               //                     ),
+               //                     child: DropdownButtonHideUnderline(
+               //                       child: ButtonTheme(
+               //                         alignedDropdown: true,
+               //                         child: DropdownButton2<String>(
+               //                           value: dropdownValue3,
+               //                           focusNode: suppiertax,
+               //                           isExpanded: true,
+               //                           isDense: true,
+               //                           alignment: Alignment.topCenter,
+               //                           style: GoogleFonts.openSans(
+               //                             fontWeight:FontWeight.w700,
+               //                               color: Colors.black,
+               //                               fontSize: width / 105.07
+               //
+               //                           ),
+               //                           underline: Container(
+               //                             color: Colors.deepPurpleAccent,
+               //                           ),
+               //                           onChanged: (String? value) {
+               //                             // This is called when the user selects an item.
+               //                             setState(() {
+               //                               dropdownValue3 = value!;
+               //                             });
+               //                             suppiertax.unfocus();
+               //                             FocusScope.of(context)
+               //                                 .requestFocus(suppierincoice_no);
+               //                           },
+               //                           items: list3.map<DropdownMenuItem<String>>(
+               //                                   (String value) {
+               //                                 return DropdownMenuItem<String>(
+               //                                   value: value,
+               //                                   child: Text(value),
+               //                                 );
+               //                               }).toList(),
+               //                         ),
+               //                       ),
+               //                     ),
+               //                   ),
+               //                 ),
+               //               ],
+               //             ),
+               //           ),
+               //
+               //           //Customer  gstno
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.center,
+               //               mainAxisAlignment: MainAxisAlignment.start,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Customer GST NO",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 55.701,
+               //                 ),
+               //                 Container(
+               //                   width: width / 3.415,
+               //                   height: height / 21.9,
+               //                   //color:Colors.white,
+               //                   decoration: const BoxDecoration(
+               //                     color: Colors.white,
+               //                   ),
+               //                   child: Container(
+               //                     width: width / 3.415,
+               //                     height: height / 21.9,
+               //                     //color:Colors.white,
+               //                     decoration: const BoxDecoration(
+               //                       color: Colors.white,
+               //                     ),
+               //                     child: TextField(
+               //                       style: GoogleFonts.openSans(
+               //                           fontWeight:FontWeight.w700,
+               //                       ),
+               //                       controller: AddnewcustomeGst,
+               //                       decoration: InputDecoration(
+               //                         contentPadding: EdgeInsets.only(
+               //                             left:width/130, bottom: height / 36.5),
+               //                         border: InputBorder.none,
+               //                       ),
+               //                       onSubmitted: (_) {
+               //                         customeraddress2.unfocus();
+               //                         FocusScope.of(context)
+               //                             .requestFocus(suppierincoice_no);
+               //                       },
+               //                     ),
+               //                   ),
+               //                 ),
+               //               ],
+               //             ),
+               //           ),
+               //
+               //         ],
+               //       ),
+               //     ),
+               //
+               //     //entry type container-2
+               //     SizedBox(
+               //       height: height / 4.0,
+               //       child: Column(
+               //         crossAxisAlignment: CrossAxisAlignment.start,
+               //         children: [
+               //           //Bill No
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.center,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Bill No",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 17.74,
+               //                 ),
+               //                 Container(
+               //                   width: width / 3.415,
+               //                   height: height / 21.9,
+               //                   //color:Colors.white,
+               //                   decoration: const BoxDecoration(
+               //                     color: Colors.white,
+               //                   ),
+               //                   child: TextField(
+               //                     style: GoogleFonts.openSans(
+               //                       fontWeight:FontWeight.w700,
+               //                     ),
+               //                     controller: purchase_No,
+               //                     focusNode: purchase_no,
+               //                     decoration: InputDecoration(
+               //                       contentPadding: EdgeInsets.only(
+               //                           left:width/130, bottom: height / 36.5),
+               //                       border: InputBorder.none,
+               //                     ),
+               //                     onSubmitted: (_) {
+               //                       purchase_no.unfocus();
+               //                       FocusScope.of(context)
+               //                           .requestFocus(purchase_date);
+               //                     },
+               //                   ),
+               //                 ),
+               //
+               //               ],
+               //             ),
+               //           ),
+               //
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Category",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 32.3,
+               //                 ),
+               //                 Padding(
+               //                   padding:  EdgeInsets.only(left:width/130,right: width/170),
+               //                   child: LayoutBuilder(
+               //                     builder: (BuildContext, BoxConstraints) =>
+               //                         Autocomplete<String>(
+               //                           fieldViewBuilder: (context, textEditingController, focusNode, onFieldSubmitted) {
+               //                             return textfield2(
+               //                               focusNode,
+               //                               textEditingController,
+               //                               onFieldSubmitted,
+               //                             );
+               //                           },
+               //                           initialValue: const TextEditingValue(
+               //                               selection: TextSelection(
+               //                                 isDirectional: true,
+               //                                 baseOffset: 5,
+               //                                 extentOffset: 1,
+               //                               )),
+               //                           optionsViewBuilder:
+               //                               (context, onSelected, options) => Align(
+               //                               alignment: Alignment.topLeft,
+               //                               child: Material(
+               //                                 shape: const RoundedRectangleBorder(
+               //                                   borderRadius:
+               //                                   BorderRadius.vertical(
+               //                                       bottom:
+               //                                       Radius.circular(4.0)),
+               //                                 ),
+               //                                 child: Container(
+               //                                   height: 52.0 * options.length,
+               //                                   width:
+               //                                   BoxConstraints.biggest.width,
+               //                                   child: ListView.builder(
+               //                                     padding: EdgeInsets.zero,
+               //                                     itemCount: options.length,
+               //                                     shrinkWrap: false,
+               //                                     itemBuilder:
+               //                                         (BuildContext, index) {
+               //                                       final String option =
+               //                                       options.elementAt(index);
+               //                                       return InkWell(
+               //                                         onTap: () =>
+               //                                             onSelected(option),
+               //                                         child: Padding(
+               //                                           padding:
+               //                                           const EdgeInsets.all(16.0),
+               //                                           child: Text(option),
+               //                                         ),
+               //                                       );
+               //                                     },
+               //                                   ),
+               //                                 ),
+               //                               )),
+               //                           optionsBuilder:
+               //                               (TextEditingValue textEditingValue) {
+               //                             if (textEditingValue.text == '') {
+               //                               return const Iterable<String>.empty();
+               //                             }
+               //
+               //                             if (textEditingValue.text != "") {
+               //                               setState(() {
+               //                                 _typeAheadControllercateory.text = textEditingValue.text;
+               //                               });
+               //                               itemaddfunction();
+               //                             }
+               //                             return categorylist.where((String option) {
+               //                               return option.toLowerCase().contains(
+               //                                   textEditingValue.text.toLowerCase());
+               //                             });
+               //                           },
+               //                           onSelected: (String selection) {
+               //                             setState(() {
+               //                               _typeAheadControllercateory.text = selection;
+               //                             });
+               //                             itemaddfunction();
+               //                           },
+               //                           displayStringForOption: (Value) {
+               //                             return Value;
+               //                           },
+               //                         ),
+               //                   ),
+               //                 ),
+               //
+               //               ],
+               //             ),
+               //           ),
+               //
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.center,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Brand",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 20.5,
+               //                 ),
+               //                 Padding(
+               //                   padding:  EdgeInsets.only(left:width/130,right: width/170,),
+               //                   child: LayoutBuilder(
+               //                     builder: (BuildContext, BoxConstraints) =>
+               //                         Autocomplete<String>(
+               //                           fieldViewBuilder: (context, textEditingController, focusNode, onFieldSubmitted) {
+               //                             return textfield2(
+               //                               focusNode,
+               //                               textEditingController,
+               //                               onFieldSubmitted,
+               //                             );
+               //                           },
+               //                           initialValue: const TextEditingValue(
+               //                               selection: TextSelection(
+               //                                 isDirectional: true,
+               //                                 baseOffset: 5,
+               //                                 extentOffset: 1,
+               //                               )),
+               //                           optionsViewBuilder:
+               //                               (context, onSelected, options) => Align(
+               //                               alignment: Alignment.topLeft,
+               //                               child: Material(
+               //                                 shape: const RoundedRectangleBorder(
+               //                                   borderRadius:
+               //                                   BorderRadius.vertical(
+               //                                       bottom:
+               //                                       Radius.circular(4.0)),
+               //                                 ),
+               //                                 child: Container(
+               //                                   height: 52.0 * options.length,
+               //                                   width:
+               //                                   BoxConstraints.biggest.width,
+               //                                   child: ListView.builder(
+               //                                     padding: EdgeInsets.zero,
+               //                                     itemCount: options.length,
+               //                                     shrinkWrap: false,
+               //                                     itemBuilder:
+               //                                         (BuildContext, index) {
+               //                                       final String option =
+               //                                       options.elementAt(index);
+               //                                       return InkWell(
+               //                                         onTap: () =>
+               //                                             onSelected(option),
+               //                                         child: Padding(
+               //                                           padding:
+               //                                           const EdgeInsets.all(16.0),
+               //                                           child: Text(option),
+               //                                         ),
+               //                                       );
+               //                                     },
+               //                                   ),
+               //                                 ),
+               //                               )),
+               //                           optionsBuilder:
+               //                               (TextEditingValue textEditingValue) {
+               //                             if (textEditingValue.text == '') {
+               //                               return const Iterable<String>.empty();
+               //                             }
+               //
+               //                             if (textEditingValue.text != "") {
+               //                               setState(() {
+               //                                 _typeAheadControllerbrand.text = textEditingValue.text;
+               //                               });
+               //                               itemaddfunction();
+               //                             }
+               //
+               //                             return Barndlist.where((String option) {
+               //                               return option.toLowerCase().contains(
+               //                                   textEditingValue.text.toLowerCase());
+               //                             });
+               //                           },
+               //                           onSelected: (String selection) {
+               //                             setState(() {
+               //                               _typeAheadControllerbrand.text = selection;
+               //                             });
+               //                             itemaddfunction();
+               //                           },
+               //                           displayStringForOption: (Value) {
+               //                             return Value;
+               //                           },
+               //                         ),
+               //                   ),
+               //                 ),
+               //
+               //
+               //
+               //               ],
+               //             ),
+               //           ),
+               //
+               //           //Purchase  Date
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.center,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Purchase  Date",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 105.07,
+               //                 ),
+               //                 Container(
+               //                   width: width / 3.415,
+               //                   height: height / 21.9,
+               //                   //color:Colors.white,
+               //                   decoration: const BoxDecoration(
+               //                     color: Colors.white,
+               //                   ),
+               //                   child: TextField(
+               //                     style: GoogleFonts.openSans(
+               //                       fontWeight:FontWeight.w700,
+               //                     ),
+               //                     controller: purchase_Date,
+               //                     focusNode: purchase_date,
+               //                     decoration: InputDecoration(
+               //                         contentPadding: EdgeInsets.only(
+               //                             left:width/130, bottom: height / 36.5),
+               //                         hintText: "Invoice Date",
+               //                         border: InputBorder.none,
+               //                         suffixIcon: const Icon(Icons.calendar_month)),
+               //                     onSubmitted: (_) {
+               //                       purchase_date.unfocus();
+               //                       FocusScope.of(context)
+               //                           .requestFocus(purchase_payment);
+               //                     },
+               //                     onTap: () async {
+               //                       DateTime? pickedDate = await showDatePicker(
+               //                           context: context,
+               //                           initialDate: DateTime.now(),
+               //                           firstDate: DateTime(1950),
+               //                           //DateTime.now() - not to allow to choose before today.
+               //                           lastDate: DateTime(2100));
+               //
+               //                       if (pickedDate != null) {
+               //                         //pickedDate output format => 2021-03-10 00:00:00.000
+               //                         String formattedDate =
+               //                         DateFormat('dd/MM/yyyy').format(pickedDate);
+               //                         //formatted date output using intl package =>  2021-03-16
+               //                         setState(() {
+               //                           purchase_Date.text =
+               //                               formattedDate; //set output date to TextField value.
+               //                         });
+               //                       } else {}
+               //                     },
+               //                   ),
+               //                 ),
+               //               ],
+               //             ),
+               //           ),
+               //
+               //           //payment mode
+               //           /* Padding(
+               //          padding: EdgeInsets.only(
+               //              top: height / 328.5, left: width / 273.2),
+               //          child: Row(
+               //            crossAxisAlignment: CrossAxisAlignment.center,
+               //            children: [
+               //              SizedBox(
+               //                width: width / 273.2,
+               //              ),
+               //              Text(
+               //                "Payment Mode",
+               //                style: GoogleFonts.openSans(
+               //                    fontSize: width / 97.571,
+               //                    color: const Color(0xff000000)),
+               //              ),
+               //              SizedBox(
+               //                width: width / 105.07,
+               //              ),
+               //              Container(
+               //                width: width / 3.415,
+               //                height: height / 21.9,
+               //                //color:Colors.white,
+               //                decoration: const BoxDecoration(
+               //                  color: Colors.white,
+               //                ),
+               //                child: Padding(
+               //                  padding: EdgeInsets.only(bottom: height / 164.25),
+               //                  child: DropdownButton2<String>(
+               //                    value: Payments,
+               //                    focusNode: purchase_payment,
+               //                    isExpanded: true,
+               //                    style: TextStyle(
+               //                        color: Colors.black,
+               //                        fontSize: width / 105.07),
+               //                    underline: Container(
+               //                      color: Colors.deepPurpleAccent,
+               //                    ),
+               //                    onChanged: (String? value) {
+               //                      // This is called when the user selects an item.
+               //                      setState(() {
+               //                        Payments = value!;
+               //                      });
+               //                      purchase_payment.unfocus();
+               //                      FocusScope.of(context)
+               //                          .requestFocus(purchase_note);
+               //                    },
+               //                    items: Payment.map<DropdownMenuItem<String>>(
+               //                        (String value) {
+               //                      return DropdownMenuItem<String>(
+               //                        value: value,
+               //                        child: Text(value),
+               //                      );
+               //                    }).toList(),
+               //                  ),
+               //                ),
+               //              ),
+               //            ],
+               //          ),
+               //        ),*/
+               //
+               //           //Remarks
+               //           Padding(
+               //             padding: EdgeInsets.only(
+               //                 top: height / 328.5, left: width / 273.2),
+               //             child: Row(
+               //               crossAxisAlignment: CrossAxisAlignment.center,
+               //               children: [
+               //                 SizedBox(
+               //                   width: width / 273.2,
+               //                 ),
+               //                 Text(
+               //                   "Remarks",
+               //                   style: GoogleFonts.openSans(
+               //                       fontSize: width / 97.571,
+               //                       color: const Color(0xff000000)),
+               //                 ),
+               //                 SizedBox(
+               //                   width: width / 23.5,
+               //                 ),
+               //                 Container(
+               //                   width: width / 3.415,
+               //                   height: height / 21.9,
+               //                   //color:Colors.white,
+               //                   decoration: const BoxDecoration(
+               //                     color: Colors.white,
+               //                   ),
+               //                   child: TextField(
+               //                     style: GoogleFonts.openSans(
+               //                       fontWeight:FontWeight.w700,
+               //                     ),
+               //                     controller: purchase_notes,
+               //                     focusNode: purchase_note,
+               //                     decoration: InputDecoration(
+               //                       contentPadding: EdgeInsets.only(
+               //                           left:width/130, bottom: height / 36.5),
+               //                       border: InputBorder.none,
+               //                     ),
+               //                     onSubmitted: (_) {
+               //                       purchase_note.unfocus();
+               //                       FocusScope.of(context).requestFocus(items_id);
+               //                     },
+               //                   ),
+               //                 ),
+               //               ],
+               //             ),
+               //           ),
+               //
+               //         ],
+               //       ),
+               //     )
+               //   ],
+               // ),
+
                Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  mainAxisAlignment: MainAxisAlignment.start,
@@ -5500,12 +6262,12 @@ TextEditingController layourbuilderclear=TextEditingController();
                    Material(
                      elevation: 50,
                      shadowColor: Colors.black38,
-                     color: const Color(0xff7d99ab),
+                     color: const Color(0xff1D5B79),
                      child: Container(
                        width: width / 0.976,
                        height: height / 16.425,
                        decoration: const BoxDecoration(
-                         color: Color(0xff7d99ab),
+                         color: Color(0xff1D5B79),
                        ),
                        child: Row(
                          children: [
@@ -5516,7 +6278,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Si No",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5527,7 +6289,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Item ID",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5538,7 +6300,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Item Name",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5551,7 +6313,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Box No",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5563,7 +6325,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "HSN Code",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5574,7 +6336,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Tax %",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5586,7 +6348,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Qnty",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5599,7 +6361,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Price",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5612,7 +6374,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Sales Price",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5623,7 +6385,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Stocks",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
 
@@ -5634,7 +6396,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                                  child: Text(
                                    "Clear ",
                                    style: GoogleFonts.openSans(
-                                       fontWeight: FontWeight.w500),
+                                       fontWeight: FontWeight.w500,color:Colors.white),
                                  )),
                            ),
                          ],
@@ -5645,7 +6407,7 @@ TextEditingController layourbuilderclear=TextEditingController();
                    Container(
                      width: width / 0.976,
                      decoration: const BoxDecoration(
-                       color: Color(0xffb7b0aa),
+                       color: Colors.white,
                      ),
                      child: Row(
                        crossAxisAlignment: CrossAxisAlignment.start,
@@ -5689,6 +6451,7 @@ TextEditingController layourbuilderclear=TextEditingController();
 
                          //itemname
                          Container(
+                             height: height / 21.9,
                            width: width / 2.7,
                            decoration: BoxDecoration(
                                border: Border.all(color: Colors.black, width: 0.6)),

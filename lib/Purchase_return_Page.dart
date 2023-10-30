@@ -747,106 +747,113 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                   ),
                 ],
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   //entry type container
                   SizedBox(
-                    height: height/4.054,
+                    height: height / 4.054,
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
                           //suppiler Id
                           Padding(
-                            padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: width/273.2,
-                                ),
-                                Text(
-                                  "Supplier ID",
-                                  style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w700,
-                                      fontSize: width/97.57, color: const Color(0xff000000),
-
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: width/22.03,
+                                  width: width / 273.2,
                                 ),
                                 Container(
-                                  width: width/3.415,
-                                  height: height/21.9,
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier ID",
+                                    style: GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
                                   //color:Colors.white,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                   ),
                                   child: TextField(
+
                                     style: GoogleFonts.openSans(
-                                        fontWeight: FontWeight.w700),
+                                      fontWeight: FontWeight.w700,fontSize: width/85,),
                                     controller: suppierid,
                                     focusNode: suppier_id,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           left: width /90.78,
-                                          bottom: height / 83.8
-                                      ),
+                                          top: height / 153.8),
+
                                       border: InputBorder.none,
+                                      suffixIcon:
+                                      Icon(Icons.circle,color:Colors.white),
                                     ),
-                                    onSubmitted: (_){
+                                    onSubmitted: (_) {
                                       suppier_id.unfocus();
-                                      FocusScope.of(context).requestFocus(suppiername);
+                                      FocusScope.of(context)
+                                          .requestFocus(suppiername);
                                     },
                                   ),
                                 ),
-                                SizedBox(width: width/273.2,),
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
                                 InkWell(
-                                  onTap:(){
-                                    if(customervalid==false){
+                                  onTap: () {
+                                    if (customervalid == false) {
                                       alreadyexistshowdialpogbox();
-
-                                    }
-                                    else {
+                                    } else {
                                       itemcodegenrate();
                                       showdialpogbox2();
-
                                     }
                                   },
-                                  child:
-                                  customervalid!=false?
-                                  Material(
+                                  child: customervalid != false
+                                      ? Material(
                                     shadowColor: Colors.black12,
                                     elevation: 25,
                                     borderRadius: BorderRadius.circular(5),
                                     color: Colors.white,
                                     child: Container(
-                                        height:height/21.9,
-                                        width:width/10.53,
+                                        height: height / 21.9,
+                                        width: width / 10.53,
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                          BorderRadius.circular(5),
                                           color: Colors.white,
                                         ),
                                         child: Row(
                                           children: [
-                                            SizedBox(width:width/400.33),
+                                            SizedBox(width: width / 400.33),
                                             const Text("New Suppiler"),
-                                            SizedBox(width:width/455.33),
+                                            SizedBox(width: width / 455.33),
                                             const Icon(Icons.add),
                                           ],
                                         )),
-                                  ):
-                                  ClipOval(
-                                      child:
-                                      Container(
-                                          height:height/21.9,
-                                          width:width/45.53,
-                                          color: Colors.white,
-                                          child: const Icon(Icons.add))),
+                                  )
+                                      : GestureDetector(
+                                    onTap: (){
+                                      itemcodegenrate();
+                                      showdialpogbox2();
+                                    },
+                                    child: ClipOval(
+                                        child: Container(
+                                            height: height / 21.9,
+                                            width: width / 45.53,
+                                            color: Colors.white,
+                                            child: const Icon(Icons.add))),
+                                  ),
                                 )
                               ],
                             ),
@@ -854,29 +861,33 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                           //suppiler name
                           Padding(
-                            padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: width/273.2,
-                                ),
-                                Text(
-                                  "Supplier Name",
-                                  style: GoogleFonts.openSans(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: width/97.57, color: const Color(0xff000000)),
-                                ),
-                                SizedBox(
-                                  width: width/42.687,
+                                  width: width / 273.2,
                                 ),
                                 Container(
-                                  width: width/3.415,
-                                  height: height/21.9,
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Name",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
                                   //color:Colors.white,
                                   decoration: const BoxDecoration(
-                                    color: Colors.white,),
-                                  child:      TextField(
+                                    color: Colors.white,
+                                  ),
+                                  child:TextField(
                                     style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.w700),
                                     controller: Suppliername,
@@ -894,47 +905,202 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                   ),
 
 
-
-
+                                  // LayoutBuilder(
+                                  //   builder: (BuildContext, BoxConstraints) =>
+                                  //       Autocomplete<String>(
+                                  //         fieldViewBuilder: (context,
+                                  //             yourbuilderclear,
+                                  //             focusNode,
+                                  //             onFieldSubmitted) {
+                                  //           return TextFormField(
+                                  //             onChanged: (_) {
+                                  //               setState(() {
+                                  //                 layourbuilderclear.text= yourbuilderclear.text;
+                                  //               });
+                                  //             },
+                                  //             style: GoogleFonts.openSans(
+                                  //               fontWeight: FontWeight.w700,fontSize: width/85,),
+                                  //             decoration: InputDecoration(
+                                  //               contentPadding: EdgeInsets.only(
+                                  //                   left: width /90.78,
+                                  //                   top: height / 153.8),
+                                  //
+                                  //               border: InputBorder.none,
+                                  //               suffixIcon:
+                                  //               GestureDetector(
+                                  //                   onTap:(){
+                                  //                     setState(() {
+                                  //                       suppierid.clear();
+                                  //                       yourbuilderclear.clear();
+                                  //                       layourbuilderclear.clear();
+                                  //                       suppiler_invoice.clear();
+                                  //                       suppiler_gstno.clear();
+                                  //                     });
+                                  //                   },
+                                  //                   child: Icon(Icons.clear,color:Colors.black,size: 20)),),
+                                  //             controller: yourbuilderclear,
+                                  //             focusNode: focusNode,
+                                  //             onFieldSubmitted: (String value) {
+                                  //               onFieldSubmitted();
+                                  //             },
+                                  //           );
+                                  //
+                                  //
+                                  //
+                                  //         },
+                                  //         optionsViewBuilder: (context, onSelected,
+                                  //             options) =>
+                                  //             Align(
+                                  //                 alignment: Alignment.topLeft,
+                                  //                 child: Material(
+                                  //                   shape:
+                                  //                   const RoundedRectangleBorder(
+                                  //                     borderRadius:
+                                  //                     BorderRadius.vertical(
+                                  //                         bottom:
+                                  //                         Radius.circular(
+                                  //                             4.0)),
+                                  //                   ),
+                                  //                   child: SizedBox(
+                                  //                     height: 52.0 * options.length,
+                                  //                     width: BoxConstraints
+                                  //                         .biggest.width,
+                                  //                     child: ListView.builder(
+                                  //                       padding: EdgeInsets.zero,
+                                  //                       itemCount: options.length,
+                                  //                       shrinkWrap: false,
+                                  //                       itemBuilder:
+                                  //                           (BuildContext, index) {
+                                  //                         final String option =
+                                  //                         options
+                                  //                             .elementAt(index);
+                                  //                         return InkWell(
+                                  //                           onTap: () =>
+                                  //                               onSelected(option),
+                                  //                           child: Padding(
+                                  //                             padding:
+                                  //                             const EdgeInsets
+                                  //                                 .all(8.0),
+                                  //                             child: Text(option),
+                                  //                           ),
+                                  //                         );
+                                  //                       },
+                                  //                     ),
+                                  //                   ),
+                                  //                 )),
+                                  //         optionsBuilder:
+                                  //             (TextEditingValue textEditingValue) {
+                                  //           if (textEditingValue.text == '') {
+                                  //             setState(() {
+                                  //               customervalid = false;
+                                  //             });
+                                  //             return const Iterable<String>.empty();
+                                  //           }
+                                  //           if (textEditingValue.text != "") {
+                                  //             check(
+                                  //                 textEditingValue.text.toString());
+                                  //             setState(() {
+                                  //               Suppliername.text = textEditingValue
+                                  //                   .text
+                                  //                   .toString();
+                                  //             });
+                                  //             checkfunc();
+                                  //           }
+                                  //           return Suppierlist.where(
+                                  //                   (String option) {
+                                  //                 return option.toLowerCase().contains(
+                                  //                     textEditingValue.text
+                                  //                         .toLowerCase());
+                                  //               });
+                                  //         },
+                                  //         onSelected: (String selection) {
+                                  //           check(selection);
+                                  //           setState(() {
+                                  //             layourbuilderclear.text = selection;
+                                  //             Suppliername.text = selection;
+                                  //             layourbuilderclear.text = selection;
+                                  //             customervalid = false;
+                                  //           });
+                                  //           checkfunc();
+                                  //
+                                  //           debugPrint(
+                                  //               'You just selected $selection');
+                                  //         },
+                                  //         displayStringForOption: (Value) {
+                                  //           return Value;
+                                  //         },
+                                  //         optionsMaxHeight: 50,
+                                  //       ),
+                                  // ),
                                 ),
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                // GestureDetector(
+                                //   onTap: (){
+                                //     setState(() {
+                                //
+                                //     });
+                                //
+                                //
+                                //   },
+                                //   child: ClipOval(
+                                //       child: Container(
+                                //           height: height / 21.9,
+                                //           width: width / 45.53,
+                                //           color: Colors.white,
+                                //           child: IgnorePointer(child: const Icon(Icons.cancel_outlined,size: 20,)))),
+                                // ),
+
+
+
                               ],
                             ),
                           ),
 
                           //tax type
                           Padding(
-                            padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: width/273.2,
-                                ),
-                                Text(
-                                  "Tax Type",
-                                  style: GoogleFonts.openSans(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: width/97.57, color: const Color(0xff000000)),
-                                ),
-                                SizedBox(
-                                  width: width/18.46,
+                                  width: width / 273.2,
                                 ),
                                 Container(
-                                  width: width/3.415,
-                                  height: height/21.9,
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Tax Type",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
                                   //color:Colors.white,
                                   decoration: const BoxDecoration(
-                                    color: Colors.white,),
+                                    color: Colors.white,
+                                  ),
                                   child: DropdownButtonHideUnderline(
                                     child: ButtonTheme(
                                       alignedDropdown: true,
-                                      child: DropdownButton2<String>(
+                                      child:
+                                      DropdownButton2<String>(
+
                                         value: dropdownValue3,
-                                        focusNode:suppiertax ,
+                                        focusNode: suppiertax,
                                         isExpanded: true,
                                         isDense: true,
                                         alignment: Alignment.topCenter,
-                                        style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/105.07),
+                                        style: GoogleFonts.openSans(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: width/85,),
                                         underline: Container(
                                           color: Colors.deepPurpleAccent,
                                         ),
@@ -943,17 +1109,21 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                           setState(() {
                                             dropdownValue3 = value!;
                                           });
+                                          if (dropdownValue3 == "IGST") {
+                                          //  Dropdowncontrollerclear();
+                                          }
                                           suppiertax.unfocus();
-                                          FocusScope.of(context).requestFocus(suppierincoice_no);
+                                          FocusScope.of(context)
+                                              .requestFocus(suppierincoice_no);
                                         },
-
-                                        items:
-                                        list3.map<DropdownMenuItem<String>>((String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(value),
-                                          );
-                                        }).toList(),
+                                        items: list3
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value),
+                                              );
+                                            }).toList(),
                                       ),
                                     ),
                                   ),
@@ -964,31 +1134,33 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                           //suppiler Invoice no
                           Padding(
-                            padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: width/273.2,
-                                ),
-                                Text(
-                                  "Supplier Invoice No",
-                                  style: GoogleFonts.openSans(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: width/97.57, color: const Color(0xff000000)),
-                                ),
-                                const SizedBox(
-                                  width: 2,
+                                  width: width / 273.2,
                                 ),
                                 Container(
-                                  width: width/3.415,
-                                  height: height/21.9,
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Invoice",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
                                   //color:Colors.white,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                   ),
-                                  child:
-                                  TypeAheadFormField(
+                                  child:     TypeAheadFormField(
                                     suggestionsBoxDecoration: const SuggestionsBoxDecoration(
                                         color: Color(0xffDDDEEE),
                                         borderRadius: BorderRadius.only(
@@ -1011,7 +1183,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                     },
                                     itemBuilder: (context, String suggestion) {
                                       return ListTile(
-                                        title: Text(suggestion,style:GoogleFonts.openSans(fontWeight: FontWeight.w700,),)
+                                          title: Text(suggestion,style:GoogleFonts.openSans(fontWeight: FontWeight.w700,),)
                                       );
                                     },
                                     transitionBuilder:
@@ -1029,7 +1201,25 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                         ? 'Please select a academic year'
                                         : null,
                                   ),
-
+                                  // TextFormField(
+                                  //   validator: (value) => value!.isEmpty
+                                  //       ? 'Please select a  Supplier Invoice No'
+                                  //       : null,
+                                  //   controller: suppiler_invoice,
+                                  //   focusNode: suppierincoice_no,
+                                  //   style: GoogleFonts.openSans(
+                                  //     fontWeight: FontWeight.w700,fontSize: width/85,
+                                  //   ),
+                                  //   decoration: InputDecoration(
+                                  //     contentPadding: EdgeInsets.only(
+                                  //         left: width /90.78,
+                                  //         top: height / 153.8),
+                                  //
+                                  //     border: InputBorder.none,
+                                  //     suffixIcon:
+                                  //     Icon(Icons.circle,color:Colors.white),
+                                  //   ),
+                                  // ),
                                 ),
                               ],
                             ),
@@ -1037,42 +1227,50 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                           //suppiler Gst no
                           Padding(
-                            padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: width/273.2,
-                                ),
-                                Text(
-                                  "Supplier Gst No",
-                                  style: GoogleFonts.openSans(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: width/97.57, color: const Color(0xff000000)),
-                                ),
-                                SizedBox(
-                                  width: width/47.103,
+                                  width: width / 273.2,
                                 ),
                                 Container(
-                                  width: width/3.415,
-                                  height: height/21.9,
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Gst No",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
                                   //color:Colors.white,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                   ),
-                                  child: TextField(
-                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
+                                  child: TextFormField(
+                                    validator: (value) => value!.isEmpty
+                                        ? "Field Can't Empty"
+                                        : null,
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,fontSize: width/85,
+                                    ),
                                     controller: suppiler_gstno,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           left: width /90.78,
-                                          bottom: height / 83.8),
+                                          top: height / 153.8),
+
                                       border: InputBorder.none,
+                                      suffixIcon:
+                                      Icon(Icons.circle,color:Colors.white),
                                     ),
-                                    onSubmitted: (_){
-                                      suppierincoice_no.unfocus();
-                                      FocusScope.of(context).requestFocus(purchase_no);
-                                    },
+
                                   ),
                                 ),
                               ],
@@ -1085,50 +1283,108 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                   ),
 
                   SizedBox(
-                    height: height/4.054,
+                    height: height / 4.054,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        //Purchase  Date
+                        //Purchase No
                         Padding(
-                          padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
                           child: Row(
-
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: width/273.2,
-                              ),
-                              Text(
-                                "Purchase  Date",
-                                style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width/97.57, color: const Color(0xff000000)),
-                              ),
-                              SizedBox(
-                                width: width/105.08,
+                                width: width / 273.2,
                               ),
                               Container(
-                                width: width/3.415,
-                                height: height/21.9,
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase No",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
                                 //color:Colors.white,
                                 decoration: const BoxDecoration(
                                   color: Colors.white,
                                 ),
-                                child:
-                                TextField(
-                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
+                                child: TextFormField(
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
+                                  ),
+                                  controller: purchase_No,
+                                  focusNode: purchase_no,
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(
+                                        left: width /90.78,
+                                        top: height / 153.8),
+
+                                    border: InputBorder.none,
+                                    suffixIcon:
+                                    Icon(Icons.circle,color:Colors.white),
+
+                                  ),
+
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        //Purchase  Date
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: width / 273.2,
+                              ),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase  Date",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
+                                //color:Colors.white,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: TextField(
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: width/85,
+                                  ),
                                   controller: purchase_Date,
                                   focusNode: purchase_date,
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           left: width /90.78,
-                                          top: height / 83.8),
+                                          top: height / 153.8),
+                                      hintText: "Invoice Date",
                                       border: InputBorder.none,
-                                      suffixIcon: const Icon(Icons.calendar_month)
-                                  ),
-                                  onSubmitted: (_){
+                                      suffixIcon:
+                                      const Icon(Icons.calendar_month)),
+                                  onSubmitted: (_) {
                                     purchase_date.unfocus();
-                                    FocusScope.of(context).requestFocus(purchase_payment);
+                                    FocusScope.of(context)
+                                        .requestFocus(purchase_payment);
                                   },
                                   onTap: () async {
                                     DateTime? pickedDate = await showDatePicker(
@@ -1141,7 +1397,8 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                     if (pickedDate != null) {
                                       //pickedDate output format => 2021-03-10 00:00:00.000
                                       String formattedDate =
-                                      DateFormat('dd/MM/yyyy').format(pickedDate);
+                                      DateFormat('dd/MM/yyyy')
+                                          .format(pickedDate);
                                       //formatted date output using intl package =>  2021-03-16
                                       setState(() {
                                         purchase_Date.text =
@@ -1157,32 +1414,41 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                         //payment mode
                         Padding(
-                          padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: width/273.2,
-                              ),
-                              Text(
-                                "Payment Mode",
-                                style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width/97.57, color: const Color(0xff000000)),
-                              ),
-                              SizedBox(
-                                width: width/105.08,
+                                width: width / 273.2,
                               ),
                               Container(
-                                width: width/3.415,
-                                height: height/21.9,
+                                width: width / 9.0,
+                                child: Text(
+                                  "Payment Mode",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
                                 //color:Colors.white,
                                 decoration: const BoxDecoration(
-                                  color: Colors.white,),
-                                child: DropdownButton2<String>(
+                                  color: Colors.white,
+                                ),
+                                child:
+                                DropdownButton2<String>(
+                                  alignment: Alignment.center,
                                   value: Payments,
                                   focusNode: purchase_payment,
                                   isExpanded: true,
-                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700, fontSize: width/105.07),
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: width/85,),
                                   underline: Container(
                                     color: Colors.deepPurpleAccent,
                                   ),
@@ -1192,18 +1458,16 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                                       Payments = value!;
                                     });
                                     purchase_payment.unfocus();
-                                    FocusScope.of(context).requestFocus(purchase_note);
+                                    FocusScope.of(context)
+                                        .requestFocus(purchase_note);
                                   },
-                                  items:
-                                  Payment.map<DropdownMenuItem<String>>((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Padding(
-                                        padding:  EdgeInsets.only(   left: width /95.78,),
-                                        child: Text(value),
-                                      ),
-                                    );
-                                  }).toList(),
+                                  items: Payment.map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
                                 ),
                               ),
                             ],
@@ -1212,42 +1476,48 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                         //Purchase Notes
                         Padding(
-                          padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: width/273.2,
-                              ),
-                              Text(
-                                "Purchase Notes",
-                                style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width/97.57, color: const Color(0xff000000)),
-                              ),
-                              SizedBox(
-                                width: width/136.6,
+                                width: width / 273.2,
                               ),
                               Container(
-                                width: width/3.415,
-                                height: height/21.9,
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase Notes",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
                                 //color:Colors.white,
                                 decoration: const BoxDecoration(
-                                  color: Colors.white,),
-                                child: TextField(
-                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                  color: Colors.white,
+                                ),
+                                child: TextFormField(
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
+                                  ),
                                   controller: purchase_notes,
                                   focusNode: purchase_note,
                                   decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(
                                         left: width /90.78,
-                                        bottom: height / 83.8),
+                                        top: height / 153.8),
+
                                     border: InputBorder.none,
+                                    suffixIcon:
+                                    Icon(Icons.circle,color:Colors.white),
                                   ),
-                                  onSubmitted: (_){
-                                    purchase_note.unfocus();
-                                    FocusScope.of(context).requestFocus(items_id);
-                                  },
+
                                 ),
                               ),
                             ],
@@ -1256,86 +1526,46 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
 
                         // Craedit days
                         Padding(
-                          padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-
                               SizedBox(
-                                width: width/273.2,
+                                width: width / 273.2,
                               ),
-
-                              Text(
-                                "Credit Days",
-                                style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width/97.57, color: const Color(0xff000000)),
-                              ),
-
-                              SizedBox(
-                                width: width/36.0,
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Credit Days",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
                               ),
 
                               Container(
-                                width: width/3.415,
-                                height: height/21.9,
+                                width: width / 3.415,
+                                height: height / 21.9,
                                 //color:Colors.white,
                                 decoration: const BoxDecoration(
-                                  color: Colors.white,),
-                                child: TextField(
-                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                                  color: Colors.white,
+                                ),
+                                child: TextFormField(
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
+                                  ),
                                   controller: Creadit_days,
                                   focusNode: Creditnoptes,
                                   decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(
                                         left: width /90.78,
-                                        bottom: height / 83.8),
-                                    border: InputBorder.none,
-                                  ),
-                                  onSubmitted: (_){
-                                    purchase_note.unfocus();
-                                    FocusScope.of(context).requestFocus(items_id);
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                                        top: height / 153.8),
 
-                        //Reason
-                        Padding(
-                          padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: width/273.2,
-                              ),
-                              Text(
-                                "Reason",
-                                style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: width/97.57, color: const Color(0xff000000)),
-                              ),
-                              SizedBox(
-                                width: width/20.064,
-                              ),
-                              Container(
-                                width: width/3.415,
-                                height: height/21.9,
-                                //color:Colors.white,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,),
-                                child:
-                                TextField(
-                                  style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
-                                  controller: Reasoncontroller,
-                                  decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(
-                                        left: width /90.78,
-                                        bottom: height / 83.8),
                                     border: InputBorder.none,
-
+                                    suffixIcon:
+                                    Icon(Icons.circle,color:Colors.white),
                                   ),
 
                                 ),
@@ -1343,13 +1573,615 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   )
-
                 ],
               ),
+
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   children: [
+              //     //entry type container
+              //     SizedBox(
+              //       height: height/4.054,
+              //       child: SingleChildScrollView(
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //
+              //             //suppiler Id
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Supplier ID",
+              //                     style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000),
+              //
+              //                     ),
+              //                   ),
+              //                   SizedBox(
+              //                     width: width/22.03,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,
+              //                     ),
+              //                     child: TextField(
+              //                       style: GoogleFonts.openSans(
+              //                           fontWeight: FontWeight.w700),
+              //                       controller: suppierid,
+              //                       focusNode: suppier_id,
+              //                       decoration: InputDecoration(
+              //                         contentPadding: EdgeInsets.only(
+              //                             left: width /90.78,
+              //                             bottom: height / 83.8
+              //                         ),
+              //                         border: InputBorder.none,
+              //                       ),
+              //                       onSubmitted: (_){
+              //                         suppier_id.unfocus();
+              //                         FocusScope.of(context).requestFocus(suppiername);
+              //                       },
+              //                     ),
+              //                   ),
+              //                   SizedBox(width: width/273.2,),
+              //                   InkWell(
+              //                     onTap:(){
+              //                       if(customervalid==false){
+              //                         alreadyexistshowdialpogbox();
+              //
+              //                       }
+              //                       else {
+              //                         itemcodegenrate();
+              //                         showdialpogbox2();
+              //
+              //                       }
+              //                     },
+              //                     child:
+              //                     customervalid!=false?
+              //                     Material(
+              //                       shadowColor: Colors.black12,
+              //                       elevation: 25,
+              //                       borderRadius: BorderRadius.circular(5),
+              //                       color: Colors.white,
+              //                       child: Container(
+              //                           height:height/21.9,
+              //                           width:width/10.53,
+              //                           decoration: BoxDecoration(
+              //                             borderRadius: BorderRadius.circular(5),
+              //                             color: Colors.white,
+              //                           ),
+              //                           child: Row(
+              //                             children: [
+              //                               SizedBox(width:width/400.33),
+              //                               const Text("New Suppiler"),
+              //                               SizedBox(width:width/455.33),
+              //                               const Icon(Icons.add),
+              //                             ],
+              //                           )),
+              //                     ):
+              //                     ClipOval(
+              //                         child:
+              //                         Container(
+              //                             height:height/21.9,
+              //                             width:width/45.53,
+              //                             color: Colors.white,
+              //                             child: const Icon(Icons.add))),
+              //                   )
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //             //suppiler name
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Supplier Name",
+              //                     style: GoogleFonts.openSans(
+              //                         fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000)),
+              //                   ),
+              //                   SizedBox(
+              //                     width: width/42.687,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,),
+              //                     child:
+              //                     TextField(
+              //                       style: GoogleFonts.openSans(
+              //                           fontWeight: FontWeight.w700),
+              //                       controller: Suppliername,
+              //                       focusNode: suppiername,
+              //                       decoration: InputDecoration(
+              //                         contentPadding: EdgeInsets.only(
+              //                             left: width /90.78,
+              //                             bottom: height / 83.8),
+              //                         border: InputBorder.none,
+              //                       ),
+              //                       onSubmitted: (_){
+              //                         suppiername.unfocus();
+              //                         FocusScope.of(context).requestFocus(suppier_id);
+              //                       },
+              //                     ),
+              //
+              //
+              //
+              //
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //             //tax type
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Tax Type",
+              //                     style: GoogleFonts.openSans(
+              //                         fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000)),
+              //                   ),
+              //                   SizedBox(
+              //                     width: width/18.46,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,),
+              //                     child: DropdownButtonHideUnderline(
+              //                       child: ButtonTheme(
+              //                         alignedDropdown: true,
+              //                         child: DropdownButton2<String>(
+              //                           value: dropdownValue3,
+              //                           focusNode:suppiertax ,
+              //                           isExpanded: true,
+              //                           isDense: true,
+              //                           alignment: Alignment.topCenter,
+              //                           style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/105.07),
+              //                           underline: Container(
+              //                             color: Colors.deepPurpleAccent,
+              //                           ),
+              //                           onChanged: (String? value) {
+              //                             // This is called when the user selects an item.
+              //                             setState(() {
+              //                               dropdownValue3 = value!;
+              //                             });
+              //                             suppiertax.unfocus();
+              //                             FocusScope.of(context).requestFocus(suppierincoice_no);
+              //                           },
+              //
+              //                           items:
+              //                           list3.map<DropdownMenuItem<String>>((String value) {
+              //                             return DropdownMenuItem<String>(
+              //                               value: value,
+              //                               child: Text(value),
+              //                             );
+              //                           }).toList(),
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //             //suppiler Invoice no
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Supplier Invoice No",
+              //                     style: GoogleFonts.openSans(
+              //                         fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000)),
+              //                   ),
+              //                   const SizedBox(
+              //                     width: 2,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,
+              //                     ),
+              //                     child:
+              //                     TypeAheadFormField(
+              //                       suggestionsBoxDecoration: const SuggestionsBoxDecoration(
+              //                           color: Color(0xffDDDEEE),
+              //                           borderRadius: BorderRadius.only(
+              //                             bottomLeft: Radius.circular(5),
+              //                             bottomRight: Radius.circular(5),
+              //                           )),
+              //                       textFieldConfiguration: TextFieldConfiguration(
+              //                         maxLength: 10,
+              //                         style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/91.07),
+              //                         decoration: InputDecoration(
+              //                           contentPadding: EdgeInsets.only(
+              //                               left: width /90.78,
+              //                               bottom: height / 83.8),
+              //                           border: InputBorder.none,
+              //                         ),
+              //                         controller: _typeAheadControllergender9,
+              //                       ),
+              //                       suggestionsCallback: (pattern) {
+              //                         return getSuggestionsgender10(pattern);
+              //                       },
+              //                       itemBuilder: (context, String suggestion) {
+              //                         return ListTile(
+              //                           title: Text(suggestion,style:GoogleFonts.openSans(fontWeight: FontWeight.w700,),)
+              //                         );
+              //                       },
+              //                       transitionBuilder:
+              //                           (context, suggestionsBox, controller) {
+              //                         return suggestionsBox;
+              //                       },
+              //                       onSuggestionSelected: (String suggestion) {
+              //                         getvalues(suggestion);
+              //                         setState(() {
+              //                           suppiler_invoice.text=suggestion.toString();
+              //                         });
+              //                       },
+              //                       suggestionsBoxController: suggestionBoxController9,
+              //                       validator: (value) => value!.isEmpty
+              //                           ? 'Please select a academic year'
+              //                           : null,
+              //                     ),
+              //
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //             //suppiler Gst no
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Supplier Gst No",
+              //                     style: GoogleFonts.openSans(
+              //                         fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000)),
+              //                   ),
+              //                   SizedBox(
+              //                     width: width/47.103,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,
+              //                     ),
+              //                     child: TextField(
+              //                         style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
+              //                       controller: suppiler_gstno,
+              //                       decoration: InputDecoration(
+              //                         contentPadding: EdgeInsets.only(
+              //                             left: width /90.78,
+              //                             bottom: height / 83.8),
+              //                         border: InputBorder.none,
+              //                       ),
+              //                       onSubmitted: (_){
+              //                         suppierincoice_no.unfocus();
+              //                         FocusScope.of(context).requestFocus(purchase_no);
+              //                       },
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //
+              //     SizedBox(
+              //       height: height/4.054,
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           //Purchase  Date
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //
+              //               children: [
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //                 Text(
+              //                   "Purchase  Date",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //                 SizedBox(
+              //                   width: width/105.08,
+              //                 ),
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,
+              //                   ),
+              //                   child:
+              //                   TextField(
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
+              //                     controller: purchase_Date,
+              //                     focusNode: purchase_date,
+              //                     decoration: InputDecoration(
+              //                         contentPadding: EdgeInsets.only(
+              //                             left: width /90.78,
+              //                             top: height / 83.8),
+              //                         border: InputBorder.none,
+              //                         suffixIcon: const Icon(Icons.calendar_month)
+              //                     ),
+              //                     onSubmitted: (_){
+              //                       purchase_date.unfocus();
+              //                       FocusScope.of(context).requestFocus(purchase_payment);
+              //                     },
+              //                     onTap: () async {
+              //                       DateTime? pickedDate = await showDatePicker(
+              //                           context: context,
+              //                           initialDate: DateTime.now(),
+              //                           firstDate: DateTime(1950),
+              //                           //DateTime.now() - not to allow to choose before today.
+              //                           lastDate: DateTime(2100));
+              //
+              //                       if (pickedDate != null) {
+              //                         //pickedDate output format => 2021-03-10 00:00:00.000
+              //                         String formattedDate =
+              //                         DateFormat('dd/MM/yyyy').format(pickedDate);
+              //                         //formatted date output using intl package =>  2021-03-16
+              //                         setState(() {
+              //                           purchase_Date.text =
+              //                               formattedDate; //set output date to TextField value.
+              //                         });
+              //                       } else {}
+              //                     },
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //           //payment mode
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //               children: [
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //                 Text(
+              //                   "Payment Mode",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //                 SizedBox(
+              //                   width: width/105.08,
+              //                 ),
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,),
+              //                   child: DropdownButton2<String>(
+              //                     value: Payments,
+              //                     focusNode: purchase_payment,
+              //                     isExpanded: true,
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700, fontSize: width/105.07),
+              //                     underline: Container(
+              //                       color: Colors.deepPurpleAccent,
+              //                     ),
+              //                     onChanged: (String? value) {
+              //                       // This is called when the user selects an item.
+              //                       setState(() {
+              //                         Payments = value!;
+              //                       });
+              //                       purchase_payment.unfocus();
+              //                       FocusScope.of(context).requestFocus(purchase_note);
+              //                     },
+              //                     items:
+              //                     Payment.map<DropdownMenuItem<String>>((String value) {
+              //                       return DropdownMenuItem<String>(
+              //                         value: value,
+              //                         child: Padding(
+              //                           padding:  EdgeInsets.only(   left: width /95.78,),
+              //                           child: Text(value),
+              //                         ),
+              //                       );
+              //                     }).toList(),
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //           //Purchase Notes
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //               crossAxisAlignment: CrossAxisAlignment.center,
+              //               children: [
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //                 Text(
+              //                   "Purchase Notes",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //                 SizedBox(
+              //                   width: width/136.6,
+              //                 ),
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,),
+              //                   child: TextField(
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+              //                     controller: purchase_notes,
+              //                     focusNode: purchase_note,
+              //                     decoration: InputDecoration(
+              //                       contentPadding: EdgeInsets.only(
+              //                           left: width /90.78,
+              //                           bottom: height / 83.8),
+              //                       border: InputBorder.none,
+              //                     ),
+              //                     onSubmitted: (_){
+              //                       purchase_note.unfocus();
+              //                       FocusScope.of(context).requestFocus(items_id);
+              //                     },
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //           // Craedit days
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //               crossAxisAlignment: CrossAxisAlignment.center,
+              //               children: [
+              //
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //
+              //                 Text(
+              //                   "Credit Days",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //
+              //                 SizedBox(
+              //                   width: width/36.0,
+              //                 ),
+              //
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,),
+              //                   child: TextField(
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+              //                     controller: Creadit_days,
+              //                     focusNode: Creditnoptes,
+              //                     decoration: InputDecoration(
+              //                       contentPadding: EdgeInsets.only(
+              //                           left: width /90.78,
+              //                           bottom: height / 83.8),
+              //                       border: InputBorder.none,
+              //                     ),
+              //                     onSubmitted: (_){
+              //                       purchase_note.unfocus();
+              //                       FocusScope.of(context).requestFocus(items_id);
+              //                     },
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //           //Reason
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //               crossAxisAlignment: CrossAxisAlignment.center,
+              //               children: [
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //                 Text(
+              //                   "Reason",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //                 SizedBox(
+              //                   width: width/20.064,
+              //                 ),
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,),
+              //                   child:
+              //                   TextField(
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+              //                     controller: Reasoncontroller,
+              //                     decoration: InputDecoration(
+              //                       contentPadding: EdgeInsets.only(
+              //                           left: width /90.78,
+              //                           bottom: height / 83.8),
+              //                       border: InputBorder.none,
+              //
+              //                     ),
+              //
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //         ],
+              //       ),
+              //     )
+              //
+              //   ],
+              // ),
 
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1359,12 +2191,12 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                   Material(
                     elevation: 50,
                     shadowColor: Colors.black38,
-                    color: const Color(0xff7d99ab),
+                    color: const Color(0xff1D5B79),
                     child: Container(
                       width: width/0.976,
                       height: height/16.425,
                       decoration: const BoxDecoration(
-                        color: Color(0xff7d99ab),),
+                        color: Color(0xff1D5B79),),
                       child: Row(
                         children: [
 
@@ -1372,7 +2204,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           SizedBox(
                             width: width/45.533,
                             child:
-                            Center(child: Text("",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                           //itemid
@@ -1380,14 +2212,14 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             width: width/14.2,
 
                             child:
-                            Center(child: Text("Item ID",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Item ID",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                           //itemname
                           SizedBox(
                             width: width/3.7,
 
-                            child:Center(child: Text("Item Name",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            child:Center(child: Text("Item Name",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
 
 
                           ),
@@ -1396,7 +2228,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           SizedBox(
                             width: width/16.8,
                             child:
-                            Center(child: Text("Box No",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Box No",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                           //Hsn Code
@@ -1404,7 +2236,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             width: width/17.8,
 
                             child:
-                            Center(child: Text("HSN Code",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("HSN Code",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                           //tax
@@ -1412,14 +2244,14 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             width: width/17.18,
 
                             child:
-                            Center(child: Text("Tax %",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Tax %",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                           //quvantity
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Qnty",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Qnty",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
 
@@ -1427,7 +2259,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Price",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Price",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                           //landing cost
@@ -1435,21 +2267,21 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             width: width/15.18,
 
                             child:
-                            Center(child: Text("Landing Cost",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),textAlign: TextAlign.center,)),
+                            Center(child: Text("Landing Cost",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),textAlign: TextAlign.center,)),
                           ),
 
                           //Sales Price
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Sales Price",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Sales Price",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                           //value
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Value",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.redAccent),)),
+                            Center(child: Text("Value",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),)),
                           ),
 
                           //Low order quvantity
@@ -1459,14 +2291,14 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                             child:
                             Center(child: Text("A\nQnty",
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                           SizedBox(
                             width: width/25.18,
 
                             child:
-                            Center(child: Text("Stk",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Stk",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
 
@@ -1474,7 +2306,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                           SizedBox(
                             width: width/15.18,
                             child:
-                            Center(child: Text("Clear ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700),)),
+                            Center(child: Text("Clear ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
                           ),
 
                         ],
@@ -1486,7 +2318,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                     // color: Color(0xffFFFFFF),
                     width: width/0.976,
                     decoration: const BoxDecoration(
-                      color: Color(0xffb7b0aa),),
+                      color: Colors.white,),
                     child:
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
