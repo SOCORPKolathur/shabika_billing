@@ -170,7 +170,7 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
 
 
 
-
+  DateTime creditdate= DateTime.now();
 
 
   @override
@@ -2701,6 +2701,8 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
                                    setState(() {
                                      Loading = true;
                                    });
+                                   print("Clieddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+                                   print(Creadit_days.text);
                                    //document create function
                                    Purchaseitem();
                                    //bill count function
@@ -4177,7 +4179,22 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
 
 
   Purchaseitem() {
+    print("Purchase Entru enterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+   setState((){
+     creditdate= DateTime(
+       Creadit_days.text==""?
+       DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+       DateTime.now().month,DateTime.now().year,
+     );
+   });
 
+    print(Creadit_days.text);
+    print("Controllerrrrrr${Creadit_days.text}");
+    print("creatdate ${creditdate.day}");
+    print("creatdate ${creditdate.month}");
+    print("creatdate ${creditdate.year}");
+    print("creatdate ${creditdate.day}/${creditdate.month}/${creditdate.year}-------------------------------------------------------");
+    print("Cureent dataeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee----enddddddd");
     if(status==true){
       FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(widget.docid).update({
         "Total": totalamount.toStringAsFixed(2),
@@ -4186,6 +4203,7 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
         "Payment mode": Payments,
         "Totalamount": TotalAmount2.toStringAsFixed(2),
         'credit days':Creadit_days.text,
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
         'date':  purchase_Date.text,
         'purchaseno': purchase_No.text,
         'purchasenote':purchase_notes.text,
@@ -4204,6 +4222,7 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
         "Payment mode": Payments,
         "Totalamount": TotalAmount2.toStringAsFixed(2),
         'credit days':Creadit_days.text,
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
         'date':  purchase_Date.text,
         'purchaseno': purchase_No.text,
         'purchasenote':purchase_notes.text,
@@ -4217,8 +4236,7 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
 
 
     }
-
-  if(itemdocuid.isNotEmpty){
+    if(itemdocuid.isNotEmpty){
     FirebaseFirestore.instance.collection("Item").doc(itemdocuid).update({
       "IMSlist":IMEISERIAL,
       "Imei no":IMEI,
@@ -4226,9 +4244,6 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
       "color":colorlist,
     });
   }
-
-
-
     FirebaseFirestore.instance.collection("Purchase entry").doc(widget.docid).update({
       "Total": totalamount.toStringAsFixed(2),
       "SGST": sgst.toStringAsFixed(2),
@@ -4236,6 +4251,7 @@ class _EditPage1_purchaseState extends State<EditPage1_purchase> {
       "Payment mode": Payments,
       "Totalamount": TotalAmount2.toStringAsFixed(2),
       'credit days':Creadit_days.text,
+      "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
       'date':  purchase_Date.text,
       'purchaseno': purchase_No.text,
       'purchasenote':purchase_notes.text,

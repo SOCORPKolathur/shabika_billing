@@ -141,11 +141,63 @@ class _ItemState extends State<Item> {
   itemcodegenrate() async {
     var document = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
     var document2 = await FirebaseFirestore.instance.collection("Item ShabikaN").get();
-    setState(() {
-      itemcodes = document.docs.length + 1;
-      itemcode.text = "${"SBG"}${F.format(document.docs.length + 1)}";
-      shabikancount = "${"SBN"}${F.format(document2.docs.length + 1)}";
-    });
+
+    if(status==true){
+      // setState((){
+      //   itemcode.text = "${"SBG"}${F.format(document.docs.length + 1)}";
+      // });
+      print("Itemcount");
+      print(itemcode.text);
+      print("endddddddddddddddddddddddddddddddddddddddddd");
+      var itemdocument=await FirebaseFirestore.instance.collection("Item ShabikaG").
+      where("purchaseno",isEqualTo:"${"SBG"}${F.format(document.docs.length+1)}").get();
+      print("----------------");
+      print(itemdocument.docs.length);
+
+      if(itemdocument.docs.length>0){
+        print("if condictionssssssss");
+        setState((){
+          itemcode.text="${"SBG"}${F.format(document.docs.length + 2)}";
+        });
+      }
+      else{
+        print("elase condictionssssssss");
+        setState((){
+          itemcode.text="${"SBG"}${F.format(document.docs.length + 1)}";
+        });
+      }
+
+    
+
+
+    }
+    if(status2==true){
+      setState((){
+        itemcode.text = "${"SBN"}${F.format(document2.docs.length + 1)}";
+      });
+      for (int i=0;i<document2.docs.length;i++){
+        if( itemcode.text==document2.docs[i]['purchaseno']){
+          setState((){
+            itemcode.clear();
+            itemcode.text=="${"SBN"}${F.format(document2.docs.length + 1)}";
+          });
+        }
+
+        else{
+          setState((){
+            itemcode.text = "${"SBG"}${F.format(document.docs.length + 1)}";
+          });
+        }
+
+      }
+    }
+
+
+
+
+
+
+
   }
 
   int landingcost = 0;

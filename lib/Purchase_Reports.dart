@@ -131,12 +131,16 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
   int month1 = 0;
   int year2 = 0;
   int day2 = 0;
+
   int month2 = 0;
+
   List<String> mydate = [];
+
   TextEditingController Datecontroller = TextEditingController();
   TextEditingController Datecontroller2 = TextEditingController();
   final DateFormat formatter = DateFormat('d/M/yyyy');
-datefun(){
+
+  datefun(){
     setState(() {
 
 
@@ -197,6 +201,7 @@ datefun(){
   });
 
 }
+
   @override
   void initState() {
 
@@ -3521,10 +3526,6 @@ datefun(){
       viewalltotal= 0;
     });
 
-
-
-
-
     var document = await FirebaseFirestore.instance
         .collection("Purchase entry")
         .doc(streamid)
@@ -3549,6 +3550,8 @@ datefun(){
       //   Changedate = DateTime(year, month, day).add(Duration(days: int.parse(values['credit days'].toString()))).toString();
       //   formattedDate = DateFormat('d/MM/yyyy').format(DateTime.parse(Changedate));
       // }
+
+
     }
     );
 

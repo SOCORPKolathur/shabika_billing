@@ -378,6 +378,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
   final layoutFocusNode = FocusNode();
 
+  bool histroyshow=false;
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -750,7 +752,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         setState(() {
                                           layourbuilderclear.text = selection;
                                           Suppliername.text = selection;
-                                          layourbuilderclear.text = selection;
+                                         // layourbuilderclear.text = selection;
                                           customervalid = false;
                                         });
                                         checkfunc();
@@ -1317,7 +1319,6 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                            //   showdialpogboxitem();
                               Text(
                                 "Item Name",
                                 style: GoogleFonts.openSans(
@@ -1327,6 +1328,9 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                               
                               InkWell(onTap:(){
                                 if(itemdocuid.isNotEmpty){
+                                  setState((){
+                                    histroyshow=true;
+                                  });
                                   showdialpogboxitem();
                                 }
 
@@ -1625,7 +1629,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
                       //itemname
                       Tooltip(
-    message:toolhint,
+                        message:toolhint,
                         child: Container(
                           width: width / 4.0,
                           height: height / 21.9,
@@ -2653,6 +2657,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   Future.delayed(const Duration(seconds: 4), () {
                                     setState(() {
                                       Loading = false;
+                                      histroyshow=false;
                                     });
                                     checkbillno();
                                     clearallcontroller();
@@ -3606,360 +3611,368 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   showdialpogboxitem() {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return showDialog(
-      barrierDismissible: true,
-      barrierColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-        return SlideInLeft(
-            animate: true,
-            duration: const Duration(milliseconds: 800),
-            manualTrigger: false,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: height / 1.990,
-                  bottom: height / 6.57,
-                  left: width / 45.53,
-                  right: width / 45.53),
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                body: Container(
-                  height: height / 2.8,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: Colors.white,
-                  ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: height / 65.7,
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(width: width / 2.276),
-                            Text(
-                              "Purchase Histroy",
-                              style: GoogleFonts.openSans(
-                                  decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            SizedBox(width: width / 2.577),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: ClipOval(
-                                child: Container(
-                                  height: height / 26.28,
-                                  width: width / 54.64,
-                                  color: Colors.red,
-                                  child: const Center(
-                                      child: Icon(
-                                    Icons.close,
-                                    color: Colors.white,
-                                  )),
-                                ),
+
+
+    if(histroyshow==true){
+      return showDialog(
+
+        barrierDismissible: histroyshow,
+        barrierColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return SlideInLeft(
+              animate: true,
+              duration: const Duration(milliseconds: 800),
+              manualTrigger: false,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: height / 1.990,
+                    bottom: height / 6.57,
+                    left: width / 45.53,
+                    right: width / 45.53),
+                child: Scaffold(
+                  backgroundColor: Colors.transparent,
+                  body: Container(
+                    height: height / 2.8,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: Colors.white,
+                    ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: height / 65.7,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(width: width / 2.276),
+                              Text(
+                                "Purchase Histroy",
+                                style: GoogleFonts.openSans(
+                                    decoration: TextDecoration.underline,
+                                    fontWeight: FontWeight.w700),
                               ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: height / 65.0,
-                        ),
-                        Material(
-                          elevation: 50,
-                          shadowColor: Colors.black38,
-                          color: const Color(0xff7d99ab),
-                          child: Container(
-                            width: width / 0.976,
-                            height: height / 16.425,
-                            decoration: const BoxDecoration(
-                              color: Color(0xff7d99ab),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsets.only(bottom: height / 164.25),
-                              child: Row(
-                                children: [
-                                  //Serial no
-                                  SizedBox(
-                                      width: width / 45.533,
-                                      height: height / 16.425,
-                                      child: const Center(
-                                          child: Text("Si\nNo"))),
+                              SizedBox(width: width / 2.577),
 
-                                  //itemid
-                                  SizedBox(
-                                      width: width / 14.2,
-                                      height: height / 16.425,
-                                      child: const Center(
-                                          child: Text("Item Code"))),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: ClipOval(
+                                  child: Container(
+                                    height: height / 26.28,
+                                    width: width / 54.64,
+                                    color: Colors.red,
+                                    child: const Center(
+                                        child: Icon(
+                                          Icons.close,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: height / 65.0,
+                          ),
+                          Material(
+                            elevation: 50,
+                            shadowColor: Colors.black38,
+                            color: const Color(0xff7d99ab),
+                            child: Container(
+                              width: width / 0.976,
+                              height: height / 16.425,
+                              decoration: const BoxDecoration(
+                                color: Color(0xff7d99ab),
+                              ),
+                              child: Padding(
+                                padding:
+                                EdgeInsets.only(bottom: height / 164.25),
+                                child: Row(
+                                  children: [
+                                    //Serial no
+                                    SizedBox(
+                                        width: width / 45.533,
+                                        height: height / 16.425,
+                                        child: const Center(
+                                            child: Text("Si\nNo"))),
 
-                                  //itemname
-                                  SizedBox(
-                                      width: width / 4.5,
-                                      child: const Text(
-                                        'Item Name',
-                                        textAlign: TextAlign.left,
-                                      )),
+                                    //itemid
+                                    SizedBox(
+                                        width: width / 14.2,
+                                        height: height / 16.425,
+                                        child: const Center(
+                                            child: Text("Item Code"))),
 
-                                  SizedBox(
-                                      width: width / 11.8,
-                                      height: height / 16.425,
-                                      child: const Center(
-                                          child: Text("Suppier Name"))),
+                                    //itemname
+                                    SizedBox(
+                                        width: width / 4.5,
+                                        child: const Text(
+                                          'Item Name',
+                                          textAlign: TextAlign.left,
+                                        )),
 
-                                  //Hsn code
-                                  SizedBox(
-                                      width: width / 11.8,
-                                      height: height / 16.425,
-                                      child: const Center(
-                                          child: Text("HsnCode"))),
+                                    SizedBox(
+                                        width: width / 11.8,
+                                        height: height / 16.425,
+                                        child: const Center(
+                                            child: Text("Suppier Name"))),
 
-                                  //tax
-                                  SizedBox(
-                                      width: width / 15.18,
-                                      height: height / 16.425,
-                                      child:
-                                          const Center(child: Text("Tax"))),
+                                    //Hsn code
+                                    SizedBox(
+                                        width: width / 11.8,
+                                        height: height / 16.425,
+                                        child: const Center(
+                                            child: Text("HsnCode"))),
 
-                                  //quvantity
-                                  SizedBox(
-                                      width: width / 15.18,
-                                      height: height / 16.425,
-                                      child:
-                                          const Center(child: Text("Qty"))),
+                                    //tax
+                                    SizedBox(
+                                        width: width / 15.18,
+                                        height: height / 16.425,
+                                        child:
+                                        const Center(child: Text("Tax"))),
 
-                                  //price
-                                  SizedBox(
-                                      width: width / 15.18,
-                                      height: height / 16.425,
-                                      child:
-                                          const Center(child: Text("Price"))),
+                                    //quvantity
+                                    SizedBox(
+                                        width: width / 15.18,
+                                        height: height / 16.425,
+                                        child:
+                                        const Center(child: Text("Qty"))),
 
-                                  //landing cost
-                                  SizedBox(
-                                      width: width / 15.18,
-                                      height: height / 16.425,
-                                      child: const Center(
-                                          child: Text("Landing cost"))),
+                                    //price
+                                    SizedBox(
+                                        width: width / 15.18,
+                                        height: height / 16.425,
+                                        child:
+                                        const Center(child: Text("Price"))),
 
-                                  SizedBox(
-                                      width: width / 15.18,
-                                      height: height / 16.425,
-                                      child: const Center(
-                                          child: Text(
-                                        "Sales Price",
-                                      ))),
+                                    //landing cost
+                                    SizedBox(
+                                        width: width / 15.18,
+                                        height: height / 16.425,
+                                        child: const Center(
+                                            child: Text("Landing cost"))),
 
-                                  SizedBox(
-                                      width: width / 15.18,
-                                      height: height / 16.425,
-                                      child: const Center(
-                                          child: Text("Value",
-                                              style: TextStyle(
-                                                  color: Colors.red)))),
-                                  SizedBox(
-                                      width: width / 15.18,
-                                      height: height / 16.425,
-                                      child: const Center(
-                                          child: Text(
-                                        "Date\nTime",
-                                      ))),
-                                ],
+                                    SizedBox(
+                                        width: width / 15.18,
+                                        height: height / 16.425,
+                                        child: const Center(
+                                            child: Text(
+                                              "Sales Price",
+                                            ))),
+
+                                    SizedBox(
+                                        width: width / 15.18,
+                                        height: height / 16.425,
+                                        child: const Center(
+                                            child: Text("Value",
+                                                style: TextStyle(
+                                                    color: Colors.red)))),
+                                    SizedBox(
+                                        width: width / 15.18,
+                                        height: height / 16.425,
+                                        child: const Center(
+                                            child: Text(
+                                              "Date\nTime",
+                                            ))),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Material(
-                          elevation: 50,
-                          shadowColor: Colors.black38,
-                          color: const Color(0xffFFFFFF),
-                          child: Container(
-                            //color: Color(0xffFFFFFF),
-                            width: width / 0.976,
-                            height: height / 2.8,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffFFFFFF),
-                            ),
-                            child: StreamBuilder<QuerySnapshot>(
-                              stream: status == true
-                                  ? FirebaseFirestore.instance.collection("Item ShabikaG").doc(itemdocuid).collection("Histroy")
-                                      .orderBy("timestamp", descending: true)
-                                      .snapshots()
-                                  : status2 == true
-                                      ? FirebaseFirestore.instance
-                                          .collection("Item ShabikaN")
-                                          .doc(itemdocuid)
-                                          .collection("Histroy")
-                                          .orderBy("timestamp",
-                                              descending: true)
-                                          .snapshots()
-                                      : FirebaseFirestore.instance
-                                          .collection("Item")
-                                          .doc(itemdocuid)
-                                          .collection("Histroy")
-                                          .orderBy("timestamp",
-                                              descending: true)
-                                          .snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.hasData == null) {
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                }
+                          Material(
+                            elevation: 50,
+                            shadowColor: Colors.black38,
+                            color: const Color(0xffFFFFFF),
+                            child: Container(
+                              //color: Color(0xffFFFFFF),
+                              width: width / 0.976,
+                              height: height / 2.8,
+                              decoration: const BoxDecoration(
+                                color: Color(0xffFFFFFF),
+                              ),
+                              child: StreamBuilder<QuerySnapshot>(
+                                stream: status == true
+                                    ? FirebaseFirestore.instance.collection("Item ShabikaG").doc(itemdocuid).collection("Histroy")
+                                    .orderBy("timestamp", descending: true)
+                                    .snapshots()
+                                    : status2 == true
+                                    ? FirebaseFirestore.instance
+                                    .collection("Item ShabikaN")
+                                    .doc(itemdocuid)
+                                    .collection("Histroy")
+                                    .orderBy("timestamp",
+                                    descending: true)
+                                    .snapshots()
+                                    : FirebaseFirestore.instance
+                                    .collection("Item")
+                                    .doc(itemdocuid)
+                                    .collection("Histroy")
+                                    .orderBy("timestamp",
+                                    descending: true)
+                                    .snapshots(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData == null) {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
 
-                                if (!snapshot.hasData) {
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                }
-                                if (snapshot.data!.docs.length < 0) {
-                                  return const Center(
-                                    child: Text("NO Histroy"),
-                                  );
-                                }
+                                  if (!snapshot.hasData) {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                  if (snapshot.data!.docs.length < 0) {
+                                    return const Center(
+                                      child: Text("NO Histroy"),
+                                    );
+                                  }
 
-                                return ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const ScrollPhysics(),
-                                  itemCount: snapshot.data!.docs.length,
-                                  itemBuilder: (context, index) {
-                                    var billing = snapshot.data!.docs[index];
-                                    return billing['save'] == true
-                                        ? Padding(
-                                            padding: EdgeInsets.only(
-                                                bottom: height / 164.25),
-                                            child: Row(
-                                              children: [
-                                                //Serial no
-                                                SizedBox(
-                                                    width: width / 45.533,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(
-                                                            " ${index + 1}"))),
-
-                                                //itemid
-                                                SizedBox(
-                                                    width: width / 14.2,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(
-                                                            "${billing['itemcode']}"))),
-
-                                                //itemname
-                                                SizedBox(
-                                                    width: width / 4.5,
+                                  return ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: const ScrollPhysics(),
+                                    itemCount: snapshot.data!.docs.length,
+                                    itemBuilder: (context, index) {
+                                      var billing = snapshot.data!.docs[index];
+                                      return billing['save'] == true
+                                          ? Padding(
+                                        padding: EdgeInsets.only(
+                                            bottom: height / 164.25),
+                                        child: Row(
+                                          children: [
+                                            //Serial no
+                                            SizedBox(
+                                                width: width / 45.533,
+                                                height: height / 16.425,
+                                                child: Center(
                                                     child: Text(
-                                                      '${billing['Description']},',
-                                                      textAlign:
-                                                          TextAlign.left,
-                                                    )),
+                                                        " ${index + 1}"))),
 
-                                                SizedBox(
-                                                    width: width / 11.8,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(billing[
-                                                            'suppilername']))),
+                                            //itemid
+                                            SizedBox(
+                                                width: width / 14.2,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(
+                                                        "${billing['itemcode']}"))),
 
-                                                //Hsn code
-                                                SizedBox(
-                                                    width: width / 11.8,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(billing[
-                                                            'Hsncode']))),
+                                            //itemname
+                                            SizedBox(
+                                                width: width / 4.5,
+                                                child: Text(
+                                                  '${billing['Description']},',
+                                                  textAlign:
+                                                  TextAlign.left,
+                                                )),
 
-                                                //tax
-                                                SizedBox(
-                                                    width: width / 15.18,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(
-                                                            billing['tax']))),
+                                            SizedBox(
+                                                width: width / 11.8,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(billing[
+                                                    'suppilername']))),
 
-                                                //quvantity
-                                                SizedBox(
-                                                    width: width / 15.18,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(billing[
-                                                                'Qty']
-                                                            .toString()))),
+                                            //Hsn code
+                                            SizedBox(
+                                                width: width / 11.8,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(billing[
+                                                    'Hsncode']))),
 
-                                                //price
-                                                SizedBox(
-                                                    width: width / 15.18,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(billing[
-                                                                'Purchase price']
-                                                            .toString()))),
+                                            //tax
+                                            SizedBox(
+                                                width: width / 15.18,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(
+                                                        billing['tax']))),
 
-                                                //landing cost
-                                                SizedBox(
-                                                    width: width / 15.18,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(billing[
-                                                                'Landing cost']
-                                                            .toString()))),
+                                            //quvantity
+                                            SizedBox(
+                                                width: width / 15.18,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(billing[
+                                                    'Qty']
+                                                        .toString()))),
 
-                                                //Sales Price
-                                                SizedBox(
-                                                    width: width / 15.18,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(billing[
-                                                                'Sales price']
-                                                            .toString()))),
+                                            //price
+                                            SizedBox(
+                                                width: width / 15.18,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(billing[
+                                                    'Purchase price']
+                                                        .toString()))),
 
-                                                //value
-                                                SizedBox(
-                                                    width: width / 15.18,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(
+                                            //landing cost
+                                            SizedBox(
+                                                width: width / 15.18,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(billing[
+                                                    'Landing cost']
+                                                        .toString()))),
+
+                                            //Sales Price
+                                            SizedBox(
+                                                width: width / 15.18,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(billing[
+                                                    'Sales price']
+                                                        .toString()))),
+
+                                            //value
+                                            SizedBox(
+                                                width: width / 15.18,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(
                                                       billing['Total']
                                                           .toString(),
                                                       style: const TextStyle(
                                                           color: Colors.red),
                                                     ))),
 
-                                                //remove
-                                                SizedBox(
-                                                    width: width / 15.18,
-                                                    height: height / 16.425,
-                                                    child: Center(
-                                                        child: Text(
+                                            //remove
+                                            SizedBox(
+                                                width: width / 15.18,
+                                                height: height / 16.425,
+                                                child: Center(
+                                                    child: Text(
                                                       "${billing['date'].toString()}\n${billing['time'].toString()}",
                                                       textAlign:
-                                                          TextAlign.center,
+                                                      TextAlign.center,
                                                       style: const TextStyle(
                                                           color:
-                                                              Colors.black),
+                                                          Colors.black),
                                                     ))),
-                                              ],
-                                            ),
-                                          )
-                                        : const SizedBox();
-                                  },
-                                );
-                              },
+                                          ],
+                                        ),
+                                      )
+                                          : const SizedBox();
+                                    },
+                                  );
+                                },
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ));
-      },
-    );
+              ));
+        },
+      );
+    }
+
+
   }
  additemdialogbox() {
     double width = MediaQuery.of(context).size.width;
@@ -5373,6 +5386,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
   ///suppier name and payment and total and so on controller clear function
   clearallcontroller2() {
+
     setState(() {
       Payments = "Please Select Type";
       dropdownValue3 = list3.first;
@@ -5696,14 +5710,16 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       Itemdocumentid.clear();
       Purchaseinvoice.clear();
       creditdate= DateTime(
-        DateTime.now().year,
-        DateTime.now().month,
-        Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+        Creadit_days.text==""?
+        DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+         DateTime.now().month,DateTime.now().year,
       );
     });
 
+    print(DateTime.now().day+int.parse(Creadit_days.text),);
 
-
+    print("creditdate 11111111111111111111111111111111111111111111111111111111111111111111111111111");
+    print(creditdate);
     if (layourbuilderclear.text != "" &&
         Suppliername.text != "" &&
         suppiler_invoice.text != "") {
@@ -6136,12 +6152,18 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       });
     }
 
+    print("creditdate Dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+    print(creditdate);
+
     setState(() {
 
       itemserch = false;
       IMEISERIAL.clear();
       Itemdocumentid.clear();
       Purchaseinvoice.clear();
+
+
+
       creditdate= DateTime(
         DateTime.now().year,
         DateTime.now().month,
@@ -7326,6 +7348,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "CGST": Cgst,
         "save": true,
         "Totalamount": TotalAmount2.toStringAsFixed(2),
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
         "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       FirebaseFirestore.instance.collection("Supplier").doc(customerdocid).collection("billing").doc(random)
@@ -7346,6 +7369,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "save": true,
         "type": status==true? "ShabikaG" : "ShabikaN",
         "Totalamount": TotalAmount2.toStringAsFixed(2),
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
         "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       FirebaseFirestore.instance.collection("Accounts").doc("AxQxYGPKUB5qGzllyfpY").update({
@@ -7376,6 +7400,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "CGST": Cgst,
         "save": true,
         "Totalamount": totalamount.toStringAsFixed(2),
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
         "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       FirebaseFirestore.instance.collection("Supplier").doc(customerdocid).collection("billing").doc(random).update({
@@ -7395,6 +7420,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "save": true,
         "type": status==true? "ShabikaG" : "ShabikaN",
         "Totalamount": totalamount.toStringAsFixed(2),
+        "credit date":"${creditdate.day}/${creditdate.month}/${creditdate.year}",
         "balance amount":Payments=="Credit Amount"?double.parse(TotalAmount2.toString()): 0,
       });
       //create histroy collection
