@@ -2012,7 +2012,6 @@ class _Billing_PageState extends State<Billing_Page> {
     }
 
 
-
     var document2=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
     for(int i=0;i<document2.docs.length;i++){
       FirebaseFirestore.instance.collection("billingItemreports").doc().set({
@@ -2103,7 +2102,6 @@ class _Billing_PageState extends State<Billing_Page> {
       });
       }
     }
-
 
     /*  FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing")
          .doc(random).update({
@@ -2613,6 +2611,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                   print("Hello+++++++++++++++++++++++++++++2");
                                   Future.delayed(const Duration(seconds: 4),(){
                                     print("helllllll+++++++++++++++++++++++++++++3");
+                                    checkbillno();
                                     setState((){
                                       Loading=false;
                                       Destription.clear();
@@ -2632,8 +2631,6 @@ class _Billing_PageState extends State<Billing_Page> {
 
                                     Navigator.pop(context);
                                     print("helllllll++++++++++++++++++++++++++++5");
-
-                                    checkbillno();
                                     Savebillpopup();
                                     clearallcontroller();
                                     clearcontroller();

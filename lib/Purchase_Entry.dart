@@ -7708,7 +7708,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         imei == true ||
                                             color == true
                                         ? SizedBox(
-                                            height: height / 2.628,
+                                            height: height / 1.15,
                                             width: width / 1.821,
                                             child: ListView.builder(
                                               itemCount: Quvantity,
@@ -8348,7 +8348,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                         imei == true ||
                                         color == true
                                         ? SizedBox(
-                                         height: height / 2.628,
+                                      height: height / 1.15,
                                          width: width / 1.821,
                                          child: ListView.builder(
                                         itemCount: Quvantity,
