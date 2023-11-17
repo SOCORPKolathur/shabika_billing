@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shabika_billing/Service_Job_sheet_File/techservices.dart';
+import 'package:shabika_billing/barcodepage.dart';
 import '../Banking_Page/Banking_Page.dart';
 import '../Brand_Page/Brand.dart';
 import '../Catogorys_Page/Catogory.dart';
@@ -108,20 +109,20 @@ const List<String> Reportslist = <String>[
 
 const List<String> Supportlists = <String>[
   'Service',
+  'Service\nEntry',
+  'Work\nSheet',
+  'Service\nReports',
+  'Service\nReports Main',
   'Service\nProblem',
   'Service\nBrand',
   'Service\nStatus',
-  'Service\nEntry',
-  'Service\nReports',
-  'Work\nSheet',
-  'Service\nReports Main',
 ];
 
 const List<String> Simcardlists = <String>[
   'Simcard',
-  'Operator',
   'Simcard\nEntry',
   'Simcard\nReports',
+  'Operator',
 
 ];
 
@@ -134,9 +135,9 @@ const List<String> Replacelists = <String>[
 
 const List<String> Wantedlists = <String>[
   'Wanted',
-  'Status',
   'Entry',
   'Reports',
+  'Status',
 ];
 
 class drawer extends StatefulWidget {
@@ -600,6 +601,8 @@ class _drawerState extends State<drawer> {
                          dropdownValue9=Simcardlists.first;
                          dropdownValue10=Wantedlists.first;
                          dropdownValue11=Replacelists.first;
+                         Pages="Barcode";
+
 
                        });
                      },
@@ -1163,7 +1166,7 @@ class _drawerState extends State<drawer> {
               Pages=="Supplier\nReports"?const Supplier_Reports():
               Pages=="Banking"? const Banking_Page():
               Pages=="Stocks"?const Stocks_Page():
-              Pages=="Purchase\nReturns"?const Purcharse_Return_Page():
+              Pages=="Purchase\nReturns"? Purcharse_Return_Page(""):
               Pages=="Sales\nReturns"?const Sales_Return_Page():
               Pages=="Returns\nReports"?const Purchase_return_Page():
               Pages=="Sales\nReturns"?const Sales_Return_Page():
@@ -1185,6 +1188,7 @@ class _drawerState extends State<drawer> {
               Pages== "Payment"?  const  Payment_Page():
               Pages== 'Replace\nEntry'?    const ReplaceMent_Page():
               Pages== 'Replace\nReports'?      Replacement_Reports():
+             /* Pages== 'Barcode'?      BarcodePage():*/
               Container()),
             )
           ],

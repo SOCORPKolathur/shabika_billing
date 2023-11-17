@@ -82,12 +82,12 @@ class _Reports_PageState extends State<Reports_Page> {
   double salesamount=0;
   double salesamountG=0;
   double salesamountN=0;
+  double profitamount=0;
   additemduntion() async {
     setState(() {
       Suppilier.clear();
       Invoice.clear();
       PaymentType.clear();
-
     });
       var document = await FirebaseFirestore.instance
           .collection("billing")
@@ -183,47 +183,89 @@ class _Reports_PageState extends State<Reports_Page> {
         for (int i = 0; i < document2.docs.length; i++) {
           if(mydate.isNotEmpty) {
           if(mydate.contains(document2.docs[i]["purchasedate"])) {
-            setState(() {
-              salesamountG = salesamountG + double.parse(document2.docs[i]["Total"].toString());
-            });
+            if(document2.docs[i]["withouttaxprice"]!="Return") {
+              setState(() {
+                salesamountG = salesamountG +
+                    double.parse(document2.docs[i]["Total"].toString());
+              });
+            }
           }
         }
           else{
-            setState(() {
-              salesamountG = salesamountG + double.parse(document2.docs[i]["Total"].toString());
-            });
+            if(document2.docs[i]["withouttaxprice"]!="Return") {
+              setState(() {
+                salesamountG = salesamountG +
+                    double.parse(document2.docs[i]["Total"].toString());
+              });
+            }
           }
       }
 
       for (int i = 0; i < document3.docs.length; i++) {
         if(mydate.isNotEmpty) {
           if(mydate.contains(document3.docs[i]["purchasedate"])) {
-            setState(() {
-              salesamountN = salesamountN + double.parse(document3.docs[i]["Total"].toString());
-            });
+            if(document3.docs[i]["withouttaxprice"]!="Return") {
+              setState(() {
+                salesamountN = salesamountN +
+                    double.parse(document3.docs[i]["Total"].toString());
+              });
+            }
           }
         }
         else{
-          setState(() {
-            salesamountN = salesamountN + double.parse(document3.docs[i]["Total"].toString());
-          });
+          if(document3.docs[i]["withouttaxprice"]!="Return") {
+            setState(() {
+              salesamountN = salesamountN +
+                  double.parse(document3.docs[i]["Total"].toString());
+            });
+          }
         }
       }
 
       for (int i = 0; i < document.docs.length; i++) {
         if(mydate.isNotEmpty) {
           if(mydate.contains(document.docs[i]["purchasedate"])) {
-            setState(() {
-              salesamount = salesamount + double.parse(document.docs[i]["Total"].toString());
-            });
+            if(document.docs[i]["withouttaxprice"]!="Return") {
+              setState(() {
+                salesamount = salesamount +
+                    double.parse(document.docs[i]["Total"].toString());
+              });
+            }
           }
         }
         else{
-          setState(() {
-            salesamount = salesamount + double.parse(document.docs[i]["Total"].toString());
-          });
+          if(document.docs[i]["withouttaxprice"]!="Return") {
+            setState(() {
+              salesamount = salesamount +
+                  double.parse(document.docs[i]["Total"].toString());
+            });
+          }
         }
       }
+
+
+    for (int i = 0; i < document.docs.length; i++) {
+      if(document.docs[i]["billtype"]=="Sales") {
+        if (mydate.isNotEmpty) {
+          if (mydate.contains(document.docs[i]["purchasedate"])) {
+            if(document.docs[i]["withouttaxprice"]!="Return") {
+              setState(() {
+                profitamount = profitamount +
+                    double.parse(document.docs[i]["margin"].toString());
+              });
+            }
+          }
+        }
+        else {
+          if(document.docs[i]["withouttaxprice"]!="Return") {
+            setState(() {
+              profitamount = profitamount +
+                  double.parse(document.docs[i]["margin"].toString());
+            });
+          }
+        }
+      }
+    }
 
 
   }
@@ -446,6 +488,7 @@ class _Reports_PageState extends State<Reports_Page> {
                       print(mydate);
                       print("+++++++++++++++++++++++++++++++++++++++kkkk");
                       //billingtotalamount();
+                      gettotal();
                     }
                   } else {}
                 },
@@ -529,6 +572,7 @@ class _Reports_PageState extends State<Reports_Page> {
                       print(mydate);
                       print("+++++++++++++++++++++++++++++++++++++++kkkk");
                       //billingtotalamount();
+                      gettotal();
                     }
                   } else {}
                 },
@@ -979,6 +1023,32 @@ class _Reports_PageState extends State<Reports_Page> {
             SizedBox(
               width: width / 100.066,
             ),
+            Text(
+              "Total Profit",
+              textAlign: TextAlign.start,
+              style: GoogleFonts.openSans(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: width / 98.64),
+            ),
+            SizedBox(
+              width: width / 100.5,
+            ),
+            Container(
+                height: height / 21.9,
+                width: width / 9.5,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Center(
+                    child: Text(
+                      profitamount.toStringAsFixed(2),
+                      style: GoogleFonts.openSans(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: width / 88.64),
+                    ))),
 
           ],
         ),
@@ -1213,7 +1283,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1221,14 +1291,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                     ],
@@ -1330,7 +1400,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -1338,14 +1408,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -1448,7 +1518,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                              decoration: BoxDecoration(
                                                border: Border.all(color: Colors.black,width: 1.2),
                                              ),
-                                             child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                             child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                          Container(
                                              width:width/12.0,
@@ -1456,14 +1526,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                              decoration: BoxDecoration(
                                                border: Border.all(color: Colors.black,width: 1.2),
                                              ),
-                                             child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                             child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                          Container(
                                              width:width/12.0,
                                              height:height/13.14,
                                              decoration: BoxDecoration(
                                                border: Border.all(color: Colors.black,width: 1.2),
                                              ),
-                                             child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                             child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                        ],
@@ -1568,7 +1638,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -1576,14 +1646,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -1686,7 +1756,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                              decoration: BoxDecoration(
                                                border: Border.all(color: Colors.black,width: 1.2),
                                              ),
-                                             child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                             child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                          Container(
                                              width:width/12.0,
@@ -1694,14 +1764,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                              decoration: BoxDecoration(
                                                border: Border.all(color: Colors.black,width: 1.2),
                                              ),
-                                             child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                             child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                          Container(
                                              width:width/12.0,
                                              height:height/13.14,
                                              decoration: BoxDecoration(
                                                border: Border.all(color: Colors.black,width: 1.2),
                                              ),
-                                             child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                             child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                        ],
@@ -1799,7 +1869,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                     Container(
                                         width:width/12.0,
@@ -1807,14 +1877,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                        child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                     Container(
                                         width:width/12.0,
                                         height:height/13.14,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.black,width: 1.2),
                                         ),
-                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                        child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                   ],
@@ -1937,7 +2007,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -1945,14 +2015,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                     ],
@@ -2054,7 +2124,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -2062,14 +2132,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -2172,7 +2242,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -2180,14 +2250,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -2292,7 +2362,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -2300,14 +2370,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -2410,7 +2480,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -2418,14 +2488,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -2523,7 +2593,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                      child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                   Container(
                                       width:width/12.0,
@@ -2531,14 +2601,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                   Container(
                                       width:width/12.0,
                                       height:height/13.14,
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                      child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                 ],
@@ -2661,7 +2731,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                       Container(
                                           width:width/12.0,
@@ -2669,14 +2739,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                          child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                       Container(
                                           width:width/12.0,
                                           height:height/13.14,
                                           decoration: BoxDecoration(
                                             border: Border.all(color: Colors.black,width: 1.2),
                                           ),
-                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                          child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                     ],
@@ -2778,7 +2848,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -2786,14 +2856,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -2896,7 +2966,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -2904,14 +2974,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -3016,7 +3086,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -3024,14 +3094,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -3134,7 +3204,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                         Container(
                                             width:width/12.0,
@@ -3142,14 +3212,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                            child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                         Container(
                                             width:width/12.0,
                                             height:height/13.14,
                                             decoration: BoxDecoration(
                                               border: Border.all(color: Colors.black,width: 1.2),
                                             ),
-                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                            child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                       ],
@@ -3247,7 +3317,7 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                      child: Center(child: Text(buillin1["withouttaxprice"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["withouttaxprice"]=="Return"? Colors.red : Colors.black),))),
 
                                   Container(
                                       width:width/12.0,
@@ -3255,14 +3325,14 @@ class _Reports_PageState extends State<Reports_Page> {
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.black),))),
+                                      child: Center(child: Text(buillin1["Sales price"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Sales price"]=="Return"? Colors.red : Colors.black),))),
                                   Container(
                                       width:width/12.0,
                                       height:height/13.14,
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.black,width: 1.2),
                                       ),
-                                      child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color:Colors.black),))),
+                                      child: Center(child: Text(buillin1["Total"],style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: buillin1["Total"]=="Return"? Colors.red : Colors.black),))),
 
 
                                 ],

@@ -55,7 +55,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
             SizedBox(
               width: width / 91.066,
             ),
-            InkWell(
+           /* InkWell(
               onTap: () {
                 Navigator.pushReplacement(
                     context,
@@ -89,7 +89,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                   ),
                 ),
               ),
-            ),
+            ),*/
             Padding(
               padding:
               EdgeInsets.only(left: width / 35.947, top: height / 32.85),
@@ -1053,7 +1053,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
                                   itemBuilder: (context, index) {
                                     var customer=snapshot.data!.docs[index];
                                     return
-
+                                      customer["return"]==true?
                                       Row(
 
                                         children: [
@@ -1149,7 +1149,7 @@ class _SL_return_reportsState extends State<SL_return_reports> {
 
 
                                         ],
-                                      );
+                                      )  : SizedBox();
                                   },);
                               },),
                           ),

@@ -1226,16 +1226,57 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
     setState((){
       reducequvanity=0;
       purchaseInvoiceIdList.clear();
+      imeiLists.clear();
+      serialLists.clear();
+      colorLists.clear();
+      returnimei.clear();
+      returnserial.clear();
+      returncolor.clear();
 
     });
+print(Returnlists);
+print("Retrun List");
+print(documentlists);
+print("Document ID List");
 
     for(int j=0;j<Returnlists.length;j++){
       var document=await FirebaseFirestore.instance.collection("billing").
       doc(returnid).collection(returnid.toString()).where("itemcode",isEqualTo:Returnlists[j]).get();
+      var billingdoc = await FirebaseFirestore.instance.collection("billingItemreports").where("maindocid",isEqualTo: returnid).where("itemcode",isEqualTo:Returnlists[j]).get();
+      var billingdocG = await FirebaseFirestore.instance.collection("billingItemreportsG").where("maindocid",isEqualTo: returnid).where("itemcode",isEqualTo:Returnlists[j]).get();
+      var billingdocN = await FirebaseFirestore.instance.collection("billingItemreportsN").where("maindocid",isEqualTo: returnid).where("itemcode",isEqualTo:Returnlists[j]).get();
 
+     for(int b=0;b<billingdoc.docs.length;b++) {
+       FirebaseFirestore.instance.collection("billingItemreports").doc(billingdoc.docs[b].id).update({
+         "withouttaxprice": "Return",
+         "Sales price": "Return",
+         "Total": "Return",
+       });
+     }
+      for(int b=0;b<billingdocG.docs.length;b++) {
+        FirebaseFirestore.instance.collection("billingItemreportsG").doc(billingdocG.docs[b].id).update({
+          "withouttaxprice": "Return",
+          "Sales price": "Return",
+          "Total": "Return",
+        });
+      }
+      for(int b=0;b<billingdocN.docs.length;b++) {
+        FirebaseFirestore.instance.collection("billingItemreportsN").doc(billingdocN.docs[b].id).update({
+          "withouttaxprice": "Return",
+          "Sales price": "Return",
+          "Total": "Return",
+        });
+      }
       for(int k=0;k<document.docs.length;k++){
         setState((){
           reducequvanity=int.parse(document.docs[k]['Qty'].toString());
+          imeiLists=document.docs[k]['Imei no'];
+          serialLists=document.docs[k]['Serial no'];
+          colorLists=document.docs[k]['color'];
+
+          returnimei=document.docs[k]['Imei no'];
+          returnserial=document.docs[k]['Serial no'];
+          returncolor=document.docs[k]['color'];
         });
 
         FirebaseFirestore.instance.collection("Accounts").doc("AxQxYGPKUB5qGzllyfpY").update({
@@ -1247,32 +1288,47 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
         update({
           "return":true,
         });
+        print(returnid);
+        print(document.docs[k].id);
+        print("id of error +++++++++++++++++++++++++++++++++++++++");
 
-        FirebaseFirestore.instance.collection("billing ShabikaG").
-        doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).
-        update({
-          "return":true,
-        });
-
-        FirebaseFirestore.instance.collection("billing ShabikaN").
-        doc(returnid).collection(returnid.toString()).doc(document.docs[k].id).
-        update({
-          "return":true,
-        });
-
+      /*  if(status==true) {
+          FirebaseFirestore.instance.collection("billing ShabikaG").
+          doc(returnid).collection(returnid.toString())
+              .doc(document.docs[k].id)
+              .
+          update({
+            "return": true,
+          });
+        }
+        if(status2==true) {
+          FirebaseFirestore.instance.collection("billing ShabikaN").
+          doc(returnid).collection(returnid.toString())
+              .doc(document.docs[k].id)
+              .
+          update({
+            "return": true,
+          });
+        }*/
 
 
       }
       for(int s=0;s<documentlists.length;s++){
-
+        print(reducequvanity);
+        print("reducequvanity");
         if(reducequvanity>0){
-          ///item Updated Lists
+          ///item Updated Listsx
 
-          var getdocdata=await FirebaseFirestore.instance.collection("Item ShabikaG").doc(documentlists[s]).get();
+          var getdocdata= status == true ?
+          await FirebaseFirestore.instance.collection("Item ShabikaG").doc(documentlists[s]).get()
+              :await FirebaseFirestore.instance.collection("Item ShabikaN").doc(documentlists[s]).get();
           Map<String ,dynamic>?Values=getdocdata.data();
           setState((){
             purchaseInvoiceIdList=Values!['purchaseinvoiceid'];
            });
+          print(purchaseInvoiceIdList);
+
+          print("New Checking 000000000000000000000000000000");
 
           if(Values!['IMEI NO']==true){
             for(int i=0;i<Values['Imei no'].length;i++){
@@ -1326,96 +1382,143 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
           print(documentlists[s]);
           print("Documentttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
 
-          FirebaseFirestore.instance.collection("Item ShabikaG").doc(documentlists[s]).update({
-            "TotalQuvantity":FieldValue.increment(reducequvanity),
-            "color":colorLists,
-            "Serial no":serialLists,
-            "Imei no":imeiLists,
-          });
 
-          FirebaseFirestore.instance.collection("Item ShabikaN").doc(documentlists[s]).update({
-            "TotalQuvantity":FieldValue.increment(reducequvanity),
-            "color":colorLists,
-            "Serial no":serialLists,
-            "Imei no":imeiLists,
-          });
+
+          if(status==true) {
+            FirebaseFirestore.instance.collection("Item ShabikaG").doc(
+                documentlists[s]).update({
+              "TotalQuvantity": FieldValue.increment(reducequvanity),
+              "color": colorLists,
+              "Serial no": serialLists,
+              "Imei no": imeiLists,
+            });
+          }
+          if(status2==true) {
+            FirebaseFirestore.instance.collection("Item ShabikaN").doc(
+                documentlists[s]).update({
+              "TotalQuvantity": FieldValue.increment(reducequvanity),
+              "color": colorLists,
+              "Serial no": serialLists,
+              "Imei no": imeiLists,
+            });
+          }
 
           var purchaseDocument=await FirebaseFirestore.instance.collection("Purchase entry").get();
-          for(int j=0;j<purchaseDocument.docs.length;j++){
+          print("Docurrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+          print(purchaseInvoiceIdList);
+          print(Returnlists);
+          print(purchaseDocument.docs.length);
 
-            if(purchaseInvoiceIdList.contains(purchaseDocument.docs[j].id)){
-              var purchaseDocument2 =await FirebaseFirestore.instance.collection("Purchase entry").
-              doc(purchaseInvoiceIdList[j]).collection(purchaseInvoiceIdList[j]).where("itemcode",isEqualTo:Returnlists[j]).get();
-              for(int k=0;k<purchaseDocument2.docs.length;k++){
-                var purchasedocument3=await FirebaseFirestore.instance.collection("Purchase entry").
-                doc(purchaseInvoiceIdList[j]).collection(purchaseInvoiceIdList[j]).doc(purchaseDocument2.docs[k].id).get();
-                Map<String ,dynamic>? Returndata=purchasedocument3.data();
+for(int m=0;m<purchaseInvoiceIdList.length;m++) {
+  print(purchaseInvoiceIdList[m]);
+  for (int j = 0; j < purchaseDocument.docs.length; j++) {
+    print("Iteration ${j}");
 
-                if(Returndata!['IMEI NO']==true){
-                  for(int i=0;i<Returndata['Imei no'].length;i++){
-                    setState((){
-                      returnimei.add(Returndata['Imei no'][i]);
-                    });
-                  }
+    for(int n=0;n<Returnlists.length;n++) {
+      if (purchaseInvoiceIdList[m] == purchaseDocument.docs[j].id) {
+        var purchaseDocument2 = await FirebaseFirestore.instance.collection(
+            "Purchase entry").doc(purchaseInvoiceIdList[m]).collection(
+            purchaseInvoiceIdList[m]).where(
+            "itemcode", isEqualTo: Returnlists[n]).get();
+        for (int k = 0; k < purchaseDocument2.docs.length; k++) {
+          var purchasedocument3 = await FirebaseFirestore.instance.collection(
+              "Purchase entry").
+          doc(purchaseInvoiceIdList[m])
+              .collection(purchaseInvoiceIdList[m])
+              .doc(
+              purchaseDocument2.docs[k].id)
+              .get();
+          Map<String, dynamic>? Returndata = purchasedocument3.data();
 
-                }
-
-                if(Returndata['Serial NO']==true){
-                  for(int j=0;j<Returndata['Serial no'].length;j++){
-                    setState((){
-                      returnserial.add(Returndata['Serial no'][j]);
-                    });
-                  }
-                }
-
-                if(Returndata['Color']==true){
-                  for(int k=0;k<Returndata['color'].length;k++){
-                    setState((){
-                      returncolor.add(Returndata['color']);
-                    });
-                  }
-                }
-
-                FirebaseFirestore.instance.collection("Purchase entry").
-                doc(purchaseInvoiceIdList[j]).collection(purchaseInvoiceIdList[j]).doc(purchaseDocument2.docs[k].id).update({
-                  "Imei no":returnimei,
-                  "Serial no":returnserial,
-                   "color":returncolor,
-                });
-                FirebaseFirestore.instance.collection("Purchase ShabikaG").
-                doc(purchaseInvoiceIdList[j]).collection(purchaseInvoiceIdList[j]).doc(purchaseDocument2.docs[k].id).update({
-                  "Imei no":returnimei,
-                  "Serial no":returnserial,
-                  "color":returncolor,
-                });
-                FirebaseFirestore.instance.collection("Purchase ShabikaN").
-                doc(purchaseInvoiceIdList[j]).collection(purchaseInvoiceIdList[j]).doc(purchaseDocument2.docs[k].id).update({
-                  "Imei no":returnimei,
-                  "Serial no":returnserial,
-                  "color":returncolor,
-                });
-
-              }
-
-
-
+          if (Returndata!['IMEI NO'] == true) {
+            for (int i = 0; i < Returndata['Imei no'].length; i++) {
+              setState(() {
+                returnimei.add(Returndata['Imei no'][i]);
+              });
             }
           }
 
+          if (Returndata['Serial NO'] == true) {
+            for (int j = 0; j < Returndata['Serial no'].length; j++) {
+              setState(() {
+                returnserial.add(Returndata['Serial no'][j]);
+              });
+            }
+          }
+
+          if (Returndata['Color'] == true) {
+            for (int k = 0; k < Returndata['color'].length; k++) {
+              setState(() {
+                returncolor.add(Returndata['color']);
+              });
+            }
+          }
+          print("Docurr))))))))))))))))))))))))))))))))))))))))))))");
+          print(purchaseInvoiceIdList[m]);
+          print(purchaseDocument2.docs[k].id);
+          print(returnimei);
+          print(reducequvanity);
+          FirebaseFirestore.instance.collection("Purchase entry").
+          doc(purchaseInvoiceIdList[m])
+              .collection(purchaseInvoiceIdList[m])
+              .doc(
+              purchaseDocument2.docs[k].id)
+              .update({
+            "Imei no": returnimei,
+            "Serial no": returnserial,
+            "color": returncolor,
+            "stocks": FieldValue.increment(reducequvanity)
+          });
+          print("purchsre update done");
+          if (status == true) {
+            FirebaseFirestore.instance.collection("Purchase ShabikaG").
+            doc(purchaseInvoiceIdList[m]).collection(
+                purchaseInvoiceIdList[m]).doc(
+                purchaseDocument2.docs[k].id).update({
+              "Imei no": returnimei,
+              "Serial no": returnserial,
+              "color": returncolor,
+              "stocks": FieldValue.increment(reducequvanity)
+            });
+          }
+          if (status2 == true) {
+            FirebaseFirestore.instance.collection("Purchase ShabikaN").
+            doc(purchaseInvoiceIdList[m]).collection(
+                purchaseInvoiceIdList[m]).doc(
+                purchaseDocument2.docs[k].id).update({
+              "Imei no": returnimei,
+              "Serial no": returnserial,
+              "color": returncolor,
+              "stocks": FieldValue.increment(reducequvanity)
+            });
+          }
+        }
+      }
+    }
+  }
+}
         }
       }
       FirebaseFirestore.instance.collection("billing").doc(returnid).update({
         "return":true,
       });
 
-      FirebaseFirestore.instance.collection("billing ShabikaG").doc(returnid).update({
-        "return":true,
-      });
-
-      FirebaseFirestore.instance.collection("billing ShabikaN").doc(returnid).update({
-        "return":true,
-      });
-
+      print(returnid);
+      print("id of error +++++++++++++++++++++++++++++++++++++++");
+      if(status==true) {
+        FirebaseFirestore.instance.collection("billing ShabikaG")
+            .doc(returnid)
+            .update({
+          "return": true,
+        });
+      }
+      if(status2==true) {
+        FirebaseFirestore.instance.collection("billing ShabikaN")
+            .doc(returnid)
+            .update({
+          "return": true,
+        });
+      }
 
     }
 
@@ -3656,9 +3759,21 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
     setState(() {
       billno.clear();
     });
-    var document=await FirebaseFirestore.instance.collection("billing").where("save",isEqualTo: true).get();
-    for(int i=0;i<document.docs.length;i++){
-      billno.add(document.docs[i]['purchaseno']);
+    if(status==true) {
+      var document = await FirebaseFirestore.instance.collection("billing ShabikaG")
+          .where("save", isEqualTo: true)
+          .get();
+      for (int i = 0; i < document.docs.length; i++) {
+        billno.add(document.docs[i]['purchaseno']);
+      }
+    }
+    if(status2==true){
+      var document = await FirebaseFirestore.instance.collection("billing ShabikaN")
+          .where("save", isEqualTo: true)
+          .get();
+      for (int i = 0; i < document.docs.length; i++) {
+        billno.add(document.docs[i]['purchaseno']);
+      }
     }
 
   }
@@ -3763,6 +3878,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         });
                       }
                     });
+                    billnoaddfuncxtion();
                   },
                 ),
               ),
@@ -3802,6 +3918,7 @@ class _Sales_Return_PageState extends State<Sales_Return_Page> {
                         });
                       }
                     });
+                    billnoaddfuncxtion();
                   },
                 ),
               ),

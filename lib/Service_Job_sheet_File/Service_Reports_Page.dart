@@ -156,13 +156,13 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
       if (mydate.isNotEmpty) {
         if (mydate.contains(docu.docs[i]["date"])){
           setState(() {
-            totalprofit= totalprofit + (double.parse(docu.docs[i]["totalcost"].toString())-double.parse(docu.docs[i]["itemtotal"].toString()));
+            totalprofit= totalprofit + double.parse(docu.docs[i]["itemtotal"].toString());
           });
         }
       }
       else{
         setState(() {
-          totalprofit= totalprofit + (double.parse(docu.docs[i]["totalcost"].toString())-double.parse(docu.docs[i]["itemtotal"].toString()));
+          totalprofit= totalprofit + double.parse(docu.docs[i]["itemtotal"].toString());
         });
       }
     }
@@ -2110,38 +2110,41 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                     ],
                                   ),
                                 ),
-                                Container(
-                                  width: width / 7.3,
-                                  height: height / 16.42,
-                                  //color: Color(0xffD60A0B),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4),
-                                    color: const Color(0xff075E54),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Item Cost: ",
-                                        style: GoogleFonts.openSans(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Container(
-                                        width:width / 13.2,
-                                        height: height / 21.9,
-                                        decoration: BoxDecoration(
-                                            color: Colors.grey.shade300,
-                                            borderRadius: BorderRadius.circular(5)),
-                                        child: Center(
-                                          child: Text(itemcost.toString(),style: GoogleFonts.openSans(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w600),
+                                Visibility(
+                                  visible: false,
+                                  child: Container(
+                                    width: width / 7.3,
+                                    height: height / 16.42,
+                                    //color: Color(0xffD60A0B),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: const Color(0xff075E54),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Item Cost: ",
+                                          style: GoogleFonts.openSans(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Container(
+                                          width:width / 13.2,
+                                          height: height / 21.9,
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              borderRadius: BorderRadius.circular(5)),
+                                          child: Center(
+                                            child: Text(itemcost.toString(),style: GoogleFonts.openSans(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w600),
 
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 Container(
@@ -2168,7 +2171,7 @@ class _Service_Reports_PageState extends State<Service_Reports_Page> {
                                             color: Colors.grey.shade300,
                                             borderRadius: BorderRadius.circular(5)),
                                         child: Center(
-                                          child: Text(profit.toString(),style: GoogleFonts.openSans(
+                                          child: Text(itemcost.toString(),style: GoogleFonts.openSans(
                                               color: Colors.black,
                                               fontWeight: FontWeight.w600),
 

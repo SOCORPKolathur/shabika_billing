@@ -67,7 +67,7 @@ class _ItemState extends State<Item> {
 
   getmargin(){
     setState(() {
-      margin.text=((double.parse(Saleprice.text)-double.parse(Landingcost.text))-(double.parse(Saleprice.text)-(double.parse(Saleprice.text)/1.18))).toStringAsFixed(2);
+      margin.text=((double.parse(Saleprice.text)-double.parse(Purchaseprice.text))-(double.parse(Saleprice.text)-(double.parse(Saleprice.text)/1.18))).toStringAsFixed(2);
     });
   }
 
@@ -136,67 +136,39 @@ class _ItemState extends State<Item> {
   NumberFormat F = NumberFormat('00');
 
   int itemcodes = 0;
+  int count = 0;
+  int countN = 0;
   String shabikancount="";
 
+
   itemcodegenrate() async {
-    var document = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
-    var document2 = await FirebaseFirestore.instance.collection("Item ShabikaN").get();
+    var document = await FirebaseFirestore.instance.collection("Item ShabikaG").orderBy("timestamp").get();
+    var document2 = await FirebaseFirestore.instance.collection("Item ShabikaN").orderBy("timestamp").get();
 
-    if(status==true){
-      // setState((){
-      //   itemcode.text = "${"SBG"}${F.format(document.docs.length + 1)}";
-      // });
-      print("Itemcount");
-      print(itemcode.text);
-      print("endddddddddddddddddddddddddddddddddddddddddd");
-      var itemdocument=await FirebaseFirestore.instance.collection("Item ShabikaG").
-      where("purchaseno",isEqualTo:"${"SBG"}${F.format(document.docs.length+1)}").get();
-      print("----------------");
-      print(itemdocument.docs.length);
+      setState(() {
+        if(document.docs.length>0) {
+  setState(() {
+    count = document.docs[document.docs.length - 1]["itemcodecount"] + 1;
+    countN = document2.docs[document2.docs.length - 1]["itemcodecount"] + 1;
+  });
 
-      if(itemdocument.docs.length>0){
-        print("if condictionssssssss");
-        setState((){
-          itemcode.text="${"SBG"}${F.format(document.docs.length + 2)}";
-        });
-      }
-      else{
-        print("elase condictionssssssss");
-        setState((){
-          itemcode.text="${"SBG"}${F.format(document.docs.length + 1)}";
-        });
-      }
-
-    
-
-
-    }
-    if(status2==true){
-      setState((){
-        itemcode.text = "${"SBN"}${F.format(document2.docs.length + 1)}";
-      });
-      for (int i=0;i<document2.docs.length;i++){
-        if( itemcode.text==document2.docs[i]['purchaseno']){
-          setState((){
-            itemcode.clear();
-            itemcode.text=="${"SBN"}${F.format(document2.docs.length + 1)}";
-          });
-        }
-
+}
         else{
-          setState((){
-            itemcode.text = "${"SBG"}${F.format(document.docs.length + 1)}";
-          });
-        }
+  setState(() {
+    count = 1;
+    countN = 1;
+  });
+}
+setState(() {
+  itemcodes = document.docs.length + 1;
+  itemcode.text = "${"SBG"}${F.format(count)}";
+  shabikancount = "${"SBN"}${F.format(countN)}";
 
-      }
-    }
+});
+print(count);
+print(countN);
 
-
-
-
-
-
+      });
 
   }
 
@@ -1657,7 +1629,7 @@ class _ItemState extends State<Item> {
                                       fontSize: width / 88.3)),
                               Padding(
                                 padding: EdgeInsets.only(
-                                    left: width / 1.45, right: 0),
+                                    left: width / 1.49, right: 0),
                                 child: Text("Edit  ",
                                     style: GoogleFonts.openSans(
                                         color: Colors.white,
@@ -3203,6 +3175,7 @@ class _ItemState extends State<Item> {
         "Image": isChecked4,
         "timestamp": DateTime.now().microsecondsSinceEpoch,
         "gst": "18%",
+        "itemcodecount":count
       });
       FirebaseFirestore.instance.collection("Item ShabikaN").doc(docid).set({
         "Category":  _typeAheadControllergender.text,
@@ -3214,7 +3187,7 @@ class _ItemState extends State<Item> {
         "Landingcost": double.parse(Purchaseprice.text).toStringAsFixed(2),
         "Saleprice": double.parse(Saleprice.text).toStringAsFixed(2),
         "MRPPrice": double.parse(MRPPrice.text).toStringAsFixed(2),
-        "margin": margin.text!= ""?(double.parse(Saleprice.text)-double.parse(Purchaseprice.text)): 0,
+        "margin": margin.text!= ""?(double.parse(Saleprice.text)-double.parse(Purchaseprice.text)).toStringAsFixed(2): "0",
         "Loworder": Loworder.text,
         "TotalQuvantity": 0,
         "BoxNo": BoxNo.text,
@@ -3224,6 +3197,7 @@ class _ItemState extends State<Item> {
         "Image": isChecked4,
         "timestamp": DateTime.now().microsecondsSinceEpoch,
         "gst": "18%",
+        "itemcodecount":countN
       });
       FirebaseFirestore.instance.collection("category").doc(catitemcode).collection("Item ShabikaN").doc().set({
         "Category": _typeAheadControllergender.text,

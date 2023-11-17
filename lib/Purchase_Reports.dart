@@ -3584,7 +3584,7 @@ class _Purchase_ReportsState extends State<Purchase_Reports> {
             ? getcreditdays = "0"
             : getcreditdays = values['credit days'].toString();
         values['balance amount'] == 0
-            ? balanceamount = double.parse(values['Totalamount'].toString())
+            ? balanceamount = 0
             : balanceamount = values['balance amount'];
         SGST = double.parse(values['SGST'].toString()).toStringAsFixed(2);
         CGST = double.parse(values['CGST'].toString()).toStringAsFixed(2);
@@ -5939,7 +5939,7 @@ print("sddfd---------------------------------------------");
                                       color: Colors.white),
                                   child: TextField(
                                     onSubmitted: (val){
-            setState(() {
+                                      setState(() {
               balancepay.text = (balanceamount -
                   double.parse(Discountbalnce.text))
                   .abs()
@@ -6281,24 +6281,29 @@ print("sddfd---------------------------------------------");
    setState(() {
      billtype=val!["type"];
    });
-    var date = DateTime.now();
+
+
+    print("Pay now work started");
+
+    var document =  await FirebaseFirestore.instance
+        .collection("Purchase entry")
+        .doc(streamid).get();
+    Map<String, dynamic> ? vale = document.data();
+
+
     var newDate=DateTime.now();
     if(creditdat.text!=""&&creditdat.text!=" ") {
       print("Pay now has credit day");
       setState(() {
-        newDate = DateTime(date.year, date.month, date.day + int.parse(creditdat.text));
+        newDate = DateFormat("dd/M/yyyy").parse(vale!["credit date"]).add(Duration(days: int.parse(creditdat.text)));
       });
-
     }
-
-    print("Pay now work started");
-
     FirebaseFirestore.instance
         .collection("Purchase entry")
         .doc(streamid)
         .update({
-      "credit days": creditdat.text,
-      "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
+      "credit days": creditdat.text != ""? creditdat.text : vale!["credit days"],
+      "credit date": creditdat.text!=""? "${newDate.day}/${newDate.month}/${newDate.year}" : vale!["credit date"],
       "balance amount": balanceamount,
     });
     print("Pay now work started");
@@ -6309,7 +6314,7 @@ print("sddfd---------------------------------------------");
         .doc()
         .set({
       "credit days": creditdat.text,
-      "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
+      "credit date": creditdat.text!=""? "${newDate.day}/${newDate.month}/${newDate.year}" : vale!["credit date"],
       "balance amount": balanceamount,
       "Amount": Payedamount.toString(),
       "Date": Payment_detatils_Date.text,
@@ -6325,8 +6330,8 @@ print("sddfd---------------------------------------------");
           .collection("Purchase ShabikaG")
           .doc(streamid)
           .update({
-        "credit days": creditdat.text,
-        "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
+        "credit days": creditdat.text != ""? creditdat.text : vale!["credit days"],
+        "credit date": creditdat.text!=""? "${newDate.day}/${newDate.month}/${newDate.year}" : vale!["credit date"],
         "balance amount": balanceamount,
       });
 
@@ -6337,7 +6342,7 @@ print("sddfd---------------------------------------------");
           .doc()
           .set({
         "credit days": creditdat.text,
-        "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
+        "credit date": creditdat.text!=""? "${newDate.day}/${newDate.month}/${newDate.year}" : vale!["credit date"],
         "balance amount": balanceamount,
         "Amount": Payedamount.toString(),
         "Date": Payment_detatils_Date.text,
@@ -6353,8 +6358,8 @@ print("sddfd---------------------------------------------");
           .collection("Purchase ShabikaN")
           .doc(streamid)
           .update({
-        "credit days": creditdat.text,
-        "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
+        "credit days": creditdat.text != ""? creditdat.text : vale!["credit days"],
+        "credit date": creditdat.text!=""? "${newDate.day}/${newDate.month}/${newDate.year}" : vale!["credit date"],
         "balance amount": balanceamount,
       });
       FirebaseFirestore.instance
@@ -6364,7 +6369,7 @@ print("sddfd---------------------------------------------");
           .doc()
           .set({
         "credit days": creditdat.text,
-        "credit date": "${newDate.day}/${newDate.month}/${newDate.year}",
+        "credit date": creditdat.text!=""? "${newDate.day}/${newDate.month}/${newDate.year}" : vale!["credit date"],
         "balance amount": balanceamount,
         "Amount": Payedamount.toString(),
         "Date": Payment_detatils_Date.text,
@@ -6387,7 +6392,7 @@ print("sddfd---------------------------------------------");
     });
     print("POP");
     Navigator.pop(context);
-   Navigator.pop(context);
+    Navigator.pop(context);
     billingtotalamount();
   }
 
@@ -6762,22 +6767,7 @@ print("sddfd---------------------------------------------");
                                       )
                                       ),
                                     ),
-                                    Container(
-                                      width: width / 20.53,
-                                      height: height / 13.14,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.black, width: 1.2),
-                                      ),
-                                      child: Center(
-                                          child: Text(
-                                        "Balance",
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.openSans(
-                                            fontWeight: FontWeight.bold,
-                                            color: const Color(0xff5801e8)),
-                                      )),
-                                    ),
+
                                     Container(
                                       width: width / 25.53,
                                       height: height / 13.14,
@@ -6793,6 +6783,22 @@ print("sddfd---------------------------------------------");
                                             fontWeight: FontWeight.bold,
                                             color: const Color(0xff5801e8)),
                                       )),
+                                    ),
+                                    Container(
+                                      width: width / 20.53,
+                                      height: height / 13.14,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.black, width: 1.2),
+                                      ),
+                                      child: Center(
+                                          child: Text(
+                                            "Balance",
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.openSans(
+                                                fontWeight: FontWeight.bold,
+                                                color: const Color(0xff5801e8)),
+                                          )),
                                     ),
                                     Container(
                                       width: width / 17.66,
@@ -7077,23 +7083,7 @@ print("sddfd---------------------------------------------");
                                               )),
                                             ),
 
-                                            //balnce items
-                                            Container(
-                                              width: width / 20.53,
-                                              height: height / 13.14,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.black,
-                                                      width: 1.2)),
-                                              child: Center(
-                                                  child: Text(
-                                                purchase['stocks'].toString(),
-                                                style: GoogleFonts.openSans(
-                                                    color: Colors.green,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              )),
-                                            ),
+
 
                                             //return items
                                             Container(
@@ -7112,6 +7102,25 @@ print("sddfd---------------------------------------------");
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
+                                            ),
+
+
+                                            //balnce items
+                                            Container(
+                                              width: width / 20.53,
+                                              height: height / 13.14,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.black,
+                                                      width: 1.2)),
+                                              child: Center(
+                                                  child: Text(
+                                                    purchase['stocks'].toString(),
+                                                    style: GoogleFonts.openSans(
+                                                        color: Colors.green,
+                                                        fontWeight:
+                                                        FontWeight.bold),
+                                                  )),
                                             ),
 
                                             Container(

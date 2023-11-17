@@ -86,7 +86,8 @@ const List<String> Stateslect = <String>[
 ];
 
 class Purcharse_Return_Page extends StatefulWidget {
-  const Purcharse_Return_Page({Key? key}) : super(key: key);
+  String docid;
+  Purcharse_Return_Page(this.docid);
 
   @override
   State<Purcharse_Return_Page> createState() => _Purcharse_Return_PageState();
@@ -186,6 +187,9 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
     itemaddfunction();
     edittoltalamount();
     billnoaddfuncxtion();
+    if(widget.docid!="") {
+      getvalues(widget.docid);
+    }
     // TODO: implement initState
     super.initState();
   }
@@ -400,9 +404,19 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
     setState(() {
       billno.clear();
     });
-    var document=await FirebaseFirestore.instance.collection("Purchase entry").where("save",isEqualTo:true).get();
-    for(int i=0;i<document.docs.length;i++){
-      billno.add(document.docs[i]['suppilierinvoiceno']);
+    if(status==true) {
+      var document = await FirebaseFirestore.instance.collection(
+          "Purchase ShabikaG").where("save", isEqualTo: true).get();
+      for (int i = 0; i < document.docs.length; i++) {
+        billno.add(document.docs[i]['suppilierinvoiceno']);
+      }
+    }
+    else if(status2==true){
+      var document = await FirebaseFirestore.instance.collection(
+          "Purchase ShabikaN").where("save", isEqualTo: true).get();
+      for (int i = 0; i < document.docs.length; i++) {
+        billno.add(document.docs[i]['suppilierinvoiceno']);
+      }
     }
 
   }
@@ -651,9 +665,9 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return
-      //Purchase_Entry
-      Stack(
+    return widget.docid !=""? Scaffold(
+      backgroundColor: Color(0xff00A99D),
+      body:Stack(
         alignment: Alignment.center,
         children: [
           Column(
@@ -686,7 +700,7 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               status = val;
                               status2 = false;
                             });
-                            billcounts();
+                            billnoaddfuncxtion();
                             landingcost(Purchase_price.text);
                             checkgst(Purchase_price.text, Qty.text);
                           }
@@ -728,7 +742,3582 @@ class _Purcharse_Return_PageState extends State<Purcharse_Return_Page> {
                               status2 = val;
                               status = false;
                             });
-                            billcounts();
+
+                            billnoaddfuncxtion();
+                            landingcost(Purchase_price.text);
+                            checkgst(Purchase_price.text, Qty.text);
+                          }
+                          else{
+                            setState(() {
+                              status = val;
+                            });
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                  Text(
+                    "Shabika N",
+                    style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  //entry type container
+                  SizedBox(
+                    height: height / 4.054,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          //suppiler Id
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier ID",
+                                    style: GoogleFonts.openSans(
+                                        fontSize: width/85,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
+                                  //color:Colors.white,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: TextField(
+
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,fontSize: width/85,),
+                                    controller: suppierid,
+                                    focusNode: suppier_id,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left: width /90.78,
+                                          top: height / 153.8),
+
+                                      border: InputBorder.none,
+                                      suffixIcon:
+                                      Icon(Icons.circle,color:Colors.white),
+                                    ),
+                                    onSubmitted: (_) {
+                                      suppier_id.unfocus();
+                                      FocusScope.of(context)
+                                          .requestFocus(suppiername);
+                                    },
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    if (customervalid == false) {
+                                      alreadyexistshowdialpogbox();
+                                    } else {
+                                      itemcodegenrate();
+                                      showdialpogbox2();
+                                    }
+                                  },
+                                  child: customervalid != false
+                                      ? Material(
+                                    shadowColor: Colors.black12,
+                                    elevation: 25,
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.white,
+                                    child: Container(
+                                        height: height / 21.9,
+                                        width: width / 10.53,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius.circular(5),
+                                          color: Colors.white,
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            SizedBox(width: width / 400.33),
+                                            const Text("New Suppiler"),
+                                            SizedBox(width: width / 455.33),
+                                            const Icon(Icons.add),
+                                          ],
+                                        )),
+                                  )
+                                      : GestureDetector(
+                                    onTap: (){
+                                      itemcodegenrate();
+                                      showdialpogbox2();
+                                    },
+                                    child: ClipOval(
+                                        child: Container(
+                                            height: height / 21.9,
+                                            width: width / 45.53,
+                                            color: Colors.white,
+                                            child: const Icon(Icons.add))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+
+                          //suppiler name
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Name",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
+                                  //color:Colors.white,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child:TextField(
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700),
+                                    controller: Suppliername,
+                                    focusNode: suppiername,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left: width /90.78,
+                                          bottom: height / 83.8),
+                                      border: InputBorder.none,
+                                    ),
+                                    onSubmitted: (_){
+                                      suppiername.unfocus();
+                                      FocusScope.of(context).requestFocus(suppier_id);
+                                    },
+                                  ),
+
+
+                                  // LayoutBuilder(
+                                  //   builder: (BuildContext, BoxConstraints) =>
+                                  //       Autocomplete<String>(
+                                  //         fieldViewBuilder: (context,
+                                  //             yourbuilderclear,
+                                  //             focusNode,
+                                  //             onFieldSubmitted) {
+                                  //           return TextFormField(
+                                  //             onChanged: (_) {
+                                  //               setState(() {
+                                  //                 layourbuilderclear.text= yourbuilderclear.text;
+                                  //               });
+                                  //             },
+                                  //             style: GoogleFonts.openSans(
+                                  //               fontWeight: FontWeight.w700,fontSize: width/85,),
+                                  //             decoration: InputDecoration(
+                                  //               contentPadding: EdgeInsets.only(
+                                  //                   left: width /90.78,
+                                  //                   top: height / 153.8),
+                                  //
+                                  //               border: InputBorder.none,
+                                  //               suffixIcon:
+                                  //               GestureDetector(
+                                  //                   onTap:(){
+                                  //                     setState(() {
+                                  //                       suppierid.clear();
+                                  //                       yourbuilderclear.clear();
+                                  //                       layourbuilderclear.clear();
+                                  //                       suppiler_invoice.clear();
+                                  //                       suppiler_gstno.clear();
+                                  //                     });
+                                  //                   },
+                                  //                   child: Icon(Icons.clear,color:Colors.black,size: 20)),),
+                                  //             controller: yourbuilderclear,
+                                  //             focusNode: focusNode,
+                                  //             onFieldSubmitted: (String value) {
+                                  //               onFieldSubmitted();
+                                  //             },
+                                  //           );
+                                  //
+                                  //
+                                  //
+                                  //         },
+                                  //         optionsViewBuilder: (context, onSelected,
+                                  //             options) =>
+                                  //             Align(
+                                  //                 alignment: Alignment.topLeft,
+                                  //                 child: Material(
+                                  //                   shape:
+                                  //                   const RoundedRectangleBorder(
+                                  //                     borderRadius:
+                                  //                     BorderRadius.vertical(
+                                  //                         bottom:
+                                  //                         Radius.circular(
+                                  //                             4.0)),
+                                  //                   ),
+                                  //                   child: SizedBox(
+                                  //                     height: 52.0 * options.length,
+                                  //                     width: BoxConstraints
+                                  //                         .biggest.width,
+                                  //                     child: ListView.builder(
+                                  //                       padding: EdgeInsets.zero,
+                                  //                       itemCount: options.length,
+                                  //                       shrinkWrap: false,
+                                  //                       itemBuilder:
+                                  //                           (BuildContext, index) {
+                                  //                         final String option =
+                                  //                         options
+                                  //                             .elementAt(index);
+                                  //                         return InkWell(
+                                  //                           onTap: () =>
+                                  //                               onSelected(option),
+                                  //                           child: Padding(
+                                  //                             padding:
+                                  //                             const EdgeInsets
+                                  //                                 .all(8.0),
+                                  //                             child: Text(option),
+                                  //                           ),
+                                  //                         );
+                                  //                       },
+                                  //                     ),
+                                  //                   ),
+                                  //                 )),
+                                  //         optionsBuilder:
+                                  //             (TextEditingValue textEditingValue) {
+                                  //           if (textEditingValue.text == '') {
+                                  //             setState(() {
+                                  //               customervalid = false;
+                                  //             });
+                                  //             return const Iterable<String>.empty();
+                                  //           }
+                                  //           if (textEditingValue.text != "") {
+                                  //             check(
+                                  //                 textEditingValue.text.toString());
+                                  //             setState(() {
+                                  //               Suppliername.text = textEditingValue
+                                  //                   .text
+                                  //                   .toString();
+                                  //             });
+                                  //             checkfunc();
+                                  //           }
+                                  //           return Suppierlist.where(
+                                  //                   (String option) {
+                                  //                 return option.toLowerCase().contains(
+                                  //                     textEditingValue.text
+                                  //                         .toLowerCase());
+                                  //               });
+                                  //         },
+                                  //         onSelected: (String selection) {
+                                  //           check(selection);
+                                  //           setState(() {
+                                  //             layourbuilderclear.text = selection;
+                                  //             Suppliername.text = selection;
+                                  //             layourbuilderclear.text = selection;
+                                  //             customervalid = false;
+                                  //           });
+                                  //           checkfunc();
+                                  //
+                                  //           debugPrint(
+                                  //               'You just selected $selection');
+                                  //         },
+                                  //         displayStringForOption: (Value) {
+                                  //           return Value;
+                                  //         },
+                                  //         optionsMaxHeight: 50,
+                                  //       ),
+                                  // ),
+                                ),
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                // GestureDetector(
+                                //   onTap: (){
+                                //     setState(() {
+                                //
+                                //     });
+                                //
+                                //
+                                //   },
+                                //   child: ClipOval(
+                                //       child: Container(
+                                //           height: height / 21.9,
+                                //           width: width / 45.53,
+                                //           color: Colors.white,
+                                //           child: IgnorePointer(child: const Icon(Icons.cancel_outlined,size: 20,)))),
+                                // ),
+
+
+
+                              ],
+                            ),
+                          ),
+
+                          //tax type
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Tax Type",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
+                                  //color:Colors.white,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: DropdownButtonHideUnderline(
+                                    child: ButtonTheme(
+                                      alignedDropdown: true,
+                                      child:
+                                      DropdownButton2<String>(
+
+                                        value: dropdownValue3,
+                                        focusNode: suppiertax,
+                                        isExpanded: true,
+                                        isDense: true,
+                                        alignment: Alignment.topCenter,
+                                        style: GoogleFonts.openSans(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: width/85,),
+                                        underline: Container(
+                                          color: Colors.deepPurpleAccent,
+                                        ),
+                                        onChanged: (String? value) {
+                                          // This is called when the user selects an item.
+                                          setState(() {
+                                            dropdownValue3 = value!;
+                                          });
+                                          if (dropdownValue3 == "IGST") {
+                                            //  Dropdowncontrollerclear();
+                                          }
+                                          suppiertax.unfocus();
+                                          FocusScope.of(context)
+                                              .requestFocus(suppierincoice_no);
+                                        },
+                                        items: list3
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value),
+                                              );
+                                            }).toList(),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          //suppiler Invoice no
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Invoice",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
+                                  //color:Colors.white,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child:     TypeAheadFormField(
+                                    suggestionsBoxDecoration: const SuggestionsBoxDecoration(
+                                        color: Color(0xffDDDEEE),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(5),
+                                          bottomRight: Radius.circular(5),
+                                        )),
+                                    textFieldConfiguration: TextFieldConfiguration(
+                                      maxLength: 10,
+                                      style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/91.07),
+                                      decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.only(
+                                            left: width /90.78,
+                                            bottom: height / 83.8),
+                                        border: InputBorder.none,
+                                      ),
+                                      controller: _typeAheadControllergender9,
+                                    ),
+                                    suggestionsCallback: (pattern) {
+                                      return getSuggestionsgender10(pattern);
+                                    },
+                                    itemBuilder: (context, String suggestion) {
+                                      return ListTile(
+                                          title: Text(suggestion,style:GoogleFonts.openSans(fontWeight: FontWeight.w700,),)
+                                      );
+                                    },
+                                    transitionBuilder:
+                                        (context, suggestionsBox, controller) {
+                                      return suggestionsBox;
+                                    },
+                                    onSuggestionSelected: (String suggestion) {
+                                      getvalues(suggestion);
+                                      setState(() {
+                                        suppiler_invoice.text=suggestion.toString();
+                                      });
+                                    },
+                                    suggestionsBoxController: suggestionBoxController9,
+                                    validator: (value) => value!.isEmpty
+                                        ? 'Please select a academic year'
+                                        : null,
+                                  ),
+                                  // TextFormField(
+                                  //   validator: (value) => value!.isEmpty
+                                  //       ? 'Please select a  Supplier Invoice No'
+                                  //       : null,
+                                  //   controller: suppiler_invoice,
+                                  //   focusNode: suppierincoice_no,
+                                  //   style: GoogleFonts.openSans(
+                                  //     fontWeight: FontWeight.w700,fontSize: width/85,
+                                  //   ),
+                                  //   decoration: InputDecoration(
+                                  //     contentPadding: EdgeInsets.only(
+                                  //         left: width /90.78,
+                                  //         top: height / 153.8),
+                                  //
+                                  //     border: InputBorder.none,
+                                  //     suffixIcon:
+                                  //     Icon(Icons.circle,color:Colors.white),
+                                  //   ),
+                                  // ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          //suppiler Gst no
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: height / 328.5, left: width / 273.2),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: width / 273.2,
+                                ),
+                                Container(
+                                  width: width / 9.0,
+                                  child: Text(
+                                    "Supplier Gst No",
+                                    style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: width/85,
+                                        color: const Color(0xff000000)),
+                                  ),
+                                ),
+
+                                Container(
+                                  width: width / 3.415,
+                                  height: height / 21.9,
+                                  //color:Colors.white,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: TextFormField(
+                                    validator: (value) => value!.isEmpty
+                                        ? "Field Can't Empty"
+                                        : null,
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,fontSize: width/85,
+                                    ),
+                                    controller: suppiler_gstno,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left: width /90.78,
+                                          top: height / 153.8),
+
+                                      border: InputBorder.none,
+                                      suffixIcon:
+                                      Icon(Icons.circle,color:Colors.white),
+                                    ),
+
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: height / 4.054,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //Purchase No
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: width / 273.2,
+                              ),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase No",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
+                                //color:Colors.white,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: TextFormField(
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
+                                  ),
+                                  controller: purchase_No,
+                                  focusNode: purchase_no,
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(
+                                        left: width /90.78,
+                                        top: height / 153.8),
+
+                                    border: InputBorder.none,
+                                    suffixIcon:
+                                    Icon(Icons.circle,color:Colors.white),
+
+                                  ),
+
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        //Purchase  Date
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: width / 273.2,
+                              ),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase  Date",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
+                                //color:Colors.white,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: TextField(
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: width/85,
+                                  ),
+                                  controller: purchase_Date,
+                                  focusNode: purchase_date,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left: width /90.78,
+                                          top: height / 153.8),
+                                      hintText: "Invoice Date",
+                                      border: InputBorder.none,
+                                      suffixIcon:
+                                      const Icon(Icons.calendar_month)),
+                                  onSubmitted: (_) {
+                                    purchase_date.unfocus();
+                                    FocusScope.of(context)
+                                        .requestFocus(purchase_payment);
+                                  },
+                                  onTap: () async {
+                                    DateTime? pickedDate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(1950),
+                                        //DateTime.now() - not to allow to choose before today.
+                                        lastDate: DateTime(2100));
+
+                                    if (pickedDate != null) {
+                                      //pickedDate output format => 2021-03-10 00:00:00.000
+                                      String formattedDate =
+                                      DateFormat('dd/MM/yyyy')
+                                          .format(pickedDate);
+                                      //formatted date output using intl package =>  2021-03-16
+                                      setState(() {
+                                        purchase_Date.text =
+                                            formattedDate; //set output date to TextField value.
+                                      });
+                                    } else {}
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        //payment mode
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: width / 273.2,
+                              ),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Payment Mode",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
+                                //color:Colors.white,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child:
+                                DropdownButton2<String>(
+                                  alignment: Alignment.center,
+                                  value: Payments,
+                                  focusNode: purchase_payment,
+                                  isExpanded: true,
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: width/85,),
+                                  underline: Container(
+                                    color: Colors.deepPurpleAccent,
+                                  ),
+                                  onChanged: (String? value) {
+                                    // This is called when the user selects an item.
+                                    setState(() {
+                                      Payments = value!;
+                                    });
+                                    purchase_payment.unfocus();
+                                    FocusScope.of(context)
+                                        .requestFocus(purchase_note);
+                                  },
+                                  items: Payment.map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        //Purchase Notes
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: width / 273.2,
+                              ),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Purchase Notes",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
+                                //color:Colors.white,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: TextFormField(
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
+                                  ),
+                                  controller: purchase_notes,
+                                  focusNode: purchase_note,
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(
+                                        left: width /90.78,
+                                        top: height / 153.8),
+
+                                    border: InputBorder.none,
+                                    suffixIcon:
+                                    Icon(Icons.circle,color:Colors.white),
+                                  ),
+
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        // Craedit days
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: height / 328.5, left: width / 273.2),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: width / 273.2,
+                              ),
+                              Container(
+                                width: width / 9.0,
+                                child: Text(
+                                  "Credit Days",
+                                  style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: width/85,
+                                      color: const Color(0xff000000)),
+                                ),
+                              ),
+
+                              Container(
+                                width: width / 3.415,
+                                height: height / 21.9,
+                                //color:Colors.white,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: TextFormField(
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w700,fontSize: width/85,
+                                  ),
+                                  controller: Creadit_days,
+                                  focusNode: Creditnoptes,
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(
+                                        left: width /90.78,
+                                        top: height / 153.8),
+
+                                    border: InputBorder.none,
+                                    suffixIcon:
+                                    Icon(Icons.circle,color:Colors.white),
+                                  ),
+
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   children: [
+              //     //entry type container
+              //     SizedBox(
+              //       height: height/4.054,
+              //       child: SingleChildScrollView(
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //
+              //             //suppiler Id
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Supplier ID",
+              //                     style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000),
+              //
+              //                     ),
+              //                   ),
+              //                   SizedBox(
+              //                     width: width/22.03,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,
+              //                     ),
+              //                     child: TextField(
+              //                       style: GoogleFonts.openSans(
+              //                           fontWeight: FontWeight.w700),
+              //                       controller: suppierid,
+              //                       focusNode: suppier_id,
+              //                       decoration: InputDecoration(
+              //                         contentPadding: EdgeInsets.only(
+              //                             left: width /90.78,
+              //                             bottom: height / 83.8
+              //                         ),
+              //                         border: InputBorder.none,
+              //                       ),
+              //                       onSubmitted: (_){
+              //                         suppier_id.unfocus();
+              //                         FocusScope.of(context).requestFocus(suppiername);
+              //                       },
+              //                     ),
+              //                   ),
+              //                   SizedBox(width: width/273.2,),
+              //                   InkWell(
+              //                     onTap:(){
+              //                       if(customervalid==false){
+              //                         alreadyexistshowdialpogbox();
+              //
+              //                       }
+              //                       else {
+              //                         itemcodegenrate();
+              //                         showdialpogbox2();
+              //
+              //                       }
+              //                     },
+              //                     child:
+              //                     customervalid!=false?
+              //                     Material(
+              //                       shadowColor: Colors.black12,
+              //                       elevation: 25,
+              //                       borderRadius: BorderRadius.circular(5),
+              //                       color: Colors.white,
+              //                       child: Container(
+              //                           height:height/21.9,
+              //                           width:width/10.53,
+              //                           decoration: BoxDecoration(
+              //                             borderRadius: BorderRadius.circular(5),
+              //                             color: Colors.white,
+              //                           ),
+              //                           child: Row(
+              //                             children: [
+              //                               SizedBox(width:width/400.33),
+              //                               const Text("New Suppiler"),
+              //                               SizedBox(width:width/455.33),
+              //                               const Icon(Icons.add),
+              //                             ],
+              //                           )),
+              //                     ):
+              //                     ClipOval(
+              //                         child:
+              //                         Container(
+              //                             height:height/21.9,
+              //                             width:width/45.53,
+              //                             color: Colors.white,
+              //                             child: const Icon(Icons.add))),
+              //                   )
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //             //suppiler name
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Supplier Name",
+              //                     style: GoogleFonts.openSans(
+              //                         fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000)),
+              //                   ),
+              //                   SizedBox(
+              //                     width: width/42.687,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,),
+              //                     child:
+              //                     TextField(
+              //                       style: GoogleFonts.openSans(
+              //                           fontWeight: FontWeight.w700),
+              //                       controller: Suppliername,
+              //                       focusNode: suppiername,
+              //                       decoration: InputDecoration(
+              //                         contentPadding: EdgeInsets.only(
+              //                             left: width /90.78,
+              //                             bottom: height / 83.8),
+              //                         border: InputBorder.none,
+              //                       ),
+              //                       onSubmitted: (_){
+              //                         suppiername.unfocus();
+              //                         FocusScope.of(context).requestFocus(suppier_id);
+              //                       },
+              //                     ),
+              //
+              //
+              //
+              //
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //             //tax type
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Tax Type",
+              //                     style: GoogleFonts.openSans(
+              //                         fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000)),
+              //                   ),
+              //                   SizedBox(
+              //                     width: width/18.46,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,),
+              //                     child: DropdownButtonHideUnderline(
+              //                       child: ButtonTheme(
+              //                         alignedDropdown: true,
+              //                         child: DropdownButton2<String>(
+              //                           value: dropdownValue3,
+              //                           focusNode:suppiertax ,
+              //                           isExpanded: true,
+              //                           isDense: true,
+              //                           alignment: Alignment.topCenter,
+              //                           style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/105.07),
+              //                           underline: Container(
+              //                             color: Colors.deepPurpleAccent,
+              //                           ),
+              //                           onChanged: (String? value) {
+              //                             // This is called when the user selects an item.
+              //                             setState(() {
+              //                               dropdownValue3 = value!;
+              //                             });
+              //                             suppiertax.unfocus();
+              //                             FocusScope.of(context).requestFocus(suppierincoice_no);
+              //                           },
+              //
+              //                           items:
+              //                           list3.map<DropdownMenuItem<String>>((String value) {
+              //                             return DropdownMenuItem<String>(
+              //                               value: value,
+              //                               child: Text(value),
+              //                             );
+              //                           }).toList(),
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //             //suppiler Invoice no
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Supplier Invoice No",
+              //                     style: GoogleFonts.openSans(
+              //                         fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000)),
+              //                   ),
+              //                   const SizedBox(
+              //                     width: 2,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,
+              //                     ),
+              //                     child:
+              //                     TypeAheadFormField(
+              //                       suggestionsBoxDecoration: const SuggestionsBoxDecoration(
+              //                           color: Color(0xffDDDEEE),
+              //                           borderRadius: BorderRadius.only(
+              //                             bottomLeft: Radius.circular(5),
+              //                             bottomRight: Radius.circular(5),
+              //                           )),
+              //                       textFieldConfiguration: TextFieldConfiguration(
+              //                         maxLength: 10,
+              //                         style: GoogleFonts.openSans(fontWeight: FontWeight.w700,fontSize: width/91.07),
+              //                         decoration: InputDecoration(
+              //                           contentPadding: EdgeInsets.only(
+              //                               left: width /90.78,
+              //                               bottom: height / 83.8),
+              //                           border: InputBorder.none,
+              //                         ),
+              //                         controller: _typeAheadControllergender9,
+              //                       ),
+              //                       suggestionsCallback: (pattern) {
+              //                         return getSuggestionsgender10(pattern);
+              //                       },
+              //                       itemBuilder: (context, String suggestion) {
+              //                         return ListTile(
+              //                           title: Text(suggestion,style:GoogleFonts.openSans(fontWeight: FontWeight.w700,),)
+              //                         );
+              //                       },
+              //                       transitionBuilder:
+              //                           (context, suggestionsBox, controller) {
+              //                         return suggestionsBox;
+              //                       },
+              //                       onSuggestionSelected: (String suggestion) {
+              //                         getvalues(suggestion);
+              //                         setState(() {
+              //                           suppiler_invoice.text=suggestion.toString();
+              //                         });
+              //                       },
+              //                       suggestionsBoxController: suggestionBoxController9,
+              //                       validator: (value) => value!.isEmpty
+              //                           ? 'Please select a academic year'
+              //                           : null,
+              //                     ),
+              //
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //             //suppiler Gst no
+              //             Padding(
+              //               padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //               child: Row(
+              //                 crossAxisAlignment: CrossAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     width: width/273.2,
+              //                   ),
+              //                   Text(
+              //                     "Supplier Gst No",
+              //                     style: GoogleFonts.openSans(
+              //                         fontWeight: FontWeight.w700,
+              //                         fontSize: width/97.57, color: const Color(0xff000000)),
+              //                   ),
+              //                   SizedBox(
+              //                     width: width/47.103,
+              //                   ),
+              //                   Container(
+              //                     width: width/3.415,
+              //                     height: height/21.9,
+              //                     //color:Colors.white,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,
+              //                     ),
+              //                     child: TextField(
+              //                         style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
+              //                       controller: suppiler_gstno,
+              //                       decoration: InputDecoration(
+              //                         contentPadding: EdgeInsets.only(
+              //                             left: width /90.78,
+              //                             bottom: height / 83.8),
+              //                         border: InputBorder.none,
+              //                       ),
+              //                       onSubmitted: (_){
+              //                         suppierincoice_no.unfocus();
+              //                         FocusScope.of(context).requestFocus(purchase_no);
+              //                       },
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //
+              //     SizedBox(
+              //       height: height/4.054,
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           //Purchase  Date
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //
+              //               children: [
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //                 Text(
+              //                   "Purchase  Date",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //                 SizedBox(
+              //                   width: width/105.08,
+              //                 ),
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,
+              //                   ),
+              //                   child:
+              //                   TextField(
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700,),
+              //                     controller: purchase_Date,
+              //                     focusNode: purchase_date,
+              //                     decoration: InputDecoration(
+              //                         contentPadding: EdgeInsets.only(
+              //                             left: width /90.78,
+              //                             top: height / 83.8),
+              //                         border: InputBorder.none,
+              //                         suffixIcon: const Icon(Icons.calendar_month)
+              //                     ),
+              //                     onSubmitted: (_){
+              //                       purchase_date.unfocus();
+              //                       FocusScope.of(context).requestFocus(purchase_payment);
+              //                     },
+              //                     onTap: () async {
+              //                       DateTime? pickedDate = await showDatePicker(
+              //                           context: context,
+              //                           initialDate: DateTime.now(),
+              //                           firstDate: DateTime(1950),
+              //                           //DateTime.now() - not to allow to choose before today.
+              //                           lastDate: DateTime(2100));
+              //
+              //                       if (pickedDate != null) {
+              //                         //pickedDate output format => 2021-03-10 00:00:00.000
+              //                         String formattedDate =
+              //                         DateFormat('dd/MM/yyyy').format(pickedDate);
+              //                         //formatted date output using intl package =>  2021-03-16
+              //                         setState(() {
+              //                           purchase_Date.text =
+              //                               formattedDate; //set output date to TextField value.
+              //                         });
+              //                       } else {}
+              //                     },
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //           //payment mode
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //               children: [
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //                 Text(
+              //                   "Payment Mode",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //                 SizedBox(
+              //                   width: width/105.08,
+              //                 ),
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,),
+              //                   child: DropdownButton2<String>(
+              //                     value: Payments,
+              //                     focusNode: purchase_payment,
+              //                     isExpanded: true,
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700, fontSize: width/105.07),
+              //                     underline: Container(
+              //                       color: Colors.deepPurpleAccent,
+              //                     ),
+              //                     onChanged: (String? value) {
+              //                       // This is called when the user selects an item.
+              //                       setState(() {
+              //                         Payments = value!;
+              //                       });
+              //                       purchase_payment.unfocus();
+              //                       FocusScope.of(context).requestFocus(purchase_note);
+              //                     },
+              //                     items:
+              //                     Payment.map<DropdownMenuItem<String>>((String value) {
+              //                       return DropdownMenuItem<String>(
+              //                         value: value,
+              //                         child: Padding(
+              //                           padding:  EdgeInsets.only(   left: width /95.78,),
+              //                           child: Text(value),
+              //                         ),
+              //                       );
+              //                     }).toList(),
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //           //Purchase Notes
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //               crossAxisAlignment: CrossAxisAlignment.center,
+              //               children: [
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //                 Text(
+              //                   "Purchase Notes",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //                 SizedBox(
+              //                   width: width/136.6,
+              //                 ),
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,),
+              //                   child: TextField(
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+              //                     controller: purchase_notes,
+              //                     focusNode: purchase_note,
+              //                     decoration: InputDecoration(
+              //                       contentPadding: EdgeInsets.only(
+              //                           left: width /90.78,
+              //                           bottom: height / 83.8),
+              //                       border: InputBorder.none,
+              //                     ),
+              //                     onSubmitted: (_){
+              //                       purchase_note.unfocus();
+              //                       FocusScope.of(context).requestFocus(items_id);
+              //                     },
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //           // Craedit days
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //               crossAxisAlignment: CrossAxisAlignment.center,
+              //               children: [
+              //
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //
+              //                 Text(
+              //                   "Credit Days",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //
+              //                 SizedBox(
+              //                   width: width/36.0,
+              //                 ),
+              //
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,),
+              //                   child: TextField(
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+              //                     controller: Creadit_days,
+              //                     focusNode: Creditnoptes,
+              //                     decoration: InputDecoration(
+              //                       contentPadding: EdgeInsets.only(
+              //                           left: width /90.78,
+              //                           bottom: height / 83.8),
+              //                       border: InputBorder.none,
+              //                     ),
+              //                     onSubmitted: (_){
+              //                       purchase_note.unfocus();
+              //                       FocusScope.of(context).requestFocus(items_id);
+              //                     },
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //           //Reason
+              //           Padding(
+              //             padding: EdgeInsets.only(top: height/328.5, left: width/273.2),
+              //             child: Row(
+              //               crossAxisAlignment: CrossAxisAlignment.center,
+              //               children: [
+              //                 SizedBox(
+              //                   width: width/273.2,
+              //                 ),
+              //                 Text(
+              //                   "Reason",
+              //                   style: GoogleFonts.openSans(
+              //                       fontWeight: FontWeight.w700,
+              //                       fontSize: width/97.57, color: const Color(0xff000000)),
+              //                 ),
+              //                 SizedBox(
+              //                   width: width/20.064,
+              //                 ),
+              //                 Container(
+              //                   width: width/3.415,
+              //                   height: height/21.9,
+              //                   //color:Colors.white,
+              //                   decoration: const BoxDecoration(
+              //                     color: Colors.white,),
+              //                   child:
+              //                   TextField(
+              //                     style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+              //                     controller: Reasoncontroller,
+              //                     decoration: InputDecoration(
+              //                       contentPadding: EdgeInsets.only(
+              //                           left: width /90.78,
+              //                           bottom: height / 83.8),
+              //                       border: InputBorder.none,
+              //
+              //                     ),
+              //
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //
+              //         ],
+              //       ),
+              //     )
+              //
+              //   ],
+              // ),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+
+                  Material(
+                    elevation: 50,
+                    shadowColor: Colors.black38,
+                    color: const Color(0xff1D5B79),
+                    child: Container(
+                      width: width/0.976,
+                      height: height/16.425,
+                      decoration: const BoxDecoration(
+                        color: Color(0xff1D5B79),),
+                      child: Row(
+                        children: [
+
+                          //Serial no
+                          SizedBox(
+                            width: width/45.533,
+                            child:
+                            Center(child: Text("",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                          //itemid
+                          SizedBox(
+                            width: width/14.2,
+
+                            child:
+                            Center(child: Text("Item ID",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                          //itemname
+                          SizedBox(
+                            width: width/3.7,
+
+                            child:Center(child: Text("Item Name",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+
+
+                          ),
+
+                          //Box No
+                          SizedBox(
+                            width: width/16.8,
+                            child:
+                            Center(child: Text("Box No",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                          //Hsn Code
+                          SizedBox(
+                            width: width/17.8,
+
+                            child:
+                            Center(child: Text("HSN Code",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                          //tax
+                          SizedBox(
+                            width: width/17.18,
+
+                            child:
+                            Center(child: Text("Tax %",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                          //quvantity
+                          SizedBox(
+                            width: width/15.18,
+                            child:
+                            Center(child: Text("Qnty",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+
+                          //price
+                          SizedBox(
+                            width: width/15.18,
+                            child:
+                            Center(child: Text("Price",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                          //landing cost
+                          SizedBox(
+                            width: width/15.18,
+
+                            child:
+                            Center(child: Text("Landing Cost",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),textAlign: TextAlign.center,)),
+                          ),
+
+                          //Sales Price
+                          SizedBox(
+                            width: width/15.18,
+                            child:
+                            Center(child: Text("Sales Price",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                          //value
+                          SizedBox(
+                            width: width/15.18,
+                            child:
+                            Center(child: Text("Value",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color: Colors.white),)),
+                          ),
+
+                          //Low order quvantity
+                          SizedBox(
+                            width: width/35.18,
+
+                            child:
+                            Center(child: Text("A\nQnty",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                          SizedBox(
+                            width: width/25.18,
+
+                            child:
+                            Center(child: Text("Stk",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+
+                          //Clear controllers
+                          SizedBox(
+                            width: width/15.18,
+                            child:
+                            Center(child: Text("Clear ",style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),)),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    // color: Color(0xffFFFFFF),
+                    width: width/0.976,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,),
+                    child:
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        //Serial no
+                        Container(
+                          width: width/45.533,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child:
+                          Checkbox(
+                              value:checkbox ,
+                              onChanged:(_) async {
+
+                                setState((){
+                                  checkbox=!checkbox;
+                                });
+
+                                ///total bill amount calculation function
+                                if(checkbox==true){
+                                  Totalbillcalculationamount();
+                                }
+
+                                ///clear the generated boolean and clear the list methods...
+                                else if(checkbox==false){
+                                  for(int i=0;i<Selected.length;i++){
+                                    setState(() {
+                                      Selected[i]=false;
+                                      gettotal=true;
+                                      totalamount=0;
+                                      salespriceff=0;
+                                      Cgst=0;
+                                      sgst=0;
+                                      totalamount=0;
+                                      TotalAmount2=0;
+                                      Returnlists.clear();
+                                      documentlists.clear();
+                                    });
+                                  }
+
+                                }
+
+                              } ),
+                        ),
+
+                        //itemid
+                        Container(
+                          width: width/14.2,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: itemid,
+                            focusNode: items_id,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only( left: width /48.78,bottom: height/65.7),
+                            ),
+                            onSubmitted: (_){
+                              items_id.unfocus();
+                              FocusScope.of(context).requestFocus(items_value);
+                            },
+
+                          ),
+                        ),
+
+                        //itemname
+                        Container(
+                          width: width/3.7,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child:
+
+
+
+                          Padding(
+                            padding:  EdgeInsets.only(left:width/130,right: width/170),
+                            child: LayoutBuilder(
+                              builder: (BuildContext , BoxConstraints )=>
+                                  Autocomplete<String>(
+                                    initialValue: TextEditingValue(
+                                      text: itemnames,
+                                    ),
+                                    optionsViewBuilder:(context, onSelected, options) => Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Material(
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.vertical(bottom: Radius.circular(4.0)),
+                                          ),
+                                          child: SizedBox(
+                                            height: 52.0 * options.length,
+                                            width: BoxConstraints.biggest.width,
+                                            child: ListView.builder(
+                                              padding: EdgeInsets.zero,
+                                              itemCount: options.length,
+                                              shrinkWrap: false,
+                                              itemBuilder: (BuildContext , index) {
+                                                final String option = options.elementAt(index);
+                                                return InkWell(
+                                                  onTap: () => onSelected(option),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(16.0),
+                                                    child: Text(option,style: GoogleFonts.openSans(fontWeight: FontWeight.w700),),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        )
+                                    ),
+                                    optionsBuilder: (TextEditingValue textEditingValue) {
+
+                                      if (textEditingValue.text == '') {
+                                        return const Iterable<String>.empty();
+                                      }
+
+                                      if(textEditingValue.text!=""){
+                                        createpurchase2(textEditingValue.text.toString());
+                                        setState(() {
+                                          itemname.text = textEditingValue.text.toString();
+                                        });
+                                      }
+
+                                      return
+                                        Itemlist.where((String option) {
+                                          return option.toLowerCase().contains(textEditingValue.text.toLowerCase());
+                                        });
+                                    },
+                                    onSelected: (String selection) {
+                                      createpurchase2(selection.toString());
+                                      setState(() {
+                                        itemname.text = selection;
+                                      });
+
+                                      debugPrint('You just selected $selection');
+                                    },
+                                    displayStringForOption: (Value){
+                                      return Value;
+                                    },
+                                  ),
+                            ),
+                          ),
+
+                        ),
+
+                        //Box No
+                        Container(
+                          width: width/16.8,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: Box_NO,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+                            onSubmitted: (_){
+                            },
+
+                          ),
+                        ),
+
+                        //Hsn Code
+                        Container(
+                          width: width/17.8,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: HSN_Code,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+
+
+                          ),
+                        ),
+
+                        //tax
+                        Container(
+                          width: width/17.18,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: taxitem,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+                          ),
+                        ),
+
+                        //quvantity
+                        Container(
+                          width: width/15.18,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: Qty,
+                            focusNode: Quvantitylist,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+                            onSubmitted: (_){
+
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please Fill the Suppiler Name and Suppiler ID.....")));
+
+                            },
+                            onChanged: (_){
+                              if(suppierid.text.length!=0||suppiler_name.text.length!=0) {
+                                if (Qty.text.length > 0) {
+                                  checkgst(Purchase_price.text, Qty.text);
+                                }
+                              }
+                              else{
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please Fill the Suppiler Name and Suppiler ID.....")));
+                              }
+                            },
+                          ),
+                        ),
+
+                        //price
+                        Container(
+                          width: width/15.18,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: Purchase_price,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+                            onSubmitted: (_){
+                              landingcost(Purchase_price.text);
+                              checkgst(Purchase_price.text, Qty.text);
+                            },
+                          ),
+                        ),
+
+                        //landing cost
+                        Container(
+                          width: width/15.18,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: Landing_cost,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+
+                          ),
+                        ),
+
+                        //Sales Price
+                        Container(
+                          width: width/15.18,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: Sales,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+                          ),
+                        ),
+
+
+                        //value
+                        Container(
+                          width: width/15.18,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.red),
+                            controller: valueitem,
+                            focusNode: items_value,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+                            onSubmitted: (_){
+                              serialvalue == true || imeivalue == true || color ==
+                                  true ?
+                              //create a document (Firebase)
+                              showtextfield(int.parse(Qty.text), serialvalue, imeivalue, color,0) :
+                              collectioncreatefunction();
+
+                              updatetotal();
+                              CGSTfunction();
+                              SGSTfunction();
+                              Totalamounts();
+                              items_value.unfocus();
+                              FocusScope.of(context).requestFocus(items_id);
+                              items_value.unfocus();
+                              FocusScope.of(context).requestFocus(items_id);
+
+                            },
+                          ),
+                        ),
+
+                        //Low order quvantity
+                        Container(
+                          width: width/30.18,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: Loworder,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+                          ),
+                        ),
+
+                        //Stock
+                        Container(
+                          width: width/30.18,
+                          height: height/21.9,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,width: 0.6
+                              )
+                          ),
+                          child: TextField(
+                            style: GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                            controller: Stocks,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: width/136.6,bottom: height/65.7),
+                            ),
+                          ),
+                        ),
+
+                        //Clear controllers
+                        Container(
+                            width: width/15.18,
+                            height: height/21.9,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.black,width: 0.6
+                                )
+                            ),
+                            child:
+                            Center(
+                              child: InkWell(
+                                onTap: (){
+                                  clearallcontroller();
+                                },
+                                child: const Icon(
+                                    Icons.delete
+                                ),
+                              ),
+                            )
+                        ),
+
+                      ],
+                    ),
+
+                  ),
+
+                  SizedBox(
+                    height: height/131.4,
+                  ),
+
+                  Material(
+                    elevation: 50,
+                    shadowColor: Colors.black38,
+                    color: const Color(0xffFFFFFF),
+                    child: Container(
+                      //color: Color(0xffFFFFFF),
+                        width: width/0.976,
+                        height: height/2.8,
+                        decoration: const BoxDecoration(
+                          color: Color(0xffFFFFFF),
+                        ),
+
+                        child:
+                        ListView(
+                          shrinkWrap: true,
+
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children:  [
+                                Text("Balance  Items",style:GoogleFonts.openSans(fontWeight: FontWeight.w700)),
+                              ],
+                            ),
+
+                            StreamBuilder<QuerySnapshot>(
+                              stream: FirebaseFirestore.instance.collection("Purchase entry").doc(returnid)
+                                  .collection(returnid.toString()).orderBy("timestamp").snapshots(),
+                              builder: (context, snapshot) {
+
+                                if (snapshot.hasData == null) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+
+                                if (!snapshot.hasData) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+
+                                return ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: const ScrollPhysics(),
+                                  itemCount: snapshot.data!.docs.length,
+                                  itemBuilder: (context, index) {
+
+                                    var stocksitem=snapshot.data!.docs[index];
+
+                                    return quvanotyblancedunction(int.parse(stocksitem['Qty'].toString()),stocksitem['stocks'])!=0 ?
+
+                                    Padding(
+                                      padding:  EdgeInsets.only(),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+
+                                          //Serial no
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                border:Border.all(
+                                                    color:Colors.black87
+                                                )
+                                            ),
+                                            width: width/45.533,
+                                            height: height/20.0,
+                                            child: Checkbox(
+                                                value:Selected[index] ,
+                                                onChanged:(_) async {
+                                                  setState((){
+                                                    Selected[index]=!Selected[index];
+                                                  });
+                                                  if(Selected[index]==true){
+                                                    setState((){
+                                                      Qtydecrease.replaceRange(index,index+1,[stocksitem["stocks"]]);
+                                                    });
+                                                    streambalnaceamount();
+                                                  }
+
+
+                                                } ),
+                                          ),
+
+                                          //itemid
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/14.2,
+                                              height: height/20.0,
+                                              child: Center(child: Text("${stocksitem['itemcode']}"))
+                                          ),
+
+                                          //itemname
+                                          Tooltip(
+                                            message: "${stocksitem['Description']}\n${stocksitem['Imei no']
+                                                .toString()}\n${stocksitem['Serial no']
+                                                .toString()}\n${stocksitem['color']
+                                                .toString()}",
+                                            child: Container(
+                                                decoration: BoxDecoration(
+                                                    border:Border.all(
+                                                        color:Colors.black87
+                                                    )
+                                                ),
+                                                width: width/3.7 +width/ 27.32,
+                                                height: height/20.0,
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                        width: width/3.7 +width/ 27.32,
+                                                        height: height/35.9,
+                                                        child: Text('${stocksitem['Description']},',textAlign: TextAlign.left,)),
+                                                    stocksitem['IMEI NO']==true?
+                                                    Text(
+                                                      "IMEI No: ${stocksitem['Imei no']
+                                                          .toString()}",
+                                                      style: GoogleFonts.openSans(
+                                                          color: Colors.green,
+                                                          textStyle:  TextStyle(
+                                                              overflow: TextOverflow
+                                                                  .ellipsis)),
+                                                    ):
+                                                    stocksitem['Serial NO']==true?
+                                                    Text(
+                                                      "Serial No: ${stocksitem['Serial no']
+                                                          .toString()}",
+                                                      style: GoogleFonts.openSans(
+                                                          color: Colors.green,
+                                                          textStyle: const TextStyle(
+                                                              overflow: TextOverflow
+                                                                  .ellipsis)),
+                                                    ):
+                                                    stocksitem['Color']==true?
+                                                    Text(
+                                                      "Color: ${stocksitem['color']
+                                                          .toString()}",
+                                                      style: GoogleFonts.openSans(
+                                                          color: Colors.green,
+                                                          textStyle:  TextStyle(
+                                                              overflow: TextOverflow
+                                                                  .ellipsis)),
+                                                    ):const SizedBox()
+
+                                                  ],
+                                                )),
+                                          ),
+
+
+
+
+                                          //Hsn code
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/11.8,
+                                              height: height/20.0,
+                                              child:
+                                              Center(child: Text(stocksitem['Hsncode']))
+                                          ),
+
+
+                                          //tax
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/15.18,
+                                              height: height/20.0,
+                                              child:
+                                              Center(child: Text(stocksitem['tax']))
+                                          ),
+
+
+                                          //quvantity
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/15.18,
+                                              height: height/20.0,
+                                              child:
+                                              TextField(
+                                                controller: _Streamcontroller1[index],
+
+                                                decoration: InputDecoration(
+                                                    contentPadding: EdgeInsets.only(left:width/34.15,bottom:10),
+
+
+                                                    border: InputBorder.none
+                                                ),
+                                                onSubmitted: (_) async {
+                                                  setState((){
+                                                    Selected[index]=!Selected[index];
+                                                  });
+                                                  if(Selected[index]==true){
+                                                    setState((){
+                                                      Qtydecrease.replaceRange(index,index+1,[int.parse(_Streamcontroller1[index].text)]);
+                                                    });
+                                                    print("Qtydecrease Listsssss");
+                                                    print(Qtydecrease);
+
+                                                    if(stocksitem['IMEI NO']==true){
+                                                      print("Imei Number True");
+                                                      setState((){
+                                                        ImerisrialListitem[index].clear();
+                                                      });
+                                                      for (int i = 0; i < stocksitem['Imei no'].length; i++) {
+                                                        setState(() {
+                                                          ImerisrialListitem[index].add(stocksitem['Imei no'][i].toString());
+                                                        });
+
+                                                      }
+                                                    }
+                                                    print(ImerisrialListitem[index]);
+                                                    print(ImerisrialListitem);
+                                                    if(stocksitem['Serial NO']==true){
+                                                      setState((){
+                                                        ImerisrialListitem1[index].clear();
+                                                      });
+                                                      for (int j = 0; j < stocksitem['Serial no'].length; j++) {
+                                                        ImerisrialListitem1[index].add(stocksitem['Serial no'][j].toString());
+                                                      }
+
+                                                    }
+                                                    if(stocksitem['Color']==true){
+                                                      setState((){
+                                                        ImerisrialListitem2[index].clear();
+                                                      });
+                                                      for (int k = 0; k < stocksitem['color'].length; k++) {
+                                                        ImerisrialListitem2[index].add(stocksitem['color'][k].toString());
+                                                      }
+
+                                                    }
+                                                    print( _Streamcontroller1[index].text);
+                                                    print( stocksitem['IMEI NO']);
+                                                    print( stocksitem['Serial NO']);
+                                                    print( stocksitem['Color']);
+                                                    if(
+                                                    stocksitem['IMEI NO']==false&&
+                                                        stocksitem['Serial NO']==false&&
+                                                        stocksitem['Color']==false&&
+                                                        _Streamcontroller1[index].text!=""){
+                                                      print("Enter The All Condition False");
+                                                      streambalnaceamount();
+                                                    }
+
+                                                    print("Check-4");
+                                                    Future.delayed(Duration(seconds:1),(){
+                                                      stocksitem['Color']==true||
+                                                          stocksitem['Serial no']==true||
+                                                          stocksitem['IMEI NO']==true?
+
+                                                      showstocksupdate(
+                                                          int.parse(_Streamcontroller1[index].text),
+                                                          stocksitem['Serial NO'],
+                                                          stocksitem['IMEI NO'],
+                                                          stocksitem['Color'],
+                                                          ///list items
+                                                          stocksitem['Imei no'],
+                                                          stocksitem['Serial no'],
+                                                          stocksitem['color'],
+                                                          stocksitem.id,
+                                                          ///purchase price
+                                                          double.parse( stocksitem['Purchase price']),index
+                                                      ):
+                                                      totalamountmultiplefunction(int.parse(_Streamcontroller1[index].text),
+                                                          double.parse( stocksitem['Purchase price']));
+
+                                                    });
+                                                  }
+                                                },
+                                              )
+                                          ),
+
+
+
+                                          //price
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/15.18,
+                                              height: height/20.0,
+                                              child:
+                                              Center(child: Text(stocksitem['Purchase price'].toString()))
+                                          ),
+
+                                          //landing cost
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/15.18,
+                                              height: height/20.0,
+                                              child:
+                                              Center(child: Text(stocksitem['Landing cost'].toString()))
+                                          ),
+
+                                          //Sales Price
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/15.18,
+                                              height: height/20.0,
+                                              child:
+                                              Center(child: Text(stocksitem['Sales price'].toString()))
+                                          ),
+
+                                          //value
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/15.18,
+                                              height: height/20.0,
+                                              child:
+                                              Center(child: Text(
+                                                _Streamcontroller1[index].text==""?
+                                                totalamountmultiplefunction(stocksitem['stocks'],double.parse(stocksitem['Purchase price'].toString())):
+                                                totalamountmultiplefunction(int.parse( _Streamcontroller1[index].text),double.parse(stocksitem['Purchase price'].toString()))
+
+                                                ,style:  GoogleFonts.openSans(color: Colors.red),))
+                                          ),
+
+                                          //A Quvantity
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/18.5,
+                                              height: height/20.0,
+                                              child:
+                                              const Center(child: Text(""))
+                                          ),
+
+                                          //remove
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                  border:Border.all(
+                                                      color:Colors.black87
+                                                  )
+                                              ),
+                                              width: width/15.18,
+                                              height: height/20.0,
+                                              child:
+                                              Center(
+                                                child: InkWell(
+                                                  onTap: (){
+                                                    deletecollection(stocksitem.id);
+
+                                                  },
+                                                  child: const Icon(
+                                                      Icons.delete
+                                                  ),
+                                                ),
+                                              )
+                                          ),
+
+                                        ],
+                                      ),
+                                    ) :
+                                    Container();
+
+
+
+
+                                  },
+                                );
+                              },
+                            ),
+
+                            /*    Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text("Sold  Items",style:TextStyle(fontWeight: FontWeight.w700)),
+                              ],
+                            ),
+
+                          StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance.collection("Purchase entry").doc(returnid)
+                                .collection(returnid.toString()).orderBy("timestamp")
+                                .snapshots(),
+                            builder: (context, snapshot) {
+
+                              if (snapshot.hasData == null) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+
+                              return ListView.builder(
+                                shrinkWrap: true,
+                                physics: const ScrollPhysics(),
+                                itemCount: snapshot.data!.docs.length,
+                                itemBuilder: (context, index) {
+
+                                  var stocksitem=snapshot.data!.docs[index];
+
+                                  return
+                                    int.parse(stocksitem['Qty'].toString()) != stocksitem['stocks'] ?
+                                    Padding(
+                                    padding:  EdgeInsets.only(bottom:height/164.25),
+                                    child: Row(
+                                      children: [
+
+                                        //Serial no
+                                        SizedBox(
+                                          width: width/45.533,
+                                          height: height/16.425,
+
+                                        ),
+
+                                        //itemid
+                                        SizedBox(
+                                            width: width/14.2,
+                                            height: height/16.425,
+                                            child: Center(child: Text("${stocksitem['itemcode']}"))
+                                        ),
+
+                                        //itemname
+                                        SizedBox(
+                                            width: width/3.7,
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text('${stocksitem['Description']},',textAlign: TextAlign.left,),
+                                                SizedBox(height:height/131.4),
+                                                Row(
+                                                  children: [
+                                                    Text("Sold item : ${quvanotysolddunction(int.parse(stocksitem['Qty'].toString()),stocksitem['stocks'])}",textAlign: TextAlign.left,
+                                                      style: const TextStyle(color: Colors.red,fontWeight: FontWeight.w700),
+                                                    ),
+                                                  ],
+                                                ),
+                                                stocksitem['IMEI NO']==true?
+                                                Text(
+                                                  "IMEI No: ${stocksitem['returnimei']
+                                                      .toString()}",
+                                                  style: GoogleFonts.openSans(
+                                                      textStyle: const TextStyle(
+                                                          overflow: TextOverflow
+                                                              .ellipsis)),
+                                                ):
+                                                stocksitem['Serial NO']==true?
+                                                Text(
+                                                  "Serial No: ${stocksitem['returnserial']
+                                                      .toString()}",
+                                                  style: GoogleFonts.openSans(
+                                                      textStyle: const TextStyle(
+                                                          overflow: TextOverflow
+                                                              .ellipsis)),
+                                                ):
+                                                stocksitem['Color']==true?
+                                                Text(
+                                                  "Color: ${stocksitem['returncolor']
+                                                      .toString()}",
+                                                  style: GoogleFonts.openSans(
+                                                      textStyle: const TextStyle(
+                                                          overflow: TextOverflow
+                                                              .ellipsis)),
+                                                ):const SizedBox()
+
+                                              ],
+                                            )),
+
+                                        SizedBox(width:width/ 27.32,),
+
+                                        //Hsn code
+                                        SizedBox(
+                                            width: width/11.8,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Hsncode']))
+                                        ),
+
+                                        //tax
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['tax']))
+                                        ),
+
+                                        //quvantity
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child:Text(quvanotysolddunction(int.parse(stocksitem['Qty'].toString()),stocksitem['stocks']).toString()))
+                                        ),
+
+                                        //price
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Purchase price'].toString()))
+                                        ),
+
+                                        //landing cost
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Landing cost'].toString()))
+                                        ),
+
+                                        //Sales Price
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Sales price'].toString()))
+                                        ),
+
+                                        //value
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(quvantitybalanceduntion(int.parse(stocksitem['Qty'].toString()),stocksitem['stocks'],double.parse(stocksitem['Purchase price'].toString())).toString(),style: const TextStyle(color: Colors.red),))
+                                        ),
+
+                                        //A Quvantity
+                                        SizedBox(
+                                            width: width/18.5,
+                                            height: height/16.425,
+                                            child:
+                                            const Center(child: Text(""))
+                                        ),
+
+                                        //remove
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(
+                                              child: InkWell(
+                                                onTap: (){
+                                                  deletecollection(stocksitem.id);
+
+
+
+                                                },
+                                                child: const Icon(
+                                                    Icons.delete
+                                                ),
+                                              ),
+                                            )
+                                        ),
+
+                                      ],
+                                    ),
+                                  ):Container();
+
+
+
+
+                                },
+                              );
+                            },
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text("Returned  Items",style:TextStyle(fontWeight: FontWeight.w700)),
+                            ],
+                          ),
+
+                          StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance.collection("Purchase entry").doc(returnid)
+                                .collection(returnid.toString()).orderBy("timestamp")
+                                .snapshots(),
+                            builder: (context, snapshot) {
+
+                              if (snapshot.hasData == null) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+
+                              return ListView.builder(
+                                shrinkWrap: true,
+                                physics: const ScrollPhysics(),
+                                itemCount: snapshot.data!.docs.length,
+                                itemBuilder: (context, index) {
+
+                                  var stocksitem=snapshot.data!.docs[index];
+
+                                  return
+                                    stocksitem['return']==true?
+                                    Padding(
+                                    padding:  EdgeInsets.only(bottom:height/164.25),
+                                    child: Row(
+                                      children: [
+
+                                        //Serial no
+                                        SizedBox(
+                                          width: width/45.533,
+                                          height: height/16.425,
+                                            child: Center(child: Text("${index+1}"))
+                                        ),
+
+                                        //itemid
+                                        SizedBox(
+                                            width: width/14.2,
+                                            height: height/16.425,
+                                            child: Center(child: Text("${stocksitem['itemcode']}"))
+                                        ),
+
+                                        //itemname
+                                        SizedBox(
+                                            width: width/3.7,
+                                            child: Center(child: Text('${stocksitem['Description']},',textAlign: TextAlign.left,))),
+
+                                        SizedBox(width:width/ 27.32,),
+
+
+
+
+                                        //Hsn code
+                                        SizedBox(
+                                            width: width/11.8,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Hsncode']))
+                                        ),
+
+
+                                        //tax
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['tax']))
+                                        ),
+
+
+                                        //quvantity
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child:Text(stocksitem['Qty'].toString()))
+                                        ),
+
+
+
+                                        //price
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Purchase price'].toString()))
+                                        ),
+
+                                        //landing cost
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Landing cost'].toString()))
+                                        ),
+
+                                        //Sales Price
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Sales price'].toString()))
+                                        ),
+
+                                        //value
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(child: Text(stocksitem['Total'],style: const TextStyle(color: Colors.red),)),
+                                        ),
+
+                                        //A Quvantity
+                                        SizedBox(
+                                            width: width/18.5,
+                                            height: height/16.425,
+                                            child:
+                                            const Center(child: Text(""))
+                                        ),
+
+                                        //remove
+                                        SizedBox(
+                                            width: width/15.18,
+                                            height: height/16.425,
+                                            child:
+                                            Center(
+                                              child: InkWell(
+                                                onTap: (){
+                                                  deletecollection(stocksitem.id);
+
+                                                },
+                                                child: const Icon(
+                                                    Icons.delete
+                                                ),
+                                              ),
+                                            )
+                                        ),
+
+                                      ],
+                                    ),
+                                  ):const SizedBox();
+
+
+
+
+                                },
+                              );
+                            },
+                          ),
+
+                         */
+
+
+
+                          ],
+                        )
+
+                    ),
+                  ),
+                ],
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(top: height / 131.4, left: width / 27.32),
+                child: Material(
+                  elevation: 50,
+                  shadowColor: Colors.black38,
+                  color: const Color(0xffFFFFFF),
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    width: width / 1.093,
+                    height: height / 6.14,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFFFFFF),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(width: width /25.83,),
+
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: width / 75.888),
+                              child:
+                              InkWell(
+                                onTap: () {
+                                  print("Hello 1 ---------------------------------------------------");
+                                  savedatefunction();
+                                  setState(() {
+                                    Loading = true;
+                                  });
+                                  print("Hello 2 ---------------------------------------------------");
+                                  retrninvoice();
+                                  print("Hello 3 ---------------------------------------------------");
+                                  //check bill no function
+                                  Purchaseitem();
+                                  print("Hello 4 ---------------------------------------------------");
+                                  printdate(returnid);
+                                  //  printdate();
+                                  Future.delayed(const Duration(seconds: 3),(){
+                                    ///stream controller clear function
+                                    // Streamcontrollerclear();
+                                    setState(() {
+                                      Loading = false;
+                                    });
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => drawer(" "),));
+                                  });
+
+                                },
+                                child:
+                                Container(
+                                  width: width / 7.0,
+                                  height: height / 16.42,
+                                  //color: Color(0xffD60A0B),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    color: const Color(0xff25D366),
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                        "Update Invoice",
+                                        style:
+                                        GoogleFonts.openSans(color: Colors.white),
+                                      )),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: height / 131.4),
+                            Padding(
+                              padding: EdgeInsets.only(left: width / 75.888),
+                              child: InkWell(
+                                onTap: () {
+                                  getvalue(
+                                      suppierid.text,
+                                      suppiler_name.text,
+                                      dropdownValue3,
+                                      suppiler_invoice.text,
+                                      purchase_No.text,
+                                      purchase_Date.text,
+                                      Payments);
+                                },
+                                child: Container(
+                                  width: width / 7.0,
+                                  height: height / 16.42,
+                                  //color: Color(0xffD60A0B),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    color: const Color(0xff0079FF),
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                        "Update And Print Invoice",
+                                        style:
+                                        GoogleFonts.openSans(color: Colors.white),
+                                      )),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(width:width/91.066),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Container(
+                            //
+                            //   height: height / 16.42,
+                            //   decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(4),
+                            //     color: const Color(0xff075E54),
+                            //   ),
+                            //   child: Row(
+                            //     crossAxisAlignment: CrossAxisAlignment.center,
+                            //     children: [
+                            //       Padding(
+                            //         padding: EdgeInsets.only(
+                            //             left: width / 455.33),
+                            //         child: SizedBox(
+                            //           width: width / 4.3,
+                            //           height: height / 19.42,
+                            //           child:
+                            //           Row(
+                            //             children: [
+                            //               Text(
+                            //                 "Payment",
+                            //                 style: GoogleFonts.openSans(
+                            //                     fontWeight: FontWeight.w600,
+                            //                     color: Colors.white,
+                            //                     fontSize: width / 85.375),
+                            //               ),
+                            //                   SizedBox(width:width/30.6),
+                            //                   DropdownButton2<String>(
+                            //                 value: Payments2,
+                            //                 iconStyleData: IconStyleData(
+                            //                   iconEnabledColor: Colors.white
+                            //                 ),
+                            //                 dropdownStyleData: DropdownStyleData(
+                            //                   decoration: BoxDecoration(color: Color(0xff00A99D))
+                            //                 ),
+                            //                 style: GoogleFonts.openSans(
+                            //                     fontWeight: FontWeight.w700,
+                            //                     color: Colors.white,
+                            //                     fontSize: width / 105.07),
+                            //                 underline: Container(
+                            //                   color: Colors.deepPurpleAccent,
+                            //                 ),
+                            //                 onChanged: (String? value) {
+                            //                   // This is called when the user selects an item.
+                            //                   setState(() {
+                            //                     Payments2 = value!;
+                            //                   });
+                            //                 },
+                            //                 items: Paymentmode.map<
+                            //                     DropdownMenuItem<String>>(
+                            //                         (String value) {
+                            //                       return DropdownMenuItem<String>(
+                            //                         value: value,
+                            //                         child: Text(value),
+                            //                       );
+                            //                     }).toList(),
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+
+                            SizedBox(height: height / 131.4),
+
+                            ///date and time container in current Date and Time
+                            Row(
+                              children: [
+                                Container(
+                                  width: width / 9.0,
+                                  height: height / 16.42,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    color: const Color(0xff0C356A),
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: width / 455.33),
+                                        child: SizedBox(
+                                          width: width / 30.5,
+                                          height: height / 19.42,
+                                          child: Center(
+                                            child: Text(
+                                              "Date",
+                                              style: GoogleFonts.openSans(
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white,
+                                                  fontSize: width / 85.375),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: width / 13.83,
+                                        height: height / 19.42,
+                                        //color: Color(0xffDDDEEE),
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey.shade300,
+                                            borderRadius:
+                                            BorderRadius.circular(6)),
+                                        child: TextField(
+                                          readOnly: true,
+                                          controller: Currentdatecontroller,
+                                          keyboardType:
+                                          TextInputType.multiline,
+                                          style: GoogleFonts.openSans(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: width / 91.06),
+                                          decoration: InputDecoration(
+                                            contentPadding: EdgeInsets.only(
+                                                left: width / 120.3,
+                                                bottom: height / 82.125),
+                                            border: InputBorder.none,
+                                          ),
+                                          onSubmitted: (_) {
+                                            totalamountwithroundof();
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(width:width/91.066),
+
+                                Container(
+                                  width: width / 9.0,
+                                  height: height / 16.42,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    color: const Color(0xff191D88),
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: width / 455.33),
+                                        child: SizedBox(
+                                          width: width / 30.5,
+                                          height: height / 19.42,
+                                          child: Center(
+                                            child: Text(
+                                              "Time",
+                                              style: GoogleFonts.openSans(
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white,
+                                                  fontSize: width / 85.375),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: width / 13.83,
+                                        height: height / 19.42,
+                                        //color: Color(0xffDDDEEE),
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey.shade300,
+                                            borderRadius:
+                                            BorderRadius.circular(6)),
+                                        child: TextField(
+                                          readOnly: true,
+                                          controller: Currenttimecontroller,
+                                          keyboardType:
+                                          TextInputType.multiline,
+                                          style: GoogleFonts.openSans(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: width / 91.06),
+                                          decoration: InputDecoration(
+                                            contentPadding: EdgeInsets.only(
+                                                left: width / 68.3,
+                                                bottom: height / 82.125),
+                                            border: InputBorder.none,
+                                          ),
+                                          onSubmitted: (_) {
+                                            totalamountwithroundof();
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(width:width/91.066),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                                height: height / 6.8,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                                  children: [
+
+                                    Row(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                      dropdownValue3 == "IGST"
+                                          ? MainAxisAlignment.start
+                                          : MainAxisAlignment.center,
+                                      children: [
+
+                                        SizedBox(width: width / 220.6),
+
+
+                                        //c gst amount
+                                        Container(
+                                            width: width / 7.0,
+                                            height: height / 16.42,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(4),
+                                              color: const Color(0xff1D5B79),
+                                            ),
+                                            child:Padding(
+                                              padding:  EdgeInsets.only(left:width/341.5),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                dropdownValue3 == "IGST"
+                                                    ? MainAxisAlignment.start
+                                                    : MainAxisAlignment.center,
+                                                children: [
+                                                  dropdownValue3 == "IGST"
+                                                      ? SizedBox(
+                                                    height: height / 21.9,
+                                                    width: width / 14.0,
+                                                    child: Text(
+                                                      "IGST(18%):",
+                                                      style: GoogleFonts.openSans(
+                                                          fontWeight:
+                                                          FontWeight.w600,
+                                                          color: Colors.white,
+                                                          fontSize: width / 85.375),
+                                                    ),
+                                                  )
+                                                      : SizedBox(
+                                                    width: width / 14.0,
+                                                    height: height / 21.9,
+                                                    child: Text(
+                                                      "C GST(9%):",
+                                                      style: GoogleFonts.openSans(
+                                                          fontWeight:
+                                                          FontWeight.w600,
+                                                          color: Colors.white,
+                                                          fontSize: width / 85.375),
+                                                    ),
+                                                  ),
+                                                  dropdownValue3 == "IGST"
+                                                      ? Container(
+                                                    width: width / 15.66,
+                                                    height: height / 21.9,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(5),
+                                                        color: Colors.grey.shade300
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "",
+                                                        style: GoogleFonts.openSans(
+                                                            fontWeight:
+                                                            FontWeight.w600,
+                                                            color: Colors.black,
+                                                            fontSize: width / 85.375),
+                                                      ),
+                                                    ),
+                                                  )
+                                                      : Container(
+                                                    width: width / 15.66,
+                                                    height: height / 21.9,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(5),
+                                                        color: Colors.grey.shade300
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        gettotal==true?"0":   Cgst.toStringAsFixed(2),
+                                                        style: GoogleFonts.openSans(
+                                                            fontWeight:
+                                                            FontWeight.w600,
+                                                            color: Colors.black,
+                                                            fontSize: width / 85.375),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                        ),
+                                        SizedBox(width:width/91.066),
+
+
+                                        //S GSt amount
+
+                                        dropdownValue3 == "IGST" ?
+                                        SizedBox(
+                                          width: width / 7.0,
+                                          height: height / 16.42,
+                                        ):
+                                        Container(
+                                            width: width / 7.0,
+                                            height: height / 16.42,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(4),
+                                              color: const Color(0xff1D5B79),
+                                            ),
+                                            child:Padding(
+                                              padding:  EdgeInsets.only(left:width/341.5),
+                                              child: Row(
+                                                children: [
+                                                  SizedBox(width:width/683),
+                                                  dropdownValue3 == "IGST"
+                                                      ? const SizedBox()
+                                                      : SizedBox(
+                                                    width: width / 14.0,
+                                                    height: height / 21.9,
+                                                    child: Text(
+                                                      "S GST(9%):",
+                                                      style: GoogleFonts.openSans(
+                                                          fontWeight:
+                                                          FontWeight.w600,
+                                                          color: Colors.white,
+                                                          fontSize: width / 85.375),
+                                                    ),
+                                                  ),
+                                                  dropdownValue3 == "IGST"
+                                                      ? const SizedBox()
+                                                      : Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey.shade300,
+                                                        borderRadius: BorderRadius.circular(5)
+                                                    ),
+                                                    width: width / 15.66,
+                                                    height: height / 21.9,
+                                                    child: Center(
+                                                      child: Text(
+                                                        gettotal==true?"0":  sgst.toStringAsFixed(2),
+                                                        style: GoogleFonts.openSans(
+                                                            fontWeight:
+                                                            FontWeight.w600,
+                                                            color: Colors.black,
+                                                            fontSize: width / 85.375),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                        )
+
+                                      ],
+                                    ),
+
+                                    SizedBox(height: height / 65.7),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(width:width/227.66),
+                                        Container(
+                                          width: width / 7.0,
+                                          height: height / 16.42,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(4),
+                                            color: const Color(0xff075E54),
+                                          ),
+                                          child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: width / 455.33),
+                                                child: SizedBox(
+                                                  width: width / 12.5,
+                                                  height: height / 19.42,
+                                                  child: Text(
+                                                    "Round Value",
+                                                    style: GoogleFonts.openSans(
+                                                        fontWeight: FontWeight.w600,
+                                                        color: Colors.white,
+                                                        fontSize: width / 85.375),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                width: width / 16.83,
+                                                height: height / 19.42,
+                                                //color: Color(0xffDDDEEE),
+                                                decoration: BoxDecoration(
+                                                    color: Colors.grey.shade300,
+                                                    borderRadius:
+                                                    BorderRadius.circular(6)),
+                                                child: TextField(
+                                                  controller: rounof,
+                                                  keyboardType:
+                                                  TextInputType.multiline,
+                                                  style: GoogleFonts.openSans(
+                                                      color: Colors.black,
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize: width / 91.06),
+                                                  decoration: InputDecoration(
+                                                    contentPadding: EdgeInsets.only(
+                                                        left: width / 68.3,
+                                                        bottom: height / 82.125),
+                                                    border: InputBorder.none,
+                                                  ),
+                                                  onSubmitted: (_) {
+                                                    totalamountwithroundof();
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(width:width/91.066),
+                                        /* Container(
+                                          width: width / 7.0,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(4),
+                                            color: const Color(0xff00A99D),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding:  EdgeInsets.only(left:width/227.66),
+                                                child: SizedBox(
+                                                  width: width / 17.3,
+                                                  height: height / 13.14,
+                                                  child: Center(
+                                                    child: Text(
+                                                      "To Pay :",
+                                                      style: GoogleFonts.openSans(
+                                                          fontWeight: FontWeight.bold,
+                                                          color:  Colors.white,
+                                                          fontSize: width / 80.88),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: width / 12.8,
+                                                height: height / 13.14,
+                                                child: Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  children: [
+
+                                                    Text(
+                                                      Totalamountoftopay.toStringAsFixed(2),
+                                                      style: GoogleFonts.openSans(
+                                                          fontWeight: FontWeight.bold,
+                                                          textStyle: const TextStyle(
+                                                              overflow:
+                                                              TextOverflow.ellipsis),
+                                                          color:  Colors.white,
+                                                          fontSize: width / 80.88),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),*/
+                                      ],
+                                    ),
+                                  ],
+                                )),
+
+                            SizedBox(width:width/68.3),
+
+                            SizedBox(
+                                height: height / 6.8,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    //sub total
+                                    Container(
+                                      width: width / 7.0,
+                                      height: height / 16.42,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: const Color(0xff00A99D),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:  EdgeInsets.only(left:width/227.66),
+                                            child: SizedBox(
+                                              width: width / 17.075,
+                                              child: Text(
+                                                "Sub Total",
+                                                style: GoogleFonts.openSans(
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white,
+                                                    fontSize: width / 85.375),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: width / 13.66,
+                                            child: Text(
+                                              gettotal==true?"0":": ${totalamount.toStringAsFixed(2)}"
+                                              ,
+                                              style: GoogleFonts.openSans(
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white,
+                                                  fontSize: width / 85.375),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: height / 131.4),
+
+                                    Container(
+                                      width: width / 7.0,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: const Color(0xff00A99D),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:  EdgeInsets.only(left:width/227.66),
+                                            child: SizedBox(
+                                              width: width / 17.3,
+                                              height: height / 13.14,
+                                              child: Center(
+                                                child: Text(
+                                                  "Total :",
+                                                  style: GoogleFonts.openSans(
+                                                      fontWeight: FontWeight.bold,
+                                                      color:  Colors.white,
+                                                      fontSize: width / 55.88),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: width / 12.8,
+                                            height: height / 13.14,
+                                            child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  gettotal==true?"0":  TotalAmount2.toStringAsFixed(2),
+                                                  style: GoogleFonts.openSans(
+                                                      fontWeight: FontWeight.bold,
+                                                      textStyle: const TextStyle(
+                                                          overflow:
+                                                          TextOverflow.ellipsis),
+                                                      color:  Colors.white,
+                                                      fontSize: width / 58.88),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+
+
+            ],
+          ),
+          Loading == true
+              ?
+          SizedBox(
+            height: height / 2.38,
+            width: width / 5.106,
+            child: Column(
+              children: [
+                Lottie.asset(
+                  "assets/FsRGzkbt6x.json",
+                  height: height / 3.38,
+                  width: width / 6.106,
+                ),
+                Text("Please Wait",
+                    style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.w600, color: Colors.black))
+              ],
+            ),
+          )
+              : const SizedBox(),
+        ],
+      )
+    ):
+      //Purchase_Entry
+      Stack(
+        alignment: Alignment.center,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+
+              //toggle switchs
+              Row(
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.only(left: width/4.583, right: width/56.916),
+                    child: FlutterSwitch(
+                      inactiveColor: const Color(0xffC9C9C9),
+                      inactiveToggleColor: Colors.grey,
+                      width: width/30.35,
+                      height: height/32.85,
+                      valueFontSize: 5.0,
+                      toggleSize: 20.0,
+                      value: status,
+                      borderRadius: 10.0,
+
+                      padding: 2.0,
+                      //showOnOff: true,
+                      onToggle: (val) {
+
+                        setState(() {
+                          if(val==true) {
+                            setState(() {
+                              status = val;
+                              status2 = false;
+                            });
+                            billnoaddfuncxtion();
+                            landingcost(Purchase_price.text);
+                            checkgst(Purchase_price.text, Qty.text);
+                          }
+                          else{
+                            setState(() {
+                              status2 = val;
+                            });
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                  Text(
+                    "Shabika G",
+                    style: GoogleFonts.openSans(color: Colors.white, fontSize:width/80.353),
+                  ),
+
+                  SizedBox(width:width/5.0),
+
+                  Padding(
+                    padding:  EdgeInsets.only(left: width/4.583, right: width/56.916),
+                    child: FlutterSwitch(
+                      inactiveColor: const Color(0xffC9C9C9),
+                      inactiveToggleColor: Colors.grey,
+                      width: width/30.35,
+                      height: height/32.85,
+                      valueFontSize: 5.0,
+                      toggleSize: 20.0,
+                      value: status2,
+                      borderRadius: 10.0,
+
+                      padding: 2.0,
+                      //showOnOff: true,
+                      onToggle: (val) {
+
+                        setState(() {
+                          if(val==true) {
+                            setState(() {
+                              status2 = val;
+                              status = false;
+                            });
+
+                            billnoaddfuncxtion();
                             landingcost(Purchase_price.text);
                             checkgst(Purchase_price.text, Qty.text);
                           }
@@ -5314,7 +8903,6 @@ String  creaditedatevalue="";
             "purchasenote": purchase_notes.text,
             "suppilierinvoiceno": suppiler_invoice.text,
             "credit days": Creadit_days.text,
-            "credit date":"",
             "balance amount":0,
             "purchaseinvoiceid":[],
             "Reason":"",
@@ -5376,7 +8964,6 @@ String  creaditedatevalue="";
             "purchasenote": purchase_notes.text,
             "suppilierinvoiceno": suppiler_invoice.text,
             "credit days": Creadit_days.text,
-            "credit date":"",
             "balance amount":0,
             "purchaseinvoiceid":[],
             "Reason":"",
@@ -5437,7 +9024,7 @@ String  creaditedatevalue="";
           "purchasenote": purchase_notes.text,
           "suppilierinvoiceno": suppiler_invoice.text,
           "credit days": Creadit_days.text,
-          "credit date":"",
+
           "balance amount":0,
           "purchaseinvoiceid":[],
           "Reason":"",
@@ -5548,7 +9135,7 @@ String  creaditedatevalue="";
       var docus1=await  FirebaseFirestore.instance.collection("Purchase ShabikaG").get();
       setState(() {
         billcount = docus1.docs.length+1;
-        purchase_No.text = "SBG${(billcount).toString().padLeft(2,"0")}";
+        purchase_No.text = "SPG${(billcount).toString().padLeft(2,"0")}";
         purchase_Date.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       });
 
@@ -5558,7 +9145,7 @@ String  creaditedatevalue="";
 
       setState(() {
         billcount = docus2.docs.length+1;
-        purchase_No.text = "SBN${(billcount).toString().padLeft(2,"0")}";
+        purchase_No.text = "SPN${(billcount).toString().padLeft(2,"0")}";
         purchase_Date.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       });
 
@@ -7050,8 +10637,6 @@ String  creaditedatevalue="";
         .collection("Purchase entry")
         .doc(streamid)
         .update({
-      "credit days": "",
-      "credit date": "",
       "balance amount": FieldValue.increment(-TotalAmount2),
     });
     FirebaseFirestore.instance
@@ -7060,8 +10645,6 @@ String  creaditedatevalue="";
         .collection("Payment Histroy")
         .doc()
         .set({
-      "credit days": "",
-      "credit date": "",
       "balance amount": FieldValue.increment(-TotalAmount2),
       "Amount": TotalAmount2,
       "Date": "${DateTime.now().day}/${DateTime.now().hour}/${DateTime.now().year}",
@@ -7075,8 +10658,6 @@ String  creaditedatevalue="";
           .collection("Purchase ShabikaG")
           .doc(streamid)
           .update({
-        "credit days": "",
-        "credit date": "",
         "balance amount": FieldValue.increment(-TotalAmount2),
       });
 
@@ -7086,8 +10667,6 @@ String  creaditedatevalue="";
           .collection("Payment Histroy")
           .doc()
           .set({
-        "credit days": "",
-        "credit date": "",
         "balance amount": FieldValue.increment(-TotalAmount2),
         "Amount": TotalAmount2,
         "Date": "${DateTime.now().day}/${DateTime.now().hour}/${DateTime.now().year}",
@@ -7102,8 +10681,6 @@ String  creaditedatevalue="";
           .collection("Purchase ShabikaN")
           .doc(streamid)
           .update({
-        "credit days": "",
-        "credit date": "",
         "balance amount": FieldValue.increment(-TotalAmount2),
       });
       FirebaseFirestore.instance
@@ -7112,8 +10689,6 @@ String  creaditedatevalue="";
           .collection("Payment Histroy")
           .doc()
           .set({
-        "credit days": "",
-        "credit date": "",
         "balance amount": FieldValue.increment(-TotalAmount2),
         "Amount": TotalAmount2,
         "Date": "${DateTime.now().day}/${DateTime.now().hour}/${DateTime.now().year}",

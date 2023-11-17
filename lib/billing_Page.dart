@@ -14,6 +14,7 @@ import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 import 'package:pdf/widgets.dart' as p;
 import 'package:random_string/random_string.dart';
+import 'package:shabika_billing/BILLPRINTING.dart';
 import 'package:shabika_billing/printing_Page.dart';
 import 'package:shabika_billing/stmodel.dart' as StatusModel;
 
@@ -109,6 +110,7 @@ class _Billing_PageState extends State<Billing_Page> {
   TextEditingController Box_NO = TextEditingController();
   TextEditingController HSN_Code = TextEditingController();
   TextEditingController Sales = TextEditingController();
+  TextEditingController Sales2 = TextEditingController();
   TextEditingController Loworder = TextEditingController();
   TextEditingController PPrice = TextEditingController();
 
@@ -1750,10 +1752,13 @@ class _Billing_PageState extends State<Billing_Page> {
   }
 
   clearallcontroller() {
+    print("clearing all 2=================================");
+
     setState(() {
       hsncpode = "";
       Boxno = "";
       itemcolor = '';
+
     });
 
     Landing_cost.clear();
@@ -1767,6 +1772,7 @@ class _Billing_PageState extends State<Billing_Page> {
     itemname.clear();
     taxitem.clear();
     Sales.clear();
+    Sales2.clear();
     PPrice.clear();
     without_tax.clear();
     Box_NO.clear();
@@ -2016,6 +2022,8 @@ class _Billing_PageState extends State<Billing_Page> {
     for(int i=0;i<document2.docs.length;i++){
       FirebaseFirestore.instance.collection("billingItemreports").doc().set({
         "Total": document2.docs[i]["Total"],
+        "billtype":"Sales",
+        "margin":document2.docs[i]["margin"],
         "Totalamount": document2.docs[i]["Totalamount"],
         "Payment mode": document2.docs[i]["Payment mode"],
         "itemcode": document2.docs[i]["itemcode"],
@@ -2041,10 +2049,13 @@ class _Billing_PageState extends State<Billing_Page> {
         "Imei no": document2.docs[i]["Imei no"],
         "Serial no": document2.docs[i]["Serial no"],
         "color": document2.docs[i]["color"],
+        "maindocid":random
       });
       if(status==true){
       FirebaseFirestore.instance.collection("billingItemreportsG").doc().set({
         "Total": document2.docs[i]["Total"],
+        "billtype":"Sales",
+        "margin":document2.docs[i]["margin"],
         "Totalamount": document2.docs[i]["Totalamount"],
         "Payment mode": document2.docs[i]["Payment mode"],
         "itemcode": document2.docs[i]["itemcode"],
@@ -2070,10 +2081,13 @@ class _Billing_PageState extends State<Billing_Page> {
         "Imei no": document2.docs[i]["Imei no"],
         "Serial no": document2.docs[i]["Serial no"],
         "color": document2.docs[i]["color"],
+        "maindocid":random
       });}
       if(status2==true){
       FirebaseFirestore.instance.collection("billingItemreportsN").doc().set({
         "Total": document2.docs[i]["Total"],
+        "billtype":"Sales",
+        "margin":document2.docs[i]["margin"],
         "Totalamount": document2.docs[i]["Totalamount"],
         "Payment mode": document2.docs[i]["Payment mode"],
         "itemcode": document2.docs[i]["itemcode"],
@@ -2099,11 +2113,12 @@ class _Billing_PageState extends State<Billing_Page> {
         "Imei no": document2.docs[i]["Imei no"],
         "Serial no": document2.docs[i]["Serial no"],
         "color": document2.docs[i]["color"],
+        "maindocid":random
       });
       }
     }
-
-    /*  FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing")
+    print("Customer bill started");
+      FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing")
          .doc(random).update({
        "Total": totalamount,
        "Payment mode": Payments,
@@ -2118,12 +2133,12 @@ class _Billing_PageState extends State<Billing_Page> {
        "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
        "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
        "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-     });*/
-
+     });
+    print("Customer bill sucess 1");
      FirebaseFirestore.instance.collection("Accounts").doc("AxQxYGPKUB5qGzllyfpY").update({
        "Totalamount":Discountamount.text == "0"&&Discountamountpercentage.text == "0" ? FieldValue.increment(TotalAmount2):FieldValue.increment(disacountamountcalue),
      });
-
+    print("Customer bill sucess 2");
 
      print(itemdocuid);
      print(imeinu);
@@ -3783,7 +3798,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
                       //quvantity
                       SizedBox(
-                        width: width / 15.18,
+                        width: width / 29.18,
                         child: Center(
                             child: Text(
                               "Qnty",
@@ -3813,6 +3828,15 @@ class _Billing_PageState extends State<Billing_Page> {
                               GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
                             )),
                       ),
+                      SizedBox(
+                        width: width / 14.0,
+                        child: Center(
+                            child: Text(
+                              "Value",
+                              style:
+                              GoogleFonts.openSans(fontWeight: FontWeight.w700,color:Colors.white),
+                            )),
+                      ),
 
                       //Stocks
                       SizedBox(
@@ -3827,7 +3851,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
                       //Clear controllers
                       SizedBox(
-                        width: width / 13.18,
+                        width: width / 30.18,
                         child: Center(
                             child: Text(
                               "Clear ",
@@ -3949,7 +3973,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
                     //itemname
                     Container(
-                      width: width / 2.7,
+                      width: width / 2.76,
                       height: height / 21.9,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
@@ -4097,7 +4121,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
                     //quvantity
                     Container(
-                      width: width / 16.8,
+                      width: width / 29.8,
                       height: height / 21.9,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 0.6)),
@@ -4183,7 +4207,23 @@ class _Billing_PageState extends State<Billing_Page> {
                           border: Border.all(color: Colors.black, width: 0.6)),
                       child: TextField(
                         style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
-                        controller: Sales,
+                        controller: Sales2,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(
+                              left: width / 136.6, bottom: height / 65.7),
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      width: width / 13.8,
+                      height: height / 21.9,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black, width: 0.6)),
+                      child: TextField(
+                        style:GoogleFonts.openSans(fontWeight: FontWeight.w700),
+                        controller: Sales,//value
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.only(
@@ -4211,7 +4251,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
                     //Clear controllers
                     Container(
-                        width: width / 14.0,
+                        width: width / 30.0,
                         height: height / 21.9,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black, width: 0.6)),
@@ -4326,7 +4366,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                     color:Colors.black87
                                   )
                                 ),
-                                width: width / 2.7+width / 13.32,
+                                width: width / 2.76+width / 13.32,
                                 height: height / 16.425,
                                 child:
                                 TextField(
@@ -4414,7 +4454,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                   color:Colors.black87
                                 )
                               ),
-                                width: width / 15.8,
+                                width: width / 29.8,
                                 height: height / 16.425,
                                 child: Padding(
                                   padding:  EdgeInsets.only(left:width/68.3),
@@ -4490,7 +4530,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                   color:Colors.black87
                                 )
                               ),
-                                width: width / 11.18,
+                                width: width / 13.8,
                                 height: height / 16.425,
                                 child: Padding(
                                   padding:  EdgeInsets.only(left:width/136.6),
@@ -4519,7 +4559,37 @@ class _Billing_PageState extends State<Billing_Page> {
                                 border:Border.all(
                                   color:Colors.black87
                                 )
-                              ),width:width/22.766, height: height / 16.425,),
+                              ),
+                                width: width / 13.8,
+                                height: height / 16.425,
+                                child: Padding(
+                                  padding:  EdgeInsets.only(left:width/136.6),
+                                  child: TextField(
+                                    controller: _Streamcontroller7[index],
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: billing['Total'].toString(),
+                                        hintStyle: const TextStyle(color: Colors.red)
+                                    ),
+                                    onSubmitted: (_){
+                                      FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                        'Sales price': int.parse(_Streamcontroller5[index].text)* double.parse(_Streamcontroller7[index].text),
+                                      });
+
+                                      updatetotal();
+                                      SGSTfunction();
+                                      CGSTfunction();
+                                      Totalamounts();
+
+                                    },
+                                  ),
+                                )),
+                            Container(
+                              decoration: BoxDecoration(
+                                border:Border.all(
+                                  color:Colors.black87
+                                )
+                              ),width: width / 15.3, height: height / 16.425,),
 
                             //remove
                             Container(
@@ -4528,7 +4598,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                   color:Colors.black87
                                 )
                               ),
-                                width: width / 14.0,
+                                width: width / 30.0,
                                 height: height / 16.425,
                                 child: Center(
                                   child: InkWell(
@@ -4615,7 +4685,11 @@ class _Billing_PageState extends State<Billing_Page> {
                                       //WhatsApp button
                                       InkWell(
                                         onTap: () {
-
+                                          Showpayment();
+                                          getvalue("Suppilername", "Tax", "Suppilerinvoice", "purchaseno", "purchasedate", "payment","totalamountvalue");
+                                          Future.delayed(const Duration(seconds:7),(){
+                                            Navigator.pop(context);
+                                          });
 
                                         },
                                         child:
@@ -5178,6 +5252,7 @@ class _Billing_PageState extends State<Billing_Page> {
       itemname.clear();
       taxitem.clear();
       Sales.clear();
+      Sales2.clear();
       PPrice.clear();
       without_tax.clear();
       Box_NO.clear();
@@ -5214,6 +5289,8 @@ class _Billing_PageState extends State<Billing_Page> {
       Cgst = 0;
       totalamount = 0;
       TotalAmount2 = 0;
+      subtotalamount=0;
+      roundoff=0;
       // dropdownValue3 = list3.first;
     });
     //_typeAheadControllergender9.clear();
@@ -5462,6 +5539,7 @@ class _Billing_PageState extends State<Billing_Page> {
   }
 
   clearcontroller() {
+    print("clearing all main=================================");
     mobileno.clear();
     Cusname.clear();
     _typeAheadControllergender9.text="Walking Customer";
@@ -5476,8 +5554,14 @@ class _Billing_PageState extends State<Billing_Page> {
     customerarea.clear();
     layourbuilderclear.clear();
     setState(() {
+      subtotalamount=0;
+      roundoff=0;
+    });
+    setState(() {
       status = true;
       status2 = false;
+      subtotalamount=0;
+      roundoff=0;
       Payments = Payment.first;
       purchase_Date.text = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       Qty.text = "1";
@@ -5744,7 +5828,7 @@ class _Billing_PageState extends State<Billing_Page> {
           "Brand": itembrand,
           "Item": itemname.text,
           "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-          "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+          "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
           "Qty": Qty.text,
           "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
           "Imei no": imeinu,
@@ -5783,7 +5867,7 @@ class _Billing_PageState extends State<Billing_Page> {
           "Brand": itembrand,
           "Item": itemname.text,
           "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-          "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+          "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
           "Qty": Qty.text,
           //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
           "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
@@ -5815,6 +5899,7 @@ class _Billing_PageState extends State<Billing_Page> {
   final List<TextEditingController> _Streamcontroller6= List.generate(100, (index) => TextEditingController());
   final List<TextEditingController> _Streamcontroller7= List.generate(100, (index) => TextEditingController());
 
+  String margin="";
   ///billing collection document create function
   collectioncrearefuntion() async{
     setState(() {
@@ -5837,6 +5922,7 @@ class _Billing_PageState extends State<Billing_Page> {
           "purchasenote": purchase_notes.text,
           "tax": taxitem.text,
           "Itemdocid":itemdocuid,
+          "margin":margin,
           "time": DateFormat.jm().format(DateTime.now()),
           "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
           "timestamp": DateTime.now().microsecondsSinceEpoch,
@@ -5846,7 +5932,7 @@ class _Billing_PageState extends State<Billing_Page> {
           "save": false,
           "return": false,
           "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-          "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+          "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
           "Qty": Qty.text,
           "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
           "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
@@ -5952,11 +6038,13 @@ class _Billing_PageState extends State<Billing_Page> {
            Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
            Qty.text = "1";
            itemcat = documents.docs[i]["Category"].toString();
+           margin = documents.docs[i]["margin"].toString();
            itembrand = documents.docs[i]["Brand"].toString();
            Boxno = documents.docs[i]["BoxNo"].toString();
            Box_NO.text = documents.docs[i]["BoxNo"].toString();
            HSN_Code.text = documents.docs[i]["HSNCode"].toString();
            Sales.text = documents.docs[i]["Saleprice"].toString();
+           Sales2.text = documents.docs[i]["Saleprice"].toString();
            PPrice.text=documents.docs[i]["Landingcost"].toString();
            salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());//sales price
            serialvalue = documents.docs[i]["Serial NO"];
@@ -5988,6 +6076,7 @@ class _Billing_PageState extends State<Billing_Page> {
             if (int.parse(Stocks.text) > 0) {
               FirebaseFirestore.instance.collection("billing").doc(random).set({
                 "Total": "",
+                "billtype"
                 "itemcode": itemcode,
                 "Itemdocid":itemdocuid,
                 "Payment mode": Payments,
@@ -6098,7 +6187,7 @@ class _Billing_PageState extends State<Billing_Page> {
                 "Brand": itembrand,
                 "Item": itemname.text,
                 "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-                "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+                "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
                 "Qty": Qty.text,
                 //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
                 "Description":
@@ -6131,15 +6220,20 @@ class _Billing_PageState extends State<Billing_Page> {
                Loworder.text = documents.docs[i]["Loworder"].toString();
                Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
                Qty.text = "1";
+               margin = documents.docs[i]["margin"].toString();
                itemcat = documents.docs[i]["Category"].toString();
                itembrand = documents.docs[i]["Brand"].toString();
                Boxno = documents.docs[i]["BoxNo"].toString();
                Box_NO.text = documents.docs[i]["BoxNo"].toString();
                HSN_Code.text = documents.docs[i]["HSNCode"].toString();
                Sales.text = documents.docs[i]["Saleprice"].toString();
+               Sales2.text = documents.docs[i]["Saleprice"].toString();
                print(documents.docs[i]["Saleprice"].toString());
                print(documents.docs[i]["Landingcost"].toString());
                print("ppppppppp=========================================");
+               print(random);
+               print("ppppppppp=========================================");
+               print(customerdocid);
                print(documents.docs[i]["Landingcost"].toString());
                PPrice.text=documents.docs[i]["Landingcost"].toString();
                salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());
@@ -6282,7 +6376,7 @@ class _Billing_PageState extends State<Billing_Page> {
                  "Brand": itembrand,
                  "Item": itemname.text,
                  "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-                 "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+                 "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
                  "Qty": Qty.text,
                  //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
                  "Description":
@@ -6336,6 +6430,7 @@ class _Billing_PageState extends State<Billing_Page> {
               taxitem.text = documents.docs[i]["gst"].toString();
               Loworder.text = documents.docs[i]["Loworder"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
+              margin = documents.docs[i]["margin"].toString();
               Qty.text = "1";
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
@@ -6343,6 +6438,7 @@ class _Billing_PageState extends State<Billing_Page> {
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              Sales2.text = documents.docs[i]["Saleprice"].toString();
               PPrice.text=documents.docs[i]["Landingcost"].toString();
               salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());
               serialvalue = documents.docs[i]["Serial NO"];
@@ -6457,10 +6553,11 @@ class _Billing_PageState extends State<Billing_Page> {
                   .set({
                 "Total": totalamount,
                 "Payment mode": Payments,
-                "itemcode": status2 == true ? "N$itemcode" : "",
+                "itemcode": status2 == true ? "$itemcode" : "",
                 "Itemdocid":itemdocuid,
                 "Hsncode": HSN_Code.text,
                 "BoxNo": Box_NO.text,
+
                 "customername": customername.text,
                 "customerphone": customerphone.text,
                 "customeraddress": customeraddress.text,
@@ -6485,7 +6582,7 @@ class _Billing_PageState extends State<Billing_Page> {
                 "Brand": itembrand,
                 "Item": itemname.text,
                 "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-                "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+                "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
                 "Qty": Qty.text,
                 //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
                 "Description":
@@ -6510,6 +6607,7 @@ class _Billing_PageState extends State<Billing_Page> {
             setState(() {
               itemcode = documents.docs[i]["Itemcode"].toString();
               itemdocuid = documents.docs[i].id.toString();
+              margin = documents.docs[i]["margin"].toString();
               hsncpode = documents.docs[i]["HSNCode"].toString();
               layourbuilderclear3.text=documents.docs[i]["Itemcode"].toString();
               layourbuilderclear2.text=documents.docs[i]["Newitemname"].toString();
@@ -6519,12 +6617,14 @@ class _Billing_PageState extends State<Billing_Page> {
               Loworder.text = documents.docs[i]["Loworder"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
               Qty.text = "1";
+              margin = documents.docs[i]["margin"].toString();
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
               Boxno = documents.docs[i]["BoxNo"].toString();
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
+              Sales2.text = documents.docs[i]["Saleprice"].toString();
               print(documents.docs[i]["Saleprice"].toString());
               print(documents.docs[i]["Landingcost"].toString());
               PPrice.text=documents.docs[i]["Landingcost"].toString();
@@ -6641,7 +6741,7 @@ class _Billing_PageState extends State<Billing_Page> {
                   .set({
                 "Total": totalamount,
                 "Payment mode": Payments,
-                "itemcode": status2 == true ? "N$itemcode" : "",
+                "itemcode": status2 == true ? "$itemcode" : "",
                 "Itemdocid":itemdocuid,
                 "Hsncode": HSN_Code.text,
                 "BoxNo": Box_NO.text,
@@ -6673,7 +6773,7 @@ class _Billing_PageState extends State<Billing_Page> {
                 "Brand": itembrand,
                 "Item": itemname.text,
                 "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-                "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+                "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
                 "Qty": Qty.text,
                 //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
                 "Description":
@@ -8094,356 +8194,7 @@ class _Billing_PageState extends State<Billing_Page> {
     }
   }
 
-  getvalue(Suppilername, Tax, Suppilerinvoice, purchaseno, purchasedate,
-      payment, totalamountvalue) async {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    setState(() {
-      Billed_to =
-          "SHABIKA MOBILES,95/1,VALMIGI STREET,EAST TAMBARAM,CHENNAI-600059";
-      Shipped_to =
-          "SHABIKA MOBILES,95/1,VALMIGI STREET,EAST TAMBARAM,CHENNAI-600059";
-      Bill_Time = DateFormat.jm().format(DateTime.now());
-    });
 
-    List<p.Widget> widgets = [];
-
-    //container for profile image decoration
-    final container = p.Center(
-      child: p.Container(
-          child: p.Padding(
-        padding: const p.EdgeInsets.only(top: 5),
-        child: p.Row(mainAxisAlignment: p.MainAxisAlignment.start, children: [
-          p.Container(
-              width: 60,
-              child: p.Center(
-                child: p.Text("SNO".toString(),
-                    style: const p.TextStyle(color: PdfColors.black)),
-              )),
-          p.SizedBox(width: width / 273.2),
-          p.Container(
-              width: 80,
-              child: p.Center(
-                child: p.Text("Descriptions".toString(),
-                    style: const p.TextStyle(color: PdfColors.black)),
-              )),
-          p.SizedBox(width: width / 273.2),
-          p.Container(
-              width: 60,
-              child: p.Center(
-                child: p.Text("HSN/SAC".toString(),
-                    style: const p.TextStyle(color: PdfColors.black)),
-              )),
-          p.SizedBox(width: width / 273.2),
-          p.Container(
-              width: 60,
-              child: p.Center(
-                child: p.Text("Qty".toString(),
-                    style: const p.TextStyle(color: PdfColors.black)),
-              )),
-          p.SizedBox(width: width / 273.2),
-          p.Container(
-              width: 60,
-              child: p.Center(
-                child: p.Text("Rate".toString(),
-                    style: const p.TextStyle(color: PdfColors.black)),
-              )),
-          p.SizedBox(width: width / 273.2),
-          p.Container(
-              width: 60,
-              child: p.Center(
-                child: p.Text("Gst".toString(),
-                    style: const p.TextStyle(color: PdfColors.black)),
-              )),
-          p.SizedBox(width: width / 273.2),
-          p.Container(
-              width: 60,
-              child: p.Center(
-                child: p.Text("Total".toString(),
-                    style: const p.TextStyle(color: PdfColors.black)),
-              ))
-        ]),
-      )),
-    );
-    //widgets.add(container);
-
-    widgets.add(p.SizedBox(height: 5));
-
-    widgets.add(p.Stack(children: [
-      /*p.Container(
-          height: 700,
-          child: p.Image(await imageFromAssetBundle('assets/7728804.png'),
-              fit: p.BoxFit.fill)),*/
-
-      /*p.Padding(
-          padding: p.EdgeInsets.only(top: 260),
-     child: container,
-        ),*/
-      p.Padding(
-          padding: const p.EdgeInsets.only(top: 90),
-          child: p.Container(
-              height: 600,
-              child: p.Column(children: [
-                p.Row(mainAxisAlignment: p.MainAxisAlignment.start, children: [
-                  p.Container(
-                      child: p.Column(
-                          crossAxisAlignment: p.CrossAxisAlignment.start,
-                          mainAxisAlignment: p.MainAxisAlignment.start,
-                          children: [
-                        /* p.Row(
-                                              children: [
-                                                p.Container(
-                                                  child: p.Center(
-                                                    child:  p.Text("Customer Name :",style: p.TextStyle(color: PdfColors.black)),
-                                                  ),
-                                                  width:110,
-                                                  height: 20,
-                                                ),
-                                                p.Container(
-                                                    width:140,
-                                                    height: 20,
-                                                    child:p.Center(
-                                                      child:  p.Text(Customer_name.toString(),style: p.TextStyle(color: PdfColors.black)),
-                                                    )
-                                                )
-                                              ]
-                                          ),*/
-                        p.SizedBox(height: 5),
-                        p.SizedBox(height: 5),
-                        p.Row(children: [
-                          p.Container(
-                              width: 110,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text("Customer Name:",
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              )),
-                          p.Container(
-                              width: 140,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text(Suppilername,
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              ))
-                        ]),
-                        p.SizedBox(height: 5),
-                        p.Row(children: [
-                          p.Container(
-                              width: 110,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text("Date :",
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              )),
-                          p.Container(
-                              width: 140,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text(purchasedate,
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              ))
-                        ]),
-                        p.SizedBox(height: 5),
-                        p.Row(children: [
-                          p.Container(
-                              width: 110,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text("Billed To :",
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              )),
-                          p.Container(
-                              width: 120,
-                              child: p.Center(
-                                child: p.Text(Billed_to,
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              ))
-                        ]),
-                      ])),
-                  p.SizedBox(width: width / 273.2),
-                  p.Container(
-                      child: p.Column(
-                          crossAxisAlignment: p.CrossAxisAlignment.start,
-                          mainAxisAlignment: p.MainAxisAlignment.start,
-                          children: [
-                        p.SizedBox(height: 5),
-                        p.Row(children: [
-                          p.Container(
-                              width: 110,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text("Payment Type:",
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              )),
-                          p.Container(
-                              width: 140,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text(payment,
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              ))
-                        ]),
-                        p.SizedBox(height: 5),
-                        p.Row(children: [
-                          p.Container(
-                              width: 110,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text("Time :",
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              )),
-                          p.Container(
-                            width: 140,
-                            height: 20,
-                            child: p.Center(
-                                child: p.Text(Bill_Time,
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black))),
-                          )
-                        ]),
-                        p.SizedBox(height: 5),
-                        p.Row(children: [
-                          p.Container(
-                              width: 110,
-                              height: 20,
-                              child: p.Center(
-                                child: p.Text("Shipped To :",
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              )),
-                          p.Container(
-                              width: 120,
-                              child: p.Center(
-                                child: p.Text(Shipped_to.toString(),
-                                    style: const p.TextStyle(
-                                        color: PdfColors.black)),
-                              ))
-                        ]),
-                      ])),
-                ]),
-                p.SizedBox(height: 5),
-                container,
-                p.SizedBox(height: 5),
-                p.Container(
-                  child: p.ListView.builder(
-                    itemCount: Destription.length,
-                    itemBuilder: (context, index) {
-                      return p.Container(
-                          child: p.Row(
-                              mainAxisAlignment: p.MainAxisAlignment.start,
-                              children: [
-                            p.Container(
-                                width: 60,
-                                height: height / 16.425,
-                                child: p.Center(
-                                  child: p.Text("${index + 1}",
-                                      style: const p.TextStyle(
-                                          color: PdfColors.black)),
-                                )),
-                            p.SizedBox(width: width / 273.2),
-                            p.Container(
-                                width: 80,
-                                height: height / 16.425,
-                                child: p.Center(
-                                  child: p.Text(Destription[index].toString(),
-                                      style: const p.TextStyle(
-                                          color: PdfColors.black)),
-                                )),
-                            p.SizedBox(width: width / 273.2),
-                            p.Container(
-                                width: 60,
-                                height: height / 16.425,
-                                child: p.Center(
-                                  child: p.Text(HSNcode[index].toString(),
-                                      style: const p.TextStyle(
-                                          color: PdfColors.black)),
-                                )),
-                            p.SizedBox(width: width / 273.2),
-                            p.Container(
-                                width: 60,
-                                height: height / 16.425,
-                                child: p.Center(
-                                  child: p.Text(Quvantity[index].toString(),
-                                      style: const p.TextStyle(
-                                          color: PdfColors.black)),
-                                )),
-                            p.SizedBox(width: width / 273.2),
-                            p.Container(
-                                width: 60,
-                                height: height / 16.425,
-                                child: p.Center(
-                                  child: p.Text(Rate[index].toString(),
-                                      style: const p.TextStyle(
-                                          color: PdfColors.black)),
-                                )),
-                            p.SizedBox(width: width / 273.2),
-                            p.Container(
-                                width: 60,
-                                height: height / 16.425,
-                                child: p.Center(
-                                  child: p.Text(Tax,
-                                      style: const p.TextStyle(
-                                          color: PdfColors.black)),
-                                )),
-                            p.SizedBox(width: width / 273.2),
-                            p.Container(
-                                width: 60,
-                                height: height / 16.425,
-                                child: p.Center(
-                                  child: p.Text(Totalamount[index].toString(),
-                                      style: const p.TextStyle(
-                                          color: PdfColors.black)),
-                                ))
-                          ]));
-                    },
-                  ),
-                ),
-                p.Padding(
-                    padding: p.EdgeInsets.only(
-                        left: width / 136.6, right: 10, top: 200),
-                    child: p.Divider(color: PdfColors.black, thickness: 0.8)),
-                p.Padding(
-                    padding: p.EdgeInsets.only(left: width / 136.6, top: 500),
-                    child: p.Row(
-                        mainAxisAlignment: p.MainAxisAlignment.end,
-                        children: [
-                          p.Container(
-                            width: width / 300.20,
-                            child: p.Text("Total :",
-                                style:
-                                    const p.TextStyle(color: PdfColors.black)),
-                          ),
-                          p.SizedBox(width: width / 136.6),
-                          p.Container(
-                            width: width / 13.66, //--100
-                            child: p.Text(totalamountvalue.toString(),
-                                style:
-                                    const p.TextStyle(color: PdfColors.black)),
-                          )
-                        ]))
-              ]))),
-    ]));
-
-    final pdf = p.Document();
-    pdf.addPage(
-      p.MultiPage(
-        pageFormat: PdfPageFormat.a4,
-        build: (context) => widgets, //here goes the widgets list
-      ),
-    );
-    Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => pdf.save(),
-    );
-  }
 
   Widget textfield2(
       FocusNode focusNode,

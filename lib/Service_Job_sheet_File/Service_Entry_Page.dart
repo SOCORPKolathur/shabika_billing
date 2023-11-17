@@ -338,6 +338,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
       }
     }
   }
+  String cusid = "";
   getcutomerdetails(val) async {
     var Document =  await FirebaseFirestore.instance.collection("Customer").get();
     for (int i = 0; i < Document.docs.length; i++) {
@@ -345,6 +346,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
         setState(() {
           alphone.text=Document.docs[i]['Alphone'].toString();
           customername.text=Document.docs[i]['Customername'].toString();
+          cusid=Document.docs[i].id.toString();
         });
       }
     }
@@ -586,6 +588,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
     "cusmob": _typeAheadControllergender9.text,
     "cusalmob": alphone.text,
     "cusname": customername.text,
+      "cusid":cusid,
     "brand": _typeAheadControllerbrand2.text,
     "model": modelcon.text,
     "color":colorcon.text,
@@ -636,6 +639,7 @@ class _Service_Entry_Page2State extends State<Service_Entry_Page2> {
 
       });
     }
+
   }
   Savebillpopup() {
     double width = MediaQuery.of(context).size.width;

@@ -701,7 +701,9 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                               child: Text(
                                                 buillin1['status'].toString(),
                                                 style: GoogleFonts.openSans(
-                                                    fontWeight: FontWeight.w600),
+                                                    fontWeight: FontWeight.w600,
+                                                color: buillin1['status']== "Received"? Colors.green : Colors.brown
+                                                ),
                                               ),
                                             )),
 
@@ -888,7 +890,11 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                               child: Text(
                                                 buillin1['status'].toString(),
                                                 style: GoogleFonts.openSans(
-                                                    fontWeight: FontWeight.w600),
+                                                    fontWeight: FontWeight.w600,
+                                                    color: buillin1['status']== "Received"? Colors.green : Colors.brown
+
+
+                                                ),
                                               ),
                                             )),
 
@@ -1073,7 +1079,9 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                               child: Text(
                                                 buillin1['status'].toString(),
                                                 style: GoogleFonts.openSans(
-                                                    fontWeight: FontWeight.w600),
+                                                    fontWeight: FontWeight.w600,
+                                                    color: buillin1['status']== "Received"? Colors.green : Colors.brown
+                                                ),
                                               ),
                                             )),
 
@@ -1260,7 +1268,9 @@ class _Replacement_ReportsState extends State<Replacement_Reports> with SingleTi
                                             child: Text(
                                               buillin1['status'].toString(),
                                               style: GoogleFonts.openSans(
-                                                  fontWeight: FontWeight.w600),
+                                                  fontWeight: FontWeight.w600,
+                                                  color: buillin1['status']== "Received"? Colors.green : Colors.brown
+                                              ),
                                             ),
                                           )),
 

@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shabika_billing/walkingcustomerreports.dart';
 
 class Customer_Page_Reports extends StatefulWidget {
   const Customer_Page_Reports({Key? key}) : super(key: key);
@@ -45,7 +46,32 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
                 style: GoogleFonts.openSans(color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: width / 54.64),),
-            )
+            ),
+            SizedBox(
+              width: 30,
+            ),
+            InkWell(
+              onTap: (){
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context)=> WalkingCuReports())
+                );
+              },
+              child: Container(
+                height: height / 20.9,
+                width: width / 5.66,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5), color: Colors.indigo),
+                child: Center(
+                  child: Text(
+                    "Walking Customer Reports",
+                    style: GoogleFonts.openSans(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: width / 89.64),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
         SizedBox(
@@ -53,7 +79,7 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
         ),
 
         Container(
-          height: height / 1.194,
+          height: height/ 1.294,
           width: width / 1.05,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
@@ -339,6 +365,16 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
                               border: Border.all(
                                   color: Colors.black, width: 1.2),
                             ),
+                            child: Center(child: Text(
+                              "Date\nTime", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                          ),
+                          Container(
+                            height: height / 13.9,
+                            width: width / 13.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
                             child: Center(
                               child: Text("Item\nPurch NO".toString(),
                                 textAlign: TextAlign.center,
@@ -395,28 +431,10 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
                           ),
 
 
-                          Container(
-                            height: height / 13.9,
-                            width: width / 13.66,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black, width: 1.2),
-                            ),
-                            child: Center(child: Text(
-                              "Time", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                          ),
 
 
-                          Container(
-                            height: height / 13.9,
-                            width: width / 13.66,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black, width: 1.2),
-                            ),
-                            child: Center(child: Text(
-                              "Date", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
-                          ),
+
+
 
 
                           Container(
@@ -454,6 +472,16 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
                             child: Center(child: Text(
                               "Total", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
                           ),
+                          Container(
+                            height: height / 13.9,
+                            width: width / 13.66,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black, width: 1.2),
+                            ),
+                            child: Center(child: Text(
+                              "Actions", style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),)),
+                          ),
 
 
                         ],
@@ -475,7 +503,7 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
                               return Center(child: Container(),);
                             }
                             if (snapshot.data!.docs.length == 0) {
-                              return Center(child: Text("Field is empty",
+                              return Center(child: Text("Customer has not purchased any products",
                                 style: GoogleFonts.openSans(),),);
                             }
                             return ListView.builder(
@@ -489,6 +517,17 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
                                   Row(
                                     children: [
                                       SizedBox(width: width / 100.53,),
+                                      Container(
+                                        height: height / 13.9,
+                                        width: width / 13.66,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.black,
+                                                width: 1.2)),
+                                        child: Center(child: Text(
+                                          "${customer['date'].toString()}\n${customer['time'].toString()}",
+                                          style: GoogleFonts.openSans(),)),
+                                      ),
                                       Container(
                                         height: height / 13.9,
                                         width: width / 13.66,
@@ -559,30 +598,10 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
                                       ),
 
 
-                                      Container(
-                                        height: height / 13.9,
-                                        width: width / 13.66,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.black,
-                                                width: 1.2)),
-                                        child: Center(child: Text(
-                                          customer['time'].toString(),
-                                          style: GoogleFonts.openSans(),)),
-                                      ),
 
 
-                                      Container(
-                                        height: height / 13.9,
-                                        width: width / 13.66,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.black,
-                                                width: 1.2)),
-                                        child: Center(child: Text(
-                                          customer['date'].toString(),
-                                          style: GoogleFonts.openSans(),)),
-                                      ),
+
+
 
 
                                       Container(
@@ -622,6 +641,31 @@ class _Customer_Page_ReportsState extends State<Customer_Page_Reports> {
                                         child: Center(child: Text(
                                           customer['Totalamount'].toString(),
                                           style: GoogleFonts.openSans(),)),
+                                      ),
+                                      Container(
+                                        height: height / 13.9,
+                                        width: width / 13.66,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.black,
+                                                width: 1.2)),
+                                        child: Center(child: Material(
+                                          elevation: 10,
+                                          color: Colors.indigo,
+                                          borderRadius: BorderRadius.circular(100),
+                                          child: Container(
+                                              width: width / 20.66,
+                                              height: height / 20.9,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(
+                                                      100),
+                                                  color: Colors.indigo
+                                              ),
+                                              child: Center(child: Text("Print Bill",
+                                                style: GoogleFonts.openSans(
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white),))),
+                                        )),
                                       ),
 
 

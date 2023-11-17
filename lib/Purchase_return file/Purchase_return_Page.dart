@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 
 import '../LandingPage/LandingPage.dart';
 import '../Puchase edit_page1.dart';
+import '../Purchase_return_Page.dart';
 
 class Purchase_return_Page extends StatefulWidget {
   const Purchase_return_Page({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
   void initState() {
     totalamount();
     additemduntion();
+    datefun();
     // TODO: implement initState
     super.initState();
   }
@@ -110,6 +112,68 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
   int day2 = 0;
   int month2 = 0;
   List<String> mydate = [];
+
+  datefun(){
+    setState(() {
+
+
+      setState(() {
+        Datecontroller.text = DateFormat('dd/M/yyyy').format(DateTime.now());
+        Datecontroller2.text =
+            DateFormat('dd/M/yyyy').format(DateTime.now());
+      });
+      setState(() {
+
+        year1 = DateTime.now().year;
+        day1 = DateTime.now().day;
+        month1 = DateTime.now().month;
+
+
+        year2 = DateTime.now().year;
+        day2 = DateTime.now().day;
+        month2 = DateTime.now().month;
+
+        //set output date to TextField value.
+      });
+      DateTime startDate = DateTime.utc(year1, month1, day1);
+      DateTime endDate = DateTime.utc(year2, month2, day2);
+      print(startDate);
+      print(endDate);
+      print("+++++++=================");
+      getDaysInBetween() {
+        final int difference =
+            endDate.difference(startDate).inDays;
+        return difference+1;
+      }
+      print(getDaysInBetween());
+
+
+      final items =
+      List<DateTime>.generate(getDaysInBetween(), (i) {
+        DateTime date = startDate;
+        return date.add(Duration(days: i));
+      });
+      setState(() {
+        mydate.clear();
+      });
+      print(items.length);
+      for (int i = 0; i < items.length; i++) {
+        setState(() {
+          isserach = true;
+          mydate.add(formatter.format(items[i]).toString());
+        });
+
+      }
+    });
+    print(mydate);
+
+    print(isserach);
+    print("+++++++++++++000000000+++++++++++");
+    setState(() {
+
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -255,7 +319,8 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
           height: height/43.8,
         ),
 
-        Row(children: [
+        Row(
+          children: [
             SizedBox(
               width: width/43.8,
             ),
@@ -341,7 +406,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
                   if (pickedDate != null) {
                     //pickedDate output format => 2021-03-10 00:00:00.000
-                    String formattedDate = DateFormat('d/M/yyyy').format(
+                    String formattedDate = DateFormat('dd / M / yyyy').format(
                         pickedDate);
                     //formatted date output using intl package =>  2021-03-16
                     //you can implement different kind of Date Format here according to your requirement
@@ -632,120 +697,6 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                 ),
               ),
             ),
-          ],),
-
-        SizedBox(
-          height: height/43.8,
-        ),
-
-        Row(
-          children: [
-            SizedBox(
-              width: width/43.8,
-            ),
-            //Status-2
-            Text("Payment\nType  ",style: GoogleFonts.openSans(
-                color: Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: width/95.64),),
-            SizedBox(width:width/35.6),
-            Container(
-                height: height / 21.9,
-                width: width / 9.5,
-                decoration: BoxDecoration(
-                    color:Colors.white,
-                    borderRadius: BorderRadius.circular(5)
-                ),
-                child:
-                LayoutBuilder(
-                  builder: (BuildContext, BoxConstraints) =>
-                      Autocomplete<String>(
-                        initialValue: const TextEditingValue(
-                          selection: TextSelection(
-                            isDirectional: true,
-                            baseOffset: 10,
-                            extentOffset: 1,
-                          ),
-
-                        ),
-                        fieldViewBuilder: (context, Controller2, focusNode, onFieldSubmitted){
-                          return
-                            TextFormField(
-                              onChanged: (_){
-                                setState((){
-                                  Paymenttype=Controller2;
-                                });
-                              },
-                              style: GoogleFonts.openSans(fontSize: width/91.06,fontWeight: FontWeight.w500),
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding:
-                                  EdgeInsets.only( bottom: height / 43.8,left: width/136.6)),
-                              controller: Controller2,
-                              focusNode: focusNode,
-                              onFieldSubmitted: (String value) {
-                                onFieldSubmitted();
-                              },
-                            );
-                        },
-                        optionsViewBuilder:
-                            (context, onSelected, options) => Align(
-                            alignment: Alignment.topLeft,
-                            child: Material(
-                              shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                BorderRadius.vertical(
-                                    bottom:
-                                    Radius.circular(4.0)),
-                              ),
-                              child: SizedBox(
-                                height: 52.0 * options.length,
-                                width:
-                                BoxConstraints.biggest.width,
-                                child: ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  itemCount: options.length,
-                                  shrinkWrap: false,
-                                  itemBuilder: (BuildContext, index) {
-                                    final String option = options.elementAt(index);
-                                    return InkWell(
-                                      onTap: () =>
-                                          onSelected(option),
-                                      child: Padding(padding: const EdgeInsets.all(16.0),
-                                        child: Text(option),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            )),
-                        optionsBuilder:
-                            (TextEditingValue textEditingValue) {
-                          if (textEditingValue.text == '') {
-                            return const Iterable<String>.empty();
-                          }
-
-                          return PaymentType.where((String option) {
-                            return option.toLowerCase().contains(
-                                textEditingValue.text.toLowerCase());
-                          });
-                        },
-                        onSelected: (String selection) {
-                          setState(() {
-                            Status2=selection;
-                            isserach=true;
-                            Username=selection;
-                            Paymenttype.text=selection;
-                          });
-
-                        },
-                        displayStringForOption: (Value) {
-                          return Value;
-                        },
-                      ),
-                )
-
-            ),
           ],
         ),
 
@@ -764,10 +715,12 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
           ),
           child:SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
 
                 const SizedBox(height:25),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(width:width/54.15,),
 
@@ -811,13 +764,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                         ),
                         child: Center(child: Text("Suppiler Name",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
 
-                    Container(
-                        width:width/4.66,
-                        height:height/13.14,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black)
-                        ),
-                        child: Center(child: Text("Reason",style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: const Color(0xff5801e8)),))),
+
 
                     Container(
                         width:width/10.66,
@@ -873,12 +820,13 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
                         var buillin1=snapshot.data!.docs[index];
 
-                          if (isserach == true) {
+                        if (isserach == true) {
 
                             if (mydate.isNotEmpty && Suppilercontroller.text == "" && Invoicecontroller.text == "" && Paymenttype.text == '') {
                               if (mydate.contains(buillin1['purchasedate'].toString())) {
                                 return
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(width:width/54.15,),
 
@@ -941,14 +889,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                           ),
                                           child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                                      Container(
-                                          width:width/4.66,
-                                          height:height/13.14,
-                                          padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(color: Colors.black,width: 1.2)
-                                          ),
-                                          child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+
 
                                       Container(
                                           width:width/10.66,
@@ -1000,7 +941,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                               //edit button
                                               InkWell(
                                                 onTap: (){
-                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => EditPage1_purchase(buillin1.id),));
+                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Purcharse_Return_Page(buillin1["suppilierinvoiceno"]),));
                                                 },
                                                 child: Material(
                                                   elevation: 10,
@@ -1024,477 +965,317 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                     ],
                                   );
                               }
+                              else{
+                                return SizedBox();
+                              }
                             }
 
+                            if (mydate.isNotEmpty && Suppilercontroller.text != "" && Invoicecontroller.text == "" && Paymenttype.text == '') {
+                              if (mydate.contains(buillin1['purchasedate'].toString())) {
+                                if (buillin1['suppilername'].toString().toLowerCase().startsWith(Suppilercontroller.text.toLowerCase())) {
+                                  return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width:width/54.15,),
 
-                            else if (buillin1['suppilername'].toString().toLowerCase().startsWith(Suppilercontroller.text.toLowerCase())
-                                &&Invoicecontroller.text==""&&Paymenttype.text==""&&Datecontroller.text==""&&Datecontroller2.text=="" ||
-                                buillin1['suppilierinvoiceno'].toString().toLowerCase().startsWith(Invoicecontroller.text.toLowerCase())
-                                    &&Suppilercontroller.text==""&&Paymenttype.text==""&&Datecontroller.text==""&&Datecontroller2.text==""
-                            )
-                            {
-                              return
-                                Row(
-                                  children: [
-                                    SizedBox(width:width/54.15,),
+              Container(
+                  width:width/15.66,
+                  height:height/13.14,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black,width: 1.2)
+                  ),
+                  child:
+                  Center(child:
+                  Text(buillin1['purchasedate'].toString(),
+                    style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.center,
+                  ))),
 
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child:
-                                        Center(child:
-                                        Text(buillin1['purchasedate'].toString(),
-                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
-                                          textAlign: TextAlign.center,
-                                        ))),
+              Container(
+                  width:width/18.507,
+                  height:height/13.14,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black,width: 1.2)
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
+                      buillin1['return']==true?
+                      Text("(Return)",
+                        style:
+                        GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
+                      ):const SizedBox(),
+                    ],
+                  )
+              ),
 
-                                    Container(
-                                        width:width/18.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
-                                            buillin1['return']==true?
-                                            Text("(Return)",
-                                              style:
-                                              GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
-                                            ):const SizedBox(),
-                                          ],
-                                        )
-                                    ),
+              Container(
+                  width:width/15.66,
+                  height:height/13.14,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black,width: 1.2)
+                  ),
 
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
+                  child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+              Container(
+                  width:width/15.66,
+                  height:height/13.14,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black,width: 1.2)
+                  ),
+                  child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+              Container(
+                  width:width/4.66,
+                  height:height/13.14,
+                  padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black,width: 1.2)
+                  ),
+                  child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                                    Container(
-                                        width:width/4.66,
-                                        height:height/13.14,
-                                        padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                                    Container(
-                                        width:width/4.66,
-                                        height:height/13.14,
-                                        padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                                    Container(
-                                        width:width/10.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+              Container(
+                  width:width/10.66,
+                  height:height/13.14,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black,width: 1.2)
+                  ),
+                  child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                                    Container(
-                                        width:width/13.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+              Container(
+                  width:width/13.507,
+                  height:height/13.14,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black,width: 1.2)
+                  ),
+                  child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                                    Container(
-                                        width:width/8.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black)
-                                        ),
-                                        child:
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            //view button
-                                            InkWell(
-                                              onTap: (){
-                                                showallitemapopup(buillin1.id);
+              Container(
+                  width:width/8.507,
+                  height:height/13.14,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black)
+                  ),
+                  child:
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //view button
+                      InkWell(
+                        onTap: (){
+                          showallitemapopup(buillin1.id);
+                        },
+                        child: Material(
+                          elevation: 10,
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(100),
+                          child: Container(
+                              width:width/13.66,
+                              height:height/21.9,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: Colors.green
+                              ),
+                              child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
+                        ),
+                      ),
 
-                                              },
-                                              child: Material(
-                                                elevation: 10,
-                                                color: Colors.green,
-                                                borderRadius: BorderRadius.circular(100),
-                                                child: Container(
-                                                    width:width/13.66,
-                                                    height:height/21.9,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(100),
-                                                        color: Colors.green
-                                                    ),
-                                                    child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
-                                              ),
-                                            ),
+                      SizedBox(width:width/136.6,),
+                      //edit button
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Purcharse_Return_Page(buillin1["suppilierinvoiceno"]),));
+                        },
+                        child: Material(
+                          elevation: 10,
 
-                                            SizedBox(width:width/136.6,),
-                                            //edit button
-                                            InkWell(
-                                              onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context) => EditPage1_purchase(buillin1.id),));
-                                              },
-                                              child: Material(
-                                                elevation: 10,
+                          borderRadius: BorderRadius.circular(100),
+                          child: Container(
+                              width:width/45.53,
+                              height:height/21.9,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
 
-                                                borderRadius: BorderRadius.circular(100),
-                                                child: Container(
-                                                    width:width/45.53,
-                                                    height:height/21.9,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Center(child: Icon(Icons.edit,color:
+                              Colors.black,size:width/68.3))),
+                        ),
+                      ),
+                    ],
+                  )
+              ),
 
-                                                    ),
-                                                    child: Center(child: Icon(Icons.edit,color:
-                                                    Colors.black,size:width/68.3))),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                    ),
-
-                                  ],
-                                );
-                            }
-
-                            else if (
-                            buillin1['Payment mode'].toString().toLowerCase().startsWith(Paymenttype.text.toLowerCase())
-                                &&Suppilercontroller.text==""&&Invoicecontroller.text==""&&Datecontroller.text==""&&Datecontroller2.text==""
-                            )
-                            {
-                              return
-                                Row(
-                                  children: [
-                                    SizedBox(width:width/54.15,),
-
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child:
-                                        Center(child:
-                                        Text(buillin1['purchasedate'].toString(),
-                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
-                                          textAlign: TextAlign.center,
-                                        ))),
-
-                                    Container(
-                                        width:width/18.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
-                                            buillin1['return']==true?
-                                            Text("(Return)",
-                                              style:
-                                              GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
-                                            ):const SizedBox(),
-                                          ],
-                                        )
-                                    ),
-
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-
-                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/4.66,
-                                        height:height/13.14,
-                                        padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/4.66,
-                                        height:height/13.14,
-                                        padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/10.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/13.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/8.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black)
-                                        ),
-                                        child:
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            //view button
-                                            InkWell(
-                                              onTap: (){
-                                                showallitemapopup(buillin1.id);
-
-                                              },
-                                              child: Material(
-                                                elevation: 10,
-                                                color: Colors.green,
-                                                borderRadius: BorderRadius.circular(100),
-                                                child: Container(
-                                                    width:width/13.66,
-                                                    height:height/21.9,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(100),
-                                                        color: Colors.green
-                                                    ),
-                                                    child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
-                                              ),
-                                            ),
-
-                                            SizedBox(width:width/136.6,),
-                                            //edit button
-                                            InkWell(
-                                              onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context) => EditPage1_purchase(buillin1.id),));
-                                              },
-                                              child: Material(
-                                                elevation: 10,
-
-                                                borderRadius: BorderRadius.circular(100),
-                                                child: Container(
-                                                    width:width/45.53,
-                                                    height:height/21.9,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(100),
-
-                                                    ),
-                                                    child: Center(child: Icon(Icons.edit,color:
-                                                    Colors.black,size:width/68.3))),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                    ),
-
-                                  ],
-                                );
-                            }
-
-                            else  if ( buillin1['suppilername'].toString().toLowerCase().startsWith(Username2.toLowerCase())
-                                      && buillin1['suppilierinvoiceno'].toString().toLowerCase().startsWith(Username.toLowerCase())
-                                      && buillin1['Payment mode'].toString().toLowerCase().startsWith(Username.toLowerCase()))
-                            {
-                              return
-                                Row(
-                                  children: [
-                                    SizedBox(width:width/54.15,),
-
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child:
-                                        Center(child:
-                                        Text(buillin1['purchasedate'].toString(),
-                                          style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
-                                          textAlign: TextAlign.center,
-                                        ))),
-
-                                    Container(
-                                        width:width/18.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
-                                            buillin1['return']==true?
-                                            Text("(Return)",
-                                              style:
-                                              GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
-                                            ):const SizedBox(),
-                                          ],
-                                        )
-                                    ),
-
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-
-                                        child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/15.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/4.66,
-                                        height:height/13.14,
-                                        padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/4.66,
-                                        height:height/13.14,
-                                        padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/10.66,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/13.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black,width: 1.2)
-                                        ),
-                                        child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
-
-                                    Container(
-                                        width:width/8.507,
-                                        height:height/13.14,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black)
-                                        ),
-                                        child:
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            //view button
-                                            InkWell(
-                                              onTap: (){
-                                                showallitemapopup(buillin1.id);
-
-                                              },
-                                              child: Material(
-                                                elevation: 10,
-                                                color: Colors.green,
-                                                borderRadius: BorderRadius.circular(100),
-                                                child: Container(
-                                                    width:width/13.66,
-                                                    height:height/21.9,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(100),
-                                                        color: Colors.green
-                                                    ),
-                                                    child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
-                                              ),
-                                            ),
-
-                                            SizedBox(width:width/136.6,),
-                                            //edit button
-                                            InkWell(
-                                              onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context) => EditPage1_purchase(buillin1.id),));
-                                              },
-                                              child: Material(
-                                                elevation: 10,
-
-                                                borderRadius: BorderRadius.circular(100),
-                                                child: Container(
-                                                    width:width/45.53,
-                                                    height:height/21.9,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(100),
-
-                                                    ),
-                                                    child: Center(child: Icon(Icons.edit,color:
-                                                    Colors.black,size:width/68.3))),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                    ),
-
-                                  ],
-                                );
-                            }
-
+            ],
+          );
+      }
+                              }
+                             else{
+                               return SizedBox();
+                             }
                           }
+                            if (mydate.isNotEmpty && Suppilercontroller.text == "" && Invoicecontroller.text != "" && Paymenttype.text == '') {
+                              if (mydate.contains(
+                                  buillin1['purchasedate'].toString())) {
+                                if (buillin1['purchaseno']
+                                    .toString()
+                                    .toLowerCase()
+                                    .startsWith(
+                                    Invoicecontroller.text.toLowerCase())) {
+                                  return
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(width:width/54.15,),
 
+                                        Container(
+                                            width:width/15.66,
+                                            height:height/13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black,width: 1.2)
+                                            ),
+                                            child:
+                                            Center(child:
+                                            Text(buillin1['purchasedate'].toString(),
+                                              style: GoogleFonts.openSans(fontWeight: FontWeight.w600),
+                                              textAlign: TextAlign.center,
+                                            ))),
+
+                                        Container(
+                                            width:width/18.507,
+                                            height:height/13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black,width: 1.2)
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Text(buillin1['purchaseno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),),
+                                                buillin1['return']==true?
+                                                Text("(Return)",
+                                                  style:
+                                                  GoogleFonts.openSans(fontSize: width/97.571, color:  Colors.red),
+                                                ):const SizedBox(),
+                                              ],
+                                            )
+                                        ),
+
+                                        Container(
+                                            width:width/15.66,
+                                            height:height/13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black,width: 1.2)
+                                            ),
+
+                                            child: Center(child: Text(buillin1['suppilierinvoiceno'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+
+                                        Container(
+                                            width:width/15.66,
+                                            height:height/13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black,width: 1.2)
+                                            ),
+                                            child: Center(child: Text(buillin1['suppilerid'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+
+                                        Container(
+                                            width:width/4.66,
+                                            height:height/13.14,
+                                            padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black,width: 1.2)
+                                            ),
+                                            child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+
+
+
+                                        Container(
+                                            width:width/10.66,
+                                            height:height/13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black,width: 1.2)
+                                            ),
+                                            child: Center(child: Text(buillin1['Payment mode'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+
+                                        Container(
+                                            width:width/13.507,
+                                            height:height/13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black,width: 1.2)
+                                            ),
+                                            child: Center(child: Text(buillin1['Total'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+
+                                        Container(
+                                            width:width/8.507,
+                                            height:height/13.14,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black)
+                                            ),
+                                            child:
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                //view button
+                                                InkWell(
+                                                  onTap: (){
+                                                    showallitemapopup(buillin1.id);
+                                                  },
+                                                  child: Material(
+                                                    elevation: 10,
+                                                    color: Colors.green,
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    child: Container(
+                                                        width:width/13.66,
+                                                        height:height/21.9,
+                                                        decoration: BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(100),
+                                                            color: Colors.green
+                                                        ),
+                                                        child: Center(child: Text("View",style: GoogleFonts.openSans(fontWeight: FontWeight.w600,color: Colors.white),))),
+                                                  ),
+                                                ),
+
+                                                SizedBox(width:width/136.6,),
+                                                //edit button
+                                                InkWell(
+                                                  onTap: (){
+                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Purcharse_Return_Page(buillin1["suppilierinvoiceno"]),));
+                                                  },
+                                                  child: Material(
+                                                    elevation: 10,
+
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    child: Container(
+                                                        width:width/45.53,
+                                                        height:height/21.9,
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(100),
+
+                                                        ),
+                                                        child: Center(child: Icon(Icons.edit,color:
+                                                        Colors.black,size:width/68.3))),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                        ),
+
+                                      ],
+                                    );
+                                }
+                                else {
+                                  return SizedBox();
+                                }
+                              }
+                            }
+                          }
                         else if(isserach==false&&mydate.isEmpty){
-
-                         return
-                           Row(
+                          return Row(
+                             mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                              SizedBox(width:width/54.15,),
 
@@ -1557,14 +1338,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                  ),
                                  child: Center(child: Text(buillin1['suppilername'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
 
-                             Container(
-                                 width:width/4.66,
-                                 height:height/13.14,
-                                 padding:EdgeInsets.symmetric(horizontal: width/683,vertical: height/328.5),
-                                 decoration: BoxDecoration(
-                                     border: Border.all(color: Colors.black,width: 1.2)
-                                 ),
-                                 child: Center(child: Text(buillin1['Reason']==""?"null":buillin1['Reason'].toString(),style: GoogleFonts.openSans(fontWeight: FontWeight.w600),))),
+
 
                              Container(
                                  width:width/10.66,
@@ -1596,7 +1370,6 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                      InkWell(
                                        onTap: (){
                                          showallitemapopup(buillin1.id);
-
                                        },
                                        child: Material(
                                          elevation: 10,
@@ -1617,7 +1390,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                                      //edit button
                                      InkWell(
                                        onTap: (){
-                                         Navigator.push(context, MaterialPageRoute(builder: (context) => EditPage1_purchase(buillin1.id),));
+                                         Navigator.push(context, MaterialPageRoute(builder: (context) => Purcharse_Return_Page(buillin1["suppilierinvoiceno"]),));
                                        },
                                        child: Material(
                                          elevation: 10,
@@ -1641,8 +1414,7 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
                            ],
                          );
                         }
-                        return
-                           const SizedBox();
+                        return const SizedBox();
                       },);
                   },
                 ),
@@ -2660,8 +2432,9 @@ class _Purchase_return_PageState extends State<Purchase_return_Page> {
 
 
                               StreamBuilder<QuerySnapshot>(
-                                stream:
-                                FirebaseFirestore.instance.collection("ReturnG entry").doc(streamid).collection(streamid).snapshots(),
+                                stream: status==true ?
+                                FirebaseFirestore.instance.collection("ReturnG entry").doc(streamid).collection(streamid).snapshots() :
+                                FirebaseFirestore.instance.collection("ReturnN entry").doc(streamid).collection(streamid).snapshots(),
                                 builder: (context, snapshot) {
                                   if(snapshot.hasData==null){
                                     return Center(child: Container(),);

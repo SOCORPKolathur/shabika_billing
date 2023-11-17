@@ -4066,6 +4066,7 @@ child:TextField(
       _typeAheadControllergender9.text=val["cusmob"];
       alphone.text=val["cusalmob"];
       customername.text=val["cusname"];
+      cusid=val["cusid"];
       deliverydate.text=val["deliverydate"];
       deliverytime.text=val["deliverytime"];
       Payments=val["Paymentmode"];
@@ -5114,6 +5115,7 @@ child:TextField(
   List <String> temporary=[];
   String itemcat = '';
   String itembrand = '';
+  String cusid = '';
 
   Purchaseitem() async {
     print("List assign in billing");
@@ -5123,6 +5125,31 @@ child:TextField(
     print(ImerisrialListitem);
     print(ImerisrialListitem1);
     print(ImerisrialListitem2);
+
+      if (status == true) {
+        var docus1 = await FirebaseFirestore.instance
+            .collection("billing ShabikaG")
+            .where("save", isEqualTo: true)
+            .get();
+        setState(() {
+          billcount = docus1.docs.length + 1;
+          purchase_No.text = "SBG${(billcount).toString().padLeft(2, "0")}";
+          purchase_Date.text =
+          "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
+        });
+      }
+      if (status2 == true) {
+        var docus2 = await FirebaseFirestore.instance
+            .collection("billing ShabikaN")
+            .where("save", isEqualTo: true)
+            .get();
+        setState(() {
+          billcount = docus2.docs.length + 1;
+          purchase_No.text = "SBN${(billcount).toString().padLeft(2, "0")}";
+          purchase_Date.text =
+          "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
+        });
+      }
     print("List assign in billing--end");
     if (int.parse(Stocks.text) > 0) {
 
@@ -5262,6 +5289,7 @@ child:TextField(
             "Category": itemcat,
             "Brand": itembrand,
             "Item": itemname.text,
+            "margin":margin,
             "save": false,
             "return": false,
             "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
@@ -5379,7 +5407,48 @@ child:TextField(
         "Serial no": serialnu,
         "color": colornu,
         "Landing Cost": Landingcost,
+        "margin":margin
       });
+
+      FirebaseFirestore.instance.collection("Customer").doc(cusid).collection("billing").doc(random).set({
+        "Total": totalamount,
+        "Payment mode": Payments,
+        "Totalamount":double.parse(Sales.text).toStringAsFixed(2),
+        "itemcode": status2 == true ? "N$itemcode" : "",
+        "Itemdocid":itemdocuid,
+        "Hsncode": HSN_Code.text,
+        "BoxNo": Box_NO.text,
+        "customername": customername.text,
+        "customerphone": customerphone.text,
+        "customeraddress": customeraddress.text,
+        "purchaseno": purchase_No.text,
+        "purchasedate": purchase_Date.text,
+        "purchasenote": purchase_notes.text,
+        "tax": taxitem.text,
+        'customerdocid': cusid,
+        "payment-1": Payments,
+        "payment-2":  "0",
+        "payment-3": "0",
+        "payment-4": "0",
+        "Discountamount": "0.00",
+        "Discountamountpercentage": "0.00%",
+        "time": DateFormat.jm().format(DateTime.now()),
+        "date":
+        "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        "timestamp": DateTime.now().microsecondsSinceEpoch,
+        "save": true,
+        "return": false,
+        "Category": itemcat,
+        "Brand": itembrand,
+        "Item": itemname.text,
+        "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
+        "Sales price": double.parse(Sales.text).toStringAsFixed(2),
+        "Qty": Qty.text,
+        //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
+        "Description":
+        "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+      });
+
 
       updatetotalquvantity();
 
@@ -5387,6 +5456,7 @@ child:TextField(
     }
     clearallcontroller();
   }
+  String margin ="";
   updatetotalquvantity() {
     print("decrease total qty");
     print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -5423,9 +5493,9 @@ child:TextField(
 
 
 
-    var document1=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
+    var document1=await FirebaseFirestore.instance.collection("Service Bills").doc(documentid).collection("Itemsused").get();
     for(int i=0;i<document1.docs.length;i++){
-      TotalAmount2= TotalAmount2 + double.parse(document1.docs[i]["Landing Cost"]);
+      TotalAmount2= TotalAmount2 + double.parse(document1.docs[i]["margin"]);
     }
 
     FirebaseFirestore.instance.collection("billing").doc(random).update({
@@ -5496,6 +5566,8 @@ child:TextField(
     for(int i=0;i<document2.docs.length;i++){
       FirebaseFirestore.instance.collection("billingItemreports").doc().set({
         "Total": document2.docs[i]["Total"],
+        "billtype":"Service",
+        "margin":document2.docs[i]["margin"],
         "Totalamount": document2.docs[i]["Totalamount"],
         "Payment mode": document2.docs[i]["Payment mode"],
         "itemcode": document2.docs[i]["itemcode"],
@@ -5521,10 +5593,13 @@ child:TextField(
         "Imei no": document2.docs[i]["Imei no"],
         "Serial no": document2.docs[i]["Serial no"],
         "color": document2.docs[i]["color"],
+
       });
       if(status==true){
         FirebaseFirestore.instance.collection("billingItemreportsG").doc().set({
           "Total": document2.docs[i]["Total"],
+          "billtype":"Service",
+          "margin":document2.docs[i]["margin"],
           "Totalamount": document2.docs[i]["Totalamount"],
           "Payment mode": document2.docs[i]["Payment mode"],
           "itemcode": document2.docs[i]["itemcode"],
@@ -5554,6 +5629,8 @@ child:TextField(
       if(status2==true){
         FirebaseFirestore.instance.collection("billingItemreportsN").doc().set({
           "Total": document2.docs[i]["Total"],
+          "billtype":"Service",
+          "margin":document2.docs[i]["margin"],
           "Totalamount": document2.docs[i]["Totalamount"],
           "Payment mode": document2.docs[i]["Payment mode"],
           "itemcode": document2.docs[i]["itemcode"],
@@ -5669,11 +5746,13 @@ child:TextField(
              itemcat = documents.docs[i]["Category"].toString();
              itembrand = documents.docs[i]["Brand"].toString();
              // Boxno = documents.docs[i]["BoxNo"].toString();
+              margin = documents.docs[i]["margin"].toString();
               Box_NO.text = documents.docs[i]["BoxNo"].toString();
               HSN_Code.text = documents.docs[i]["HSNCode"].toString();
               Sales.text = documents.docs[i]["Saleprice"].toString();
               PPrice.text=documents.docs[i]["Landingcost"].toString();
               Landingcost=documents.docs[i]["Landingcost"].toString();
+              margin=documents.docs[i]["margin"].toString();
               salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());//sales price
               serialvalue = documents.docs[i]["Serial NO"];
               imeivalue = documents.docs[i]["IMEI NO"];
@@ -5725,6 +5804,7 @@ child:TextField(
               Loworder.text = documents.docs[i]["Loworder"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
               Qty.text = "1";
+              margin = documents.docs[i]["margin"].toString();
               itemcat = documents.docs[i]["Category"].toString();
               itembrand = documents.docs[i]["Brand"].toString();
               // Boxno = documents.docs[i]["BoxNo"].toString();
@@ -5737,6 +5817,7 @@ child:TextField(
               print(documents.docs[i]["Landingcost"].toString());
               PPrice.text=documents.docs[i]["Landingcost"].toString();
               Landingcost=documents.docs[i]["Landingcost"].toString();
+              margin=documents.docs[i]["margin"].toString();
               salespriceff = double.parse(documents.docs[i]["Saleprice"].toString());
               serialvalue = documents.docs[i]["Serial NO"];
               imeivalue = documents.docs[i]["IMEI NO"];

@@ -207,8 +207,11 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
       });
     }
     if(widget.type=='ShabikaN'){
+      print("Item N +++++++++++++++");
+      print("Item N +++++++++++++++");
       var document =await FirebaseFirestore.instance.collection("Item ShabikaN").doc(widget.docid).get();
       Map<String,dynamic>?value=document.data();
+      print(value!["margin"]);
       setState(() {
         itemcode.text=value!["Itemcode"];
         HSNcode.text=value["HSNCode"];
@@ -221,7 +224,7 @@ class _Item_edit_PageState extends State<Item_edit_Page> {
         BoxNo.text=value["BoxNo"];
         Categorycont.text=value["Category"];
         Barndcont.text=value["Brand"];
-        margin.text=value["margin"];
+        margin.text=value["margin"].toString();
         if(value["IMEI NO"]==true){
           setState(() {
             isChecked=true;

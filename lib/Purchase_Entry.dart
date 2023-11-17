@@ -535,7 +535,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                     color: Colors.white,
                                   ),
                                   child: TextField(
-
+                                    readOnly: true,
                                     style: GoogleFonts.openSans(
                                         fontWeight: FontWeight.w700,fontSize: width/85,),
                                     controller: suppierid,
@@ -678,9 +678,6 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                             onFieldSubmitted();
                                           },
                                         );
-
-
-
                                       },
                                       optionsViewBuilder: (context, onSelected,
                                               options) =>
@@ -2298,7 +2295,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
                                             print("Check-3");
 
-                                            if(status==true){
+                                          /*  if(status==true){
                                               var documents = await FirebaseFirestore.instance.collection("Item ShabikaG").where("Itemcode", isEqualTo:billing['itemcode']).get();
                                               FirebaseFirestore.instance.collection("Item ShabikaG").doc(documents.docs[0].id).update({
                                                 "TotalQuvantity": int.parse(_Streamcontroller5[index].text),
@@ -2374,7 +2371,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                                     documents2.docs[0]['IMEI NO'],documents2.docs[0]['Color'],documents2.docs[0]['Image'],documents2.docs[0].id,billing['Item'],billing.id);
                                               });
 
-                                            }
+                                            }*/
 
 
                                           },
@@ -4432,7 +4429,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                   onTap:() async {
                                     var document = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
                                     sets(() {
-                                      itemcodeid = "${"SBI"}${F.format(document.docs.length + 1)}";
+                                      itemcodeid = "${"SPG"}${F.format(document.docs.length + 1)}";
                                     });
                                     FirebaseFirestore.instance.collection("Item ShabikaG").doc().set({
                                       "Category":  _typeAheadControllergender.text,
@@ -4444,6 +4441,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       "Landingcost": double.parse(Landing_cost.text).toStringAsFixed(2),
                                       "Saleprice": double.parse(Sales.text).toStringAsFixed(2),
                                       "MRPPrice": double.parse(Mrp_Price.text).toStringAsFixed(2),
+                                      "margin": margin.text!= ""?double.parse(margin.text).toStringAsFixed(2): 0,
                                       "Loworder": Loworder.text,
                                       "TotalQuvantity": Qty.text==""?0:int.parse(Qty.text),
                                       "BoxNo": Box_NO.text,
@@ -4454,6 +4452,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                                       "timestamp": DateTime.now().microsecondsSinceEpoch,
                                       "gst": "18%",
                                       "purchaseinvoiceid":[random],
+                                      "itemcodecount":count
                                     });
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(content: Text("Item Added Sucessfully"))
@@ -5142,6 +5141,21 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                           child: GestureDetector(
                             onTap: () {
                               showdialpogbox();
+                              Supplierfunction();
+                              suppiernameaddfunction();
+                              check(Suppliername.text);
+
+
+        Future.delayed(
+            Duration(seconds: 3),()
+                              {
+                                setState(() {
+                                  clearallcontrollers();
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                });
+                              });
+
                             },
                             child: Container(
                               width: width / 8.6,
@@ -5217,7 +5231,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                         height: height / 32.85,
                       ),
                       Text(
-                        "Add a Supplier Item Successfully",
+                        "New Supplier Added Successfully",
                         style: GoogleFonts.openSans(
                             fontWeight: FontWeight.w600,
                             fontSize: width / 68.3,
@@ -5235,68 +5249,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
                       SizedBox(
                         height: height / 32.85,
                       ),
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Supplierfunction();
-                              suppiernameaddfunction();
-                              check(Suppliername.text);
-                              clearallcontrollers();
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                            child: Material(
-                              elevation: 15,
-                              color: const Color(0xff25D366),
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                height: height / 16.425,
-                                width: width / 9.588,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: const Color(0xff25D366),
-                                ),
-                                child: Center(
-                                  child: Text("Okay",
-                                      style: GoogleFonts.openSans(
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 85.375,
-                                          color: Colors.white)),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: width / 68.3),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Material(
-                              elevation: 15,
-                              color: const Color(0xff263646),
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                height: height / 16.425,
-                                width: width / 9.588,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.white,
-                                ),
-                                child: Center(
-                                  child: Text("Cancel",
-                                      style: GoogleFonts.openSans(
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width / 85.375,
-                                          color: Colors.black)),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
+
                     ],
                   ),
                 )),
@@ -5627,7 +5580,15 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   createpurchase2(name) async {
     print("Document id");
     print(random);
-
+    print("Adding Product");
+    setState(() {
+      creditdate= DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+      );
+    });
+    print("Adding Product new");
     FirebaseFirestore.instance.collection("Purchase entry").doc(random).set({
       "Total": "",
       "Payment mode": Payments,
@@ -5651,7 +5612,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
       "timestamp": DateTime.now().microsecondsSinceEpoch
     });
-
+    print("Adding Product1");
 
     if (status == true) {
 
@@ -5703,7 +5664,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         "timestamp": DateTime.now().microsecondsSinceEpoch
       });
     }
-
+    print("Adding Product2");
     setState((){
 
       IMEISERIAL.clear();
@@ -5715,8 +5676,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
          DateTime.now().month,DateTime.now().year,
       );
     });
+    print("Adding Product3");
 
-    print(DateTime.now().day+int.parse(Creadit_days.text),);
 
     print("creditdate 11111111111111111111111111111111111111111111111111111111111111111111111111111");
     print(creditdate);
@@ -6077,6 +6038,14 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     print("Document id");
     print(random);
 
+    setState(() {
+      creditdate= DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
+      );
+    });
+
     FirebaseFirestore.instance.collection("Purchase entry").doc(random).set({
       "Total": "",
       "Payment mode": Payments,
@@ -6164,11 +6133,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
 
 
-      creditdate= DateTime(
-        DateTime.now().year,
-        DateTime.now().month,
-        Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
-      );
+
 
     });
 
@@ -6311,11 +6276,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
   collectioncreatefunction() async {
     setState(() {
 
-      creditdate= DateTime(
-        DateTime.now().year,
-        DateTime.now().month,
-        Creadit_days.text==""?  DateTime.now().day + 0: DateTime.now().day + int.parse(Creadit_days.text),
-      );
+
     });
     print(IMEI2);
     print("Idendivication++++++++++++++++++++++++++++++++++");
@@ -6385,7 +6346,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
             .set({
           "Total": double.parse(valueitem.text).toStringAsFixed(2),
           "Payment mode": Payments,
-          "itemcode": status == true ? "G$itemcode" : "N$itemcode",
+          "itemcode": status == true ? "$itemcode" : "$itemcode",
           "Hsncode": HSN_Code.text,
           "BoxNo": Box_NO.text,
           "Itemdocid":itemdocuid,
@@ -6430,7 +6391,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(random).collection(random).doc().set({
           "Total": double.parse(valueitem.text).toStringAsFixed(2),
           "Payment mode": Payments,
-          "itemcode": status == true ? "G$itemcode" : "N$itemcode",
+          "itemcode": status == true ? "$itemcode" : "$itemcode",
           "Hsncode": HSN_Code.text,
           "BoxNo": Box_NO.text,
           "Itemdocid":itemdocuid,
@@ -6530,19 +6491,20 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               "gst": "18%",
               "HSNCode": HSN_Code.text != "" ? HSN_Code.text : "",
               "BoxNo": Box_NO.text != "" ? Box_NO.text : "",
-              "gst": taxitem.text != "" ? taxitem.text : "",
               "TotalQuvantity": Qty.text != "" ? FieldValue.increment((int.parse(Qty.text))) : "",
               "Purchaseprice": Purchase_price.text != "" ? double.parse(Purchase_price.text).toStringAsFixed(2) : "",
               "Landingcost": Landing_cost.text != "" ? double.parse(Landing_cost.text).toStringAsFixed(2) : "",
               "Saleprice": Sales.text != "" ? double.parse(Sales.text).toStringAsFixed(2) : "",
               "MRPPrice": Mrp_Price.text != "" ? double.parse(Mrp_Price.text).toStringAsFixed(2) : "",
+              "margin": margin.text!= ""?double.parse(margin.text).toStringAsFixed(2): 0,
               "IMSlist": IMEISERIAL,
               "Imei no": IMEI2,
               "Serial no": SERIAL2,
               "color": colorlist2,
               //"Image list": Imagelist,
               "Newitemname": layourbuilderclear2.text,
-              "Itemcode": layourbuilderclear3.text
+              "Itemcode": layourbuilderclear3.text,
+              "itemcodecount":count
             });
 
           }
@@ -6633,7 +6595,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
         FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(random).collection(random).doc().set({
           "Total": double.parse(valueitem.text).toStringAsFixed(2),
           "Payment mode": Payments,
-          "itemcode": status == true ? "G$itemcode" : "N$itemcode",
+          "itemcode": status == true ? "$itemcode" : "$itemcode",
           "Hsncode": HSN_Code.text,
           "BoxNo": Box_NO.text,
           "Itemdocid":itemdocuid,
@@ -6776,13 +6738,15 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
               "Landingcost": Landing_cost.text != "" ? double.parse(Landing_cost.text).toStringAsFixed(2) : "",
               "Saleprice": Sales.text != "" ? double.parse(Sales.text).toStringAsFixed(2) : "",
               "MRPPrice": Mrp_Price.text != "" ? double.parse(Mrp_Price.text).toStringAsFixed(2) : "",
+              "margin": margin.text!= ""?(double.parse(Sales.text)-double.parse(Purchase_price.text)).toStringAsFixed(2): "0",
               "IMSlist": IMEISERIAL,
               "Imei no": IMEI2,
               "Serial no": SERIAL2,
               "color": colorlist2,
               //"Image list": Imagelist,
               "Newitemname": layourbuilderclear2.text,
-              "Itemcode": layourbuilderclear3.text
+              "Itemcode": layourbuilderclear3.text,
+              "itemcodecount":countN
             });
 
           }
@@ -6962,29 +6926,41 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       },
     );
   }
-
+  int count = 0;
+  int countN = 0;
   ///itemcode change function
   alteritemcode() async {
+    var document = await FirebaseFirestore.instance.collection("Item ShabikaG").orderBy("timestamp").get();
+    var document2 = await FirebaseFirestore.instance.collection("Item ShabikaN").orderBy("timestamp").get();
 
+    setState(() {
+      if (document.docs.length > 0) {
+        setState(() {
+          count = document.docs[document.docs.length - 1]["itemcodecount"] + 1;
+          countN =
+              document2.docs[document2.docs.length - 1]["itemcodecount"] + 1;
+        });
+      }
+      else {
+        setState(() {
+          count = 1;
+          countN = 1;
+        });
+      }
+    });
     if(status==true){
-      var document = await FirebaseFirestore.instance.collection("Item ShabikaG").get();
       setState(() {
-        Itemcount=document.docs.length+1;
-        layourbuilderclear3.text="SBG${(Itemcount).toString().padLeft(2, "0")}";
+        layourbuilderclear3.text="SBG${(count).toString().padLeft(2, "0")}";
         Stocks.text="0";
       });
 
     }
 
     if(status2==true){
-      var document3 = await FirebaseFirestore.instance.collection("Item ShabikaN").get();
       setState(() {
-        Itemcount=document3.docs.length+1;
-        layourbuilderclear3.text="SBN${(Itemcount).toString().padLeft(2, "0")}";
+        layourbuilderclear3.text="SBN${(countN).toString().padLeft(2, "0")}";
         Stocks.text="0";
       });
-
-
     }
     print("Called");
     updatemargin();
@@ -6998,10 +6974,10 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       setState(() {
       print("Margin Update called for SG");
         margin.text =
-            ((double.parse(Sales.text) - double.parse(Landing_cost.text)) -
+            ((double.parse(Sales.text) - double.parse(Purchase_price.text)) -
                 (double.parse(Sales.text) - (double.parse(Sales.text) / 1.18)))
                 .toStringAsFixed(2);
-        marginval=((double.parse(Sales.text) - double.parse(Landing_cost.text)) -
+        marginval=((double.parse(Sales.text) - double.parse(Purchase_price.text)) -
             (double.parse(Sales.text) - (double.parse(Sales.text) / 1.18)));
       });
 
@@ -7009,8 +6985,8 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
     if(status2==true){
       print("Margin Update called for SN");
   setState(() {
-      margin.text = (double.parse(Sales.text) - double.parse(Landing_cost.text)).toStringAsFixed(2);
-      marginval = (double.parse(Sales.text) - double.parse(Landing_cost.text));
+      margin.text = (double.parse(Sales.text) - double.parse(Purchase_price.text)).toStringAsFixed(2);
+      marginval = (double.parse(Sales.text) - double.parse(Purchase_price.text));
   });
     }
   }
@@ -7473,7 +7449,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
       var docus1 = await FirebaseFirestore.instance.collection("Purchase ShabikaG").where("save", isEqualTo: true).get();
       setState(() {
         billcount = docus1.docs.length + 1;
-        purchase_No.text = "SBG${(billcount).toString().padLeft(2, "0")}";
+        purchase_No.text = "SPG${(billcount).toString().padLeft(2, "0")}";
         purchase_Date.text =
             "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       });
@@ -7488,7 +7464,7 @@ class _Purchase_EntryState extends State<Purchase_Entry> {
 
       setState(() {
         billcount = docus2.docs.length + 1;
-        purchase_No.text = "SBN${(billcount).toString().padLeft(2, "0")}";
+        purchase_No.text = "SPN${(billcount).toString().padLeft(2, "0")}";
         purchase_Date.text =
             "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
       });

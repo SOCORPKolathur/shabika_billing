@@ -72,8 +72,48 @@ class _Stocks_PageState extends State<Stocks_Page> {
   @override
   void initState() {
     firstcall();
+    gettotalval();
     // TODO: implement initState
     super.initState();
+  }
+
+  double totalval =0;
+  double totalvalG =0;
+  double totalvalN =0;
+
+
+  gettotalval() async {
+    setState(() {
+      totalval=0;
+      totalvalG=0;
+      totalvalN=0;
+    });
+
+      var docu = await FirebaseFirestore.instance.collection("Item ShabikaG")
+          .get();
+      for (int i = 0; i < docu.docs.length; i++) {
+        setState(() {
+          totalvalG = totalvalG + (int.parse(docu.docs[i]["TotalQuvantity"].toString()) * double.parse(docu.docs[i]["Landingcost"].toString()));
+        });
+
+
+    }
+
+      var docu2 = await FirebaseFirestore.instance.collection("Item ShabikaN")
+          .get();
+      for (int i = 0; i < docu2.docs.length; i++) {
+        setState(() {
+          totalvalN = totalvalN + (int.parse(docu2.docs[i]["TotalQuvantity"].toString()) * double.parse(docu2.docs[i]["Landingcost"].toString()));
+        });
+      }
+
+
+
+        setState(() {
+          totalval = totalvalG + totalvalN;
+        });
+
+
   }
 
   @override
@@ -156,6 +196,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                               });
                             }
                           });
+                          //gettotalval();
                         },
                       ),
 
@@ -191,6 +232,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                           }
 
                         });
+                        //gettotalval();
                       },
                     ),
             SizedBox(width:width/136.6),
@@ -204,6 +246,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
           height:height/43.8,
         ),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             SizedBox(
               width: width / 50,
@@ -221,7 +264,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 ),
                 Container(
                   height: height / 21.9,
-                  width: width / 7.506, // width: width / 3.415,
+                  width: width / 9.506, // width: width / 3.415,
                   decoration: BoxDecoration(
                       color: Colors.white, borderRadius: BorderRadius.circular(5)),
                   child: TextFormField(
@@ -268,7 +311,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 ),
                 Container(
                   height: height / 21.9,
-                  width: width / 7.506, // width: width / 3.415,
+                  width: width / 9.506, // width: width / 3.415,
                   decoration: BoxDecoration(
                       color: Colors.white, borderRadius: BorderRadius.circular(5)),
                   child: TextFormField(
@@ -357,7 +400,7 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 ),
                 Container(
                   height: height / 21.9,
-                  width: width / 4.506, // width: width / 3.415,
+                  width: width / 5.506, // width: width / 3.415,
                   decoration: BoxDecoration(
                       color: Colors.white, borderRadius: BorderRadius.circular(5)),
                   child: TextFormField(
@@ -387,6 +430,100 @@ class _Stocks_PageState extends State<Stocks_Page> {
             SizedBox(
               width: width / 136.6,
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Shabika G Value",
+                  textAlign: TextAlign.start,
+                  style: GoogleFonts.openSans(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: width / 98.64),
+                ),
+                Container(
+                  height: height / 21.9,
+                  width: width / 10.306, // width: width / 3.415,
+                  decoration: BoxDecoration(
+                      color: Colors.white, borderRadius: BorderRadius.circular(5)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 4.0,left: 4),
+                    child: Text(
+                     totalvalG.toStringAsFixed(2),
+                      style: GoogleFonts.openSans(
+                          fontSize: width / 91.06, fontWeight: FontWeight.w700),
+
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: width / 136.6,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Shabika N Value",
+                  textAlign: TextAlign.start,
+                  style: GoogleFonts.openSans(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: width / 98.64),
+                ),
+                Container(
+                  height: height / 21.9,
+                  width: width / 10.306, // width: width / 3.415,
+                  decoration: BoxDecoration(
+                      color: Colors.white, borderRadius: BorderRadius.circular(5)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 4.0,left: 4),
+                    child: Text(
+                      totalvalN.toStringAsFixed(2),
+                      style: GoogleFonts.openSans(
+                          fontSize: width / 91.06, fontWeight: FontWeight.w700),
+
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: width / 136.6,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Total Value",
+                  textAlign: TextAlign.start,
+                  style: GoogleFonts.openSans(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: width / 98.64),
+                ),
+                Container(
+                  height: height / 21.9,
+                  width: width / 10.306, // width: width / 3.415,
+                  decoration: BoxDecoration(
+                      color: Colors.white, borderRadius: BorderRadius.circular(5)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 4.0,left: 4),
+                    child: Text(
+                      totalval.toStringAsFixed(2),
+                      style: GoogleFonts.openSans(
+                          fontSize: width / 91.06, fontWeight: FontWeight.w700),
+
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: width / 136.6,
+            ),
+
             InkWell(
               onTap: () {
                 setState(() {
@@ -593,9 +730,9 @@ class _Stocks_PageState extends State<Stocks_Page> {
                 ),
 
                 StreamBuilder<QuerySnapshot>(
-                  stream:status3==true?FirebaseFirestore.instance.collection("Item ShabikaG").orderBy("timestamp",descending: false).snapshots():
-                      status4==true?FirebaseFirestore.instance.collection("Item ShabikaN").orderBy("timestamp",descending: false).snapshots():
-                  FirebaseFirestore.instance.collection("Item").orderBy("timestamp",descending: false).snapshots(),
+                  stream:status3==true?FirebaseFirestore.instance.collection("Item ShabikaG").orderBy("timestamp",descending: true).snapshots():
+                      status4==true?FirebaseFirestore.instance.collection("Item ShabikaN").orderBy("timestamp",descending: true).snapshots():
+                  FirebaseFirestore.instance.collection("Item").orderBy("timestamp",descending: true).snapshots(),
                   builder: (context, snapshot) {
                     if(snapshot.hasData==null){
                       return Center(child: Container());
