@@ -1188,7 +1188,7 @@ class _drawerState extends State<drawer> {
               Pages== "Payment"?  const  Payment_Page():
               Pages== 'Replace\nEntry'?    const ReplaceMent_Page():
               Pages== 'Replace\nReports'?      Replacement_Reports():
-             /* Pages== 'Barcode'?      BarcodePage():*/
+              Pages== 'Barcode'?      BarcodePage():
               Container()),
             )
           ],

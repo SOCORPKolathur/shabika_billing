@@ -1708,7 +1708,7 @@ class _Billing_PageState extends State<Billing_Page> {
       sgst = 0;
     });
     setState(() {
-      sgst = (salespriceff - (salespriceff / (1.18)))/2;
+      sgst = (totalamount - (totalamount / (1.18)))/2;
     });
 
     roundoff=totalamount-(subtotalamount+Cgst+sgst);
@@ -1736,7 +1736,7 @@ class _Billing_PageState extends State<Billing_Page> {
       Cgst = 0;
     });
     setState(() {
-      Cgst = (salespriceff - (salespriceff / (1.18)))/2;
+      Cgst = (totalamount - (totalamount / (1.18)))/2;
     });
     return Cgst.toStringAsFixed(2);
   }
@@ -1753,6 +1753,9 @@ class _Billing_PageState extends State<Billing_Page> {
 
   clearallcontroller() {
     print("clearing all 2=================================");
+
+    setState(() {
+
 
     setState(() {
       hsncpode = "";
@@ -1779,6 +1782,7 @@ class _Billing_PageState extends State<Billing_Page> {
     HSN_Code.clear();
     layourbuilderclear2.clear();
     layourbuilderclear3.clear();
+    });
 
   }
 
@@ -1790,7 +1794,6 @@ class _Billing_PageState extends State<Billing_Page> {
   double disacountamountcalue=0;
 
   discountamount() {
-
     if(double.parse(Discountamount.text)!=0){
       discountamountsvalue = (double.parse(TotalAmount2.toString()) - (double.parse(Discountamount.text))).toDouble();
       if (discountamountsvalue != 0) {
@@ -1799,14 +1802,36 @@ class _Billing_PageState extends State<Billing_Page> {
           TotalAmount2 = discountamountsvalue;
           disacountamountcalue = discountamountsvalue;
         });
-        FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
+        setState(() {
+          Cgst = 0;
+          sgst = 0;
+          subtotalamount=0;
         });
-        FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
+        setState(() {
+          Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+          sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+          subtotalamount= TotalAmount2 - (Cgst+sgst);
         });
+        if(status2==true) {
+          FirebaseFirestore.instance.collection("billing ShabikaN")
+              .doc(random)
+              .update({
+            "Totalamount": Discountamount.text == "0" &&
+                Discountamountpercentage.text == "0" ? TotalAmount2
+                .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+
+          });
+        }
+        if(status==true) {
+          FirebaseFirestore.instance.collection("billing ShabikaG")
+              .doc(random)
+              .update({
+            "Totalamount": Discountamount.text == "0" &&
+                Discountamountpercentage.text == "0" ? TotalAmount2
+                .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+
+          });
+        }
         FirebaseFirestore.instance.collection("billing").doc(random).update({
           "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
 
@@ -1822,13 +1847,35 @@ class _Billing_PageState extends State<Billing_Page> {
         TotalAmount2=(TotalAmount2 + discountamountsvalue2);
         disacountamountcalue=(TotalAmount2 + discountamountsvalue2);
       });
-      FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+      setState(() {
+        Cgst = 0;
+        sgst = 0;
+        subtotalamount=0;
       });
-      FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+      setState(() {
+        Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+        sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+        subtotalamount= TotalAmount2 - (Cgst+sgst);
+      });
+      if(status2==true) {
+        FirebaseFirestore.instance.collection("billing ShabikaN")
+            .doc(random)
+            .update({
+          "Totalamount": Discountamount.text == "0" &&
+              Discountamountpercentage.text == "0" ? TotalAmount2
+              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+        });
+      }
+      if(status==true) {
+        FirebaseFirestore.instance.collection("billing ShabikaG")
+            .doc(random)
+            .update({
+          "Totalamount": Discountamount.text == "0" &&
+              Discountamountpercentage.text == "0" ? TotalAmount2
+              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
 
-      });
+        });
+      }
       FirebaseFirestore.instance.collection("billing").doc(random).update({
         "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
 
@@ -1841,14 +1888,35 @@ class _Billing_PageState extends State<Billing_Page> {
         TotalAmount2=(TotalAmount2 + (discountamountsvalue2+double.parse(Discountamount.text)/double.parse(Discountamountpercentage.text)));
         disacountamountcalue=(TotalAmount2 + (discountamountsvalue2+double.parse(Discountamount.text)/double.parse(Discountamountpercentage.text)));
       });
-      FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
+      setState(() {
+        Cgst = 0;
+        sgst = 0;
+        subtotalamount=0;
       });
-      FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
+      setState(() {
+        Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+        sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+        subtotalamount= TotalAmount2 - (Cgst+sgst);
       });
+      if(status2==true) {
+        FirebaseFirestore.instance.collection("billing ShabikaN")
+            .doc(random)
+            .update({
+          "Totalamount": Discountamount.text == "0" &&
+              Discountamountpercentage.text == "0" ? TotalAmount2
+              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+        });
+      }
+      if(status==true) {
+        FirebaseFirestore.instance.collection("billing ShabikaG")
+            .doc(random)
+            .update({
+          "Totalamount": Discountamount.text == "0" &&
+              Discountamountpercentage.text == "0" ? TotalAmount2
+              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+
+        });
+      }
       FirebaseFirestore.instance.collection("billing").doc(random).update({
         "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
 
@@ -1856,6 +1924,9 @@ class _Billing_PageState extends State<Billing_Page> {
       return TotalAmount2.toStringAsFixed(2);
 
     }
+    updatetotal();
+
+
   }
 
 
@@ -1873,14 +1944,36 @@ class _Billing_PageState extends State<Billing_Page> {
           TotalAmount2 = discountamountsvalue;
           disacountamountcalue = discountamountsvalue;
         });
-        FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
+        setState(() {
+          Cgst = 0;
+          sgst = 0;
+          subtotalamount=0;
         });
-        FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
+        setState(() {
+          Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+          sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+          subtotalamount= TotalAmount2 - (Cgst+sgst);
         });
+        if(status2==true) {
+          FirebaseFirestore.instance.collection("billing ShabikaN")
+              .doc(random)
+              .update({
+            "Totalamount": Discountamount.text == "0" &&
+                Discountamountpercentage.text == "0" ? TotalAmount2
+                .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+
+          });
+        }
+        if(status==true) {
+          FirebaseFirestore.instance.collection("billing ShabikaG")
+              .doc(random)
+              .update({
+            "Totalamount": Discountamount.text == "0" &&
+                Discountamountpercentage.text == "0" ? TotalAmount2
+                .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+
+          });
+        }
         FirebaseFirestore.instance.collection("billing").doc(random).update({
           "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
 
@@ -1893,14 +1986,36 @@ class _Billing_PageState extends State<Billing_Page> {
         TotalAmount2 = subtractvalue+TotalAmount2;
         disacountamountcalue = subtractvalue+TotalAmount2;
       });
-      FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
+      setState(() {
+        Cgst = 0;
+        sgst = 0;
+        subtotalamount=0;
       });
-      FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
+      setState(() {
+        Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+        sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+        subtotalamount= TotalAmount2 - (Cgst+sgst);
       });
+      if(status2==true) {
+        FirebaseFirestore.instance.collection("billing ShabikaN")
+            .doc(random)
+            .update({
+          "Totalamount": Discountamount.text == "0" &&
+              Discountamountpercentage.text == "0" ? TotalAmount2
+              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+
+        });
+      }
+      if(status==true) {
+        FirebaseFirestore.instance.collection("billing ShabikaG")
+            .doc(random)
+            .update({
+          "Totalamount": Discountamount.text == "0" &&
+              Discountamountpercentage.text == "0" ? TotalAmount2
+              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+
+        });
+      }
       FirebaseFirestore.instance.collection("billing").doc(random).update({
         "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
 
@@ -2627,6 +2742,8 @@ class _Billing_PageState extends State<Billing_Page> {
                                   Future.delayed(const Duration(seconds: 4),(){
                                     print("helllllll+++++++++++++++++++++++++++++3");
                                     checkbillno();
+                                    clearallcontroller();
+                                    clearcontroller();
                                     setState((){
                                       Loading=false;
                                       Destription.clear();
@@ -2647,8 +2764,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                     Navigator.pop(context);
                                     print("helllllll++++++++++++++++++++++++++++5");
                                     Savebillpopup();
-                                    clearallcontroller();
-                                    clearcontroller();
+
 
                                   });
 
@@ -4780,11 +4896,13 @@ class _Billing_PageState extends State<Billing_Page> {
                                       //Print Invoice button
                                       InkWell(
                                         onTap: () {
-                                          for(int k=0;k<Destription.length;k++){
+                                         /* for(int k=0;k<Destription.length;k++){
                                             product.add(Product((int.parse(k.toString())+1).toString(),Items[k],Rate[k].toDouble(), Quvantity[k]));
-                                          }
-                                          generateInvoice(PdfPageFormat.a4,product,);
-                                          printingtotalamountfunction();
+                                          }*/
+                                          print("Print Ready");
+                                          getvalue("Suppilername", "Tax", "Suppilerinvoice", "purchaseno", "purchasedate", "payment","totalamountvalue");
+                                          //generateInvoice(PdfPageFormat.a4,product,);
+                                          //printingtotalamountfunction();
 
                                         },
                                         child: Container(
@@ -5539,6 +5657,9 @@ class _Billing_PageState extends State<Billing_Page> {
   }
 
   clearcontroller() {
+    setState(() {
+
+
     print("clearing all main=================================");
     mobileno.clear();
     Cusname.clear();
@@ -5572,6 +5693,7 @@ class _Billing_PageState extends State<Billing_Page> {
       Shippedto.text =
           "SHABIKA MOBILES,95/1,VALMIGI STREET,EAST TAMBARAM,CHENNAI-600059";
     });
+    });
   }
 
   TextEditingController customername = TextEditingController();
@@ -5598,8 +5720,8 @@ class _Billing_PageState extends State<Billing_Page> {
     var documents = await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
     for (int i = 0; i < documents.docs.length; i++) {
       setState(() {
-        totalamount = ((totalamount) + double.parse(documents.docs[i]['Sales price'].toString()));
-        subtotalamount = ((subtotalamount) + double.parse(documents.docs[i]['withouttaxprice'].toString()));
+        totalamount = ((totalamount) + (int.parse(documents.docs[i]['Qty'].toString()) * double.parse(documents.docs[i]['Sales price'].toString())));
+        subtotalamount = ((subtotalamount) + (int.parse(documents.docs[i]['Qty'].toString()) * double.parse(documents.docs[i]['withouttaxprice'].toString())));
       });
     }
 
@@ -7347,6 +7469,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
   String deletewuvantity = "";
   String deletestocksitems = "";
+  String deletestocksitemsid = "";
 
   deletecollection(id) async {
     setState((){
@@ -7357,152 +7480,232 @@ class _Billing_PageState extends State<Billing_Page> {
     setState(() {
       deletewuvantity = values!['Qty'];
       deletestocksitems = values['Item'];
+      deletestocksitemsid = values['itemcode'];
     });
 
-    var documentgetdate=await FirebaseFirestore.instance.collection("Purchase entry").get();
+    if (deletewuvantity!="") {
 
-    for(int p=0;p<documentgetdate.docs.length;p++){
-
-      var documentgetdate2=await FirebaseFirestore.instance.collection("Purchase entry").
-      doc(documentgetdate.docs[p].id).collection(documentgetdate.docs[p].id).
-      where("Item",isEqualTo:deletestocksitems).get();
-
-      for(int x=0;x<documentgetdate2.docs.length;x++){
-
-        if(Productinvoicelist[x]==documentgetdate.docs[x].id){
-
-          if(documentgetdate2.docs[x]['IMEI NO']&&documentgetdate2.docs[x]['Imei no'].contains(imeinu[x])){
-            FirebaseFirestore.instance.collection("Purchase entry").doc(documentgetdate.docs[p].id).
-            collection(documentgetdate.docs[p].id)
-                .doc(documentgetdate2.docs[x].id).update({
-              "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-            });
-            if(status==true){
-              FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(documentgetdate.docs[p].id).
-              collection(documentgetdate.docs[p].id)
-                  .doc(documentgetdate2.docs[x].id).update({
-                "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-              });
-            }
-
-            if(status2==true){
-              FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(documentgetdate.docs[p].id).
-              collection(documentgetdate.docs[p].id)
-                  .doc(documentgetdate2.docs[x].id).update({
-                "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-              });
-            }
-          }
-
-          else if(documentgetdate2.docs[x]['Serial NO']&&documentgetdate2.docs[x]['Serial no'].contains(serialnu[x])){
-            FirebaseFirestore.instance.collection("Purchase entry").doc(documentgetdate.docs[p].id).
-            collection(documentgetdate.docs[p].id)
-                .doc(documentgetdate2.docs[x].id).update({
-              "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-            });
-            if(status==true){
-              FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(documentgetdate.docs[p].id).
-              collection(documentgetdate.docs[p].id)
-                  .doc(documentgetdate2.docs[x].id).update({
-                "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-              });
-            }
-
-            if(status2==true){
-              FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(documentgetdate.docs[p].id).
-              collection(documentgetdate.docs[p].id)
-                  .doc(documentgetdate2.docs[x].id).update({
-                "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-              });
-            }
-          }
-
-          else if(documentgetdate2.docs[x]['Color']&&documentgetdate2.docs[x]['color'].contains(colornu[x])){
-            FirebaseFirestore.instance.collection("Purchase entry").doc(documentgetdate.docs[p].id).
-            collection(documentgetdate.docs[p].id)
-                .doc(documentgetdate2.docs[x].id).update({
-              "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-            });
-            if(status==true){
-              FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(documentgetdate.docs[p].id).
-              collection(documentgetdate.docs[p].id)
-                  .doc(documentgetdate2.docs[x].id).update({
-                "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-              });
-            }
-
-            if(status2==true){
-              FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(documentgetdate.docs[p].id).
-              collection(documentgetdate.docs[p].id)
-                  .doc(documentgetdate2.docs[x].id).update({
-                "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-              });
-            }
-          }
-
-          else{
-            FirebaseFirestore.instance.collection("Purchase entry").doc(documentgetdate.docs[p].id).
-            collection(documentgetdate.docs[p].id)
-                .doc(documentgetdate2.docs[x].id).update({
-              "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-            });
-            if(status==true){
-              FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(documentgetdate.docs[p].id).
-              collection(documentgetdate.docs[p].id)
-                  .doc(documentgetdate2.docs[x].id).update({
-                "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-              });
-            }
-
-            if(status2==true){
-              FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(documentgetdate.docs[p].id).
-              collection(documentgetdate.docs[p].id)
-                  .doc(documentgetdate2.docs[x].id).update({
-                "stocks":FieldValue.increment(int.parse(deletewuvantity.toString()))
-              });
-            }
-
-          }
-
-        }
-
-
-
-      }
-
-
-
-    }
-
-    if (deletewuvantity.isNotEmpty) {
-      var itemdata=await FirebaseFirestore.instance.collection('Item ShabikaG').
-      where("Newitemname",isEqualTo:deletestocksitems).get();
-      for(int k=0;k<itemdata.docs.length;k++){
         if(status==true){
-          await FirebaseFirestore.instance.collection('Item ShabikaG').doc(itemdata.docs[k].id).update(
-              {"TotalQuvantity": FieldValue.increment(int.parse(deletewuvantity)),
-                'Imei no': FieldValue.arrayUnion(imeinu),
-                'Serial no': FieldValue.arrayUnion(serialnu),
-                'color': FieldValue.arrayUnion(colornu),
+          var itemdata=await FirebaseFirestore.instance.collection('Item ShabikaG').
+          where("Itemcode",isEqualTo:deletestocksitemsid).get();
+          for(int k=0;k<itemdata.docs.length;k++) {
+            await FirebaseFirestore.instance.collection('Item ShabikaG').doc(
+                itemdata.docs[k].id).update(
+                {
+                  "TotalQuvantity": FieldValue.increment(
+                      int.parse(deletewuvantity)),
+                  'Imei no': FieldValue.arrayUnion(imeinu),
+                  'Serial no': FieldValue.arrayUnion(serialnu),
+                  'color': FieldValue.arrayUnion(colornu),
 
-              });
+                });
+          }
         }
-
         if(status2==true){
+          var itemdata=await FirebaseFirestore.instance.collection('Item ShabikaN').
+          where("Itemcode",isEqualTo:deletestocksitemsid).get();
+          for(int k=0;k<itemdata.docs.length;k++){
           await FirebaseFirestore.instance.collection('Item ShabikaN').doc(itemdata.docs[k].id).update(
               {"TotalQuvantity": FieldValue.increment(int.parse(deletewuvantity)),
                 'Imei no': FieldValue.arrayUnion(imeinu),
                 'Serial no': FieldValue.arrayUnion(serialnu),
                 'color': FieldValue.arrayUnion(colornu),});
         }
+
       }
-
-
 
       FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(id).delete();
     }
 
     updatetotal();
+    SGSTfunction();
+    CGSTfunction();
+    Totalamounts();
+    var documentgetdate=await FirebaseFirestore.instance.collection("Purchase entry").get();
+
+    for(int p=0;p<documentgetdate.docs.length;p++){
+
+      var documentgetdate2=await FirebaseFirestore.instance.collection("Purchase entry").doc(documentgetdate.docs[p].id).collection(documentgetdate.docs[p].id).orderBy("timestamp").get();
+      var documentgetdate2G=await FirebaseFirestore.instance.collection("Purchase ShabikaG").doc(documentgetdate.docs[p].id).collection(documentgetdate.docs[p].id).orderBy("timestamp").get();
+      var documentgetdate2N=await FirebaseFirestore.instance.collection("Purchase ShabikaN").doc(documentgetdate.docs[p].id).collection(documentgetdate.docs[p].id).orderBy("timestamp").get();
+      print(Productinvoicelist);
+
+        for (int x = 0; x < documentgetdate2.docs.length; x++) {
+          for(int y=0;y<Productinvoicelist.length;y++) {
+
+            print("L++++++++++");
+            print(documentgetdate.docs[x].id);
+            print("^^^^^^^^^");
+            print(Productinvoicelist[y]);
+            if(deletestocksitemsid == documentgetdate2.docs[x]["itemcode"]) {
+              if (Productinvoicelist[y] == documentgetdate.docs[p].id) {
+                print("Trueeeeeeeeeeeeeee");
+                print(documentgetdate2.docs[x].id);
+                print(documentgetdate2.docs[x]['IMEI NO']);
+                if (documentgetdate2.docs[x]['IMEI NO'] == true ||
+                    documentgetdate2.docs[x]['Serial NO'] == true ||
+                    documentgetdate2.docs[x]['Color'] == true) {
+                  print(documentgetdate2.docs[x]['IMSlist']);
+                  print("RED");
+                  print(imeinu);
+                  for (int u = 0; u < imeinu.length; u++) {
+                    if (documentgetdate2.docs[x]['IMSlist'].contains(
+                        imeinu[u])) {
+                      FirebaseFirestore.instance.collection("Purchase entry")
+                          .doc(
+                          documentgetdate.docs[p].id).
+                      collection(documentgetdate.docs[p].id)
+                          .doc(documentgetdate2.docs[x].id)
+                          .update({
+                        "stocks": FieldValue.increment(int.parse(deletewuvantity.toString()))
+                      });
+                      if (status == true) {
+                        FirebaseFirestore.instance.collection(
+                            "Purchase ShabikaG")
+                            .doc(documentgetdate.docs[p].id).
+                        collection(documentgetdate.docs[p].id)
+                            .doc(documentgetdate2G.docs[x].id)
+                            .update({
+                          "stocks": FieldValue.increment(
+                              int.parse(deletewuvantity.toString()))
+                        });
+                      }
+
+                      if (status2 == true) {
+                        FirebaseFirestore.instance.collection(
+                            "Purchase ShabikaN")
+                            .doc(
+                            documentgetdate.docs[p].id).
+                        collection(documentgetdate.docs[p].id)
+                            .doc(documentgetdate2N.docs[x].id)
+                            .update({
+                          "stocks": FieldValue.increment(
+                              int.parse(deletewuvantity.toString()))
+                        });
+                      }
+                    }
+                  }
+
+                for (int u = 0; u < serialnu.length; u++){
+              if (documentgetdate2.docs[x]['Serial no'].contains(serialnu[u])) {
+                FirebaseFirestore.instance.collection("Purchase entry").doc(
+                    documentgetdate.docs[p].id).
+                collection(documentgetdate.docs[p].id)
+                    .doc(documentgetdate2.docs[x].id).update({
+                  "stocks": FieldValue.increment(
+                      int.parse(deletewuvantity.toString()))
+                });
+                if (status == true) {
+                  FirebaseFirestore.instance.collection("Purchase ShabikaG")
+                      .doc(
+                      documentgetdate.docs[p].id).
+                  collection(documentgetdate.docs[p].id)
+                      .doc(documentgetdate2G.docs[x].id)
+                      .update({
+                    "stocks": FieldValue.increment(
+                        int.parse(deletewuvantity.toString()))
+                  });
+                }
+
+                if (status2 == true) {
+                  FirebaseFirestore.instance.collection("Purchase ShabikaN")
+                      .doc(
+                      documentgetdate.docs[p].id).
+                  collection(documentgetdate.docs[p].id)
+                      .doc(documentgetdate2N.docs[x].id)
+                      .update({
+                    "stocks": FieldValue.increment(
+                        int.parse(deletewuvantity.toString()))
+                  });
+                }
+              }
+            }
+                  for (int u = 0; u < colornu.length; u++) {
+                    if (documentgetdate2.docs[x]['color'].contains(
+                        colornu[u])) {
+                      FirebaseFirestore.instance.collection("Purchase entry")
+                          .doc(
+                          documentgetdate.docs[p].id).
+                      collection(documentgetdate.docs[p].id)
+                          .doc(documentgetdate2.docs[x].id)
+                          .update({
+                        "stocks": FieldValue.increment(
+                            int.parse(deletewuvantity.toString()))
+                      });
+                      if (status == true) {
+                        FirebaseFirestore.instance.collection(
+                            "Purchase ShabikaG")
+                            .doc(
+                            documentgetdate.docs[p].id).
+                        collection(documentgetdate.docs[p].id)
+                            .doc(documentgetdate2G.docs[x].id)
+                            .update({
+                          "stocks": FieldValue.increment(
+                              int.parse(deletewuvantity.toString()))
+                        });
+                      }
+
+                      if (status2 == true) {
+                        FirebaseFirestore.instance.collection(
+                            "Purchase ShabikaN")
+                            .doc(
+                            documentgetdate.docs[p].id).
+                        collection(documentgetdate.docs[p].id)
+                            .doc(documentgetdate2N.docs[x].id)
+                            .update({
+                          "stocks": FieldValue.increment(
+                              int.parse(deletewuvantity.toString()))
+                        });
+                      }
+                    }
+                  }
+                }
+
+                else {
+                  FirebaseFirestore.instance.collection("Purchase entry").doc(
+                      documentgetdate.docs[p].id).
+                  collection(documentgetdate.docs[p].id)
+                      .doc(documentgetdate2.docs[x].id).update({
+                    "stocks": FieldValue.increment(
+                        int.parse(deletewuvantity.toString()))
+                  });
+                  if (status == true) {
+                    FirebaseFirestore.instance.collection("Purchase ShabikaG")
+                        .doc(
+                        documentgetdate.docs[p].id).
+                    collection(documentgetdate.docs[p].id)
+                        .doc(documentgetdate2G.docs[x].id)
+                        .update({
+                      "stocks": FieldValue.increment(
+                          int.parse(deletewuvantity.toString()))
+                    });
+                  }
+
+                  if (status2 == true) {
+                    FirebaseFirestore.instance.collection("Purchase ShabikaN")
+                        .doc(
+                        documentgetdate.docs[p].id).
+                    collection(documentgetdate.docs[p].id)
+                        .doc(documentgetdate2N.docs[x].id)
+                        .update({
+                      "stocks": FieldValue.increment(
+                          int.parse(deletewuvantity.toString()))
+                    });
+                  }
+                  break;
+                }
+              }
+            }
+        }
+      }
+
+
+
+    }
+
+
+
+
     setState((){
       salespriceff=0;
     });

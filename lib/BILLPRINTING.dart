@@ -647,7 +647,7 @@ getvalue(Suppilername, Tax, Suppilerinvoice, purchaseno, purchasedate, payment,t
                         )
                     ),
                     child: p.ListView.builder(
-                      itemCount:2,
+                      itemCount:5,
                       itemBuilder: (context, index) {
                         return
                           p.Container(
