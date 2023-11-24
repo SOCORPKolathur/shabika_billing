@@ -4157,6 +4157,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                         setState(() {
                                           _typeAheadControllercateory.text =
                                               textEditingValue.text;
+
                                         });
                                         itemaddfunction();
                                         itemcodeaddfunction();
