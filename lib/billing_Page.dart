@@ -19,6 +19,7 @@ import 'package:shabika_billing/printing_Page.dart';
 import 'package:shabika_billing/stmodel.dart' as StatusModel;
 
 import 'Edit_billing_Page.dart';
+import 'models/billing_model.dart';
 
 const List<String> list = <String>[
   'Please Select Category',
@@ -152,7 +153,6 @@ class _Billing_PageState extends State<Billing_Page> {
       _typeAheadControllergender9.text="Walking Customer";
       customername.text="Walking Customer";
       customerphone.text="Walking Customer";
-
     });
 
     check("Walking Customer");
@@ -1710,8 +1710,7 @@ class _Billing_PageState extends State<Billing_Page> {
     setState(() {
       sgst = (totalamount - (totalamount / (1.18)))/2;
     });
-
-    roundoff=totalamount-(subtotalamount+Cgst+sgst);
+    roundoff=TotalAmount2-(subtotalamount+Cgst+sgst);
     return sgst.toStringAsFixed(2);
   }
 
@@ -1760,7 +1759,7 @@ class _Billing_PageState extends State<Billing_Page> {
     setState(() {
       hsncpode = "";
       Boxno = "";
-      itemcolor = '';
+      itemcolor = false;
 
     });
 
@@ -1793,236 +1792,391 @@ class _Billing_PageState extends State<Billing_Page> {
   double discountamountsvalue2 = 0;
   double disacountamountcalue=0;
 
-  discountamount() {
-    if(double.parse(Discountamount.text)!=0){
-      discountamountsvalue = (double.parse(TotalAmount2.toString()) - (double.parse(Discountamount.text))).toDouble();
-      if (discountamountsvalue != 0) {
-        discountamountsvalue2 = double.parse(Discountamount.text);
-        setState((){
-          TotalAmount2 = discountamountsvalue;
-          disacountamountcalue = discountamountsvalue;
-        });
-        setState(() {
-          Cgst = 0;
-          sgst = 0;
-          subtotalamount=0;
-        });
-        setState(() {
-          Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-          sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-          subtotalamount= TotalAmount2 - (Cgst+sgst);
-        });
-        if(status2==true) {
-          FirebaseFirestore.instance.collection("billing ShabikaN")
-              .doc(random)
-              .update({
-            "Totalamount": Discountamount.text == "0" &&
-                Discountamountpercentage.text == "0" ? TotalAmount2
-                .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-
-          });
-        }
-        if(status==true) {
-          FirebaseFirestore.instance.collection("billing ShabikaG")
-              .doc(random)
-              .update({
-            "Totalamount": Discountamount.text == "0" &&
-                Discountamountpercentage.text == "0" ? TotalAmount2
-                .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-
-          });
-        }
-        FirebaseFirestore.instance.collection("billing").doc(random).update({
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
-        });
-
-        return TotalAmount2.toStringAsFixed(2);
-      }
-
-
-    }
-    if (double.parse(Discountamount.text)==0&&double.parse(Discountamountpercentage.text)==0) {
-      setState((){
-        TotalAmount2=(TotalAmount2 + discountamountsvalue2);
-        disacountamountcalue=(TotalAmount2 + discountamountsvalue2);
-      });
-      setState(() {
-        Cgst = 0;
-        sgst = 0;
-        subtotalamount=0;
-      });
-      setState(() {
-        Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-        sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-        subtotalamount= TotalAmount2 - (Cgst+sgst);
-      });
-      if(status2==true) {
-        FirebaseFirestore.instance.collection("billing ShabikaN")
-            .doc(random)
-            .update({
-          "Totalamount": Discountamount.text == "0" &&
-              Discountamountpercentage.text == "0" ? TotalAmount2
-              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-        });
-      }
-      if(status==true) {
-        FirebaseFirestore.instance.collection("billing ShabikaG")
-            .doc(random)
-            .update({
-          "Totalamount": Discountamount.text == "0" &&
-              Discountamountpercentage.text == "0" ? TotalAmount2
-              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-
-        });
-      }
-      FirebaseFirestore.instance.collection("billing").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
-      });
-        return TotalAmount2.toStringAsFixed(2);
-
-    }
-    else if(double.parse(Discountamount.text)==0&&double.parse(Discountamountpercentage.text)!=0){
-      setState((){
-        TotalAmount2=(TotalAmount2 + (discountamountsvalue2+double.parse(Discountamount.text)/double.parse(Discountamountpercentage.text)));
-        disacountamountcalue=(TotalAmount2 + (discountamountsvalue2+double.parse(Discountamount.text)/double.parse(Discountamountpercentage.text)));
-      });
-      setState(() {
-        Cgst = 0;
-        sgst = 0;
-        subtotalamount=0;
-      });
-      setState(() {
-        Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-        sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-        subtotalamount= TotalAmount2 - (Cgst+sgst);
-      });
-      if(status2==true) {
-        FirebaseFirestore.instance.collection("billing ShabikaN")
-            .doc(random)
-            .update({
-          "Totalamount": Discountamount.text == "0" &&
-              Discountamountpercentage.text == "0" ? TotalAmount2
-              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-        });
-      }
-      if(status==true) {
-        FirebaseFirestore.instance.collection("billing ShabikaG")
-            .doc(random)
-            .update({
-          "Totalamount": Discountamount.text == "0" &&
-              Discountamountpercentage.text == "0" ? TotalAmount2
-              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-
-        });
-      }
-      FirebaseFirestore.instance.collection("billing").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
-      });
-      return TotalAmount2.toStringAsFixed(2);
-
-    }
-    updatetotal();
-
-
-  }
+  // discountamount() {
+  //
+  //   double temporrayamount=0;
+  //
+  //   if(double.parse(Discountamount.text)!=0){
+  //     temporrayamount = (double.parse(TotalAmount2.toString()) - (double.parse(Discountamount.text))).toDouble();
+  //     if (temporrayamount != 0) {
+  //    //   discountamountsvalue2 = double.parse(Discountamount.text);
+  //       double amount = 0.0;
+  //       // setState((){
+  //       //   for(int x = 0; x < billingsList.length; x++){
+  //       //     billingsList[x].totalAmount = discountamountsvalue.toString();
+  //       //   }
+  //       //   TotalAmount2 = discountamountsvalue;
+  //       //   disacountamountcalue = discountamountsvalue;
+  //       // });
+  //       setState(() {
+  //         Cgst = 0;
+  //         sgst = 0;
+  //         subtotalamount=0;
+  //       });
+  //       setState(() {
+  //         Cgst = (temporrayamount - (temporrayamount / (1.18)))/2;
+  //         sgst = (temporrayamount - (temporrayamount / (1.18)))/2;
+  //         subtotalamount= temporrayamount - (Cgst+sgst);
+  //       });
+  //       // if(status2==true) {
+  //       //   FirebaseFirestore.instance.collection("billing ShabikaN")
+  //       //       .doc(random)
+  //       //       .update({
+  //       //     "Totalamount": Discountamount.text == "0" &&
+  //       //         Discountamountpercentage.text == "0" ? TotalAmount2
+  //       //         .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+  //       //
+  //       //   });
+  //       // }
+  //       // if(status==true) {
+  //       //   FirebaseFirestore.instance.collection("billing ShabikaG")
+  //       //       .doc(random)
+  //       //       .update({
+  //       //     "Totalamount": Discountamount.text == "0" &&
+  //       //         Discountamountpercentage.text == "0" ? TotalAmount2
+  //       //         .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+  //       //
+  //       //   });
+  //       // }
+  //       // FirebaseFirestore.instance.collection("billing").doc(random).update({
+  //       //   "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+  //       //
+  //       // });
+  //
+  //       print(temporrayamount);
+  //       print(subtotalamount);
+  //       print(sgst);
+  //       print(Cgst);
+  //       print("dicount value-------------------");
+  //       TotalAmount2=double.parse(temporrayamount.toStringAsFixed(2));
+  //       //return temporrayamount.toStringAsFixed(2);
+  //     }
+  //
+  //
+  //   }
+  //
+  //   if (double.parse(Discountamount.text)==0&&double.parse(Discountamountpercentage.text)==0) {
+  //     setState((){
+  //       TotalAmount2+=(TotalAmount2 + discountamountsvalue2);
+  //       disacountamountcalue=(TotalAmount2 + discountamountsvalue2);
+  //     });
+  //     setState(() {
+  //       Cgst = 0;
+  //       sgst = 0;
+  //       subtotalamount=0;
+  //     });
+  //     setState(() {
+  //       Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+  //       sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+  //       subtotalamount= TotalAmount2 - (Cgst+sgst);
+  //     });
+  //     if(status2==true) {
+  //       // FirebaseFirestore.instance.collection("billing ShabikaN")
+  //       //     .doc(random)
+  //       //     .update({
+  //       //   "Totalamount": Discountamount.text == "0" &&
+  //       //       Discountamountpercentage.text == "0" ? TotalAmount2
+  //       //       .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+  //       // });
+  //     }
+  //     if(status==true) {
+  //       FirebaseFirestore.instance.collection("billing ShabikaG")
+  //           .doc(random)
+  //           .update({
+  //         "Totalamount": Discountamount.text == "0" &&
+  //             Discountamountpercentage.text == "0" ? TotalAmount2
+  //             .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+  //
+  //       });
+  //     }
+  //     // FirebaseFirestore.instance.collection("billing").doc(random).update({
+  //     //   "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+  //     //
+  //     // });
+  //        return TotalAmount2.toStringAsFixed(2);
+  //
+  //   }
+  //   else if(double.parse(Discountamount.text)==0&&double.parse(Discountamountpercentage.text)!=0){
+  //     setState((){
+  //       TotalAmount2=(TotalAmount2 + (discountamountsvalue2+double.parse(Discountamount.text)/double.parse(Discountamountpercentage.text)));
+  //       disacountamountcalue=(TotalAmount2 + (discountamountsvalue2+double.parse(Discountamount.text)/double.parse(Discountamountpercentage.text)));
+  //     });
+  //     setState(() {
+  //       Cgst = 0;
+  //       sgst = 0;
+  //       subtotalamount=0;
+  //     });
+  //     setState(() {
+  //       Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+  //       sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+  //       subtotalamount= TotalAmount2 - (Cgst+sgst);
+  //     });
+  //     // if(status2==true) {
+  //     //   FirebaseFirestore.instance.collection("billing ShabikaN")
+  //     //       .doc(random)
+  //     //       .update({
+  //     //     "Totalamount": Discountamount.text == "0" &&
+  //     //         Discountamountpercentage.text == "0" ? TotalAmount2
+  //     //         .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+  //     //   });
+  //     // }
+  //     // if(status==true) {
+  //     //   FirebaseFirestore.instance.collection("billing ShabikaG")
+  //     //       .doc(random)
+  //     //       .update({
+  //     //     "Totalamount": Discountamount.text == "0" &&
+  //     //         Discountamountpercentage.text == "0" ? TotalAmount2
+  //     //         .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+  //     //
+  //     //   });
+  //     // }
+  //     // FirebaseFirestore.instance.collection("billing").doc(random).update({
+  //     //   "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+  //     //
+  //     // });
+  //     for(int x = 0; x < billingsList.length; x++){
+  //       billingsList[x].totalAmount = TotalAmount2.toStringAsFixed(2);
+  //     }
+  //     return TotalAmount2.toStringAsFixed(2);
+  //
+  //   }
+  //   updatetotal();
+  //
+  //
+  // }
 
 
 
   int subtractvalue = 0;
 
   discountamountpercentage() {
-    if(double.parse(Discountamountpercentage.text)!=0){
+    if(Discountamountpercentage.text!=""){
       setState(() {
-        discountamountsvalue = (int.parse(TotalAmount2.toString()) * int.parse(Discountamountpercentage.text) / 100 - (int.parse(TotalAmount2.toString()))).abs().toDouble();
-        subtractvalue = (int.parse(TotalAmount2.toString()) * int.parse(Discountamountpercentage.text) / 100).toInt();
+        discountamountsvalue = (double.parse(TotalAmount2.toString()) * double.parse(Discountamountpercentage.text) / 100).abs().toDouble();
+        // print(discountamountsvalue);
+        // print("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+        // subtractvalue = (int.parse(TotalAmount2.toString()) * int.parse(Discountamountpercentage.text) / 100).toInt();
+        Discountamount.text = discountamountsvalue.toString();
       });
-      if (discountamountsvalue != 0) {
-        setState(() {
-          TotalAmount2 = discountamountsvalue;
-          disacountamountcalue = discountamountsvalue;
-        });
-        setState(() {
-          Cgst = 0;
-          sgst = 0;
-          subtotalamount=0;
-        });
-        setState(() {
-          Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-          sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-          subtotalamount= TotalAmount2 - (Cgst+sgst);
-        });
-        if(status2==true) {
-          FirebaseFirestore.instance.collection("billing ShabikaN")
-              .doc(random)
-              .update({
-            "Totalamount": Discountamount.text == "0" &&
-                Discountamountpercentage.text == "0" ? TotalAmount2
-                .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-
-          });
-        }
-        if(status==true) {
-          FirebaseFirestore.instance.collection("billing ShabikaG")
-              .doc(random)
-              .update({
-            "Totalamount": Discountamount.text == "0" &&
-                Discountamountpercentage.text == "0" ? TotalAmount2
-                .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-
-          });
-        }
-        FirebaseFirestore.instance.collection("billing").doc(random).update({
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
-        });
-        return TotalAmount2.toStringAsFixed(2);
-      }
+      // if (discountamountsvalue != 0) {
+      //   setState(() {
+      //     TotalAmount2 = discountamountsvalue;
+      //     disacountamountcalue = discountamountsvalue;
+      //   });
+      //   setState(() {
+      //     Cgst = 0;
+      //     sgst = 0;
+      //     subtotalamount=0;
+      //   });
+      //   setState(() {
+      //     Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+      //     sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+      //     subtotalamount= TotalAmount2 - (Cgst+sgst);
+      //   });
+      //   // if(status2==true) {
+      //   //   FirebaseFirestore.instance.collection("billing ShabikaN")
+      //   //       .doc(random)
+      //   //       .update({
+      //   //     "Totalamount": Discountamount.text == "0" &&
+      //   //         Discountamountpercentage.text == "0" ? TotalAmount2
+      //   //         .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+      //   //
+      //   //   });
+      //   // }
+      //   // if(status==true) {
+      //   //   FirebaseFirestore.instance.collection("billing ShabikaG")
+      //   //       .doc(random)
+      //   //       .update({
+      //   //     "Totalamount": Discountamount.text == "0" &&
+      //   //         Discountamountpercentage.text == "0" ? TotalAmount2
+      //   //         .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+      //   //
+      //   //   });
+      //   // }
+      //   // FirebaseFirestore.instance.collection("billing").doc(random).update({
+      //   //   "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+      //   //
+      //   // });
+      //
+      //   print(TotalAmount2);
+      //   print(subtotalamount);
+      //   print(Cgst);
+      //   print(sgst);
+      //   print(disacountamountcalue);
+      //   print(Discountamountpercentage.text);
+      //
+      //   return TotalAmount2.toStringAsFixed(2);
+      // }
     }
-    else{
+    if(Discountamountpercentage.text.isEmpty){
+      print("Conmtrollerempytyyyyyyyyyyyyyyyyyyyyyyyyy");
       setState(() {
-        TotalAmount2 = subtractvalue+TotalAmount2;
-        disacountamountcalue = subtractvalue+TotalAmount2;
+        Discountamount.text="0";
       });
-      setState(() {
-        Cgst = 0;
-        sgst = 0;
-        subtotalamount=0;
-      });
-      setState(() {
-        Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-        sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
-        subtotalamount= TotalAmount2 - (Cgst+sgst);
-      });
-      if(status2==true) {
-        FirebaseFirestore.instance.collection("billing ShabikaN")
-            .doc(random)
-            .update({
-          "Totalamount": Discountamount.text == "0" &&
-              Discountamountpercentage.text == "0" ? TotalAmount2
-              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-
-        });
-      }
-      if(status==true) {
-        FirebaseFirestore.instance.collection("billing ShabikaG")
-            .doc(random)
-            .update({
-          "Totalamount": Discountamount.text == "0" &&
-              Discountamountpercentage.text == "0" ? TotalAmount2
-              .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
-
-        });
-      }
-      FirebaseFirestore.instance.collection("billing").doc(random).update({
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-
-      });
-      return TotalAmount2.toStringAsFixed(2);
-
     }
+
+
+    // else{
+    //   setState(() {
+    //     TotalAmount2 = subtractvalue+TotalAmount2;
+    //     disacountamountcalue = subtractvalue+TotalAmount2;
+    //   });
+    //   setState(() {
+    //     Cgst = 0;
+    //     sgst = 0;
+    //     subtotalamount=0;
+    //   });
+    //   setState(() {
+    //     Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+    //     sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+    //     subtotalamount= TotalAmount2 - (Cgst+sgst);
+    //   });
+    //   if(status2==true) {
+    //     FirebaseFirestore.instance.collection("billing ShabikaN")
+    //         .doc(random)
+    //         .update({
+    //       "Totalamount": Discountamount.text == "0" &&
+    //           Discountamountpercentage.text == "0" ? TotalAmount2
+    //           .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+    //
+    //     });
+    //   }
+    //   if(status==true) {
+    //     FirebaseFirestore.instance.collection("billing ShabikaG")
+    //         .doc(random)
+    //         .update({
+    //       "Totalamount": Discountamount.text == "0" &&
+    //           Discountamountpercentage.text == "0" ? TotalAmount2
+    //           .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+    //
+    //     });
+    //   }
+    //   FirebaseFirestore.instance.collection("billing").doc(random).update({
+    //     "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //
+    //   });
+    //   return TotalAmount2.toStringAsFixed(2);
+    //
+    // }
+
+    setState(() {
+
+    });
+  }
+
+  discountamount() {
+    if(Discountamount.text!=""){
+      setState(() {
+        discountamountsvalue = 100/((double.parse(TotalAmount2.toString()) / double.parse(Discountamount.text)).abs().toDouble());
+        // print(discountamountsvalue);
+        // print("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+        // subtractvalue = (int.parse(TotalAmount2.toString()) * int.parse(Discountamountpercentage.text) / 100).toInt();
+        Discountamountpercentage.text = discountamountsvalue.toStringAsFixed(1);
+      });
+      // if (discountamountsvalue != 0) {
+      //   setState(() {
+      //     TotalAmount2 = discountamountsvalue;
+      //     disacountamountcalue = discountamountsvalue;
+      //   });
+      //   setState(() {
+      //     Cgst = 0;
+      //     sgst = 0;
+      //     subtotalamount=0;
+      //   });
+      //   setState(() {
+      //     Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+      //     sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+      //     subtotalamount= TotalAmount2 - (Cgst+sgst);
+      //   });
+      //   // if(status2==true) {
+      //   //   FirebaseFirestore.instance.collection("billing ShabikaN")
+      //   //       .doc(random)
+      //   //       .update({
+      //   //     "Totalamount": Discountamount.text == "0" &&
+      //   //         Discountamountpercentage.text == "0" ? TotalAmount2
+      //   //         .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+      //   //
+      //   //   });
+      //   // }
+      //   // if(status==true) {
+      //   //   FirebaseFirestore.instance.collection("billing ShabikaG")
+      //   //       .doc(random)
+      //   //       .update({
+      //   //     "Totalamount": Discountamount.text == "0" &&
+      //   //         Discountamountpercentage.text == "0" ? TotalAmount2
+      //   //         .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+      //   //
+      //   //   });
+      //   // }
+      //   // FirebaseFirestore.instance.collection("billing").doc(random).update({
+      //   //   "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+      //   //
+      //   // });
+      //
+      //   print(TotalAmount2);
+      //   print(subtotalamount);
+      //   print(Cgst);
+      //   print(sgst);
+      //   print(disacountamountcalue);
+      //   print(Discountamountpercentage.text);
+      //
+      //   return TotalAmount2.toStringAsFixed(2);
+      // }
+    }
+    if(Discountamount.text.isEmpty){
+
+      setState(() {
+        Discountamountpercentage.text="0";
+      });
+    }
+
+
+    // else{
+    //   setState(() {
+    //     TotalAmount2 = subtractvalue+TotalAmount2;
+    //     disacountamountcalue = subtractvalue+TotalAmount2;
+    //   });
+    //   setState(() {
+    //     Cgst = 0;
+    //     sgst = 0;
+    //     subtotalamount=0;
+    //   });
+    //   setState(() {
+    //     Cgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+    //     sgst = (TotalAmount2 - (TotalAmount2 / (1.18)))/2;
+    //     subtotalamount= TotalAmount2 - (Cgst+sgst);
+    //   });
+    //   if(status2==true) {
+    //     FirebaseFirestore.instance.collection("billing ShabikaN")
+    //         .doc(random)
+    //         .update({
+    //       "Totalamount": Discountamount.text == "0" &&
+    //           Discountamountpercentage.text == "0" ? TotalAmount2
+    //           .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+    //
+    //     });
+    //   }
+    //   if(status==true) {
+    //     FirebaseFirestore.instance.collection("billing ShabikaG")
+    //         .doc(random)
+    //         .update({
+    //       "Totalamount": Discountamount.text == "0" &&
+    //           Discountamountpercentage.text == "0" ? TotalAmount2
+    //           .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+    //
+    //     });
+    //   }
+    //   FirebaseFirestore.instance.collection("billing").doc(random).update({
+    //     "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //
+    //   });
+    //   return TotalAmount2.toStringAsFixed(2);
+    //
+    // }
+
+    setState(() {
+
+    });
   }
 
   final TextEditingController _typeAheadControllercateory = TextEditingController();
@@ -2056,204 +2210,573 @@ class _Billing_PageState extends State<Billing_Page> {
 
 
   totalcollectionamount() async{
-    print("identifi+++++++++++++++++++++++++++++3");
-    print(random);
-     var document1=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
-     for(int i=0;i<document1.docs.length;i++){
-       FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(document1.docs[i].id).update({
-         "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-       });
-     }
-    print("identifi+++++++++++++++++++++++++++++4");
-     FirebaseFirestore.instance.collection("billing").doc(random).update({
-       "Total": totalamount,
-       "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ? TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-       "Payment mode": Payments,
-       "save": true,
-       'customerdocid': customerdocid,
-       "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
-       "purchasenote": purchase_notes.text,
-       "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-       "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-       "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-       "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-       "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-       "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-     });
-    print("identifi+++++++++++++++++++++++++++++5");
-    if (status == true) {
-      FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
-        "Total": totalamount,
-        "Payment mode": Payments,
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+
+    String randomString1 =  randomAlphaNumeric(16);
+
+    if(billingsList.isNotEmpty){
+
+      FirebaseFirestore.instance.collection("billing").doc(randomString1).set({
+        "BoxNo": billingsList.first.boxNo,
+        "Color": billingsList.first.color,
+        "Customer GstNo": status2 == true?"":billingsList.first.customerGstNo,
+        "Hsncode": billingsList.first.hsncode,
+        "IMEI NO": billingsList.first.iMEINO,
+        "Itemdocid":billingsList.first.itemdocid,
+        "Payment mode": billingsList.first.paymentMode,
+        "Serial NO": billingsList.first.serialNO,
+        "Total": getGrandTotal(),
+        "billtypeitemcode": billingsList.first.itemcode,
+        "credit days": billingsList.first.creditDays,
+        "customeraddress": billingsList.first.customeraddress,
+        "customername": billingsList.first.customername,
+        "customerphone": billingsList.first.customerphone,
+        "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        "purchasedate": billingsList.first.purchasedate,
+        "purchaseno": billingsList.first.purchaseno,
+        "purchasenote": billingsList.first.purchasenote,
         "save": true,
-        "purchasenote": purchase_notes.text,
-        'customerdocid': customerdocid,
-        "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
-        "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-        "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-        "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-        "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-        "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-        "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+        "return": false,
+        "tax": billingsList.first.tax,
+        "time": DateFormat.jm().format(DateTime.now()),
+        "timestamp": DateTime.now().microsecondsSinceEpoch,
       });
-      var document3=await FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).collection(random).get();
-      for(int i=0;i<document3.docs.length;i++){
-        FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).collection(random).doc(document3.docs[i].id).update({
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-        });
-      }
-    }
-
-    if (status2 == true) {
-
-      FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
-        "Total": totalamount,
-        "Payment mode": Payments,
-        "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+      FirebaseFirestore.instance.collection("billing ShabikaG").doc(randomString1).set({
+        "BoxNo": billingsList.first.boxNo,
+        "Color": billingsList.first.color,
+        "Customer GstNo": status2 == true?"":billingsList.first.customerGstNo,
+        "Hsncode": billingsList.first.hsncode,
+        "IMEI NO": billingsList.first.iMEINO,
+        "Itemdocid":billingsList.first.itemdocid,
+        "Payment mode": billingsList.first.paymentMode,
+        "Serial NO": billingsList.first.serialNO,
+        "Total": getGrandTotal(),
+        "billtypeitemcode": billingsList.first.itemcode,
+        "credit days": billingsList.first.creditDays,
+        "customeraddress": billingsList.first.customeraddress,
+        "customername": billingsList.first.customername,
+        "customerphone": billingsList.first.customerphone,
+        "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        "purchasedate": billingsList.first.purchasedate,
+        "purchaseno": billingsList.first.purchaseno,
+        "purchasenote": billingsList.first.purchasenote,
         "save": true,
-        'customerdocid': customerdocid,
-        "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
-        "purchasenote": purchase_notes.text,
-        "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-        "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-        "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-        "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-        "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-        "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+        "return": false,
+        "tax": billingsList.first.tax,
+        "time": DateFormat.jm().format(DateTime.now()),
+        "timestamp": DateTime.now().microsecondsSinceEpoch,
+      });
+      FirebaseFirestore.instance.collection("billing ShabikaN").doc(randomString1).set({
+        "BoxNo": billingsList.first.boxNo,
+        "Color": billingsList.first.color,
+        "Customer GstNo": status2 == true?"":billingsList.first.customerGstNo,
+        "Hsncode": billingsList.first.hsncode,
+        "IMEI NO": billingsList.first.iMEINO,
+        "Itemdocid":billingsList.first.itemdocid,
+        "Payment mode": billingsList.first.paymentMode,
+        "Serial NO": billingsList.first.serialNO,
+        "Total": getGrandTotal(),
+        "billtypeitemcode": billingsList.first.itemcode,
+        "credit days": billingsList.first.creditDays,
+        "customeraddress": billingsList.first.customeraddress,
+        "customername": billingsList.first.customername,
+        "customerphone": billingsList.first.customerphone,
+        "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        "purchasedate": billingsList.first.purchasedate,
+        "purchaseno": billingsList.first.purchaseno,
+        "purchasenote": billingsList.first.purchasenote,
+        "save": true,
+        "return": false,
+        "tax": billingsList.first.tax,
+        "time": DateFormat.jm().format(DateTime.now()),
+        "timestamp": DateTime.now().microsecondsSinceEpoch,
       });
 
-      var document2=await FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).get();
-      for(int i=0;i<document2.docs.length;i++){
-        FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).doc(document2.docs[i].id).update({
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+
+      for(int x=0;x<billingsList.length;x++){
+        FirebaseFirestore.instance.collection("billing").doc(randomString1).collection(randomString1).doc().set({
+          "BoxNo": billingsList[x].boxNo,
+          "Color": billingsList[x].color,
+          "Customer GstNo": status2 == true?"":billingsList[x].customerGstNo,
+          "Hsncode": billingsList[x].hsncode,
+          "IMEI NO": billingsList[x].iMEINO,
+          "Itemdocid":billingsList[x].itemdocid,
+          "Payment mode": billingsList[x].paymentMode,
+          "Serial NO": billingsList[x].serialNO,
+          "Total": billingsList[x].total,
+          "billtypeitemcode": billingsList[x].itemcode,
+          "credit days": billingsList[x].creditDays,
+          "customeraddress": billingsList[x].customeraddress,
+          "customername": billingsList[x].customername,
+          "customerphone": billingsList[x].customerphone,
+          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+          "purchaseno": billingsList[x].purchaseno,
+          "purchasedate": billingsList[x].purchasedate,
+          "purchasenote": billingsList[x].purchasenote,
+          "save": true,
+          "return": false,
+          "tax": billingsList[x].tax,
+          "time": DateFormat.jm().format(DateTime.now()),
+          "timestamp": DateTime.now().microsecondsSinceEpoch,
+
+          "Brand":billingsList[x].brand,
+          "Category":billingsList[x].category,
+          "Description":billingsList[x].description,
+          "Discountamount":billingsList[x].discountAmount,
+          "Discountamountpercentage":billingsList[x].discAmountPercentage,
+          "Imei no":billingsList[x].imeiNoList,
+          "Serial no":billingsList[x].serialNoList,
+          "color":billingsList[x].colorList,
+          "Qty":billingsList[x].qty,
+          "Sales price":billingsList[x].salesPrice,
+          "margin":margin,
+          "withouttaxprice":billingsList[x].withouttaxprice,
         });
+        FirebaseFirestore.instance.collection("billingItemreports").doc().set({
+          "BoxNo": billingsList[x].boxNo,
+          "Color": billingsList[x].color,
+          "Customer GstNo": status2 == true?"":billingsList[x].customerGstNo,
+          "Hsncode": billingsList[x].hsncode,
+          "IMEI NO": billingsList[x].iMEINO,
+          "Itemdocid":billingsList[x].itemdocid,
+          "Payment mode": billingsList[x].paymentMode,
+          "Serial NO": billingsList[x].serialNO,
+          "Total": billingsList[x].total,
+          "billtypeitemcode": billingsList[x].itemcode,
+          "credit days": billingsList[x].creditDays,
+          "customeraddress": billingsList[x].customeraddress,
+          "customername": billingsList[x].customername,
+          "customerphone": billingsList[x].customerphone,
+          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+          "purchaseno": billingsList[x].purchaseno,
+          "purchasedate": billingsList[x].purchasedate,
+          "purchasenote": billingsList[x].purchasenote,
+          "save": true,
+          "return": false,
+          "tax": billingsList[x].tax,
+          "time": DateFormat.jm().format(DateTime.now()),
+          "timestamp": DateTime.now().microsecondsSinceEpoch,
+          "billtype":"Sales",
+          "maindocid":randomString1,
+
+
+          "Brand":billingsList[x].brand,
+          "Category":billingsList[x].category,
+          "Description":billingsList[x].description,
+          "Discountamount":billingsList[x].discountAmount,
+          "Discountamountpercentage":billingsList[x].discAmountPercentage,
+          "Imei no":billingsList[x].imeiNoList,
+          "Serial no":billingsList[x].serialNoList,
+          "color":billingsList[x].colorList,
+          "Qty":billingsList[x].qty,
+          "Sales price":billingsList[x].salesPrice,
+          "margin":margin,
+          "withouttaxprice":billingsList[x].withouttaxprice,
+        });
+
+        if(status==true){
+          FirebaseFirestore.instance.collection("billing ShabikaG").doc(randomString1).collection(randomString1).doc().set({
+            "BoxNo": billingsList[x].boxNo,
+            "Color": billingsList[x].color,
+            "Customer GstNo": status2 == true?"":billingsList[x].customerGstNo,
+            "Hsncode": billingsList[x].hsncode,
+            "IMEI NO": billingsList[x].iMEINO,
+            "Itemdocid":billingsList[x].itemdocid,
+            "Payment mode": billingsList[x].paymentMode,
+            "Serial NO": billingsList[x].serialNO,
+            "Total": billingsList[x].total,
+            "billtypeitemcode": billingsList[x].itemcode,
+            "credit days": billingsList[x].creditDays,
+            "customeraddress": billingsList[x].customeraddress,
+            "customername": billingsList[x].customername,
+            "customerphone": billingsList[x].customerphone,
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "purchaseno": billingsList[x].purchaseno,
+            "purchasedate": billingsList[x].purchasedate,
+            "purchasenote": billingsList[x].purchasenote,
+            "save": true,
+            "return": false,
+            "tax": billingsList[x].tax,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "timestamp": DateTime.now().microsecondsSinceEpoch,
+            "Brand":billingsList[x].brand,
+            "Category":billingsList[x].category,
+            "Description":billingsList[x].description,
+            "Discountamount":billingsList[x].discountAmount,
+            "Discountamountpercentage":billingsList[x].discAmountPercentage,
+            "Imei no":billingsList[x].imeiNoList,
+            "Serial no":billingsList[x].serialNoList,
+            "color":billingsList[x].colorList,
+            "Qty":billingsList[x].qty,
+            "Sales price":billingsList[x].salesPrice,
+            "margin":margin,
+            "withouttaxprice":billingsList[x].withouttaxprice,
+          });
+          FirebaseFirestore.instance.collection("billingItemreportsG").doc().set({
+            "BoxNo": billingsList[x].boxNo,
+            "Color": billingsList[x].color,
+            "Customer GstNo": status2 == true?"":billingsList[x].customerGstNo,
+            "Hsncode": billingsList[x].hsncode,
+            "IMEI NO": billingsList[x].iMEINO,
+            "Itemdocid":billingsList[x].itemdocid,
+            "Payment mode": billingsList[x].paymentMode,
+            "Serial NO": billingsList[x].serialNO,
+            "Total": billingsList[x].total,
+            "billtypeitemcode": billingsList[x].itemcode,
+            "credit days": billingsList[x].creditDays,
+            "customeraddress": billingsList[x].customeraddress,
+            "customername": billingsList[x].customername,
+            "customerphone": billingsList[x].customerphone,
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "purchaseno": billingsList[x].purchaseno,
+            "purchasedate": billingsList[x].purchasedate,
+            "purchasenote": billingsList[x].purchasenote,
+            "save": true,
+            "return": false,
+            "tax": billingsList[x].tax,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "timestamp": DateTime.now().microsecondsSinceEpoch,
+            "billtype":"Sales",
+            "maindocid":randomString1,
+
+
+            "Brand":billingsList[x].brand,
+            "Category":billingsList[x].category,
+            "Description":billingsList[x].description,
+            "Discountamount":billingsList[x].discountAmount,
+            "Discountamountpercentage":billingsList[x].discAmountPercentage,
+            "Imei no":billingsList[x].imeiNoList,
+            "Serial no":billingsList[x].serialNoList,
+            "color":billingsList[x].colorList,
+            "Qty":billingsList[x].qty,
+            "Sales price":billingsList[x].salesPrice,
+            "margin":margin,
+            "withouttaxprice":billingsList[x].withouttaxprice,
+          });
+        }
+        if(status2==true){
+          FirebaseFirestore.instance.collection("billing ShabikaN").doc(randomString1).collection(randomString1).doc().set({
+            "BoxNo": billingsList[x].boxNo,
+            "Color": billingsList[x].color,
+            "Customer GstNo": status2 == true?"":billingsList[x].customerGstNo,
+            "Hsncode": billingsList[x].hsncode,
+            "IMEI NO": billingsList[x].iMEINO,
+            "Itemdocid":billingsList[x].itemdocid,
+            "Payment mode": billingsList[x].paymentMode,
+            "Serial NO": billingsList[x].serialNO,
+            "Total": billingsList[x].total,
+            "billtypeitemcode": billingsList[x].itemcode,
+            "credit days": billingsList[x].creditDays,
+            "customeraddress": billingsList[x].customeraddress,
+            "customername": billingsList[x].customername,
+            "customerphone": billingsList[x].customerphone,
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "purchaseno": billingsList[x].purchaseno,
+            "purchasedate": billingsList[x].purchasedate,
+            "purchasenote": billingsList[x].purchasenote,
+            "save": true,
+            "return": false,
+            "tax": billingsList[x].tax,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "timestamp": DateTime.now().microsecondsSinceEpoch,
+
+            "Brand":billingsList[x].brand,
+            "Category":billingsList[x].category,
+            "Description":billingsList[x].description,
+            "Discountamount":billingsList[x].discountAmount,
+            "Discountamountpercentage":billingsList[x].discAmountPercentage,
+            "Imei no":billingsList[x].imeiNoList,
+            "Serial no":billingsList[x].serialNoList,
+            "color":billingsList[x].colorList,
+            "Qty":billingsList[x].qty,
+            "Sales price":billingsList[x].salesPrice,
+            "margin":margin,
+            "withouttaxprice":billingsList[x].withouttaxprice,
+          });
+          FirebaseFirestore.instance.collection("billingItemreportsN").doc().set({
+            "BoxNo": billingsList[x].boxNo,
+            "Color": billingsList[x].color,
+            "Customer GstNo": status2 == true?"":billingsList[x].customerGstNo,
+            "Hsncode": billingsList[x].hsncode,
+            "IMEI NO": billingsList[x].iMEINO,
+            "Itemdocid":billingsList[x].itemdocid,
+            "Payment mode": billingsList[x].paymentMode,
+            "Serial NO": billingsList[x].serialNO,
+            "Total": billingsList[x].total,
+            "billtypeitemcode": billingsList[x].itemcode,
+            "credit days": billingsList[x].creditDays,
+            "customeraddress": billingsList[x].customeraddress,
+            "customername": billingsList[x].customername,
+            "customerphone": billingsList[x].customerphone,
+            "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+            "purchaseno": billingsList[x].purchaseno,
+            "purchasedate": billingsList[x].purchasedate,
+            "purchasenote": billingsList[x].purchasenote,
+            "save": true,
+            "return": false,
+            "tax": billingsList[x].tax,
+            "time": DateFormat.jm().format(DateTime.now()),
+            "timestamp": DateTime.now().microsecondsSinceEpoch,
+            "billtype":"Sales",
+            "maindocid":randomString1,
+
+
+            "Brand":billingsList[x].brand,
+            "Category":billingsList[x].category,
+            "Description":billingsList[x].description,
+            "Discountamount":billingsList[x].discountAmount,
+            "Discountamountpercentage":billingsList[x].discAmountPercentage,
+            "Imei no":billingsList[x].imeiNoList,
+            "Serial no":billingsList[x].serialNoList,
+            "color":billingsList[x].colorList,
+            "Qty":billingsList[x].qty,
+            "Sales price":billingsList[x].salesPrice,
+            "margin":margin,
+            "withouttaxprice":billingsList[x].withouttaxprice,
+          });
+        }
       }
 
     }
+    FirebaseFirestore.instance.collection("Accounts").doc("AxQxYGPKUB5qGzllyfpY").update({
+      "Totalamount": getGrandTotal(),
+    });
 
-
-    var document2=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
-    for(int i=0;i<document2.docs.length;i++){
-      FirebaseFirestore.instance.collection("billingItemreports").doc().set({
-        "Total": document2.docs[i]["Total"],
-        "billtype":"Sales",
-        "margin":document2.docs[i]["margin"],
-        "Totalamount": document2.docs[i]["Totalamount"],
-        "Payment mode": document2.docs[i]["Payment mode"],
-        "itemcode": document2.docs[i]["itemcode"],
-        "Hsncode": document2.docs[i]["Hsncode"],
-        "BoxNo": document2.docs[i]["BoxNo"],
-        "customername": document2.docs[i]["customername"],
-        "customerphone": document2.docs[i]["customerphone"],
-        "customeraddress": document2.docs[i]["customeraddress"],
-        "purchaseno": document2.docs[i]["purchaseno"],
-        "purchasedate": document2.docs[i]["purchasedate"],
-        "purchasenote": document2.docs[i]["purchasenote"],
-        "tax": document2.docs[i]["tax"],
-        "time": document2.docs[i]["time"],
-        "date": document2.docs[i]["date"],
-        "timestamp": document2.docs[i]["timestamp"],
-        "Category": document2.docs[i]["Category"],
-        "Brand": document2.docs[i]["Brand"],
-        "Item": document2.docs[i]["Item"],
-        "withouttaxprice": document2.docs[i]["withouttaxprice"],
-        "Sales price": document2.docs[i]["Sales price"],
-        "Qty": document2.docs[i]["Qty"],
-        "Description": document2.docs[i]["Description"],
-        "Imei no": document2.docs[i]["Imei no"],
-        "Serial no": document2.docs[i]["Serial no"],
-        "color": document2.docs[i]["color"],
-        "maindocid":random
-      });
-      if(status==true){
-      FirebaseFirestore.instance.collection("billingItemreportsG").doc().set({
-        "Total": document2.docs[i]["Total"],
-        "billtype":"Sales",
-        "margin":document2.docs[i]["margin"],
-        "Totalamount": document2.docs[i]["Totalamount"],
-        "Payment mode": document2.docs[i]["Payment mode"],
-        "itemcode": document2.docs[i]["itemcode"],
-        "Hsncode": document2.docs[i]["Hsncode"],
-        "BoxNo": document2.docs[i]["BoxNo"],
-        "customername": document2.docs[i]["customername"],
-        "customerphone": document2.docs[i]["customerphone"],
-        "customeraddress": document2.docs[i]["customeraddress"],
-        "purchaseno": document2.docs[i]["purchaseno"],
-        "purchasedate": document2.docs[i]["purchasedate"],
-        "purchasenote": document2.docs[i]["purchasenote"],
-        "tax": document2.docs[i]["tax"],
-        "time": document2.docs[i]["time"],
-        "date": document2.docs[i]["date"],
-        "timestamp": document2.docs[i]["timestamp"],
-        "Category": document2.docs[i]["Category"],
-        "Brand": document2.docs[i]["Brand"],
-        "Item": document2.docs[i]["Item"],
-        "withouttaxprice": document2.docs[i]["withouttaxprice"],
-        "Sales price": document2.docs[i]["Sales price"],
-        "Qty": document2.docs[i]["Qty"],
-        "Description": document2.docs[i]["Description"],
-        "Imei no": document2.docs[i]["Imei no"],
-        "Serial no": document2.docs[i]["Serial no"],
-        "color": document2.docs[i]["color"],
-        "maindocid":random
-      });}
-      if(status2==true){
-      FirebaseFirestore.instance.collection("billingItemreportsN").doc().set({
-        "Total": document2.docs[i]["Total"],
-        "billtype":"Sales",
-        "margin":document2.docs[i]["margin"],
-        "Totalamount": document2.docs[i]["Totalamount"],
-        "Payment mode": document2.docs[i]["Payment mode"],
-        "itemcode": document2.docs[i]["itemcode"],
-        "Hsncode": document2.docs[i]["Hsncode"],
-        "BoxNo": document2.docs[i]["BoxNo"],
-        "customername": document2.docs[i]["customername"],
-        "customerphone": document2.docs[i]["customerphone"],
-        "customeraddress": document2.docs[i]["customeraddress"],
-        "purchaseno": document2.docs[i]["purchaseno"],
-        "purchasedate": document2.docs[i]["purchasedate"],
-        "purchasenote": document2.docs[i]["purchasenote"],
-        "tax": document2.docs[i]["tax"],
-        "time": document2.docs[i]["time"],
-        "date": document2.docs[i]["date"],
-        "timestamp": document2.docs[i]["timestamp"],
-        "Category": document2.docs[i]["Category"],
-        "Brand": document2.docs[i]["Brand"],
-        "Item": document2.docs[i]["Item"],
-        "withouttaxprice": document2.docs[i]["withouttaxprice"],
-        "Sales price": document2.docs[i]["Sales price"],
-        "Qty": document2.docs[i]["Qty"],
-        "Description": document2.docs[i]["Description"],
-        "Imei no": document2.docs[i]["Imei no"],
-        "Serial no": document2.docs[i]["Serial no"],
-        "color": document2.docs[i]["color"],
-        "maindocid":random
-      });
-      }
-    }
-    print("Customer bill started");
-      FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing")
-         .doc(random).update({
-       "Total": totalamount,
-       "Payment mode": Payments,
-       "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-       "save": true,
-       'customerdocid': customerdocid,
-       "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
-       "purchasenote": purchase_notes.text,
-       "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-       "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-       "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-       "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-       "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-       "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-     });
-    print("Customer bill sucess 1");
-     FirebaseFirestore.instance.collection("Accounts").doc("AxQxYGPKUB5qGzllyfpY").update({
-       "Totalamount":Discountamount.text == "0"&&Discountamountpercentage.text == "0" ? FieldValue.increment(TotalAmount2):FieldValue.increment(disacountamountcalue),
-     });
-    print("Customer bill sucess 2");
+    //
+    //  var document1=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
+    //  for(int i=0;i<document1.docs.length;i++){
+    //    FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(document1.docs[i].id).update({
+    //      "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //    });
+    //  }
+    // print("identifi+++++++++++++++++++++++++++++4");
+    //  FirebaseFirestore.instance.collection("billing").doc(random).update({
+    //    "Total": totalamount,
+    //    "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ? TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //    "Payment mode": Payments,
+    //    "save": true,
+    //    'customerdocid': customerdocid,
+    //    "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
+    //    "purchasenote": purchase_notes.text,
+    //    "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+    //    "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+    //    "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+    //    "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+    //    "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+    //    "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+    //  });
+    // print("identifi+++++++++++++++++++++++++++++5");
+    // if (status == true) {
+    //   FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
+    //     "Total": totalamount,
+    //     "Payment mode": Payments,
+    //     "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //     "save": true,
+    //     "purchasenote": purchase_notes.text,
+    //     'customerdocid': customerdocid,
+    //     "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
+    //     "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+    //     "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+    //     "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+    //     "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+    //     "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+    //     "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+    //   });
+    //   var document3=await FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).collection(random).get();
+    //   for(int i=0;i<document3.docs.length;i++){
+    //     FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).collection(random).doc(document3.docs[i].id).update({
+    //       "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //     });
+    //   }
+    // }
+    //
+    // if (status2 == true) {
+    //
+    //   FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
+    //     "Total": totalamount,
+    //     "Payment mode": Payments,
+    //     "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //     "save": true,
+    //     'customerdocid': customerdocid,
+    //     "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
+    //     "purchasenote": purchase_notes.text,
+    //     "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+    //     "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+    //     "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+    //     "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+    //     "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+    //     "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+    //   });
+    //
+    //   var document2=await FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).get();
+    //   for(int i=0;i<document2.docs.length;i++){
+    //     FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).doc(document2.docs[i].id).update({
+    //       "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //     });
+    //   }
+    //
+    // }
+    //
+    //
+    // var document2=await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
+    //
+    //
+    // for(int i=0;i<document2.docs.length;i++){
+    //   FirebaseFirestore.instance.collection("billingItemreports").doc().set({
+    //     "Total": document2.docs[i]["Total"],
+    //     "billtype":"Sales",
+    //     "margin":document2.docs[i]["margin"],
+    //     "Totalamount": document2.docs[i]["Totalamount"],
+    //     "Payment mode": document2.docs[i]["Payment mode"],
+    //     "itemcode": document2.docs[i]["itemcode"],
+    //     "Hsncode": document2.docs[i]["Hsncode"],
+    //     "BoxNo": document2.docs[i]["BoxNo"],
+    //     "customername": document2.docs[i]["customername"],
+    //     "customerphone": document2.docs[i]["customerphone"],
+    //     "customeraddress": document2.docs[i]["customeraddress"],
+    //     "purchaseno": document2.docs[i]["purchaseno"],
+    //     "purchasedate": document2.docs[i]["purchasedate"],
+    //     "purchasenote": document2.docs[i]["purchasenote"],
+    //     "tax": document2.docs[i]["tax"],
+    //     "time": document2.docs[i]["time"],
+    //     "date": document2.docs[i]["date"],
+    //     "timestamp": document2.docs[i]["timestamp"],
+    //     "Category": document2.docs[i]["Category"],
+    //     "Brand": document2.docs[i]["Brand"],
+    //     "Item": document2.docs[i]["Item"],
+    //     "withouttaxprice": document2.docs[i]["withouttaxprice"],
+    //     "Sales price": document2.docs[i]["Sales price"],
+    //     "Qty": document2.docs[i]["Qty"],
+    //     "Description": document2.docs[i]["Description"],
+    //     "Imei no": document2.docs[i]["Imei no"],
+    //     "Serial no": document2.docs[i]["Serial no"],
+    //     "color": document2.docs[i]["color"],
+    //     "maindocid":random
+    //   });
+    //   if(status==true){
+    //   FirebaseFirestore.instance.collection("billingItemreportsG").doc().set({
+    //     "Total": document2.docs[i]["Total"],
+    //     "billtype":"Sales",
+    //     "margin":document2.docs[i]["margin"],
+    //     "Totalamount": document2.docs[i]["Totalamount"],
+    //     "Payment mode": document2.docs[i]["Payment mode"],
+    //     "itemcode": document2.docs[i]["itemcode"],
+    //     "Hsncode": document2.docs[i]["Hsncode"],
+    //     "BoxNo": document2.docs[i]["BoxNo"],
+    //     "customername": document2.docs[i]["customername"],
+    //     "customerphone": document2.docs[i]["customerphone"],
+    //     "customeraddress": document2.docs[i]["customeraddress"],
+    //     "purchaseno": document2.docs[i]["purchaseno"],
+    //     "purchasedate": document2.docs[i]["purchasedate"],
+    //     "purchasenote": document2.docs[i]["purchasenote"],
+    //     "tax": document2.docs[i]["tax"],
+    //     "time": document2.docs[i]["time"],
+    //     "date": document2.docs[i]["date"],
+    //     "timestamp": document2.docs[i]["timestamp"],
+    //     "Category": document2.docs[i]["Category"],
+    //     "Brand": document2.docs[i]["Brand"],
+    //     "Item": document2.docs[i]["Item"],
+    //     "withouttaxprice": document2.docs[i]["withouttaxprice"],
+    //     "Sales price": document2.docs[i]["Sales price"],
+    //     "Qty": document2.docs[i]["Qty"],
+    //     "Description": document2.docs[i]["Description"],
+    //     "Imei no": document2.docs[i]["Imei no"],
+    //     "Serial no": document2.docs[i]["Serial no"],
+    //     "color": document2.docs[i]["color"],
+    //     "maindocid":random
+    //   });}
+    //   if(status2==true){
+    //   FirebaseFirestore.instance.collection("billingItemreportsN").doc().set({
+    //     "Total": document2.docs[i]["Total"],
+    //     "billtype":"Sales",
+    //     "margin":document2.docs[i]["margin"],
+    //     "Totalamount": document2.docs[i]["Totalamount"],
+    //     "Payment mode": document2.docs[i]["Payment mode"],
+    //     "itemcode": document2.docs[i]["itemcode"],
+    //     "Hsncode": document2.docs[i]["Hsncode"],
+    //     "BoxNo": document2.docs[i]["BoxNo"],
+    //     "customername": document2.docs[i]["customername"],
+    //     "customerphone": document2.docs[i]["customerphone"],
+    //     "customeraddress": document2.docs[i]["customeraddress"],
+    //     "purchaseno": document2.docs[i]["purchaseno"],
+    //     "purchasedate": document2.docs[i]["purchasedate"],
+    //     "purchasenote": document2.docs[i]["purchasenote"],
+    //     "tax": document2.docs[i]["tax"],
+    //     "time": document2.docs[i]["time"],
+    //     "date": document2.docs[i]["date"],
+    //     "timestamp": document2.docs[i]["timestamp"],
+    //     "Category": document2.docs[i]["Category"],
+    //     "Brand": document2.docs[i]["Brand"],
+    //     "Item": document2.docs[i]["Item"],
+    //     "withouttaxprice": document2.docs[i]["withouttaxprice"],
+    //     "Sales price": document2.docs[i]["Sales price"],
+    //     "Qty": document2.docs[i]["Qty"],
+    //     "Description": document2.docs[i]["Description"],
+    //     "Imei no": document2.docs[i]["Imei no"],
+    //     "Serial no": document2.docs[i]["Serial no"],
+    //     "color": document2.docs[i]["color"],
+    //     "maindocid":random
+    //   });
+    //   }
+    // }
+    // print("Customer bill started");
+    //  //  FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing")
+    //  //     .doc(random).update({
+    //  //   "Total": totalamount,
+    //  //   "Payment mode": Payments,
+    //  //   "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+    //  //   "save": true,
+    //  //   'customerdocid': customerdocid,
+    //  //   "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
+    //  //   "purchasenote": purchase_notes.text,
+    //  //   "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+    //  //   "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+    //  //   "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+    //  //   "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+    //  //   "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+    //  //   "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+    //  // });
+    //
+    // // FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing").doc(random)
+    // //     .set({
+    // //   "Total": totalamount,
+    // //   "Payment mode": Payments,
+    // //   "itemcode": status2 == true ? "N$itemcode" : "",
+    // //   "Itemdocid":itemdocuid,
+    // //   "Hsncode": HSN_Code.text,
+    // //   "BoxNo": Box_NO.text,
+    // //   "customername": customername.text,
+    // //   "customerphone": customerphone.text,
+    // //   "customeraddress": customeraddress.text,
+    // //   "purchaseno": purchase_No.text,
+    // //   "purchasedate": purchase_Date.text,
+    // //   "purchasenote": purchase_notes.text,
+    // //   "tax": taxitem.text,
+    // //   'customerdocid': customerdocid,
+    // //   "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+    // //   "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+    // //   "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+    // //   "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+    // //   "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+    // //   "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+    // //   "time": DateFormat.jm().format(DateTime.now()),
+    // //   "date":
+    // //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+    // //   "timestamp": DateTime.now().microsecondsSinceEpoch,
+    // //   "save": false,
+    // //   "return": false,
+    // //   "Category": itemcat,
+    // //   "Brand": itembrand,
+    // //   "Item": itemname.text,
+    // //   "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
+    // //   "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
+    // //   "Qty": Qty.text,
+    // //   //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
+    // //   "Description":
+    // //   "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+    // // });
+    // print("Customer bill sucess 1");
+    //
+    // print("Customer bill sucess 2");
 
      print(itemdocuid);
      print(imeinu);
@@ -2290,13 +2813,12 @@ class _Billing_PageState extends State<Billing_Page> {
        });
      }
 
-
-
   setState(() {
     serialvalue = false;
     imeivalue = false;
     color = false;
     popupLoading = false;
+    billingsList.clear();
   });
 
   }
@@ -4399,337 +4921,325 @@ class _Billing_PageState extends State<Billing_Page> {
               decoration: const BoxDecoration(
                 color: Color(0xffFFFFFF),
               ),
-              child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance.collection("billing").doc(random).collection(random).orderBy("timestamp")
-                    .snapshots(),
-                builder: (context, snapshot) {
-
-                  if (snapshot.hasData == null) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-
-                  if (!snapshot.hasData) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const ScrollPhysics(),
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (context, index) {
-                      var billing = snapshot.data!.docs[index];
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: 0),
-                        child:
-                        Row(
-                          children: [
-                            //Serial no
-                            Container(
-                              decoration: BoxDecoration(
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                itemCount: billingsList.length,
+                itemBuilder: (context, index) {
+                  var billing = billingsList[index];
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 0),
+                    child:
+                    Row(
+                      children: [
+                        //Serial no
+                        Container(
+                            decoration: BoxDecoration(
                                 border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),
-                                width: width / 45.533,
-                                height: height / 16.425,
-                                child:
-                                TextField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: " ${index + 1}",
-                                      hintStyle: const TextStyle(color: Colors.black)
-                                  ),
-                                )
-                            ),
-
-                            //itemid
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),
-                                width: width / 14.2,
-                                height: height / 16.425,
-
-                                child:
-                                TextField(
-                                  controller: _Streamcontroller1[index],
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: "${billing['itemcode']}",
-                                      hintStyle: const TextStyle(color: Colors.black)
-                                  ),
-                                  onSubmitted: (_){
-                                    FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                      'itemcode':_Streamcontroller1[index].text,
-                                    });
-
-                                  },
-                                )
-                            ),
-
-                            //itemname
-                            Tooltip(
-                              message:"${billing['Description']}",
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border:Border.all(
                                     color:Colors.black87
-                                  )
-                                ),
-                                width: width / 2.76+width / 13.32,
-                                height: height / 16.425,
-                                child:
-                                TextField(
-
-                                  controller: _Streamcontroller2[index],
-                                  decoration: InputDecoration(
-
-                                      border: InputBorder.none,
-                                      hintText: "${billing['Description']}",
-                                      hintStyle: const TextStyle(color: Colors.black)
-                      ),
-                                  onSubmitted: (_){
-                                    FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                      'Description':_Streamcontroller2[index].text,
-                                    });
-
-                                  },
-                                ),
-
-
-                              ),
+                                )
                             ),
-
-
-                            //Hsn code
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
+                            width: width / 45.533,
+                            height: height / 16.425,
+                            child:
+                            TextField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: " ${index + 1}",
+                                  hintStyle: const TextStyle(color: Colors.black)
                               ),
-
-                                width: width / 15.9,
-                                height: height / 16.425,
-                                child: Padding(
-                                  padding:  EdgeInsets.only(left:width/136.6),
-                                  child: TextField(
-                                    controller: _Streamcontroller3[index],
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "${billing['Hsncode']}",
-                                        hintStyle: const TextStyle(color: Colors.black)
-                                    ),
-                                    onSubmitted: (_){
-                                      FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                        'Hsncode':_Streamcontroller3[index].text,
-                                      });
-                                    },
-                                  ),
-                                )),
-
-                            //tax
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),
-
-                              width: width / 17.8,
-                              height: height / 16.425,
-                              child:
-                              Padding(
-                                padding:  EdgeInsets.only(left:width/136.6),
-                                child: TextField(
-                                  controller: _Streamcontroller4[index],
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: "${billing['tax']}",
-                                      hintStyle: const TextStyle(color: Colors.black)
-                                  ),
-                                  onSubmitted: (_){
-                                    FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                      'tax':_Streamcontroller5[index].text,
-                                    });
-                                  },
-                                ),
-                              ),
-                            ),
-
-                            //quvantity
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),
-                                width: width / 29.8,
-                                height: height / 16.425,
-                                child: Padding(
-                                  padding:  EdgeInsets.only(left:width/68.3),
-                                  child: TextField(
-                                    controller: _Streamcontroller5[index],
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "${billing['Qty']}",
-                                        hintStyle: const TextStyle(color: Colors.black)
-                                    ),
-                                    onSubmitted: (_) async {
-                                      //create a document (Firebase)
-                                      FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                        'Qty':int.parse(_Streamcontroller5[index].text),
-                                        'Sales price': (int.parse(_Streamcontroller5[index].text.toString())* double.parse(salespriceff.toString())).toString(),
-                                      });
-                                      billing['Serial NO']==true||
-                                      billing['IMEI NO']==true||
-                                      billing['Color']==true?
-
-                                      showquvantitytextfield(
-                                          int.parse(_Streamcontroller5[index].text),
-                                          billing['Serial NO'],
-                                          billing['IMEI NO'],
-                                          billing['Color']):
-                                      updatetotal();
-                                      setState((){
-                                        _Streamcontroller7[index].text= (int.parse(_Streamcontroller5[index].text)*double.parse(salespriceff.toString())) .toString();
-                                        _Streamcontroller6[index].text=(double.parse(_Streamcontroller6[index].text) / 1.18).round().toStringAsFixed(2);
-                                      });
-
-                                    },
-                                  ),
-                                )),
-
-                            // Price
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),
-
-                                width: width / 14.18,
-                                height: height / 16.425,
-                                child: Padding(
-                                  padding:  EdgeInsets.only(left:width/136.6),
-                                  child: TextField(
-                                    controller: _Streamcontroller6[index],
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "${billing['withouttaxprice']}",
-                                        hintStyle: const TextStyle(color: Colors.black)
-                                    ),
-                                    onSubmitted: (_){
-                                      setState((){
-                                        _Streamcontroller6[index].text=(double.parse(_Streamcontroller6[index].text) / 1.18).round().toStringAsFixed(2);
-                                      });
-                                      FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                        'withouttaxprice':_Streamcontroller6[index].text,
-                                      });
-
-                                      updatetotal();
-
-                                    },
-                                  ),
-                                )),
-
-                            //Sales Price
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),
-                                width: width / 13.8,
-                                height: height / 16.425,
-                                child: Padding(
-                                  padding:  EdgeInsets.only(left:width/136.6),
-                                  child: TextField(
-                                    controller: _Streamcontroller7[index],
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: billing['Sales price'].toString(),
-                                        hintStyle: const TextStyle(color: Colors.black)
-                                    ),
-                                    onSubmitted: (_){
-                                      FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                        'Sales price': int.parse(_Streamcontroller5[index].text)* double.parse(_Streamcontroller7[index].text),
-                                      });
-
-                                      updatetotal();
-                                      SGSTfunction();
-                                      CGSTfunction();
-                                      Totalamounts();
-
-                                    },
-                                  ),
-                                )),
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),
-                                width: width / 13.8,
-                                height: height / 16.425,
-                                child: Padding(
-                                  padding:  EdgeInsets.only(left:width/136.6),
-                                  child: TextField(
-                                    controller: _Streamcontroller7[index],
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: billing['Total'].toString(),
-                                        hintStyle: const TextStyle(color: Colors.red)
-                                    ),
-                                    onSubmitted: (_){
-                                      FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
-                                        'Sales price': int.parse(_Streamcontroller5[index].text)* double.parse(_Streamcontroller7[index].text),
-                                      });
-
-                                      updatetotal();
-                                      SGSTfunction();
-                                      CGSTfunction();
-                                      Totalamounts();
-
-                                    },
-                                  ),
-                                )),
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),width: width / 15.3, height: height / 16.425,),
-
-                            //remove
-                            Container(
-                              decoration: BoxDecoration(
-                                border:Border.all(
-                                  color:Colors.black87
-                                )
-                              ),
-                                width: width / 30.0,
-                                height: height / 16.425,
-                                child: Center(
-                                  child: InkWell(
-                                    onTap: () {
-                                      deletecollection(billing.id);
-
-                                    },
-                                    child: const Icon(Icons.delete),
-                                  ),
-                                )),
-
-                          ],
+                            )
                         ),
-                      );
-                    },
+
+                        //itemid
+                        Container(
+                            decoration: BoxDecoration(
+                                border:Border.all(
+                                    color:Colors.black87
+                                )
+                            ),
+                            width: width / 14.2,
+                            height: height / 16.425,
+
+                            child:
+                            TextField(
+                              controller: _Streamcontroller1[index],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "${billing.itemcode}",
+                                  hintStyle: const TextStyle(color: Colors.black)
+                              ),
+                              onSubmitted: (_){
+                                // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                //   'itemcode':_Streamcontroller1[index].text,
+                                // });
+
+                              },
+                            )
+                        ),
+
+                        //itemname
+                        Tooltip(
+                          message:"${billing.description}",
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border:Border.all(
+                                    color:Colors.black87
+                                )
+                            ),
+                            width: width / 2.76+width / 13.32,
+                            height: height / 16.425,
+                            child:
+                            TextField(
+
+                              controller: _Streamcontroller2[index],
+                              decoration: InputDecoration(
+
+                                  border: InputBorder.none,
+                                  hintText: "${billing.description}",
+                                  hintStyle: const TextStyle(color: Colors.black)
+                              ),
+                              onSubmitted: (_){
+                                // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                //   'Description':_Streamcontroller2[index].text,
+                                // });
+
+                              },
+                            ),
+
+
+                          ),
+                        ),
+
+
+                        //Hsn code
+                        Container(
+                            decoration: BoxDecoration(
+                                border:Border.all(
+                                    color:Colors.black87
+                                )
+                            ),
+
+                            width: width / 15.9,
+                            height: height / 16.425,
+                            child: Padding(
+                              padding:  EdgeInsets.only(left:width/136.6),
+                              child: TextField(
+                                controller: _Streamcontroller3[index],
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "${billing.hsncode}",
+                                    hintStyle: const TextStyle(color: Colors.black)
+                                ),
+                                onSubmitted: (_){
+                                  // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                  //   'Hsncode':_Streamcontroller3[index].text,
+                                  // });
+                                },
+                              ),
+                            )),
+
+                        //tax
+                        Container(
+                          decoration: BoxDecoration(
+                              border:Border.all(
+                                  color:Colors.black87
+                              )
+                          ),
+
+                          width: width / 17.8,
+                          height: height / 16.425,
+                          child:
+                          Padding(
+                            padding:  EdgeInsets.only(left:width/136.6),
+                            child: TextField(
+                              controller: _Streamcontroller4[index],
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "${billing.tax}",
+                                  hintStyle: const TextStyle(color: Colors.black)
+                              ),
+                              onSubmitted: (_){
+                                // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                //   'tax':_Streamcontroller5[index].text,
+                                // });
+                              },
+                            ),
+                          ),
+                        ),
+
+                        //quvantity
+                        Container(
+                            decoration: BoxDecoration(
+                                border:Border.all(
+                                    color:Colors.black87
+                                )
+                            ),
+                            width: width / 29.8,
+                            height: height / 16.425,
+                            child: Padding(
+                              padding:  EdgeInsets.only(left:width/68.3),
+                              child: TextField(
+                                controller: _Streamcontroller5[index],
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "${billing.qty}",
+                                    hintStyle: const TextStyle(color: Colors.black)
+                                ),
+                                onSubmitted: (_) async {
+
+                                  print("${billing.total}))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))");
+                                  //create a document (Firebase)
+                                  // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                  //   'Qty':int.parse(_Streamcontroller5[index].text),
+                                  //   'Sales price': (int.parse(_Streamcontroller5[index].text.toString())* double.parse(salespriceff.toString())).toString(),
+                                  // });
+                                  billing.serialNO==true||
+                                      billing.iMEINO==true||
+                                      billing.color==true?
+
+                                  showquvantitytextfield(
+                                      int.parse(_Streamcontroller5[index].text),
+                                      billing.serialNO,
+                                      billing.iMEINO,
+                                      billing.color):
+                                  updatetotal();
+                                  setState((){
+                                    _Streamcontroller7[index].text= (int.parse(_Streamcontroller5[index].text)*double.parse(salespriceff.toString())) .toString();
+                                    _Streamcontroller6[index].text=(double.parse(_Streamcontroller6[index].text) / 1.18).round().toStringAsFixed(2);
+                                  });
+
+                                },
+                              ),
+                            )),
+
+                        // Price
+                        Container(
+                            decoration: BoxDecoration(
+                                border:Border.all(
+                                    color:Colors.black87
+                                )
+                            ),
+
+                            width: width / 14.18,
+                            height: height / 16.425,
+                            child: Padding(
+                              padding:  EdgeInsets.only(left:width/136.6),
+                              child: TextField(
+                                controller: _Streamcontroller6[index],
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "${billing.withouttaxprice}",
+                                    hintStyle: const TextStyle(color: Colors.black)
+                                ),
+                                onSubmitted: (_){
+                                  setState((){
+                                    _Streamcontroller6[index].text=(double.parse(_Streamcontroller6[index].text) / 1.18).round().toStringAsFixed(2);
+                                 billing.withouttaxprice = _Streamcontroller6[index].text;
+                                  });
+                                  // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                  //   'withouttaxprice':_Streamcontroller6[index].text,
+                                  // });
+
+                                  updatetotal();
+
+                                },
+                              ),
+                            )),
+
+                        //Sales Price
+                        Container(
+                            decoration: BoxDecoration(
+                                border:Border.all(
+                                    color:Colors.black87
+                                )
+                            ),
+                            width: width / 13.8,
+                            height: height / 16.425,
+                            child: Padding(
+                              padding:  EdgeInsets.only(left:width/136.6),
+                              child: TextField(
+                                controller: _Streamcontroller7[index],
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: billing.salesPrice.toString(),
+                                    hintStyle: const TextStyle(color: Colors.black)
+                                ),
+                                onSubmitted: (_){
+                                  // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                  //   'Sales price': int.parse(_Streamcontroller5[index].text)* double.parse(_Streamcontroller7[index].text),
+                                  // });
+
+                                   updatetotal();
+                                   SGSTfunction();
+                                   CGSTfunction();
+                                   Totalamounts();
+
+                                },
+                              ),
+                            )),
+
+                        Container(
+                            decoration: BoxDecoration(
+                                border:Border.all(
+                                    color:Colors.black87
+                                )
+                            ),
+                            width: width / 13.8,
+                            height: height / 16.425,
+                            child: Padding(
+                              padding:  EdgeInsets.only(left:width/136.6),
+                              child: TextField(
+                                controller: _Streamcontroller7[index],
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: billing.total.toString(),
+                                    hintStyle: const TextStyle(color: Colors.red)
+                                ),
+                                onSubmitted: (_){
+                                  // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc(billing.id).update({
+                                  //   'Sales price': int.parse(_Streamcontroller5[index].text)* double.parse(_Streamcontroller7[index].text),
+                                  // });
+
+                                   updatetotal();
+                                  SGSTfunction();
+                                   CGSTfunction();
+                                   Totalamounts();
+
+                                },
+                              ),
+                            )),
+
+                        Container(
+                          decoration: BoxDecoration(
+                              border:Border.all(
+                                  color:Colors.black87
+                              )
+                          ),width: width / 15.3, height: height / 16.425,),
+
+                        //remove
+                        Container(
+                            decoration: BoxDecoration(
+                                border:Border.all(
+                                    color:Colors.black87
+                                )
+                            ),
+                            width: width / 30.0,
+                            height: height / 16.425,
+                            child: Center(
+                              child: InkWell(
+                                onTap: () {
+                                  //deletecollection(billing.id);
+                                  setState(() {
+                                    billingsList.removeAt(index);
+                                  });
+                                },
+                                child: const Icon(Icons.delete),
+                              ),
+                            )),
+
+                      ],
+                    ),
                   );
                 },
               ),
@@ -4957,9 +5467,7 @@ class _Billing_PageState extends State<Billing_Page> {
                                                       left: width / 136.6,
                                                       bottom: height / 65.7),
                                                 ),
-                                                onSubmitted: (_) {
-                                                  discountamount();
-                                                },
+
                                               ),
                                             ),
                                           ],
@@ -5069,8 +5577,12 @@ class _Billing_PageState extends State<Billing_Page> {
                                                         left: width / 136.6,
                                                         bottom: height / 65.7),
                                                   ),
-                                                  onSubmitted: (_) {
+                                                  // onSubmitted: (_) {
+                                                  //   discountamountpercentage();
+                                                  // },
+                                                  onChanged: (value){
                                                     discountamountpercentage();
+
                                                   },
                                                 ),
                                               ),
@@ -5113,9 +5625,11 @@ class _Billing_PageState extends State<Billing_Page> {
                                                         left: width / 136.6,
                                                         bottom: height / 65.7),
                                                   ),
-                                                  onSubmitted: (_) {
-                                                    discountamount();
-                                                  },
+                                                    onChanged:(value){
+                                                      discountamount();
+                                                    }
+
+
                                                 ),
                                               ),
                                             ],
@@ -5328,7 +5842,8 @@ class _Billing_PageState extends State<Billing_Page> {
                                             BorderRadius.circular(5)),
                                         child: Center(
                                           child: Text(
-                                            TotalAmount2.toStringAsFixed(2),
+                                            //TotalAmount2.toStringAsFixed(2),
+                                            getGrandTotal(),
                                             style: GoogleFonts.openSans(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
@@ -5358,7 +5873,7 @@ class _Billing_PageState extends State<Billing_Page> {
 
         hsncpode = "";
         Boxno = "";
-        itemcolor = '';
+        itemcolor = false;
       });
       PPrice.clear();
       Landing_cost.clear();
@@ -5391,12 +5906,13 @@ class _Billing_PageState extends State<Billing_Page> {
   }
 
   String random = "";
+  List<BillingModel> billingsList = [];
   String itemcode = "dsgdgd";
   String hsncpode = "";
   String itemcat = '';
   String itembrand = '';
-  String itemimei = '';
-  String itemserial = '';
+  bool itemimei = false;
+  bool itemserial = false;
 
   checkbillno() {
 
@@ -5720,8 +6236,13 @@ class _Billing_PageState extends State<Billing_Page> {
     var documents = await FirebaseFirestore.instance.collection("billing").doc(random).collection(random).get();
     for (int i = 0; i < documents.docs.length; i++) {
       setState(() {
+
+        billingsList.first.total = (int.parse(billingsList.first.qty.toString()) *  double.parse(billingsList.first.salesPrice.toString())).toString();
+        subtotalamount = (int.parse(billingsList.first.qty.toString()) *  double.parse(billingsList.first.withouttaxprice.toString()));
+
         totalamount = ((totalamount) + (int.parse(documents.docs[i]['Qty'].toString()) * double.parse(documents.docs[i]['Sales price'].toString())));
         subtotalamount = ((subtotalamount) + (int.parse(documents.docs[i]['Qty'].toString()) * double.parse(documents.docs[i]['withouttaxprice'].toString())));
+
       });
     }
 
@@ -5911,97 +6432,144 @@ class _Billing_PageState extends State<Billing_Page> {
       }
 
 
-      FirebaseFirestore.instance.collection("billing").doc(random).update({
-        "Payment mode": Payments,
-        "Total": double.parse(Sales.text).toStringAsFixed(2),
-        "purchasenote": purchase_notes.text,
-      });
+      // FirebaseFirestore.instance.collection("billing").doc(random).update({
+      //   "Payment mode": Payments,
+      //   "Total": double.parse(Sales.text).toStringAsFixed(2),
+      //   "purchasenote": purchase_notes.text,
+      // });
 
       if (status == true) {
-        FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
-          "Payment mode": Payments,
-          "Total": double.parse(Sales.text).toStringAsFixed(2),
-          "purchasenote": purchase_notes.text,
-        });
 
-        FirebaseFirestore.instance
-            .collection("billing ShabikaG")
-            .doc(random)
-            .collection(random)
-            .doc()
-            .set({
-          "Total": double.parse(Sales.text).toStringAsFixed(2),
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-          "Payment mode": Payments,
-          "itemcode": itemcode,
-          "Hsncode": HSN_Code.text,
-          "BoxNo": Box_NO.text,
-          "customername": customername.text,
-          "customerphone": customerphone.text,
-          "customeraddress": customeraddress.text,
-          "purchaseno": purchase_No.text,
-          "purchasedate": purchase_Date.text,
-          "purchasenote": purchase_notes.text,
-          "tax": taxitem.text,
-          "time": DateFormat.jm().format(DateTime.now()),
-          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "timestamp": DateTime.now().microsecondsSinceEpoch,
-          "Category": itemcat,
-          "Brand": itembrand,
-          "Item": itemname.text,
-          "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-          "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
-          "Qty": Qty.text,
-          "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-          "Imei no": imeinu,
-          "Serial no": serialnu,
-          "color": colornu,
-        });
+        // FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).update({
+        //   "Payment mode": Payments,
+        //   "Total": double.parse(Sales.text).toStringAsFixed(2),
+        //   "purchasenote": purchase_notes.text,
+        // });
+        //
+        // FirebaseFirestore.instance
+        //     .collection("billing ShabikaG")
+        //     .doc(random)
+        //     .collection(random)
+        //     .doc()
+        //     .set({
+        //   "Total": double.parse(Sales.text).toStringAsFixed(2),
+        //   "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+        //   "Payment mode": Payments,
+        //   "itemcode": itemcode,
+        //   "Hsncode": HSN_Code.text,
+        //   "BoxNo": Box_NO.text,
+        //   "customername": customername.text,
+        //   "customerphone": customerphone.text,
+        //   "customeraddress": customeraddress.text,
+        //   "purchaseno": purchase_No.text,
+        //   "purchasedate": purchase_Date.text,
+        //   "purchasenote": purchase_notes.text,
+        //   "tax": taxitem.text,
+        //   "time": DateFormat.jm().format(DateTime.now()),
+        //   "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        //   "timestamp": DateTime.now().microsecondsSinceEpoch,
+        //   "Category": itemcat,
+        //   "Brand": itembrand,
+        //   "Item": itemname.text,
+        //   "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
+        //   "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
+        //   "Qty": Qty.text,
+        //   "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+        //   "Imei no": imeinu,
+        //   "Serial no": serialnu,
+        //   "color": colornu,
+        // });
+
+        billingsList.add(
+            BillingModel(
+              margin: "",
+              brand: _typeAheadControllerbrand.text,
+              category: _typeAheadControllercateory.text,
+              colorList: colornu,
+              discAmountPercentage: Discountamountpercentage.text,
+              discountAmount: Discountamount.text,
+              image: false,
+              imageList: [],
+              imeiNoList: imeinu,
+              itemName: itemname.text,
+              qty: int.parse(Qty.text.toString()),
+              salesPrice: double.parse(Sales2.text).toStringAsFixed(2),
+              serialNoList: serialnu,
+              totalAmount: Discountamount.text == "0" &&
+                  Discountamountpercentage.text == "0" ? TotalAmount2
+                  .toStringAsFixed(2) : disacountamountcalue.toStringAsFixed(2),
+              withouttaxprice: double.parse(without_tax.text).toStringAsFixed(2),
+              color: itemcolor,
+              description: "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+              date: "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+              paymentMode: Payments,
+              time: DateFormat.jm().format(DateTime.now()),
+              total: double.parse(Sales.text).toStringAsFixed(2),
+              boxNo: Box_NO.text,
+              creditDays: Creadit_days.text,
+              customeraddress: customeraddress.text,
+              customername: customername.text,
+              customerphone: customerphone.text,
+              hsncode: HSN_Code.text,
+              iMEINO: itemimei,
+              itemcode: itemcode,
+              itemdocid: itemdocuid,
+              purchasedate: purchase_Date.text,
+              purchaseno: purchase_No.text,
+              purchasenote: purchase_notes.text,
+              return1: false,
+              save: false,
+              serialNO: itemserial,
+              tax: taxitem.text,
+              customerGstNo: status2 == true?"":AddnewcustomeGst.text,
+              timestamp: DateTime.now().microsecondsSinceEpoch,
+            )
+        );
 
       }
 
       if (status2 == true) {
-        FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
-          "Payment mode": Payments,
-          "Total": double.parse(Sales.text).toStringAsFixed(2),
-          "purchasenote": purchase_notes.text,
-        });
-
-        FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).doc()
-            .set({
-          "Total": double.parse(Sales.text).toStringAsFixed(2),
-          "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
-          "Payment mode": Payments,
-          "itemcode": itemcode,
-          "Hsncode": HSN_Code.text,
-          "BoxNo": Box_NO.text,
-          "customername": customername.text,
-          "customerphone": customerphone.text,
-          "customeraddress": customeraddress.text,
-          "purchaseno": purchase_No.text,
-          "purchasedate": purchase_Date.text,
-          "purchasenote": purchase_notes.text,
-          "tax": taxitem.text,
-          "time": DateFormat.jm().format(DateTime.now()),
-          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "timestamp": DateTime.now().microsecondsSinceEpoch,
-          "Category": itemcat,
-          "Brand": itembrand,
-          "Item": itemname.text,
-          "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-          "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
-          "Qty": Qty.text,
-          //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-          "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-          "Imei no": imeinu,
-          "Serial no": serialnu,
-          "color": colornu,
-        });
+        // FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).update({
+        //   "Payment mode": Payments,
+        //   "Total": double.parse(Sales.text).toStringAsFixed(2),
+        //   "purchasenote": purchase_notes.text,
+        // });
+        //
+        // FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).collection(random).doc()
+        //     .set({
+        //   "Total": double.parse(Sales.text).toStringAsFixed(2),
+        //   "Totalamount": Discountamount.text == "0"&&Discountamountpercentage.text == "0" ?TotalAmount2.toStringAsFixed(2):disacountamountcalue.toStringAsFixed(2),
+        //   "Payment mode": Payments,
+        //   "itemcode": itemcode,
+        //   "Hsncode": HSN_Code.text,
+        //   "BoxNo": Box_NO.text,
+        //   "customername": customername.text,
+        //   "customerphone": customerphone.text,
+        //   "customeraddress": customeraddress.text,
+        //   "purchaseno": purchase_No.text,
+        //   "purchasedate": purchase_Date.text,
+        //   "purchasenote": purchase_notes.text,
+        //   "tax": taxitem.text,
+        //   "time": DateFormat.jm().format(DateTime.now()),
+        //   "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+        //   "timestamp": DateTime.now().microsecondsSinceEpoch,
+        //   "Category": itemcat,
+        //   "Brand": itembrand,
+        //   "Item": itemname.text,
+        //   "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
+        //   "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
+        //   "Qty": Qty.text,
+        //   //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
+        //   "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+        //   "Imei no": imeinu,
+        //   "Serial no": serialnu,
+        //   "color": colornu,
+        // });
       }
 
       updatetotal();
 
-      updatetotalquvantity();
+      //updatetotalquvantity();
 
 
     }
@@ -6028,46 +6596,47 @@ class _Billing_PageState extends State<Billing_Page> {
       updatequvantity = '';
       updatequvantity = Qty.text;
     });
-    FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc().set(
-        {
-          "Total": double.parse(Sales.text).toStringAsFixed(2),
-          "Payment mode": Payments,
-          "itemcode":itemcode,
-          "Hsncode": HSN_Code.text,
-          "BoxNo": Box_NO.text,
-          "customername": customername.text,
-          "customerphone": customerphone.text,
-          "customeraddress": customeraddress.text,
-          "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
-          "purchaseno": purchase_No.text,
-          "purchasedate": purchase_Date.text,
-          "purchasenote": purchase_notes.text,
-          "tax": taxitem.text,
-          "Itemdocid":itemdocuid,
-          "margin":margin,
-          "time": DateFormat.jm().format(DateTime.now()),
-          "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-          "timestamp": DateTime.now().microsecondsSinceEpoch,
-          "Category": itemcat,
-          "Brand": itembrand,
-          "Item": itemname.text,
-          "save": false,
-          "return": false,
-          "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-          "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
-          "Qty": Qty.text,
-          "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-          "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-          // "Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-          "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-          "Imei no": imeinu,
-          "Serial no": serialnu,
-          "color": colornu,
-          "Serial NO": serialvalue,
-          "IMEI NO": imeivalue,
-          "Image": image,
-          "Color": color,
-        });
+
+    // FirebaseFirestore.instance.collection("billing").doc(random).collection(random).doc().set(
+    //     {
+    //       "Total": double.parse(Sales.text).toStringAsFixed(2),
+    //       "Payment mode": Payments,
+    //       "itemcode":itemcode,
+    //       "Hsncode": HSN_Code.text,
+    //       "BoxNo": Box_NO.text,
+    //       "customername": customername.text,
+    //       "customerphone": customerphone.text,
+    //       "customeraddress": customeraddress.text,
+    //       "Customer GstNo": status2 == true ? "" : AddnewcustomeGst.text,
+    //       "purchaseno": purchase_No.text,
+    //       "purchasedate": purchase_Date.text,
+    //       "purchasenote": purchase_notes.text,
+    //       "tax": taxitem.text,
+    //       "Itemdocid":itemdocuid,
+    //       "margin":margin,
+    //       "time": DateFormat.jm().format(DateTime.now()),
+    //       "date": "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+    //       "timestamp": DateTime.now().microsecondsSinceEpoch,
+    //       "Category": itemcat,
+    //       "Brand": itembrand,
+    //       "Item": itemname.text,
+    //       "save": false,
+    //       "return": false,
+    //       "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
+    //       "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
+    //       "Qty": Qty.text,
+    //       "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+    //       "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+    //       // "Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
+    //       "Description": "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+    //       "Imei no": imeinu,
+    //       "Serial no": serialnu,
+    //       "color": colornu,
+    //       "Serial NO": serialvalue,
+    //       "IMEI NO": imeivalue,
+    //       "Image": image,
+    //       "Color": color,
+    //     });
 
 
     setState(() {
@@ -6107,6 +6676,42 @@ class _Billing_PageState extends State<Billing_Page> {
       Billed_to = "";
     });
   }
+  
+  String getGrandTotal(){
+    double grandTotal = 0.0;
+    TotalAmount2 = 0.0;
+    for(int t = 0; t < billingsList.length; t++){
+      grandTotal += double.parse(billingsList[t].total.toString());
+      TotalAmount2 += double.parse(billingsList[t].total.toString());
+    }
+    print(grandTotal);
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    if(Discountamount.text != ""){
+      grandTotal = (double.parse(grandTotal.toString()) - (double.parse(Discountamount.text))).toDouble();
+      if (grandTotal != 0) {
+        print(grandTotal);
+
+        setState(() {
+          Cgst = 0;
+          sgst = 0;
+          subtotalamount=0;
+        });
+        setState(() {
+          Cgst = (grandTotal - (grandTotal / (1.18)))/2;
+          sgst = (grandTotal - (grandTotal / (1.18)))/2;
+          subtotalamount = grandTotal - (Cgst+sgst);
+        });
+        print(subtotalamount);
+        print(sgst);
+        print(Cgst);
+        print("dicount value-------------------");
+      }
+    }
+    SGSTfunction();
+    return grandTotal.toStringAsFixed(2);
+  }
 
   checkgst(Salesvalue, qty) {
     setState(() {
@@ -6117,7 +6722,7 @@ class _Billing_PageState extends State<Billing_Page> {
   //toggle switch boolean
   bool status = true;
   bool status2 = false;
-  String itemcolor = '';
+  bool itemcolor = false;
   String Boxno = '';
   String itemdocuid = '';
 
@@ -6196,125 +6801,211 @@ class _Billing_PageState extends State<Billing_Page> {
             }
 
             if (int.parse(Stocks.text) > 0) {
-              FirebaseFirestore.instance.collection("billing").doc(random).set({
-                "Total": "",
-                "billtype"
-                "itemcode": itemcode,
-                "Itemdocid":itemdocuid,
-                "Payment mode": Payments,
-                "Hsncode": HSN_Code.text,
-                "BoxNo": Box_NO.text,
-                "customername": customername.text,
-                "customerphone": customerphone.text,
-                "customeraddress": customeraddress.text,
-                "Customer GstNo": status2 == true?"":AddnewcustomeGst.text,
-                "purchaseno": purchase_No.text,
-                "purchasedate": purchase_Date.text,
-                "purchasenote": purchase_notes.text,
-                "tax": taxitem.text,
-                "IMEI NO": itemimei,
-                "Serial NO": itemserial,
-                "Color": itemcolor,
-                "credit days": Creadit_days.text,
-                "save": false,
-                "return": false,
-                "time": DateFormat.jm().format(DateTime.now()),
-                "date":
-                "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                "timestamp": DateTime.now().microsecondsSinceEpoch
-              });
+              // FirebaseFirestore.instance.collection("billing").doc(random).set({
+              //   "Total": "",
+              //   "billtype"
+              //   "itemcode": itemcode,
+              //   "Itemdocid":itemdocuid,
+              //   "Payment mode": Payments,
+              //   "Hsncode": HSN_Code.text,
+              //   "BoxNo": Box_NO.text,
+              //   "customername": customername.text,
+              //   "customerphone": customerphone.text,
+              //   "customeraddress": customeraddress.text,
+              //   "Customer GstNo": status2 == true?"":AddnewcustomeGst.text,
+              //   "purchaseno": purchase_No.text,
+              //   "purchasedate": purchase_Date.text,
+              //   "purchasenote": purchase_notes.text,
+              //   "tax": taxitem.text,
+              //   "IMEI NO": itemimei,
+              //   "Serial NO": itemserial,
+              //   "Color": itemcolor,
+              //   "credit days": Creadit_days.text,
+              //   "save": false,
+              //   "return": false,
+              //   "time": DateFormat.jm().format(DateTime.now()),
+              //   "date":
+              //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+              //   "timestamp": DateTime.now().microsecondsSinceEpoch
+              // });
               if (status == true) {
-                FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).set({
-                  "Total": "",
-                  "itemcode": itemcode,
-                  "Itemdocid":itemdocuid,
-                  "Payment mode": Payments,
-                  "Hsncode": HSN_Code.text,
-                  "BoxNo": Box_NO.text,
-                  "customername": customername.text,
-                  "customerphone": customerphone.text,
-                  "customeraddress": customeraddress.text,
-                  "purchaseno": purchase_No.text,
-                  "purchasedate": purchase_Date.text,
-                  "purchasenote": purchase_notes.text,
-                  "tax": taxitem.text,
-                  "IMEI NO": itemimei,
-                  "Serial NO": itemserial,
-                  "Color": itemcolor,
-                  "credit days": Creadit_days.text,
-                  "save": false,
-                  "return": false,
-                  "time": DateFormat.jm().format(DateTime.now()),
-                  "date":
-                  "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                  "timestamp": DateTime.now().microsecondsSinceEpoch
-                });
+                // billingsList.add(
+                //     BillingModel(
+                //       margin: "",
+                //       brand: itembrand,
+                //       category: itemcat,
+                //       colorList: [],
+                //       discAmountPercentage: "",
+                //       discountAmount: "",
+                //       image: false,
+                //       imageList: [],
+                //       imeiNoList: [],
+                //       itemName: itemname.text,
+                //       qty: int.parse(Qty.text),
+                //       salesPrice: "",
+                //       serialNoList: [],
+                //       totalAmount: "",
+                //       withouttaxprice: "",
+                //       color: itemcolor,
+                //       description: "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+                //       date: "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+                //       paymentMode: Payments,
+                //       time: DateFormat.jm().format(DateTime.now()),
+                //       total: "",
+                //       boxNo: Box_NO.text,
+                //       creditDays: Creadit_days.text,
+                //       customeraddress: customeraddress.text,
+                //       customername: customername.text,
+                //       customerphone: customerphone.text,
+                //       hsncode: HSN_Code.text,
+                //       iMEINO: itemimei,
+                //       itemcode: itemcode,
+                //       itemdocid: itemdocuid,
+                //       purchasedate: purchase_Date.text,
+                //       purchaseno: purchase_No.text,
+                //       purchasenote: purchase_notes.text,
+                //       return1: false,
+                //       save: false,
+                //       serialNO: itemserial,
+                //       tax: taxitem.text,
+                //       customerGstNo: status2 == true?"":AddnewcustomeGst.text,
+                //       timestamp: DateTime.now().microsecondsSinceEpoch,
+                //     )
+                // );
+                // FirebaseFirestore.instance.collection("billing ShabikaG").doc(random).set({
+                //   "Total": "",
+                //   "itemcode": itemcode,
+                //   "Itemdocid":itemdocuid,
+                //   "Payment mode": Payments,
+                //   "Hsncode": HSN_Code.text,
+                //   "BoxNo": Box_NO.text,
+                //   "customername": customername.text,
+                //   "customerphone": customerphone.text,
+                //   "customeraddress": customeraddress.text,
+                //   "purchaseno": purchase_No.text,
+                //   "purchasedate": purchase_Date.text,
+                //   "purchasenote": purchase_notes.text,
+                //   "tax": taxitem.text,
+                //   "IMEI NO": itemimei,
+                //   "Serial NO": itemserial,
+                //   "Color": itemcolor,
+                //   "credit days": Creadit_days.text,
+                //   "save": false,
+                //   "return": false,
+                //   "time": DateFormat.jm().format(DateTime.now()),
+                //   "date":
+                //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+                //   "timestamp": DateTime.now().microsecondsSinceEpoch
+                // });
               }
               if (status2 == true) {
-                FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).set({
-                  "Total": "",
-                  "itemcode": itemcode,
-                  "Itemdocid":itemdocuid,
-                  "Payment mode": Payments,
-                  "Hsncode": HSN_Code.text,
-                  "BoxNo": Box_NO.text,
-                  "customername": customername.text,
-                  "customerphone": customerphone.text,
-                  "customeraddress": customeraddress.text,
-                  "purchaseno": purchase_No.text,
-                  "purchasedate": purchase_Date.text,
-                  "purchasenote": purchase_notes.text,
-                  "tax": taxitem.text,
-                  "IMEI NO": itemimei,
-                  "Serial NO": itemserial,
-                  "Color": itemcolor,
-                  "credit days": Creadit_days.text,
-                  "save": false,
-                  "return": false,
-                  "time": DateFormat.jm().format(DateTime.now()),
-                  "date":
-                  "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                  "timestamp": DateTime.now().microsecondsSinceEpoch
-                });
+                // billingsList.add(
+                //     BillingModel(
+                //       margin: "",
+                //       brand: itembrand,
+                //       category: itemcat,
+                //       colorList: [],
+                //       discAmountPercentage: "",
+                //       discountAmount: "",
+                //       image: false,
+                //       imageList: [],
+                //       imeiNoList: [],
+                //       itemName: itemname.text,
+                //       qty: int.parse(Qty.text),
+                //       salesPrice: "",
+                //       serialNoList: [],
+                //       totalAmount: "",
+                //       withouttaxprice: "",
+                //       color: itemcolor,
+                //       description: "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+                //       date: "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+                //       paymentMode: Payments,
+                //       time: DateFormat.jm().format(DateTime.now()),
+                //       total: "",
+                //       boxNo: Box_NO.text,
+                //       creditDays: Creadit_days.text,
+                //       customeraddress: customeraddress.text,
+                //       customername: customername.text,
+                //       customerphone: customerphone.text,
+                //       hsncode: HSN_Code.text,
+                //       iMEINO: itemimei,
+                //       itemcode: itemcode,
+                //       itemdocid: itemdocuid,
+                //       purchasedate: purchase_Date.text,
+                //       purchaseno: purchase_No.text,
+                //       purchasenote: purchase_notes.text,
+                //       return1: false,
+                //       save: false,
+                //       serialNO: itemserial,
+                //       tax: taxitem.text,
+                //       customerGstNo: status2 == true?"":AddnewcustomeGst.text,
+                //       timestamp: DateTime.now().microsecondsSinceEpoch,
+                //     )
+                // );
+                // FirebaseFirestore.instance.collection("billing ShabikaN").doc(random).set({
+                //   "Total": "",
+                //   "itemcode": itemcode,
+                //   "Itemdocid":itemdocuid,
+                //   "Payment mode": Payments,
+                //   "Hsncode": HSN_Code.text,
+                //   "BoxNo": Box_NO.text,
+                //   "customername": customername.text,
+                //   "customerphone": customerphone.text,
+                //   "customeraddress": customeraddress.text,
+                //   "purchaseno": purchase_No.text,
+                //   "purchasedate": purchase_Date.text,
+                //   "purchasenote": purchase_notes.text,
+                //   "tax": taxitem.text,
+                //   "IMEI NO": itemimei,
+                //   "Serial NO": itemserial,
+                //   "Color": itemcolor,
+                //   "credit days": Creadit_days.text,
+                //   "save": false,
+                //   "return": false,
+                //   "time": DateFormat.jm().format(DateTime.now()),
+                //   "date":
+                //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+                //   "timestamp": DateTime.now().microsecondsSinceEpoch
+                // });
               }
-              FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing").doc(random)
-                  .set({
-                "Total": totalamount,
-                "Payment mode": Payments,
-                "itemcode": status2 == true ? "N$itemcode" : "",
-                "Itemdocid":itemdocuid,
-                "Hsncode": HSN_Code.text,
-                "BoxNo": Box_NO.text,
-                "customername": customername.text,
-                "customerphone": customerphone.text,
-                "customeraddress": customeraddress.text,
-                "purchaseno": purchase_No.text,
-                "purchasedate": purchase_Date.text,
-                "purchasenote": purchase_notes.text,
-                "tax": taxitem.text,
-                'customerdocid': customerdocid,
-                "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-                "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-                "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-                "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-                "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-                "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-                "time": DateFormat.jm().format(DateTime.now()),
-                "date":
-                "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                "timestamp": DateTime.now().microsecondsSinceEpoch,
-                "save": false,
-                "return": false,
-                "Category": itemcat,
-                "Brand": itembrand,
-                "Item": itemname.text,
-                "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-                "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
-                "Qty": Qty.text,
-                //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-                "Description":
-                "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-              });
+              // FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing").doc(random)
+              //     .set({
+              //   "Total": totalamount,
+              //   "Payment mode": Payments,
+              //   "itemcode": status2 == true ? "N$itemcode" : "",
+              //   "Itemdocid":itemdocuid,
+              //   "Hsncode": HSN_Code.text,
+              //   "BoxNo": Box_NO.text,
+              //   "customername": customername.text,
+              //   "customerphone": customerphone.text,
+              //   "customeraddress": customeraddress.text,
+              //   "purchaseno": purchase_No.text,
+              //   "purchasedate": purchase_Date.text,
+              //   "purchasenote": purchase_notes.text,
+              //   "tax": taxitem.text,
+              //   'customerdocid': customerdocid,
+              //   "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+              //   "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+              //   "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+              //   "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+              //   "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+              //   "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+              //   "time": DateFormat.jm().format(DateTime.now()),
+              //   "date":
+              //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+              //   "timestamp": DateTime.now().microsecondsSinceEpoch,
+              //   "save": false,
+              //   "return": false,
+              //   "Category": itemcat,
+              //   "Brand": itembrand,
+              //   "Item": itemname.text,
+              //   "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
+              //   "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
+              //   "Qty": Qty.text,
+              //   //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
+              //   "Description":
+              //   "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+              // });
               checkgst(Sales.text, Qty.text);
 
             }
@@ -6377,133 +7068,133 @@ class _Billing_PageState extends State<Billing_Page> {
                ImerisrialListitem2.add(documents.docs[i]["color"][l].toString());
              }
              if (int.parse(Stocks.text) > 0) {
-               FirebaseFirestore.instance.collection("billing").doc(random).set({
-                 "Total": "",
-                 "itemcode": itemcode,
-                 "Itemdocid":itemdocuid,
-                 "Payment mode": Payments,
-                 "Hsncode": HSN_Code.text,
-                 "BoxNo": Box_NO.text,
-                 "customername": customername.text,
-                 "customerphone": customerphone.text,
-                 "customeraddress": customeraddress.text,
-                 "Customer GstNo": status2 == true?"":AddnewcustomeGst.text,
-                 "purchaseno": purchase_No.text,
-                 "purchasedate": purchase_Date.text,
-                 "purchasenote": purchase_notes.text,
-                 "tax": taxitem.text,
-                 "IMEI NO": itemimei,
-                 "Serial NO": itemserial,
-                 "Color": itemcolor,
-                 "credit days": Creadit_days.text,
-                 "save": false,
-                 "return": false,
-                 "time": DateFormat.jm().format(DateTime.now()),
-                 "date":
-                 "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                 "timestamp": DateTime.now().microsecondsSinceEpoch
-               });
-               if (status == true) {
-                 FirebaseFirestore.instance
-                     .collection("billing ShabikaG")
-                     .doc(random)
-                     .set({
-                   "Total": "",
-                   "itemcode": itemcode,
-                   "Itemdocid":itemdocuid,
-                   "Payment mode": Payments,
-                   "Hsncode": HSN_Code.text,
-                   "BoxNo": Box_NO.text,
-                   "customername": customername.text,
-                   "customerphone": customerphone.text,
-                   "customeraddress": customeraddress.text,
-                   "purchaseno": purchase_No.text,
-                   "purchasedate": purchase_Date.text,
-                   "purchasenote": purchase_notes.text,
-                   "tax": taxitem.text,
-                   "IMEI NO": itemimei,
-                   "Serial NO": itemserial,
-                   "Color": itemcolor,
-                   "credit days": Creadit_days.text,
-                   "save": false,
-                   "return": false,
-                   "time": DateFormat.jm().format(DateTime.now()),
-                   "date":
-                   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                   "timestamp": DateTime.now().microsecondsSinceEpoch
-                 });
-               }
-               if (status2 == true) {
-                 FirebaseFirestore.instance
-                     .collection("billing ShabikaN")
-                     .doc(random)
-                     .set({
-                   "Total": "",
-                   "itemcode": itemcode,
-                   "Itemdocid":itemdocuid,
-                   "Payment mode": Payments,
-                   "Hsncode": HSN_Code.text,
-                   "BoxNo": Box_NO.text,
-                   "customername": customername.text,
-                   "customerphone": customerphone.text,
-                   "customeraddress": customeraddress.text,
-                   "purchaseno": purchase_No.text,
-                   "purchasedate": purchase_Date.text,
-                   "purchasenote": purchase_notes.text,
-                   "tax": taxitem.text,
-                   "IMEI NO": itemimei,
-                   "Serial NO": itemserial,
-                   "Color": itemcolor,
-                   "credit days": Creadit_days.text,
-                   "save": false,
-                   "return": false,
-                   "time": DateFormat.jm().format(DateTime.now()),
-                   "date":
-                   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                   "timestamp": DateTime.now().microsecondsSinceEpoch
-                 });
-               }
-               FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing").doc(random).set({
-                 "Total": totalamount,
-                 "Payment mode": Payments,
-                 "itemcode": status2 == true ? "N$itemcode" : "",
-                 "Itemdocid":itemdocuid,
-                 "Hsncode": HSN_Code.text,
-                 "BoxNo": Box_NO.text,
-                 "customername": customername.text,
-                 "customerphone": customerphone.text,
-                 "customeraddress": customeraddress.text,
-                 "purchaseno": purchase_No.text,
-                 "purchasedate": purchase_Date.text,
-                 "purchasenote": purchase_notes.text,
-                 "tax": taxitem.text,
-                 'customerdocid': customerdocid,
-                 "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-                 "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-                 "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-                 "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-                 "Discountamount": Discountamount.text == ""
-                     ? "0"
-                     : double.parse(Discountamount.text).toStringAsFixed(2),
-                 "Discountamountpercentage": Discountamountpercentage.text == ""
-                     ? "0"
-                     : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-                 "time": DateFormat.jm().format(DateTime.now()),
-                 "date":
-                 "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                 "timestamp": DateTime.now().microsecondsSinceEpoch,
-                 "save": false,
-                 "return": false,
-                 "Category": itemcat,
-                 "Brand": itembrand,
-                 "Item": itemname.text,
-                 "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-                 "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
-                 "Qty": Qty.text,
-                 //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-                 "Description":
-                 "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-               });
+               // FirebaseFirestore.instance.collection("billing").doc(random).set({
+               //   "Total": "",
+               //   "itemcode": itemcode,
+               //   "Itemdocid":itemdocuid,
+               //   "Payment mode": Payments,
+               //   "Hsncode": HSN_Code.text,
+               //   "BoxNo": Box_NO.text,
+               //   "customername": customername.text,
+               //   "customerphone": customerphone.text,
+               //   "customeraddress": customeraddress.text,
+               //   "Customer GstNo": status2 == true?"":AddnewcustomeGst.text,
+               //   "purchaseno": purchase_No.text,
+               //   "purchasedate": purchase_Date.text,
+               //   "purchasenote": purchase_notes.text,
+               //   "tax": taxitem.text,
+               //   "IMEI NO": itemimei,
+               //   "Serial NO": itemserial,
+               //   "Color": itemcolor,
+               //   "credit days": Creadit_days.text,
+               //   "save": false,
+               //   "return": false,
+               //   "time": DateFormat.jm().format(DateTime.now()),
+               //   "date":
+               //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+               //   "timestamp": DateTime.now().microsecondsSinceEpoch
+               // });
+               // if (status == true) {
+               //   FirebaseFirestore.instance
+               //       .collection("billing ShabikaG")
+               //       .doc(random)
+               //       .set({
+               //     "Total": "",
+               //     "itemcode": itemcode,
+               //     "Itemdocid":itemdocuid,
+               //     "Payment mode": Payments,
+               //     "Hsncode": HSN_Code.text,
+               //     "BoxNo": Box_NO.text,
+               //     "customername": customername.text,
+               //     "customerphone": customerphone.text,
+               //     "customeraddress": customeraddress.text,
+               //     "purchaseno": purchase_No.text,
+               //     "purchasedate": purchase_Date.text,
+               //     "purchasenote": purchase_notes.text,
+               //     "tax": taxitem.text,
+               //     "IMEI NO": itemimei,
+               //     "Serial NO": itemserial,
+               //     "Color": itemcolor,
+               //     "credit days": Creadit_days.text,
+               //     "save": false,
+               //     "return": false,
+               //     "time": DateFormat.jm().format(DateTime.now()),
+               //     "date":
+               //     "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+               //     "timestamp": DateTime.now().microsecondsSinceEpoch
+               //   });
+               // }
+               // if (status2 == true) {
+               //   FirebaseFirestore.instance
+               //       .collection("billing ShabikaN")
+               //       .doc(random)
+               //       .set({
+               //     "Total": "",
+               //     "itemcode": itemcode,
+               //     "Itemdocid":itemdocuid,
+               //     "Payment mode": Payments,
+               //     "Hsncode": HSN_Code.text,
+               //     "BoxNo": Box_NO.text,
+               //     "customername": customername.text,
+               //     "customerphone": customerphone.text,
+               //     "customeraddress": customeraddress.text,
+               //     "purchaseno": purchase_No.text,
+               //     "purchasedate": purchase_Date.text,
+               //     "purchasenote": purchase_notes.text,
+               //     "tax": taxitem.text,
+               //     "IMEI NO": itemimei,
+               //     "Serial NO": itemserial,
+               //     "Color": itemcolor,
+               //     "credit days": Creadit_days.text,
+               //     "save": false,
+               //     "return": false,
+               //     "time": DateFormat.jm().format(DateTime.now()),
+               //     "date":
+               //     "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+               //     "timestamp": DateTime.now().microsecondsSinceEpoch
+               //   });
+               // }
+               // FirebaseFirestore.instance.collection("Customer").doc(customerdocid).collection("billing").doc(random).set({
+               //   "Total": totalamount,
+               //   "Payment mode": Payments,
+               //   "itemcode": status2 == true ? "N$itemcode" : "",
+               //   "Itemdocid":itemdocuid,
+               //   "Hsncode": HSN_Code.text,
+               //   "BoxNo": Box_NO.text,
+               //   "customername": customername.text,
+               //   "customerphone": customerphone.text,
+               //   "customeraddress": customeraddress.text,
+               //   "purchaseno": purchase_No.text,
+               //   "purchasedate": purchase_Date.text,
+               //   "purchasenote": purchase_notes.text,
+               //   "tax": taxitem.text,
+               //   'customerdocid': customerdocid,
+               //   "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+               //   "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+               //   "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+               //   "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+               //   "Discountamount": Discountamount.text == ""
+               //       ? "0"
+               //       : double.parse(Discountamount.text).toStringAsFixed(2),
+               //   "Discountamountpercentage": Discountamountpercentage.text == ""
+               //       ? "0"
+               //       : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+               //   "time": DateFormat.jm().format(DateTime.now()),
+               //   "date":
+               //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+               //   "timestamp": DateTime.now().microsecondsSinceEpoch,
+               //   "save": false,
+               //   "return": false,
+               //   "Category": itemcat,
+               //   "Brand": itembrand,
+               //   "Item": itemname.text,
+               //   "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
+               //   "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
+               //   "Qty": Qty.text,
+               //   //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
+               //   "Description":
+               //   "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+               // });
                checkgst(Sales.text, Qty.text);
 
              }
@@ -6548,7 +7239,6 @@ class _Billing_PageState extends State<Billing_Page> {
               hsncpode = documents.docs[i]["HSNCode"].toString();
               itemid.text = documents.docs[i]["Itemcode"].toString();
               itemname.text = documents.docs[i]["Newitemname"].toString();
-              layourbuilderclear2.text = documents.docs[i]["Newitemname"].toString();
               taxitem.text = documents.docs[i]["gst"].toString();
               Loworder.text = documents.docs[i]["Loworder"].toString();
               Stocks.text = documents.docs[i]["TotalQuvantity"].toString();
@@ -6581,135 +7271,224 @@ class _Billing_PageState extends State<Billing_Page> {
               ImerisrialListitem2.add(documents.docs[i]["color"][l].toString());
             }
             if (int.parse(Stocks.text) > 0) {
-              FirebaseFirestore.instance.collection("billing").doc(random).set({
-                "Total": "",
-                "itemcode": itemcode,
-                "Itemdocid":itemdocuid,
-                "Payment mode": Payments,
-                "Hsncode": HSN_Code.text,
-                "BoxNo": Box_NO.text,
-                "customername": customername.text,
-                "customerphone": customerphone.text,
-                "customeraddress": customeraddress.text,
-                "Customer GstNo": status2 == true?"":AddnewcustomeGst.text,
-                "purchaseno": purchase_No.text,
-                "purchasedate": purchase_Date.text,
-                "purchasenote": purchase_notes.text,
-                "tax": taxitem.text,
-                "IMEI NO": itemimei,
-                "Serial NO": itemserial,
-                "Color": itemcolor,
-                "credit days": Creadit_days.text,
-                "save": false,
-                "return": false,
-                "time": DateFormat.jm().format(DateTime.now()),
-                "date":
-                "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                "timestamp": DateTime.now().microsecondsSinceEpoch
-              });
+              // billingsList.add(
+              //     BillingModel(
+              //       margin: "",
+              //       brand: itembrand,
+              //       category: itemcat,
+              //       colorList: [],
+              //       discAmountPercentage: "",
+              //       discountAmount: "",
+              //       image: false,
+              //       imageList: [],
+              //       imeiNoList: [],
+              //       itemName: itemname.text,
+              //       qty: int.parse(Qty.text),
+              //       salesPrice: "",
+              //       serialNoList: [],
+              //       totalAmount: "",
+              //       withouttaxprice: "",
+              //       color: itemcolor,
+              //       description: "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+              //       date: "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+              //       paymentMode: Payments,
+              //       time: DateFormat.jm().format(DateTime.now()),
+              //       total: "",
+              //       boxNo: Box_NO.text,
+              //       creditDays: Creadit_days.text,
+              //       customeraddress: customeraddress.text,
+              //       customername: customername.text,
+              //       customerphone: customerphone.text,
+              //       hsncode: HSN_Code.text,
+              //       iMEINO: itemimei,
+              //       itemcode: itemcode,
+              //       itemdocid: itemdocuid,
+              //       purchasedate: purchase_Date.text,
+              //       purchaseno: purchase_No.text,
+              //       purchasenote: purchase_notes.text,
+              //       return1: false,
+              //       save: false,
+              //       serialNO: itemserial,
+              //       tax: taxitem.text,
+              //       customerGstNo: status2 == true?"":AddnewcustomeGst.text,
+              //       timestamp: DateTime.now().microsecondsSinceEpoch,
+              //     )
+              // );
+              // FirebaseFirestore.instance.collection("billing").doc(random).set({
+              //   "Total": "",
+              //   "itemcode": itemcode,
+              //   "Itemdocid":itemdocuid,
+              //   "Payment mode": Payments,
+              //   "Hsncode": HSN_Code.text,
+              //   "BoxNo": Box_NO.text,
+              //   "customername": customername.text,
+              //   "customerphone": customerphone.text,
+              //   "customeraddress": customeraddress.text,
+              //   "Customer GstNo": status2 == true?"":AddnewcustomeGst.text,
+              //   "purchaseno": purchase_No.text,
+              //   "purchasedate": purchase_Date.text,
+              //   "purchasenote": purchase_notes.text,
+              //   "tax": taxitem.text,
+              //   "IMEI NO": itemimei,
+              //   "Serial NO": itemserial,
+              //   "Color": itemcolor,
+              //   "credit days": Creadit_days.text,
+              //   "save": false,
+              //   "return": false,
+              //   "time": DateFormat.jm().format(DateTime.now()),
+              //   "date":
+              //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+              //   "timestamp": DateTime.now().microsecondsSinceEpoch
+              // });
               if (status == true) {
-                FirebaseFirestore.instance
-                    .collection("billing ShabikaG")
-                    .doc(random)
-                    .set({
-                  "Total": "",
-                  "itemcode": itemcode,
-                  "Itemdocid":itemdocuid,
-                  "Payment mode": Payments,
-                  "Hsncode": HSN_Code.text,
-                  "BoxNo": Box_NO.text,
-                  "customername": customername.text,
-                  "customerphone": customerphone.text,
-                  "customeraddress": customeraddress.text,
-                  "purchaseno": purchase_No.text,
-                  "purchasedate": purchase_Date.text,
-                  "purchasenote": purchase_notes.text,
-                  "tax": taxitem.text,
-                  "IMEI NO": itemimei,
-                  "Serial NO": itemserial,
-                  "Color": itemcolor,
-                  "credit days": Creadit_days.text,
-                  "save": false,
-                  "return": false,
-                  "time": DateFormat.jm().format(DateTime.now()),
-                  "date":
-                  "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                  "timestamp": DateTime.now().microsecondsSinceEpoch
-                });
+
+                // FirebaseFirestore.instance
+                //     .collection("billing ShabikaG")
+                //     .doc(random)
+                //     .set({
+                //   "Total": "",
+                //   "itemcode": itemcode,
+                //   "Itemdocid":itemdocuid,
+                //   "Payment mode": Payments,
+                //   "Hsncode": HSN_Code.text,
+                //   "BoxNo": Box_NO.text,
+                //   "customername": customername.text,
+                //   "customerphone": customerphone.text,
+                //   "customeraddress": customeraddress.text,
+                //   "purchaseno": purchase_No.text,
+                //   "purchasedate": purchase_Date.text,
+                //   "purchasenote": purchase_notes.text,
+                //   "tax": taxitem.text,
+                //   "IMEI NO": itemimei,
+                //   "Serial NO": itemserial,
+                //   "Color": itemcolor,
+                //   "credit days": Creadit_days.text,
+                //   "save": false,
+                //   "return": false,
+                //   "time": DateFormat.jm().format(DateTime.now()),
+                //   "date":
+                //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+                //   "timestamp": DateTime.now().microsecondsSinceEpoch
+                // });
               }
               if (status2 == true) {
-                FirebaseFirestore.instance
-                    .collection("billing ShabikaN")
-                    .doc(random)
-                    .set({
-                  "Total": "",
-                  "itemcode": itemcode,
-                  "Itemdocid":itemdocuid,
-                  "Payment mode": Payments,
-                  "Hsncode": HSN_Code.text,
-                  "BoxNo": Box_NO.text,
-                  "customername": customername.text,
-                  "customerphone": customerphone.text,
-                  "customeraddress": customeraddress.text,
-                  "purchaseno": purchase_No.text,
-                  "purchasedate": purchase_Date.text,
-                  "purchasenote": purchase_notes.text,
-                  "tax": taxitem.text,
-                  "IMEI NO": itemimei,
-                  "Serial NO": itemserial,
-                  "Color": itemcolor,
-                  "credit days": Creadit_days.text,
-                  "save": false,
-                  "return": false,
-                  "time": DateFormat.jm().format(DateTime.now()),
-                  "date":
-                  "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                  "timestamp": DateTime.now().microsecondsSinceEpoch
-                });
+                // billingsList.add(
+                //     BillingModel(
+                //       margin: "",
+                //       brand: _typeAheadControllerbrand.text,
+                //       category: _typeAheadControllercateory.text,
+                //       colorList: [],
+                //       discAmountPercentage: "",
+                //       discountAmount: "",
+                //       image: false,
+                //       imageList: [],
+                //       imeiNoList: [],
+                //       itemName: itemname.text,
+                //       qty: 0,
+                //       salesPrice: "",
+                //       serialNoList: [],
+                //       totalAmount: "",
+                //       withouttaxprice: "",
+                //       color: itemcolor,
+                //       description: "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+                //       date: "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+                //       paymentMode: Payments,
+                //       time: DateFormat.jm().format(DateTime.now()),
+                //       total: "",
+                //       boxNo: Box_NO.text,
+                //       creditDays: Creadit_days.text,
+                //       customeraddress: customeraddress.text,
+                //       customername: customername.text,
+                //       customerphone: customerphone.text,
+                //       hsncode: HSN_Code.text,
+                //       iMEINO: itemimei,
+                //       itemcode: itemcode,
+                //       itemdocid: itemdocuid,
+                //       purchasedate: purchase_Date.text,
+                //       purchaseno: purchase_No.text,
+                //       purchasenote: purchase_notes.text,
+                //       return1: false,
+                //       save: false,
+                //       serialNO: itemserial,
+                //       tax: taxitem.text,
+                //       customerGstNo: status2 == true?"":AddnewcustomeGst.text,
+                //       timestamp: DateTime.now().microsecondsSinceEpoch,
+                //     )
+                // );
+                // FirebaseFirestore.instance
+                //     .collection("billing ShabikaN")
+                //     .doc(random)
+                //     .set({
+                //   "Total": "",
+                //   "itemcode": itemcode,
+                //   "Itemdocid":itemdocuid,
+                //   "Payment mode": Payments,
+                //   "Hsncode": HSN_Code.text,
+                //   "BoxNo": Box_NO.text,
+                //   "customername": customername.text,
+                //   "customerphone": customerphone.text,
+                //   "customeraddress": customeraddress.text,
+                //   "purchaseno": purchase_No.text,
+                //   "purchasedate": purchase_Date.text,
+                //   "purchasenote": purchase_notes.text,
+                //   "tax": taxitem.text,
+                //   "IMEI NO": itemimei,
+                //   "Serial NO": itemserial,
+                //   "Color": itemcolor,
+                //   "credit days": Creadit_days.text,
+                //   "save": false,
+                //   "return": false,
+                //   "time": DateFormat.jm().format(DateTime.now()),
+                //   "date":
+                //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+                //   "timestamp": DateTime.now().microsecondsSinceEpoch
+                // });
               }
-              FirebaseFirestore.instance
-                  .collection("Customer")
-                  .doc(customerdocid)
-                  .collection("billing")
-                  .doc(random)
-                  .set({
-                "Total": totalamount,
-                "Payment mode": Payments,
-                "itemcode": status2 == true ? "$itemcode" : "",
-                "Itemdocid":itemdocuid,
-                "Hsncode": HSN_Code.text,
-                "BoxNo": Box_NO.text,
 
-                "customername": customername.text,
-                "customerphone": customerphone.text,
-                "customeraddress": customeraddress.text,
-                "purchaseno": purchase_No.text,
-                "purchasedate": purchase_Date.text,
-                "purchasenote": purchase_notes.text,
-                "tax": taxitem.text,
-                'customerdocid': customerdocid,
-                "save": false,
-                "return": false,
-                "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
-                "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
-                "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
-                "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
-                "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
-                "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
-                "time": DateFormat.jm().format(DateTime.now()),
-                "date":
-                "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                "timestamp": DateTime.now().microsecondsSinceEpoch,
-                "Category": itemcat,
-                "Brand": itembrand,
-                "Item": itemname.text,
-                "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
-                "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
-                "Qty": Qty.text,
-                //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
-                "Description":
-                "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
-              });
+              // FirebaseFirestore.instance
+              //     .collection("Customer")
+              //     .doc(customerdocid)
+              //     .collection("billing")
+              //     .doc(random)
+              //     .set({
+              //   "Total": totalamount,
+              //   "Payment mode": Payments,
+              //   "itemcode": status2 == true ? "$itemcode" : "",
+              //   "Itemdocid":itemdocuid,
+              //   "Hsncode": HSN_Code.text,
+              //   "BoxNo": Box_NO.text,
+              //
+              //   "customername": customername.text,
+              //   "customerphone": customerphone.text,
+              //   "customeraddress": customeraddress.text,
+              //   "purchaseno": purchase_No.text,
+              //   "purchasedate": purchase_Date.text,
+              //   "purchasenote": purchase_notes.text,
+              //   "tax": taxitem.text,
+              //   'customerdocid': customerdocid,
+              //   "save": false,
+              //   "return": false,
+              //   "payment-1": paymenttype1.text != "" ? paymenttype1.text : "0",
+              //   "payment-2": paymenttype2.text != "" ? paymenttype2.text : "0",
+              //   "payment-3": paymenttype3.text != "" ? paymenttype3.text : "0",
+              //   "payment-4": paymenttype4.text != "" ? paymenttype4.text : "0",
+              //   "Discountamount": Discountamount.text == "" ? "0" : double.parse(Discountamount.text).toStringAsFixed(2),
+              //   "Discountamountpercentage": Discountamountpercentage.text == "" ? "0" : "${double.parse(Discountamountpercentage.text).toStringAsFixed(2)}%",
+              //   "time": DateFormat.jm().format(DateTime.now()),
+              //   "date":
+              //   "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+              //   "timestamp": DateTime.now().microsecondsSinceEpoch,
+              //   "Category": itemcat,
+              //   "Brand": itembrand,
+              //   "Item": itemname.text,
+              //   "withouttaxprice": double.parse(without_tax.text).toStringAsFixed(2),
+              //   "Sales price": double.parse(Sales2.text).toStringAsFixed(2),
+              //   "Qty": Qty.text,
+              //   //"Description":"${itemname.text},${itembrand},${itemcat}${IMEISERIAL.isNotEmpty?IMEISERIAL.toString():""}",
+              //   "Description":
+              //   "${itemname.text},${IMEISERIAL.isNotEmpty ? IMEISERIAL.toString() : ""}",
+              // });
+
               checkgst(Sales.text, Qty.text);
 
             }
@@ -6918,7 +7697,7 @@ class _Billing_PageState extends State<Billing_Page> {
   }
 
   ///itemcode change function
-  ///
+
   int Itemcount=0;
 
   alteritemcode() async {
@@ -8398,7 +9177,6 @@ class _Billing_PageState extends State<Billing_Page> {
   }
 
 
-
   Widget textfield2(
       FocusNode focusNode,
       TextEditingController textEditingController,
@@ -8464,7 +9242,12 @@ class _Billing_PageState extends State<Billing_Page> {
       },
     );
   }
+
+
+
+
 }
+
 
 class Location {
   String name;
